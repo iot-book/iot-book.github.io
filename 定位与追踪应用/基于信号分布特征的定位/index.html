@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="WiSys Lob">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>6.2 基于信号分布特征的定位 - IoT Book</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "6.2 \u57fa\u4e8e\u4fe1\u53f7\u5206\u5e03\u7279\u5f81\u7684\u5b9a\u4f4d";
+    var mkdocs_page_input_path = "\u5b9a\u4f4d\u4e0e\u8ffd\u8e2a\u5e94\u7528\\\u57fa\u4e8e\u4fe1\u53f7\u5206\u5e03\u7279\u5f81\u7684\u5b9a\u4f4d.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> IoT Book</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../前言/物联网导论/">一. 前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../物联网简介/物联网简介/">二. 物联网简介</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">三. 物联网通信协议</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网通信协议/android开发基础/">3.1 Android基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网通信协议/matlab基础/">3.2 MATLAB基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">四. 物联网通信基础</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">4.1 物联网基础概念</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/物联网基础概念/">4.1.1 基础概念</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/滤波/">4.1.2 滤波</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/傅里叶分析/">4.1.3 傅立叶分析</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">4.2 编码方法及声音实现</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/编码方法及其声音实现/">4.2.1 实现1</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/编码方法及其声音实现-2/">4.2.2 实现2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">五. 物联网感知</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/传感器/">5.1 传感器</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/多普勒效应/">5.2 多普勒效应</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/飞行时间/">5.3 飞行时间</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/相位偏移/">5.4 相位偏移</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">六. 定位与追踪</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../基于距离测量的定位/">6.1 基于距离测量的定位</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">6.2 基于信号分布特征的定位</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">基于声音信号强度分布的定位方法</a></li>
+    
+
+    <li class="toctree-l3"><a href="#_2">机器学习技术在基于信号分布特征定位方法中的应用</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../基于距离变化量的位置追踪/">6.3 基于距离变化量的位置追踪</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">七. 感知识别</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">7.1 智能手表手势识别</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/智能手表连接教程/智能手表连接教程/">7.1.1 智能手表连接教程</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/智能手表数据采集/智能手表数据采集/">7.1.2 智能手表数据采集</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/数据处理与展示/智能手表数据处理与展示/">7.1.3 数据处理与展示</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">八. 物联网网络构建</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/网络冲突处理(zigzag)/">8.1 低功耗物联网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/网络冲突处理(zigzag)/">8.2 网络冲突处理</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.3 跨协议识别</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.4 低功耗广域网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.5 跨协议通信</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.6 物联网多跳自组网网络协议</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">九. 物联网应用平台</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网应用平台/阿里云平台/阿里云物联网平台介绍/">9.1 阿里云平台</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网应用平台/LoRa测试床/LoRa测试床/">9.2 LoRa测试床</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">IoT Book</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>六. 定位与追踪 &raquo;</li>
+        
+      
+    
+    <li>6.2 基于信号分布特征的定位</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <!-- # 7.2 基于信号分布特征的定位 -->
+
+<p>基于信号分布特征的定位方法，主要是利用信号的某些特征在空间中的分布特点而实现的匹配定位方法。</p>
+<p>如果把某位置上采集的信号特征称为该位置上信号的“指纹”，那么基于“指纹”的定位方法的基本思想是：首先对定位空间中的每个采样点进行训练，即采集每个采样点的信号特征，构成指纹数据库；对某个待定位点进行定位，则采集该点的信号特征，并于指纹数据库进行对比，则数据库中与待定位点信号特征最接近的训练采样点，即为对待定位点的定位结果。</p>
+<h2 id="_1">基于声音信号强度分布的定位方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本节主要介绍了论文Solo中相关工作的内容。</p>
+<p>首先，我们思考：是否可以利用声音信号实现基于指纹的定位方法呢？答案是肯定的。我们观察扬声器播放的单频率声音信号，可以发现：不同频率声音信号在传播过程中，其发散的程度是不同的，高频声音信号传播的方向性更强，低频声音信号在传播中更容易发散。因此，可以利用不同频率声音信号的传播特点实现定位。</p>
+<p>现有的声音定位方法通常可以利用单个音箱和手机实现一维测距。考虑与音箱某个距离L的圆周，如果对手机进行一维测距的结果为L，则可以确定手机处于该圆周上。如果结合上文所述的声音信号在声场中的分布规律，即在圆周上与音箱夹角不同角度处接收的信号强度不同这一性质，即可根据手机接收到的信号的强度信息，确定手机与音箱的夹角，即确定了手机在圆周上的位置。这是利用声音信号强度分布实现手机定位的基本思路。</p>
+<p>Solo将问题从确定手机的具体位置简化为：在距离音箱30厘米处设定一个边长为15cm的3×3的网格，每个网格是边长是5cm。Solo利用声音信号，对手机处于网格的位置进行的分类。这样就将定位问题简化为一个对手机所在位置的9分类问题。</p>
+<p>对于声音信号，如前文所述，Solo在商业扬声器和麦克风常见的20Hz到20kHz工作频段中选择10个频率的正弦声音信号进行混合，作为Solo工作所使用的声音信号。同时，Solo实现了现有的一维测距工作来测量扬声器到手机的距离。手机接收到声音信号后，按前文所述进行带通滤波以分离10个不同频率的声音信号，并分别求出信号的强度<span><span class="MathJax_Preview">s_1…s_{10}</span><script type="math/tex">s_1…s_{10}</script></span>。我们以频率最低的信号强度作为基准，其他频率的信号强度均除以该信号的强度，求得9个强度比<span><span class="MathJax_Preview">i_1…i_9</span><script type="math/tex">i_1…i_9</script></span>。此时我们得到了9个强度比和扬声器到手机的距离这10个参数。</p>
+<p>训练过程中，Solo将上述10个参数作为输入，手机所处的网格位置作为结果，训练一个具有单层隐藏层的人工神经网络。神经网络的结构示意图如图2-8，其中d代表扬声器到手机的距离，<span><span class="MathJax_Preview">i_1…i_m</span><script type="math/tex">i_1…i_m</script></span>代表m个信号强度比（实验中m=9），<span><span class="MathJax_Preview">p_1…p_n</span><script type="math/tex">p_1…p_n</script></span>代表输出的n类结果的概率（实验中n=9，表示3×3方格的9分类）。测试过程与训练过程类似，首先采集每个测量点的声音信号数据，求出9个强度比和距离。随后利用该神经网络模型对这10个参数进行分析，对手机采样时所处的网格位置进行分类和预测。训练集数据和测试集数据的采样位置如图2-9所示。其中训练集采样位置是均匀分布在每个网格内的4个点，测试集采样位置是每个网格内随机生成坐标的3个点。该神经网络模型的输出结果是一个长度为9的向量，向量的每个元素介于0和1之间，表示手机处于该网格内的概率。我们最终将采用概率最高的结果作为对手机位置分类的结果。</p>
+<h2 id="_2">机器学习技术在基于信号分布特征定位方法中的应用<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>虽然Solo只是一个证明基于信号强度分布进行定位的可行性的定性方法，但是Solo中对定位的实现思路值得我们认真审视。对信号分布特征的匹配，其实质是通过某些特征，对目标点的位置进行分类或回归的过程。而分类模型和回归模型的本质的一样的，分类模型是回归模型的离散化输出。因此，对信号进行特征匹配的方法就是基于信号分布特征的定位方法的核心。而机器学习是目前流行的一种特征匹配方法。</p>
+<p>如果我们重新考虑基于指纹的定位方法的基本思想，我们发现，其基本思想就是对定位空间进行了分割，本质上就是对定位空间根据某种标准（通常是信号的某种特征）进行了类别的划分。定位空间的每个网格，即为该分类方法中的一个类别。而定位的过程，即是对目标位置进行分类的过程。</p>
+<p>当我们用分类的思想对定位方法进行抽象后，我们可以发现，基于指纹的定位方法的核心过程为“确定分类方式-特征提取-训练分类器-测试数据”。显然，机器学习是实现该过程的一种有效的方法。例如Solo，将定位空间划分为3*3的网格，这就确定了分类的方式：将空间划分为3*3共9个类别。接下来，为了提取用于分类的声音信号的特征，Solo测量了每个网格内4个采样位置上10个频率信号的强度信息。随后利用这些信息训练了神经网络，该神经网络就是一个分类器。最后，对目标位置的定位，即为利用该分类器对目标位置进行分类并获得结果。</p>
+<p>同样的，如果我们使用其他的机器学习技术，例如支持向量机等，同样可以得到类似的结果。我们甚至可以将多种分类器结合起来，以提高分类的准确率，从而提高定位精度。但是利用分类器实现定位也存在缺点，一个显而易见的问题在于，其定位的精度依赖于分类的精细程度，分类越精细（例如选择几何尺寸更小的网格），其定位的分辨能力越高，训练和建模的复杂程度也越高（因为基于指纹的方法需要在每个网格采集数据进行训练和建模）。</p>
+<p>如果我们想在降低训练和建模的复杂程度的同时，得到具体的定位目标点的坐标，那么线性回归是另一种选择。回归指研究一组随机变量(Y1 ，Y2 ，…，Yi)和另一组(X1，X2，…，Xk)变量之间关系的统计分析方法，又称多重回归分析。通常Y1，Y2，…，Yi是因变量，X1、X2，…，Xk是自变量。回到二维定位中，对于Solo，如果利用回归代替神经网络来实现定位，其本质就是研究10个频率信号强度与目标位置坐标(x, y)的关系的统计分析方法。</p>
+<p>这里我们不详细介绍如何利用回归分析实现定位，因为其解决问题的思想于分类的方法基本相同，主要的区别在于利用回归模型代替了分类器，得到的结果也从分类结果变为目标点的坐标。同样的，对于回归分析，针对不同的应用场景和数据，可以使用不同的回归模型来得到更好的结果。例如，对于存在某些对定位结果影响较大的参数时，可以使用岭回归代替线性回归。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../基于距离变化量的位置追踪/" class="btn btn-neutral float-right" title="6.3 基于距离变化量的位置追踪">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../基于距离测量的定位/" class="btn btn-neutral" title="6.1 基于距离测量的定位"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../基于距离测量的定位/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../基于距离变化量的位置追踪/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

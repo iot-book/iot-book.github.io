@@ -1,0 +1,11 @@
+function [ lmps ] = getLMPS( y )
+temp = [-100, y, -100];  %为了便于比较局部最大值，在
+lmp = 0;
+lmps = 0;
+for i=2:length(y)+1
+    if temp(i)>temp(i-1) && temp(i)>temp(i+1)
+        lmp = lmp + 1;
+    end
+    lmps = lmps +lmp;
+end
+

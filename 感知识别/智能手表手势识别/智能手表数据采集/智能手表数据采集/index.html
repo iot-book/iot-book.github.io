@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="WiSys Lob">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>7.1.2 智能手表数据采集 - IoT Book</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "7.1.2 \u667a\u80fd\u624b\u8868\u6570\u636e\u91c7\u96c6";
+    var mkdocs_page_input_path = "\u611f\u77e5\u8bc6\u522b\\\u667a\u80fd\u624b\u8868\u624b\u52bf\u8bc6\u522b\\\u667a\u80fd\u624b\u8868\u6570\u636e\u91c7\u96c6\\\u667a\u80fd\u624b\u8868\u6570\u636e\u91c7\u96c6.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> IoT Book</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../前言/物联网导论/">一. 前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../物联网简介/物联网简介/">二. 物联网简介</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">三. 物联网通信协议</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网通信协议/android开发基础/">3.1 Android基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网通信协议/matlab基础/">3.2 MATLAB基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">四. 物联网通信基础</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">4.1 物联网基础概念</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/物联网基础概念/">4.1.1 基础概念</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/滤波/">4.1.2 滤波</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/傅里叶分析/">4.1.3 傅立叶分析</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">4.2 编码方法及声音实现</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/编码方法及其声音实现/">4.2.1 实现1</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/编码方法及其声音实现-2/">4.2.2 实现2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">五. 物联网感知</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/传感器/">5.1 传感器</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/多普勒效应/">5.2 多普勒效应</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/飞行时间/">5.3 飞行时间</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/相位偏移/">5.4 相位偏移</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">六. 定位与追踪</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于距离测量的定位/">6.1 基于距离测量的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于信号分布特征的定位/">6.2 基于信号分布特征的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于距离变化量的位置追踪/">6.3 基于距离变化量的位置追踪</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">七. 感知识别</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">7.1 智能手表手势识别</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../智能手表连接教程/智能手表连接教程/">7.1.1 智能手表连接教程</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">7.1.2 智能手表数据采集</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#_1">智能手表惯性传感器数据采集程序使用说明</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#_2">程序名称</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">程序功能</a></li>
+        
+            <li><a class="toctree-l5" href="#_4">程序使用说明</a></li>
+        
+            <li><a class="toctree-l5" href="#_5">数据格式</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../数据处理与展示/智能手表数据处理与展示/">7.1.3 数据处理与展示</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">八. 物联网网络构建</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/网络冲突处理(zigzag)/">8.1 低功耗物联网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/网络冲突处理(zigzag)/">8.2 网络冲突处理</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.3 跨协议识别</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.4 低功耗广域网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.5 跨协议通信</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.6 物联网多跳自组网网络协议</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">九. 物联网应用平台</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网应用平台/阿里云平台/阿里云物联网平台介绍/">9.1 阿里云平台</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网应用平台/LoRa测试床/LoRa测试床/">9.2 LoRa测试床</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">IoT Book</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>7.1 智能手表手势识别 &raquo;</li>
+        
+      
+        
+          <li>七. 感知识别 &raquo;</li>
+        
+      
+    
+    <li>7.1.2 智能手表数据采集</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">智能手表惯性传感器数据采集程序使用说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">程序名称<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>IMU Detector</p>
+<h3 id="_3">程序功能<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>记录一段时间内智能手表的加速度传感器和陀螺仪传感器采集的数据</p>
+<h3 id="_4">程序使用说明<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>在智能手表上打开**IMU Detector**程序，初始界面为红色</p>
+</li>
+<li>
+<p>点击手表盘面，此时界面变为白色，可以开始移动手表</p>
+</li>
+<li>
+<p>再次点击手表盘面，界面变回红色并显示数据采集的时间长度</p>
+</li>
+<li>
+<p>根据《智能手表连接教程》，通过智能手机，连接智能手表到电脑</p>
+</li>
+<li>
+<p>在电脑上打开命令行或终端，执行(Windows)<code>.\pull.ps1 &lt;filename&gt;</code>或(Mac, Linux)<code>./pull.sh &lt;filename&gt;</code>命令，即可将手表记录的文件传输给电脑，命令示例如下：</p>
+<p>(Windows)</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>.<span class="se">\p</span>ull.ps1 move
+</pre></div>
+</td></tr></table>
+
+<p>(Mac, Linux)</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>./pull.sh move
+</pre></div>
+</td></tr></table>
+
+<p>结果为在执行命令的文件夹下出现<code>move.data</code>文件</p>
+</li>
+</ol>
+<h3 id="_5">数据格式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>采集数据得到的文件格式如下：</p>
+<p>一共有<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>行，7列</p>
+<p>每行代表一个时刻采集到的数据</p>
+<p>7列按照从左到右，每列的含义如下：</p>
+<p>时间戳（单位：<span><span class="MathJax_Preview">ms</span><script type="math/tex">ms</script></span>），X轴加速度（单位：<span><span class="MathJax_Preview">m/s^2</span><script type="math/tex">m/s^2</script></span>），Y轴加速度（单位：<span><span class="MathJax_Preview">m/s^2</span><script type="math/tex">m/s^2</script></span>），Z轴加速度（单位：<span><span class="MathJax_Preview">m/s^2</span><script type="math/tex">m/s^2</script></span>），绕X轴角速度（单位：<span><span class="MathJax_Preview">rad/s</span><script type="math/tex">rad/s</script></span>），绕Y轴角速度（单位：<span><span class="MathJax_Preview">rad/s</span><script type="math/tex">rad/s</script></span>），绕Z轴角速度（单位：<span><span class="MathJax_Preview">rad/s</span><script type="math/tex">rad/s</script></span>），</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../数据处理与展示/智能手表数据处理与展示/" class="btn btn-neutral float-right" title="7.1.3 数据处理与展示">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../智能手表连接教程/智能手表连接教程/" class="btn btn-neutral" title="7.1.1 智能手表连接教程"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../智能手表连接教程/智能手表连接教程/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../数据处理与展示/智能手表数据处理与展示/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="WiSys Lob">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>7.1.3 数据处理与展示 - IoT Book</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "7.1.3 \u6570\u636e\u5904\u7406\u4e0e\u5c55\u793a";
+    var mkdocs_page_input_path = "\u611f\u77e5\u8bc6\u522b\\\u667a\u80fd\u624b\u8868\u624b\u52bf\u8bc6\u522b\\\u6570\u636e\u5904\u7406\u4e0e\u5c55\u793a\\\u667a\u80fd\u624b\u8868\u6570\u636e\u5904\u7406\u4e0e\u5c55\u793a.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> IoT Book</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../前言/物联网导论/">一. 前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../物联网简介/物联网简介/">二. 物联网简介</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">三. 物联网通信协议</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网通信协议/android开发基础/">3.1 Android基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网通信协议/matlab基础/">3.2 MATLAB基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">四. 物联网通信基础</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">4.1 物联网基础概念</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/物联网基础概念/">4.1.1 基础概念</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/滤波/">4.1.2 滤波</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/傅里叶分析/">4.1.3 傅立叶分析</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">4.2 编码方法及声音实现</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/编码方法及其声音实现/">4.2.1 实现1</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/编码方法及其声音实现-2/">4.2.2 实现2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">五. 物联网感知</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/传感器/">5.1 传感器</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/多普勒效应/">5.2 多普勒效应</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/飞行时间/">5.3 飞行时间</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/相位偏移/">5.4 相位偏移</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">六. 定位与追踪</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于距离测量的定位/">6.1 基于距离测量的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于信号分布特征的定位/">6.2 基于信号分布特征的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于距离变化量的位置追踪/">6.3 基于距离变化量的位置追踪</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">七. 感知识别</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">7.1 智能手表手势识别</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../智能手表连接教程/智能手表连接教程/">7.1.1 智能手表连接教程</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../智能手表数据采集/智能手表数据采集/">7.1.2 智能手表数据采集</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">7.1.3 数据处理与展示</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#_1">数据处理与展示</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#_2">文件结构</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">代码说明</a></li>
+        
+            <li><a class="toctree-l5" href="#_4">思考与扩展</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">八. 物联网网络构建</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/网络冲突处理(zigzag)/">8.1 低功耗物联网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/网络冲突处理(zigzag)/">8.2 网络冲突处理</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.3 跨协议识别</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.4 低功耗广域网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.5 跨协议通信</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.6 物联网多跳自组网网络协议</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">九. 物联网应用平台</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网应用平台/阿里云平台/阿里云物联网平台介绍/">9.1 阿里云平台</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网应用平台/LoRa测试床/LoRa测试床/">9.2 LoRa测试床</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">IoT Book</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>7.1 智能手表手势识别 &raquo;</li>
+        
+      
+        
+          <li>七. 感知识别 &raquo;</li>
+        
+      
+    
+    <li>7.1.3 数据处理与展示</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">数据处理与展示<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>当使用智能手表并根据《智能手表数据采集》教程采集到惯性传感器数据后，使用**matlab**处理并展示数据</p>
+<h3 id="_2">文件结构<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>代码文件夹包含<code>main.m</code>和<code>move.data</code>两个文件，其中<code>main.m</code>为处理手表数据的**matlab**源文件，<code>move.data</code>为从智能手表上采集到的惯性传感器数据文件</p>
+<h3 id="_3">代码说明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>首先使用<code>load</code>函数将<code>move.data</code>的内容提取为一个矩阵：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="n">load</span><span class="p">(</span><span class="s">&#39;move.data&#39;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>矩阵<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>共有114行，7列，通过文本编辑器打开<code>move.data</code>或者通过**matlab**的变量查询界面可以看到矩阵内容，每行代表一个时刻采集到的数据，列的含义见下表（选取<code>move.data</code>前2行作为示例）：</p>
+<p><img alt="数据文件含义" src="../images/8.1/dataTable.png" /></p>
+<p>上表中，时间戳的具体含义为：从1970年1月1日00:00到当前系统时间（智能手表上的系统时间）经历的总毫秒数。手表的三个坐标轴示意图如下：</p>
+<p><img alt="手表三轴示意图" src="../images/8.1/watch.png" /></p>
+<p>为了便于处理，把时间戳的开始时间固定为0，以后的时间戳是相对于第一条数据的时间偏移：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>本程序中使用的智能手表其加速度计和陀螺仪的采样率是<span><span class="MathJax_Preview">50Hz</span><script type="math/tex">50Hz</script></span>，可以通过查询手表的相关文档或者观察相邻数据时间戳间隔来获取，定义变量如下：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">samplingRate</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>
+<span class="n">samplingTime</span> <span class="p">=</span> <span class="mi">1000</span> <span class="o">/</span> <span class="n">samplingRate</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
+<p>从上表以及数据文件中都可以看出，有的数据时间戳是相同的，而相邻两条数据的时间戳间隔也不是定值，其中的原因需要从智能手表的惯性测量单元采集数据的原理说起。</p>
+<p>在<span><span class="MathJax_Preview">Android</span><script type="math/tex">Android</script></span>应用开发中，采集加速度计或者陀螺仪的数据是通过监听“数据变化”这一事件来实现的。以加速度计为例，如果加速度计元件在此刻测量到的数据与上一次测量到的数据不同，则会触发“数据变化”这一事件，可以利用该事件携带的参数在程序中进行数据收集或处理。加速度计元件相邻两次测量之间的时间间隔由该元件的采样率决定，两者互为倒数。理论上来说，如果相邻两次测量测得的数据相同，则不会触发“数据变化”事件，导致某一时刻数据缺失，但是由于元件本身的噪声，两次测量数据相同的情况很少见。由于程序运行的时延、元件采样率本身不精确等因素带来的误差，相邻两次数据的时间戳间隔不一定恰好等于元件相邻两次测量之间的时间间隔。两条数据时间戳相同的情况则是由于加速度计和陀螺仪是两个不同的元件，在采集时可能在同一时刻触发了加速度计的“数据变化”事件和陀螺仪的“数据变化”事件，因此在同一时刻会将数据记录2次。</p>
+<p>既然时间戳间隔不均匀，为了将时间戳处理成均匀的以便根据加速度计算速度和位移，需要对数据进行平滑插值处理：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">I</span><span class="p">]</span> <span class="p">=</span> <span class="n">unique</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">),</span> <span class="s">&#39;first&#39;</span><span class="p">);</span>
+<span class="n">A</span> <span class="p">=</span> <span class="n">A</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="p">:);</span>
+
+<span class="n">temA</span> <span class="p">=</span> <span class="p">[];</span>
+<span class="n">temA</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="n">samplingTime</span> <span class="p">:</span> <span class="n">A</span><span class="p">(</span><span class="k">end</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">2</span> <span class="p">:</span> <span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">temA</span><span class="p">(:,</span> <span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">spline</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(:,</span> <span class="nb">i</span><span class="p">),</span> <span class="n">temA</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">));</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p><code>unique</code>函数取出一个向量中所有互不相同的值，即去重，<code>spline</code>函数为三次样条插值函数，调用方式为<code>spline(x,y,xx)</code>，即先通过参数<code>x</code>和<code>y</code>拟合一条三次曲线，然后将自变量取值<code>xx</code>对应的函数值返回。</p>
+<p>本程序仅展示2维情况下的数据，<code>move.data</code>文件也是手表在表盘所在平面内运动得到的数据，因此在本程序中，<span><span class="MathJax_Preview">Z</span><script type="math/tex">Z</script></span>轴的加速度和3轴陀螺仪没有意义，只需要<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>轴和<span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span>轴的加速度：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">T</span> <span class="p">=</span> <span class="n">temA</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">A</span> <span class="p">=</span> <span class="n">temA</span><span class="p">(:,</span> <span class="mi">2</span> <span class="p">:</span> <span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>有了时间戳均匀的加速度数据，可以据此计算速度和位移了。在这里，采用的运动模型为**分段匀加速运动**，即认为在此次采样和下次采样之间的这段时间，手表保持此次采样值对应的加速度不变，根据此运动模型计算得到不同时刻对应的速度和位移：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">dt</span> <span class="p">=</span> <span class="n">samplingTime</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="n">dV</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">dt</span><span class="p">;</span>
+<span class="n">V</span> <span class="p">=</span> <span class="n">cumsum</span><span class="p">(</span><span class="n">dV</span><span class="p">);</span>
+<span class="n">dD</span> <span class="p">=</span> <span class="n">V</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">A</span> <span class="o">*</span> <span class="n">dt</span> ^ <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">cumsum</span><span class="p">(</span><span class="n">dD</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p><code>cumsum</code>对一个向量（或矩阵，默认按照第一个维度的方向）进行累加操作，返回所有累加的中间结果拼成的向量（或矩阵）</p>
+<p>下面可以根据时间戳和2个轴的加速度、速度和位移数据画图展示，第一个图展示的是2个轴、3个物理量对应的6张图的曲线，使用<code>subplot</code>函数可以将这6张图画到一起：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">));</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;X轴加速度&#39;</span><span class="p">);</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Y轴加速度&#39;</span><span class="p">);</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">));</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;X轴速度&#39;</span><span class="p">);</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Y轴速度&#39;</span><span class="p">);</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">));</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;X轴位移&#39;</span><span class="p">);</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Y轴位移&#39;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>结果如下图所示：</p>
+<p><img alt="X轴和Y轴的加速度、速度以及位移曲线" src="../images/8.1/data3axis.png" /></p>
+<p>为了展示手表运动的动态效果，可以利用<code>pause</code>函数进行连续画点以实现动画效果：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">w</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">;</span>
+<span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">]);</span>
+
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="nb">size</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">hold</span> <span class="n">on</span><span class="p">;</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;ro&#39;</span><span class="p">);</span>
+    <span class="n">pause</span><span class="p">(</span><span class="n">dt</span><span class="p">);</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p><code>axis</code>函数规定了图像<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>和<span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span>轴的取值范围，手表的运动轨迹如下：</p>
+<p><img alt="trace" src="../images/8.1/trace.png" /></p>
+<h3 id="_4">思考与扩展<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>本程序只展示了在2维平面内手表运动的情况，如何将该场景拓展至3维？此时需要陀螺仪的数据计算手表的旋转情况。注意：手表测量得到的加速度数据，其参照系为手表的加速度计元件，而需要恢复的手表运动轨迹其参照系为世界坐标系，两者需要转换。</li>
+<li>2维平面的另一个简化之处在于不需要考虑重力的影响（重力全部分布在<span><span class="MathJax_Preview">Z</span><script type="math/tex">Z</script></span>轴，在本程序中不予考虑），如果扩展到3维，如何在手表运动的情况下去除重力？注意：由于手表坐标系相对于世界坐标系的变化，重力在手表参照系下不再是常量。</li>
+<li>在上面惯性测量单元采集数据的原理中提到，加速度计和陀螺仪在采集数据时均有误差，这种误差对于恢复轨迹能带来多大的影响？如何有效地去除这种误差？</li>
+<li>计算速度和位移时，本程序采用的**分段匀加速运动**模型是否合理？有没有更能拟合真实速度和位移的运动模型？</li>
+<li>本程序进行手表手势识别的思路是先恢复轨迹，再根据轨迹判断手势。在轨迹恢复不准的情况下，如何根据不准的结果进行不同手势的区分？</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../../物联网网络构建/网络冲突处理(zigzag)/" class="btn btn-neutral float-right" title="8.1 低功耗物联网">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../智能手表数据采集/智能手表数据采集/" class="btn btn-neutral" title="7.1.2 智能手表数据采集"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../智能手表数据采集/智能手表数据采集/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../../../物联网网络构建/网络冲突处理(zigzag)/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>

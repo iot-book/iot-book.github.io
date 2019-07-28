@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="WiSys Lob">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>3.2 MATLAB基础 - IoT Book</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "3.2 MATLAB\u57fa\u7840";
+    var mkdocs_page_input_path = "\u7269\u8054\u7f51\u901a\u4fe1\u534f\u8bae\\matlab\u57fa\u7840.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> IoT Book</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../前言/物联网导论/">一. 前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../物联网简介/物联网简介/">二. 物联网简介</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">三. 物联网通信协议</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../android开发基础/">3.1 Android基础</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">3.2 MATLAB基础</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#matlab">Matlab 安装</a></li>
+    
+
+    <li class="toctree-l3"><a href="#matlab_1">Matlab使用</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">四. 物联网通信基础</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">4.1 物联网基础概念</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/物联网基础概念/">4.1.1 基础概念</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/滤波/">4.1.2 滤波</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/傅里叶分析/">4.1.3 傅立叶分析</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">4.2 编码方法及声音实现</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/编码方法及其声音实现/">4.2.1 实现1</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../物联网通信基础/编码方法及其声音实现-2/">4.2.2 实现2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">五. 物联网感知</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/传感器/">5.1 传感器</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/多普勒效应/">5.2 多普勒效应</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/飞行时间/">5.3 飞行时间</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/相位偏移/">5.4 相位偏移</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">六. 定位与追踪</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于距离测量的定位/">6.1 基于距离测量的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于信号分布特征的定位/">6.2 基于信号分布特征的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于距离变化量的位置追踪/">6.3 基于距离变化量的位置追踪</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">七. 感知识别</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">7.1 智能手表手势识别</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/智能手表连接教程/智能手表连接教程/">7.1.1 智能手表连接教程</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/智能手表数据采集/智能手表数据采集/">7.1.2 智能手表数据采集</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/数据处理与展示/智能手表数据处理与展示/">7.1.3 数据处理与展示</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">八. 物联网网络构建</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/网络冲突处理(zigzag)/">8.1 低功耗物联网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/网络冲突处理(zigzag)/">8.2 网络冲突处理</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.3 跨协议识别</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.4 低功耗广域网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.5 跨协议通信</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.6 物联网多跳自组网网络协议</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">九. 物联网应用平台</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网应用平台/阿里云平台/阿里云物联网平台介绍/">9.1 阿里云平台</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网应用平台/LoRa测试床/LoRa测试床/">9.2 LoRa测试床</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">IoT Book</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>三. 物联网通信协议 &raquo;</li>
+        
+      
+    
+    <li>3.2 MATLAB基础</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="matlab">Matlab 安装<a class="headerlink" href="#matlab" title="Permanent link">&para;</a></h1>
+<p>请使用学校提供的正版matlab安装教程进行matlab软件的安装和激活</p>
+<h1 id="matlab_1">Matlab使用<a class="headerlink" href="#matlab_1" title="Permanent link">&para;</a></h1>
+<p>本章节我将以录音文件读取和展示为例为带大家进行简单的matlab操作。安装完成后，打开matlab界面，通过cd命令进入到工作目录。
+<img alt="" src="../images/5.png" title="" /> 
+由于在命令行中输入命令每次修改都需要重新复制粘贴，为了方便修改和运行代码，我们可以创建”.m”脚本文件来进行代码的实现。点击应用左上方的新建按钮，选择脚本：
+<img alt="" src="../images/6.png" title="" /> 
+然后编辑器中会出现一个Untitled.m 点击左上方的保存按钮，为这个脚本文件取名并保存在当前工作文件夹中，我将其命名为了“Hello.m”：
+<img alt="" src="../images/7.png" title="" /> 
+为了方便处理录音文件，我们将在手机上录到的“.wav”文件拷贝到当前的matlab工作目录下。
+在”Hello.m”中编写文件读取和展示的代码：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%从录音文件receive.wav中读取数据和采样频率</span>
+<span class="p">[</span><span class="n">data</span><span class="p">,</span> <span class="n">fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;receive.wav&#39;</span><span class="p">);</span>
+<span class="c">%把数据展示到figure中</span>
+<span class="n">figure</span><span class="p">;</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+点击上方的运行按钮：
+<img alt="" src="../images/8.png" title="" /> 
+Matlab绘制出了图形：
+<img alt="" src="../images/9.png" title="" /> 
+横轴是采样点的序号，纵轴是采样点的值，代表声音的幅度。对局部放大之后如下图：
+<img alt="" src="../images/10.png" title="" /><br />
+我们观察可以发现图中画出的是两条数据，这是因为录音文件中存储的是手机的两个麦克风所录到的两路信号，在工作区中观察变量data会发现其为n*2的矩阵：
+<img alt="" src="../images/11.png" title="" /> 
+双击其变量名可以在变量工作区中打开它，滚动屏幕就可以观察它的值：
+<img alt="" src="../images/12.png" title="" /><br />
+Matlab除了可以建脚本文件，还可以创建函数文件。点击新建-&gt;函数：
+<img alt="" src="../images/13.png" title="" /><br />
+编辑器中出现一个未命名的m文件，并且带有初始的函数结构。点击保存按钮保存这个文件并为函数取名，保存之后还需要对函数名和文件名进行统一：
+<img alt="" src="../images/14.png" title="" /> 
+修改函数命名之后编辑器右侧的小方块将变成绿色，表示问题已修复。
+<img alt="" src="../images/15.png" title="" /> 
+ 接下来可以根据自己想要的功能修改函数的输入输出参数以及计算过程：
+ <sub>~</sub>matlab
+function [result] = getMax(a,b)
+%getMax 此处显示有关此函数的摘要
+% 输入参数是两个数a和b，返回这两个数中的最大值。
+result= max(a,b);
+end
+<sub>~</sub>
+现在就可以在命令行、脚本或其他函数文件中利用函数名称调用它了：
+<img alt="" src="../images/16.png" title="" /> 
+有了这些基础，你已经可以进行简单的matlab使用了，更多的操作你可以自行进行学习，我们后续的教程也会在首次使用到某个新操作的时候进行相应的介绍。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../物联网通信基础/物联网基础概念/" class="btn btn-neutral float-right" title="4.1.1 基础概念">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../android开发基础/" class="btn btn-neutral" title="3.1 Android基础"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../android开发基础/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../物联网通信基础/物联网基础概念/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

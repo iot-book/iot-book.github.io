@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="WiSys Lob">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>4.1.1 基础概念 - IoT Book</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "4.1.1 \u57fa\u7840\u6982\u5ff5";
+    var mkdocs_page_input_path = "\u7269\u8054\u7f51\u901a\u4fe1\u57fa\u7840\\\u7269\u8054\u7f51\u57fa\u7840\u6982\u5ff5.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> IoT Book</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../前言/物联网导论/">一. 前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../物联网简介/物联网简介/">二. 物联网简介</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">三. 物联网通信协议</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网通信协议/android开发基础/">3.1 Android基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网通信协议/matlab基础/">3.2 MATLAB基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">四. 物联网通信基础</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">4.1 物联网基础概念</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">4.1.1 基础概念</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#_1">物联网连接层</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#_2">声波的生成、发送和接收</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">模拟信号到数字信号</a></li>
+        
+            <li><a class="toctree-l5" href="#_4">量化</a></li>
+        
+            <li><a class="toctree-l5" href="#_5">傅里叶变换</a></li>
+        
+            <li><a class="toctree-l5" href="#_6">线性时不变系统</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#_7">信道</a></li>
+    
+
+    <li class="toctree-l4"><a href="#_8">信道冲击响应</a></li>
+    
+
+    <li class="toctree-l4"><a href="#_9">信噪比</a></li>
+    
+
+    <li class="toctree-l4"><a href="#_10">多径效应</a></li>
+    
+
+    <li class="toctree-l4"><a href="#_11">信号衰落</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#_12">时间</a></li>
+        
+            <li><a class="toctree-l5" href="#_13">空间</a></li>
+        
+            <li><a class="toctree-l5" href="#_14">频率</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#csi-channel-state-information">CSI （Channel State Information）</a></li>
+    
+
+    <li class="toctree-l4"><a href="#_15">参考</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../滤波/">4.1.2 滤波</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../傅里叶分析/">4.1.3 傅立叶分析</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">4.2 编码方法及声音实现</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../编码方法及其声音实现/">4.2.1 实现1</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../编码方法及其声音实现-2/">4.2.2 实现2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">五. 物联网感知</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/传感器/">5.1 传感器</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/多普勒效应/">5.2 多普勒效应</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/飞行时间/">5.3 飞行时间</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/相位偏移/">5.4 相位偏移</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">六. 定位与追踪</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于距离测量的定位/">6.1 基于距离测量的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于信号分布特征的定位/">6.2 基于信号分布特征的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于距离变化量的位置追踪/">6.3 基于距离变化量的位置追踪</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">七. 感知识别</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">7.1 智能手表手势识别</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/智能手表连接教程/智能手表连接教程/">7.1.1 智能手表连接教程</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/智能手表数据采集/智能手表数据采集/">7.1.2 智能手表数据采集</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/数据处理与展示/智能手表数据处理与展示/">7.1.3 数据处理与展示</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">八. 物联网网络构建</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/网络冲突处理(zigzag)/">8.1 低功耗物联网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/网络冲突处理(zigzag)/">8.2 网络冲突处理</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.3 跨协议识别</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.4 低功耗广域网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.5 跨协议通信</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.6 物联网多跳自组网网络协议</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">九. 物联网应用平台</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网应用平台/阿里云平台/阿里云物联网平台介绍/">9.1 阿里云平台</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网应用平台/LoRa测试床/LoRa测试床/">9.2 LoRa测试床</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">IoT Book</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>4.1 物联网基础概念 &raquo;</li>
+        
+      
+        
+          <li>四. 物联网通信基础 &raquo;</li>
+        
+      
+    
+    <li>4.1.1 基础概念</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">物联网连接层<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>我们先来介绍物联网的连接层，在介绍连接层基础上来介绍物联网感知层的相关技术，最后介绍传输和应用层的相关技术。</p>
+<p>物联网中有不同的连接技术，除了传统的有线连接技术之外，我们在这里主要介绍无线连接的技术，包括WiFi技术、蓝牙技术包括BLE技术等、ZigBee技术、LoRa、SigFox，每一种技术的适用场景和特点也是不一样的。</p>
+<p>为了介绍清楚无线传输的基础以及在上面发展出来的各种技术，我们先来介绍无线通信的基本原理。无线通信的基本思想就是利用无线电磁波或者无线信号来调制和传输信息。比如最简单的场景中，我们可以产生一个固定频率的无线信号，通过有信号来代表1，没有信号来代表0，来传输信号。由于产生和控制无线电磁型号需要比较复杂的过程，在几年前我在计划该课程的时候一直苦恼怎么让大家很直观的理解其中的技术，最好还能够实际动手试试。现在市面上有能够让我们进行信号处理的设备，但是我觉得还可以做得更直接更好，利用我们的智能手机就能完成这一系列工作。这一个课程中主要利用声波信号来模拟无线信号，声波信号可以很方便的产生，利用普通的智能手机就能够产生、发射和接收声波信号，同时声波信号也易于处理，很好的可视化，同时声波信号的处理和大部分无线信号的处理过程都比较类似，有利于我们理解无线处理的过程。本课程后面的材料中如果没有特殊声明，都讲会使用声波信号来模拟物联网连接过程中的各种技术，请同学们也自己动手来多尝试一下。</p>
+<p>在介绍声波信号的处理之前，我们先来理解一下声波信号的基本特征。一般来说，人可以听到的声波范围大概为20Hz到20KHz中间，因此现在大部分手机声音采样率为44100，对应到能够处理的最大声音频率为22KHz左右。超过20KHz的声波我们经常叫做超声波。</p>
+<h2 id="_2">声波的生成、发送和接收<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>这一部分对应了无线数据发送的时候的生成、发送和接收。在无线数据发送的过程中，这里每一部分都对应了很多的操作。我们先介绍声波的一些基本知识，然后通过声波的基本知识介绍数据发送和接收的过程。</p>
+<p>对于一个最简单的声波信号，可以为一个简单的正弦信号，下图展示的一个频率为1KHz的正弦声波信号，大家可以将这段声音播放出来看看。为了产生这段声音，我们只需要在Matlab执行如下的操作并将文件保存下来就可以。</p>
+<p><code>TODO 图 + Matlab代码</code></p>
+<p>声音是一种机械波，有物体的震动引起了空气的震动，从而能够传播声音。因此出现了超声波洗龙虾、超声波洗牙。</p>
+<p>关于Matlab的主要语法，有过任意编程语言经验的人应该都不会感觉到复杂，请大家自行学习。</p>
+<p>日常生活中我们能看到的信号大部分都是模拟信号，我们能看到的风雨雷电，我们听到的声音，看到的图片等，要将这些信息存入到电脑中间，需要经过一系列的处理，其中有几个重要的步骤就是采样和量化。无线通信是无线电磁信号为基础的。我们在这一章节中为了方便理解，针对声音信号来进行研究。</p>
+<h2 id="_3">模拟信号到数字信号<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>这是信号处理中的关键一步，因为网络通信尤其是无线通信的时候，利用的都是物理信号（如电磁信号），因此通信过程中的重要一步就是将模拟信号转成数字信号。</p>
+<p><img alt="通信过程" src="/images/4.1/p1.png" /></p>
+<p>如果真实存在着一个1KHz的声波信号，我们需要接收和处理这个信号的话，先要对信号进行采样和量化，这实际上也是所有计算机处理数据和信号的基础。计算机中将所有模拟信号转化为数字信号是通过采样和量化来实现的。具体来说，通过将模拟信号转化为电信号（通常为电压信号），然后通过将电压量化转成数字信号。在声音信号的处理中，我们首先依赖的是麦克风。麦克风能够将模拟的声音信号转化为电压信号，简单来说，麦克风上有一个可以随着声音振动而振动的薄膜，薄膜振动引起了产生电压的不断变化，因此电压的变化就代表了声音信号的变化。</p>
+<p><img alt="麦克风原理" src="/images/4.1/p2.png" /></p>
+<p>不过大家要注意的是，这个时候电压在时间和大小上依然是连续的，也就是说任意的电压值都是有可能的，很显然，这样大数据在电脑上是无法保存的，保存的大小是无穷大。为了保存这样的数据，我们先要对数据进行处理。第一个处理就是连续的信号转化为离散的信号。这一步是通过采样来实现的。采样是指计算机设备定时的对信号电压进行采集，采样解决了连续信号到离散信号的问题，可是采样后的电压值仍然没有办法直接保存，因为电压值在可能的取值范围内是连续的，为了解决这个问题，就需要量化。量化简单的来说就是将无限的连续的电压取值转化为有限的离散的电压取值，这样采样后的结果就能够保存。我们平时说的模拟/数字转换器（Analog to Digital Converter，即ADC，与之对应的是数/模转换器,即DAC）其实也就是干的这样的事情。</p>
+<p>具体这个事情是怎么来实现的呢，我们首先通过简单的仿真实验来进行情况说明，然后我们再通过实际的信号让大家体会这一过程。假设存在一个正弦的声音信号，频率为5Hz，理想情况下这个信号是一个正弦波，这个信号在matlab下可以如下产生和画图出来。注意，matlab下产生的已经是离散的信号了。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 信号的产生过程</span>
+<span class="c">%% 产生一个频率为1000、时长为1s的信号；</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="mi">200</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span> <span class="c">% 1s内2000个采样点</span>
+<span class="n">f</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c">% 频率f=1000</span>
+<span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="信号时域图" src="/images/4.1/p3.png" /></p>
+<p>注意这里面有几个小的问题，当我们将信号频率稍微做一些修改好，画出来的图将变成下面这个样子。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 信号的产生过程</span>
+<span class="c">%% 产生一个频率为100、时长为1s的信号；</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="mi">200</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span> <span class="c">% 1s内150个采样点</span>
+<span class="n">f</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c">% 频率f=1000</span>
+<span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="采样率不足" src="/images/4.1/p4.png" /></p>
+<p>注意这个图已经完全不是我们想象中的正弦图像了，大家想想看看这个是什么原因。</p>
+<p>这里面有几个很有趣的问题，是不是连续的信号就无法用离散的信号表示出来，连续的信号是不是就得用无穷多的离散信号来表达？这里牵涉到了信号采样中的一个重要问题，我们将这个问题更加具体化，假设信号中的最大频率为f，那么应该以多大的采样频率对信号进行采样合理呢，显然不可能无限大的采样频率，这样在计算机上无法处理，实际上也非常不经济。这个问题也就变为信号的频率为f，那么最少的采样频率为多少。</p>
+<p>奈奎斯特采样定律告诉我们，对于这样的情形，需要的采样频率为2*f。采样过程所应遵循的规律，又称取样定理、抽样定理。采样定理说明采样频率与信号频谱之间的关系，是连续信号的基本依据。</p>
+<p>我们来看一个更加有意思的例子，如果信号的采样频率设置得不对会怎么样？</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 信号的产生过程</span>
+<span class="c">%% 信号的产生过程</span>
+<span class="c">%% 产生一个频率为100、时长为1s的信号；</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="mi">10000</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span> <span class="c">% 1s内10000个采样点</span>
+<span class="n">f</span> <span class="p">=</span> <span class="mi">401</span><span class="p">;</span> <span class="c">% 频率f=1000</span>
+<span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>这个例子中，信号是400Hz的，理论上来说，信号是如下这个样子的。<img alt="400Hz信号" src="/images/4.1/p5.png" /></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 信号的产生过程</span>
+<span class="c">%% 产生一个频率为100、时长为1s的信号；</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="mi">402</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span> <span class="c">% 1s内2000个采样点</span>
+<span class="n">f</span> <span class="p">=</span> <span class="mi">401</span><span class="p">;</span> <span class="c">% 频率f=1000</span>
+<span class="n">y</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>大家可以先来想象一下这个采样出来的结果会是怎么样的。</p>
+<p><img alt="低采样频率" src="/images/4.1/p6.png" /></p>
+<p><strong>思考：</strong></p>
+<ol>
+<li>为什么会出现这样的结果。</li>
+<li>如果频率为f，采样频率为fs，那么混叠后的频率将会是多少，这样会对通信产生什么影响。</li>
+<li>用于演示混叠现象的经典例子之一是所谓的“车轮效应”。在影片里当马车越走越快时，马车车轮似乎越走越慢，然后甚至朝反方向运转。为什么？</li>
+</ol>
+<h2 id="_4">量化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>在数字信号处理领域，量化指将信号的连续取值（或者大量可能的离散取值）近似为有限多个（或较少的）离散值的过程。量化主要应用于从连续信号到数字信号的转换中。连续信号经过采样成为离散信号，离散信号经过量化即成为数字信号。注意离散信号通常情况下并不需要经过量化的过程，但可能在值域上并不离散，还是需要经过量化的过程 。信号的采样和量化通常都是由ADC实现的。</p>
+<p>例如8位的ADC可以将标称<a href="https://baike.baidu.com/item/输入电压范围">输入电压范围</a>内的模拟电压信号转换为8位的<a href="https://baike.baidu.com/item/数字信号">数字信号</a>。</p>
+<p><strong>思考：</strong> 多少位不同的电压值？</p>
+<p><img alt="量化效果图" src="/images/4.1/p7.png" /></p>
+<p><img alt="量化效果" src="/images/4.1/p8.png" /></p>
+<p>The simplest way to quantize a signal is to choose the digital amplitude value closest to the original analog amplitude. This example shows the original analog signal (green), the quantized signal (black dots), the <a href="https://en.wikipedia.org/wiki/Signal_reconstruction">signal reconstructed</a> from the quantized signal (yellow) and the difference between the original signal and the reconstructed signal (red). The difference between the original signal and the reconstructed signal is the quantization error and, in this simple quantization scheme, is a deterministic function of the input signal.</p>
+<p>为了进一步说明这种四舍五入方法，这里以3 位(3 bit)的二进制数码进行量化的过程为例，如图4-9所示。</p>
+<p><img alt="图4-9. 示意图" src="/images/4.1/p9.png" /></p>
+<p>图4-9中，输入信号是一个模拟信号，采样点为A～L，幅值范围为0～9，采样值、量化和编码的结果如表4-3所示。</p>
+<p><img alt="表4-3 采样值、 量化和编码的结果" src="/images/4.1/p10.png" /></p>
+<p><a href="https://baijiahao.baidu.com/s?id=1614627981206121506&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1614627981206121506&amp;wfr=spider&amp;for=pc</a></p>
+<p>可见量化的过程中，输出的信号和原信号是有一定的区别的，这个区别就是量化噪声。我们通常说的高保真，其中有一个重要步骤采取足够多的量化位数，保证量化噪声足够小，量化出来的信号足够接近原始信号，当然其中带来的代价就是存储和处理的开销变大。大家可以去网易音乐上看看高保真音乐的，他后面以后一个码率，这一个码率跟量化是直接相关的。思考：大家想想那个码率都跟什么因素相关。</p>
+<p>按照<a href="https://baike.baidu.com/item/量化级">量化级</a>的划分方式分，有均匀量化和非均匀量化。</p>
+<p><strong>思考：</strong> 为什么有这两种量化的方式？</p>
+<ul>
+<li>
+<p><a href="https://baike.baidu.com/item/均匀量化">均匀量化</a>：ADC输入动态范围被均匀地划分为2^n份。</p>
+</li>
+<li>
+<p><a href="https://baike.baidu.com/item/非均匀量化">非均匀量化</a>：ADC输入动态范围的划分不均匀，一般用类似指数的<a href="https://baike.baidu.com/item/曲线">曲线</a>进行量化。</p>
+</li>
+</ul>
+<p>非均匀量化是针对均匀量化提出的，因为一般的语音信号中，绝大部分是小幅度的信号，且人耳听觉遵循指数规律。为了保证关心的信号能够被更精确的还原，我们应该将更多的bit用于表示小信号。</p>
+<p>假设信号采用的是均匀量化的方法，量化噪声带来的信噪比变化，</p>
+<p><strong>思考</strong>：</p>
+<p>假设要将最大频率为8KHz的唱歌的信号转成数字信号，量化bit为8bit，则产生的信号码率至少是多少？1min的信号大小是多少？</p>
+<p>到了这里，我们来看一个真实的采样和量化的例子，这也是我们整个数据处理实验的开始。这个实验在手机上就能实现，我们来看看手机上如何进行声音的采样和量化。</p>
+<p>在做实验之前，你需要准备好一个手机（安卓和苹果手机都可以），并配置好基本的开发环境，如果你还不太熟悉，参见？。</p>
+<p><img alt="img" src="/images/4.1/p11.png" /></p>
+<p>安装好了之后，可以启动第一个声音记录的小程序。仔细看这个小程序，跟大家学习过的网络传输的过程是类似的，前面有一个ADC不断的将声音信号转化成为数字信号，这个数字信号是存储在一个buffer里面的，需要我们讲buffer中的数据不断的读取出来然后保存成声音信号。类似于网络中的数据处理，网卡有一个很重要的功能就是将物理信号转化为数字信号，然后也是需要我们将网络收到的数据从buffer中读取出来。事实上这一个例子也展示了大多数需要用到ADC转化的功能，数据被转换并且保存在一个buffer中，然后对buffer中的数据进行处理。当然进一步来看的话，这个buffer中的数据如何处理也是有不同的手段的，有一些是需要轮询，不断的取看buffer中是否有数据，有一些是基于中断，一旦有数据就会产生一个中断通知进行数据处理，这两种处理方法都可以实现非阻塞模式，即用户无需在这个地方等待buffer内容。还有一种是阻塞模式，用户需要等待buffer内容，当buffer中有数据时才能够继续往下处理。几种模式各有优缺点，这也是数据处理中，尤其是通信和与硬件打交道的数据处理中经常要面临的问题。如果数据处理不及时，数据就会被覆盖导致丢失，这个问题在网络传输中也会遇到。</p>
+<p>这里面通过这一个小的程序我们想介绍几个概念，这也是平时大家在网络学习的过程中容易忽视的概念，因为网络学习中我们很难有机会从最底层开始接触到基础的信号处理。在启动录音的过程中，需要设置几个参数，第一个就是采样率，目前设置的是44100Hz，基本能够将人能听到的声音录下来。一个是量化的bit位数，这里设置的是16位，即每一个采样点用16bit来量化。另外一个是声道数量，目前选择的是双声道，即有两路数据。声音编码的格式采用的是PCM格式，这也是一种最基础的声音编码方法，与我们常见的mp3等格式不同，那些格式需要将声音文件进行进一步的编码。这个数据文件也是我们后面会要用到的数据的基础格式。</p>
+<h2 id="_5">傅里叶变换<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>为了更加便于来分析一个信号，我们在介绍信号的更多属性前，我们先来介绍一下傅里叶变换。给定一个采样的信号，如何知道信号中的所有频率呢？傅里叶变化的一个最基本的作用就是建立数据时域和频域之间的一个转换关系。那么傅里叶变换是怎么得到的呢。我们先不看这么复杂的过程，先来看一个简单的例子。</p>
+<p><strong>思考：</strong> 那么2.4GHz信号是否需要4.8GHz的采样频率，也就是意味着1s之内有4.8GHz的数据？</p>
+<h2 id="_6">线性时不变系统<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>前面的研究我们可以看出，正弦信号是具备很好的属性，我们都很熟悉，也很好处理的。可是实际中有一个问题，不是每一个信号都是正弦信号，那如何处理这些信号呢。研究中我们有一个方法，可以把一个未知的问题转化为已知的问题，那么一个很自然的想法就是，能不能将一个未知的不好处理的信号转化为已知的好处理的信号。</p>
+<h1 id="_7">信道<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<p>信道又被称为通道、频道和波道，是信号在通信系统中传输的通道，由信号从发射端传输到接收端所经过的传输媒质所构成。广义的信道定义除了包括传输媒质，还包括传输信号的相关设备。</p>
+<p>狭义信道，按照传输媒质来划分，可以分为有线信道、无线信道和存储信道三类。 </p>
+<p>（在某种意义上，磁带、磁盘等数据存储媒质也可以被看作是一种通信信道。将数据写入存储媒质的过程即等效于发射机将信号传输到信道的过程，将数据从存储媒质读出的过程即等效于接收机从信道接收信号的过程。）</p>
+<p>广义信道，按照其功能进行划分，可以分为调制信道和编码信道两类。</p>
+<p>调制信道是指信号从调制器的输出端传输到解调器的输入端经过的部分。对于调制和解调的研究者来说，信号在调制信道上经过的传输媒质和变换设备都对信号做出了某种形式的变换，研究者只关心这些变换的输入和输出的关系，并不关心实现这一系列变换的具体物理过程。这一系列变换的输入与输出之间的关系，通常用多端口时变网络作为调制信道的数学模型进行描述。</p>
+<p>编码信道是指数字信号由编码器输出端传输到译码器输入端经过的部分。对于编译码的研究者来说，编码器输出的数字序列经过编码信道上的一系列变换之后，在译码器的输入端成为另一组数字序列，研究者只关心这两组数字序列之间的变换关系，而并不关心这一系列变换发生的具体物理过程，甚至并不关心信号在调制信道上的具体变化。编码器输出的数字序列与到译码器输入的数字序列之间的关系，通常用多端口网络的转移概率作为编码信道的数学模型进行描述。</p>
+<p><img src="/images/4.2/cpt_channel.png" width=600px></p>
+<h1 id="_8">信道冲击响应<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>TODO 加个图</p>
+<p>通信信道会对经过的信号产生作用（例如减弱，改变频率等），不同的信道作用效果不一样。</p>
+<p>因为任何输入信号都可以分解成单位脉冲信号的线性叠加，研究信道对单位脉冲信号的响应是有意义的。信道冲击响应（Channel Impulse Response，CIR），顾名思义，即当输入一个单位脉冲信号时，信道输出端的响应输出信号。对于一个线性系统，输出信号可以用输出端对单位脉冲信号的响应的线性叠加表示。信道冲击响应反映了信道的基本特性。</p>
+<h1 id="_9">信噪比<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
+<p>信噪比（Signal-to-noise ratio，SNR or S/N）用于衡量信号强度与背景噪声强度的关系，定义为信号功率与噪声功率之比。</p>
+<div>
+<div class="MathJax_Preview">
+SNR = \frac{P_{signal}}{P_{noise}} = \frac{A^2_{signal}}{A^2_{noise}}
+</div>
+<script type="math/tex; mode=display">
+SNR = \frac{P_{signal}}{P_{noise}} = \frac{A^2_{signal}}{A^2_{noise}}
+</script>
+</div>
+<p>SNR常使用分贝（dB）作为单位。
+$$
+SNR(dB) = 10\log_{10} \left(\frac{P_{signal}}{P_{noise}}\right) = 20\log_{10} \left(\frac{A_{signal}}{A_{noise}}\right)
+$$
+其中，<span><span class="MathJax_Preview">P_{signal}</span><script type="math/tex">P_{signal}</script></span>为信号功率，<span><span class="MathJax_Preview">P_{noise}</span><script type="math/tex">P_{noise}</script></span>为噪声功率，<span><span class="MathJax_Preview">A_{signal}</span><script type="math/tex">A_{signal}</script></span>为信号振幅，<span><span class="MathJax_Preview">A_{noise}</span><script type="math/tex">A_{noise}</script></span>为噪声振幅。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">fs</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c">% sampling frequency</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">x</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="c">% Add white Gaussian noise to signal</span>
+<span class="c">% snr = 10dB</span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">awgn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;measured&#39;</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]);</span>
+<span class="n">legend</span><span class="p">(</span><span class="s">&#39;Original Signal&#39;</span><span class="p">,</span> <span class="s">&#39;Signal with AWGN&#39;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="" src="/images/4.2/cpt_snr.pdf" /></p>
+<p><strong>因为物联网的主要通信技术为无线通信，下面介绍一些无线通信相关的基础观念。</strong></p>
+<h1 id="_10">多径效应<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h1>
+<p>由于电磁信号所处环境的不同，传播过程中出现折射、反射、漫射、衍射等等现象，在接收端收到了来自多条路径的信号，分为视距路径（Line of Sight）和非视距路径（Not Line of Sight）。多径效应对无线系统有很大影响，常用的解决技术有时域均衡、正交频分复用（OFDM）、Rake接收机、分集接收技术等。</p>
+<p><img src="/images/4.2/cpt_multipath.jpg" width=600px></p>
+<h1 id="_11">信号衰落<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h1>
+<p>在无线通信领域，衰落（Fading）是指由于信道的变化导致接收信号的幅度发生随机变化的现象，即信号衰落。导致信号衰落的信道被称作衰落信道。衰落可按时间、空间、频率，三个角度来分类。 </p>
+<h3 id="_12">时间<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>在时间上，分为慢衰落和快衰落。慢衰落描述的是信号幅度的长期变化，是传播环境在较长时间、较大范围内发生变化的结果，因此又被称为长期衰落、大尺度衰落。快衰落则描述了信号幅度的瞬时变化，与多径传播有关，又被称为短期衰落、小尺度衰落。慢衰落是快衰落的中值。 </p>
+<h3 id="_13">空间<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>在空间上，分为瑞利衰落和莱斯衰落。瑞利衰落适用于从发射机到接收机不存在直射信号的情况；相反，莱斯衰落适用于发射机到接收机存在直射路径的情况。 </p>
+<h3 id="_14">频率<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>在频率上，分为平坦性衰落和选择性衰落。相干带宽是描述时延扩展的指标，是表征多径信道特性的一个重要参数。它是指某一特定的频率范围，在该频率范围内的任意两个频率分量都具有很强的幅度相关性，即在相干带宽范围内，多径信道具有恒定的增益和线性相位。通常，相干带宽近似等于最大多径时延的倒数。从频域看，如果相干带宽小于发送信道的带宽，则该信道特性会导致接收信号波形产生频率选择性衰落，即某些频率成分信号的幅值可以增强，而另外一些频率成分信号的幅值会被削弱。当信号带宽远小于相干带宽时，所有的信号频率呈现出一样的强度衰落，称之为平坦性衰落。</p>
+<p>TODO 加图</p>
+<h1 id="csi-channel-state-information">CSI （Channel State Information）<a class="headerlink" href="#csi-channel-state-information" title="Permanent link">&para;</a></h1>
+<p>在无线通信中，信道状态信息（Channel State Information，CSI）指一个通信链路的已知信道信息。CSI描述了一个信号如何从发送端传播到接收端以及相应影响，如散射、衰落和能量随距离的衰减，即信道估计。运用CSI可以依据当前信道状态实行自适应传输，这对多天线系统中实现高速率的可靠通信十分重要。</p>
+<p>CSI可以分为瞬时CSI（Instantaneous CSI）和统计CSI（Statistical CSI）。瞬时CSI意味着当前信道状态已知，因此可以调整发射信号来优化接收信号以达到空间复用或减少比特错误率。统计CSI意味着信道的统计特性已知，如衰落分布的类型、平均信道增益、空间相关性等，这些信息也能用来进行传输优化。</p>
+<p>在某些快衰落系统中，信道状态在symbol级别都会发生极速的变化，此时只用统计CSI是有意义的。另一方面，在慢衰落系统中，可以在合理精度内得到瞬时CSI估计，在该估计过时前仍可被用来进行传输适应。</p>
+<p>TODO 举例</p>
+<h1 id="_15">参考<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h1>
+<ol>
+<li>Zheng Yang, Zimu Zhou, and Yunhao Liu. 2013. From RSSI to CSI: Indoor localization via channel response. <em>ACM Comput. Surv.</em> 46, 2, Article 25 (December 2013), 32 pages. DOI: <a href="https://doi.org/10.1145/2543581.2543592">https://doi.org/10.1145/2543581.2543592</a></li>
+<li>《古今数学思想（第三册）》第28章</li>
+<li>《信号与系统（第二版）》第3、4、5章</li>
+<li>《离散时间信号处理（第三版）》第7章</li>
+<li><a href="https://zh.wikipedia.org/wiki/Communication_channel">Wikipedia/Communication_channel</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Multipath_propagation">Wikipedia/Multipath</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Fading">Wikipedia/Fading</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Channel_state_information">Wikipedia/Channel_state_information</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Fast_Fourier_transform">Wikipedia/Fast_Fourier_transform</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Fourier_transform">Wikipedia/Fourier_transform</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Communication_Systems/Fading_Channels">Wikibooks/Fading_Channels</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Filter">Wikipedia/Filter</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Filter_(signal_processing)">Wikipedia/Filter_(signal_processing)</a></li>
+<li><a href="https://baike.baidu.com/item/相干带宽">百度百科/相干带宽</a></li>
+<li><a href="https://baike.baidu.com/item/滤波器">百度百科/滤波器</a></li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../滤波/" class="btn btn-neutral float-right" title="4.1.2 滤波">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../物联网通信协议/matlab基础/" class="btn btn-neutral" title="3.2 MATLAB基础"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../物联网通信协议/matlab基础/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../滤波/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

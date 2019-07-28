@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="WiSys Lob">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>4.2.2 实现2 - IoT Book</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "4.2.2 \u5b9e\u73b02";
+    var mkdocs_page_input_path = "\u7269\u8054\u7f51\u901a\u4fe1\u57fa\u7840\\\u7f16\u7801\u65b9\u6cd5\u53ca\u5176\u58f0\u97f3\u5b9e\u73b0-2.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> IoT Book</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../前言/物联网导论/">一. 前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../物联网简介/物联网简介/">二. 物联网简介</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">三. 物联网通信协议</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网通信协议/android开发基础/">3.1 Android基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网通信协议/matlab基础/">3.2 MATLAB基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">四. 物联网通信基础</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">4.1 物联网基础概念</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../物联网基础概念/">4.1.1 基础概念</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../滤波/">4.1.2 滤波</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../傅里叶分析/">4.1.3 傅立叶分析</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">4.2 编码方法及声音实现</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../编码方法及其声音实现/">4.2.1 实现1</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">4.2.2 实现2</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#_1">相位编码</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#bpsk">BPSK</a></li>
+        
+            <li><a class="toctree-l5" href="#qpsk">QPSK</a></li>
+        
+            <li><a class="toctree-l5" href="#oqpsk">OQPSK</a></li>
+        
+            <li><a class="toctree-l5" href="#oqpsk_1">在声音信号上实现OQPSK</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#_2">载波调制</a></li>
+    
+
+    <li class="toctree-l4"><a href="#ofdm">OFDM编码</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">五. 物联网感知</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/传感器/">5.1 传感器</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/多普勒效应/">5.2 多普勒效应</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/飞行时间/">5.3 飞行时间</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网感知/相位偏移/">5.4 相位偏移</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">六. 定位与追踪</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于距离测量的定位/">6.1 基于距离测量的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于信号分布特征的定位/">6.2 基于信号分布特征的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../定位与追踪应用/基于距离变化量的位置追踪/">6.3 基于距离变化量的位置追踪</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">七. 感知识别</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">7.1 智能手表手势识别</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/智能手表连接教程/智能手表连接教程/">7.1.1 智能手表连接教程</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/智能手表数据采集/智能手表数据采集/">7.1.2 智能手表数据采集</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../感知识别/智能手表手势识别/数据处理与展示/智能手表数据处理与展示/">7.1.3 数据处理与展示</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">八. 物联网网络构建</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/网络冲突处理(zigzag)/">8.1 低功耗物联网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/网络冲突处理(zigzag)/">8.2 网络冲突处理</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.3 跨协议识别</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.4 低功耗广域网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.5 跨协议通信</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网网络构建/LoRa低功耗广域网/">8.6 物联网多跳自组网网络协议</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">九. 物联网应用平台</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../物联网应用平台/阿里云平台/阿里云物联网平台介绍/">9.1 阿里云平台</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../物联网应用平台/LoRa测试床/LoRa测试床/">9.2 LoRa测试床</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">IoT Book</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>4.2 编码方法及声音实现 &raquo;</li>
+        
+      
+        
+          <li>四. 物联网通信基础 &raquo;</li>
+        
+      
+    
+    <li>4.2.2 实现2</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">相位编码<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>前面我们介绍了幅度编码和频率编码，观察下图中的正弦函数公式，我们发现正弦信号除了幅度和频率特征，还有相位特征。本章节中，我们将介绍相位编码方法，也就是PSK（Phase shift keying）。
+<img alt="正弦信号的特征" src="../images/4.2/sine_wave.png" title="" />  </p>
+<h3 id="bpsk">BPSK<a class="headerlink" href="#bpsk" title="Permanent link">&para;</a></h3>
+<p>相位编码，就是使用不同相位的信号来代表不同信息的编码方式。我们首先来看最简单的BPSK(Binary Phase Shift Keying),使用两种相位的信号来编码信息。为了使相位的区分度更高，我们使用相位相差为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的两种信号：
+<img alt="相位为0和相位为\pi\pi的信号" src="../images/4.2/bpsk-basic.png" title="" /><br />
+有了基础的带有相位信息的信号，我们就可以根据输入的待编码的信息来选择不同相位的信号。当输入为0时，我们选择相位为0的信号，当输入为1时，我们选择相位为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的信号。输入信号和对应的生成的BPSK调制过的信号如下图所示。
+<img alt="编码后的BPSK信号" src="../images/4.2/bpsk-encode.png" title="" />
+这种实现BPSK的方法叫做“键控”方法。此时数据和相位之间的映射关系是：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>相位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td><span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>其星座映射图为：
+<img alt="BPSK星座图" src="../images/4.2/bpsk-star.png" title="" /></p>
+<h3 id="qpsk">QPSK<a class="headerlink" href="#qpsk" title="Permanent link">&para;</a></h3>
+<p>目前普遍使用的实现PSK的方法是IQ正交调制。其原理是使用两路正交的信号分别编码两路数据，每路数据单独调制，并将两路信号直接相加。正交的两路信号通常选用<span><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>和<span><span class="MathJax_Preview">cos(2\pi ft)</span><script type="math/tex">cos(2\pi ft)</script></span>。
+<img alt="QPSK选用两路正交信号" src="..\images\4.2\qpsk-basic.png" title="" />
+用<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>和<span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>分别代表两路待调制的数据，使用IQ调制后的信号为：</p>
+<div>
+<div class="MathJax_Preview">
+s(t) = i*sin(2\pi ft) + q*cos(2\pi ft) 
+</div>
+<script type="math/tex; mode=display">
+s(t) = i*sin(2\pi ft) + q*cos(2\pi ft) 
+</script>
+</div>
+<p>此时数据和相位之间的映射关系是：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>I</th>
+<th>Q</th>
+<th>s(t)</th>
+<th>相位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>1</td>
+<td>1</td>
+<td><span><span class="MathJax_Preview">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</span><script type="math/tex">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>01</td>
+<td>1</td>
+<td>-1</td>
+<td><span><span class="MathJax_Preview">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</span><script type="math/tex">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{7 \pi}{4}</span><script type="math/tex">\frac{7 \pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>-1</td>
+<td>1</td>
+<td><span><span class="MathJax_Preview">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{3 \pi}{4}</span><script type="math/tex">\frac{3 \pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>-1</td>
+<td>-1</td>
+<td><span><span class="MathJax_Preview">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{5 \pi}{4}</span><script type="math/tex">\frac{5 \pi}{4}</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>其星座映射图为：
+<img alt="QPSK星座图" src="../images/4.2/qpsk-star.png" title="" />
+我们可以看到这里一共用到了四种相位来编码数据，这就是QPSK(Quadrature Phase Shift Keying)</p>
+<p>为了使输出信号s(t)的振幅为1，我们需要对I和Q信号除以<span><span class="MathJax_Preview">\sqrt{2}</span><script type="math/tex">\sqrt{2}</script></span>，因此，数据和I,Q对应关系应该是如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>I</th>
+<th>Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>01</td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>下图展示了I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。图中对应的I路和Q路数据分别是：<span><span class="MathJax_Preview">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span>,<span><span class="MathJax_Preview">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span></p>
+<p><img alt="IQ信号和编码后的QPSK信号" src="../images/4.2/qpsk-encode.png" title="" />
+在解码时，利用其正交特性，分别对两路信号进行积分运算，得到每路信号中编码的数据。
+解码I路信号：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{split}
+\int_{0}^{\frac{1}{f}}(s(t)* sin(2\pi ft)) &amp;=  \int_{0}^{\frac{1}{f}}((i* sin(2\pi ft) + q* cos(2\pi ft))*sin(2\pi ft)) \\
+&amp;= 
+\int_{0}^{\frac{1}{f}}(i*sin(2\pi ft)^2 +q*cos(2\pi ft)*sin(2\pi ft) \\
+&amp;= 
+\int_{0}^{\frac{1}{f}}(i*\frac{1-cos(4 \pi ft)}{2} +q*sin(4\pi ft)) \\
+&amp;= 
+\int_{0}^{\frac{1}{f}}i*\frac{1}{2} - \int_{0}^{\frac{1}{f}}i*\frac{cos(4 \pi ft)}{2}) +\int_{0}^{\frac{1}{f}}q*sin(4\pi ft)) \\
+&amp;= 
+\frac{i}{2} -0 + 0 \\
+&amp;=
+\frac{i}{2}\\
+\end{split}
+</div>
+<script type="math/tex; mode=display">
+\begin{split}
+\int_{0}^{\frac{1}{f}}(s(t)* sin(2\pi ft)) &=  \int_{0}^{\frac{1}{f}}((i* sin(2\pi ft) + q* cos(2\pi ft))*sin(2\pi ft)) \\
+&= 
+\int_{0}^{\frac{1}{f}}(i*sin(2\pi ft)^2 +q*cos(2\pi ft)*sin(2\pi ft) \\
+&= 
+\int_{0}^{\frac{1}{f}}(i*\frac{1-cos(4 \pi ft)}{2} +q*sin(4\pi ft)) \\
+&= 
+\int_{0}^{\frac{1}{f}}i*\frac{1}{2} - \int_{0}^{\frac{1}{f}}i*\frac{cos(4 \pi ft)}{2}) +\int_{0}^{\frac{1}{f}}q*sin(4\pi ft)) \\
+&= 
+\frac{i}{2} -0 + 0 \\
+&=
+\frac{i}{2}\\
+\end{split}
+</script>
+</div>
+<p>对Q路信号的解码与之同理，这里就不进行重复展示了。
+IQ调制的方法不仅可以实现4中相位的QPSK，还可以支持更多相位来实现更高的数据速率。当我们把QPSK的星座映射图中的坐标轴上也加上数据点，就可以得到8PSK的星座映射图：
+<img alt="8PSK星座图" src="../images/4.2/8psk-star.png" title="" />
+为了使叠加的信号的相位满足星座映射图，数据和IQ之间的映射应该为：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>I</th>
+<th>Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td><span><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>001</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>010</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>011</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>当我们继续在星座映射图中增加数据点，就可以获得数据速率更高的相位编码方式，比如说下图中的16-QAM、32-QAM和64-QAM
+<img alt="16-QAM、32-QAM和64-QAM的星座图" src="../images/4.2/16-32-64-QAM.png" title="" /></p>
+<h3 id="oqpsk">OQPSK<a class="headerlink" href="#oqpsk" title="Permanent link">&para;</a></h3>
+<p>观察QPSK的星座映射图，我们可以发现从00 到 11 和从10 到01之间的相位转变都是<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>。当信号通过低通滤波器时，大的相位翻转会导致大的幅值幅波动，如下图中红圈部分所示：
+<img alt="QPSK编码中会出现相位翻转为pi的情况" src="../images/4.2/phase-shifts.png" title="" />
+这种大的相位翻转会影响解码的成功率。我们可以使用OQPSK(Offset QPSK)来解决这个问题。
+OQPSK方法是基于QPSK的IQ调制方式，I路信号和QPSK相同，Q路数据向后错位半个周期。这样一来I路和Q路信号翻转的位置相差半个周期，也就是说I路数据和Q路数据不会出现同时的翻转，信号相位最大只能变化<span><span class="MathJax_Preview">\frac{\pi}{2}</span><script type="math/tex">\frac{\pi}{2}</script></span>。
+下图分别展示了OQPSK的I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。
+<img alt="IQ信号和编码后的OQPSK信号" src="../images/4.2/oqpsk-encode.png" title="" /></p>
+<h3 id="oqpsk_1">在声音信号上实现OQPSK<a class="headerlink" href="#oqpsk_1" title="Permanent link">&para;</a></h3>
+<h4 id="oqpsk_2">OQPSK编码<a class="headerlink" href="#oqpsk_2" title="Permanent link">&para;</a></h4>
+<h4 id="oqpsk_3">OQPSK解码<a class="headerlink" href="#oqpsk_3" title="Permanent link">&para;</a></h4>
+<h2 id="_2">载波调制<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>载波调制的原理是将低频的基带信号通过上变频搬移到较高频率的载波上进行传输。接收端接收到信号后首先利用下变频将信号搬移到基带信号频率上。
+下图展示的是把基带信号上变频到频率为fc的载波后进行传输，在接收端进行下变频、使用滤波器滤掉高频信号获得基带信号的过程。
+<img alt="载波调制解调示意图" src="../images/4.2/carrier_structure.png" title="" />
+接下来我们用公式来推导这个过程。
+基带信号为
+$$
+s(t) = i*sin(2\pi ft) + q*cos(2\pi ft) 
+$$
+载波频率为<span><span class="MathJax_Preview">f_c</span><script type="math/tex">f_c</script></span>,将基带信号搬移到载波上：
+$$
+s(t) = i*sin(2\pi ft)*sin(2\pi f_c t) + q*cos(2\pi ft)*cos(2\pi f_c t) = 
+$$
+接收端收到后对其进行下变频。</p>
+<h2 id="ofdm">OFDM编码<a class="headerlink" href="#ofdm" title="Permanent link">&para;</a></h2>
+<p>上变频 下变频</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../物联网感知/传感器/" class="btn btn-neutral float-right" title="5.1 传感器">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../编码方法及其声音实现/" class="btn btn-neutral" title="4.2.1 实现1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../编码方法及其声音实现/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../物联网感知/传感器/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

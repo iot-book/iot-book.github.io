@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="WiSys Lob">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>9.2 LoRa测试床 - IoT Book</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "9.2 LoRa\u6d4b\u8bd5\u5e8a";
+    var mkdocs_page_input_path = "\u7269\u8054\u7f51\u5e94\u7528\u5e73\u53f0\\LoRa\u6d4b\u8bd5\u5e8a\\LoRa\u6d4b\u8bd5\u5e8a.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> IoT Book</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../前言/物联网导论/">一. 前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../物联网简介/物联网简介/">二. 物联网简介</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">三. 物联网通信协议</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../物联网通信协议/android开发基础/">3.1 Android基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网通信协议/matlab基础/">3.2 MATLAB基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">四. 物联网通信基础</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">4.1 物联网基础概念</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../物联网通信基础/物联网基础概念/">4.1.1 基础概念</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../物联网通信基础/滤波/">4.1.2 滤波</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../物联网通信基础/傅里叶分析/">4.1.3 傅立叶分析</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">4.2 编码方法及声音实现</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../物联网通信基础/编码方法及其声音实现/">4.2.1 实现1</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../物联网通信基础/编码方法及其声音实现-2/">4.2.2 实现2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">五. 物联网感知</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../物联网感知/传感器/">5.1 传感器</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网感知/多普勒效应/">5.2 多普勒效应</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网感知/飞行时间/">5.3 飞行时间</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网感知/相位偏移/">5.4 相位偏移</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">六. 定位与追踪</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../定位与追踪应用/基于距离测量的定位/">6.1 基于距离测量的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../定位与追踪应用/基于信号分布特征的定位/">6.2 基于信号分布特征的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../定位与追踪应用/基于距离变化量的位置追踪/">6.3 基于距离变化量的位置追踪</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">七. 感知识别</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">7.1 智能手表手势识别</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../感知识别/智能手表手势识别/智能手表连接教程/智能手表连接教程/">7.1.1 智能手表连接教程</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../感知识别/智能手表手势识别/智能手表数据采集/智能手表数据采集/">7.1.2 智能手表数据采集</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../感知识别/智能手表手势识别/数据处理与展示/智能手表数据处理与展示/">7.1.3 数据处理与展示</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">八. 物联网网络构建</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../物联网网络构建/网络冲突处理(zigzag)/">8.1 低功耗物联网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网网络构建/网络冲突处理(zigzag)/">8.2 网络冲突处理</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网网络构建/LoRa低功耗广域网/">8.3 跨协议识别</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网网络构建/LoRa低功耗广域网/">8.4 低功耗广域网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网网络构建/LoRa低功耗广域网/">8.5 跨协议通信</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../物联网网络构建/LoRa低功耗广域网/">8.6 物联网多跳自组网网络协议</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">九. 物联网应用平台</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../阿里云平台/阿里云物联网平台介绍/">9.1 阿里云平台</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">9.2 LoRa测试床</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">什么是测试床</a></li>
+    
+
+    <li class="toctree-l3"><a href="#lora">LoRa测试床概述和功能</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_2">概述</a></li>
+        
+            <li><a class="toctree-l4" href="#_3">实现功能</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#lora_1">LoRa测试床架构组成</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#lora_2">LoRa组件</a></li>
+        
+            <li><a class="toctree-l4" href="#_7">控制平台</a></li>
+        
+            <li><a class="toctree-l4" href="#_8">客户系统</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#lora_3">LoRa测试床部署情况</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_9">网关</a></li>
+        
+            <li><a class="toctree-l4" href="#_10">节点</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#lora_4">LoRa测试床使用指南</a></li>
+    
+
+    <li class="toctree-l3"><a href="#lora_5">LoRa测试床技术实现</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#lora_6">LoRa网络搭建</a></li>
+        
+            <li><a class="toctree-l4" href="#_11">控制平台搭建</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#_12">参考文献</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">IoT Book</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>九. 物联网应用平台 &raquo;</li>
+        
+      
+    
+    <li>9.2 LoRa测试床</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">什么是测试床<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>简单的说，测试床就是一个平台，用于对科学理论、计算工具和新技术进行严格、透明和可复制测试。</p>
+<p>在网络研究领域里，许多网络性能和指标的测量就需要实际的大规模的实验部署，这时候，测试床的重要性就显现出来了。网络研究发展到现在，涌现出了许多经典的测试床系统，比如用于WSN(wireless sensor network)的<a href="https://syrah.eecs.harvard.edu/files/syrah/files/motelab-spots05.pdf">MoteLab</a>，<a href="https://gitlab.ethz.ch/tec/public/flocklab/wikis/home">FlockLab</a>和<a href="https://web.archive.org/web/20070912105942/http://pdos.csail.mit.edu:80/roofnet/doku.php">INDRIYA2</a>, 用于802.11b/g的<a href="https://web.archive.org/web/20070912105942/http://pdos.csail.mit.edu:80/roofnet/doku.php">Roofnet</a>等等。相关的论文在引用[2]-[4]。</p>
+<p>在这个章节里，我们将介绍我们所搭建的LoRa测试床系统。LoRa是一种低功耗广域网通信技术，即通信距离远且功耗低，做这样的一套测试床系统，既有与之前的测试床系统类似的地方，也有其特有的不同特性，我们的设计考虑到了这些。</p>
+<p>与我们这套测试床系统类似的有<a href="https://users.ece.cmu.edu/~agr/resources/publications/openchirp-smart-edge-17.pdf">OpenChirp</a>以及阿里的AliOS Things里的<a href="https://lora.aliosthings.io">lora平台</a>(可能访问不了)。</p>
+<h1 id="lora">LoRa测试床概述和功能<a class="headerlink" href="#lora" title="Permanent link">&para;</a></h1>
+<h2 id="_2">概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>LoRa测试床搭建的初衷是方便快捷的对LoRa设备进行操作和实验。
+由于LoRa长距离通信的特点，我们不能仅让测试床限制在某一个地方，而是应该让其具有广域通信的能力。因此我们设计了使用树莓派控制LoRa节点的方案，这样的系统具有可移动的特性，可以方便的移动到任何有网络的地方进行实验。在不断的探索中，我们还开发了一套LoRa自主更新的系统，即除了使用LoRa进行通信，我们还利用其本身的信号进行控制更新程序，从而到达实现远程更新的目的，进一步摆脱了电力和网络的限制。关于两种设计方案，我们会在下面的章节进行详细的说明。</p>
+<h2 id="_3">实现功能<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>烧录新程序</li>
+<li>打开，关闭，重启LoRa节点</li>
+<li>批量进行上述的操作</li>
+<li>LoRa节点的远程自主更新(基于本身的信号)</li>
+<li>实时采集数据，并可视化</li>
+<li>数据导出，下载</li>
+</ul>
+<p>下面我们将从LoRa测试床架构组成，部署情况，使用指南和技术实现四个方面进行叙述。</p>
+<h1 id="lora_1">LoRa测试床架构组成<a class="headerlink" href="#lora_1" title="Permanent link">&para;</a></h1>
+<p>LoRa测试床的总结架构设计如下图所示</p>
+<p><img alt="测试床设计架构" src="../fig/architecture-testbed.png" /></p>
+<p>容易看出，测试床平台由三部分组成：
+1. LoRa组件搭建的LoRa服务，包括节点，网关和服务器，运行的协议为LoRa相关的协议。为了与TCP/IP网络区分开，这里特定使用了蓝色的箭头表示通信流程。
+2. 控制平台。这里设计了两套控制方案，分别应对不同的应用场景。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>首先由架构图可以看到第一套方案是我们设计的控制网络，位于图中的左下方，中心服务器接收来自Web服务器的指令，然后将指令传给树莓派系统。由于树莓派系统与LoRa节点是用USB接口连接，故而树莓派系统可以将命令进一步传给LoRa的节点，这样就达到了控制节点的目的。值得一提的是在实际实现中，控制命令是通过内网进行操控，从而更加安全可靠。这种方案需要给树莓派系统供电供网，通常用于室内。
+
+由于LoRa的通信是双向的，故而也可以采取一套自主更新系统，即使用自身的LoRa信号进行程序的更新。这种更新系统不受电力，网络的外在条件限制，通常用于室外。
+</pre></div>
+</td></tr></table>
+
+<ol>
+<li>客户系统。不同的客户机通过网络连接到Web服务器进行操作，我们提供了方便操作的UI。我们通过共享数据库来实现Web服务器与LoRa服务器之间的数据共享。</li>
+</ol>
+<p>这三台服务器是相互独立的，在实际实现里，可以实现在同一台物理机也可以实现在不同的物理机。下面我们将从这三个方面展开进行详细的叙述。</p>
+<h2 id="lora_2">LoRa组件<a class="headerlink" href="#lora_2" title="Permanent link">&para;</a></h2>
+<p>为了实现LoRa测试床系统，第一步是将LoRa的一套服务调试完成。这里主要介绍我们使用的LoRa组件，具体实现见LoRa测试床的技术实现部分。</p>
+<h3 id="_4">服务器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>我们采用的是实验室采购的一台服务器，linux系统，LoRa服务对服务器并没有特别的要求，故略去不表。</p>
+<h3 id="_5">网关<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>我们主要使用两种LoRa网关，如下图<a href="http://risinghf.com/#/product-details?product_id=18&amp;lang=zh">网关1</a>和<a href="http://risinghf.com/#/product-details?product_id=2&amp;lang=zh">网关2</a>(图片来自<a href="http://risinghf.com">这里</a>)：</p>
+<div align="center">
+<div style="width:300px; height:auto; float:left; display:inline; margin-right:10px">
+<center><img src="../fig/gw1.png" alt="新节点硬件" height="200" width="100"/></center>
+<center>网关1</center>
+</div>
+
+<div>
+<center><img src="../fig/gw2.png" alt="老节点硬件" height="200" width="130"/></center>
+<center>网关2</center>
+</div>
+</div>
+
+<p>它们的主控芯片为ARM Cortex-A53平台，主频1.2GHz。不同之处在于包装和附加功能，比如网关2可以电池供电，提供了更多的接口等。目前测试床有3个网关1和2个网关2。</p>
+<h3 id="_6">节点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>我们同样拥有两种节点，主要区别在于MCU，射频芯片以及其他传感器件。同时在封装上也有区别，分别适用于室内和室外的部署。</p>
+<div align="center">
+<div style="width:300px; height:auto; float:left; display:inline; margin-right:10px">
+<center><img src="../fig/new_node.jpg" alt="节点1" height="180" width="300"/></center>
+</div>
+
+<div>
+<center><img src="../fig/old_node.png" alt="节点2" height="180" width="400"/></center>
+</div>
+</div>
+
+<p>节点1的射频芯片为SX1268，MCU为STM32L083，并且含有GPS，温湿度以及动力传感器。节点2则使用SX1278的射频芯片，STM32L53的MCU以及含有串口。</p>
+<p>我们对节点1进一步的封装，使其能够防水防潮，并且装上太阳能板，使其能够在室外长期的工作，效果图如下：</p>
+<div align="center">
+<div style="width:300px; height:auto; float:left; display:inline; margin-right:10px">
+<img src="../fig/new_node_package.jpg" alt = "太阳能节点（1）" height="180" width="300"/>
+</div>
+<div>
+<img src="../fig/new_node_package2.jpg" alt = "太阳能节点（2）" height="180" width="300"/>
+</div>
+</div>
+
+<p>对于节点2，我们让其与树莓派进行串口连接，从而赋予其可移动控制的特性，通常用于室内，效果图如下：</p>
+<div align="center">
+<div style="width:300px; height:auto; float:left; display:inline; margin-right:10px">
+<img src="../fig/node2_package.png" alt = "实验床节点（1）" height="180" width="300"/>
+</div>
+<div>
+<img src="../fig/node2_package2.png" alt = "实验床节点（2）" height="180" width="300"/>
+</div>
+</div>
+
+<h2 id="_7">控制平台<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>正如前面介绍的，我们设计了两套控制系统，分别是树莓派管控系统和自主更新系统。</p>
+<ul>
+<li>
+<p>树莓派管控系统</p>
+<p><strong>对LoRa节点的控制</strong> 对LoRa节点的控制基于树莓派和节点间的串口连接，这只要将LoRa节点与树莓派串口连接就可以实现。但是要实现LoRa节点对命令的响应，比如烧写，打开，停止这些控制命令，就需要给节点实现Bootloader的服务。</p>
+<p><strong>树莓派与中心服务器的连接问题</strong> 对于有连接Wifi的条件，我们采用路由器进行网络的分配和管控，同时由于在学校内部，我们一般使用内网进行连接和控制。对于没有连接WiFi的条件，我们则给树莓派+LoRa节点配置了手机SD卡以及穿透服务连接到我们的内网。同时为了便于时时控制和收集运行日志，我们实现了树莓派与服务器间一对一的socket连接进行数据的传输。</p>
+</li>
+<li>
+<p>自主更新系统</p>
+<p>TODO</p>
+</li>
+</ul>
+<p><strong>两种系统的比较</strong>。这两种系统毫无疑问是各有优劣的，树莓派管控系统对于资源要求比较苛刻，比如需要联网，需要长时间不间断供电等等，但是其好在运行稳定，实现相对容易和快捷。自主更新系统则比较自由，对环境条件依赖度很小，但是其实现代价比较高昂，考虑到LoRa本身通信速度的局限性，整套系统的稳定性也有待考量。</p>
+<h2 id="_8">客户系统<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>客户端永远是最轻松的一方。我们提供了UI以供操作。<a href="http://59.110.157.63">点击这里</a>进入客户系统。下面是登陆界面和操作界面一瞥。</p>
+<div align="center">
+<div style="width:300px; height:auto; float:left; display:inline; margin-right:5px">
+<center><img src="../fig/登录.png" alt="登陆界面" height="200" /></center>
+<!-- <center>登陆界面</center> -->
+</div>
+
+<div>
+<center><img src="../fig/操作界面.png" alt="操作界面" height="200" /></center>
+<!-- <center>操作界面</center> -->
+</div>
+</div>
+
+<h1 id="lora_3">LoRa测试床部署情况<a class="headerlink" href="#lora_3" title="Permanent link">&para;</a></h1>
+<h2 id="_9">网关<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">节点<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h1 id="lora_4">LoRa测试床使用指南<a class="headerlink" href="#lora_4" title="Permanent link">&para;</a></h1>
+<h1 id="lora_5">LoRa测试床技术实现<a class="headerlink" href="#lora_5" title="Permanent link">&para;</a></h1>
+<h2 id="lora_6">LoRa网络搭建<a class="headerlink" href="#lora_6" title="Permanent link">&para;</a></h2>
+<h2 id="_11">控制平台搭建<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>树莓派管控系统</p>
+</li>
+<li>
+<p>自主更新系统</p>
+</li>
+</ul>
+<h1 id="_12">参考文献<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h1>
+<ul>
+<li>[1] <a href="https://en.wikipedia.org/wiki/Testbed">https://en.wikipedia.org/wiki/Testbed</a></li>
+<li>[2] Werner-Allen, Geoffrey, Patrick Swieskowski, and Matt Welsh. "Motelab: A wireless sensor network testbed." Proceedings of the 4<sup>th</sup> international symposium on Information processing in sensor networks. IEEE Press, 2005.</li>
+<li>[3] Aguayo, Daniel, et al. "Link-level measurements from an 802.11 b mesh network." ACM SIGCOMM Computer Communication Review. Vol. 34. No. 4. ACM, 2004.</li>
+<li>[4] Doddavenkatappa, Manjunath, Mun Choon Chan, and Akkihebbal L. Ananda. "Indriya: A low-cost, 3D wireless sensor network testbed." International conference on testbeds and research infrastructures. Springer, Berlin, Heidelberg, 2011.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../阿里云平台/阿里云物联网平台介绍/" class="btn btn-neutral" title="9.1 阿里云平台"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../阿里云平台/阿里云物联网平台介绍/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>

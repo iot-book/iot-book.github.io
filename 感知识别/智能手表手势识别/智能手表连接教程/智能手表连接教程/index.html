@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="WiSys Lob">
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>7.1.1 智能手表连接教程 - IoT Book</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "7.1.1 \u667a\u80fd\u624b\u8868\u8fde\u63a5\u6559\u7a0b";
+    var mkdocs_page_input_path = "\u611f\u77e5\u8bc6\u522b\\\u667a\u80fd\u624b\u8868\u624b\u52bf\u8bc6\u522b\\\u667a\u80fd\u624b\u8868\u8fde\u63a5\u6559\u7a0b\\\u667a\u80fd\u624b\u8868\u8fde\u63a5\u6559\u7a0b.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/rust.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> IoT Book</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../前言/物联网导论/">一. 前言</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../物联网简介/物联网简介/">二. 物联网简介</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">三. 物联网通信协议</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网通信协议/android开发基础/">3.1 Android基础</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网通信协议/matlab基础/">3.2 MATLAB基础</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">四. 物联网通信基础</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">4.1 物联网基础概念</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/物联网基础概念/">4.1.1 基础概念</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/滤波/">4.1.2 滤波</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/傅里叶分析/">4.1.3 傅立叶分析</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">4.2 编码方法及声音实现</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/编码方法及其声音实现/">4.2.1 实现1</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../../物联网通信基础/编码方法及其声音实现-2/">4.2.2 实现2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">五. 物联网感知</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/传感器/">5.1 传感器</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/多普勒效应/">5.2 多普勒效应</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/飞行时间/">5.3 飞行时间</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网感知/相位偏移/">5.4 相位偏移</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">六. 定位与追踪</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于距离测量的定位/">6.1 基于距离测量的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于信号分布特征的定位/">6.2 基于信号分布特征的定位</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../定位与追踪应用/基于距离变化量的位置追踪/">6.3 基于距离变化量的位置追踪</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">七. 感知识别</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">7.1 智能手表手势识别</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">7.1.1 智能手表连接教程</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#_1">智能手表连接教程</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#_2">教程目标</a></li>
+        
+            <li><a class="toctree-l5" href="#_3">工具准备</a></li>
+        
+            <li><a class="toctree-l5" href="#_4">示例</a></li>
+        
+            <li><a class="toctree-l5" href="#_5">智能手表连接到手机</a></li>
+        
+            <li><a class="toctree-l5" href="#_6">智能手表连接到电脑</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../智能手表数据采集/智能手表数据采集/">7.1.2 智能手表数据采集</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../数据处理与展示/智能手表数据处理与展示/">7.1.3 数据处理与展示</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">八. 物联网网络构建</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/网络冲突处理(zigzag)/">8.1 低功耗物联网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/网络冲突处理(zigzag)/">8.2 网络冲突处理</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.3 跨协议识别</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.4 低功耗广域网</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.5 跨协议通信</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网网络构建/LoRa低功耗广域网/">8.6 物联网多跳自组网网络协议</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">九. 物联网应用平台</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../物联网应用平台/阿里云平台/阿里云物联网平台介绍/">9.1 阿里云平台</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../物联网应用平台/LoRa测试床/LoRa测试床/">9.2 LoRa测试床</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">IoT Book</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>7.1 智能手表手势识别 &raquo;</li>
+        
+      
+        
+          <li>七. 感知识别 &raquo;</li>
+        
+      
+    
+    <li>7.1.1 智能手表连接教程</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">智能手表连接教程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">教程目标<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>将**非苹果系列智能手表**（例如Moto360，LG Sport，HUAWEI手表等）与**安卓手机**进行配对连接，并通过**adb工具**（Android Debug Bridge，安卓调试桥）进一步与电脑连接，以实现下面两个功能：</p>
+<ol>
+<li>从智能手表向电脑传输数据（通过adb工具）</li>
+<li>从电脑向智能手表安装程序（通过Android Studio）</li>
+</ol>
+<h3 id="_3">工具准备<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>非苹果系列智能手表</p>
+</li>
+<li>
+<p>安卓手机，安装软件Wear OS by Google<img src="./images/wearOS.png"  height="50" width="50" />，在应用商店或浏览器中均可搜索到</p>
+</li>
+<li>
+<p>adb工具，见<code>ADB/</code>文件夹，Windows操作系统的adb位于<code>ADB/Win</code>，Mac或Linux系统的adb位于<code>ADB/Mac</code></p>
+</li>
+</ol>
+<h3 id="_4">示例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>以下连接教程以Moto 360手表连接到小米手机(MI 4LTE)为例</p>
+<h3 id="_5">智能手表连接到手机<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>注：智能手表最多只能与一部智能手机连接，如果要与其他手机连接，必须断开与之前手机的连接</p>
+<ol>
+<li>
+<p>智能手表：如果智能手表之前曾与其他手机连接，则需先断开连接并恢复出厂设置。点击<code>设置(Settings)-&gt;系统(System)-&gt;断开连接并重置(Disconnect &amp; reset)</code>，等待重启完成后，手表会进入匹配手机的页面；如果智能手表之前不曾与其他手机连接，则开机后直接进入匹配手机的页面，如图1</p>
+</li>
+<li>
+<p>智能手机：打开WiFi或数据连接以保证能够连接到互联网，打开蓝牙，打开<code>Wear OS</code>应用，（点击左上角）打开<code>添加新手表</code>，在下方出现的列表中选择待匹配手表并点击，完成匹配，如图2。若无法连接成功，可以采用以下几个方案：重新启动<code>Wear OS</code>应用；在手机<code>设置-&gt;蓝牙-&gt;已配对设备</code>中，如果之前曾与该手表进行过配对，则选择该手表并取消配对</p>
+</li>
+<li>
+<p>智能手表：点击<code>设置(Settings)-&gt;系统(System)-&gt;关于(About)</code>，连续点击<code>版本号(Build number)</code>7次，则会在<code>设置(Settings)</code>菜单下出现<code>开发者选项(Developer options)</code>，点击<code>开发者选项(Developer options)</code>，打开<code>ADB调试(ADB Debugging)</code>和<code>通过蓝牙调试(Debug over Bluetooth)</code></p>
+</li>
+<li>
+<p>智能手机：打开<code>Wear OS</code>应用，（在底部）点击<code>高级设置</code>，打开<code>通过蓝牙调试</code>，此时应该显示<code>主机：未连接；目标：已连接</code>，如图3。如果<code>目标</code>显示<code>未连接</code>，则重新启动<code>Wear OS</code>应用再查看</p>
+</li>
+</ol>
+<p><img src="./images/Fig1.png"  height="200" width="200" />   <img src="./images/Fig2.png"  height="200" width="240" />   <img src="./images/Fig3.png"  height="200" width="120" /></p>
+<p>​                   图1                                       图2                                    图3</p>
+<h3 id="_6">智能手表连接到电脑<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>智能手机：通过USB连接线连接到电脑</p>
+</li>
+<li>
+<p>电脑：在电脑上打开命令行或终端，执行(Windows)<code>.\connect.ps1</code>或(Mac, Linux)<code>./connect</code>命令，此时智能手机<code>高级设置</code>中的<code>主机</code>应显示<code>已连接</code>，若有以下情况，进行对应操作：</p>
+<p>2.1 若出现<code>error: more than one device/emulator</code>，则执行<code>./adb kill-server</code>关闭已有的连接</p>
+<p>2.2 若出现<code>device not found</code>，在智能手机上，点击<code>设置-&gt;开发者选项-&gt;选择USB配置-&gt;仅限充电</code>，此时手机弹出在该电脑上的USB调试权限设定，设定权限后再执行(Windows)<code>.\connect.ps1</code>或(Mac, Linux)<code>./connect</code>命令</p>
+<p>2.3 若出现<code>This adb server's $ADB_VENDOR_KEYS is not set</code>，则找到(Windows)<code>C：Users/$Name/.android</code>或(Mac, Linux)<code>~/.android</code>文件夹，将文件夹中的<code>adbkey.pub,adbkey</code>删除，然后再执行(Windows)<code>.\connect.ps1</code>或(Mac, Linux)<code>./connect</code>命令</p>
+</li>
+<li>
+<p>智能手表：主机连接成功后，手表上会出现'是否允许在该PC上进行调试'，选择'总是允许'</p>
+</li>
+<li>电脑：Android Studio可以找到智能手表并可以安装程序</li>
+<li>智能手表：点击<code>设置(Settings)-&gt;应用(Apps)-&gt;$(安装的应用)-&gt;权限(Permissions)</code>，打开相应的应用权限</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../智能手表数据采集/智能手表数据采集/" class="btn btn-neutral float-right" title="7.1.2 智能手表数据采集">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../../../定位与追踪应用/基于距离变化量的位置追踪/" class="btn btn-neutral" title="6.3 基于距离变化量的位置追踪"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../../../定位与追踪应用/基于距离变化量的位置追踪/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../智能手表数据采集/智能手表数据采集/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../js/extra.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>
