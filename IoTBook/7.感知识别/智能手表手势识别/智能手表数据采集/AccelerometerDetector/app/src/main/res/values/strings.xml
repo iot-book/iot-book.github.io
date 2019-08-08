@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IMU Detector</string>
+    <string name="main_button_start">开始</string>
+    <string name="main_button_stop">停止</string>
+    <string name="main_button_save">正在保存</string>
+    <string name="message_time_usage">耗时：%1$s毫秒</string>
+</resources>
