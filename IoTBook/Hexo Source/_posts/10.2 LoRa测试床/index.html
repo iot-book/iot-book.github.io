@@ -1071,7 +1071,7 @@
 </li>
 <li>
 <p>自主更新系统</p>
-<p>TODO</p>
+<p>我们使用增量式更新的方式来对LoRa节点的程序内容进行更新。更新生成程序通过对比分析新旧版本的ELF文件生成更新文件，然后LoRa服务器通过网关将更新文件发送到需要更新的节点。节点验证更新文件的正确性后跳转进入IAP程序进行更新，更新完成后程序将跳转回用户程序。</p>
 </li>
 </ul>
 <p><strong>两种系统的比较</strong>。这两种系统毫无疑问是各有优劣的，树莓派管控系统对于资源要求比较苛刻，比如需要联网，需要长时间不间断供电等等，但是其好在运行稳定，实现相对容易和快捷。自主更新系统则比较自由，对环境条件依赖度很小，但是其实现代价比较高昂，考虑到LoRa本身通信速度的局限性，整套系统的稳定性也有待考量。</p>
@@ -1091,17 +1091,164 @@
 
 <h1 id="lora_3">LoRa测试床部署情况<a class="headerlink" href="#lora_3" title="Permanent link">&para;</a></h1>
 <h2 id="_9">网关<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>截至2019年7月23日，我们一共部署了3个网关，均为网关1类型，如下图中的网关部署情况。
+<center><img src="/images/10.2/gateway_deployment.png" alt="网关部署情况" height="300" /></center></p>
+<p>从上往下，依次为网关2，网关1和网关3，离地高度分别为36米， 18米和 12米。</p>
 <h2 id="_10">节点<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>节点的部署情况分为室外和室内两种，我们分别叫做室外测试床和室内测试床。</p>
+<ul>
+<li>室外测试床。我们计划是部署50个节点左右，包括静止的节点和移动的节点，对于移动的节点，我们采取的方法是将其绑在自行车上，室外测试床系统目前正在测试和部署中。
+下图中显示了9个静止的节点的位置信息以及部署实物图。
+<div align="center">
+<div style="width:300px; height:auto; float:left; display:inline; margin-right:5px">
+<center><img src="/images/10.2/node_deployment.png" alt="室外节点部署情况" height="300" /></center>
+<!-- <center>登陆界面</center> -->
+</div></li>
+</ul>
+<div>
+<center><img src="/images/10.2/node_ps.png" alt="室外节点部署情况" height="300" /></center>
+<!-- <center>操作界面</center> -->
+</div>
+
+</div>
+
+<ul>
+<li>室内测试床。室内测试床包含50个节点，实物图如下。
+<center><img src="/images/10.2/testbed_indoor.png" alt="室内测试床" height="300" /></center>
+每个节点与一个树莓派连接，树莓派连接网线，然后由交换机进行IP分配从而上网。</li>
+</ul>
 <h1 id="lora_4">LoRa测试床使用指南<a class="headerlink" href="#lora_4" title="Permanent link">&para;</a></h1>
+<p>点击进入测试床<a href="http://thulpwan.top">首页</a>。</p>
+<ol>
+<li>
+<p>注册<br />
+    <div align="center">
+    <div style="width:400px; height:auto; float:left; display:inline; margin-right:5px">
+    <center><img src="/images/10.2/注册.png" alt="点击注册" height="305" /></center>
+    <!-- <center>登陆界面</center> -->
+    </div></p>
+<p><div>
+<center><img src="/images/10.2/注册1.png" alt="填入信息" height="305" /></center>
+<!-- <center>操作界面</center> -->
+</div>
+</div><br />
+然后需要等待邮箱回复账号，密码才可登录。</p>
+</li>
+<li>
+<p>登录
+    <div align="center">
+    <div style="width:305px; height:auto; float:left; display:inline; margin-right:5px">
+    <center><img src="/images/10.2/登录.png" alt="点击登录" height="250" /></center>
+    <!-- <center>登陆界面</center> -->
+    </div></p>
+<p><div>
+<center><img src="/images/10.2/登录1.png" alt="进入首页" height="250" /></center>
+<!-- <center>操作界面</center> -->
+</div>
+</div><br />
+使用获得到的账号，密码登录，进入首页。</p>
+</li>
+<li>
+<p>操作<br />
+进一步的操作见首页的侧边栏目 <strong>使用说明</strong>。</p>
+</li>
+</ol>
 <h1 id="lora_5">LoRa测试床技术实现<a class="headerlink" href="#lora_5" title="Permanent link">&para;</a></h1>
+<p>本小节主要从技术实现上介绍我们如何搭建测试床，以供读者参考。测试出的实现分为两个部分，第一个部分是搭建自己的LoRa网络，第二个就是搭建管控平台对LoRa网络进行管控。</p>
 <h2 id="lora_6">LoRa网络搭建<a class="headerlink" href="#lora_6" title="Permanent link">&para;</a></h2>
+<p>想要搭建属于自己的LoRa网络，需要做三件事情：
+* 实现节点的应用的程序，我们目前实现了基于SX1278和SX1268两套程序。
+* 搭建网关服务。
+* 搭建LoRa服务器</p>
+<p>我们就分别从这三个方面进行叙述。</p>
+<ol>
+<li>
+<p>首先是实现节点的应用程序，我们之前介绍了我们的两款节点硬件组成和组装情况。我们采用的参考代码在<a href="https://github.com/Lora-net/LoRaMac-node">这里</a>。使用git clone命令下载到本地仓库，这里的代码使用的是VS code平台。</p>
+<p>为了使代码适用于我们自己的硬件，需要对代码进行修改移植，修改的地方主要是与硬件相关的地方。首先在boards文件夹下新建一块适用于自己硬件的板子，可以随意起名，我们这里名Handsome，具体文件组织和所需文件如下图所示。硬件的修改主要为MCU和Radio两部分，上述代码提供了很多相似的硬件代码，我们可以copy相应的代码。注意的是board-config.h为自己的硬件对应的引脚。
+<div align="center">
+<div style="width:300px; height:auto; float:left; display:inline; margin-right:5px">
+<center><img src="/images/10.2/node_code.png" alt="节点移植板子目录" height="340" /></center>
+<!-- <center>登陆界面</center> -->
+</div></p>
+<p><div>
+<center><img src="/images/10.2/node_code_app.png" alt="节点移植应用app目录" height="340" /></center>
+<!-- <center>操作界面</center> -->
+</div>
+</div>
+   修改得到了自己的板子，然后就可以在app下面新建自己的板子对应的应用，如上右图。调试的方法可以先调通串口打印相关的代码，然后用串口进行调试。还需要注意的是要让这个程序运行起来，需要修改相应的CMakeLists.txt文件，它控制着代码的编译生成。修改方法是，找到修改目录下对应的CMakeLists.txt文件(若没有，需要自己生成)，修改的地方可以参考这个文件的编写，比如新增了Borads下名为Handsome的板子，就需要在Handsome下新建一个CMakeLists.txt，这个文件的编写，可以参考其他板子下的CMakeLists.txt文件。同时在外层的CMakeLists.txt里要新增这个板子，这个也可以参考其他板子，比如搜索一下板子LoRaMote的使用地方，然后仿照添加进去。</p>
+</li>
+</ol>
+<p><mark>注：不同的操作平台还需要配置相应的环境。</mark></p>
+<ol>
+<li>
+<p>网关服务的搭建。购买的网关通常自带了相关的LoRaWAN代码，我们可以直接使用。当然我们也可以自己搭建网关服务，网关的代码一般包含网关硬件控制相关的代码LoRa_gateway和通信代码packet_forwarder。我们参考代码分别为<a href="https://github.com/Lora-net/lora_gateway">LoRa_gateway</a>和<a href="https://github.com/Lora-net/packet_forwarder">packet_forwarder</a>。</p>
+<p>依然是先git clone下来，然后再分别对连部分代码进行编译生成，这之后会在lora_geteway目录下生成./reset_lgw.sh文件，在packet_forwarder/lora_pkt_fwd目录下面生成lora_pkt_fwd可执行文件。然后需要依次执行./reset_lgw.sh start，./lora_pkt_fwd，即可将网关运行起来。</p>
+<p>需要注意packet_forwarder/lora_pkt_fwd目录下的global_conf.json和local_conf.json两个文件，这是用来配置网关的，其中一个主要目的是使服务器能够找到网关，具体配置这里也不详述了。</p>
+<p><mark>注：网关通常需要反复运行多次才可以成功启动。</mark></p>
+</li>
+<li>
+<p>搭建LoRa服务器。LoRa服务器的搭建有比较详细的教程，见<a href="https://www.loraserver.io/">这里</a>。</p>
+</li>
+</ol>
 <h2 id="_11">控制平台搭建<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>树莓派管控系统</p>
+<p>树莓派管控系统
+  我们使用前后端分离的设计理念进行搭建，因此我们也将从前端和后端两部分进行介绍。</p>
+</li>
+<li>
+<p>前端<br />
+      前端系统开发采用的框架是蚂蚁金融前端解决方案ant design pro，该解决方案基于React实现，使用umi搭建框架。
+      这个框架使用起来很方便，只需要切换到目录，使用</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>npm install  
+npm start
+</pre></div>
+</td></tr></table>
+
+<p>即可启动，并且支持时时更新浏览。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>开发过程中每一个页面对应于框架中的一个js文件，js文件中使用render函数来渲染页面，该函数返回的结果为dom块，这个dom块就会被渲染到对应的界面中。开发者可以利用参数来控制dom块的渲染结果，从而方便地对页面的展示效果进行条件控制。
+前端的主要页面包括**系统概况、使用说明、地图视图、节点预定、节点管理、LoRaServer、关于我们**。
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>后端<br />
+    后端实现采用的是Java的Spring，SpringMVC和Mybatis框架，即SSM框架。构建项目采用Maven工具，通过pom.xml把Spring、SpringMVC、Mybatis整合起来。下面简单介绍一下SSM三个框架的作用。   </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Spring：Spring使用最基本的Java Bean来替代EJB的作用。简单来说，Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。  
+Spring MVC：Spring MVC 分离了控制器、模型对象、分派器以及处理程序对象的角色，使得它们更容易定制。  
+Mybatis：MyBatis是一个基于Java的持久层框架。MyBatis 消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。通过配置，MyBatis 将接口和 Java 的POJOs 映射成数据库中的记录。
+</pre></div>
+</td></tr></table>
+
 </li>
 <li>
 <p>自主更新系统</p>
+</li>
+<li>
+<p><strong>更新文件生成</strong>
+  更新文件生成的方法以R2为基础改进而来，利用重定位表来减少不同程序版本间数据和函数地址移位的影响。通过修改链接器参数（如在MDK5进行编译时，添加参数--emit_relocs），我们可以得到含有重定位信息的ELF文件，进而得到所有发生了重定位的位置和重定位的结果地址，我么称其为为重定位表。根据重定位表，我们在bin文件中将所有发生了重定位的位置处的地址修改为0，然后使用算法对修改后的bin文件进行差异计算，得到最短的编辑脚本。我们使用了经过修改的RMTD算法，其编辑脚本中包含如下两种指令：
+  ADD <n> <byte 1...byte n> :添加n个字节，内容为byte1 ... byte n；
+  COPY <n> <addr> : 从旧程序的addr处复制n个字节到新程序。
+  我们不必在指令中包含新程序的地址，因为这些指令是连续的，写入新程序的地址可以由之前的所有指令计算得来。
+  在对bin文件进行修改后，算法计算出的编辑脚本的长度显著减少，但是我们还需要将重定位表包含到更新文件中以供节点还原地址。为了尽可能减少更新文件的大小，我们不是包含完整的重定位表，而是计算新程序重定位表与旧程序重定位表的差异，将其包含到更新文件内。由于地址由链接器按规则分配，在新旧程序对应的重定位表中会有许多项的差值保存一致，利用这一特点，我们寻找所有对应的重定位项并计算差值，根据差值将多个重定位项合在一起包含进更新文件。对于没有对应的重定位项，则直接添加到更新文件中。
+  最后，我们计算更新文件的CRC校验码并将其添加到文件尾以供节点进行正确性校验。</p>
+</li>
+<li>
+<p><strong>更新文件传输</strong>
+  服务器与节点使用一个固定的FPort来进行更新文件的传输。服务器接收上传的更新文件并将文件分成多个包加入下行消息队列。当节点接受到该Fort的消息时进入CLASS C模式以持续接收来自服务器的数据包。若出现丢包，则节点发送消息通知服务器调整消息队列以进行重传。节点接收到全部数据后进行CRC校验，校验通过后则程序跳转进行更新。</p>
+</li>
+<li>
+<p><strong>节点程序更新</strong>
+  节点内程序的更新分为两部分：重定位表的更新和用户程序更新。
+  对重定位表进行更新时，根据差值和旧重定位表项计算出新的表项，并与直接添加的重定位表项进行归并后得到新的重定位表。
+  对用户程序进行更新则依据编辑脚本进行，根据ADD或COPY指令从旧程序或更新文件处拷贝数据，并根据重定位表修改部分位置的地址生成新的程序。
+  当flash空间充足时，我们可以在不覆盖旧程序的情况下合成出新程序，但当flash空间比较有限时，必须注意不能够覆盖掉需要在之后拷贝的数据。同时，由于flash具有按页擦除的机制，我们希望找到一个程序页面的更新顺序，当按照这个顺序进行更新时不会覆盖需要被拷贝的数据。为此，我们分析编辑脚本中的所有COPY指令并构建出一个表示页面间数据依赖的有向图。当该图无环时，我们必定可以找到期望的页面序列，而当该图有环时，我们保存环路上的一个页面到内存或闪存中以打破环路。在具体实现的算法中，我们每次寻找被拷贝数最少的页面并进行更新。如果该页面被其他页面拷贝了数据，则在更新前保存该页面。在该页面更新后，删除图中对应的边并进行下一轮搜索。
+  使用这样乱序对页面进行更新的方式，我们便不需要同时在闪存中储存两个程序，对于闪存空间的需求大大减少；同时因为不必再将新程序在移动到原来的位置，闪存擦写的次数和能量消耗也得到减少。</p>
 </li>
 </ul>
 <h1 id="_12">参考文献<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h1>

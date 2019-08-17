@@ -1,0 +1,1362 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>Wifi感知 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../../.." title="IoT Book" class="md-header-nav__button md-logo">
+          
+            <img src="../../../../images/icon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              IoT Book
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Wifi感知
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../../.." title="IoT Book" class="md-nav__button md-logo">
+      
+        <img src="../../../../images/icon.png" width="48" height="48">
+      
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../1. 前言/物联网导论/" title="一. 前言" class="md-nav__link">
+      一. 前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../2. 物联网简介/物联网简介/" title="二. 物联网简介" class="md-nav__link">
+      二. 物联网简介
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 平台搭建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 平台搭建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../平台搭建/android开发基础/" title="3.1 Android基础" class="md-nav__link">
+      3.1 Android基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../平台搭建/matlab基础/" title="3.2 MATLAB基础" class="md-nav__link">
+      3.2 MATLAB基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      四. 物联网通信与连接技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        四. 物联网通信与连接技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3. 物联网通信协议/物联网连接技术/" title="4.1 物联网连接技术" class="md-nav__link">
+      4.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3. 物联网通信协议/蓝牙实验/" title="4.2 蓝牙实验" class="md-nav__link">
+      4.2 蓝牙实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      五. 物联网通信基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        五. 物联网通信基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+    
+    <label class="md-nav__link" for="nav-5-1">
+      5.1 基础概念
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-1">
+        5.1 基础概念
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1 物联网基础概念/" title="5.1.1 量化、采样及采样定律" class="md-nav__link">
+      5.1.1 量化、采样及采样定律
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1.3 滤波/" title="5.1.2 滤波" class="md-nav__link">
+      5.1.2 滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1.2 傅里叶分析/" title="5.1.3 傅立叶分析" class="md-nav__link">
+      5.1.3 傅立叶分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      5.2 信号编码
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        5.2 信号编码
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.2 编码方法及其声音实现/" title="5.2.1 脉冲、幅度、时间、频率编码" class="md-nav__link">
+      5.2.1 脉冲、幅度、时间、频率编码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.2 编码方法及其声音实现-2/" title="5.2.2 相位编码、OFDM与载波调制" class="md-nav__link">
+      5.2.2 相位编码、OFDM与载波调制
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 物联网感知
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 物联网感知
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/传感器/" title="6.1 传感器" class="md-nav__link">
+      6.1 传感器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/飞行时间/" title="6.2 ToF测距" class="md-nav__link">
+      6.2 ToF测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/多普勒效应/" title="6.3 多普勒效应测距离变化量" class="md-nav__link">
+      6.3 多普勒效应测距离变化量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/相位偏移/" title="6.4 相位测距" class="md-nav__link">
+      6.4 相位测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="6.5 FMCW测距" class="md-nav__link">
+      6.5 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      七. 定位与追踪
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        七. 定位与追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.1基于距离测量的定位/" title="7.1 基于距离测量的定位" class="md-nav__link">
+      7.1 基于距离测量的定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.2基于信号分布特征的定位/" title="7.2 基于信号分布特征的定位" class="md-nav__link">
+      7.2 基于信号分布特征的定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.3基于距离变化量的位置追踪/" title="7.3 基于距离变化量的位置追踪" class="md-nav__link">
+      7.3 基于距离变化量的位置追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      八. 感知识别
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        八. 感知识别
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      8.1 设备身份认证
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        8.1 设备身份认证
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.1.1 频率选择" class="md-nav__link">
+      8.1.1 频率选择
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.1.2 声纹识别" class="md-nav__link">
+      8.1.2 声纹识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.2 Wi-Fi 动作识别" class="md-nav__link">
+      8.2 Wi-Fi 动作识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      8.3 智能手表手势识别
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        8.3 智能手表手势识别
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../智能手表手势识别/智能手表连接教程/智能手表连接教程/" title="8.3.1 智能手表连接教程" class="md-nav__link">
+      8.3.1 智能手表连接教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../智能手表手势识别/智能手表数据采集/智能手表数据采集/" title="8.3.2 智能手表数据采集" class="md-nav__link">
+      8.3.2 智能手表数据采集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../智能手表手势识别/数据处理与展示/智能手表数据处理与展示/" title="8.3.3 数据处理与展示" class="md-nav__link">
+      8.3.3 数据处理与展示
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      九. 物联网网络构建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        九. 物联网网络构建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      9.1 低功耗物联网
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        9.1 低功耗物联网
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1 低功耗物联网概述/" title="9.1.1 概述" class="md-nav__link">
+      9.1.1 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1.1 低占空比网络/" title="9.1.2 低占空比网络" class="md-nav__link">
+      9.1.2 低占空比网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1.2 低功耗广域网/" title="9.1.3 低功耗广域网" class="md-nav__link">
+      9.1.3 低功耗广域网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      9.2 网络冲突处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        9.2 网络冲突处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2 网络冲突处理/" title="9.2.1 概述" class="md-nav__link">
+      9.2.1 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2.2 zigzag实验/" title="9.2.2 zigzag的声音实现" class="md-nav__link">
+      9.2.2 zigzag的声音实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2.1 链路模型及网络容量/" title="9.2.3 链路模型及网络容量" class="md-nav__link">
+      9.2.3 链路模型及网络容量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.3 跨协议识别/" title="9.3 跨协议识别" class="md-nav__link">
+      9.3 跨协议识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.4 跨协议通信/" title="9.4 跨协议通信" class="md-nav__link">
+      9.4 跨协议通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.5 物联网多跳自组网网络协议/" title="9.5 多跳自组织网络" class="md-nav__link">
+      9.5 多跳自组织网络
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      十. 物联网应用平台
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        十. 物联网应用平台
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="10.1 阿里云平台" class="md-nav__link">
+      10.1 阿里云平台
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="10.2 LoRa测试床" class="md-nav__link">
+      10.2 LoRa测试床
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="系统环境与程序启动" class="md-nav__link">
+    系统环境与程序启动
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="启动后台程序" class="md-nav__link">
+    启动后台程序
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csiini" title="注：csi.ini 文件内容解释" class="md-nav__link">
+    注：csi.ini 文件内容解释
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="启动前台程序" class="md-nav__link">
+    启动前台程序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="实时可视化系统使用说明" class="md-nav__link">
+    实时可视化系统使用说明
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="信号特征实时管理" class="md-nav__link">
+    信号特征实时管理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="新建连接（框1）" class="md-nav__link">
+    新建连接（框1）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="信号特征实时显示（框2）" class="md-nav__link">
+    信号特征实时显示（框2）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="信号特征放大显示（框3）" class="md-nav__link">
+    信号特征放大显示（框3）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" title="发包频率调节（框4）" class="md-nav__link">
+    发包频率调节（框4）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" title="保存数据（框5）" class="md-nav__link">
+    保存数据（框5）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="人体检测报警" class="md-nav__link">
+    人体检测报警
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6" title="警报指示区（框6）" class="md-nav__link">
+    警报指示区（框6）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" title="检测参数选择（框7）" class="md-nav__link">
+    检测参数选择（框7）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="算法设计与应用实例" class="md-nav__link">
+    算法设计与应用实例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="注：" class="md-nav__link">
+    注：
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Wifi感知</h1>
+                
+                <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Wi-Fi雷达系统2.0是一款用于无线感知的科研与教学平台，其包含信号分析与人体移动检测两个部分。信号分析模块可以帮助科研人员和学生实时采集、观察、记录无线信号特征（CSI与RSSI），从而发现影响信号变化的因素，促进创新研究与应用；人体移动检测作为无线感知的一个典型应用，可以帮助学生了解和学习WiFi雷达技术的应用，启发学生创新性思维。 </p>
+<p><img alt="img" src="../image/1.png" /></p>
+<p><center>图 1. Wi-Fi雷达系统与界面&lt;\center&gt;</p>
+<p>Wi-Fi雷达2.0在WiFi雷达1.0的基础上增加了CSI相位处理模块，可以提供鲁棒的CSI相位信息；支持显示全部三根天线的CSI信息；支持实时控制采样频率；支持在多台接收机上进行远程分布式环境感知实验。</p>
+<h2 id="_2">系统环境与程序启动<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Wi-Fi雷达系统由后台程序（数据产生和发送）和前台程序（数据显示与采集）两部分组成。后台程序需要运行在装有发射天线的微型计算机上。前台程序需要运行在任何装有java虚拟机并且与微型计算机在同一局域网内的设备上。以下将详细叙述启动系统的全部流程。</p>
+<h3 id="_3">启动后台程序<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="img" src="../image/2.png" /> </p>
+<p><center>图 2. 系统运行命令</center></p>
+<ol>
+<li>
+<p>打开系统终端</p>
+</li>
+<li>
+<p>切换到root权限  </p>
+<p><code>$su root</code></p>
+</li>
+<li>
+<p>输入系统密码： <strong>123456</strong></p>
+</li>
+<li>
+<p>进入VisualCSI—2.0/WRadarC目录</p>
+<p><code>$cd Desktop/VisualCSI-2.0/WRadarC</code></p>
+</li>
+<li>
+<p>配置系统参数</p>
+<p><code>$vi csi.ini</code> </p>
+</li>
+<li>
+<p>运行后台程序</p>
+<p><code>$./CSIServer</code>  </p>
+</li>
+</ol>
+<hr />
+<h5 id="csiini">注：csi.ini 文件内容解释<a class="headerlink" href="#csiini" title="Permanent link">&para;</a></h5>
+<p>PingMS=1000      //ICMP数据包发送时间间隔，以毫秒为单位</p>
+<p>Packets=0        //发送ICMP数据包个数，如果为零则表示无穷多</p>
+<p>APIP=192.168.1.1    //连接的AP地址</p>
+<p>FrontIP=192.168.1.105  //前台界面的IP地址(先用ifconfig查看地址)  </p>
+<hr />
+<h3 id="_4">启动前台程序<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="img" src="../image/3.png" /></p>
+<p><center>图 3. 系统启动界面</center></p>
+<ol>
+<li>
+<p>进入VisualCSI-2.0文件夹</p>
+<p><code>$cd Desktop/VisualCSI-2.0/</code> </p>
+</li>
+<li>
+<p>运行VisualCSI.jar程序</p>
+<p><code>$java -jar VisualCSI.jar</code>  </p>
+</li>
+</ol>
+<p>此时会看到弹出VisualCSI启动窗口“WIFI Radar”界面，如图3。 </p>
+<h2 id="_5">实时可视化系统使用说明<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>WiFi雷达数据实时可视化显示子系统可以分为两个部分：</p>
+<p>1. 信号特征实时管理</p>
+<p>2. 人体检测警报</p>
+<p>其中信号特征包含物理层的信道状态信息（CSI）和链路层的无线信号强度（RSS）。同时我们将WiFi雷达的前端程序分成如图4所示的7个功能区。下文将会按顺序依次介绍每个功能区的设计意图和使用方法。</p>
+<p><img alt="img" src="../image/4.png" /></p>
+<p><center>图 4. Wi-Fi雷达系统界面</p>
+<h3 id="_6">信号特征实时管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="1">新建连接（框1）<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>点击右下角的“新建连接”，弹出“新建连接”对话框。</li>
+<li>“服务器IP地址”中填写运行后台程序的设备IP地址（miniPC的无线IP地址）。</li>
+<li>“本机IP地址”中填写运行前台程序的设备IP地址。<strong>（目前有bug，两个地址请都输入ifconfig显示的apip）</strong></li>
+<li>点击“确定”，进入运行界面，如图5所示。</li>
+</ol>
+<p><img alt="img" src="../image/5.png" /></p>
+<p><center>图 5. 连接成功后运行时画面</p>
+<h4 id="2">信号特征实时显示（框2）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>图4中框2内从左到右三列小窗口分别为三根不同接收天线A、B和C的无线信道信息。</li>
+<li>其中每一列中从上到下三个小窗口（例如图4中2.1、2.2和2.3框）分别实时显示该天线的振幅值，相位和RSS值。</li>
+<li>CSIAm和CSIPh窗口中横坐标是30个不同频率的子载波，纵坐标是相应子载波幅度/相位。在本程序中我们设置固定时间窗为10，即保留最近的10组CSI数据用以构成CSI矩阵，也即窗口内同时显示最近10个CSI向量值，线条最粗，亮度最高的一条表示最新的CSI子载波向量；线条较细、亮度较低的则表示同一时间窗内的历史数据。</li>
+<li>RSSI窗口的横坐标是时间，纵坐标是RSSI值。用户可以通过观察RSSI值在窗口内的游动情况获知无线信号能量变化。</li>
+</ol>
+<p><img alt="img" src="../image/6.png" /></p>
+<p><center>图 6. 信号特征显示区</p>
+<h4 id="3">信号特征放大显示（框3）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p>点击框2中每个小窗口，该窗口内的信号特征信息便会在框3显示区中放大显示(如图7所示)。用户可以更加清晰地、实时地观测每个子载波或者时刻信号特征信息变化情况。</p>
+<p><img alt="image" src="../image/7.png" /></p>
+<p><center>图 7. 信号放大显示区</p>
+<h4 id="4">发包频率调节（框4）<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<ol>
+<li>滑动图4框4中的频率调节杆，可以调节后台程序ICMP发包速率。以满足用户观察不同频率下信号特征变化的使用需求。</li>
+<li>如图8所示，频率调节杆的数值可调节范围为1<sub>10，分别对应发包频率1Hz</sub>10Hz。</li>
+</ol>
+<p><img alt="img" src="../image/8.png" /></p>
+<p><center>图 8. 频率调节区</p>
+<h4 id="5">保存数据（框5）<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
+<ol>
+<li>3.2和3.3中描述的功能虽然可以让用户实时观测信号特征变化情况，进行直观、定性的变化监测，但是但是对于数据的深度分析和定量计算则显得力不从心。为此图4中框5区域提供了信号特征数据保存功能（如图9所示）。</li>
+</ol>
+<p><img alt="img" src="../image/9.png" /></p>
+<p><center>图 9. 信号数据保存</p>
+<ol>
+<li>在建立好连接的基础上，点击保存按钮，则前台程序开始记录数据。同时保存按钮上方实时显示已经记录下的数据包的数量。此时，系统从已连接状态转移到正在保存状态。</li>
+<li>当已保存的数据包足以满足实验需求的数量时，点击停止按钮，则本次数据保存操作结束，相应数据会保存到VisualCSI-2.0/data目录下，并以当前时间为规则自动命名。同时系统从正在保存状态回归到已连接状态。需注意如果仅仅点击保存而没有在适当时间停止保存，则本次保存的数据无法成功写入文件。</li>
+<li>如果在保存的过程中，由于各种原因希望抛弃本次数据，可以点击取消按钮，结束本次保存操作并回到普通的已连接状态。</li>
+<li>保存的数据文件每一行存储着三根接受天线上的CSI信息和RSS信息，其格式如下：
+<center></center>
+<table>
+   <tbody><tr>
+      <td>天线1</td>
+      <td>天线2</td>
+      <td>天线3</td>
+      <td colspan="2">天线1，子载波1</td>
+      <td colspan="2">天线1，子载波2</td>
+      <td>…</td>
+      <td colspan="2">天线i，子载波j</td>
+      <td>…</td>
+      <td colspan="2">天线3，子载波30</td>
+   </tr>
+   <tr>
+      <td>RSS</td>
+      <td>RSS</td>
+      <td>RSS</td>
+      <td>实部</td>
+      <td>虚部</td>
+      <td>实部</td>
+      <td>虚部</td>
+      <td></td>
+      <td>实部</td>
+      <td>虚部</td>
+      <td></td>
+      <td>实部</td>
+      <td>虚部</td>
+   </tr>
+</tbody></table></li>
+</ol>
+<h3 id="_7">人体检测报警<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>人体检测警报功能包括：警报指示区和检测参数选择。</p>
+<h4 id="6">警报指示区（框6）<a class="headerlink" href="#6" title="Permanent link">&para;</a></h4>
+<p>3.2和3.3中描述的功能虽然可以让用户实时观测信号特征变化情况，进行直观、定性的变化分析，但是如果需要对数据进行深度分析和定量计算则不能仅仅依赖上述功能区。</p>
+<p><img alt="img" src="../image/10.png" /></p>
+<p><center>图 10. 警报指示区</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>如图4中框6所示，警报指示区分为是三个界别：安全（绿色）、预警（黄色）、警报（红色）。当环境中无人存在的时候或环境十分平稳、无人移动时，指示水平将会处于安全水平；当环境中有细微异动则指示水平将会达到预警水平，该状态需要引起管理人员的注意，但并不能明确说明有人体在检测区域内移动，很可能是环境噪音或者移动物体在检测边缘移动。当指示水平突破警戒线时则说明确实有人在检测区域内移动，此刻系统进行异常报警（如图10所示）。当移动人体离开检测区域后，指示水平将回到警报水平以下。
+</pre></div>
+</td></tr></table>
+
+<h4 id="7">检测参数选择（框7）<a class="headerlink" href="#7" title="Permanent link">&para;</a></h4>
+<p>本系统集成了两种人体检测算法，即基于信号振幅值方差和基于振幅均值的人体检测技术。老师和学生可以在框7中进行不同的算法选择，以观测不同算法下人体检测性能。对于基于CSI的人体检测，高检测率意味着检测系统对环境变化很敏感，检测区域相对较广。为了降低检测系统敏感度，控制检测区域范围与消除不必要的误报情况，满足不同的应用需求，用户可以选择不同的检测率，系统会根据用户的选择自动调整检测阈值。</p>
+<p><img alt="img" src="../image/11.png" /></p>
+<p><center>图 11. 检测算法控制区</p>
+<h2 id="_8">算法设计与应用实例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>下面以人员发现与定位作为典型应用，帮助老师和学生理解WiFi雷达系统的使用。人员发现可用于安防系统，对非法人员的入侵采取报警或其它相应措施。本例仅用于演示如何使用本系统来实现简易的人员发现功能。该演示算法过于简单，在准确性和鲁棒性上都存在提高空间。使用者应当基于系统提供的CSI数据，自行设计算法，以实现特定的功能。</p>
+<p>原始数据采集后，首先需要将其处理成实验所需的格式。就本实验而言，需要从复数形式的CSI信息中提取出信号的幅度与相位，作为CSI数据的特征值。30组实部与虚部对应了30个CSI值，因此在处理过后可以分别得到30个幅度与30个相位。</p>
+<p>为了观察时域上的信号变化情况，WiFi雷达采用振幅方差信息来判断周围环境状态的稳定性，从而实现人员发现。WiFi雷达在完成数据处理后，将数据包的载波振幅存入缓冲区（时间窗口）中。缓冲区被设置为存放30个数据包的信息。缓冲区内的载波振幅信息可以用一个30*30的矩阵进行表示，如图12所示。</p>
+<p><img alt="img" src="../image/12.png" /></p>
+<p><center>图 12. CSI矩阵计算方差示意图</p>
+<p>然后系统会从矩阵中的每一列求出各个载波振幅的方差，得到一段时间内的表征信号波动程度的30维方差向量，如图12所示。当室内处于无人的状态时，理想状况下该向量应该趋于0向量，而当有人进入时，由于CSI信号发生较大的波动，各个载波的方差也会出现较大的变化。一旦系统检测到在某段时间内载波方差出现连续的较大波动，就会认为有入侵者闯入。</p>
+<p>由于受环境噪音的影响，载波方差在无人的情况并非为零，且方差波动较大。为了消除环境噪音对于人体检测的干扰，WiFi雷达采用如下机制：以t为时间窗口，取t与t+1相邻前后两次的方差，通过数学方法找到衡量前后两次方差差别的数值，该值可以表征方差的稳定性。在本算法中，采取的是两次方差之间的欧氏距离。理论上，当相邻的CSI信息很稳定时，I值结果应改为0，当I值数值越大，说明两次CSI信息波动越大。</p>
+<p>接下来通过实际试验，可得到表征CSI稳定程度的I值在不同状况下的取值范围。Wi-Fi雷达系统大致可以将I值区间划分为三个波动范围，来表征室内的不同安全程度。</p>
+<p><img alt="img" src="../image/13.png" /></p>
+<p><center>图 13. 静态环境下I值概率密度分布曲线</p>
+<p>如图13所示，当房间中无人时，受残余噪音影响，I值的概率密度曲线近似呈高斯分布。当I值处于图中绿色部分时，房间可以被认为处于绝对安全状态；图中的黄色部分，可以被认为是一个警告范围（I0~I1），或是不可预测的噪音影响或轻微异动的影响，此刻房间中的情况需要引起重视；而当房间中有人运动时，I值将超越红色预警阈值I1，此刻WiFi雷达系统将发出入侵警报。</p>
+<p>针对不同的实际情况，I值的警戒值（I0、I1）需要进行不同的定义，这种对阈值的可调整设计主要是考虑到不同安全需求等级的室内需要的程序灵敏度不同。否则如果仅有相同的一组阈值设置，在环境噪声本身较大或者安全需求等级较低的实验环境中很容易出现误报或者漏报的情况，给实验操作带来不便。</p>
+<p>因此Wi-Fi雷达设计了逐渐升高的三种阈值，用来代表逐渐降低的三种灵敏度。这样在不同的环境中，用户可以灵活选择适合自己需求的检测性能。</p>
+<p>以上就是基于振幅方差的WiFi雷达人体移动检测算法设计与实现过程。老师和同学可以参考以上分析和设计方法来分别实现具有创新性的室内Wi-Fi雷达人体检测和定位算法。  </p>
+<h2 id="_9">注：<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>本实验平台中所有密码均设置为**123456** </p>
+<p>**转载自：<a href="http://tns.thss.tsinghua.edu.cn/wifiradar/wifiradar.html">http://tns.thss.tsinghua.edu.cn/wifiradar/wifiradar.html</a> **</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/wisys-lab" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.245445c6.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+        <script src="../../../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
