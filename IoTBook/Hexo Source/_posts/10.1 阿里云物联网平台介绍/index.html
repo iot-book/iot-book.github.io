@@ -1,0 +1,1116 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/logo.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+    
+    
+      
+        <title>10.1 阿里云物联网平台介绍</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.dfc6cb0c.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.6079476c.css">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.6586f7cd.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../../#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+          <a href="../../../.." title="IoT Book" class="md-header-nav__button md-logo">
+          
+            <img src="../../../../images/icon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                IoT Book
+              </span>
+              <span class="md-header-nav__topic">
+                10.1 阿里云物联网平台介绍
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../../../../images/icon.png" width="48" height="48">
+      
+    </span>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../1. 前言/物联网导论/" title="一. 前言" class="md-nav__link">
+      一. 前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../2. 物联网简介/物联网简介/" title="二. 物联网简介" class="md-nav__link">
+      二. 物联网简介
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 平台搭建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 平台搭建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../平台搭建/android开发基础/" title="3.1 Android基础" class="md-nav__link">
+      3.1 Android基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../平台搭建/matlab基础/" title="3.2 MATLAB基础" class="md-nav__link">
+      3.2 MATLAB基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      四. 物联网通信与连接技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        四. 物联网通信与连接技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3. 物联网通信协议/物联网连接技术/" title="4.1 物联网连接技术" class="md-nav__link">
+      4.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3. 物联网通信协议/蓝牙实验/" title="4.2 蓝牙实验" class="md-nav__link">
+      4.2 蓝牙实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      五. 物联网通信基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        五. 物联网通信基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+    
+    <label class="md-nav__link" for="nav-5-1">
+      5.1 基础概念
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-1">
+        5.1 基础概念
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1 物联网基础概念/" title="5.1.1 量化、采样及采样定律" class="md-nav__link">
+      5.1.1 量化、采样及采样定律
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1.3 滤波/" title="5.1.2 滤波" class="md-nav__link">
+      5.1.2 滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1.2 傅里叶分析/" title="5.1.3 傅立叶分析" class="md-nav__link">
+      5.1.3 傅立叶分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      5.2 信号编码
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        5.2 信号编码
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.2 编码方法及其声音实现/" title="5.2.1 脉冲、幅度、时间、频率编码" class="md-nav__link">
+      5.2.1 脉冲、幅度、时间、频率编码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.2 编码方法及其声音实现-2/" title="5.2.2 相位编码、OFDM与载波调制" class="md-nav__link">
+      5.2.2 相位编码、OFDM与载波调制
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 物联网感知
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 物联网感知
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/传感器/" title="6.1 传感器" class="md-nav__link">
+      6.1 传感器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/飞行时间/" title="6.2 ToF测距" class="md-nav__link">
+      6.2 ToF测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/多普勒效应/" title="6.3 多普勒效应测距离变化量" class="md-nav__link">
+      6.3 多普勒效应测距离变化量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/相位偏移/" title="6.4 相位测距" class="md-nav__link">
+      6.4 相位测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="6.5 FMCW测距" class="md-nav__link">
+      6.5 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      七. 定位与追踪
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        七. 定位与追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.1基于距离测量的定位/" title="7.1 基于距离测量的定位" class="md-nav__link">
+      7.1 基于距离测量的定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.2基于信号分布特征的定位/" title="7.2 基于信号分布特征的定位" class="md-nav__link">
+      7.2 基于信号分布特征的定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.3基于距离变化量的位置追踪/" title="7.3 基于距离变化量的位置追踪" class="md-nav__link">
+      7.3 基于距离变化量的位置追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      八. 感知识别
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        八. 感知识别
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      8.1 设备身份认证
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        8.1 设备身份认证
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.1.1 频率选择" class="md-nav__link">
+      8.1.1 频率选择
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.1.2 声纹识别" class="md-nav__link">
+      8.1.2 声纹识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.2 Wi-Fi 动作识别" class="md-nav__link">
+      8.2 Wi-Fi 动作识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      8.3 智能手表手势识别
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        8.3 智能手表手势识别
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../7.感知识别/智能手表手势识别/智能手表连接教程/智能手表连接教程/" title="8.3.1 智能手表连接教程" class="md-nav__link">
+      8.3.1 智能手表连接教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../7.感知识别/智能手表手势识别/智能手表数据采集/智能手表数据采集/" title="8.3.2 智能手表数据采集" class="md-nav__link">
+      8.3.2 智能手表数据采集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../7.感知识别/智能手表手势识别/数据处理与展示/智能手表数据处理与展示/" title="8.3.3 数据处理与展示" class="md-nav__link">
+      8.3.3 数据处理与展示
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      九. 物联网网络构建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        九. 物联网网络构建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      9.1 低功耗物联网
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        9.1 低功耗物联网
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1 低功耗物联网概述/" title="9.1.1 概述" class="md-nav__link">
+      9.1.1 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1.1 低占空比网络/" title="9.1.2 低占空比网络" class="md-nav__link">
+      9.1.2 低占空比网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1.2 低功耗广域网/" title="9.1.3 低功耗广域网" class="md-nav__link">
+      9.1.3 低功耗广域网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      9.2 网络冲突处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        9.2 网络冲突处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2 网络冲突处理/" title="9.2.1 概述" class="md-nav__link">
+      9.2.1 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2.2 zigzag实验/" title="9.2.2 zigzag的声音实现" class="md-nav__link">
+      9.2.2 zigzag的声音实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2.1 链路模型及网络容量/" title="9.2.3 链路模型及网络容量" class="md-nav__link">
+      9.2.3 链路模型及网络容量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.3 跨协议识别/" title="9.3 跨协议识别" class="md-nav__link">
+      9.3 跨协议识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.4 跨协议通信/" title="9.4 跨协议通信" class="md-nav__link">
+      9.4 跨协议通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.5 物联网多跳自组网网络协议/" title="9.5 多跳自组织网络" class="md-nav__link">
+      9.5 多跳自组织网络
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      十. 物联网应用平台
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        十. 物联网应用平台
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="10.1 阿里云平台" class="md-nav__link">
+      10.1 阿里云平台
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="10.2 LoRa测试床" class="md-nav__link">
+      10.2 LoRa测试床
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        
+          <li class="md-nav__item">
+    <a href="#_2" title="基于阿里云物联网平台的物联网系统架构" class="md-nav__link">
+    基于阿里云物联网平台的物联网系统架构
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#_3" title="物联网平台的搭建" class="md-nav__link">
+    物联网平台的搭建
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#_4" title="基于物联网平台的应用开发" class="md-nav__link">
+    基于物联网平台的应用开发
+  </a>
+  
+</li>
+        
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">阿里云物联网平台介绍<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>阿里云物联网平台是阿里巴巴公司推出的专业物联网服务平台，其提供的详尽的文档和清晰的管理界面非常适合刚刚接触物联网平台的初学者，对物联网系统架构、管理等有一个整体上的把握。</p>
+<p><a href="https://help.aliyun.com/product/30520.html?spm=a2c4g.11186623.6.540.6c533f69OVkLwL">阿里云物联网平台文档</a></p>
+<p><a href="https://iot.console.aliyun.com/lk/summary">阿里云物联网管理平台可视化界面</a> （需要注册阿里云账户后才能使用）</p>
+<h2 id="_2">基于阿里云物联网平台的物联网系统架构<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><img alt="物联网架构图" src="/images/10.1/system.png" /></p>
+<p>基于阿里云物联网平台的物联网系统架构图如上图所示，整个系统可大致分为4层架构：</p>
+<ol>
+<li>
+<p>边缘设备：物联网系统中的数据生产者，通常为传感器，一般认为没有计算能力。</p>
+</li>
+<li>
+<p>边缘节点：边缘节点对下收集边缘设备产生的数据，对上将数据转发给物联网平台，通常为网关，具有数据转发和路由功能，同时具备一定的计算能力，边缘计算就在边缘节点上发生。</p>
+</li>
+<li>
+<p>物联网平台：一个集管理、控制、部署等多个功能于一体的平台。</p>
+</li>
+<li>
+<p>应用层：利用物联网平台提供的服务，可以在网页端的可视化界面查看平台运行情况，并通过平台发送管理指令，也可以利用平台提供的接口实现自己的应用，在服务器上进行数据的后续处理等。</p>
+</li>
+</ol>
+<h2 id="_3">物联网平台的搭建<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>具体的搭建流程参考文档：<a href="https://help.aliyun.com/document_detail/73705.html?spm=a2c4g.11186623.6.554.e71e3f69rHJbYz">平台搭建快速入门</a></p>
+<p>搭建的大致流程可分为以下几步：</p>
+<ol>
+<li>定义产品。“产品”是阿里云物联网平台中的一个专有名词，指的是平台管理的物理实体（这里不用“设备”一词，是因为“设备”也是专有名词）的一个抽象，类似于面向对象编程中“类”的概念，比如“温度计”或者“摄像头”，指的并不是一个具体的温度计或摄像头，而是一种类型。在阿里云物联网平台中，产品分为两类：网关和设备，其中网关对应边缘节点，设备对应边缘设备，搭建物联网平台需要定义至少这两种产品，根据实际需要，类型为“设备”的产品一般会有多种，对应多种不同的边缘设备。</li>
+<li>定义设备。“设备”是阿里云物联网平台中的一个专有名词，指的是平台管理的具体物理实体，类似于面向对象编程中“实例”的概念，因此一个产品可以对应一个或许多设备，说明这些设备均属于同一类型。</li>
+<li>定义物模型。“物模型”是阿里云物联网平台中的一个专有名词，指的是产品对应的数据模型。为特定产品定义物模型，相当于规定了该产品对应的设备要发送数据的类型、发送数据的格式等。</li>
+<li>连接平台与设备。连接分为两种：第一种是将边缘节点接入平台，第二种是将边缘设备连接到边缘节点。在边缘节点接入平台中，需要下载并安装阿里云平台的程序包[<a href="https://code.aliyun.com/linkkit/c-sdk/repository/archive.zip?ref=v3.0.1">Link Kit SDK</a>]并开启服务。边缘设备连接到边缘节点具体参考文档：<a href="https://help.aliyun.com/document_detail/103247.html?spm=a2c4g.11186623.6.568.22b14144Icl0Jb">设备接入</a>，里面涉及到“驱动”的概念。</li>
+<li>驱动开发。“驱动”是阿里云物联网平台中的一个专有名词，指的是一种实现边缘设备和边缘节点连接的程序。由于边缘设备多种多样，为了将边缘设备接入边缘节点，需要为不同类型的边缘设备开发不同的驱动程序。驱动开发参考文档：<a href="https://help.aliyun.com/document_detail/104444.html?spm=a2c4g.11186623.6.576.3c368f08jee9gK">驱动开发</a></li>
+<li>部署。</li>
+</ol>
+<p>以上步骤完成后，就可以在阿里云提供的可视化管理界面上查看各种信息了。</p>
+<h2 id="_4">基于物联网平台的应用开发<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>利用阿里云物联网平台进行应用开发，需要了解该平台提供的各种程序接口，参考文档：<a href="https://help.aliyun.com/document_detail/69893.html?spm=a2c4g.11186623.6.686.34ee53c7yiogre">云端API</a></p>
+<p>API的具体使用方式可以阿里云的<a href="https://api.aliyun.com/?spm=a2c4g.11186623.cwnn_jpze.545.67507eb7gXSFvi#/">OpenAPI Explorer</a>，在其中有详细的调用说明和示例。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/wisys-lab" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+    <script src="../../../../assets/javascripts/application.6f02ae1b.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr../../../../lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../../assets/javascripts/lunr../../../../tinyseg.js"></script>
+              
+              
+                <script src="../../../../assets/javascripts/lunrlunr.jp../../../../.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+        <script src="../../../../../../../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

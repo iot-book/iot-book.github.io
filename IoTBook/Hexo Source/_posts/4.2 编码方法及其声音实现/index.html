@@ -1,0 +1,1562 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/logo.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+    
+    
+      
+        <title>4.2.1 编码方法及其声音实现</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.dfc6cb0c.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.6079476c.css">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.6586f7cd.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../../#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+          <a href="../../../.." title="IoT Book" class="md-header-nav__button md-logo">
+          
+            <img src="../../../../images/icon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                IoT Book
+              </span>
+              <span class="md-header-nav__topic">
+                4.2.1 编码方法及其声音实现
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../../../../images/icon.png" width="48" height="48">
+      
+    </span>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../1. 前言/物联网导论/" title="一. 前言" class="md-nav__link">
+      一. 前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../2. 物联网简介/物联网简介/" title="二. 物联网简介" class="md-nav__link">
+      二. 物联网简介
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 平台搭建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 平台搭建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../平台搭建/android开发基础/" title="3.1 Android基础" class="md-nav__link">
+      3.1 Android基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../平台搭建/matlab基础/" title="3.2 MATLAB基础" class="md-nav__link">
+      3.2 MATLAB基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      四. 物联网通信与连接技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        四. 物联网通信与连接技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3. 物联网通信协议/物联网连接技术/" title="4.1 物联网连接技术" class="md-nav__link">
+      4.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3. 物联网通信协议/蓝牙实验/" title="4.2 蓝牙实验" class="md-nav__link">
+      4.2 蓝牙实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      五. 物联网通信基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        五. 物联网通信基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+    
+    <label class="md-nav__link" for="nav-5-1">
+      5.1 基础概念
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-1">
+        5.1 基础概念
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1 物联网基础概念/" title="5.1.1 量化、采样及采样定律" class="md-nav__link">
+      5.1.1 量化、采样及采样定律
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1.3 滤波/" title="5.1.2 滤波" class="md-nav__link">
+      5.1.2 滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.1.2 傅里叶分析/" title="5.1.3 傅立叶分析" class="md-nav__link">
+      5.1.3 傅立叶分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      5.2 信号编码
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        5.2 信号编码
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.2 编码方法及其声音实现/" title="5.2.1 脉冲、幅度、时间、频率编码" class="md-nav__link">
+      5.2.1 脉冲、幅度、时间、频率编码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4. 物联网通信基础/4.2 编码方法及其声音实现-2/" title="5.2.2 相位编码、OFDM与载波调制" class="md-nav__link">
+      5.2.2 相位编码、OFDM与载波调制
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 物联网感知
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 物联网感知
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/传感器/" title="6.1 传感器" class="md-nav__link">
+      6.1 传感器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/飞行时间/" title="6.2 ToF测距" class="md-nav__link">
+      6.2 ToF测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/多普勒效应/" title="6.3 多普勒效应测距离变化量" class="md-nav__link">
+      6.3 多普勒效应测距离变化量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.物联网感知/相位偏移/" title="6.4 相位测距" class="md-nav__link">
+      6.4 相位测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="6.5 FMCW测距" class="md-nav__link">
+      6.5 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      七. 定位与追踪
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        七. 定位与追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.1基于距离测量的定位/" title="7.1 基于距离测量的定位" class="md-nav__link">
+      7.1 基于距离测量的定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.2基于信号分布特征的定位/" title="7.2 基于信号分布特征的定位" class="md-nav__link">
+      7.2 基于信号分布特征的定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../6. 定位与追踪应用/7.3基于距离变化量的位置追踪/" title="7.3 基于距离变化量的位置追踪" class="md-nav__link">
+      7.3 基于距离变化量的位置追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      八. 感知识别
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        八. 感知识别
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      8.1 设备身份认证
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        8.1 设备身份认证
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.1.1 频率选择" class="md-nav__link">
+      8.1.1 频率选择
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.1.2 声纹识别" class="md-nav__link">
+      8.1.2 声纹识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../404/" title="8.2 Wi-Fi 动作识别" class="md-nav__link">
+      8.2 Wi-Fi 动作识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      8.3 智能手表手势识别
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        8.3 智能手表手势识别
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../7.感知识别/智能手表手势识别/智能手表连接教程/智能手表连接教程/" title="8.3.1 智能手表连接教程" class="md-nav__link">
+      8.3.1 智能手表连接教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../7.感知识别/智能手表手势识别/智能手表数据采集/智能手表数据采集/" title="8.3.2 智能手表数据采集" class="md-nav__link">
+      8.3.2 智能手表数据采集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../7.感知识别/智能手表手势识别/数据处理与展示/智能手表数据处理与展示/" title="8.3.3 数据处理与展示" class="md-nav__link">
+      8.3.3 数据处理与展示
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      九. 物联网网络构建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        九. 物联网网络构建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      9.1 低功耗物联网
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        9.1 低功耗物联网
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1 低功耗物联网概述/" title="9.1.1 概述" class="md-nav__link">
+      9.1.1 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1.1 低占空比网络/" title="9.1.2 低占空比网络" class="md-nav__link">
+      9.1.2 低占空比网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.1.2 低功耗广域网/" title="9.1.3 低功耗广域网" class="md-nav__link">
+      9.1.3 低功耗广域网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      9.2 网络冲突处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        9.2 网络冲突处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2 网络冲突处理/" title="9.2.1 概述" class="md-nav__link">
+      9.2.1 概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2.2 zigzag实验/" title="9.2.2 zigzag的声音实现" class="md-nav__link">
+      9.2.2 zigzag的声音实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.2.1 链路模型及网络容量/" title="9.2.3 链路模型及网络容量" class="md-nav__link">
+      9.2.3 链路模型及网络容量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.3 跨协议识别/" title="9.3 跨协议识别" class="md-nav__link">
+      9.3 跨协议识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.4 跨协议通信/" title="9.4 跨协议通信" class="md-nav__link">
+      9.4 跨协议通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../8. 物联网网络构建/8.5 物联网多跳自组网网络协议/" title="9.5 多跳自组织网络" class="md-nav__link">
+      9.5 多跳自组织网络
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      十. 物联网应用平台
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        十. 物联网应用平台
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="10.1 阿里云平台" class="md-nav__link">
+      10.1 阿里云平台
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="10.2 LoRa测试床" class="md-nav__link">
+      10.2 LoRa测试床
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        
+          <li class="md-nav__item">
+    <a href="#_2" title="脉冲编码" class="md-nav__link">
+    脉冲编码
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#_3" title="幅度编码" class="md-nav__link">
+    幅度编码
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#_4" title="时间编码" class="md-nav__link">
+    时间编码
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#_5" title="频率编码" class="md-nav__link">
+    频率编码
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#_6" title="相位编码" class="md-nav__link">
+    相位编码
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#bpsk-qpsk" title="BPSK &amp; QPSK 编码" class="md-nav__link">
+    BPSK &amp; QPSK 编码
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#ofdm" title="OFDM编码" class="md-nav__link">
+    OFDM编码
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#_7" title="载波调制" class="md-nav__link">
+    载波调制
+  </a>
+  
+</li>
+        
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">编码方法及其声音实现<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在本章节中，我们将介绍几种常用的编码方法，并将这几种编码解码方法实现到声音通信上，实现对声音信号的解码。</p>
+<h2 id="_2">脉冲编码<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>脉冲编码是利用相邻两个脉冲信号之间的时间间隔来编码数据。可以指定长度的间隔代表特定的二进制串。最简单的脉冲编码是使用一长一短两种间隔，分别代表“0”和“1”。在解码时只需要识别出每个脉冲信号的起始位置，就可以得到不同脉冲之间的间隔，从而可以根据每个间隔的长短将其解码为“0”或“1”。</p>
+<p><img alt="脉冲编码原理" src="\images\4.2\1.png" title="脉冲编码原理" /> </p>
+<p>脉冲编码由于使用简单的对应规则将“0”和“1”编码为不同长度的间隔，在解码时可以简单的根据信号幅度得到每个脉冲的起始位置来获得间隔的长短，这种编解码方法的优点是计算开销非常小。</p>
+<p>脉冲编码的缺点是编码效率低，每个脉冲之间需要有足够的距离来防止多径效应造成的回声影响到下一个脉冲的判断。想要提高脉冲编码的数据速率，可以从两个方面来考虑。第一个方面是可以缩短编码长度，不仅可以在保证解码正确率的条件下尽可能缩短脉冲之间用于编码数据的时间间隔，还可以通过缩短脉冲信号的持续时间来使得同样时间下传输更多的数据。</p>
+<p><img alt="缩短脉冲间隔可以提高编码效率" src="\images\4.2\2.png" title="缩短脉冲间隔可以提高编码效率" />  </p>
+<p>第二个方面，可以通过设置多种编码长度，使一个编码位携带更多的信息。如下图中所示，设置2种编码长度时，每个编码位携带1bit信息；设置4中编码长度时，每个编码位携带2bit信息；设置8种编码长度时，每个编码位携带3bit信息。</p>
+<p><img alt="设置多种编码长度" src="\images\4.2\3.png" title="设置多种编码长度" /> </p>
+<p>当然，我们不能无限的通过增加不同的编码长度来提高编码效率。当不同的编码长度之间的区分度越小，解码时将他们区分开的难度也越大。</p>
+<p>另外，如果不同的编码单位出现的概率不同，我们还可以使用霍夫曼编码的思想来进一步优化脉冲编码的速率。比如说在一个待发送的文件中“0”的个数大于“1”的个数，使用较短的间隔代表“0”，长的间隔代表“1”，可以使总的发送时间更短。</p>
+<p>实现到声音通信上：
+信号：使用18kHz的声音信号作为脉冲信号，采样频率设置为48kHz。17kHz以上频率的声音信号是大多数成年人都听不到的，选用18kHz可以使人不受干扰。
+编码设计：脉冲长度设置为100个采样点，由于采样频率为48kHz，脉冲的持续时间是100/48000≈2.1ms。脉冲之间空白的间隔采样点数与编码的对应规则见下表：
+脉冲间隔（sample）|   编码
+-- | --
+50 | 00
+100 | 01
+150 | 10
+200 | 11</p>
+<p>进行声音通信首先是要产生声音信号，在脉冲编码中，我们需要生成固定频率（18KHz）和固定长度（100个采样点）的脉冲信号：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% impulse coding</span>
+<span class="n">fs</span> <span class="p">=</span> <span class="mi">48000</span><span class="p">;</span><span class="c">%设置采样频率</span>
+<span class="n">f</span> <span class="p">=</span> <span class="mi">18000</span><span class="p">;</span><span class="c">%指定声音信号频率</span>
+<span class="n">time</span> <span class="p">=</span> <span class="mf">0.0025</span><span class="p">;</span><span class="c">%指定生成的信号持续时间</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="n">time</span><span class="p">;</span><span class="c">%设置每个采样点数据对应的时间</span>
+<span class="n">t</span> <span class="p">=</span> <span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">);</span><span class="c">%截取出100个时间上的采样点</span>
+<span class="n">impulse</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="c">%生成频率为f的正弦信号</span>
+</pre></div>
+</td></tr></table>
+接下来我们生成用于编码的空白部分：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">delta</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>
+<span class="n">pause0</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">delta</span><span class="p">);</span><span class="c">%编码00</span>
+<span class="n">pause1</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">delta</span><span class="p">);</span> <span class="c">%编码01</span>
+<span class="n">pause2</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="n">delta</span><span class="p">);</span> <span class="c">%编码10</span>
+<span class="n">pause3</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">delta</span><span class="p">);</span> <span class="c">%编码11</span>
+</pre></div>
+</td></tr></table>
+设置待传输的字符串：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">str</span> <span class="p">=</span> <span class="s">&#39;Tsinghua University&#39;</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></p>
+<p>为了通过信号把字符串传输出去，我们需要将其转为二进制串。实现名为“string2bin”的函数，把字符数组转化为0,1串：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">function</span><span class="w"> </span>[ binary ] <span class="p">=</span><span class="w"> </span><span class="nf">string2bin</span><span class="p">(</span> str <span class="p">)</span><span class="w"></span>
+<span class="c">%   把字符串转换成二进制串</span>
+<span class="n">ascii</span> <span class="p">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<span class="n">L</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">ascii</span><span class="p">);</span>
+<span class="n">binary</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+<span class="k">for</span> <span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">L</span>
+    <span class="n">binary_str</span> <span class="p">=</span> <span class="n">dec2bin</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+    <span class="n">binary_str_index</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">binary_str</span><span class="p">);</span>
+    <span class="k">for</span> <span class="nb">j</span> <span class="p">=</span> <span class="mi">8</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">binary_str_index</span> <span class="o">&gt;</span><span class="mi">0</span>
+            <span class="n">binary</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="n">str2num</span><span class="p">(</span><span class="n">binary_str</span><span class="p">(</span><span class="n">binary_str_index</span><span class="p">));</span>
+        <span class="k">else</span>
+            <span class="n">binary</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">end</span>
+        <span class="n">binary_str_index</span> <span class="p">=</span> <span class="n">binary_str_index</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">binary</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">binary</span><span class="o">&#39;</span><span class="p">,[</span><span class="n">L</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+调用string2bin函数时传入之前设置的待传输字符串，就可以得到等待传输的二进制串，将其存储在变量“message”中：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">message</span> <span class="p">=</span> <span class="n">string2bin</span><span class="p">(</span> <span class="n">str</span> <span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="c">%调用函数把字符串转为二进制串</span>
+<span class="c">%因为我们设计的编码是每个码元代表2个bit，这里要把二进制串转为4进制串</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="n">m_Length</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="n">message4</span> <span class="p">=</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">m_Length</span><span class="o">/</span><span class="mi">2</span>
+    <span class="c">% 把二进制串中的每两位进行结合，得到四进制串</span>
+    <span class="n">message4</span> <span class="p">=</span> <span class="p">[</span><span class="n">message4</span><span class="p">,</span><span class="n">message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="n">message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)];</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+生成编码数据：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">output</span> <span class="p">=</span> <span class="p">[];</span>
+<span class="c">% 根据四进制串中的值，将impulse和对应的空白信号添加到输出信号中</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">m_Length</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">if</span> <span class="n">message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span>
+        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause0</span><span class="p">];</span>
+    <span class="k">elseif</span> <span class="n">message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span>
+        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause1</span><span class="p">];</span>
+    <span class="k">elseif</span> <span class="n">message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">==</span><span class="mi">2</span>
+        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause2</span><span class="p">];</span>
+    <span class="k">else</span>
+        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause3</span><span class="p">];</span>
+    <span class="k">end</span>  
+<span class="k">end</span>
+<span class="c">% 在输出信号前加一段空白，避免播放器在信号刚开始的位置出现失真的情况。</span>
+<span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">pause3</span><span class="p">,</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">];</span>
+<span class="c">% 在figure中画出输出的时域信号</span>
+<span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">output</span><span class="p">);</span>
+<span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">500</span> <span class="mi">17500</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="c">% 将输出信号写入到音频文件中，需要指明文件名、数据、和采样频率。</span>
+<span class="n">audiowrite</span><span class="p">(</span><span class="s">&#39;message.wav&#39;</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+最终生成的输出信号时域信号如图所示，横轴代表采样点的序号，纵轴代表幅度：</p>
+<p><img alt="编码生成的时域信号" src="\images\4.2\4.png" title="编码生成的时域信号" />  </p>
+<p>得到编码过信息的声音文件后，我们将文件存储在一个android 手机上，并使用一个声音播放器打开此文件进行播放。同时，使用我们在前面章节中开发的录音应用把携带有信息的声音信号录制下来存储到录音文件中。
+用matlab读取录音文件“r.wav”,并将读出的数据在图中展示出来：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 读取录音文件中的数据</span>
+<span class="p">[</span><span class="n">data</span><span class="p">,</span> <span class="n">fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;r.wav&#39;</span><span class="p">);</span>
+<span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="n">hold</span> <span class="n">on</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+展示的结果如下图所示：</p>
+<p><img alt="接收到的声音信号" src="\images\4.2\receive_data.png" title="接收到的声音信号" /></p>
+<p>因为我们这里展示的是简单的编码方式，单个声音信道录到的数据就足够解码，我在录音时设置了单声道的录制。相应的这里得到的声音信号显示是只有一路信号。
+在进行具体的解码之前，我们先来看一下impulse解码的原理。由于impulse coding 使用的是impulse之间的间隔来编码数据，所以解码的时候关键在于得到每两个相邻脉冲之间的间隔，从而将其转换为对应的二进制数据。要得到脉冲之间的间隔就需要首先得到每个脉冲的起始和结束时间。又因为每个脉冲的长度是固定的，所以我们只需要知道脉冲的起始位置即可。
+借助傅里叶变换，我们可以轻易知道一段时域信号中某个频率信号的强度。通过把时域信号进行分段的傅里叶变换，每段信号中18kHz信号的强度都可以被计算出来。由于我们设计的脉冲长度是100个采样点，当我们把傅里叶变换的窗口长度设置为100时，只有窗口从脉冲起始点开始截取信号的时候才能使得整个时域窗口中都充满18kHz的声音信号。若是窗口起始点不在脉冲起始的位置，那么时域窗口中将不可避免的包含到一部分空白信号（没有声音信号，采样值接近0）。根据傅里叶变换的原理，频域上的能量强度是时域上对应频率能量的叠加。所以当窗口对齐脉冲起始位置时，傅里叶变换得到的18kHz处的能量是最高的。我们可以记录下每个时域窗口对应的18kHz的能量强度，通过寻找极大值得到每个脉冲信号的起始位置。</p>
+<p><img alt="脉冲信号和时域窗口" src="\images\4.2\winding.png" title="脉冲信号和时域窗口" /> </p>
+<p>接下来我们进行解码操作。首先对信号进行滤波，去除掉环境中的噪音只保留信号编码所用到的18kHz的声音信号：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 对录音数据进行滤波</span>
+<span class="c">%定义一个带通滤波器</span>
+<span class="n">hd</span> <span class="p">=</span> <span class="n">design</span><span class="p">(</span><span class="n">fdesign</span><span class="p">.</span><span class="n">bandpass</span><span class="p">(</span><span class="s">&#39;N,F3dB1,F3dB2&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">17500</span><span class="p">,</span><span class="mi">18500</span><span class="p">,</span><span class="n">fs</span><span class="p">),</span><span class="s">&#39;butter&#39;</span><span class="p">);</span>
+<span class="c">%用定义好的带通滤波器对data进行滤波</span>
+<span class="n">data</span> <span class="p">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">hd</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+（思考：滤波的操作实际上在脉冲编码中并不是必要的，你知道是为什么吗？）
+接下来我们对录音信号进行滑动窗口的傅里叶变换，得到每一段数据中18kHz信号的强度信息：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 对数据进行带滑动窗口的傅里叶变换。得到每一段数据中18kHz信号的强度信息</span>
+<span class="n">f</span> <span class="p">=</span> <span class="mi">18000</span><span class="p">;</span><span class="c">%目标频率为18kHz</span>
+<span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">data</span><span class="p">);</span><span class="c">%获取数据的长度值</span>
+<span class="n">window</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span><span class="c">%设置窗口大小为100个采样点</span>
+<span class="n">impulse_fft</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="c">%定义变量数组impulse_fft，用于存储每个时刻对应的数据段中18kHz信号的强度</span>
+<span class="k">for</span> <span class="nb">i</span><span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">window</span>
+    <span class="c">%对从当前点开始的window长度的数据进行傅里叶变换</span>
+    <span class="n">y</span> <span class="p">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">data</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">window</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+    <span class="n">y</span> <span class="p">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="c">%得到目标频率傅里叶变换结果中对应的index</span>
+    <span class="n">index_impulse</span> <span class="p">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">f</span><span class="o">/</span><span class="n">fs</span><span class="o">*</span><span class="n">window</span><span class="p">);</span>
+    <span class="c">%考虑到声音通信过程中的频率偏移，我们取以目标频率为中心的5个频率采样点中最大的一个来代表目标频率的强度</span>
+    <span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="n">index_impulse</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="n">index_impulse</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span>
+<span class="k">end</span>
+<span class="c">% 在figure中展示每个窗口对应的18kHz信号的强度</span>
+<span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+在图中展示每个时域窗口的信号对应的18kHz信号的强度，如下图所示：</p>
+<p><img alt="每个时域窗口对应的18kHz信号的强度" src="\images\4.2\impulse_fft_raw.png" title="每个时域窗口对应的18kHz信号的强度" /> </p>
+<p>对局部进行放大，我们可以观察到锯齿形的曲线：</p>
+<p><img alt="时域上的18kHz信号强度的局部放大" src="\images\4.2\impulse_fft_raw_zoom.png" title="时域上的18kHz信号强度的局部放大" /> </p>
+<p>我们的目的是通过找极大值准确的得到每个脉冲信号的起始位置，然而锯齿形的信号的最大值可能不严格出现在信号峰的中间位置。我们需要通过滑动窗口平均来对impulse_fft进行均值滤波，得到一个平滑的曲线。在这里我们设置一个大小为11的窗口：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">% 滑动平均（均值滤波）</span>
+<span class="n">sliding_window</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span><span class="p">=</span> <span class="mi">1</span><span class="o">+</span><span class="n">sliding_window</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">sliding_window</span>
+    <span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">mean</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="n">sliding_window</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">sliding_window</span><span class="p">));</span>
+<span class="k">end</span>
+在<span class="n">figure中展示平滑后的impulse_fft</span>
+<span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">);</span>
+<span class="n">hold</span> <span class="n">on</span><span class="p">;</span> 
+</pre></div>
+</td></tr></table>
+我们可以从下图中看出，均值滤波有效地把锯齿形的信号转化成了相对平滑的信号。对于滑动窗口的大小，可以根据实际需要进行调整。</p>
+<p><img alt="经过滑动平均的18kHz信号强度的局部放大" src="\images\4.2\impulse_fft_sliding_zoom.png" title="经过滑动平均的18kHz信号强度的局部放大" /> </p>
+<p>由于在实际操作中我们不能保证经过了平滑之后的信号在峰的两侧都是单调的，所以我们用局部最大值来替代极大值的判断。通过找到局部的最大值得到峰的中间位置，从而得到脉冲信号的起始位置。由于脉冲的长度为100，所以我们再次使用一个长度为100的窗口。这次的窗口是以当前点为窗口的中间，往前后各取半个窗口的长度。当中心点的值是整个窗口中的最大值时，说明左右两侧的点都比中间点的值小，也就是说，当前窗口的中心点是一个峰。为了去除空白数据处的曲线波动对峰值判断的干扰，我们多加了一个对峰的数值的判断，当数据值小于等于0.3时，无论曲线在此处的走势如何都不认为这是一个峰。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">% 取出impulse 起始位置（峰的中间位置）</span>
+<span class="n">position_impulse</span><span class="p">=[];</span><span class="c">%用于存储峰值的index</span>
+<span class="n">half_window</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span><span class="p">=</span> <span class="n">half_window</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">half_window</span>
+    <span class="c">%进行峰值判断</span>
+    <span class="k">if</span> <span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.3</span> <span class="o">&amp;&amp;</span> <span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">==</span><span class="n">max</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="n">half_window</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">half_window</span><span class="p">))</span>
+        <span class="n">position_impulse</span><span class="p">=[</span><span class="n">position_impulse</span><span class="p">,</span><span class="nb">i</span><span class="p">];</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+根据我们前面的分析可知，峰值的位置就是脉冲的起始位置。为了验证这个结论，我们把得到的峰值位置在时域信号图中展示出来，并计算相邻两个脉冲之间的间隔：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 在图中表示出脉冲起始位置并计算相邻两个脉冲之间的间隔</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="n">N</span><span class="p">]=</span> <span class="nb">size</span><span class="p">(</span><span class="n">position_impulse</span><span class="p">);</span>
+<span class="c">%定义变量delta_impulse用于存储相邻两个脉冲之间的间隔</span>
+<span class="n">delta_impulse</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="c">%在18kHz信号的强度图中标出脉冲起始位置</span>
+    <span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">plot</span><span class="p">([</span><span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">),</span><span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.8</span><span class="p">],</span><span class="s">&#39;m&#39;</span><span class="p">);</span>
+    <span class="c">%在时域信号上标出脉冲起始位置</span>
+    <span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">plot</span><span class="p">([</span><span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">),</span><span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span><span class="s">&#39;m&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="c">%计算两个相邻脉冲之间的间隔。-100是减去脉冲信号长度</span>
+    <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span>  <span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span><span class="mi">100</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+脉冲起始位置在原始时域声音信号上的展示如下图所示。观察发现代表着我们计算得到的脉冲起始位置的洋红色线条所切割的位置并不是真正的脉冲信号起始位置。在洋红色线条之前已经有一段的声音信号存在了。</p>
+<p><img alt="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" src="\images\4.2\impulse_position_raw.png" title="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" /> </p>
+<p>然而这些洋红色线条在18kHz强度的时域图中与峰值很好的一一对应，如下图所示。也就是说，18kHz信号强度的时域图中的峰值并不是出现在脉冲的起始位置。</p>
+<p><img alt="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" src="\images\4.2\impulse_position_fft.png" title="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" /> </p>
+<p>这个结论我们最初的理论分析是不一致的。为了解释这一现象，我们将真实时域信号和分窗口傅里叶变换得到的18kHz信号强度时域图画在下图中进行观察。我们发现</p>
+<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="\images\4.2\raw_and_fft.png" title="18kHz信号强度峰值并没有出现在信号起始处" /></p>
+<p>这个现象其实是滤波造成的。如果我们把上图中的原始信号替换成滤波之后的信号，就会发现滤波后的每个脉冲的开头和结尾处的信号比中间的弱。这个滤波器的特性所导致的现象，再加上多径效应造成的回声拖尾现象，使得滑动窗口傅里叶变换得到的最大值并不是出现在脉冲的起始位置。</p>
+<p><img alt="18kHz信号强度时域图以及滤波之后的声音信号" src="\images\4.2\filter_and_fft.png" title="18kHz信号强度时域图以及滤波之后的声音信号" /> </p>
+<p>若我们不对信号进行滤波，而是直接用原始的声音数据进行滑动窗口傅里叶变换，得到的结果如下图所示。我们可以看到18kHz信号强度的峰值确实出现在了声音信号的起始位置，但由于没有进行滤波，原始信号中所存在的频率更杂乱，使得我们得到的18kHz信号强度曲线也更加波折。</p>
+<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="\images\4.2\raw_and_fft2.png" title="18kHz信号强度峰值并没有出现在信号起始处" /></p>
+<p>尽管用滤波前的原始数据还是滤波后的数据进行滑动窗口傅里叶变换得到的峰值位置不一致，事实上，这两种方式都可以成功解码出数据。这是因为我们解码数据依靠的是相邻两个脉冲信号之间的间隔。就算识别出来的脉冲信号的绝对位置有偏差，只要每个脉冲信号位置都偏差大致相似的采样点数，相邻两个脉冲信号之间的间隔是大致不变的。当我们设计编码时使代表不同码元的间隔之间差异足够大，就可以保证解码的准确性。
+接下来我们使用相邻脉冲之间的间隔进行解码。根据我们设计编码时定义的对应规则把不同长度的间隔映射为不同的编码数据。另外，由于噪声等的影响，我们得到的间隔长度不会严格等于设计值。这时就需要我们在解码时加入一定的鲁棒性。在这个实验中，我们认为只要实际间隔值和设计值之间的误差小于10，就解码出对应的数据，否则解码失败。误差的阈值可以根据信道、信号等的实际情况进行设置。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 解码</span>
+<span class="c">%由于每个码元对应2bit，所以先把间隔对应到4进制数</span>
+<span class="n">decode_message4</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">&gt;-</span><span class="mi">10</span> <span class="o">&amp;&amp;</span><span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">&lt;</span><span class="mi">10</span>
+        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&gt;-</span><span class="mi">10</span> <span class="o">&amp;&amp;</span><span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&lt;</span><span class="mi">10</span>
+        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">150</span> <span class="o">&gt;-</span><span class="mi">10</span> <span class="o">&amp;&amp;</span><span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">150</span> <span class="o">&lt;</span><span class="mi">10</span>
+        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">200</span> <span class="o">&gt;-</span><span class="mi">10</span> <span class="o">&amp;&amp;</span><span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">200</span> <span class="o">&lt;</span><span class="mi">10</span>
+        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="c">% 把四进制转化为二进制</span>
+<span class="n">decode_message</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">elseif</span> <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+现在我们解码出了声音信号中编码的二进制串，要将其转化为可解读的信息还需要将二进制串变成字符串。我们实现一个与string2bin函数对应的bin2string函数来实现这个功能：</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">function</span><span class="w"> </span>[ str ] <span class="p">=</span><span class="w"> </span><span class="nf">bin2string</span><span class="p">(</span> binary <span class="p">)</span><span class="w"></span>
+<span class="c">%UNTITLED2 此处显示有关此函数的摘要</span>
+<span class="c">%   把二进制串转化为字符串</span>
+<span class="n">L</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">binary</span><span class="p">);</span>
+<span class="n">str</span> <span class="p">=</span> <span class="p">[];</span>
+<span class="n">binary</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">binary</span><span class="o">&#39;</span><span class="p">,[</span><span class="mi">8</span><span class="p">,</span><span class="n">L</span><span class="o">/</span><span class="mi">8</span><span class="p">]);</span>
+<span class="n">binary</span> <span class="p">=</span> <span class="n">binary</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">L</span><span class="o">/</span><span class="mi">8</span>
+    <span class="n">s</span><span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="nb">j</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">8</span>
+        <span class="n">s</span> <span class="p">=</span> <span class="n">s</span><span class="o">+</span><span class="mi">2</span>^<span class="p">(</span><span class="mi">8</span><span class="o">-</span><span class="nb">j</span><span class="p">)</span><span class="o">*</span><span class="n">binary</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">);</span>
+    <span class="k">end</span>
+    <span class="n">str</span> <span class="p">=</span> <span class="p">[</span><span class="n">str</span><span class="p">,</span><span class="n">char</span><span class="p">(</span><span class="n">s</span><span class="p">)];</span>
+<span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+最后，调用bin2string函数：
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%把二进制数据根据ascii码值解出对应的字符串</span>
+<span class="n">str</span> <span class="p">=</span> <span class="n">bin2string</span><span class="p">(</span><span class="n">decode_message</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+得到可以解读的数据串:</p>
+<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="\images\4.2\impulse_result.png" title="18kHz信号强度峰值并没有出现在信号起始处" /></p>
+<h2 id="_3">幅度编码<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>幅度编码是利用为信号设置不同的幅度来实现编码的目的。最简单的幅度编码是ON-OFF Keying (OOK)。OOK使用固定频率的信号代表“1”，没有信号代表“0”，两种码元的长度相同。下面是使用OOK编码的示意图：</p>
+<p><img alt="幅度编码" src="\images\4.2\5.png" title="" />  </p>
+<p>幅度编码的效率提高可以通过设置不同的振幅级别来实现，使得每个码元所携带的信息更多：</p>
+<p><img alt="增加振幅级别可以提高编码效率" src="\images\4.2\6.png" title="" />  </p>
+<p>在幅度编码中，首先需要考虑的问题是要使的不同码元对应的幅度有足够大的区分度，否则解码时无法区分不同的幅度。另外一点需要考虑的就是信道的特性。信号所传输的信道增益是否是随时间稳定的？如果信道增益发生变化，那么就很可能使得本来幅度较高的信号在经过信道传输之后比原本幅度低的信号还弱。这就容易导致解码错误。声音信道就是一种增益比较容易变化的信道，周围反射环境的变化会使得信道增益出现明显变化。这种情况下可以通过缩短数据包的长度来折中。由于信道增益的变化依赖于多径环境的变化，我们知道多径环境不会发生突变，只会发生连续的变化。只要数据包的长度足够短，那么就可以保证在这个数据包发送的过程中，声音信道的增益的变化是比较小的。
+（思考题：信号经过信道传输之后，会发生强度的衰减。当接收端接收到信号时，信号幅度的绝对值已经发生了很大的改变。如何才能保证正确解码出信号中的数据呢？）
+//（比如：每个数据包起始处先按顺序把每种码元发一遍，这样接收者就知道每种码元收到时的强度了）</p>
+<h2 id="_4">时间编码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>？？这个到底叫啥。。
+利用一个单位编码内信号出现的时间进行数据的编码的方式。</p>
+<h2 id="_5">频率编码<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>频率编码也就是Frequency shift keying (FSK)，使用的是不同的频率或不同的频率组合来编码不同的数据。
+最简单的频率编码也可以用ON-OFF Keying (OOK)来表示，使用固定频率<span><span class="MathJax_Preview">f\not=0</span><script type="math/tex">f\not=0</script></span>的信号代表“1”，用<span><span class="MathJax_Preview">f=0</span><script type="math/tex">f=0</script></span>的信号代表“0”。
+可以设置多种不同的频率<span><span class="MathJax_Preview">F=\{f_0,f_1,f_2,....f_n\}</span><script type="math/tex">F=\{f_0,f_1,f_2,....f_n\}</script></span>来代表不同的数据，但需要使不同频率之间的额差异足够大。否则由于离散傅里叶变换的精度问题，相近的频率会很难区分。
+使用不同的频率组合进行编码可以大大提高编码的效率。当使用6种不同的频率进行单一频率编码时，最多只能产生7个码元：每个频率是一个码元，空白信号代表一个码元。同样是6中不同的频率，若是使用两种频率的组合进行编码，就可以产生<span><span class="MathJax_Preview">C_6^2=15+1 = 16</span><script type="math/tex">C_6^2=15+1 = 16</script></span>种码元（一个空白信号码元）。</p>
+<h2 id="_6">相位编码<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="bpsk-qpsk">BPSK &amp; QPSK 编码<a class="headerlink" href="#bpsk-qpsk" title="Permanent link">&para;</a></h2>
+<h2 id="ofdm">OFDM编码<a class="headerlink" href="#ofdm" title="Permanent link">&para;</a></h2>
+<h2 id="_7">载波调制<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>上变频 下变频</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/wisys-lab" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+    <script src="../../../../assets/javascripts/application.6f02ae1b.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr../../../../lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../../assets/javascripts/lunr../../../../tinyseg.js"></script>
+              
+              
+                <script src="../../../../assets/javascripts/lunrlunr.jp../../../../.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+        <script src="../../../../../../../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
