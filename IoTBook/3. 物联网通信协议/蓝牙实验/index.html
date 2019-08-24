@@ -987,16 +987,34 @@
 <p>图2.1展示了BLE设备完成一次通信的工作流程。通常来说，一个外围设备开始工作后，会不断向周围发送不定向的广播数据包，以便中央设备发现它。收到广播包的中央设备可以向该外围设备发送一个连接请求来建立一个BLE连接。收到请求后，外围设备与中央设备会协商一个共同的跳频序列并建立连接。随后，中央设备和外围设备可以使用此跳频序列进行传输数据包。连接建立后，中央设备可以选择加密通信数据或是进行认证过程，以便访问外围设备中具有加密或认证要求的数据。然后，中央设备可以发送读/写请求来访问外围设备中的数据。如果中央设备满足被请求数据的加密和认证要求，则外围设备将执行相应的操作并响应请求的数据。完成数据通信后，外围设备或中央设备可以关闭连接，外围设备返回广播状态。
 在之后的章节中，我们将详细介绍每一个流程的具体细节。</p>
 <p><img alt="BLE设备的工作流程" src="../images/BLE1.png" />
-图2.1  BLE设备的工作流程</p>
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. BLE设备的工作流程</div>
+</center>
+<!-- 图2.1  BLE设备的工作流程 --></p>
 <h2 id="21">2.1  广播模式<a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
 <p>BLE使用与经典蓝牙技术相同的频谱范围（2.400-2.4835 GHz ISM频段）进行通信。经典蓝牙使用79个1-MHz频道，而BLE使用40个2-MHz频道[35]。 当外围设备开始工作后，它会在第37，38和39信道中不断发送广播包，以便中央设备发现它并与其建立连接。广播包中包含外围设备的MAC地址，制造商相关信息和该设备的可连接性。可连接性表示该设备是否接受连接请求。可连接性可以在BLE配置中设置，即通用访问配置文件（Generic Access Profile, 简称GAP[36]）。 大多数BLE设备都是可连接的，因为它们需要建立连接来进行数据同步或接受控制指令。</p>
 <p>如图2.2所示，在BLE通信范围内，所有中央设备都可以接收到外围设备发送的广播包。通常来说，中央设备可以通过广播包中包含的MAC地址和制造商相关信息来分辨不同的外围设备，从而选择建立连接的目标。一旦一个中央设备和外围设备之间建立了连接，该外围设备将停止广播，其他中央设备也无法与该外围设备建立连接。</p>
-<p><img alt="广播模式的网络拓扑" src="../images/BLE2.png" /></p>
-<p>图2.2  广播模式的网络拓扑</p>
+<p><img alt="广播模式的网络拓扑" src="../images/BLE2.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 广播模式的网络拓扑</div>
+</center>
+<!-- 图2.2  广播模式的网络拓扑 --></p>
 <h2 id="22">2.2  建立连接<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
 <p>中央设备在接收到广播包之后，可以向外围设备发送连接请求数据包以建立连接。与传统蓝牙一样，BLE使用跳频技术在剩下37个信道中传输数据。要让外围设备和中央设备能够准确地收到对方的信息，双方必须协商共同的跳频序列来传输数据。中央设备会发送带有跳频参数的连接请求（CONN_REQ数据包），包括跳频间隔，跳频增量，MAC地址和初始化CRC。外围设备收到CONN_REQ数据包后，会根据其中参数计算跳频序列。然后外围设备进入连接状态并停止广播。中央设备和外围设备根据相同的跳频序列，到相同的信道中传输数据包。跳频技术保证了一个区域内不同BLE设备的通信不会相互干扰，提高了BLE的稳定性（如图2.3所示）。</p>
-<p><img alt="BLE跳频技术示意图" src="../images/BLE3.png" /></p>
-<p>图2.3 BLE跳频技术示意图</p>
+<p><img alt="BLE跳频技术示意图" src="../images/BLE3.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. BLE跳频技术示意图</div>
+</center>
+<!-- 图2.3 BLE跳频技术示意图 --></p>
 <p>为了保持连接，中央设备和外围设备应该在没有数据传输时向对方发送空的心跳包。如果中央设备或外围设备在一定时间内没有接收到任何心跳包时（例如，传输信道受到干扰或发送者停止发送心跳包），连接将被关闭，随后外围设备重新开始广播。</p>
 <h2 id="23">2.3  加密数据包<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
 <p>BLE协议提供了数据加密以防止数据窃听。要进行数据加密，中央设备首先向外围设备发送加密请求包（LL_ENC_REQ）。如果外围设备接受该加密请求，它会回复一个LL_ENC_RSP数据包。否则，它会响应一个LL _REJECT_IND数据包以拒绝加密请求。如果外围设备接受了加密请求，则中央设备和外围设备会开始协商一个公共的加密密钥。生成加密密钥的过程被称为配对。
@@ -1011,8 +1029,14 @@
 <h2 id="24">2.4  身份认证<a class="headerlink" href="#24" title="Permanent link">&para;</a></h2>
 <p>BLE协议中，身份认证的目的是验证中央设备的合法性。与数据加密不同，BLE规范[37]中没有提供任何身份认证的方法，而是建议BLE设备制造商在应用层实现身份认证过程。与Web应用程序中的身份认证机制相同，中央设备和外围设备应首先协商一个认证凭证（如Web应用中的用户名和密码）。在之后的连接中，中央设备可以使用此认证凭证来表明自身的身份。</p>
 <p>由于生产厂商的不同，不同的BLE设备可能实现了不同的身份认证方法。例如，在智能手环Mi Band 1中，智能手环和智能手机在第一次连接中协商一个随机字符串作为认证凭证。在之后的连接中，智能手机应将此认证凭证写入智能手环中进行身份认证；在某款智能门锁中，智能门锁和智能手机在第一次连接中生成一个随机密钥作为认证凭证。在之后的连接中，智能手环首先向智能手机发送一个随机字符串。智能手机使用事先生成的认证凭证对字符串进行签名，然后将签名后的字符串发送给智能手环。智能手环将检查签名后数据是否与认证凭证相对应（如图2.4所示）。</p>
-<p><img alt="某智能门锁的认证过程" src="../images/BLE4.png" /></p>
-<p>图2.4  某智能门锁的认证过程</p>
+<p><img alt="某智能门锁的认证过程" src="../images/BLE4.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 某智能门锁的认证过程</div>
+</center>
+<!-- 图2.4  某智能门锁的认证过程 --></p>
 <h2 id="25">2.5  读写数据<a class="headerlink" href="#25" title="Permanent link">&para;</a></h2>
 <p>在外围设备中，数据被存储在通用属性配置文件（Generic Attribute Profile, 简称GATT[38]）中。GATT定义了一个数据存储结构（如图2.5所示），在这个结构中，特征是数据存储的最小单位。每个特征都包含以下属性。
 - UUID：特征的唯一标识符。
@@ -1020,8 +1044,14 @@
 - Properties：此特征允许的操作类型。它可以是只读（read only），只写（write only）或读写（read/write）。
 - Secure：此特征的访问权限控制。 它可以是没有任何权限要求（No Security，NS），要求中央设备与外围设备进行了加密（Encryption Required，ER），要求中央设备通过了身份认证（Authentication Required，AR）或既要求加密也要求认证（Encryption and Authentication Required，EA）。如果特征要求数据加密，则中央设备必须数据加密才能读取或写入此特征。如果特征要求身份认证，则中央设备必须通过认证才能访问此特征。
 - Value：存储在特征中的数据。</p>
-<p><img alt="GATT定义的数据存储结构" src="../images/BLE5.png" /></p>
-<p>图2.5  GATT定义的数据存储结构</p>
+<p><img alt="GATT定义的数据存储结构" src="../images/BLE5.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. GATT定义的数据存储结构</div>
+</center>
+<!-- 图2.5  GATT定义的数据存储结构 --></p>
 <p>特征是外围设备中数据存储的基本单位。每个特征由设备生产厂商给予其含义。例如，在智能手环中，电池信息，活动数据，步数，心率存储在不同的特征中。表2.1列出了一些示例特征。任何连接到一个外围设备的中央设备可以直接读取特征列表的Handle，UUID和Properties，而Value则由Secure字段保护。</p>
 <p>表2.1  GATT特征实例</p>
 <table>
@@ -1073,14 +1103,26 @@
 </tbody>
 </table>
 <p>如果一个特征是可读的（Properties字段是read only或read/write），则中央设备可以向外围设备发送读请求包（如图2.6所示），包括opcode操作码和目标特征的handle。如果该设备满足了特征的Secure字段中的要求，则外围设备将响应特征的Value值。如果一个特征是可写的（Properties字段是write only或read/write），则中央设备可以发送写请求包（如图2.7所示)，包括opcode操作码，目标特征handle和欲写入的值。如果该设备满足特征的Secure字段中的要求，外围设备将使用写数据包中的新值更新目标特征中的Value值。以智能手环为例，智能手机发送读请求以获取智能手环上测量的数据，并发送写请求以修改手环的工作状态来控制智能手环。</p>
-<p><img alt="读数据包格式" src="../images/BLE6.png" /></p>
-<p>图2.6  读数据包格式</p>
-<p><img alt="写数据包格式" src="../images/BLE7.png" /></p>
-<p>图2.7  写数据包格式</p>
+<p><img alt="读数据包格式" src="../images/BLE6.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 读数据包格式</div>
+</center>
+<!-- 图2.6  读数据包格式 --></p>
+<p><img alt="写数据包格式" src="../images/BLE7.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 写数据包格式</div>
+</center>
+<!-- 图2.7  写数据包格式 --></p>
 <p>表2.2展示了外围设备对于不同中央设备的读/写请求的返回结果。如果特写征在Secure字段中没有任何要求（NS），则它会回应所有设备的读写请求。如果某个特征要求加密（ER或EA），则只会为进行了数据加密的设备返回结果，但对未加密的设备会返回错误代码Encryption Insufficient。对于认证要求则与加密类似。</p>
 <p>表2.2  BLE特征的访问控制</p>
 <p>安全要求|未加密未认证|已加密未认证|未加密已认证|已加密已认证
-----------|----------|----------|----------|----------|
+-----------|-----------|-----------|-----------|-----------|
 NS|返回结果|返回结果|返回结果|返回结果
 ER|错误码|返回结果|错误码|返回结果
 AR|未知结果|未知结果|返回结果|返回结果
@@ -1110,14 +1152,20 @@ EA|错误码|未知结果|错误码|返回结果</p>
 </ol>
 </li>
 </ul>
-<p><img alt="" src="../images/BLE8.png" /></p>
+<p><img alt="" src="../images/BLE8.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. APP使用界面</div>
+</center></p>
 <ul>
 <li>
 <ol>
 <li>利用linux系统中的bluez协议栈，将电脑制作成一个发射BLE广播包的beacons节点。linux系统执行以下命令：
-        ◦ hciconfig hci0 up                                   开启蓝牙网卡
-        ◦ hcitool -i hci0 cmd 0x08 0x000A 01                   开启广播模式
-        ◦ hcitool -i hci0 cmd 0x08 0x0008 1a 02 01 06 03 03 aa fe 12 16 aa fe 10 00 03 62 6C 6F 67 2E 67 74 77 61 6E 67 01 00 00 00 00 00   定制广播内容</li>
+    ◦ hciconfig hci0 up                                   开启蓝牙网卡
+    ◦ hcitool -i hci0 cmd 0x08 0x000A 01                   开启广播模式
+    ◦ hcitool -i hci0 cmd 0x08 0x0008 1a 02 01 06 03 03 aa fe 12 16 aa fe 10 00 03 62 6C 6F 67 2E 67 74 77 61 6E 67 01 00 00 00 00 00   定制广播内容</li>
 </ol>
 </li>
 <li>
@@ -1126,7 +1174,13 @@ EA|错误码|未知结果|错误码|返回结果</p>
 </ol>
 </li>
 </ul>
-<p><img alt="" src="../images/BLE9.png" /></p>
+<p><img alt="" src="../images/BLE9.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. beacons节点状态</div>
+</center></p>
 <h2 id="ble_3">实验二：理解BLE设备通信流程和嗅探方法<a class="headerlink" href="#ble_3" title="Permanent link">&para;</a></h2>
 <h3 id="_5">实验内容：<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>使用手机与小米手环通信，使用USB Dongle监听通信。让同学们理解BLE设备的通信流程，同时掌握嗅探工具的使用方法。</p>
@@ -1147,7 +1201,13 @@ EA|错误码|未知结果|错误码|返回结果</p>
 </ol>
 </li>
 </ul>
-<p><img alt="锁定目标设备" src="../images/BLE10.png" /></p>
+<p><img alt="锁定目标设备" src="../images/BLE10.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 锁定目标设备</div>
+</center></p>
 <p>图2.1. 锁定目标设备</p>
 <ul>
 <li>
@@ -1156,7 +1216,13 @@ EA|错误码|未知结果|错误码|返回结果</p>
 </ol>
 </li>
 </ul>
-<p><img alt="设备的广播模式和建立连接过程" src="../images/BLE11.png" /></p>
+<p><img alt="设备的广播模式和建立连接过程" src="../images/BLE11.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 设备的广播模式和建立连接过程</div>
+</center></p>
 <p>图2.2 设备的广播模式和建立连接过程</p>
 <ul>
 <li>

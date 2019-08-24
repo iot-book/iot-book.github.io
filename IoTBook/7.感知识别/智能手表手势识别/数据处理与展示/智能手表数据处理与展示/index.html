@@ -1104,9 +1104,21 @@
 </td></tr></table>
 
 <p>矩阵<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>共有114行，7列，通过文本编辑器打开<code>move.data</code>或者通过**matlab**的变量查询界面可以看到矩阵内容，每行代表一个时刻采集到的数据，列的含义见下表（选取<code>move.data</code>前2行作为示例）：</p>
-<p><img alt="数据文件含义" src="./image/8.1/dataTable.png" /></p>
+<p><img alt="数据文件含义" src="../images/8.1/dataTable.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 数据文件含义</div>
+</center></p>
 <p>上表中，时间戳的具体含义为：从1970年1月1日00:00到当前系统时间（智能手表上的系统时间）经历的总毫秒数。手表的三个坐标轴示意图如下：</p>
-<p><img alt="手表三轴示意图" src="./image/8.1/watch.pdf" /></p>
+<p><img alt="手表三轴示意图" src="../images/8.1/watch.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 手表三轴示意图</div>
+</center></p>
 <p>为了便于处理，把时间戳的开始时间固定为0，以后的时间戳是相对于第一条数据的时间偏移：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 </pre></div>
@@ -1212,7 +1224,13 @@
 </td></tr></table>
 
 <p>结果如下图所示：</p>
-<p><img alt="X轴和Y轴的加速度、速度以及位移曲线" src="./image/8.1/data3axis.png" /></p>
+<p><img alt="X轴和Y轴的加速度、速度以及位移曲线" src="../images/8.1/data3axis.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. X轴和Y轴的加速度、速度以及位移曲线</div>
+</center></p>
 <p>为了展示手表运动的动态效果，可以利用<code>pause</code>函数进行连续画点以实现动画效果：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1235,7 +1253,13 @@
 </td></tr></table>
 
 <p><code>axis</code>函数规定了图像<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>和<span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span>轴的取值范围，手表的运动轨迹如下：</p>
-<p><img alt="trace" src="./image/8.1/trace.png" /></p>
+<p><img alt="trace" src="../images/8.1/trace.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. trace</div>
+</center></p>
 <h3 id="_4">思考与扩展<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ol>
 <li>本程序只展示了在2维平面内手表运动的情况，如何将该场景拓展至3维？此时需要陀螺仪的数据计算手表的旋转情况。注意：手表测量得到的加速度数据，其参照系为手表的加速度计元件，而需要恢复的手表运动轨迹其参照系为世界坐标系，两者需要转换。</li>

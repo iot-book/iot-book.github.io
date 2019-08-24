@@ -40,7 +40,7 @@
     
     
       
-        <title>4.1 物联网基础概念</title>
+        <title>5.1.1 量化、采样及采样定律 - IoT Book</title>
       
     
     
@@ -1117,9 +1117,21 @@
 <p>日常生活中我们能看到的信号大部分都是模拟信号，我们能看到的风雨雷电，我们听到的声音，看到的图片等，要将这些信息存入到电脑中间，需要经过一系列的处理，其中有几个重要的步骤就是采样和量化。无线通信是无线电磁信号为基础的。我们在这一章节中为了方便理解，针对声音信号来进行研究。</p>
 <h2 id="_3">模拟信号到数字信号<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>这是信号处理中的关键一步，因为网络通信尤其是无线通信的时候，利用的都是物理信号（如电磁信号），因此通信过程中的重要一步就是将模拟信号转成数字信号。</p>
-<p><img alt="通信过程" src="/images/4.1/p1.png" /></p>
+<p><img alt="通信过程" src="../images/基础概念/p1.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 通信过程</div>
+</center></p>
 <p>如果真实存在着一个1KHz的声波信号，我们需要接收和处理这个信号的话，先要对信号进行采样和量化，这实际上也是所有计算机处理数据和信号的基础。计算机中将所有模拟信号转化为数字信号是通过采样和量化来实现的。具体来说，通过将模拟信号转化为电信号（通常为电压信号），然后通过将电压量化转成数字信号。在声音信号的处理中，我们首先依赖的是麦克风。麦克风能够将模拟的声音信号转化为电压信号，简单来说，麦克风上有一个可以随着声音振动而振动的薄膜，薄膜振动引起了产生电压的不断变化，因此电压的变化就代表了声音信号的变化。</p>
-<p><img alt="麦克风原理" src="/images/4.1/p2.png" /></p>
+<p><img alt="麦克风原理" src="../images/基础概念/p2.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 麦克风原理</div>
+</center></p>
 <p>不过大家要注意的是，这个时候电压在时间和大小上依然是连续的，也就是说任意的电压值都是有可能的，很显然，这样大数据在电脑上是无法保存的，保存的大小是无穷大。为了保存这样的数据，我们先要对数据进行处理。第一个处理就是连续的信号转化为离散的信号。这一步是通过采样来实现的。采样是指计算机设备定时的对信号电压进行采集，采样解决了连续信号到离散信号的问题，可是采样后的电压值仍然没有办法直接保存，因为电压值在可能的取值范围内是连续的，为了解决这个问题，就需要量化。量化简单的来说就是将无限的连续的电压取值转化为有限的离散的电压取值，这样采样后的结果就能够保存。我们平时说的模拟/数字转换器（Analog to Digital Converter，即ADC，与之对应的是数/模转换器,即DAC）其实也就是干的这样的事情。</p>
 <p>具体这个事情是怎么来实现的呢，我们首先通过简单的仿真实验来进行情况说明，然后我们再通过实际的信号让大家体会这一过程。假设存在一个正弦的声音信号，频率为5Hz，理想情况下这个信号是一个正弦波，这个信号在matlab下可以如下产生和画图出来。注意，matlab下产生的已经是离散的信号了。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1136,7 +1148,13 @@
 </pre></div>
 </td></tr></table>
 
-<p><img alt="信号时域图" src="/images/4.1/p3.png" /></p>
+<p><img alt="信号时域图" src="../images/基础概念/p3.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 信号时域图</div>
+</center></p>
 <p>注意这里面有几个小的问题，当我们将信号频率稍微做一些修改好，画出来的图将变成下面这个样子。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1152,7 +1170,13 @@
 </pre></div>
 </td></tr></table>
 
-<p><img alt="采样率不足" src="/images/4.1/p4.png" /></p>
+<p><img alt="采样率不足" src="../images/基础概念/p4.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 采样率不足</div>
+</center></p>
 <p>注意这个图已经完全不是我们想象中的正弦图像了，大家想想看看这个是什么原因。</p>
 <p>这里面有几个很有趣的问题，是不是连续的信号就无法用离散的信号表示出来，连续的信号是不是就得用无穷多的离散信号来表达？这里牵涉到了信号采样中的一个重要问题，我们将这个问题更加具体化，假设信号中的最大频率为f，那么应该以多大的采样频率对信号进行采样合理呢，显然不可能无限大的采样频率，这样在计算机上无法处理，实际上也非常不经济。这个问题也就变为信号的频率为f，那么最少的采样频率为多少。</p>
 <p>奈奎斯特采样定律告诉我们，对于这样的情形，需要的采样频率为2*f。采样过程所应遵循的规律，又称取样定理、抽样定理。采样定理说明采样频率与信号频谱之间的关系，是连续信号的基本依据。</p>
@@ -1173,7 +1197,14 @@
 </pre></div>
 </td></tr></table>
 
-<p>这个例子中，信号是400Hz的，理论上来说，信号是如下这个样子的。<img alt="400Hz信号" src="/images/4.1/p5.png" /></p>
+<p>这个例子中，信号是400Hz的，理论上来说，信号是如下这个样子的：</p>
+<p><img alt="400Hz信号" src="../images/基础概念/p5.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 400Hz信号</div>
+</center></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1189,7 +1220,13 @@
 </td></tr></table>
 
 <p>大家可以先来想象一下这个采样出来的结果会是怎么样的。</p>
-<p><img alt="低采样频率" src="/images/4.1/p6.png" /></p>
+<p><img alt="低采样频率" src="../images/基础概念/p6.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 低采样频率</div>
+</center></p>
 <p><strong>思考：</strong></p>
 <ol>
 <li>为什么会出现这样的结果。</li>
@@ -1198,25 +1235,51 @@
 </ol>
 <h2 id="_4">量化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>在数字信号处理领域，量化指将信号的连续取值（或者大量可能的离散取值）近似为有限多个（或较少的）离散值的过程。量化主要应用于从连续信号到数字信号的转换中。连续信号经过采样成为离散信号，离散信号经过量化即成为数字信号。注意离散信号通常情况下并不需要经过量化的过程，但可能在值域上并不离散，还是需要经过量化的过程 。信号的采样和量化通常都是由ADC实现的。</p>
-<p>例如8位的ADC可以将标称<a href="https://baike.baidu.com/item/输入电压范围">输入电压范围</a>内的模拟电压信号转换为8位的<a href="https://baike.baidu.com/item/数字信号">数字信号</a>。</p>
+<p>例如8位的ADC可以将标称输入电压范围内的模拟电压信号转换为8位的数字信号。</p>
 <p><strong>思考：</strong> 多少位不同的电压值？</p>
-<p><img alt="量化效果图" src="/images/4.1/p7.png" /></p>
-<p><img alt="量化效果" src="/images/4.1/p8.png" /></p>
-<p>The simplest way to quantize a signal is to choose the digital amplitude value closest to the original analog amplitude. This example shows the original analog signal (green), the quantized signal (black dots), the <a href="https://en.wikipedia.org/wiki/Signal_reconstruction">signal reconstructed</a> from the quantized signal (yellow) and the difference between the original signal and the reconstructed signal (red). The difference between the original signal and the reconstructed signal is the quantization error and, in this simple quantization scheme, is a deterministic function of the input signal.</p>
+<p><img alt="量化效果图" src="../images/基础概念/p7.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 量化效果图</div>
+</center></p>
+<p><img alt="量化效果" src="../images/基础概念/p8.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 量化效果</div>
+</center></p>
+<p>The simplest way to quantize a signal is to choose the digital amplitude value closest to the original analog amplitude. This example shows the original analog signal (green), the quantized signal (black dots), the signal reconstructed from the quantized signal (yellow) and the difference between the original signal and the reconstructed signal (red). The difference between the original signal and the reconstructed signal is the quantization error and, in this simple quantization scheme, is a deterministic function of the input signal.</p>
 <p>为了进一步说明这种四舍五入方法，这里以3 位(3 bit)的二进制数码进行量化的过程为例，如图4-9所示。</p>
-<p><img alt="图4-9. 示意图" src="/images/4.1/p9.png" /></p>
-<p>图4-9中，输入信号是一个模拟信号，采样点为A～L，幅值范围为0～9，采样值、量化和编码的结果如表4-3所示。</p>
-<p><img alt="表4-3 采样值、 量化和编码的结果" src="/images/4.1/p10.png" /></p>
-<p><a href="https://baijiahao.baidu.com/s?id=1614627981206121506&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1614627981206121506&amp;wfr=spider&amp;for=pc</a></p>
+<p><img alt="图4-9. 示意图" src="../images/基础概念/p9.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 示意图</div>
+</center></p>
+<p>上图中，输入信号是一个模拟信号，采样点为A～L，幅值范围为0～9，采样值、量化和编码的结果如表4-3所示。</p>
+<p><img alt="表4-3 采样值、 量化和编码的结果" src="../images/基础概念/p10.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 采样值、 量化和编码的结果</div>
+</center></p>
+<blockquote>
+<p>ref: <a href="https://baijiahao.baidu.com/s?id=1614627981206121506&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1614627981206121506&amp;wfr=spider&amp;for=pc</a></p>
+</blockquote>
 <p>可见量化的过程中，输出的信号和原信号是有一定的区别的，这个区别就是量化噪声。我们通常说的高保真，其中有一个重要步骤采取足够多的量化位数，保证量化噪声足够小，量化出来的信号足够接近原始信号，当然其中带来的代价就是存储和处理的开销变大。大家可以去网易音乐上看看高保真音乐的，他后面以后一个码率，这一个码率跟量化是直接相关的。思考：大家想想那个码率都跟什么因素相关。</p>
-<p>按照<a href="https://baike.baidu.com/item/量化级">量化级</a>的划分方式分，有均匀量化和非均匀量化。</p>
+<p>按照量化级的划分方式分，有均匀量化和非均匀量化。</p>
 <p><strong>思考：</strong> 为什么有这两种量化的方式？</p>
 <ul>
 <li>
-<p><a href="https://baike.baidu.com/item/均匀量化">均匀量化</a>：ADC输入动态范围被均匀地划分为2^n份。</p>
+<p>均匀量化：ADC输入动态范围被均匀地划分为<span><span class="MathJax_Preview">2^n</span><script type="math/tex">2^n</script></span>份。</p>
 </li>
 <li>
-<p><a href="https://baike.baidu.com/item/非均匀量化">非均匀量化</a>：ADC输入动态范围的划分不均匀，一般用类似指数的<a href="https://baike.baidu.com/item/曲线">曲线</a>进行量化。</p>
+<p>非均匀量化：ADC输入动态范围的划分不均匀，一般用类似指数的曲线进行量化。</p>
 </li>
 </ul>
 <p>非均匀量化是针对均匀量化提出的，因为一般的语音信号中，绝大部分是小幅度的信号，且人耳听觉遵循指数规律。为了保证关心的信号能够被更精确的还原，我们应该将更多的bit用于表示小信号。</p>
@@ -1224,8 +1287,8 @@
 <p><strong>思考</strong>：</p>
 <p>假设要将最大频率为8KHz的唱歌的信号转成数字信号，量化bit为8bit，则产生的信号码率至少是多少？1min的信号大小是多少？</p>
 <p>到了这里，我们来看一个真实的采样和量化的例子，这也是我们整个数据处理实验的开始。这个实验在手机上就能实现，我们来看看手机上如何进行声音的采样和量化。</p>
-<p>在做实验之前，你需要准备好一个手机（安卓和苹果手机都可以），并配置好基本的开发环境，如果你还不太熟悉，参见？。</p>
-<p><img alt="img" src="/images/4.1/p11.png" /></p>
+<p>在做实验之前，你需要准备好一个手机（安卓和苹果手机都可以），并配置好基本的开发环境，如果你还不太熟悉，参见平台搭建章节。</p>
+<p><img alt="img" src="../images/基础概念/p11.png" /></p>
 <p>安装好了之后，可以启动第一个声音记录的小程序。仔细看这个小程序，跟大家学习过的网络传输的过程是类似的，前面有一个ADC不断的将声音信号转化成为数字信号，这个数字信号是存储在一个buffer里面的，需要我们讲buffer中的数据不断的读取出来然后保存成声音信号。类似于网络中的数据处理，网卡有一个很重要的功能就是将物理信号转化为数字信号，然后也是需要我们将网络收到的数据从buffer中读取出来。事实上这一个例子也展示了大多数需要用到ADC转化的功能，数据被转换并且保存在一个buffer中，然后对buffer中的数据进行处理。当然进一步来看的话，这个buffer中的数据如何处理也是有不同的手段的，有一些是需要轮询，不断的取看buffer中是否有数据，有一些是基于中断，一旦有数据就会产生一个中断通知进行数据处理，这两种处理方法都可以实现非阻塞模式，即用户无需在这个地方等待buffer内容。还有一种是阻塞模式，用户需要等待buffer内容，当buffer中有数据时才能够继续往下处理。几种模式各有优缺点，这也是数据处理中，尤其是通信和与硬件打交道的数据处理中经常要面临的问题。如果数据处理不及时，数据就会被覆盖导致丢失，这个问题在网络传输中也会遇到。</p>
 <p>这里面通过这一个小的程序我们想介绍几个概念，这也是平时大家在网络学习的过程中容易忽视的概念，因为网络学习中我们很难有机会从最底层开始接触到基础的信号处理。在启动录音的过程中，需要设置几个参数，第一个就是采样率，目前设置的是44100Hz，基本能够将人能听到的声音录下来。一个是量化的bit位数，这里设置的是16位，即每一个采样点用16bit来量化。另外一个是声道数量，目前选择的是双声道，即有两路数据。声音编码的格式采用的是PCM格式，这也是一种最基础的声音编码方法，与我们常见的mp3等格式不同，那些格式需要将声音文件进行进一步的编码。这个数据文件也是我们后面会要用到的数据的基础格式。</p>
 <h2 id="_5">傅里叶变换<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
@@ -1240,7 +1303,7 @@
 <p>广义信道，按照其功能进行划分，可以分为调制信道和编码信道两类。</p>
 <p>调制信道是指信号从调制器的输出端传输到解调器的输入端经过的部分。对于调制和解调的研究者来说，信号在调制信道上经过的传输媒质和变换设备都对信号做出了某种形式的变换，研究者只关心这些变换的输入和输出的关系，并不关心实现这一系列变换的具体物理过程。这一系列变换的输入与输出之间的关系，通常用多端口时变网络作为调制信道的数学模型进行描述。</p>
 <p>编码信道是指数字信号由编码器输出端传输到译码器输入端经过的部分。对于编译码的研究者来说，编码器输出的数字序列经过编码信道上的一系列变换之后，在译码器的输入端成为另一组数字序列，研究者只关心这两组数字序列之间的变换关系，而并不关心这一系列变换发生的具体物理过程，甚至并不关心信号在调制信道上的具体变化。编码器输出的数字序列与到译码器输入的数字序列之间的关系，通常用多端口网络的转移概率作为编码信道的数学模型进行描述。</p>
-<p><img src="/images/4.2/cpt_channel.png" width=600px></p>
+<p><img src="./images/4.2/cpt_channel.png" width=600px></p>
 <h1 id="_8">信道冲击响应<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
 <p>TODO 加个图</p>
 <p>通信信道会对经过的信号产生作用（例如减弱，改变频率等），不同的信道作用效果不一样。</p>
@@ -1278,11 +1341,17 @@ $$
 </pre></div>
 </td></tr></table>
 
-<p><img alt="" src="/images/4.2/cpt_snr.pdf" /></p>
+<p><img alt="" src="../images/4.2/cpt_snr.pdf" /></p>
 <p><strong>因为物联网的主要通信技术为无线通信，下面介绍一些无线通信相关的基础观念。</strong></p>
 <h1 id="_10">多径效应<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h1>
 <p>由于电磁信号所处环境的不同，传播过程中出现折射、反射、漫射、衍射等等现象，在接收端收到了来自多条路径的信号，分为视距路径（Line of Sight）和非视距路径（Not Line of Sight）。多径效应对无线系统有很大影响，常用的解决技术有时域均衡、正交频分复用（OFDM）、Rake接收机、分集接收技术等。</p>
-<p><img src="/images/4.2/cpt_multipath.jpg" width=600px></p>
+<p><img src="./images/4.2/cpt_multipath.jpg" width=600px>
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 多径示意图</div>
+</center></p>
 <h1 id="_11">信号衰落<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h1>
 <p>在无线通信领域，衰落（Fading）是指由于信道的变化导致接收信号的幅度发生随机变化的现象，即信号衰落。导致信号衰落的信道被称作衰落信道。衰落可按时间、空间、频率，三个角度来分类。 </p>
 <h3 id="_12">时间<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>

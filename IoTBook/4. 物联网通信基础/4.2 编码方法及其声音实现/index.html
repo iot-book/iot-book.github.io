@@ -40,7 +40,7 @@
     
     
       
-        <title>4.2 编码方法及其声音实现</title>
+        <title>5.2.1 脉冲、幅度、时间、频率编码 - IoT Book</title>
       
     
     
@@ -1089,24 +1089,62 @@
 <p>在本章节中，我们将介绍几种常用的编码方法，并将这几种编码解码方法实现到声音通信上，实现对声音信号的解码。</p>
 <h2 id="_2">脉冲编码<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>脉冲编码是利用相邻两个脉冲信号之间的时间间隔来编码数据。可以指定长度的间隔代表特定的二进制串。最简单的脉冲编码是使用一长一短两种间隔，分别代表“0”和“1”。在解码时只需要识别出每个脉冲信号的起始位置，就可以得到不同脉冲之间的间隔，从而可以根据每个间隔的长短将其解码为“0”或“1”。</p>
-<p><img alt="脉冲编码原理" src="\images\4.2\1.png" title="脉冲编码原理" /> </p>
+<p><img alt="脉冲编码原理" src="../images/4.2/1.png" title="脉冲编码原理" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 脉冲编码原理</div>
+</center> </p>
 <p>脉冲编码由于使用简单的对应规则将“0”和“1”编码为不同长度的间隔，在解码时可以简单的根据信号幅度得到每个脉冲的起始位置来获得间隔的长短，这种编解码方法的优点是计算开销非常小。</p>
 <p>脉冲编码的缺点是编码效率低，每个脉冲之间需要有足够的距离来防止多径效应造成的回声影响到下一个脉冲的判断。想要提高脉冲编码的数据速率，可以从两个方面来考虑。第一个方面是可以缩短编码长度，不仅可以在保证解码正确率的条件下尽可能缩短脉冲之间用于编码数据的时间间隔，还可以通过缩短脉冲信号的持续时间来使得同样时间下传输更多的数据。</p>
-<p><img alt="缩短脉冲间隔可以提高编码效率" src="\images\4.2\2.png" title="缩短脉冲间隔可以提高编码效率" />  </p>
+<p><img alt="缩短脉冲间隔可以提高编码效率" src="../images/4.2/2.png" title="缩短脉冲间隔可以提高编码效率" /><br />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 缩短脉冲间隔可以提高编码效率</div>
+</center></p>
 <p>第二个方面，可以通过设置多种编码长度，使一个编码位携带更多的信息。如下图中所示，设置2种编码长度时，每个编码位携带1bit信息；设置4中编码长度时，每个编码位携带2bit信息；设置8种编码长度时，每个编码位携带3bit信息。</p>
-<p><img alt="设置多种编码长度" src="\images\4.2\3.png" title="设置多种编码长度" /> </p>
+<p><img alt="设置多种编码长度" src="../images/4.2/3.png" title="设置多种编码长度" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 设置多种编码长度</div>
+</center></p>
 <p>当然，我们不能无限的通过增加不同的编码长度来提高编码效率。当不同的编码长度之间的区分度越小，解码时将他们区分开的难度也越大。</p>
 <p>另外，如果不同的编码单位出现的概率不同，我们还可以使用霍夫曼编码的思想来进一步优化脉冲编码的速率。比如说在一个待发送的文件中“0”的个数大于“1”的个数，使用较短的间隔代表“0”，长的间隔代表“1”，可以使总的发送时间更短。</p>
 <p>实现到声音通信上：
 信号：使用18kHz的声音信号作为脉冲信号，采样频率设置为48kHz。17kHz以上频率的声音信号是大多数成年人都听不到的，选用18kHz可以使人不受干扰。
-编码设计：脉冲长度设置为100个采样点，由于采样频率为48kHz，脉冲的持续时间是100/48000≈2.1ms。脉冲之间空白的间隔采样点数与编码的对应规则见下表：
-脉冲间隔（sample）|   编码
--- | --
-50 | 00
-100 | 01
-150 | 10
-200 | 11</p>
-<p>进行声音通信首先是要产生声音信号，在脉冲编码中，我们需要生成固定频率（18KHz）和固定长度（100个采样点）的脉冲信号：
+编码设计：脉冲长度设置为100个采样点，由于采样频率为48kHz，脉冲的持续时间是100/48000≈2.1ms。脉冲之间空白的间隔采样点数与编码的对应规则见下表：</p>
+<table>
+<thead>
+<tr>
+<th>脉冲间隔（sample）</th>
+<th>编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>00</td>
+</tr>
+<tr>
+<td>100</td>
+<td>01</td>
+</tr>
+<tr>
+<td>150</td>
+<td>10</td>
+</tr>
+<tr>
+<td>200</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>进行声音通信首先是要产生声音信号，在脉冲编码中，我们需要生成固定频率（18KHz）和固定长度（100个采样点）的脉冲信号：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1122,7 +1160,8 @@
 <span class="n">impulse</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="c">%生成频率为f的正弦信号</span>
 </pre></div>
 </td></tr></table>
-接下来我们生成用于编码的空白部分：
+
+<p>接下来我们生成用于编码的空白部分：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1134,11 +1173,13 @@
 <span class="n">pause3</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">delta</span><span class="p">);</span> <span class="c">%编码11</span>
 </pre></div>
 </td></tr></table>
-设置待传输的字符串：
+
+<p>设置待传输的字符串：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">str</span> <span class="p">=</span> <span class="s">&#39;Tsinghua University&#39;</span><span class="p">;</span>
 </pre></div>
-</td></tr></table></p>
-<p>为了通过信号把字符串传输出去，我们需要将其转为二进制串。实现名为“string2bin”的函数，把字符数组转化为0,1串：
+</td></tr></table>
+
+<p>为了通过信号把字符串传输出去，我们需要将其转为二进制串。实现名为“string2bin”的函数，把字符数组转化为0,1串：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1178,7 +1219,8 @@
 <span class="k">end</span>
 </pre></div>
 </td></tr></table>
-调用string2bin函数时传入之前设置的待传输字符串，就可以得到等待传输的二进制串，将其存储在变量“message”中：
+
+<p>调用string2bin函数时传入之前设置的待传输字符串，就可以得到等待传输的二进制串，将其存储在变量“message”中：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1196,7 +1238,8 @@
 <span class="k">end</span>
 </pre></div>
 </td></tr></table>
-生成编码数据：
+
+<p>生成编码数据：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1240,10 +1283,17 @@
 <span class="n">audiowrite</span><span class="p">(</span><span class="s">&#39;message.wav&#39;</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
-最终生成的输出信号时域信号如图所示，横轴代表采样点的序号，纵轴代表幅度：</p>
-<p><img alt="编码生成的时域信号" src="\images\4.2\4.png" title="编码生成的时域信号" />  </p>
+
+<p>最终生成的输出信号时域信号如图所示，横轴代表采样点的序号，纵轴代表幅度：</p>
+<p><img alt="编码生成的时域信号" src="../images/4.2/4.png" title="编码生成的时域信号" /><br />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 编码生成的时域信号</div>
+</center></p>
 <p>得到编码过信息的声音文件后，我们将文件存储在一个android 手机上，并使用一个声音播放器打开此文件进行播放。同时，使用我们在前面章节中开发的录音应用把携带有信息的声音信号录制下来存储到录音文件中。
-用matlab读取录音文件“r.wav”,并将读出的数据在图中展示出来：
+用matlab读取录音文件“r.wav”,并将读出的数据在图中展示出来：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1255,13 +1305,26 @@
 <span class="n">hold</span> <span class="n">on</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
-展示的结果如下图所示：</p>
-<p><img alt="接收到的声音信号" src="\images\4.2\receive_data.png" title="接收到的声音信号" /></p>
+
+<p>展示的结果如下图所示：</p>
+<p><img alt="接收到的声音信号" src="../images/4.2/receive_data.png" title="接收到的声音信号" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 接收到的声音信号</div>
+</center></p>
 <p>因为我们这里展示的是简单的编码方式，单个声音信道录到的数据就足够解码，我在录音时设置了单声道的录制。相应的这里得到的声音信号显示是只有一路信号。
 在进行具体的解码之前，我们先来看一下impulse解码的原理。由于impulse coding 使用的是impulse之间的间隔来编码数据，所以解码的时候关键在于得到每两个相邻脉冲之间的间隔，从而将其转换为对应的二进制数据。要得到脉冲之间的间隔就需要首先得到每个脉冲的起始和结束时间。又因为每个脉冲的长度是固定的，所以我们只需要知道脉冲的起始位置即可。
 借助傅里叶变换，我们可以轻易知道一段时域信号中某个频率信号的强度。通过把时域信号进行分段的傅里叶变换，每段信号中18kHz信号的强度都可以被计算出来。由于我们设计的脉冲长度是100个采样点，当我们把傅里叶变换的窗口长度设置为100时，只有窗口从脉冲起始点开始截取信号的时候才能使得整个时域窗口中都充满18kHz的声音信号。若是窗口起始点不在脉冲起始的位置，那么时域窗口中将不可避免的包含到一部分空白信号（没有声音信号，采样值接近0）。根据傅里叶变换的原理，频域上的能量强度是时域上对应频率能量的叠加。所以当窗口对齐脉冲起始位置时，傅里叶变换得到的18kHz处的能量是最高的。我们可以记录下每个时域窗口对应的18kHz的能量强度，通过寻找极大值得到每个脉冲信号的起始位置。</p>
-<p><img alt="脉冲信号和时域窗口" src="\images\4.2\winding.png" title="脉冲信号和时域窗口" /> </p>
-<p>接下来我们新建一个decoding.m的脚本文件进行解码操作。首先对信号进行滤波，去除掉环境中的噪音只保留信号编码所用到的18kHz的声音信号：
+<p><img alt="脉冲信号和时域窗口" src="../images/4.2/winding.png" title="脉冲信号和时域窗口" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 脉冲信号和时域窗口</div>
+</center></p>
+<p>接下来我们新建一个decoding.m的脚本文件进行解码操作。首先对信号进行滤波，去除掉环境中的噪音只保留信号编码所用到的18kHz的声音信号：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1273,8 +1336,9 @@
 <span class="n">data</span> <span class="p">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">hd</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
-（思考：滤波的操作实际上在脉冲编码中并不是必要的，你知道是为什么吗？）
-接下来我们对录音信号进行滑动窗口的傅里叶变换，得到每一段数据中18kHz信号的强度信息：
+
+<p><strong>（思考：滤波的操作实际上在脉冲编码中并不是必要的，你知道是为什么吗？）</strong></p>
+<p>接下来我们对录音信号进行滑动窗口的傅里叶变换，得到每一段数据中18kHz信号的强度信息：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1310,11 +1374,24 @@
 <span class="n">plot</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
-在图中展示每个时域窗口的信号对应的18kHz信号的强度，如下图所示：</p>
-<p><img alt="每个时域窗口对应的18kHz信号的强度" src="\images\4.2\impulse_fft_raw.png" title="每个时域窗口对应的18kHz信号的强度" /> </p>
+
+<p>在图中展示每个时域窗口的信号对应的18kHz信号的强度，如下图所示：</p>
+<p><img alt="每个时域窗口对应的18kHz信号的强度" src="../images/4.2/impulse_fft_raw.png" title="每个时域窗口对应的18kHz信号的强度" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 每个时域窗口对应的18kHz信号的强度</div>
+</center></p>
 <p>对局部进行放大，我们可以观察到锯齿形的曲线：</p>
-<p><img alt="时域上的18kHz信号强度的局部放大" src="\images\4.2\impulse_fft_raw_zoom.png" title="时域上的18kHz信号强度的局部放大" /> </p>
-<p>我们的目的是通过找极大值准确的得到每个脉冲信号的起始位置，然而锯齿形的信号的最大值可能不严格出现在信号峰的中间位置。我们需要通过滑动窗口平均来对impulse_fft进行均值滤波，得到一个平滑的曲线。在这里我们设置一个大小为11的窗口：
+<p><img alt="时域上的18kHz信号强度的局部放大" src="../images/4.2/impulse_fft_raw_zoom.png" title="时域上的18kHz信号强度的局部放大" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 时域上的18kHz信号强度的局部放大</div>
+</center></p>
+<p>我们的目的是通过找极大值准确的得到每个脉冲信号的起始位置，然而锯齿形的信号的最大值可能不严格出现在信号峰的中间位置。我们需要通过滑动窗口平均来对impulse_fft进行均值滤波，得到一个平滑的曲线。在这里我们设置一个大小为11的窗口：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1334,9 +1411,16 @@
 <span class="n">hold</span> <span class="n">on</span><span class="p">;</span> 
 </pre></div>
 </td></tr></table>
-我们可以从下图中看出，均值滤波有效地把锯齿形的信号转化成了相对平滑的信号。对于滑动窗口的大小，可以根据实际需要进行调整。</p>
-<p><img alt="经过滑动平均的18kHz信号强度的局部放大" src="\images\4.2\impulse_fft_sliding_zoom.png" title="经过滑动平均的18kHz信号强度的局部放大" /> </p>
-<p>由于在实际操作中我们不能保证经过了平滑之后的信号在峰的两侧都是单调的，所以我们用局部最大值来替代极大值的判断。通过找到局部的最大值得到峰的中间位置，从而得到脉冲信号的起始位置。由于脉冲的长度为100，所以我们再次使用一个长度为100的窗口。这次的窗口是以当前点为窗口的中间，往前后各取半个窗口的长度。当中心点的值是整个窗口中的最大值时，说明左右两侧的点都比中间点的值小，也就是说，当前窗口的中心点是一个峰。为了去除空白数据处的曲线波动对峰值判断的干扰，我们多加了一个对峰的数值的判断，当数据值小于等于0.3时，无论曲线在此处的走势如何都不认为这是一个峰。
+
+<p>我们可以从下图中看出，均值滤波有效地把锯齿形的信号转化成了相对平滑的信号。对于滑动窗口的大小，可以根据实际需要进行调整。</p>
+<p><img alt="经过滑动平均的18kHz信号强度的局部放大" src="../images/4.2/impulse_fft_sliding_zoom.png" title="经过滑动平均的18kHz信号强度的局部放大" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 经过滑动平均的18kHz信号强度的局部放大</div>
+</center></p>
+<p>由于在实际操作中我们不能保证经过了平滑之后的信号在峰的两侧都是单调的，所以我们用局部最大值来替代极大值的判断。通过找到局部的最大值得到峰的中间位置，从而得到脉冲信号的起始位置。由于脉冲的长度为100，所以我们再次使用一个长度为100的窗口。这次的窗口是以当前点为窗口的中间，往前后各取半个窗口的长度。当中心点的值是整个窗口中的最大值时，说明左右两侧的点都比中间点的值小，也就是说，当前窗口的中心点是一个峰。为了去除空白数据处的曲线波动对峰值判断的干扰，我们多加了一个对峰的数值的判断，当数据值小于等于0.3时，无论曲线在此处的走势如何都不认为这是一个峰。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1356,7 +1440,8 @@
 <span class="k">end</span>
 </pre></div>
 </td></tr></table>
-根据我们前面的分析可知，峰值的位置就是脉冲的起始位置。为了验证这个结论，我们把得到的峰值位置在时域信号图中展示出来，并计算相邻两个脉冲之间的间隔：
+
+<p>根据我们前面的分析可知，峰值的位置就是脉冲的起始位置。为了验证这个结论，我们把得到的峰值位置在时域信号图中展示出来，并计算相邻两个脉冲之间的间隔：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1386,18 +1471,48 @@
 <span class="k">end</span>
 </pre></div>
 </td></tr></table>
-脉冲起始位置在原始时域声音信号上的展示如下图所示。观察发现代表着我们计算得到的脉冲起始位置的洋红色线条所切割的位置并不是真正的脉冲信号起始位置。在洋红色线条之前已经有一段的声音信号存在了。</p>
-<p><img alt="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" src="\images\4.2\impulse_position_raw.png" title="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" /> </p>
+
+<p>脉冲起始位置在原始时域声音信号上的展示如下图所示。观察发现代表着我们计算得到的脉冲起始位置的洋红色线条所切割的位置并不是真正的脉冲信号起始位置。在洋红色线条之前已经有一段的声音信号存在了。</p>
+<p><img alt="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" src="../images/4.2/impulse_position_raw.png" title="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" /> 
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配</div>
+</center></p>
 <p>然而这些洋红色线条在18kHz强度的时域图中与峰值很好的一一对应，如下图所示。也就是说，18kHz信号强度的时域图中的峰值并不是出现在脉冲的起始位置。</p>
-<p><img alt="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" src="\images\4.2\impulse_position_fft.png" title="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" /> </p>
+<p><img alt="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" src="../images/4.2/impulse_position_fft.png" title="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应</div>
+</center></p>
 <p>这个结论我们最初的理论分析是不一致的。为了解释这一现象，我们将真实时域信号和分窗口傅里叶变换得到的18kHz信号强度时域图画在下图中进行观察。我们发现</p>
-<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="\images\4.2\raw_and_fft.png" title="18kHz信号强度峰值并没有出现在信号起始处" /></p>
+<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="../images/4.2/raw_and_fft.png" title="18kHz信号强度峰值并没有出现在信号起始处" /><center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 18kHz信号强度峰值并没有出现在信号起始处</div>
+</center></p>
 <p>这个现象其实是滤波造成的。如果我们把上图中的原始信号替换成滤波之后的信号，就会发现滤波后的每个脉冲的开头和结尾处的信号比中间的弱。这个滤波器的特性所导致的现象，再加上多径效应造成的回声拖尾现象，使得滑动窗口傅里叶变换得到的最大值并不是出现在脉冲的起始位置。</p>
-<p><img alt="18kHz信号强度时域图以及滤波之后的声音信号" src="\images\4.2\filter_and_fft.png" title="18kHz信号强度时域图以及滤波之后的声音信号" /> </p>
+<p><img alt="18kHz信号强度时域图以及滤波之后的声音信号" src="../images/4.2/filter_and_fft.png" title="18kHz信号强度时域图以及滤波之后的声音信号" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 18kHz信号强度时域图以及滤波之后的声音信号</div>
+</center></p>
 <p>若我们不对信号进行滤波，而是直接用原始的声音数据进行滑动窗口傅里叶变换，得到的结果如下图所示。我们可以看到18kHz信号强度的峰值确实出现在了声音信号的起始位置，但由于没有进行滤波，原始信号中所存在的频率更杂乱，使得我们得到的18kHz信号强度曲线也更加波折。</p>
-<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="\images\4.2\raw_and_fft2.png" title="18kHz信号强度峰值并没有出现在信号起始处" /></p>
+<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="../images/4.2/raw_and_fft2.png" title="18kHz信号强度峰值并没有出现在信号起始处" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 18kHz信号强度峰值并没有出现在信号起始处</div>
+</center></p>
 <p>尽管用滤波前的原始数据还是滤波后的数据进行滑动窗口傅里叶变换得到的峰值位置不一致，事实上，这两种方式都可以成功解码出数据。这是因为我们解码数据依靠的是相邻两个脉冲信号之间的间隔。就算识别出来的脉冲信号的绝对位置有偏差，只要每个脉冲信号位置都偏差大致相似的采样点数，相邻两个脉冲信号之间的间隔是大致不变的。当我们设计编码时使代表不同码元的间隔之间差异足够大，就可以保证解码的准确性。
-接下来我们使用相邻脉冲之间的间隔进行解码。根据我们设计编码时定义的对应规则把不同长度的间隔映射为不同的编码数据。另外，由于噪声等的影响，我们得到的间隔长度不会严格等于设计值。这时就需要我们在解码时加入一定的鲁棒性。在这个实验中，我们认为只要实际间隔值和设计值之间的误差小于10，就解码出对应的数据，否则解码失败。误差的阈值可以根据信道、信号等的实际情况进行设置。
+接下来我们使用相邻脉冲之间的间隔进行解码。根据我们设计编码时定义的对应规则把不同长度的间隔映射为不同的编码数据。另外，由于噪声等的影响，我们得到的间隔长度不会严格等于设计值。这时就需要我们在解码时加入一定的鲁棒性。在这个实验中，我们认为只要实际间隔值和设计值之间的误差小于10，就解码出对应的数据，否则解码失败。误差的阈值可以根据信道、信号等的实际情况进行设置。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1461,8 +1576,9 @@
 <span class="k">end</span>
 </pre></div>
 </td></tr></table>
-现在我们解码出了声音信号中编码的二进制串，要将其转化为可解读的信息还需要将二进制串变成字符串。我们实现一个与string2bin函数对应的bin2string函数来实现这个功能：</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+
+<p>现在我们解码出了声音信号中编码的二进制串，要将其转化为可解读的信息还需要将二进制串变成字符串。我们实现一个与string2bin函数对应的bin2string函数来实现这个功能：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1493,13 +1609,15 @@
 <span class="k">end</span>
 </pre></div>
 </td></tr></table>
-最后，调用bin2string函数：
+
+<p>最后，调用bin2string函数：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%把二进制数据根据ascii码值解出对应的字符串</span>
 <span class="n">str</span> <span class="p">=</span> <span class="n">bin2string</span><span class="p">(</span><span class="n">decode_message</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-运行整个脚本 decoding.m 得到可以解读的数据串:</p>
+
+<p>运行整个脚本 decoding.m 得到可以解读的数据串:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1512,9 +1630,21 @@
 
 <h2 id="_3">幅度编码<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>幅度编码是利用为信号设置不同的幅度来实现编码的目的。最简单的幅度编码是ON-OFF Keying (OOK)。OOK使用固定频率的信号代表“1”，没有信号代表“0”，两种码元的长度相同。下面是使用OOK编码的示意图：</p>
-<p><img alt="幅度编码" src="\images\4.2\5.png" title="" />  </p>
+<p><img alt="幅度编码" src="../images/4.2/5.png" title="" /> 
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 幅度编码</div>
+</center> </p>
 <p>幅度编码的效率提高可以通过设置不同的振幅级别来实现，使得每个码元所携带的信息更多：</p>
-<p><img alt="增加振幅级别可以提高编码效率" src="\images\4.2\6.png" title="" />  </p>
+<p><img alt="增加振幅级别可以提高编码效率" src="../images/4.2/6.png" title="" /><br />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
+</center></p>
 <p>在幅度编码中，首先需要考虑的问题是要使的不同码元对应的幅度有足够大的区分度，否则解码时无法区分不同的幅度。另外一点需要考虑的就是信道的特性。信号所传输的信道增益是否是随时间稳定的？如果信道增益发生变化，那么就很可能使得本来幅度较高的信号在经过信道传输之后比原本幅度低的信号还弱。这就容易导致解码错误。声音信道就是一种增益比较容易变化的信道，周围反射环境的变化会使得信道增益出现明显变化。这种情况下可以通过缩短数据包的长度来折中。由于信道增益的变化依赖于多径环境的变化，我们知道多径环境不会发生突变，只会发生连续的变化。只要数据包的长度足够短，那么就可以保证在这个数据包发送的过程中，声音信道的增益的变化是比较小的。
 （思考题：信号经过信道传输之后，会发生强度的衰减。当接收端接收到信号时，信号幅度的绝对值已经发生了很大的改变。如何才能保证正确解码出信号中的数据呢？）
 //（比如：每个数据包起始处先按顺序把每种码元发一遍，这样接收者就知道每种码元收到时的强度了）</p>
@@ -1525,20 +1655,120 @@
 <p>频率编码也就是Frequency shift keying (FSK)，使用的是不同的频率或不同的频率组合来编码不同的数据。
 最简单的频率编码也可以用ON-OFF Keying (OOK)来表示，使用固定频率<span><span class="MathJax_Preview">f\not=0</span><script type="math/tex">f\not=0</script></span>的信号代表“1”，用<span><span class="MathJax_Preview">f=0</span><script type="math/tex">f=0</script></span>的信号代表“0”。
 可以设置多种不同的频率<span><span class="MathJax_Preview">F=\{f_0,f_1,f_2,....f_n\}</span><script type="math/tex">F=\{f_0,f_1,f_2,....f_n\}</script></span>来代表不同的数据，但需要使不同频率之间的额差异足够大。否则由于离散傅里叶变换的精度问题，相近的频率会很难区分。
-使用不同的频率组合进行编码可以大大提高编码的效率。当使用6种不同的频率进行单一频率编码时，最多只能产生7个码元：每个频率是一个码元，空白信号代表一个码元。
-频率|<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> |<span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span>|<span><span class="MathJax_Preview">f_3</span><script type="math/tex">f_3</script></span>|<span><span class="MathJax_Preview">f_4</span><script type="math/tex">f_4</script></span>|<span><span class="MathJax_Preview">f_5</span><script type="math/tex">f_5</script></span>|<span><span class="MathJax_Preview">f_6</span><script type="math/tex">f_6</script></span>|空白
--- | --| --| --| --| --| --| --| --
-码元 |<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> |<span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span>|<span><span class="MathJax_Preview">f_3</span><script type="math/tex">f_3</script></span>|<span><span class="MathJax_Preview">f_4</span><script type="math/tex">f_4</script></span>|<span><span class="MathJax_Preview">f_5</span><script type="math/tex">f_5</script></span>|<span><span class="MathJax_Preview">f_6</span><script type="math/tex">f_6</script></span>|空白
-同样是6种不同的频率，若是使用两种频率的组合进行编码，就可以产生<span><span class="MathJax_Preview">C_6^2=15+1 = 16</span><script type="math/tex">C_6^2=15+1 = 16</script></span>种码元（一个空白信号码元）。
-频率|<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> |<span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span>|<span><span class="MathJax_Preview">f_3</span><script type="math/tex">f_3</script></span>|<span><span class="MathJax_Preview">f_4</span><script type="math/tex">f_4</script></span>|<span><span class="MathJax_Preview">f_5</span><script type="math/tex">f_5</script></span>|<span><span class="MathJax_Preview">f_6</span><script type="math/tex">f_6</script></span>|空白
--- | --| --| --| --| --| --| --| --
-<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> | - |<span><span class="MathJax_Preview">f_1,f_2</span><script type="math/tex">f_1,f_2</script></span> |<span><span class="MathJax_Preview">f_1,f_3</span><script type="math/tex">f_1,f_3</script></span> |<span><span class="MathJax_Preview">f_1,f_4</span><script type="math/tex">f_1,f_4</script></span>|<span><span class="MathJax_Preview">f_1,f_5</span><script type="math/tex">f_1,f_5</script></span> |<span><span class="MathJax_Preview">f_1,f_6</span><script type="math/tex">f_1,f_6</script></span>|-
-<span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span> | - |- |<span><span class="MathJax_Preview">f_2,f_3</span><script type="math/tex">f_2,f_3</script></span> |<span><span class="MathJax_Preview">f_2,f_4</span><script type="math/tex">f_2,f_4</script></span>|<span><span class="MathJax_Preview">f_2,f_5</span><script type="math/tex">f_2,f_5</script></span> |<span><span class="MathJax_Preview">f_2,f_6</span><script type="math/tex">f_2,f_6</script></span>|-
-<span><span class="MathJax_Preview">f_3</span><script type="math/tex">f_3</script></span> | - |- |- |<span><span class="MathJax_Preview">f_3,f_4</span><script type="math/tex">f_3,f_4</script></span>|<span><span class="MathJax_Preview">f_3,f_5</span><script type="math/tex">f_3,f_5</script></span> |<span><span class="MathJax_Preview">f_3,f_6</span><script type="math/tex">f_3,f_6</script></span>|-
-<span><span class="MathJax_Preview">f_4</span><script type="math/tex">f_4</script></span> | - |- |- |-|<span><span class="MathJax_Preview">f_4,f_5</span><script type="math/tex">f_4,f_5</script></span> |<span><span class="MathJax_Preview">f_4,f_6</span><script type="math/tex">f_4,f_6</script></span>|-
-<span><span class="MathJax_Preview">f_5</span><script type="math/tex">f_5</script></span> | - |- |- |-|- |<span><span class="MathJax_Preview">f_5,f_6</span><script type="math/tex">f_5,f_6</script></span>|-
-<span><span class="MathJax_Preview">f_6</span><script type="math/tex">f_6</script></span> | - |- |- |-|- |-|-
-空白 | - |-|-|-|- |-|空白</p>
+使用不同的频率组合进行编码可以大大提高编码的效率。当使用6种不同的频率进行单一频率编码时，最多只能产生7个码元：每个频率是一个码元，空白信号代表一个码元。</p>
+<table>
+<thead>
+<tr>
+<th>频率</th>
+<th><span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span></th>
+<th><span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span></th>
+<th><span><span class="MathJax_Preview">f_3</span><script type="math/tex">f_3</script></span></th>
+<th><span><span class="MathJax_Preview">f_4</span><script type="math/tex">f_4</script></span></th>
+<th><span><span class="MathJax_Preview">f_5</span><script type="math/tex">f_5</script></span></th>
+<th><span><span class="MathJax_Preview">f_6</span><script type="math/tex">f_6</script></span></th>
+<th>空白</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>码元</td>
+<td><span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span></td>
+<td><span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span></td>
+<td><span><span class="MathJax_Preview">f_3</span><script type="math/tex">f_3</script></span></td>
+<td><span><span class="MathJax_Preview">f_4</span><script type="math/tex">f_4</script></span></td>
+<td><span><span class="MathJax_Preview">f_5</span><script type="math/tex">f_5</script></span></td>
+<td><span><span class="MathJax_Preview">f_6</span><script type="math/tex">f_6</script></span></td>
+<td>空白</td>
+</tr>
+</tbody>
+</table>
+<p>同样是6种不同的频率，若是使用两种频率的组合进行编码，就可以产生<span><span class="MathJax_Preview">C_6^2=15+1 = 16</span><script type="math/tex">C_6^2=15+1 = 16</script></span>种码元（一个空白信号码元）。</p>
+<table>
+<thead>
+<tr>
+<th>频率</th>
+<th><span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span></th>
+<th><span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span></th>
+<th><span><span class="MathJax_Preview">f_3</span><script type="math/tex">f_3</script></span></th>
+<th><span><span class="MathJax_Preview">f_4</span><script type="math/tex">f_4</script></span></th>
+<th><span><span class="MathJax_Preview">f_5</span><script type="math/tex">f_5</script></span></th>
+<th><span><span class="MathJax_Preview">f_6</span><script type="math/tex">f_6</script></span></th>
+<th>空白</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span></td>
+<td>-</td>
+<td><span><span class="MathJax_Preview">f_1,f_2</span><script type="math/tex">f_1,f_2</script></span></td>
+<td><span><span class="MathJax_Preview">f_1,f_3</span><script type="math/tex">f_1,f_3</script></span></td>
+<td><span><span class="MathJax_Preview">f_1,f_4</span><script type="math/tex">f_1,f_4</script></span></td>
+<td><span><span class="MathJax_Preview">f_1,f_5</span><script type="math/tex">f_1,f_5</script></span></td>
+<td><span><span class="MathJax_Preview">f_1,f_6</span><script type="math/tex">f_1,f_6</script></span></td>
+<td>-</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span></td>
+<td>-</td>
+<td>-</td>
+<td><span><span class="MathJax_Preview">f_2,f_3</span><script type="math/tex">f_2,f_3</script></span></td>
+<td><span><span class="MathJax_Preview">f_2,f_4</span><script type="math/tex">f_2,f_4</script></span></td>
+<td><span><span class="MathJax_Preview">f_2,f_5</span><script type="math/tex">f_2,f_5</script></span></td>
+<td><span><span class="MathJax_Preview">f_2,f_6</span><script type="math/tex">f_2,f_6</script></span></td>
+<td>-</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">f_3</span><script type="math/tex">f_3</script></span></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><span><span class="MathJax_Preview">f_3,f_4</span><script type="math/tex">f_3,f_4</script></span></td>
+<td><span><span class="MathJax_Preview">f_3,f_5</span><script type="math/tex">f_3,f_5</script></span></td>
+<td><span><span class="MathJax_Preview">f_3,f_6</span><script type="math/tex">f_3,f_6</script></span></td>
+<td>-</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">f_4</span><script type="math/tex">f_4</script></span></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><span><span class="MathJax_Preview">f_4,f_5</span><script type="math/tex">f_4,f_5</script></span></td>
+<td><span><span class="MathJax_Preview">f_4,f_6</span><script type="math/tex">f_4,f_6</script></span></td>
+<td>-</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">f_5</span><script type="math/tex">f_5</script></span></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><span><span class="MathJax_Preview">f_5,f_6</span><script type="math/tex">f_5,f_6</script></span></td>
+<td>-</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">f_6</span><script type="math/tex">f_6</script></span></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>空白</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>空白</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
