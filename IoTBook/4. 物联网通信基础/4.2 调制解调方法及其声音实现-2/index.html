@@ -40,7 +40,7 @@
     
     
       
-        <title>5.2.2 相位编码、OFDM与载波调制 - IoT Book</title>
+        <title>相位调制 - IoT Book</title>
       
     
     
@@ -104,7 +104,7 @@
                 IoT Book
               </span>
               <span class="md-header-nav__topic">
-                5.2.2 相位编码、OFDM与载波调制
+                相位调制
               </span>
             
           
@@ -293,12 +293,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       五. 物联网通信基础
@@ -374,12 +372,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       5.2 信号编码
@@ -397,7 +393,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../4.2 编码方法及其声音实现/" title="5.2.1 脉冲、幅度、时间、频率编码" class="md-nav__link">
+    <a href="../4.2 编码方法及其声音实现.md" title="5.2.1 脉冲、幅度、时间、频率编码" class="md-nav__link">
       5.2.1 脉冲、幅度、时间、频率编码
     </a>
   </li>
@@ -407,104 +403,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        5.2.2 相位编码、OFDM与载波调制
-      </label>
-    
-    <a href="./" title="5.2.2 相位编码、OFDM与载波调制" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../4.2 编码方法及其声音实现-2.md" title="5.2.2 相位编码、OFDM与载波调制" class="md-nav__link">
       5.2.2 相位编码、OFDM与载波调制
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        
-          <li class="md-nav__item">
-    <a href="#bpsk" title="BPSK" class="md-nav__link">
-    BPSK
-  </a>
-  
-</li>
-        
-      
-        
-          <li class="md-nav__item">
-    <a href="#qpsk" title="QPSK" class="md-nav__link">
-    QPSK
-  </a>
-  
-</li>
-        
-      
-        
-          <li class="md-nav__item">
-    <a href="#oqpsk" title="OQPSK" class="md-nav__link">
-    OQPSK
-  </a>
-  
-</li>
-        
-      
-        
-          <li class="md-nav__item">
-    <a href="#oqpsk_1" title="在声音信号上实现OQPSK" class="md-nav__link">
-    在声音信号上实现OQPSK
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          
-            <li class="md-nav__item">
-    <a href="#oqpsk_2" title="OQPSK编码" class="md-nav__link">
-    OQPSK编码
-  </a>
-  
-</li>
-          
-        
-          
-            <li class="md-nav__item">
-    <a href="#oqpsk_3" title="OQPSK解码" class="md-nav__link">
-    OQPSK解码
-  </a>
-  
-</li>
-          
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -1106,8 +1009,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#oqpsk_2" title="OQPSK编码" class="md-nav__link">
-    OQPSK编码
+    <a href="#oqpsk_2" title="OQPSK调制" class="md-nav__link">
+    OQPSK调制
   </a>
   
 </li>
@@ -1145,8 +1048,8 @@
               
                 
                 
-                <h1 id="_1">相位编码<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>前面我们介绍了幅度编码和频率编码，观察下图中的正弦函数公式，我们发现正弦信号除了幅度和频率特征，还有相位特征。本章节中，我们将介绍相位编码方法，也就是PSK（Phase shift keying）。</p>
+                <h1 id="_1">相位调制<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>前面我们介绍了幅度调制和频率调制，观察下图中的正弦函数公式，我们发现正弦信号除了幅度和频率特征，还有相位特征。本章节中，我们将介绍相位调制方法，也就是PSK（Phase shift keying）。</p>
 <p><img alt="正弦信号的特征" src="../images/4.2/sine_wave.png" title="" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1155,7 +1058,7 @@ color: #999;
 padding: 2px;">图. 正弦信号的特征</div>
 </center>  </p>
 <h2 id="bpsk">BPSK<a class="headerlink" href="#bpsk" title="Permanent link">&para;</a></h2>
-<p>相位编码，就是使用不同相位的信号来代表不同信息的编码方式。我们首先来看最简单的BPSK(Binary Phase Shift Keying),使用两种相位的信号来编码信息。为了使相位的区分度更高，我们使用相位相差为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的两种信号：</p>
+<p>相位调制，就是使用不同相位的信号来代表不同信息的调制方式。我们首先来看最简单的BPSK(Binary Phase Shift Keying),使用两种相位的信号来调制信息。为了使相位的区分度更高，我们使用相位相差为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的两种信号：</p>
 <p><img alt="相位为0和相位为pi的信号" src="../images/4.2/bpsk-basic.png" title="" /><br />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1163,13 +1066,13 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 相位为0和相位为pi的信号</div>
 </center></p>
-<p>有了基础的带有相位信息的信号，我们就可以根据输入的待编码的信息来选择不同相位的信号。当输入为0时，我们选择相位为0的信号，当输入为1时，我们选择相位为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的信号。输入信号和对应的生成的BPSK调制过的信号如下图所示。</p>
-<p><img alt="编码后的BPSK信号" src="../images/4.2/bpsk-encode.png" title="" />
+<p>有了基础的带有相位信息的信号，我们就可以根据输入的待调制的信息来选择不同相位的信号。当输入为0时，我们选择相位为0的信号，当输入为1时，我们选择相位为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的信号。输入信号和对应的生成的BPSK调制过的信号如下图所示。</p>
+<p><img alt="调制后的BPSK信号" src="../images/4.2/bpsk-encode.png" title="" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. 编码后的BPSK信号</div>
+padding: 2px;">图. 调制后的BPSK信号</div>
 </center></p>
 <p>这种实现BPSK的方法叫做“键控”方法。此时数据和相位之间的映射关系是：</p>
 <table>
@@ -1300,12 +1203,12 @@ padding: 2px;">图. QPSK星座图</div>
 </tbody>
 </table>
 <p>下图展示了I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。图中对应的I路和Q路数据分别是：<span><span class="MathJax_Preview">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span>,<span><span class="MathJax_Preview">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span></p>
-<p><img alt="IQ信号和编码后的QPSK信号" src="../images/4.2/qpsk-encode.png" title="" />
+<p><img alt="IQ信号和调制后的QPSK信号" src="../images/4.2/qpsk-encode.png" title="" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. IQ信号和编码后的QPSK信号</div>
+padding: 2px;">图. IQ信号和调制后的QPSK信号</div>
 </center></p>
 <p>在解码时，利用其正交特性，分别对两路信号进行积分运算，得到每路信号中编码的数据。
 解码I路信号：</p>
@@ -1387,7 +1290,7 @@ padding: 2px;">图. 8PSK星座图</div>
 </tr>
 </tbody>
 </table>
-<p>当我们继续在星座映射图中增加数据点，就可以获得数据速率更高的相位编码方式，比如说下图中的16-QAM、32-QAM和64-QAM</p>
+<p>当我们继续在星座映射图中增加数据点，就可以获得数据速率更高的相位调制方式，比如说下图中的16-QAM、32-QAM和64-QAM</p>
 <p><img alt="16-QAM、32-QAM和64-QAM的星座图" src="../images/4.2/16-32-64-QAM.png" title="" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1397,25 +1300,25 @@ padding: 2px;">图. 16-QAM、32-QAM和64-QAM的星座图</div>
 </center></p>
 <h2 id="oqpsk">OQPSK<a class="headerlink" href="#oqpsk" title="Permanent link">&para;</a></h2>
 <p>观察QPSK的星座映射图，我们可以发现从00 到 11 和从10 到01之间的相位转变都是<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>。当信号通过低通滤波器时，大的相位翻转会导致大的幅值幅波动，如下图中红圈部分所示：</p>
-<p><img alt="QPSK编码中会出现相位翻转为pi的情况" src="../images/4.2/phase-shifts.png" title="" />
+<p><img alt="QPSK调制中会出现相位翻转为pi的情况" src="../images/4.2/phase-shifts.png" title="" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. QPSK编码中会出现相位翻转为pi的情况</div>
+padding: 2px;">图. QPSK调制中会出现相位翻转为pi的情况</div>
 </center></p>
 <p>这种大的相位翻转会影响解码的成功率。我们可以使用OQPSK(Offset QPSK)来解决这个问题。
 OQPSK方法是基于QPSK的IQ调制方式，I路信号和QPSK相同，Q路数据向后错位半个周期。这样一来I路和Q路信号翻转的位置相差半个周期，也就是说I路数据和Q路数据不会出现同时的翻转，信号相位最大只能变化<span><span class="MathJax_Preview">\frac{\pi}{2}</span><script type="math/tex">\frac{\pi}{2}</script></span>。
 下图分别展示了OQPSK的I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。</p>
-<p><img alt="IQ信号和编码后的OQPSK信号" src="../images/4.2/oqpsk-encode.png" title="" />
+<p><img alt="IQ信号和调制后的OQPSK信号" src="../images/4.2/oqpsk-encode.png" title="" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. IQ信号和编码后的OQPSK信号</div>
+padding: 2px;">图. IQ信号和调制后的OQPSK信号</div>
 </center></p>
 <h2 id="oqpsk_1">在声音信号上实现OQPSK<a class="headerlink" href="#oqpsk_1" title="Permanent link">&para;</a></h2>
-<h3 id="oqpsk_2">OQPSK编码<a class="headerlink" href="#oqpsk_2" title="Permanent link">&para;</a></h3>
+<h3 id="oqpsk_2">OQPSK调制<a class="headerlink" href="#oqpsk_2" title="Permanent link">&para;</a></h3>
 <h3 id="oqpsk_3">OQPSK解码<a class="headerlink" href="#oqpsk_3" title="Permanent link">&para;</a></h3>
 <h1 id="_2">载波调制<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <p>载波调制的原理是将低频的基带信号通过上变频搬移到较高频率的载波上进行传输。接收端接收到信号后首先利用下变频将信号搬移到基带信号频率上。
@@ -1447,7 +1350,7 @@ s(t) = i*sin(2\pi ft)*sin(2\pi f_c t) + q*cos(2\pi ft)*cos(2\pi f_c t) =
 </script>
 </div>
 <p>接收端收到后对其进行下变频。</p>
-<h2 id="ofdm">OFDM编码<a class="headerlink" href="#ofdm" title="Permanent link">&para;</a></h2>
+<h2 id="ofdm">OFDM调制<a class="headerlink" href="#ofdm" title="Permanent link">&para;</a></h2>
 <p>上变频 下变频</p>
                 
                   
@@ -1465,41 +1368,6 @@ s(t) = i*sin(2\pi ft)*sin(2\pi f_c t) + q*cos(2\pi ft)*cos(2\pi f_c t) =
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../4.2 编码方法及其声音实现/" title="5.2.1 脉冲、幅度、时间、频率编码" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  后退
-                </span>
-                5.2.1 脉冲、幅度、时间、频率编码
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../../5.物联网感知/传感器/" title="6.1 传感器" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  前进
-                </span>
-                6.1 传感器
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -40,7 +40,7 @@
     
     
       
-        <title>5.2.1 脉冲、幅度、时间、频率编码 - IoT Book</title>
+        <title>调制解调方法及其声音实现 - IoT Book</title>
       
     
     
@@ -104,7 +104,7 @@
                 IoT Book
               </span>
               <span class="md-header-nav__topic">
-                5.2.1 脉冲、幅度、时间、频率编码
+                调制解调方法及其声音实现
               </span>
             
           
@@ -293,12 +293,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       五. 物联网通信基础
@@ -374,12 +372,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       5.2 信号编码
@@ -395,80 +391,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        5.2.1 脉冲、幅度、时间、频率编码
-      </label>
-    
-    <a href="./" title="5.2.1 脉冲、幅度、时间、频率编码" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../4.2 编码方法及其声音实现.md" title="5.2.1 脉冲、幅度、时间、频率编码" class="md-nav__link">
       5.2.1 脉冲、幅度、时间、频率编码
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        
-          <li class="md-nav__item">
-    <a href="#_2" title="脉冲编码" class="md-nav__link">
-    脉冲编码
-  </a>
-  
-</li>
-        
-      
-        
-          <li class="md-nav__item">
-    <a href="#_3" title="幅度编码" class="md-nav__link">
-    幅度编码
-  </a>
-  
-</li>
-        
-      
-        
-          <li class="md-nav__item">
-    <a href="#_4" title="时间编码" class="md-nav__link">
-    时间编码
-  </a>
-  
-</li>
-        
-      
-        
-          <li class="md-nav__item">
-    <a href="#_5" title="频率编码" class="md-nav__link">
-    频率编码
-  </a>
-  
-</li>
-        
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -478,7 +405,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../4.2 编码方法及其声音实现-2/" title="5.2.2 相位编码、OFDM与载波调制" class="md-nav__link">
+    <a href="../4.2 编码方法及其声音实现-2.md" title="5.2.2 相位编码、OFDM与载波调制" class="md-nav__link">
       5.2.2 相位编码、OFDM与载波调制
     </a>
   </li>
@@ -1046,8 +973,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#_2" title="脉冲编码" class="md-nav__link">
-    脉冲编码
+    <a href="#_2" title="脉冲调制" class="md-nav__link">
+    脉冲调制
   </a>
   
 </li>
@@ -1055,8 +982,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#_3" title="幅度编码" class="md-nav__link">
-    幅度编码
+    <a href="#_3" title="幅度调制" class="md-nav__link">
+    幅度调制
   </a>
   
 </li>
@@ -1064,8 +991,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#_4" title="时间编码" class="md-nav__link">
-    时间编码
+    <a href="#_4" title="时间调制" class="md-nav__link">
+    时间调制
   </a>
   
 </li>
@@ -1073,8 +1000,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#_5" title="频率编码" class="md-nav__link">
-    频率编码
+    <a href="#_5" title="频率调制" class="md-nav__link">
+    频率调制
   </a>
   
 </li>
@@ -1097,19 +1024,19 @@
               
                 
                 
-                <h1 id="_1">编码方法及其声音实现<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>在本章节中，我们将介绍几种常用的编码方法，并将这几种编码解码方法实现到声音通信上，实现对声音信号的解码。</p>
-<h2 id="_2">脉冲编码<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>脉冲编码是利用相邻两个脉冲信号之间的时间间隔来编码数据。可以指定长度的间隔代表特定的二进制串。最简单的脉冲编码是使用一长一短两种间隔，分别代表“0”和“1”。在解码时只需要识别出每个脉冲信号的起始位置，就可以得到不同脉冲之间的间隔，从而可以根据每个间隔的长短将其解码为“0”或“1”。</p>
-<p><img alt="脉冲编码原理" src="../images/4.2/1.png" title="脉冲编码原理" />
+                <h1 id="_1">调制解调方法及其声音实现<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在本章节中，我们将介绍几种常用的调制解调方法，并将这几种调制解调方法实现到声音通信上，实现对声音信号的解码。</p>
+<h2 id="_2">脉冲调制<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>脉冲调制是利用相邻两个脉冲信号之间的时间间隔来编码数据。可以指定长度的间隔代表特定的二进制串。最简单的脉冲调制是使用一长一短两种间隔，分别代表“0”和“1”。在解码时只需要识别出每个脉冲信号的起始位置，就可以得到不同脉冲之间的间隔，从而可以根据每个间隔的长短将其解码为“0”或“1”。</p>
+<p><img alt="脉冲调制原理" src="../images/4.2/1.png" title="脉冲调制原理" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. 脉冲编码原理</div>
+padding: 2px;">图. 脉冲调制原理</div>
 </center> </p>
-<p>脉冲编码由于使用简单的对应规则将“0”和“1”编码为不同长度的间隔，在解码时可以简单的根据信号幅度得到每个脉冲的起始位置来获得间隔的长短，这种编解码方法的优点是计算开销非常小。</p>
-<p>脉冲编码的缺点是编码效率低，每个脉冲之间需要有足够的距离来防止多径效应造成的回声影响到下一个脉冲的判断。想要提高脉冲编码的数据速率，可以从两个方面来考虑。第一个方面是可以缩短编码长度，不仅可以在保证解码正确率的条件下尽可能缩短脉冲之间用于编码数据的时间间隔，还可以通过缩短脉冲信号的持续时间来使得同样时间下传输更多的数据。</p>
+<p>脉冲调制由于使用简单的对应规则将“0”和“1”编码为不同长度的间隔，在解码时可以简单的根据信号幅度得到每个脉冲的起始位置来获得间隔的长短，这种编解码方法的优点是计算开销非常小。</p>
+<p>脉冲调制的缺点是编码效率低，每个脉冲之间需要有足够的距离来防止多径效应造成的回声影响到下一个脉冲的判断。想要提高脉冲调制的数据速率，可以从两个方面来考虑。第一个方面是可以缩短编码长度，不仅可以在保证解码正确率的条件下尽可能缩短脉冲之间用于编码数据的时间间隔，还可以通过缩短脉冲信号的持续时间来使得同样时间下传输更多的数据。</p>
 <p><img alt="缩短脉冲间隔可以提高编码效率" src="../images/4.2/2.png" title="缩短脉冲间隔可以提高编码效率" /><br />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1304,7 +1231,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 编码生成的时域信号</div>
 </center></p>
-<p>得到编码过信息的声音文件后，我们将文件存储在一个android 手机上，并使用一个声音播放器打开此文件进行播放。同时，使用我们在前面章节中开发的录音应用把携带有信息的声音信号录制下来存储到录音文件中。
+<p>得到调制过信息的声音文件后，我们将文件存储在一个android 手机上，并使用一个声音播放器打开此文件进行播放。同时，使用我们在前面章节中开发的录音应用把携带有信息的声音信号录制下来存储到录音文件中。
 用matlab读取录音文件“r.wav”,并将读出的数据在图中展示出来：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1326,7 +1253,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 接收到的声音信号</div>
 </center></p>
-<p>因为我们这里展示的是简单的编码方式，单个声音信道录到的数据就足够解码，我在录音时设置了单声道的录制。相应的这里得到的声音信号显示是只有一路信号。
+<p>因为我们这里展示的是简单的调制方式，单个声音信道录到的数据就足够解码，我在录音时设置了单声道的录制。相应的这里得到的声音信号显示是只有一路信号。
 在进行具体的解码之前，我们先来看一下impulse解码的原理。由于impulse coding 使用的是impulse之间的间隔来编码数据，所以解码的时候关键在于得到每两个相邻脉冲之间的间隔，从而将其转换为对应的二进制数据。要得到脉冲之间的间隔就需要首先得到每个脉冲的起始和结束时间。又因为每个脉冲的长度是固定的，所以我们只需要知道脉冲的起始位置即可。
 借助傅里叶变换，我们可以轻易知道一段时域信号中某个频率信号的强度。通过把时域信号进行分段的傅里叶变换，每段信号中18kHz信号的强度都可以被计算出来。由于我们设计的脉冲长度是100个采样点，当我们把傅里叶变换的窗口长度设置为100时，只有窗口从脉冲起始点开始截取信号的时候才能使得整个时域窗口中都充满18kHz的声音信号。若是窗口起始点不在脉冲起始的位置，那么时域窗口中将不可避免的包含到一部分空白信号（没有声音信号，采样值接近0）。根据傅里叶变换的原理，频域上的能量强度是时域上对应频率能量的叠加。所以当窗口对齐脉冲起始位置时，傅里叶变换得到的18kHz处的能量是最高的。我们可以记录下每个时域窗口对应的18kHz的能量强度，通过寻找极大值得到每个脉冲信号的起始位置。</p>
 <p><img alt="脉冲信号和时域窗口" src="../images/4.2/winding.png" title="脉冲信号和时域窗口" />
@@ -1336,7 +1263,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 脉冲信号和时域窗口</div>
 </center></p>
-<p>接下来我们新建一个decoding.m的脚本文件进行解码操作。首先对信号进行滤波，去除掉环境中的噪音只保留信号编码所用到的18kHz的声音信号：</p>
+<p>接下来我们新建一个decoding.m的脚本文件进行解码操作。首先对信号进行滤波，去除掉环境中的噪音只保留信号调制所用到的18kHz的声音信号：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1640,16 +1567,16 @@ padding: 2px;">图. 18kHz信号强度峰值并没有出现在信号起始处</di
 </pre></div>
 </td></tr></table>
 
-<h2 id="_3">幅度编码<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>幅度编码是利用为信号设置不同的幅度来实现编码的目的。最简单的幅度编码是ON-OFF Keying (OOK)。OOK使用固定频率的信号代表“1”，没有信号代表“0”，两种码元的长度相同。下面是使用OOK编码的示意图：</p>
-<p><img alt="幅度编码" src="../images/4.2/5.png" title="" /> 
+<h2 id="_3">幅度调制<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>幅度调制是利用为信号设置不同的幅度来实现调制的目的。最简单的幅度调制是ON-OFF Keying (OOK)。OOK使用固定频率的信号代表“1”，没有信号代表“0”，两种码元的长度相同。下面是使用OOK调制的示意图：</p>
+<p><img alt="幅度调制" src="../images/4.2/5.png" title="" /> 
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. 幅度编码</div>
+padding: 2px;">图. 幅度调制</div>
 </center> </p>
-<p>幅度编码的效率提高可以通过设置不同的振幅级别来实现，使得每个码元所携带的信息更多：</p>
+<p>幅度调制的效率提高可以通过设置不同的振幅级别来实现，使得每个码元所携带的信息更多：</p>
 <p><img alt="增加振幅级别可以提高编码效率" src="../images/4.2/6.png" title="" /><br />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1657,17 +1584,17 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
 </center></p>
-<p>在幅度编码中，首先需要考虑的问题是要使的不同码元对应的幅度有足够大的区分度，否则解码时无法区分不同的幅度。另外一点需要考虑的就是信道的特性。信号所传输的信道增益是否是随时间稳定的？如果信道增益发生变化，那么就很可能使得本来幅度较高的信号在经过信道传输之后比原本幅度低的信号还弱。这就容易导致解码错误。声音信道就是一种增益比较容易变化的信道，周围反射环境的变化会使得信道增益出现明显变化。这种情况下可以通过缩短数据包的长度来折中。由于信道增益的变化依赖于多径环境的变化，我们知道多径环境不会发生突变，只会发生连续的变化。只要数据包的长度足够短，那么就可以保证在这个数据包发送的过程中，声音信道的增益的变化是比较小的。
+<p>在幅度调制中，首先需要考虑的问题是要使的不同码元对应的幅度有足够大的区分度，否则解码时无法区分不同的幅度。另外一点需要考虑的就是信道的特性。信号所传输的信道增益是否是随时间稳定的？如果信道增益发生变化，那么就很可能使得本来幅度较高的信号在经过信道传输之后比原本幅度低的信号还弱。这就容易导致解码错误。声音信道就是一种增益比较容易变化的信道，周围反射环境的变化会使得信道增益出现明显变化。这种情况下可以通过缩短数据包的长度来折中。由于信道增益的变化依赖于多径环境的变化，我们知道多径环境不会发生突变，只会发生连续的变化。只要数据包的长度足够短，那么就可以保证在这个数据包发送的过程中，声音信道的增益的变化是比较小的。
 （思考题：信号经过信道传输之后，会发生强度的衰减。当接收端接收到信号时，信号幅度的绝对值已经发生了很大的改变。如何才能保证正确解码出信号中的数据呢？）
 //（比如：每个数据包起始处先按顺序把每种码元发一遍，这样接收者就知道每种码元收到时的强度了）</p>
-<h2 id="_4">时间编码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_4">时间调制<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>？？这个到底叫啥。。
 利用一个单位编码内信号出现的时间进行数据的编码的方式。</p>
-<h2 id="_5">频率编码<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>频率编码也就是Frequency shift keying (FSK)，使用的是不同的频率或不同的频率组合来编码不同的数据。
-最简单的频率编码也可以用ON-OFF Keying (OOK)来表示，使用固定频率<span><span class="MathJax_Preview">f\not=0</span><script type="math/tex">f\not=0</script></span>的信号代表“1”，用<span><span class="MathJax_Preview">f=0</span><script type="math/tex">f=0</script></span>的信号代表“0”。
+<h2 id="_5">频率调制<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>频率调制也就是Frequency shift keying (FSK)，使用的是不同的频率或不同的频率组合来调制不同的数据。
+最简单的频率调制也可以用ON-OFF Keying (OOK)来表示，使用固定频率<span><span class="MathJax_Preview">f\not=0</span><script type="math/tex">f\not=0</script></span>的信号代表“1”，用<span><span class="MathJax_Preview">f=0</span><script type="math/tex">f=0</script></span>的信号代表“0”。
 可以设置多种不同的频率<span><span class="MathJax_Preview">F=\{f_0,f_1,f_2,....f_n\}</span><script type="math/tex">F=\{f_0,f_1,f_2,....f_n\}</script></span>来代表不同的数据，但需要使不同频率之间的额差异足够大。否则由于离散傅里叶变换的精度问题，相近的频率会很难区分。
-使用不同的频率组合进行编码可以大大提高编码的效率。当使用6种不同的频率进行单一频率编码时，最多只能产生7个码元：每个频率是一个码元，空白信号代表一个码元。</p>
+使用不同的频率组合进行调制可以大大提高编码的效率。当使用6种不同的频率进行单一频率调制时，最多只能产生7个码元：每个频率是一个码元，空白信号代表一个码元。</p>
 <table>
 <thead>
 <tr>
@@ -1694,7 +1621,7 @@ padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
 </tr>
 </tbody>
 </table>
-<p>同样是6种不同的频率，若是使用两种频率的组合进行编码，就可以产生<span><span class="MathJax_Preview">C_6^2=15+1 = 16</span><script type="math/tex">C_6^2=15+1 = 16</script></span>种码元（一个空白信号码元）。</p>
+<p>同样是6种不同的频率，若是使用两种频率的组合进行调制，就可以产生<span><span class="MathJax_Preview">C_6^2=15+1 = 16</span><script type="math/tex">C_6^2=15+1 = 16</script></span>种码元（一个空白信号码元）。</p>
 <table>
 <thead>
 <tr>
@@ -1797,41 +1724,6 @@ padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../4.1.2 傅里叶分析/" title="5.1.3 傅立叶分析" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  后退
-                </span>
-                5.1.3 傅立叶分析
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../4.2 编码方法及其声音实现-2/" title="5.2.2 相位编码、OFDM与载波调制" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  前进
-                </span>
-                5.2.2 相位编码、OFDM与载波调制
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
