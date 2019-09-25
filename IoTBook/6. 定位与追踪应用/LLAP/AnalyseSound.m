@@ -1,4 +1,5 @@
 clear; close all; clc;
+soundFile = '?.wav';
 
 Algorithm();
 
@@ -12,12 +13,6 @@ defineParameter();
 D = RemoveDCandCalculateDistance(XR, XI);
 dist = linearRegression(D);
 plot(dist);
-
-err = zeros(10, 20);
-for ii = 1 : 10
-    err(ii, :) = dist(1150 + ii * 195 : 1169 + ii * 195) - 0.01 * ii;
-end
-err = abs(err);
 
 end
 
@@ -42,7 +37,7 @@ POWER_THR = 5.5e5;
 PEAK_THR = 220;
 DC_TREND = 0.25;
 
-[sample, fs] = audioread('expr/Exp3.wav');
+[sample, fs] = audioread(soundFile);
 cut0 = fs + 1;          %cut the beginning part of original signal
 sample = sample(cut0 : end, 1)';
 dataLen = floor(length(sample) / (CIC_DEC * dataSeg));

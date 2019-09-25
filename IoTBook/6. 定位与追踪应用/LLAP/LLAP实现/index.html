@@ -78,6 +78,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="../../../../#llap-low-latency-acoustic-phase" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -280,6 +284,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3. 物联网通信协议/LoRa编码和通信实验/" title="4.3 LoRa编码和通信实验" class="md-nav__link">
+      4.3 LoRa编码和通信实验
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -310,7 +326,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="5.1 物联网基础概念" class="md-nav__link">
+    <a href="../../../4. 物联网通信基础/4.1 物联网基础概念/" title="5.1 物联网基础概念" class="md-nav__link">
       5.1 物联网基础概念
     </a>
   </li>
@@ -322,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="5.2 调制解调方法" class="md-nav__link">
+    <a href="../../../4. 物联网通信基础/4.2 调制解调方法及其声音实现/" title="5.2 调制解调方法" class="md-nav__link">
       5.2 调制解调方法
     </a>
   </li>
@@ -580,6 +596,54 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        
+          <li class="md-nav__item">
+    <a href="#llap-low-latency-acoustic-phase" title="LLAP (Low-Latency Acoustic Phase)实现" class="md-nav__link">
+    LLAP (Low-Latency Acoustic Phase)实现
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          
+            <li class="md-nav__item">
+    <a href="#_1" title="代码说明" class="md-nav__link">
+    代码说明
+  </a>
+  
+</li>
+          
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -588,8 +652,34 @@
                 
                   <h1>LLAP实现</h1>
                 
-                <p>代码基于论文Mobicom16“Device-Free Gesture Tracking Using Acoustic Signals"实现</p>
+                <h2 id="llap-low-latency-acoustic-phase">LLAP (Low-Latency Acoustic Phase)实现<a class="headerlink" href="#llap-low-latency-acoustic-phase" title="Permanent link">&para;</a></h2>
+<p>代码基于论文Mobicom16“Device-Free Gesture Tracking Using Acoustic Signals"实现</p>
 <p>参考代码：<a href="https://github.com/Samsonsjarkal/LLAP/blob/master/llap/Control/RangeFinder.cpp">https://github.com/Samsonsjarkal/LLAP/blob/master/llap/Control/RangeFinder.cpp</a></p>
+<h3 id="_1">代码说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h4 id="generatesoundm">GenerateSound.m<a class="headerlink" href="#generatesoundm" title="Permanent link">&para;</a></h4>
+<p>本程序用于生成待发送的声音信号，对声音信号的参数说明如下</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sampleFreq</span> <span class="p">=</span> <span class="mi">48000</span><span class="p">;</span>     <span class="c">%采样率，单位Hz</span>
+<span class="n">dF</span> <span class="p">=</span> <span class="mi">350</span><span class="p">;</span>               <span class="c">%相邻两个频率成分的频率差，单位Hz</span>
+<span class="n">pathN</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>             <span class="c">%频率成分数</span>
+<span class="n">baseF</span> <span class="p">=</span> <span class="mi">17000</span><span class="p">;</span>          <span class="c">%信号的最低频率，单位Hz</span>
+<span class="n">durSec</span> <span class="p">=</span> <span class="mi">300</span><span class="p">;</span>           <span class="c">%声音信号持续时间，单位s</span>
+<span class="n">A</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>                  <span class="c">%幅度</span>
+</pre></div>
+</td></tr></table>
+
+<p>生成的声音信号文件为**sample.wav**，位于与代码同级目录下。</p>
+<h4 id="analysesoundm">AnalyseSound.m<a class="headerlink" href="#analysesoundm" title="Permanent link">&para;</a></h4>
+<p>本程序实现LLAP的主要算法</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">soundFile</span> <span class="p">=</span> &quot;&quot; <span class="c">% 待分析的声音文件名</span>
+</pre></div>
+</td></tr></table>
+
+<p>程序运行结果为一张图像，描绘根据分析结果绘制的位移图像</p>
                 
                   
                 

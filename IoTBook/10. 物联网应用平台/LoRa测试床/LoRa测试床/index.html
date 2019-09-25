@@ -284,6 +284,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3. 物联网通信协议/LoRa编码和通信实验/" title="4.3 LoRa编码和通信实验" class="md-nav__link">
+      4.3 LoRa编码和通信实验
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -314,7 +326,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="5.1 物联网基础概念" class="md-nav__link">
+    <a href="../../../4. 物联网通信基础/4.1 物联网基础概念/" title="5.1 物联网基础概念" class="md-nav__link">
       5.1 物联网基础概念
     </a>
   </li>
@@ -326,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="5.2 调制解调方法" class="md-nav__link">
+    <a href="../../../4. 物联网通信基础/4.2 调制解调方法及其声音实现/" title="5.2 调制解调方法" class="md-nav__link">
       5.2 调制解调方法
     </a>
   </li>
@@ -643,8 +655,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#lora_2" title="LoRa测试床架构组成" class="md-nav__link">
-    LoRa测试床架构组成
+    <a href="#lora_2" title="LoRa测试床架构设计" class="md-nav__link">
+    LoRa测试床架构设计
   </a>
   
     <nav class="md-nav">
@@ -781,11 +793,10 @@
 <p>简单的说，测试床就是一个平台，用于对科学理论、计算工具和新技术进行严格、透明和可复制测试。</p>
 <p>在网络研究领域里，许多网络性能和指标的测量就需要实际的大规模的实验部署，这时候，测试床的重要性就显现出来了。网络研究发展到现在，涌现出了许多经典的测试床系统，比如用于WSN(wireless sensor network)的<a href="https://syrah.eecs.harvard.edu/files/syrah/files/motelab-spots05.pdf">MoteLab</a>，<a href="https://gitlab.ethz.ch/tec/public/flocklab/wikis/home">FlockLab</a>和<a href="https://web.archive.org/web/20070912105942/http://pdos.csail.mit.edu:80/roofnet/doku.php">INDRIYA2</a>, 用于802.11b/g的<a href="https://web.archive.org/web/20070912105942/http://pdos.csail.mit.edu:80/roofnet/doku.php">Roofnet</a>等等。相关的论文在引用[2]-[4]。</p>
 <p>在这个章节里，我们将介绍我们所搭建的LoRa测试床系统。LoRa是一种低功耗广域网通信技术，即通信距离远且功耗低，做这样的一套测试床系统，既有与之前的测试床系统类似的地方，也有其特有的不同特性，我们的设计考虑到了这些。</p>
-<p>与我们这套测试床系统类似的有<a href="https://users.ece.cmu.edu/~agr/resources/publications/openchirp-smart-edge-17.pdf">OpenChirp</a>以及阿里的AliOS Things里的<a href="https://lora.aliosthings.io">lora平台</a>(可能访问不了)。</p>
+<p>与我们这套测试床系统类似的有<a href="https://users.ece.cmu.edu/~agr/resources/publications/openchirp-smart-edge-17.pdf">OpenChirp</a>以及阿里的AliOS Things里的<a href="https://lora.aliosthings.io">lora平台</a>。</p>
 <h2 id="lora_1">LoRa测试床概述和功能<a class="headerlink" href="#lora_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>LoRa测试床搭建的初衷是方便快捷的对LoRa设备进行操作和实验。
-由于LoRa长距离通信的特点，我们不能仅让测试床限制在某一个地方，而是应该让其具有广域通信的能力。因此我们设计了使用树莓派控制LoRa节点的方案，这样的系统具有可移动的特性，可以方便的移动到任何有网络的地方进行实验。在不断的探索中，我们还开发了一套LoRa自主更新的系统，即除了使用LoRa进行通信，我们还利用其本身的信号进行控制更新程序，从而到达实现远程更新的目的，进一步摆脱了电力和网络的限制。关于两种设计方案，我们会在下面的章节进行详细的说明。</p>
+<p>通常情况下，开发和部署Iot设备的花销非常大.LoRa测试床搭建的初衷是方便快捷的对LoRa设备进行操作和实验。由于LoRa长距离通信的特点，我们不能仅让测试床限制在某一个地方，而是应该让其具有广域通信的能力。为了测试LoRa节点的不同协议，我们需要更新这些节点的程序。现有的LoRa网络具有非常低的数据速率，并且不能支持无线重新编程。因此我们设计了使用树莓派控制LoRa节点的方案，这样的系统具有可移动的特性，可以方便的移动到任何有网络的地方进行实验。在不断的探索中，我们还开发了一套LoRa自主更新的系统，即除了使用LoRa进行通信，我们还利用其本身的信号进行控制更新程序，从而到达实现远程更新的目的，进一步摆脱了电力和网络的限制。关于两种设计方案，我们会在下面的章节进行详细的说明。</p>
 <h3 id="_3">实现功能<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>烧录新程序</li>
@@ -795,8 +806,8 @@
 <li>实时采集数据，并可视化</li>
 <li>数据导出，下载</li>
 </ul>
-<p>下面我们将从LoRa测试床架构组成，部署情况，使用指南和技术实现四个方面进行叙述。</p>
-<h2 id="lora_2">LoRa测试床架构组成<a class="headerlink" href="#lora_2" title="Permanent link">&para;</a></h2>
+<p>下面我们将从LoRa测试床架构设计，部署情况，使用指南和技术实现四个方面进行叙述。</p>
+<h2 id="lora_2">LoRa测试床架构设计<a class="headerlink" href="#lora_2" title="Permanent link">&para;</a></h2>
 <p>LoRa测试床的总结架构设计如下图所示</p>
 <p><img alt="测试床设计架构" src="../fig/architecture-testbed.png" />
 <center>
@@ -807,7 +818,9 @@ padding: 2px;">图. 测试床设计架构</div>
 </center></p>
 <p>容易看出，测试床平台由三部分组成：</p>
 <ol>
-<li>LoRa组件搭建的LoRa服务，包括节点，网关和服务器，运行的协议为LoRa相关的协议。为了与TCP/IP网络区分开，这里特定使用了蓝色的箭头表示通信流程。</li>
+<li>
+<p>LoRa组件搭建的LoRa服务，包括节点，网关和服务器，运行的协议为LoRa相关的协议。为了与TCP/IP网络区分开，这里特定使用了蓝色的箭头表示通信流程。不同的LoRa节点部署在校园的不同位置。我们还在校园内部署了几个网关。因此，那些LoRa节点可以形成LoRa网络，因此我们可以在网络上进行实验。同时，每个LoRa节点连接到基于树莓派的边缘节点。所有Raspberry Pi边缘节点都通过带外通信（如蜂窝网络）连接到中央服务器。因此，中央服务器可以向基于树莓派的边缘节点发送命令以控制每个节点。中央服务器还可以从边缘节点收集数据。应该注意的是，控制和数据收集与LoRa网络性能本身分离。因此，即使LoRa网络遇到一些问题，我们仍然可以控制网络并收集数据进行诊断。</p>
+</li>
 <li>
 <p>控制平台。这里设计了两套控制方案，分别应对不同的应用场景。</p>
 <p>首先由架构图可以看到第一套方案是我们设计的控制网络，位于图中的左下方，中心服务器接收来自Web服务器的指令，然后将指令传给树莓派系统。由于树莓派系统与LoRa节点是用USB接口连接，故而树莓派系统可以将命令进一步传给LoRa的节点，这样就达到了控制节点的目的。值得一提的是在实际实现中，控制命令是通过内网进行操控，从而更加安全可靠。这种方案需要给树莓派系统供电供网，通常用于室内。</p>
@@ -897,11 +910,16 @@ padding: 2px;">图. 测试床设计架构</div>
 </div>
 
 <h2 id="lora_4">LoRa测试床部署情况<a class="headerlink" href="#lora_4" title="Permanent link">&para;</a></h2>
+<p>所有的设备都被部署在北京市海淀区清华大学校内。</p>
 <h3 id="_9">网关<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>截至2019年7月23日，我们一共部署了3个网关，均为网关1类型，如下图中的网关部署情况。
 <center><img src="..\fig\gateway_deployment.png" alt="网关部署情况" height="300" /></center></p>
-<p>从上往下，依次为网关2，网关1和网关3，离地高度分别为36米， 18米和 12米。</p>
+<p>从上往下，依次为网关2，网关1和网关3，离地高度分别为36米， 18米和 12米。
+其中主要网关，网关2被部署在清华大学东配楼软件学院楼顶。软件学院一共有4层，高度满足大多数测量要求。</p>
+<p>这些网关都运行在CN470频段，两个网关都是由运行最新版本的Raspberry PI 3 Model B的Raspbian操作系统，直接购买的商用网关(工业级). 2个网关都配有增益为3db的天线。</p>
 <h3 id="_10">节点<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>所有终端节点均配备3 dBi的外置天线获得。 收发器的输出功率设置为23 dBm。
+由于某些测试位置位于信号较差的区域。 SF一般设为7或者12，7拥有最大的速率，12则拥有最大的距离，带宽设置为125KHz信道。</p>
 <p>节点的部署情况分为室外和室内两种，我们分别叫做室外测试床和室内测试床。</p>
 <ul>
 <li>室外测试床。我们计划是部署50个节点左右，包括静止的节点和移动的节点，对于移动的节点，我们采取的方法是将其绑在自行车上，室外测试床系统目前正在测试和部署中。
@@ -971,6 +989,7 @@ padding: 2px;">图. 测试床设计架构</div>
 <ol>
 <li>
 <p>首先是实现节点的应用程序，我们之前介绍了我们的两款节点硬件组成和组装情况。我们采用的参考代码在<a href="https://github.com/Lora-net/LoRaMac-node">这里</a>。使用git clone命令下载到本地仓库，这里的代码使用的是VS code平台。</p>
+<p>首先应该先配置环境，分别需要配置Cmake, GNU ARM-Toolchain以及OpenOCD,相应的配置要求在<a href="https://github.com/Lora-net/LoRaMac-node/blob/develop/Doc/development-environment.md">这里</a>。</p>
 <p>为了使代码适用于我们自己的硬件，需要对代码进行修改移植，修改的地方主要是与硬件相关的地方。首先在boards文件夹下新建一块适用于自己硬件的板子，可以随意起名，我们这里名Handsome，具体文件组织和所需文件如下图所示。硬件的修改主要为MCU和Radio两部分，上述代码提供了很多相似的硬件代码，我们可以copy相应的代码。注意的是board-config.h为自己的硬件对应的引脚。
 <div align="center">
 <div style="width:300px; height:auto; float:left; display:inline; margin-right:5px">
@@ -984,17 +1003,136 @@ padding: 2px;">图. 测试床设计架构</div>
 </div></p>
 </li>
 </ol>
-<p>修改得到了自己的板子，然后就可以在app下面新建自己的板子对应的应用，如上右图。调试的方法可以先调通串口打印相关的代码，然后用串口进行调试。还需要注意的是要让这个程序运行起来，需要修改相应的CMakeLists.txt文件，它控制着代码的编译生成。修改方法是，找到修改目录下对应的CMakeLists.txt文件(若没有，需要自己生成)，修改的地方可以参考这个文件的编写，比如新增了Borads下名为Handsome的板子，就需要在Handsome下新建一个CMakeLists.txt，这个文件的编写，可以参考其他板子下的CMakeLists.txt文件。同时在外层的CMakeLists.txt里要新增这个板子，这个也可以参考其他板子，比如搜索一下板子LoRaMote的使用地方，然后仿照添加进去。</p>
-<p><mark>注：不同的操作平台还需要配置相应的环境。</mark></p>
+<p>修改得到了自己的板子，然后就可以在app下面新建自己的板子对应的应用，如上右图。调试的方法可以先调通串口打印相关的代码，然后用串口进行调试。还需要注意的是要让这个程序运行起来，需要修改相应的CMakeLists.txt文件，它控制着代码的编译生成。修改方法是，找到修改目录下对应的CMakeLists.txt文件(若没有，需要自己生成)，修改的地方可以参考这个文件的编写，比如新增了Borads下名为Handsome的板子，就需要在Handsome下新建一个CMakeLists.txt，这个文件的编写，可以参考其他板子下的CMakeLists.txt文件。同时在外层的CMakeLists.txt里要新增这个板子，这个也可以参考其他板子，比 如搜索一下板子LoRaMote的使用地方，然后仿照添加进去。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>烧写，这里以linux系统为例
+&lt;ol&gt;
+&lt;li&gt;安装烧写程序&lt;/li&gt;
+下载官方提供并经过修改的STM32烧写程序 http://download.thulpwan.top/stm32flash.zip ，解压并编译安装 &lt;code&gt;make &amp;&amp; make install&lt;/code&gt; ，安装成功后应可以执行 &lt;code&gt;stm32flash -h&lt;/code&gt;。
+&lt;li&gt;烧写bin&lt;/li&gt;
+如下载 http://download.thulpwan.top/abp01-sf12-4863-classA.bin ，将其烧写入节点：
+&lt;pre&gt;stm32flash -w abp01-sf12-4863-classA.bin -v -g 0 /dev/tty.SLAB_USBtoUART&lt;/pre&gt;
+其中 &lt;code&gt;/dev/tty.SLAB_USBtoUART&lt;/code&gt; 为Mac上显示的串口设备，在Linux通常类似 &lt;code&gt;/dev/ttyUSB0&lt;/code&gt; 。
+&lt;/ol&gt;
+</pre></div>
+</td></tr></table>
+
+<!--<mark>注：不同的操作平台还需要配置相应的环境。</mark>-->
+
 <ol>
 <li>
 <p>网关服务的搭建。购买的网关通常自带了相关的LoRaWAN代码，我们可以直接使用。当然我们也可以自己搭建网关服务，网关的代码一般包含网关硬件控制相关的代码LoRa_gateway和通信代码packet_forwarder。我们参考代码分别为<a href="https://github.com/Lora-net/lora_gateway">LoRa_gateway</a>和<a href="https://github.com/Lora-net/packet_forwarder">packet_forwarder</a>。</p>
 <p>依然是先git clone下来，然后再分别对连部分代码进行编译生成，这之后会在lora_geteway目录下生成./reset_lgw.sh文件，在packet_forwarder/lora_pkt_fwd目录下面生成lora_pkt_fwd可执行文件。然后需要依次执行./reset_lgw.sh start，./lora_pkt_fwd，即可将网关运行起来。</p>
-<p>需要注意packet_forwarder/lora_pkt_fwd目录下的global_conf.json和local_conf.json两个文件，这是用来配置网关的，其中一个主要目的是使服务器能够找到网关，具体配置这里也不详述了。</p>
+<p>需要注意packet_forwarder/lora_pkt_fwd目录下的global_conf.json和local_conf.json两个文件，这是用来配置网关的，其中一个主要目的是使服务器能够找到网关，global_conf是全局对于网关接收到的频率频段进行设置，local_conf.json主要设置云服务器的server.
+CN470频段设置如下：</p>
+<table>
+<thead>
+<tr>
+<th>Channel Group</th>
+<th>Channel</th>
+<th>Start Freq(MHz)</th>
+<th>End Freq(MHz)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0-7</td>
+<td>470.3</td>
+<td>471.7</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8-15</td>
+<td>471.9</td>
+<td>473.3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>16-23</td>
+<td>473.5</td>
+<td>474.9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>24-31</td>
+<td>475.1</td>
+<td>476.5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>32-39</td>
+<td>476.7</td>
+<td>478.1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>40-47</td>
+<td>478.3</td>
+<td>479.7</td>
+</tr>
+<tr>
+<td>6</td>
+<td>48-55</td>
+<td>479.9</td>
+<td>481.3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>56-63</td>
+<td>481.5</td>
+<td>482.9</td>
+</tr>
+<tr>
+<td>8</td>
+<td>64-71</td>
+<td>483.1</td>
+<td>484.5</td>
+</tr>
+<tr>
+<td>9</td>
+<td>72-79</td>
+<td>484.7</td>
+<td>486.1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>80-87</td>
+<td>486.3</td>
+<td>487.7</td>
+</tr>
+<tr>
+<td>11</td>
+<td>88-95</td>
+<td>487.9</td>
+<td>489.3</td>
+</tr>
+<tr>
+<td>ChannelsMask字节<span style="color:red">从左到右</span>代表的Channel频率<span style="color:red">逐渐降低</span>，如：最后一个ChannelsMask若为<span style="color:red">0x00FF</span>则代表使用Channel Group <span style="color:red">10</span>，<span style="color:red">0xFF00</span>代表使用Channel Group <span style="color:red">11</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><mark>注：网关通常需要反复运行多次才可以成功启动。</mark></p>
 </li>
 <li>
-<p>搭建LoRa服务器。LoRa服务器的搭建有比较详细的教程，见<a href="https://www.loraserver.io/">这里</a>。</p>
+<p>搭建LoRa服务器。LoRa服务器的搭建有比较详细的教程，见<a href="https://www.loraserver.io/">这里</a>。
+    LoRa服务器分为三个部分, LoRa gateway bridge, LoRa server 和 LoRa app server.
+    这里可以使用我们实验室自己搭建的loraserver, 地址为 <a href="https://loraserver.thulpwan.top/">https://loraserver.thulpwan.top/</a></p>
+<p>可以直接注册一个账户并登陆，首先创建自己的application，其中name和description自己随意填，service-profile随意选，payload codec留空即可。点击提交完成。</p>
+<p>然后点击创建节点。name和description自己随意填，device eui需要唯一且与自己节点端代码一致。device-profile选择test-abp即可。选中disable frame-counter validation，提交即完成.</p>
+<p>之后填写节点配置信息。可以选择generate也可以自己手写，最好保持唯一性。而且这些值应该同节点代码中保持一致。简单起见，可以使后四个key取相同值。</p>
+<p>运行节点，网关和服务器，不出意外，网关和服务器端均能收到abp配置的节点消息。</p>
+<p>为了测试是否能够收到包，进入loraserver主界面，随便点一个app，在上面的第三行有一个integration。 点击创建INTEGRATION，选择kind为HTTP integration，四种URL可以填一样的，也可以填不一样的进行区分，ip或者域名为你创建的应用。提交即可在应用里收到上行数据。</p>
 </li>
 </ol>
 <h2 id="_11">控制平台搭建<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
@@ -1057,13 +1195,47 @@ Mybatis：MyBatis是一个基于Java的持久层框架。MyBatis 消除了几乎
   当flash空间充足时，我们可以在不覆盖旧程序的情况下合成出新程序，但当flash空间比较有限时，必须注意不能够覆盖掉需要在之后拷贝的数据。同时，由于flash具有按页擦除的机制，我们希望找到一个程序页面的更新顺序，当按照这个顺序进行更新时不会覆盖需要被拷贝的数据。为此，我们分析编辑脚本中的所有COPY指令并构建出一个表示页面间数据依赖的有向图。当该图无环时，我们必定可以找到期望的页面序列，而当该图有环时，我们保存环路上的一个页面到内存或闪存中以打破环路。在具体实现的算法中，我们每次寻找被拷贝数最少的页面并进行更新。如果该页面被其他页面拷贝了数据，则在更新前保存该页面。在该页面更新后，删除图中对应的边并进行下一轮搜索。
   使用这样乱序对页面进行更新的方式，我们便不需要同时在闪存中储存两个程序，对于闪存空间的需求大大减少；同时因为不必再将新程序在移动到原来的位置，闪存擦写的次数和能量消耗也得到减少。</p>
 </li>
+<li>
+<p>微服务</p>
+</li>
 </ul>
+<p>由于LoRaWAN网络的架构，不同实体的轻量级功能可以被部署为微服务。随着集装箱化的成功技术，如Docker [15]，微服务可以被认为是容器，导致非常快启动并可以轻松部署。 
+  为了实现一个LoRaWAN网络在紧急情况下支持自动恢复如地震，火灾，飓风或任何其他情况
+  那可能会破坏部分核心网络基础设施,微服务编排平台的使用可能适合这些.其在CPU，内存的使用效率也会更高</p>
+<ul>
+<li>地理定位服务</li>
+</ul>
+<p>基于现有LoRa组件可以提供TDOA定位所需要的所有设备要求，根据LoRa包达到不同LoRa网关时间的不同，可以依次计算达到距离差，从而根据至少3个网关的2条双曲线交点从而计算出待定点。现有的技术可以达到20-200m的精度。</p>
+<p>具体来说，在乡村和空旷的地段，地理定位服务将提供最大的精度，而在城市和密集环境下会有的多径问题。精度将会随着网关数量的上升而上升。</p>
+<p>在提供定位时，由于终端节点不确定的位置，定位功能为节点带来了额外的功耗开销，所以将会消耗更多的电力。所以通常固定位置的节点使用classA模式，而需要地理定位的节 点被实现为classB或者classC模式。</p>
 <h1 id="_12">参考文献<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h1>
 <ul>
 <li>[1] <a href="https://en.wikipedia.org/wiki/Testbed">https://en.wikipedia.org/wiki/Testbed</a></li>
 <li>[2] Werner-Allen, Geoffrey, Patrick Swieskowski, and Matt Welsh. "Motelab: A wireless sensor network testbed." Proceedings of the 4<sup>th</sup> international symposium on Information processing in sensor networks. IEEE Press, 2005.</li>
 <li>[3] Aguayo, Daniel, et al. "Link-level measurements from an 802.11 b mesh network." ACM SIGCOMM Computer Communication Review. Vol. 34. No. 4. ACM, 2004.</li>
 <li>[4] Doddavenkatappa, Manjunath, Mun Choon Chan, and Akkihebbal L. Ananda. "Indriya: A low-cost, 3D wireless sensor network testbed." International conference on testbeds and research infrastructures. Springer, Berlin, Heidelberg, 2011.</li>
+<li>[5] Yousuf, Asif M., Edward M. Rochester, and Majid Ghaderi. "A low-cost LoRaWAN testbed for IoT: Implementation and measurements." 2018 IEEE 4<sup>th</sup> World Forum on Internet of Things (WF-IoT). IEEE, 2018.</li>
+<li>[6] Navarro-Ortiz, Jorge, et al. "A LoRaWAN testbed design for supporting critical situations: prototype and evaluation." Wireless Communications and Mobile Computing 2019 (2019).</li>
+<li>[7] Trüb, Roman, et al. "Demo Abstract: A Testbed for Long-Range LoRa Communication." 2019 18<sup>th</sup> ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN). IEEE, 2019.</li>
+<li>[8] Marais, Jaco M., Reza Malekian, and Adnan M. Abu-Mahfouz. "LoRa and LoRaWAN testbeds: A review." 2017 Ieee Africon. IEEE, 2017.</li>
+<li>[9] Bankov, Dmitry, Evgeny Khorov, and Andrey Lyakhov. "On the limits of LoRaWAN channel access." 2016 International Conference on Engineering and Telecommunication (EnT). IEEE, 2016.</li>
+<li>[10] Petajajarvi, Juha, et al. "On the coverage of LPWANs: range evaluation and channel attenuation model for LoRa technology." 2015 14<sup>th</sup> International Conference on ITS Telecommunications (ITST). IEEE, 2015.</li>
+<li>[11] Cenedese, Angelo, et al. "Padova smart city: An urban internet of things experimentation." Proceeding of IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks 2014. IEEE, 2014.</li>
+<li>[12] Wendt, Thomas, Franziska Volk, and Elke Mackensen. "A benchmark survey of long range (LoRaTM) spread-spectrum-communication at 2.45 GHz for safety applications." 2015 IEEE 16<sup>th</sup> Annual Wireless and Microwave Technology Conference (WAMICON). IEEE, 2015.</li>
+<li>[13] Radcliffe, Peter J., et al. "Usability of LoRaWAN technology in a central business district." 2017 IEEE 85<sup>th</sup> Vehicular Technology Conference (VTC Spring). IEEE, 2017.</li>
+<li>[14] P. Neumann, J. Montavont, , and T. Nol, “Indoor deployment of lowpower
+wide area networks (LPWAN): A LoRaWAN case study,” in Proc.
+IEEE Wireless and Mobile Computing, Networking and Communications,2016.</li>
+<li>[15] Q. Zhou, K. Zheng, L. Hou, J. Xing, and R. Xu, “X-LoRa: An Open Source LPWA Network,” <a href="http://arxiv.org/abs/1812.09012">http://arxiv.org/abs/1812.09012</a>, 2019.</li>
+<li>[16] HELPER: Heterogeneous Efficient Low Power Radio for Enabling Ad Hoc Emergency Public Safety Networks.</li>
+<li>[17] Roman Lim, Federico Ferrari, Marco Zimmerling, Christoph Walser, Philipp
+Sommer, and Jan Beutel. 2013. FlockLab: a testbed for distributed, synchronized
+tracing and profiling of wireless embedded systems. In Proceedings of the 12<sup>th</sup>
+international conference on Information processing in sensor networks. ACM, 153–166.</li>
+<li>[18] Anne-Sophie Tonneau, Nathalie Mitton, and Julien Vandaele. 2014. A survey
+on (mobile) wireless sensor network experimentation testbeds. In International
+Conference on Distributed Computing in Sensor Systems (DCOSS). IEEE, 263–268.</li>
+<li>[19] Fargas, Bernat Carbonés, and Martin Nordal Petersen. "GPS-free geolocation using LoRa in low-power WANs." 2017 global internet of things summit (Giots). IEEE, 2017.</li>
 </ul>
                 
                   

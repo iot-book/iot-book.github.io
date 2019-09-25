@@ -284,6 +284,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/LoRa编码和通信实验/" title="4.3 LoRa编码和通信实验" class="md-nav__link">
+      4.3 LoRa编码和通信实验
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -314,7 +326,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="5.1 物联网基础概念" class="md-nav__link">
+    <a href="../4.1 物联网基础概念/" title="5.1 物联网基础概念" class="md-nav__link">
       5.1 物联网基础概念
     </a>
   </li>
@@ -326,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="5.2 调制解调方法" class="md-nav__link">
+    <a href="../4.2 调制解调方法及其声音实现/" title="5.2 调制解调方法" class="md-nav__link">
       5.2 调制解调方法
     </a>
   </li>
@@ -653,7 +665,9 @@ $$
 </pre></div>
 </td></tr></table>
 
-<p><img alt="" src="../images/4.2/cpt_snr.pdf" /></p>
+<p><img alt="" src="./images/4.2/cpt_snr.pdf" /></p>
+<p>思考：你知道<code>mean(abs(wgn(1e6, 1, 5, 50, 'dBm', 'complex')))</code>的数学期望是什么吗？</p>
+<p>答案：<span><span class="MathJax_Preview">\sqrt{\frac{\pi}{2}\cdot 10^{0.1\cdot (5-30)}\cdot 50\cdot \frac{1}{2}}</span><script type="math/tex">\sqrt{\frac{\pi}{2}\cdot 10^{0.1\cdot (5-30)}\cdot 50\cdot \frac{1}{2}}</script></span>，你可能需要了解所涉及的matlab函数的功能以及瑞利分布。</p>
 <h1 id="_4">傅里叶变换<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
 <p>傅里叶（Fourier，1768～1830）年轻时是一个很出色的数学学者，但他专致于当一个军官。因为他是一个裁缝的儿子而被拒绝任命，他便转谋教士职位。当他曾经就读的军事学校委之以教授职位时他便接受了，同时数学就变成了他终生的爱好。像他同时代的其他科学家一样，傅里叶从事热流动的研究，作为实际问题，在工业上是为了处理金属，作为科学问题，是企图确定地球内部的温度。1822年，傅里叶发表了数学的经典文献之一，《热的解析理论》。在这本书中，他在分离变量法求解热传导方程的过程中发现初始条件的函数可以表示为三角级数。他有些不严谨又富于创造性地断言任意周期函数都可以展开为三角级数，更进一步的，他指出非周期函数的表示——不是成谐波关系的三角函数的加权和，而是不全成谐波关系的三角函数的加权积分，即傅里叶变换（在数学物理方程中，傅里叶变换也是用于求解热传导方程的经典方法）。 </p>
 <p>尽管傅里叶发明傅里叶级数和傅里叶变化的初衷是为了求解微分方程，但这一方法在信号分析中被广为使用。</p>
@@ -685,8 +699,9 @@ x[n]=\frac{1}{N} \sum_{k=0}^{N-1} e^{i \frac{2 \pi}{N} n k} \hat{x}[k] \quad n=0
 $$
 实际上，DFT和IDFT变换式中和式前面的归一化系数并不重要。在上面的定义中，DFT和IDFT前的系数分别为1和<span><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>，有时会将这两个系数都改成<span><span class="MathJax_Preview">\frac{1}{\sqrt{N}}</span><script type="math/tex">\frac{1}{\sqrt{N}}</script></span>。</p>
 <p>DFT虽然可以计算有限时间内的频谱，但它的计算复杂度是<span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>的，计算量过大，限制了在实际中的应用。下面我们介绍的FFT算法可以把DFT的计算复杂度降为<span><span class="MathJax_Preview">O(n\log n)</span><script type="math/tex">O(n\log n)</script></span>，从而将傅里叶变换推往实用。</p>
+<p>思考：提高采样率能提高频域分辨率吗？</p>
 <h3 id="fft">快速傅里叶变换（FFT）<a class="headerlink" href="#fft" title="Permanent link">&para;</a></h3>
-<p>在20世纪60年代中期，一种称之为快速傅里叶变换（Fast Fourier Transform, FFT）的算法被引入，它是快速计算序列的离散傅里叶变换（DFT）或其逆变换的方法。这一算法在1965年被库利（Cooley）和图基（Tukey）独立地发现，其实它也有相当长的历史。事实上，这一算法在高斯的手稿中已能找到。之所以使得它成为重要的近代发现是由于FFT被证明是非常适合于高效的数字实现，并且它将计算变换所需要的时间减少了几个数量级。有了这一算法，在利用离散时间傅里叶级数和变换中许多有趣而过去认为不切实际的想法突然变得实际起来，并且使离散时间信号于系统分析技术的发展加速向前迈进。</p>
+<p>在20世纪60年代中期，一种称之为快速傅里叶变换（Fast Fourier Transform, FFT）的算法被引入，它是快速计算序列的离散傅里叶变换（DFT）或其逆变换的方法。这一算法在1965年被库利（Cooley）和图基（Tukey）独立地发现，其实它也有相当长的历史。事实上，这一算法在高斯的手稿中已能找到。之所以使得它成为重要的近代发现是由于FFT被证明是非常适合于高效的数字实现，并且它将计算变换所需要的时间减少了几个数量级。有了这一算法，在利用离散时间傅里叶级数和变换中许多有趣而过去认为不切实际的想法突然变得实际起来，并且使离散时间信号与系统分析技术的发展加速向前迈进。</p>
 <p>傅里叶分析将信号从原始域（通常是时间或空间）转换到频域的表示或者逆过来转换。FFT会通过把DFT矩阵分解为稀疏（大多为零）因子之积来快速计算此类变换。因此，它能够将计算DFT的复杂度从只用DFT定义计算需要的 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，降低到 <span><span class="MathJax_Preview">O(n\log n)</span><script type="math/tex">O(n\log n)</script></span>，其中 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 为数据大小。</p>
 <p>快速傅里叶变换广泛的应用于工程、科学和数学领域。这里的基本思想在1965年才得到普及，但早在1805年就已推导出来。1994年美国数学家吉尔伯特·斯特朗把FFT描述为“我们一生中最重要的数值算法”，它还被IEEE科学与工程计算期刊列入20世纪十大算法。</p>
 <h4 id="fft_1">FFT的一个应用：大数乘法<a class="headerlink" href="#fft_1" title="Permanent link">&para;</a></h4>
@@ -758,7 +773,7 @@ $$
 </pre></div>
 </td></tr></table>
 
-<p><img alt="" src="../images/4.2/cpt_filter.pdf" /></p>
+<p><img alt="" src="./images/4.2/cpt_filter.pdf" /></p>
 <p><strong>因为物联网的主要通信技术为无线通信，下面介绍一些无线通信相关的基础观念。</strong></p>
 <h1 id="_9">多径效应<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
 <p>由于电磁信号所处环境的不同，传播过程中出现折射、反射、漫射、衍射等等现象，在接收端收到了来自多条路径的信号，分为视距路径（Line of Sight）和非视距路径（Not Line of Sight）。多径效应对无线系统有很大影响，常用的解决技术有时域均衡、正交频分复用（OFDM）、Rake接收机、分集接收技术等。</p>

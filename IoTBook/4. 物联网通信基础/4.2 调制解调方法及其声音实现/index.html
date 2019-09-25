@@ -40,7 +40,7 @@
     
     
       
-        <title>调制解调方法及其声音实现 - IoT Book</title>
+        <title>5.2 调制解调方法 - IoT Book</title>
       
     
     
@@ -104,7 +104,7 @@
                 IoT Book
               </span>
               <span class="md-header-nav__topic">
-                调制解调方法及其声音实现
+                5.2 调制解调方法
               </span>
             
           
@@ -284,6 +284,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/LoRa编码和通信实验/" title="4.3 LoRa编码和通信实验" class="md-nav__link">
+      4.3 LoRa编码和通信实验
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -293,10 +305,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       五. 物联网通信基础
@@ -314,7 +328,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="5.1 物联网基础概念" class="md-nav__link">
+    <a href="../4.1 物联网基础概念/" title="5.1 物联网基础概念" class="md-nav__link">
       5.1 物联网基础概念
     </a>
   </li>
@@ -324,11 +338,113 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../404/" title="5.2 调制解调方法" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        5.2 调制解调方法
+      </label>
+    
+    <a href="./" title="5.2 调制解调方法" class="md-nav__link md-nav__link--active">
       5.2 调制解调方法
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        
+          <li class="md-nav__item">
+    <a href="#1" title="1. 脉冲调制" class="md-nav__link">
+    1. 脉冲调制
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#2" title="2. 幅度调制" class="md-nav__link">
+    2. 幅度调制
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#3" title="3. 频率调制" class="md-nav__link">
+    3. 频率调制
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#4" title="4. 相位调制" class="md-nav__link">
+    4. 相位调制
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          
+            <li class="md-nav__item">
+    <a href="#41-bpsk" title="4.1 BPSK" class="md-nav__link">
+    4.1 BPSK
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#42-qpsk" title="4.2 QPSK" class="md-nav__link">
+    4.2 QPSK
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#43-oqpsk" title="4.3 OQPSK" class="md-nav__link">
+    4.3 OQPSK
+  </a>
+  
+</li>
+          
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -601,8 +717,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#_2" title="脉冲调制" class="md-nav__link">
-    脉冲调制
+    <a href="#1" title="1. 脉冲调制" class="md-nav__link">
+    1. 脉冲调制
   </a>
   
 </li>
@@ -610,8 +726,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#_3" title="幅度调制" class="md-nav__link">
-    幅度调制
+    <a href="#2" title="2. 幅度调制" class="md-nav__link">
+    2. 幅度调制
   </a>
   
 </li>
@@ -619,8 +735,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#_4" title="时间调制" class="md-nav__link">
-    时间调制
+    <a href="#3" title="3. 频率调制" class="md-nav__link">
+    3. 频率调制
   </a>
   
 </li>
@@ -628,9 +744,42 @@
       
         
           <li class="md-nav__item">
-    <a href="#_5" title="频率调制" class="md-nav__link">
-    频率调制
+    <a href="#4" title="4. 相位调制" class="md-nav__link">
+    4. 相位调制
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          
+            <li class="md-nav__item">
+    <a href="#41-bpsk" title="4.1 BPSK" class="md-nav__link">
+    4.1 BPSK
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#42-qpsk" title="4.2 QPSK" class="md-nav__link">
+    4.2 QPSK
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#43-oqpsk" title="4.3 OQPSK" class="md-nav__link">
+    4.3 OQPSK
+  </a>
+  
+</li>
+          
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -653,10 +802,10 @@
                 
                 
                 <h1 id="_1">调制解调方法及其声音实现<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>在本章节中，我们将介绍几种常用的调制解调方法，并将这几种调制解调方法实现到声音通信上，实现对声音信号的解码。</p>
-<h2 id="_2">脉冲调制<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>我们将在本章介绍几种常用的调制解调方法，并将这几种调制解调方法实现到声音通信上，实现对声音信号的解码。</p>
+<h2 id="1">1. 脉冲调制<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>脉冲调制是利用相邻两个脉冲信号之间的时间间隔来编码数据。可以指定长度的间隔代表特定的二进制串。最简单的脉冲调制是使用一长一短两种间隔，分别代表“0”和“1”。在解码时只需要识别出每个脉冲信号的起始位置，就可以得到不同脉冲之间的间隔，从而可以根据每个间隔的长短将其解码为“0”或“1”。</p>
-<p><img alt="脉冲调制原理" src="../images/4.2/1.png" title="脉冲调制原理" />
+<p><img alt="脉冲调制原理" src="../res/基础概念/1.png" title="脉冲调制原理" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -665,7 +814,7 @@ padding: 2px;">图. 脉冲调制原理</div>
 </center> </p>
 <p>脉冲调制由于使用简单的对应规则将“0”和“1”编码为不同长度的间隔，在解码时可以简单的根据信号幅度得到每个脉冲的起始位置来获得间隔的长短，这种编解码方法的优点是计算开销非常小。</p>
 <p>脉冲调制的缺点是编码效率低，每个脉冲之间需要有足够的距离来防止多径效应造成的回声影响到下一个脉冲的判断。想要提高脉冲调制的数据速率，可以从两个方面来考虑。第一个方面是可以缩短编码长度，不仅可以在保证解码正确率的条件下尽可能缩短脉冲之间用于编码数据的时间间隔，还可以通过缩短脉冲信号的持续时间来使得同样时间下传输更多的数据。</p>
-<p><img alt="缩短脉冲间隔可以提高编码效率" src="../images/4.2/2.png" title="缩短脉冲间隔可以提高编码效率" /><br />
+<p><img alt="缩短脉冲间隔可以提高编码效率" src="../res/基础概念/2.png" title="缩短脉冲间隔可以提高编码效率" /><br />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -673,7 +822,7 @@ color: #999;
 padding: 2px;">图. 缩短脉冲间隔可以提高编码效率</div>
 </center></p>
 <p>第二个方面，可以通过设置多种编码长度，使一个编码位携带更多的信息。如下图中所示，设置2种编码长度时，每个编码位携带1bit信息；设置4中编码长度时，每个编码位携带2bit信息；设置8种编码长度时，每个编码位携带3bit信息。</p>
-<p><img alt="设置多种编码长度" src="../images/4.2/3.png" title="设置多种编码长度" />
+<p><img alt="设置多种编码长度" src="../res/基础概念/3.png" title="设置多种编码长度" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -852,7 +1001,7 @@ padding: 2px;">图. 设置多种编码长度</div>
 </td></tr></table>
 
 <p>最终生成的输出信号时域信号如图所示，横轴代表采样点的序号，纵轴代表幅度：</p>
-<p><img alt="编码生成的时域信号" src="../images/4.2/4.png" title="编码生成的时域信号" /><br />
+<p><img alt="编码生成的时域信号" src="../res/基础概念/4.png" title="编码生成的时域信号" /><br />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -874,7 +1023,7 @@ padding: 2px;">图. 编码生成的时域信号</div>
 </td></tr></table>
 
 <p>展示的结果如下图所示：</p>
-<p><img alt="接收到的声音信号" src="../images/4.2/receive_data.png" title="接收到的声音信号" />
+<p><img alt="接收到的声音信号" src="../res/基础概念/receive_data.png" title="接收到的声音信号" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -884,7 +1033,7 @@ padding: 2px;">图. 接收到的声音信号</div>
 <p>因为我们这里展示的是简单的调制方式，单个声音信道录到的数据就足够解码，我在录音时设置了单声道的录制。相应的这里得到的声音信号显示是只有一路信号。
 在进行具体的解码之前，我们先来看一下impulse解码的原理。由于impulse coding 使用的是impulse之间的间隔来编码数据，所以解码的时候关键在于得到每两个相邻脉冲之间的间隔，从而将其转换为对应的二进制数据。要得到脉冲之间的间隔就需要首先得到每个脉冲的起始和结束时间。又因为每个脉冲的长度是固定的，所以我们只需要知道脉冲的起始位置即可。
 借助傅里叶变换，我们可以轻易知道一段时域信号中某个频率信号的强度。通过把时域信号进行分段的傅里叶变换，每段信号中18kHz信号的强度都可以被计算出来。由于我们设计的脉冲长度是100个采样点，当我们把傅里叶变换的窗口长度设置为100时，只有窗口从脉冲起始点开始截取信号的时候才能使得整个时域窗口中都充满18kHz的声音信号。若是窗口起始点不在脉冲起始的位置，那么时域窗口中将不可避免的包含到一部分空白信号（没有声音信号，采样值接近0）。根据傅里叶变换的原理，频域上的能量强度是时域上对应频率能量的叠加。所以当窗口对齐脉冲起始位置时，傅里叶变换得到的18kHz处的能量是最高的。我们可以记录下每个时域窗口对应的18kHz的能量强度，通过寻找极大值得到每个脉冲信号的起始位置。</p>
-<p><img alt="脉冲信号和时域窗口" src="../images/4.2/winding.png" title="脉冲信号和时域窗口" />
+<p><img alt="脉冲信号和时域窗口" src="../res/基础概念/winding.png" title="脉冲信号和时域窗口" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -904,7 +1053,8 @@ padding: 2px;">图. 脉冲信号和时域窗口</div>
 </pre></div>
 </td></tr></table>
 
-<p><strong>（思考：滤波的操作实际上在脉冲编码中并不是必要的，你知道是为什么吗？）</strong></p>
+<p><strong>思考</strong>
+滤波的操作实际上在脉冲编码中并不是必要的，你知道是为什么吗？</p>
 <p>接下来我们对录音信号进行滑动窗口的傅里叶变换，得到每一段数据中18kHz信号的强度信息：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -943,7 +1093,7 @@ padding: 2px;">图. 脉冲信号和时域窗口</div>
 </td></tr></table>
 
 <p>在图中展示每个时域窗口的信号对应的18kHz信号的强度，如下图所示：</p>
-<p><img alt="每个时域窗口对应的18kHz信号的强度" src="../images/4.2/impulse_fft_raw.png" title="每个时域窗口对应的18kHz信号的强度" />
+<p><img alt="每个时域窗口对应的18kHz信号的强度" src="../res/基础概念/impulse_fft_raw.png" title="每个时域窗口对应的18kHz信号的强度" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -951,7 +1101,7 @@ color: #999;
 padding: 2px;">图. 每个时域窗口对应的18kHz信号的强度</div>
 </center></p>
 <p>对局部进行放大，我们可以观察到锯齿形的曲线：</p>
-<p><img alt="时域上的18kHz信号强度的局部放大" src="../images/4.2/impulse_fft_raw_zoom.png" title="时域上的18kHz信号强度的局部放大" />
+<p><img alt="时域上的18kHz信号强度的局部放大" src="../res/基础概念/impulse_fft_raw_zoom.png" title="时域上的18kHz信号强度的局部放大" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -980,7 +1130,7 @@ padding: 2px;">图. 时域上的18kHz信号强度的局部放大</div>
 </td></tr></table>
 
 <p>我们可以从下图中看出，均值滤波有效地把锯齿形的信号转化成了相对平滑的信号。对于滑动窗口的大小，可以根据实际需要进行调整。</p>
-<p><img alt="经过滑动平均的18kHz信号强度的局部放大" src="../images/4.2/impulse_fft_sliding_zoom.png" title="经过滑动平均的18kHz信号强度的局部放大" />
+<p><img alt="经过滑动平均的18kHz信号强度的局部放大" src="../res/基础概念/impulse_fft_sliding_zoom.png" title="经过滑动平均的18kHz信号强度的局部放大" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -1040,7 +1190,7 @@ padding: 2px;">图. 经过滑动平均的18kHz信号强度的局部放大</div>
 </td></tr></table>
 
 <p>脉冲起始位置在原始时域声音信号上的展示如下图所示。观察发现代表着我们计算得到的脉冲起始位置的洋红色线条所切割的位置并不是真正的脉冲信号起始位置。在洋红色线条之前已经有一段的声音信号存在了。</p>
-<p><img alt="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" src="../images/4.2/impulse_position_raw.png" title="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" /> 
+<p><img alt="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" src="../res/基础概念/impulse_position_raw.png" title="计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配" /> 
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -1048,7 +1198,7 @@ color: #999;
 padding: 2px;">图. 计算得到的脉冲起始在真实时域信号中与脉冲起始不匹配</div>
 </center></p>
 <p>然而这些洋红色线条在18kHz强度的时域图中与峰值很好的一一对应，如下图所示。也就是说，18kHz信号强度的时域图中的峰值并不是出现在脉冲的起始位置。</p>
-<p><img alt="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" src="../images/4.2/impulse_position_fft.png" title="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" />
+<p><img alt="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" src="../res/基础概念/impulse_position_fft.png" title="计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -1056,14 +1206,14 @@ color: #999;
 padding: 2px;">图. 计算得到的脉冲起始位置和18kHz信号强度峰值整齐对应</div>
 </center></p>
 <p>这个结论我们最初的理论分析是不一致的。为了解释这一现象，我们将真实时域信号和分窗口傅里叶变换得到的18kHz信号强度时域图画在下图中进行观察。我们发现</p>
-<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="../images/4.2/raw_and_fft.png" title="18kHz信号强度峰值并没有出现在信号起始处" /><center>
+<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="../res/基础概念/raw_and_fft.png" title="18kHz信号强度峰值并没有出现在信号起始处" /><center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
 padding: 2px;">图. 18kHz信号强度峰值并没有出现在信号起始处</div>
 </center></p>
 <p>这个现象其实是滤波造成的。如果我们把上图中的原始信号替换成滤波之后的信号，就会发现滤波后的每个脉冲的开头和结尾处的信号比中间的弱。这个滤波器的特性所导致的现象，再加上多径效应造成的回声拖尾现象，使得滑动窗口傅里叶变换得到的最大值并不是出现在脉冲的起始位置。</p>
-<p><img alt="18kHz信号强度时域图以及滤波之后的声音信号" src="../images/4.2/filter_and_fft.png" title="18kHz信号强度时域图以及滤波之后的声音信号" />
+<p><img alt="18kHz信号强度时域图以及滤波之后的声音信号" src="../res/基础概念/filter_and_fft.png" title="18kHz信号强度时域图以及滤波之后的声音信号" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -1071,7 +1221,7 @@ color: #999;
 padding: 2px;">图. 18kHz信号强度时域图以及滤波之后的声音信号</div>
 </center></p>
 <p>若我们不对信号进行滤波，而是直接用原始的声音数据进行滑动窗口傅里叶变换，得到的结果如下图所示。我们可以看到18kHz信号强度的峰值确实出现在了声音信号的起始位置，但由于没有进行滤波，原始信号中所存在的频率更杂乱，使得我们得到的18kHz信号强度曲线也更加波折。</p>
-<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="../images/4.2/raw_and_fft2.png" title="18kHz信号强度峰值并没有出现在信号起始处" />
+<p><img alt="18kHz信号强度峰值并没有出现在信号起始处" src="../res/基础概念/raw_and_fft2.png" title="18kHz信号强度峰值并没有出现在信号起始处" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -1195,9 +1345,9 @@ padding: 2px;">图. 18kHz信号强度峰值并没有出现在信号起始处</di
 </pre></div>
 </td></tr></table>
 
-<h2 id="_3">幅度调制<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="2">2. 幅度调制<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>幅度调制是利用为信号设置不同的幅度来实现调制的目的。最简单的幅度调制是ON-OFF Keying (OOK)。OOK使用固定频率的信号代表“1”，没有信号代表“0”，两种码元的长度相同。下面是使用OOK调制的示意图：</p>
-<p><img alt="幅度调制" src="../images/4.2/5.png" title="" /> 
+<p><img alt="幅度调制" src="../res/基础概念/5.png" title="" /> 
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -1205,20 +1355,23 @@ color: #999;
 padding: 2px;">图. 幅度调制</div>
 </center> </p>
 <p>幅度调制的效率提高可以通过设置不同的振幅级别来实现，使得每个码元所携带的信息更多：</p>
-<p><img alt="增加振幅级别可以提高编码效率" src="../images/4.2/6.png" title="" /><br />
+<p><img alt="增加振幅级别可以提高编码效率" src="../res/基础概念/6.png" title="" /><br />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
 padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
 </center></p>
-<p>在幅度调制中，首先需要考虑的问题是要使的不同码元对应的幅度有足够大的区分度，否则解码时无法区分不同的幅度。另外一点需要考虑的就是信道的特性。信号所传输的信道增益是否是随时间稳定的？如果信道增益发生变化，那么就很可能使得本来幅度较高的信号在经过信道传输之后比原本幅度低的信号还弱。这就容易导致解码错误。声音信道就是一种增益比较容易变化的信道，周围反射环境的变化会使得信道增益出现明显变化。这种情况下可以通过缩短数据包的长度来折中。由于信道增益的变化依赖于多径环境的变化，我们知道多径环境不会发生突变，只会发生连续的变化。只要数据包的长度足够短，那么就可以保证在这个数据包发送的过程中，声音信道的增益的变化是比较小的。
-（思考题：信号经过信道传输之后，会发生强度的衰减。当接收端接收到信号时，信号幅度的绝对值已经发生了很大的改变。如何才能保证正确解码出信号中的数据呢？）
-//（比如：每个数据包起始处先按顺序把每种码元发一遍，这样接收者就知道每种码元收到时的强度了）</p>
-<h2 id="_4">时间调制<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>？？这个到底叫啥。。
-利用一个单位编码内信号出现的时间进行数据的编码的方式。</p>
-<h2 id="_5">频率调制<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>在幅度调制中，首先需要考虑的问题是要使的不同码元对应的幅度有足够大的区分度，否则解码时无法区分不同的幅度。另外一点需要考虑的就是信道的特性。信号所传输的信道增益是否是随时间稳定的？如果信道增益发生变化，那么就很可能使得本来幅度较高的信号在经过信道传输之后比原本幅度低的信号还弱。这就容易导致解码错误。声音信道就是一种增益比较容易变化的信道，周围反射环境的变化会使得信道增益出现明显变化。这种情况下可以通过缩短数据包的长度来折中。由于信道增益的变化依赖于多径环境的变化，我们知道多径环境不会发生突变，只会发生连续的变化。只要数据包的长度足够短，那么就可以保证在这个数据包发送的过程中，声音信道的增益的变化是比较小的。</p>
+<p><strong>思考</strong>
+信号经过信道传输之后，会发生强度的衰减。当接收端接收到信号时，信号幅度的绝对值已经发生了很大的改变。如何才能保证正确解码出信号中的数据？
+<!-- （比如：每个数据包起始处先按顺序把每种码元发一遍，这样接收者就知道每种码元收到时的强度了） --></p>
+<!-- ## 时间调制
+
+？？这个到底叫啥。。
+利用一个单位编码内信号出现的时间进行数据的编码的方式。 -->
+
+<h2 id="3">3. 频率调制<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>频率调制也就是Frequency shift keying (FSK)，使用的是不同的频率或不同的频率组合来调制不同的数据。
 最简单的频率调制也可以用ON-OFF Keying (OOK)来表示，使用固定频率<span><span class="MathJax_Preview">f\not=0</span><script type="math/tex">f\not=0</script></span>的信号代表“1”，用<span><span class="MathJax_Preview">f=0</span><script type="math/tex">f=0</script></span>的信号代表“0”。
 可以设置多种不同的频率<span><span class="MathJax_Preview">F=\{f_0,f_1,f_2,....f_n\}</span><script type="math/tex">F=\{f_0,f_1,f_2,....f_n\}</script></span>来代表不同的数据，但需要使不同频率之间的额差异足够大。否则由于离散傅里叶变换的精度问题，相近的频率会很难区分。
@@ -1336,6 +1489,308 @@ padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
 </tr>
 </tbody>
 </table>
+<h2 id="4">4. 相位调制<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>前面我们介绍了幅度调制和频率调制，观察下图中的正弦函数公式，我们发现正弦信号除了幅度和频率特征，还有相位特征。本章节中，我们将介绍相位调制方法，也就是PSK（Phase shift keying）。</p>
+<p><img alt="正弦信号的特征" src="../res/基础概念/sine_wave.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 正弦信号的特征</div>
+</center>  </p>
+<h3 id="41-bpsk">4.1 BPSK<a class="headerlink" href="#41-bpsk" title="Permanent link">&para;</a></h3>
+<p>相位调制，就是使用不同相位的信号来代表不同信息的调制方式。我们首先来看最简单的BPSK(Binary Phase Shift Keying),使用两种相位的信号来调制信息。为了使相位的区分度更高，我们使用相位相差为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的两种信号：</p>
+<p><img alt="相位为0和相位为pi的信号" src="../res/基础概念/bpsk-basic.png" title="" /><br />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 相位为0和相位为pi的信号</div>
+</center></p>
+<p>有了基础的带有相位信息的信号，我们就可以根据输入的待调制的信息来选择不同相位的信号。当输入为0时，我们选择相位为0的信号，当输入为1时，我们选择相位为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的信号。输入信号和对应的生成的BPSK调制过的信号如下图所示。</p>
+<p><img alt="调制后的BPSK信号" src="../res/基础概念/bpsk-encode.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 调制后的BPSK信号</div>
+</center></p>
+<p>这种实现BPSK的方法叫做“键控”方法。此时数据和相位之间的映射关系是：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>相位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td><span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>其星座映射图为：</p>
+<p><img alt="BPSK星座图" src="../res/基础概念/bpsk-star.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. BPSK星座图</div>
+</center></p>
+<h3 id="42-qpsk">4.2 QPSK<a class="headerlink" href="#42-qpsk" title="Permanent link">&para;</a></h3>
+<p>目前普遍使用的实现PSK的方法是IQ正交调制。其原理是使用两路正交的信号分别编码两路数据，每路数据单独调制，并将两路信号直接相加。正交的两路信号通常选用<span><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>和<span><span class="MathJax_Preview">cos(2\pi ft)</span><script type="math/tex">cos(2\pi ft)</script></span>。</p>
+<p><img alt="QPSK选用两路正交信号" src="../res/基础概念/qpsk-basic.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. QPSK选用两路正交信号</div>
+</center></p>
+<p>用<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>和<span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>分别代表两路待调制的数据，使用IQ调制后的信号为：</p>
+<div>
+<div class="MathJax_Preview">
+s(t) = i*sin(2\pi ft) + q*cos(2\pi ft) 
+</div>
+<script type="math/tex; mode=display">
+s(t) = i*sin(2\pi ft) + q*cos(2\pi ft) 
+</script>
+</div>
+<p>此时数据和相位之间的映射关系是：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>I</th>
+<th>Q</th>
+<th>s(t)</th>
+<th>相位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>1</td>
+<td>1</td>
+<td><span><span class="MathJax_Preview">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</span><script type="math/tex">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>01</td>
+<td>1</td>
+<td>-1</td>
+<td><span><span class="MathJax_Preview">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</span><script type="math/tex">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{7 \pi}{4}</span><script type="math/tex">\frac{7 \pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>-1</td>
+<td>1</td>
+<td><span><span class="MathJax_Preview">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{3 \pi}{4}</span><script type="math/tex">\frac{3 \pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>-1</td>
+<td>-1</td>
+<td><span><span class="MathJax_Preview">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{5 \pi}{4}</span><script type="math/tex">\frac{5 \pi}{4}</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>其星座映射图为：</p>
+<p><img alt="QPSK星座图" src="../res/基础概念/qpsk-star.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. QPSK星座图</div>
+</center></p>
+<p>我们可以看到这里一共用到了四种相位来编码数据，这就是QPSK(Quadrature Phase Shift Keying)</p>
+<p>为了使输出信号s(t)的振幅为1，我们需要对I和Q信号除以<span><span class="MathJax_Preview">\sqrt{2}</span><script type="math/tex">\sqrt{2}</script></span>，因此，数据和I,Q对应关系应该是如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>I</th>
+<th>Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>01</td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>下图展示了I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。图中对应的I路和Q路数据分别是：<span><span class="MathJax_Preview">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span>,<span><span class="MathJax_Preview">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span></p>
+<p><img alt="IQ信号和调制后的QPSK信号" src="../res/基础概念/qpsk-encode.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. IQ信号和调制后的QPSK信号</div>
+</center></p>
+<p>在解码时，利用其正交特性，分别对两路信号进行积分运算，得到每路信号中编码的数据。
+解码I路信号：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{split}
+\int_{0}^{\frac{1}{f}}(s(t)* sin(2\pi ft)) &amp;=  \int_{0}^{\frac{1}{f}}((i* sin(2\pi ft) + q* cos(2\pi ft))*sin(2\pi ft)) \\
+&amp;= 
+\int_{0}^{\frac{1}{f}}(i*sin(2\pi ft)^2 +q*cos(2\pi ft)*sin(2\pi ft) \\
+&amp;= 
+\int_{0}^{\frac{1}{f}}(i*\frac{1-cos(4 \pi ft)}{2} +q*sin(4\pi ft)) \\
+&amp;= 
+\int_{0}^{\frac{1}{f}}i*\frac{1}{2} - \int_{0}^{\frac{1}{f}}i*\frac{cos(4 \pi ft)}{2}) +\int_{0}^{\frac{1}{f}}q*sin(4\pi ft)) \\
+&amp;= 
+\frac{i}{2} -0 + 0 \\
+&amp;=
+\frac{i}{2}\\
+\end{split}
+</div>
+<script type="math/tex; mode=display">
+\begin{split}
+\int_{0}^{\frac{1}{f}}(s(t)* sin(2\pi ft)) &=  \int_{0}^{\frac{1}{f}}((i* sin(2\pi ft) + q* cos(2\pi ft))*sin(2\pi ft)) \\
+&= 
+\int_{0}^{\frac{1}{f}}(i*sin(2\pi ft)^2 +q*cos(2\pi ft)*sin(2\pi ft) \\
+&= 
+\int_{0}^{\frac{1}{f}}(i*\frac{1-cos(4 \pi ft)}{2} +q*sin(4\pi ft)) \\
+&= 
+\int_{0}^{\frac{1}{f}}i*\frac{1}{2} - \int_{0}^{\frac{1}{f}}i*\frac{cos(4 \pi ft)}{2}) +\int_{0}^{\frac{1}{f}}q*sin(4\pi ft)) \\
+&= 
+\frac{i}{2} -0 + 0 \\
+&=
+\frac{i}{2}\\
+\end{split}
+</script>
+</div>
+<p>对Q路信号的解码与之同理，这里就不进行重复展示了。
+IQ调制的方法不仅可以实现4中相位的QPSK，还可以支持更多相位来实现更高的数据速率。当我们把QPSK的星座映射图中的坐标轴上也加上数据点，就可以得到8PSK的星座映射图：</p>
+<p><img alt="8PSK星座图" src="../res/基础概念/8psk-star.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 8PSK星座图</div>
+</center></p>
+<p>为了使叠加的信号的相位满足星座映射图，数据和IQ之间的映射应该为：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>I</th>
+<th>Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td><span><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>001</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>010</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>011</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>当我们继续在星座映射图中增加数据点，就可以获得数据速率更高的相位调制方式，比如说下图中的16-QAM、32-QAM和64-QAM</p>
+<p><img alt="16-QAM、32-QAM和64-QAM的星座图" src="../res/基础概念/16-32-64-QAM.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 16-QAM、32-QAM和64-QAM的星座图</div>
+</center></p>
+<h3 id="43-oqpsk">4.3 OQPSK<a class="headerlink" href="#43-oqpsk" title="Permanent link">&para;</a></h3>
+<p>观察QPSK的星座映射图，我们可以发现从00 到 11 和从10 到01之间的相位转变都是<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>。当信号通过低通滤波器时，大的相位翻转会导致大的幅值幅波动，如下图中红圈部分所示：</p>
+<p><img alt="QPSK调制中会出现相位翻转为pi的情况" src="../res/基础概念/phase-shifts.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. QPSK调制中会出现相位翻转为pi的情况</div>
+</center></p>
+<p>这种大的相位翻转会影响解码的成功率。我们可以使用OQPSK(Offset QPSK)来解决这个问题。
+OQPSK方法是基于QPSK的IQ调制方式，I路信号和QPSK相同，Q路数据向后错位半个周期。这样一来I路和Q路信号翻转的位置相差半个周期，也就是说I路数据和Q路数据不会出现同时的翻转，信号相位最大只能变化<span><span class="MathJax_Preview">\frac{\pi}{2}</span><script type="math/tex">\frac{\pi}{2}</script></span>。
+下图分别展示了OQPSK的I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。</p>
+<p><img alt="IQ信号和调制后的OQPSK信号" src="../res/基础概念/oqpsk-encode.png" title="" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. IQ信号和调制后的OQPSK信号</div>
+</center></p>
+<!-- ## 在声音信号上实现OQPSK
+
+### OQPSK调制
+
+### OQPSK解码 -->
+
+<!-- ## 4. 载波
+
+载波调制的原理是将低频的基带信号通过上变频搬移到较高频率的载波上进行传输。接收端接收到信号后首先利用下变频将信号搬移到基带信号频率上。
+下图展示的是把基带信号上变频到频率为fc的载波后进行传输，在接收端进行下变频、使用滤波器滤掉高频信号获得基带信号的过程。
+
+![载波调制解调示意图](./res/基础概念/carrier_structure.png ' ')
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 载波调制解调示意图</div>
+</center>
+
+接下来我们用公式来推导这个过程。
+基带信号为
+
+$$
+s(t) = i*sin(2\pi ft) + q*cos(2\pi ft) 
+$$
+
+载波频率为$f_c$,将基带信号搬移到载波上：
+
+$$
+s(t) = i*sin(2\pi ft)*sin(2\pi f_c t) + q*cos(2\pi ft)*cos(2\pi f_c t) = 
+$$
+
+接收端收到后对其进行下变频。 -->
                 
                   
                 
@@ -1352,6 +1807,41 @@ padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../4.1 物联网基础概念/" title="5.1 物联网基础概念" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                5.1 物联网基础概念
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../404/" title="6.1 低功耗物联网" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                6.1 低功耗物联网
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

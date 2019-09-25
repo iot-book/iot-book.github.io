@@ -3,7 +3,7 @@ sampleFreq = 48000;     %sampling rate
 dF = 350;               %frequency interval between two adjacent frequencies
 pathN = 10;             %the number of signals of different frequencies
 baseF = 17000;          %the lowest frequency of signal
-durSec = 300;            %duration time of signal
+durSec = 300;           %duration time of signal (s)
 A = 1;                  %Amplitude
 
 %% Generate Signal

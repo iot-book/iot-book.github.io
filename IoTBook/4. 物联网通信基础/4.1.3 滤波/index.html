@@ -284,6 +284,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/LoRa编码和通信实验/" title="4.3 LoRa编码和通信实验" class="md-nav__link">
+      4.3 LoRa编码和通信实验
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -314,7 +326,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="5.1 物联网基础概念" class="md-nav__link">
+    <a href="../4.1 物联网基础概念/" title="5.1 物联网基础概念" class="md-nav__link">
       5.1 物联网基础概念
     </a>
   </li>
@@ -326,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="5.2 调制解调方法" class="md-nav__link">
+    <a href="../4.2 调制解调方法及其声音实现/" title="5.2 调制解调方法" class="md-nav__link">
       5.2 调制解调方法
     </a>
   </li>
@@ -637,7 +649,7 @@
                 <h1 id="_1">滤波<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>在信号处理(Signal Processing, SP)领域，“滤波”是最古老、也是最经典的话题之一。“滤波”最早出现在模拟电路系统，电子工程师使用模拟滤波器(Analog Filter)消除信号的异常波动，使信号更加平滑。而在计算机领域，我们讨论更多的是“数字滤波”，即对离散的采样信号进行滤波，达到消除特定频率信号分量的目的。</p>
 <p>数字滤波器脱胎于模拟滤波器，两者的目标是类似的，都是在信号处理的过程中消除某些频率的信号分量（如低频信号中的高频噪声）。但模拟滤波器的作用对象是连续信号，而数字滤波器处理的是离散的采样点，因此两者在具体实现上有很大的不同。模拟滤波器通常由电容、电感等模拟电子器件组成，主要依仗器件的物理特性实现滤波效果。而数字滤波器则由软件或者数字芯片实现，使用特定的算法对离散采样信号进行处理。在本文中，我们主要讨论数字滤波器的原理及实现方式。</p>
-<p><img alt="模拟滤波器与数字滤波器示意" src="../images/滤波/filter.jpg" />
+<p><img alt="模拟滤波器与数字滤波器示意" src="./images/滤波/filter.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -654,7 +666,7 @@ padding: 2px;">图. 模拟滤波器与数字滤波器示意</div>
 </ul>
 <p>接下来，我们以一个简单的低通滤波器为例，说明滤波器的工作原理：</p>
 <p>使用滑动窗口对输入的数据计算滑动平均，就是一个最简单的低通滤波器模型。考虑一组长度有限的非零输入，滤波器首先确定一个长度固定的滑动窗口。以下表中的数据为例，我们使用一个长度为5的滑动窗口，计算某桥梁在五分钟的跨度内，每分钟通过汽车数量的平均值。表格的第二列是每分钟实际通过汽车数，所以滑动平均操作就是从第5个数开始，计算这个数与其前4个数的平均值（如下表第三列的27），该平均值就是滑动平均算法的第一个输出。然后移动滑动窗口，计算下一个数与其前4个数的平均值（如下表第三列的第二个输出40.4）。以此类推，直至所有输入的数都参与过平均值计算。</p>
-<p><img alt="平均计算过程" src="../images/滤波/avg.jpg" />
+<p><img alt="平均计算过程" src="./images/滤波/avg.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -691,7 +703,7 @@ padding: 2px;">图. 平均计算过程</div>
 </td></tr></table>
 
 <p>使用滑动窗口计算平均的结果如下图所示，在输入数据中原本存在许多突变的点，这些点在滑动平均操作后都变得更加平滑了。考虑在时间序列中，突变的点对应高频的信号，因此滑动平均操作可以消除输入序列中的高频分量。通过滑动平均操作，我们实现了过滤高频分量、保留低频分量的目标，即实现了一个简单的低通滤波器。</p>
-<p><img alt="滑动窗口计算平均的结果" src="../images/滤波/avgfig.jpg" />
+<p><img alt="滑动窗口计算平均的结果" src="./images/滤波/avgfig.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -717,7 +729,7 @@ y_{avg}(n) = \frac{1}{5}[x(n-4)+x(n-3)+x(n-2)+x(n-1)+x(n)]=\frac{1}{5}\sum_{k=n-
 </script>
 </div>
 <p>从上式可以看出，每个滑动窗口内的平均计算，可以理解为对窗口内所有输入值求和后再除以窗口长度（如下图所示）。</p>
-<p><img alt="求和后平均" src="../images/滤波/avg1.jpg" />
+<p><img alt="求和后平均" src="./images/滤波/avg1.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -725,7 +737,7 @@ color: #999;
 padding: 2px;">图. 求和后平均</div>
 </center></p>
 <p>如果我们根据乘法分配律，将乘系数的操作移到求和之前，在滑动窗口内的平均计算就变成了对输入数据的加权求和。只不过在这个例子中，所有输入的权重都是相同的（即<span><span class="MathJax_Preview">\frac{1}{5}</span><script type="math/tex">\frac{1}{5}</script></span>）。</p>
-<p><img alt="加权求和" src="../images/滤波/avg2.jpg" />
+<p><img alt="加权求和" src="./images/滤波/avg2.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -863,7 +875,7 @@ f_{co} = 0.443\times \frac{f_s}{N}
 </pre></div>
 </td></tr></table>
 
-<p><img alt="不同窗口长度下，滑动平均滤波器的脉冲响应" src="../images/滤波/脉冲响应.png" />
+<p><img alt="不同窗口长度下，滑动平均滤波器的脉冲响应" src="./images/滤波/脉冲响应.png" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -883,7 +895,7 @@ y(n)=\sum_{k=0}^{M}h(k)x(n-k)=h(k)*x(n)
 </script>
 </div>
 <p>这一发现有很重要的意义！因为我们知道对于傅里叶变换和逆傅里叶变换这一类线性系统，在一个域上的卷积等于变换到另一个域上的点乘。</p>
-<p><img alt="" src="../images/滤波/fft.jpg" />
+<p><img alt="" src="./images/滤波/fft.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -891,7 +903,7 @@ color: #999;
 padding: 2px;">图. 滤波效果示意</div>
 </center></p>
 <p>因此，令时域信号与滤波器系数做卷积，其效果等价于：使用滤波器系数<span><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span>做DFT的结果<span><span class="MathJax_Preview">H(m)</span><script type="math/tex">H(m)</script></span>，在频域上直接与目标信号做点乘滤波。理想情况下，我们希望<span><span class="MathJax_Preview">H(m)</span><script type="math/tex">H(m)</script></span>在我们希望的频率处值为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，而在我们希望过滤掉的频率处值为<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>。而实际上，我们在上面例子中所描述的简单低通滤波器与理想情况相距甚远。回想一下，我们在上文所描述的滤波器，使用一个长度为5的滑动窗口，滤波器系数全部设为<span><span class="MathJax_Preview">\frac{1}{5}</span><script type="math/tex">\frac{1}{5}</script></span>，即<span><span class="MathJax_Preview">h(k)=[\frac{1}{5} \frac{1}{5} \frac{1}{5} \frac{1}{5} \frac{1}{5}]</span><script type="math/tex">h(k)=[\frac{1}{5} \frac{1}{5} \frac{1}{5} \frac{1}{5} \frac{1}{5}]</script></span>。对这样一个系数向量做DFT，显然我们将在频域上得到一个以频率0为中心、由一个主瓣和若干旁瓣共同组成的类sinc波（如下图实线所示），这与我们期望的理想滤波器（虚线所示）相差甚远。</p>
-<p><img alt="滑动平均在频域上的效果" src="../images/滤波/dft.jpg" />
+<p><img alt="滑动平均在频域上的效果" src="./images/滤波/dft.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -899,7 +911,7 @@ color: #999;
 padding: 2px;">图. 滑动平均在频域上的效果</div>
 </center></p>
 <p>这样的低通滤波器，显然无法完全消除所有高于频率阈值的信号分量，同时也会导致低于阈值的有效信号发生变形。</p>
-<p><img alt="非完美滤波器效果" src="../images/滤波/filter2.jpg" />
+<p><img alt="非完美滤波器效果" src="./images/滤波/filter2.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -908,7 +920,7 @@ padding: 2px;">图. 非完美滤波器效果</div>
 </center></p>
 <p>上图可以看到，由于窗口长度和滤波器系数选择的不合理（全部都是<span><span class="MathJax_Preview">\frac{1}{5}</span><script type="math/tex">\frac{1}{5}</script></span>），简单低通滤波器的滤波效果并不理想。那么，我们要如何确定窗口长度<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>和滤波器系数<span><span class="MathJax_Preview">h(k)</span><script type="math/tex">h(k)</script></span>，使得滤波器的效果尽可能好呢？</p>
 <p>一个直观的想法是先在频域上构造理想波形，即构造频域上的矩形波，在目标频率范围为1，其他频率处为0。然后对频域构造的结果做逆傅里叶变换，得到我们想要的滤波器系数。但这个想法要付诸实际，还面临着一个挑战：频域上，理想滤波器在除目标频率范围外的所有频率处都为0，因此其长度为无限长，经过逆傅里叶变换后，得到时域的滤波器系数也将会是无限长的。但考虑到实际信号处理中使用的都是有限长度信号，因此理想滤波器在实际中无法实现。</p>
-<p><img alt="理想低通滤波器要求无限长度的滤波器系数向量" src="../images/滤波/ideal.jpg" />
+<p><img alt="理想低通滤波器要求无限长度的滤波器系数向量" src="./images/滤波/ideal.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -917,7 +929,7 @@ padding: 2px;">图. 理想低通滤波器要求无限长度的滤波器系数向
 </center></p>
 <p>在继续介绍滤波器实现之前，我们先来明确一组等价的概念：滤波器长度=滑动窗口长度=滤波抽头长度=滤波器系数向量长度，这几个看似不同的说法经常出现在各种与滤波器相关的资料中，但他们所表达的含义是一样的。给定一组真实信号输入，显然滤波器的长度是有限的。且考虑长度为n的滤波器会抽除输入信号头部n个数据点，因此滤波器长度应该要远小于输入信号的长度。</p>
 <p>实际滤波时，我们通常对理想滤波器逆傅里叶变换截取一段有限长度的结果，用作滤波器系数。如下图所示，随着滤波器系数长度的增加，其傅里叶变换的结果约接近理想滤波器。同时，我们也发现DFT结果中，接近频率阈值处存在振幅抖动，这就是我们常说的吉布斯效应。为了消除吉布斯效应，并使通频带外信号得到更好的抑制，学者们提出了许多不同的加窗策略，这又是另一个非常有趣的主题，有兴趣的同学可以在课后自行了解。</p>
-<p><img alt="" src="../images/滤波/filter-len.jpg" />
+<p><img alt="" src="./images/滤波/filter-len.jpg" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -975,7 +987,7 @@ padding: 2px;">图. 不同窗口长度</div>
 </pre></div>
 </td></tr></table>
 
-<p><img alt="" src="../images/4.2/cpt_filter.png" />
+<p><img alt="" src="./images/4.2/cpt_filter.png" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
