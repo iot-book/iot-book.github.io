@@ -850,7 +850,37 @@
 </pre></div>
 </td></tr></table>
 
-<p>通过系统提供的定位服务，我们就可以从GPS传感器中读取到设备当前的位置信息，当然前提是开发者已经为应用赋予了运行时权限管理。</p>
+<p>通过系统提供的定位服务，我们就可以从GPS传感器中读取到设备当前的位置信息，当然前提是开发者已经为应用赋予了运行时权限管理。静态权限在<code>AndroidManifest.xml</code>文件的<code>&lt;application/&gt;</code>标签外部添加</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">&lt;!-- 这个权限用于进行网络定位 --&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_COARSE_LOCATION&quot;</span> <span class="nt">/&gt;</span>
+<span class="c">&lt;!-- 这个权限用于访问GPS定位 --&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_FINE_LOCATION&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</td></tr></table>
+
+<p>动态权限在<code>getLastKnowLocation()</code>方法调用前添加</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="c1">// 运行时权限管理</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">)</span>
+        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span> 
+        <span class="o">&amp;&amp;</span> <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">)</span>
+        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">)</span> 
+<span class="o">{</span>
+    <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span><span class="n">MULTI_PERMISSIONS</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>最后在安卓布局文件中添加一个按钮和一个文本框。每次点击按钮时，调用<code>getLastKnowLocation()</code>方法，并将返回的设备当前位置信息显示到文本框内：</p>
 <p><img alt="" src="../res/app2.png" />
 <center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
