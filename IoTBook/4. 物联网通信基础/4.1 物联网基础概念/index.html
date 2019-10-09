@@ -358,8 +358,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#1" title="1. 物联网连接层" class="md-nav__link">
-    1. 物联网连接层
+    <a href="#1" title="1. 采样和量化" class="md-nav__link">
+    1. 采样和量化
   </a>
   
     <nav class="md-nav">
@@ -763,8 +763,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="9.1 阿里云平台" class="md-nav__link">
-      9.1 阿里云平台
+    <a href="../../5.物联网感知/定位感知实验/" title="9.1 定位感知" class="md-nav__link">
+      9.1 定位感知
     </a>
   </li>
 
@@ -775,8 +775,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="9.2 LoRa测试床" class="md-nav__link">
-      9.2 LoRa测试床
+    <a href="../../404/" title="9.2 阿里云平台" class="md-nav__link">
+      9.2 阿里云平台
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.3 LoRa测试床" class="md-nav__link">
+      9.3 LoRa测试床
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.4 物联网开发" class="md-nav__link">
+      9.4 物联网开发
     </a>
   </li>
 
@@ -810,8 +834,8 @@
       
         
           <li class="md-nav__item">
-    <a href="#1" title="1. 物联网连接层" class="md-nav__link">
-    1. 物联网连接层
+    <a href="#1" title="1. 采样和量化" class="md-nav__link">
+    1. 采样和量化
   </a>
   
     <nav class="md-nav">
@@ -988,9 +1012,7 @@
                 
                 
                 <h1 id="_1">物联网基础概念<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="1">1. 物联网连接层<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>我们先来介绍物联网的连接层，在介绍连接层基础上来介绍物联网感知层的相关技术，最后介绍传输和应用层的相关技术。</p>
-<p>物联网中有不同的连接技术，除了传统的有线连接技术之外，我们在这里主要介绍无线连接的技术，包括WiFi技术、蓝牙技术包括BLE技术等、ZigBee技术、LoRa、SigFox，每一种技术的适用场景和特点也是不一样的。</p>
+<h2 id="1">1. 采样和量化<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>为了介绍清楚无线传输的基础以及在上面发展出来的各种技术，我们先来介绍无线通信的基本原理。无线通信的基本思想就是利用无线电磁波或者无线信号来调制和传输信息。比如最简单的场景中，我们可以产生一个固定频率的无线信号，通过有信号来代表1，没有信号来代表0，来传输信号。由于产生和控制无线电磁型号需要比较复杂的过程，在几年前我在计划该课程的时候一直苦恼怎么让大家很直观的理解其中的技术，最好还能够实际动手试试。现在市面上有能够让我们进行信号处理的设备，但是我觉得还可以做得更直接更好，利用我们的智能手机就能完成这一系列工作。这一个课程中主要利用声波信号来模拟无线信号，声波信号可以很方便的产生，利用普通的智能手机就能够产生、发射和接收声波信号，同时声波信号也易于处理，很好的可视化，同时声波信号的处理和大部分无线信号的处理过程都比较类似，有利于我们理解无线处理的过程。本课程后面的材料中如果没有特殊声明，都讲会使用声波信号来模拟物联网连接过程中的各种技术，请同学们也自己动手来多尝试一下。</p>
 <p>在介绍声波信号的处理之前，我们先来理解一下声波信号的基本特征。一般来说，人可以听到的声波范围大概为20Hz到20KHz中间，因此现在大部分手机声音采样率为44100，对应到能够处理的最大声音频率为22KHz左右。超过20KHz的声波我们经常叫做超声波。</p>
 <h3 id="11">1.1 声波的生成、发送和接收<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
@@ -1193,7 +1215,6 @@ padding: 2px;">表4-3. 采样值、 量化和编码的结果</div>
 </li>
 </ul>
 <p>非均匀量化是针对均匀量化提出的，因为一般的语音信号中，绝大部分是小幅度的信号，且人耳听觉遵循指数规律。为了保证关心的信号能够被更精确的还原，我们应该将更多的bit用于表示小信号。</p>
-<p>假设信号采用的是均匀量化的方法，量化噪声带来的信噪比变化，</p>
 <p><strong>思考</strong>：</p>
 <p>假设要将最大频率为8KHz的唱歌的信号转成数字信号，量化bit为8bit，则产生的信号码率至少是多少？1min的信号大小是多少？</p>
 <p>到了这里，我们来看一个真实的采样和量化的例子，这也是我们整个数据处理实验的开始。这个实验在手机上就能实现，我们来看看手机上如何进行声音的采样和量化。</p>
@@ -1750,7 +1771,10 @@ B(x)=\sum_{i=0}^{n-1}b_i x^i
 ### 2.10 线性时不变系统 -->
 
 <h2 id="3">3. 信道<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<p>信道又被称为通道、频道和波道，是信号在通信系统中传输的通道，由信号从发射端传输到接收端所经过的传输媒质所构成。广义的信道定义除了包括传输媒质，还包括传输信号的相关设备。</p>
+<p>信道又被称为通道、频道和波道，是信号在通信系统中传输的通道，由信号从发射端传输到接收端所经过的传输媒质所构成。广义的信道定义除了包括传输媒质，还包括传输信号的相关设备。
+在学习这一部分的过程中，我们始终要围绕着下面的问题：
+什么是信道，怎么样来表示这个信道。
+信号传输里面两个重要的事情，就是如何表示信号（调制），以及如何表示信道（传输的影响）。传输最终要做的事情就是通过接收到的信号，还原出发送的信号。</p>
 <p><strong>狭义信道</strong></p>
 <p>按照传输媒质来划分，可以分为有线信道、无线信道和存储信道三类。值得注意的是，磁带、磁盘等数据存储媒质也可以被看作是一种通信信道。将数据写入存储媒质的过程即等效于发射机将信号传输到信道的过程，将数据从存储媒质读出的过程即等效于接收机从信道接收信号的过程。</p>
 <p><strong>广义信道</strong></p>
@@ -1775,8 +1799,25 @@ padding: 2px;">图. 信道示意</div>
 <h3 id="32">3.2 信道冲击响应<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
 <!-- TODO 加个图 -->
 
+<p><img alt="" src="../res/基础概念/channel-response-time.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 信道响应示意图，图中代表了单位信号经过信道后产生了不同的延迟和衰减。</div>
+</center></p>
 <p>信道冲击响应（Channel Impulse Response，CIR），顾名思义，即当输入一个单位脉冲信号时，信道输出端的响应输出信号。</p>
 <p>通信信道会对经过的信号产生作用（例如减弱，改变频率等），不同的信道作用效果不一样。因为任何输入信号都可以分解成单位脉冲信号的线性叠加，研究信道对单位脉冲信号的响应是有意义的。对于一个线性系统，输出信号可以用输出端对单位脉冲信号的响应的线性叠加表示。信道冲击响应反映了信道的基本特性。</p>
+<p>事实上，信道我们就可以看做一个滤波器，这个滤波器的参数通常我们用<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>来表示，这个参数如上图所示。
+如果我们知道了这个信道参数，也就是信道冲击响应的话，那么对于任意输入信号，我们也能够计算出对应的经过信道后的变化。严格的说，对于信号<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>,经过信道后的结果为<span><span class="MathJax_Preview">y=x\times h1</span><script type="math/tex">y=x\times h1</script></span> 其中<span><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span>表示卷积。在数据传输中，实际上重要的一个过程就是通过接收到的<span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>和测量的<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>，计算传输的<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>。这其中带来了另外一个重要的问题就是如何来计算信道冲击响应。
+当然理想情况下，我们可以在发送端发送一个冲击，然后在接收端测量这一冲击，通过这个方法来计算信道参数。实际上，发送一个理想的冲击信号是很困难的，因此实际上我们可以通过发送已知的其他信号来测量信道冲击相应，比如数据发送过程中的preamble，我们就可以利用来计算信道冲击相应。在实际计算中，我们还可以将时域上的信道冲击响应转化为频率，如下图所示。这样实际上我们比较输入信号和输出信号的频域特征，我们就可以计算出相应频域上的冲击响应，从而计算出相应的时域上的参数。
+<img alt="" src="../res/基础概念/channel-response-freq.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 信道响应示意图，图中代表了单位信号经过信道后不同频率的影响。此图和上图时域上的响应是等价的，一个是时间上的表示，一个是频率上的表示，两者可以互相转化。这个参数也是大量定位和感知工作的信息来源，例如信道冲击相应，我们可以计算不同多径路径和直接视距路径LOS。</div>
+</center></p>
 <h3 id="33">3.3 信噪比<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
 <p>信噪比（Signal-to-noise ratio，SNR or S/N）用于衡量信号强度与背景噪声强度的关系，定义为信号功率与噪声功率之比。</p>
 <div>
