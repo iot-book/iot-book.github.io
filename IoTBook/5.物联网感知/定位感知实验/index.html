@@ -862,20 +862,24 @@
 </td></tr></table>
 
 <p>动态权限在<code>getLastKnowLocation()</code>方法调用前添加</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="c1">// 运行时权限管理</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="c1">// 运行时权限管理</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">)</span>
-        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span> 
+        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span>
         <span class="o">&amp;&amp;</span> <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">)</span>
-        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">)</span> 
+        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">)</span>
 <span class="o">{</span>
-    <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span><span class="n">MULTI_PERMISSIONS</span><span class="o">,</span><span class="mi">100</span><span class="o">);</span>
+    <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span>
+                    <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">,</span>
+                    <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">},</span><span class="mi">100</span><span class="o">);</span>
 <span class="o">}</span>
 </pre></div>
 </td></tr></table>
@@ -889,7 +893,213 @@ color: #999;
 padding: 2px;">图. 安卓模拟器设置虚拟GPS数据，APP读数并显示</div>
 </center></p>
 <p><strong><mark>可能出现的问题</mark></strong></p>
-<p>如果你是在真实安卓手机上实现上述程序，则调用<code>getLastKnowLocation()</code>后可能返回的是一个空对象<code>null</code>。造成这一问题的原因通常是因为手机在室内环境下无法连接到GSP卫星，从而无法获取到GPS位置信息。只要步行至室外开阔环境下， 上述程序即可正常工作。</p>
+<ol>
+<li>如果你是在真实安卓手机上实现上述程序，则调用<code>getLastKnowLocation()</code>后可能返回的是一个空对象<code>null</code>。造成这一问题的原因通常是因为手机在室内环境下无法连接到GSP卫星，从而无法获取到GPS位置信息。只要步行至室外开阔环境下， 上述程序即可正常工作。</li>
+<li>如果你不是使用<code>getLastKnowLocation()</code>获取GPS数据，而是使用百度地图、高德地图等SDK中的获取位置函数，则可能在基于Intel x86架构的安卓模拟器上无法正常获取定位，需要安卓真机上调试。</li>
+</ol>
+<p><strong>获取GPS信息完整代码</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">androidx.appcompat.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">androidx.core.app.ActivityCompat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.Manifest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.pm.PackageManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.location.Location</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.location.LocationManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.baidu.mapapi.map.BaiduMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.baidu.mapapi.map.MapView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">LocationManager</span> <span class="n">locationManager</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">TextView</span> <span class="n">textLocationShow</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btnLocation</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">MapView</span> <span class="n">mMapView</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">BaiduMap</span> <span class="n">mBaiduMap</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="c1">// 获取定位服务</span>
+        <span class="n">locationManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">LocationManager</span><span class="o">)</span> <span class="k">this</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">LOCATION_SERVICE</span><span class="o">);</span>
+        <span class="c1">// 初始化View组件信息及相关点击事件</span>
+        <span class="n">initViews</span><span class="o">();</span>
+    <span class="o">}</span>
+
+
+    <span class="cm">/**</span>
+<span class="cm">     * 方法描述：初始化View组件信息及相关点击事件</span>
+<span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initViews</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">textLocationShow</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">text_location_show</span><span class="o">);</span>
+        <span class="n">btnLocation</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_location</span><span class="o">);</span>
+        <span class="c1">//获取地图控件引用</span>
+        <span class="n">mMapView</span> <span class="o">=</span> <span class="o">(</span><span class="n">MapView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bmapView</span><span class="o">);</span>
+        <span class="c1">// 点击按钮显示坐标</span>
+        <span class="n">btnLocation</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">getLocation</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 运行时权限管理</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">)</span>
+                <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span>
+                <span class="o">&amp;&amp;</span> <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">)</span>
+                <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span>
+                    <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">,</span>
+                    <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">},</span><span class="mi">100</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 通过GPS服务获取位置信息</span>
+        <span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="n">locationManager</span><span class="o">.</span><span class="na">getLastKnownLocation</span><span class="o">(</span><span class="n">LocationManager</span><span class="o">.</span><span class="na">GPS_PROVIDER</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">location</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">updateUI</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * 方法描述：在View上更新位置信息的显示</span>
+<span class="cm">     * @param location</span>
+<span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">updateUI</span><span class="o">(</span><span class="n">Location</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">longitude</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">();</span>
+        <span class="kt">double</span> <span class="n">latitude</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">();</span>
+        <span class="n">textLocationShow</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;当前经度：&quot;</span> <span class="o">+</span> <span class="n">longitude</span> <span class="o">+</span> <span class="s">&quot;\n当前纬度：&quot;</span> <span class="o">+</span> <span class="n">latitude</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+        <span class="c1">//在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理</span>
+        <span class="n">mMapView</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+        <span class="c1">//在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理</span>
+        <span class="n">mMapView</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+        <span class="c1">//在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理</span>
+        <span class="n">mMapView</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="12">1.2. 监听位置更新<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
 <p>在上面的实现方式中，只有在用户主动调用<code>getLastKnowLocation()</code>时位置信息才会更新，是否可以让位置信息在设备位置变化时自动更新呢？</p>
 <p>为了实现这一功能，我们需要借助于位置监听接口：<code>LocationListener</code>。<code>LocationListener</code>是Android默认提供的一个监听接口，用于监听位置（包括GPS、网络、基站等所有提供位置的）变化、设备开关与状态，通过该接口可以实时动态地获取设备位置信息。我们首先使用内部类或者匿名实现该接口，然后在相关方法中添加实现功能的代码，最后注册监听：</p>
@@ -1053,10 +1263,10 @@ padding: 2px;">图. 集成jar文件</div>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">&lt;application&gt;</span>  
-    <span class="nt">&lt;meta-data</span>  
-        <span class="na">android:name=</span><span class="s">&quot;com.baidu.lbsapi.API_KEY&quot;</span>  
-        <span class="na">android:value=</span><span class="s">&quot;开发者 key&quot;</span> <span class="nt">/&gt;</span>  
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">&lt;application&gt;</span>
+    <span class="nt">&lt;meta-data</span>
+        <span class="na">android:name=</span><span class="s">&quot;com.baidu.lbsapi.API_KEY&quot;</span>
+        <span class="na">android:value=</span><span class="s">&quot;开发者 key&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/application&gt;</span>
 </pre></div>
 </td></tr></table>
@@ -1113,7 +1323,7 @@ padding: 2px;">图. 集成jar文件</div>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
-        <span class="c1">//在使用SDK各组件之前初始化context信息，传入ApplicationContext   </span>
+        <span class="c1">//在使用SDK各组件之前初始化context信息，传入ApplicationContext</span>
         <span class="n">SDKInitializer</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
         <span class="c1">//自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.</span>
         <span class="c1">//包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。</span>
@@ -1157,33 +1367,33 @@ padding: 2px;">图. 集成jar文件</div>
 24
 25
 26
-27</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>  
-    <span class="kd">private</span> <span class="n">MapView</span> <span class="n">mMapView</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
-    <span class="nd">@Override</span>  
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>  
+27</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">MapView</span> <span class="n">mMapView</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>  
-        <span class="c1">//获取地图控件引用  </span>
-        <span class="n">mMapView</span> <span class="o">=</span> <span class="o">(</span><span class="n">MapView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bmapView</span><span class="o">);</span>  
-    <span class="o">}</span>  
-    <span class="nd">@Override</span>  
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>  
-       <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>  
-       <span class="c1">//在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理  </span>
-       <span class="n">mMapView</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>  
-    <span class="o">}</span>  
-    <span class="nd">@Override</span>  
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>  
-      <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>  
-      <span class="c1">//在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理  </span>
-      <span class="n">mMapView</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>  
-    <span class="o">}</span> 
-    <span class="nd">@Override</span>  
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>  
-      <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>  
-      <span class="c1">//在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理  </span>
-      <span class="n">mMapView</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>  
-    <span class="o">}</span>  
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+        <span class="c1">//获取地图控件引用</span>
+        <span class="n">mMapView</span> <span class="o">=</span> <span class="o">(</span><span class="n">MapView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bmapView</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+       <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+       <span class="c1">//在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理</span>
+       <span class="n">mMapView</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+      <span class="c1">//在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理</span>
+      <span class="n">mMapView</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+      <span class="c1">//在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理</span>
+      <span class="n">mMapView</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+    <span class="o">}</span>
 </pre></div>
 </td></tr></table>
 
