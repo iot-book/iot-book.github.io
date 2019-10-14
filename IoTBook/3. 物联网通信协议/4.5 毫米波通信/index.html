@@ -1,0 +1,992 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="zh">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/logo.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+    
+    
+      
+        <title>4.5 毫米波通信 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.dfc6cb0c.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.6586f7cd.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+          <a href="../../.." title="IoT Book" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/nicon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                IoT Book
+              </span>
+              <span class="md-header-nav__topic">
+                4.5 毫米波通信
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../../../images/nicon.png" width="48" height="48">
+      
+    </span>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1. 前言/物联网导论/" title="一. 前言" class="md-nav__link">
+      一. 前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2. 物联网简介/物联网简介/" title="二. 物联网简介" class="md-nav__link">
+      二. 物联网简介
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 开发环境
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 开发环境
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../平台搭建/android开发基础/" title="3.1 Android 环境" class="md-nav__link">
+      3.1 Android 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../平台搭建/matlab基础/" title="3.2 MATLAB 环境" class="md-nav__link">
+      3.2 MATLAB 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      四. 物联网网络协议
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        四. 物联网网络协议
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../物联网连接技术/" title="4.1 物联网连接技术" class="md-nav__link">
+      4.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.2 Wi-Fi无线局域网/" title="4.2 Wi-Fi无线局域网" class="md-nav__link">
+      4.2 Wi-Fi无线局域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.3 蓝牙/" title="4.3 蓝牙" class="md-nav__link">
+      4.3 蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.4 ZigBee/" title="4.4 ZigBee" class="md-nav__link">
+      4.4 ZigBee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        4.5 毫米波通信
+      </label>
+    
+    <a href="./" title="4.5 毫米波通信" class="md-nav__link md-nav__link--active">
+      4.5 毫米波通信
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        
+          <li class="md-nav__item">
+    <a href="#1" title="1. 毫米波通信的兴起" class="md-nav__link">
+    1. 毫米波通信的兴起
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#2" title="2. 毫米波通信优缺点" class="md-nav__link">
+    2. 毫米波通信优缺点
+  </a>
+  
+</li>
+        
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.6 可见光通信/" title="4.6 可见光通信" class="md-nav__link">
+      4.6 可见光通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.7 低功耗广域网/" title="4.7 低功耗广域网" class="md-nav__link">
+      4.7 低功耗广域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../蓝牙实验/" title="4.8 蓝牙连接实验" class="md-nav__link">
+      4.8 蓝牙连接实验
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../LoRa编码和通信实验/" title="4.9 LoRa编码和通信实验" class="md-nav__link">
+      4.9 LoRa编码和通信实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      五. 物联网通信基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        五. 物联网通信基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/5.1 采样和量化/" title="5.1 采样和量化" class="md-nav__link">
+      5.1 采样和量化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/5.2 傅立叶分析/" title="5.2 傅立叶分析" class="md-nav__link">
+      5.2 傅立叶分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/5.3 无线信道/" title="5.3 无线信道" class="md-nav__link">
+      5.3 无线信道
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/5.4 滤波/" title="5.4 信号滤波" class="md-nav__link">
+      5.4 信号滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/4.2 调制解调方法及其声音实现/" title="5.5 调制解调方法" class="md-nav__link">
+      5.5 调制解调方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 物联网网络构建技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 物联网网络构建技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.1 低功耗物联网" class="md-nav__link">
+      6.1 低功耗物联网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.2 多跳自组织网" class="md-nav__link">
+      6.2 多跳自组织网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.3 网络冲突处理" class="md-nav__link">
+      6.3 网络冲突处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.4 跨协议识别与通信" class="md-nav__link">
+      6.4 跨协议识别与通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      七. 物联网定位与追踪
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        七. 物联网定位与追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.1 无线测距" class="md-nav__link">
+      7.1 无线测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.2 定位技术" class="md-nav__link">
+      7.2 定位技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.3 追踪技术" class="md-nav__link">
+      7.3 追踪技术
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      八. 物联网感知技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        八. 物联网感知技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.1 传感器感知" class="md-nav__link">
+      8.1 传感器感知
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.2 行为识别" class="md-nav__link">
+      8.2 行为识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.3 身份认证" class="md-nav__link">
+      8.3 身份认证
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      九. 物联网综合应用平台
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        九. 物联网综合应用平台
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../5.物联网感知/定位感知实验/" title="9.1 定位感知" class="md-nav__link">
+      9.1 定位感知
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.2 阿里云平台" class="md-nav__link">
+      9.2 阿里云平台
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.3 LoRa测试床" class="md-nav__link">
+      9.3 LoRa测试床
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.4 物联网开发" class="md-nav__link">
+      9.4 物联网开发
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        
+          <li class="md-nav__item">
+    <a href="#1" title="1. 毫米波通信的兴起" class="md-nav__link">
+    1. 毫米波通信的兴起
+  </a>
+  
+</li>
+        
+      
+        
+          <li class="md-nav__item">
+    <a href="#2" title="2. 毫米波通信优缺点" class="md-nav__link">
+    2. 毫米波通信优缺点
+  </a>
+  
+</li>
+        
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">毫米波通信<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 毫米波通信的兴起<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>随着物联网的蓬勃发展，有限的频谱资源被众多应运而生的无线接入技术争夺，从而造成了频段的拥挤。前面章节介绍的无线接入技术大都运行在2.4GHz和5GHz频段这两个免费的ISM频段，竞争紧张的频谱资源。在这种情况下，人们将目光投向了使用更高频率载波毫米波频段。毫米波是指波长在毫米级别的电磁波，例如频率在30GHZ以上，300GHz以下的波，都属于毫米波的范围。毫米波的使用开辟了新的可以利用的频段。</p>
+<p><strong>思考</strong></p>
+<p>使用毫米波通信能够带来好处？</p>
+<p>毫米波通信可以带来很多的好处，
+例如在大部分国家，60GHz都是免费的；使用的频段较宽，甚至具有5-9GHz的可用频谱宽度，这比有效带宽只有几百MHz的802.11n等技术要更加充裕。</p>
+<p>如今，数据传输速率越来越高是必然的趋势。4K视频（有效显示格式为4096*3072）已经走入人们生活中，几十个G大小的4K视频越来越普遍。而由于具有更宽的有效带宽，60GHz通信可以轻易实现1 Gbit/s以上的高速率数字信号传输，使得60GHz毫米波通信在传输高清视频上具有非常大的优势。</p>
+<p>2006年，由LG、松下、NEC、三星电子、索尼和东芝等公司共同成立WirelessHD工作组，开发一种可以替代HDMI的无线数字高清传输技术，并于2008年提出了WirelessHD技术（无线高清，也称为UltraGig），利用60GHz毫米波通信实现高速率的视频传输技术。</p>
+<p>2007年，由英特尔、Broadcom、Atheros、微软等15假公司组成的WiGig（Wireless Gigabit，无线千兆比特）联盟开始着手设计60GHz的通信技术。2009年，由WiGig参与提出的IEEE 802.11ad标准问世。IEEE 802.11ad主要用于实现家庭内部无线高清音视频信号的传输，为家庭多媒体应用带来更完备的高清视频解决方案。IEEE 802.11ad将60GHz频段划分为四个信道，采用OFDM技术，使用不同的调制技术可以支持高达7Gbps的数据传输速率，比802.11n快十倍以上。</p>
+<p>2010年，WiGig和WiFi联盟宣布合作，将60GHz通信技术和传统WiFi技术整合。IEEE 802.11ad将802.11介质访问控制层进行补充和延伸，完全兼容IEEE802.11标准，可以与WiFi完全融合。2013年3月，WiGig联盟正式并入WiFi联盟。</p>
+<p>随着半导体工业的发展，60GHz频率的射频收发器的成本已经大大降低，使大规模应用60GHz频段成为可能。如今，60GHz毫米波通信技术，已经走出实验室，进入了真实电子世界中竞争最为激烈的领域之一——数字家庭。60GHz毫米波通信也被认为是未来无线通信技术中最具潜力的技术之一。</p>
+<h2 id="2">2. 毫米波通信优缺点<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>和当前众多的无线通信技术相比，60GHz之所以被深入研究有着它自身的优点，由于毫米波的这些优点使得毫米波技术和应用得到了迅速的发展。</p>
+<ul>
+<li>(1) 丰富的频谱资源
+目前无线谱低频段大部分已被占用，例如2.4GHz的无线低频频段就挤满了802．1lbg、蓝牙、微波和其他应用。近年来，各国政府都在60GHz频率附近划分了ISM频段。比如，中国将59GHz-64GHz划分为ISM频段，美国、日本分别将57GHz-64GHz、59.4GHz-62.9GHz划分为ISM频段，而欧洲更是划分了高达9GHz（57GHz-66GHz）的ISM频段。反观目前主要使用的802.11n技术，其有效带宽约为660MHz，远远小于60GHz毫米波无线通信技术能使用的带宽。随着无线频谱资源的越来越稀缺，60GHz毫米波无线通信技术在60GHz频率周围能够利用的资源之多，频段之广，要远远超出其他几种无线通信技术。</li>
+<li>(2) 传输速率高
+传输速率是随着带宽的增加而增加，因此60GHz的丰富带宽资源会大幅提升数据传输速率。例如，IEEE 802.11ad技术就可以支持高达7Gbps数据率。</li>
+<li>(3) 高方向性
+99．9%的波束集中在4.7度范围内，此无线频率适合点对点的无线通信对高方向性天线的要求。</li>
+<li>(4) 空间干扰小
+由于60GHz通信的高度方向性，同时传输的信号在空间中重叠度小，不易产生干扰。</li>
+<li>(5) 安全性
+由于墙壁等障碍物会使毫米波衰减大大增加，这使得60GHz无线通信在短距离通信的安全性能和抗干扰性能上存在得天独厚的优势，有利于限制信号在有限区域内，物理隔离信号传播，保障安全性。</li>
+<li>(6) 波长短
+由于60GHz信号的波长为毫米级别，其元器件的尺寸很小，便于集成化，同时易于实现波束成型技术（beamforming）。</li>
+</ul>
+<p>虽然60GHz毫米波通信具有众多优点，其在大规模应用中仍存在亟待解决的关键问题。</p>
+<ul>
+<li>(1) 信号快速衰减，通信距离短
+我们知道，波长越短，衰减越大，传输距离越短。由于60GHz通信的波长很短，其衰减非常快，传输路径的自由空间损耗在60GHz附近频率时约为15dB/km。</li>
+<li>(2) 方向集中，覆盖范围受影响
+由于60GHz毫米波的高度方向性，在作为热点提供服务时，需要大量天线同时工作，保障各个方向的信号覆盖。</li>
+<li>(3) 穿透性差，易被阻隔
+由于60GHz毫米波的高度衰减性，当有物体阻隔在收发设备之间时，信号无法通过，连接会被中断。</li>
+</ul>
+<p><img alt="TP-LINK的Talon AD7200路由器" src="../images/7.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. TP-LINK的Talon AD7200路由器</div>
+</center>
+<!-- 图8 TP-LINK的Talon AD7200路由器 --></p>
+<p>TP-LINK在2016年的国际消费电子展（CES2016）上公开了世界上首个802.11ad路由器Talon AD7200。IEEE 802.11ad已经逐渐成为行业主导标准。在可以预见的未来，大量支持IEEE 802.11ad将会不断出现，改变无线局域网的格局，使Wi-Fi步入60GHz时代。随着虚拟现实技术的兴起和4K影音的高速发展，IEEE 802.11ad具有光明的前景。</p>
+<p>目前有很多物联网相关的研究都针对毫米波通信在应用过程中的问题展开，例如针对毫米波在传输中衰减过大的问题，一般通信中都采用定向天线传输的机制，通过Beamforming等方式来提高传输能量的集中性。</p>
+<p><strong>思考</strong></p>
+<ol>
+<li>如何在传输过程中使得信号朝固定的方向加强？</li>
+<li>Beamforming是指什么技术？</li>
+<li>通过多天线阵列技术，可以通过调整控制不同天线上发射的信号的相位，能够达到在不同的方向上对信号进行加强的目标。思考为什么？</li>
+</ol>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../4.4 ZigBee/" title="4.4 ZigBee" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                4.4 ZigBee
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../4.6 可见光通信/" title="4.6 可见光通信" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                4.6 可见光通信
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/iot-book" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+    <script src="../../../assets/javascripts/application.6f02ae1b.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr../../../lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="../../../../../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
