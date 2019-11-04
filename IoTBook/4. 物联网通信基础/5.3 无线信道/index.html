@@ -2,7 +2,7 @@
 
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
@@ -35,8 +35,8 @@
       
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
-      <link rel="shortcut icon" href="../../../assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
     
     
       
@@ -44,22 +44,31 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.dfc6cb0c.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
       
     
     
-      <script src="../../../assets/javascripts/modernizr.6586f7cd.js"></script>
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
     
     
-      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
     
     
   </head>
@@ -78,7 +87,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../../#_1" tabindex="1" class="md-skip">
+      <a href="#_1" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -87,7 +96,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-          <a href="../../.." title="IoT Book" class="md-header-nav__button md-logo">
+        <a href="../../.." title="IoT Book" class="md-header-nav__button md-logo">
           
             <img src="../../../images/nicon.png" width="24" height="24">
           
@@ -99,22 +108,21 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
-            
-              <span class="md-header-nav__topic">
-                IoT Book
-              </span>
-              <span class="md-header-nav__topic">
+            <span class="md-header-nav__topic">
+              IoT Book
+            </span>
+            <span class="md-header-nav__topic">
+              
                 5.3 无线信道
-              </span>
-            
+              
+            </span>
           
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-            
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
@@ -137,7 +145,6 @@
     </div>
   </div>
 </div>
-          
         
       </div>
       
@@ -150,7 +157,7 @@
         
       
       
-      <main class="md-main">
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
             
@@ -159,11 +166,11 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <span class="md-nav__button md-logo">
+    <a href="../../.." title="IoT Book" class="md-nav__button md-logo">
       
         <img src="../../../images/nicon.png" width="48" height="48">
       
-    </span>
+    </a>
     IoT Book
   </label>
   
@@ -447,73 +454,77 @@
     
   
   
-  
-  
     <label class="md-nav__title" for="__toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
-        
-          <li class="md-nav__item">
-    <a href="#1" title="1. 信道定义" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
     1. 信道定义
   </a>
   
 </li>
-        
       
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 信道状态信息
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-    <a href="#2" title="2. 信道状态信息" class="md-nav__link">
-    2. 信道状态信息
+  <a href="#_2" class="md-nav__link">
+    信道估计
   </a>
   
 </li>
         
-      
-        
           <li class="md-nav__item">
-    <a href="#3" title="3. 信道冲击响应" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    实际系统的信道状态信息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
     3. 信道冲击响应
   </a>
   
 </li>
-        
       
-        
-          <li class="md-nav__item">
-    <a href="#4" title="4. 信噪比" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
     4. 信噪比
   </a>
   
 </li>
-        
       
-        
-          <li class="md-nav__item">
-    <a href="#5" title="5. 多径效应" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
     5. 多径效应
   </a>
   
 </li>
-        
       
-        
-          <li class="md-nav__item">
-    <a href="#6" title="6. 信号衰落" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
     6. 信号衰落
   </a>
   
 </li>
-        
       
-        
-          <li class="md-nav__item">
-    <a href="#7" title="7. 参考文献" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
     7. 参考文献
   </a>
   
 </li>
-        
       
       
       
@@ -836,73 +847,77 @@
     
   
   
-  
-  
     <label class="md-nav__title" for="__toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
-        
-          <li class="md-nav__item">
-    <a href="#1" title="1. 信道定义" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
     1. 信道定义
   </a>
   
 </li>
-        
       
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 信道状态信息
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-    <a href="#2" title="2. 信道状态信息" class="md-nav__link">
-    2. 信道状态信息
+  <a href="#_2" class="md-nav__link">
+    信道估计
   </a>
   
 </li>
         
-      
-        
           <li class="md-nav__item">
-    <a href="#3" title="3. 信道冲击响应" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
+    实际系统的信道状态信息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
     3. 信道冲击响应
   </a>
   
 </li>
-        
       
-        
-          <li class="md-nav__item">
-    <a href="#4" title="4. 信噪比" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
     4. 信噪比
   </a>
   
 </li>
-        
       
-        
-          <li class="md-nav__item">
-    <a href="#5" title="5. 多径效应" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
     5. 多径效应
   </a>
   
 </li>
-        
       
-        
-          <li class="md-nav__item">
-    <a href="#6" title="6. 信号衰落" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
     6. 信号衰落
   </a>
   
 </li>
-        
       
-        
-          <li class="md-nav__item">
-    <a href="#7" title="7. 参考文献" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
     7. 参考文献
   </a>
   
 </li>
-        
       
       
       
@@ -943,7 +958,40 @@ color: #999;
 padding: 2px;">图. 信道示意</div>
 </center></p>
 <h2 id="2">2. 信道状态信息<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>在无线通信中，信道状态信息（Channel State Information，CSI）指一个通信链路的已知信道信息。CSI描述了一个信号如何从发送端传播到接收端以及相应影响，如散射、衰落和能量随距离的衰减，即信道估计。运用CSI可以依据当前信道状态实行自适应传输，这对多天线系统中实现高速率的可靠通信十分重要。</p>
+<p>理解信道对于理解无线通信和感知非常重要。首先我们来看一下是如何描述一个信道的。假设发送者A发送数据给接受者B，给定一个发送信号例如<span><span class="MathJax_Preview">sin(wt)</span><script type="math/tex">sin(wt)</script></span>,接收者B接收到的信号如何来描述。
+一般来说，我们可以想到信号经过信道后至少有两个方面的变化。</p>
+<p>第一个变化就是信号会衰减，简单来看，也就是说信号会由之前的<span><span class="MathJax_Preview">sin(wt)</span><script type="math/tex">sin(wt)</script></span>变为<span><span class="MathJax_Preview">A sin(wt)</span><script type="math/tex">A sin(wt)</script></span>，其中A为衰减系数。
+另外一个变化就是由于多径的影响，收到的信号为多条不同路径信号的叠加，也就是为<span><span class="MathJax_Preview">A_1 sin(wt + \phi_1) + A_2 sin(wt + \phi_2) + \ldots + A_n sin(wt+\phi_n)</span><script type="math/tex">A_1 sin(wt + \phi_1) + A_2 sin(wt + \phi_2) + \ldots + A_n sin(wt+\phi_n)</script></span>。
+如果我们将<span><span class="MathJax_Preview">sin(wt)</span><script type="math/tex">sin(wt)</script></span>换成了冲击信号的话，通过信道后通常会有如下的结果。
+<img alt="" src="./res/基础概念/pulse_channel.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 信道对信号的影响</div>
+</center>
+可以看出来，收到的信号仍然是发送信号的衰减和延迟的组合。</p>
+<blockquote>
+<blockquote>
+<p>思考：如何来表示这样的影响</p>
+</blockquote>
+</blockquote>
+<p>通常我们有很多的方法来表示这样的信号带来的影响，最简单的接收信号y可以表示为<span><span class="MathJax_Preview">y = \sum_{i\leq n}x*A_ie^{jw_i}</span><script type="math/tex">y = \sum_{i\leq n}x*A_ie^{jw_i}</script></span>。
+表示了不同信号延迟和衰减的叠加。
+同时，我们也有另外的方法来表示。我们先引入卷积概念，
+函数f 和 g为两个可积函数，f和g的卷积记做<span><span class="MathJax_Preview">f*g</span><script type="math/tex">f*g</script></span>，我们有
+$$ f*g = $$
+记冲击函数结果中各项系数为 <span><span class="MathJax_Preview">H = [h_1, h_2, \ldots, h_k]</span><script type="math/tex">H = [h_1, h_2, \ldots, h_k]</script></span>，那么输入信号x通过信道的输出结果就是
+<span><span class="MathJax_Preview">y = H*x</span><script type="math/tex">y = H*x</script></span>在没有噪声的情况下。如果存在噪声noise，那么结果为<span><span class="MathJax_Preview">y = H*x + noise</span><script type="math/tex">y = H*x + noise</script></span>。</p>
+<blockquote>
+<blockquote>
+<p>思考为什么会是卷积？</p>
+</blockquote>
+</blockquote>
+<h3 id="_2">信道估计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>为了估计出H的大小，一般的做法为发送已知内容的信号，例如信号中的前导码等，通过分析接收到的信号和发送信号的变化，计算出H。</p>
+<h3 id="_3">实际系统的信道状态信息<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>在无线通信中，信道状态信息通常可以通过无线网卡来获取，这是无线通信中的一个重要参数，有了这个参数后，接收节点能够还原出发送节点的信息。信道状态信息一般被称为Channel State Information（CSI）。CSI描述了一个信号如何从发送端传播到接收端以及相应影响，如散射、衰落和能量随距离的衰减，即信道估计。运用CSI可以依据当前信道状态实行自适应传输，这对多天线系统中实现高速率的可靠通信十分重要。</p>
 <p>CSI可以分为瞬时CSI（Instantaneous CSI）和统计CSI（Statistical CSI）。瞬时CSI意味着当前信道状态已知，因此可以调整发射信号来优化接收信号以达到空间复用或减少比特错误率。统计CSI意味着信道的统计特性已知，如衰落分布的类型、平均信道增益、空间相关性等，这些信息也能用来进行传输优化。</p>
 <p>在某些快衰落系统中，信道状态在symbol级别都会发生极速的变化，此时只用统计CSI是有意义的。另一方面，在慢衰落系统中，可以在合理精度内得到瞬时CSI估计，在该估计过时前仍可被用来进行传输适应。</p>
 <!-- TODO 举例 -->
@@ -1064,7 +1112,7 @@ padding: 2px;">图. 多径示意图</div>
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  后退
+                  上一页
                 </span>
                 5.2 傅立叶分析
               </span>
@@ -1076,7 +1124,7 @@ padding: 2px;">图. 多径示意图</div>
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  前进
+                  下一页
                 </span>
                 5.4 信号滤波
               </span>
@@ -1100,28 +1148,25 @@ padding: 2px;">图. 多径示意图</div>
           Material for MkDocs</a>
       </div>
       
-        
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/iot-book" class="md-footer-social__link fa fa-github"></a>
     
   </div>
 
-      
     </div>
   </div>
 </footer>
       
     </div>
     
-    <script src="../../../assets/javascripts/application.6f02ae1b.js"></script>
+      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
       
         
         
           
-          <script src="../../../assets/javascripts/lunr../../../lunr.stemmer.support.js"></script>
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
               
@@ -1133,12 +1178,9 @@ padding: 2px;">图. 多径示意图</div>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
-        <script src="../../../../../../js/extra.js"></script>
+        <script src="../../../js/extra.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-    
       
     
   </body>

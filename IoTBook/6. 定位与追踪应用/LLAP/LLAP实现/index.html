@@ -2,7 +2,7 @@
 
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh" class="no-js">
   <head>
     
@@ -35,8 +35,8 @@
       
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
-      <link rel="shortcut icon" href="../../../../assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
     
     
       
@@ -44,22 +44,31 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.dfc6cb0c.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.30686662.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
       
     
     
-      <script src="../../../../assets/javascripts/modernizr.6586f7cd.js"></script>
+      <script src="../../../../assets/javascripts/modernizr.74668098.js"></script>
     
     
-      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
     
     
   </head>
@@ -78,7 +87,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../../../#llap-low-latency-acoustic-phase" tabindex="1" class="md-skip">
+      <a href="#llap-low-latency-acoustic-phase" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -87,7 +96,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-          <a href="../../../.." title="IoT Book" class="md-header-nav__button md-logo">
+        <a href="../../../.." title="IoT Book" class="md-header-nav__button md-logo">
           
             <img src="../../../../images/nicon.png" width="24" height="24">
           
@@ -99,22 +108,21 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
-            
-              <span class="md-header-nav__topic">
-                IoT Book
-              </span>
-              <span class="md-header-nav__topic">
+            <span class="md-header-nav__topic">
+              IoT Book
+            </span>
+            <span class="md-header-nav__topic">
+              
                 LLAP实现
-              </span>
-            
+              
+            </span>
           
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-            
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
@@ -137,7 +145,6 @@
     </div>
   </div>
 </div>
-          
         
       </div>
       
@@ -150,7 +157,7 @@
         
       
       
-      <main class="md-main">
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
             
@@ -159,11 +166,11 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <span class="md-nav__button md-logo">
+    <a href="../../../.." title="IoT Book" class="md-nav__button md-logo">
       
         <img src="../../../../images/nicon.png" width="48" height="48">
       
-    </span>
+    </a>
     IoT Book
   </label>
   
@@ -736,34 +743,55 @@
   
   
   
-  
-  
     <label class="md-nav__title" for="__toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
-        
-          <li class="md-nav__item">
-    <a href="#llap-low-latency-acoustic-phase" title="LLAP (Low-Latency Acoustic Phase)实现" class="md-nav__link">
+        <li class="md-nav__item">
+  <a href="#llap-low-latency-acoustic-phase" class="md-nav__link">
     LLAP (Low-Latency Acoustic Phase)实现
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
-          
-            <li class="md-nav__item">
-    <a href="#_1" title="代码说明" class="md-nav__link">
-    代码说明
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    论文方法介绍
   </a>
   
 </li>
-          
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    代码说明
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generatesoundm" class="md-nav__link">
+    GenerateSound.m
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysesoundm" class="md-nav__link">
+    AnalyseSound.m
+  </a>
+  
+</li>
         
       </ul>
     </nav>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
       
       
       
@@ -787,7 +815,15 @@
                 <h2 id="llap-low-latency-acoustic-phase">LLAP (Low-Latency Acoustic Phase)实现<a class="headerlink" href="#llap-low-latency-acoustic-phase" title="Permanent link">&para;</a></h2>
 <p>代码基于论文Mobicom16“Device-Free Gesture Tracking Using Acoustic Signals"实现</p>
 <p>参考代码：<a href="https://github.com/Samsonsjarkal/LLAP/blob/master/llap/Control/RangeFinder.cpp">https://github.com/Samsonsjarkal/LLAP/blob/master/llap/Control/RangeFinder.cpp</a></p>
-<h3 id="_1">代码说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="_1">论文方法介绍<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>论文采用含有多个频率成分的声波进行追踪，通过分析反射信号的相位推算被追踪物体的位移，具体流程如下：</p>
+<ol>
+<li>生成多频率信号。为了尽量减少声波对人耳的影响，声波的频率成分应尽可能在人耳的听力范围之外，或者边界上。论文中采用的声波频率在17kHz以上。生成多频率信号而不是单一频率信号的原因是：对多频率信号的每个单一频率进行分析，可以在之后采用线性回归的方式消除动态多径效应中每条多径距离变化不一致的问题。</li>
+<li>对收到的反射信号进行解调和滤波。在反射信号的频率成分中，既包含发射信号的频率，也包含由于被追踪物体运动而产生的多普勒频移。为了将多普勒频移分离出来，论文采用I/Q解调的方式。在I/Q解调的过程中，论文采用CIC (Cascaded Integrator Comb，级联积分梳) 滤波器对信号进行分块滤波，CIC滤波器本质上是一个使用矩形窗口进行滑动平均的滤波器，在代码中实现为CIC_Filter函数。</li>
+<li>分离信号中的静态分量和动态分量。由于周围的静态环境或一定时间内相对静态的环境，反射信号中会体现出由于静态多径效应产生的分量，和运动物体产生的动态分量相对应。论文中采用LEVD（Local Extreme Value Detection，局部极值检测）算法提取静态分量，再从原信号中减去静态分量来获取动态分量。</li>
+<li>线性回归计算一小段时间内的物体位移。提取出信号的动态分量后，便可计算动态分量的相位，为利用相位的变化计算位移。多径效应的影响导致仅依赖于一个频率的信号计算出来的结果很有可能误差很大，而多个频率分别计算可以对误差较大的点进行修正。</li>
+</ol>
+<h3 id="_2">代码说明<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="generatesoundm">GenerateSound.m<a class="headerlink" href="#generatesoundm" title="Permanent link">&para;</a></h4>
 <p>本程序用于生成待发送的声音信号，对声音信号的参数说明如下</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -840,28 +876,25 @@
           Material for MkDocs</a>
       </div>
       
-        
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/iot-book" class="md-footer-social__link fa fa-github"></a>
     
   </div>
 
-      
     </div>
   </div>
 </footer>
       
     </div>
     
-    <script src="../../../../assets/javascripts/application.6f02ae1b.js"></script>
+      <script src="../../../../assets/javascripts/application.ac79c3b0.js"></script>
       
         
         
           
-          <script src="../../../../assets/javascripts/lunr../../../../lunr.stemmer.support.js"></script>
+          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
               
@@ -873,12 +906,9 @@
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
       
-        <script src="../../../../../../../../js/extra.js"></script>
+        <script src="../../../../js/extra.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-    
       
     
   </body>
