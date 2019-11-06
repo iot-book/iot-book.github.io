@@ -1,0 +1,1359 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="zh">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>8.1.1 信号强度测距 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="IoT Book" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/nicon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              IoT Book
+            </span>
+            <span class="md-header-nav__topic">
+              
+                8.1.1 信号强度测距
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="IoT Book" class="md-nav__button md-logo">
+      
+        <img src="../../../images/nicon.png" width="48" height="48">
+      
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1. 前言/物联网导论/" title="一. 前言" class="md-nav__link">
+      一. 前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2. 物联网简介/物联网简介/" title="二. 物联网简介" class="md-nav__link">
+      二. 物联网简介
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 开发环境
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 开发环境
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../平台搭建/android开发基础/" title="3.1 Android 环境" class="md-nav__link">
+      3.1 Android 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../平台搭建/matlab基础/" title="3.2 MATLAB 环境" class="md-nav__link">
+      3.2 MATLAB 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      四. 物联网网络协议
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        四. 物联网网络协议
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/物联网连接技术/" title="4.1 物联网连接技术" class="md-nav__link">
+      4.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.2 Wi-Fi无线局域网/" title="4.2 Wi-Fi无线局域网" class="md-nav__link">
+      4.2 Wi-Fi无线局域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.3 蓝牙/" title="4.3 蓝牙" class="md-nav__link">
+      4.3 蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.4 ZigBee/" title="4.4 ZigBee" class="md-nav__link">
+      4.4 ZigBee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.5 毫米波通信/" title="4.5 毫米波通信" class="md-nav__link">
+      4.5 毫米波通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.6 可见光通信/" title="4.6 可见光通信" class="md-nav__link">
+      4.6 可见光通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.7 低功耗广域网/" title="4.7 低功耗广域网" class="md-nav__link">
+      4.7 低功耗广域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/蓝牙实验/" title="4.8 蓝牙连接实验" class="md-nav__link">
+      4.8 蓝牙连接实验
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/LoRa编码和通信实验/" title="4.9 LoRa编码和通信实验" class="md-nav__link">
+      4.9 LoRa编码和通信实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      五. 物联网通信基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        五. 物联网通信基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/5.1 采样和量化/" title="5.1 采样和量化" class="md-nav__link">
+      5.1 采样和量化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/5.2 傅立叶分析.md" title="5.2 傅立叶分析" class="md-nav__link">
+      5.2 傅立叶分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/5.3 无线信道/" title="5.3 无线信道" class="md-nav__link">
+      5.3 无线信道
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/5.4 滤波/" title="5.4 信号滤波" class="md-nav__link">
+      5.4 信号滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4. 物联网通信基础/4.2 调制解调方法及其声音实现/" title="5.5 调制解调方法" class="md-nav__link">
+      5.5 调制解调方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 物联网网络构建技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 物联网网络构建技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../8. 物联网网络构建/8.1 低功耗物联网概述/" title="6.1 低功耗物联网" class="md-nav__link">
+      6.1 低功耗物联网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.2 多跳自组织网" class="md-nav__link">
+      6.2 多跳自组织网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      6.3 网络冲突处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        6.3 网络冲突处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.3.1 链路模型及网络容量" class="md-nav__link">
+      6.3.1 链路模型及网络容量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.3.2 网络冲突处理方法" class="md-nav__link">
+      6.3.2 网络冲突处理方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.3.2 实验：ZigZag的声音实现" class="md-nav__link">
+      6.3.2 实验：ZigZag的声音实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      6.4 跨协议识别与通信
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        6.4 跨协议识别与通信
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.4.1 跨协议识别" class="md-nav__link">
+      6.4.1 跨协议识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.4.2 跨协议通信" class="md-nav__link">
+      6.4.2 跨协议通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      七. 物联网感知技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        七. 物联网感知技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      7.1 传感器感知
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        7.1 传感器感知
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.1.1 传感器" class="md-nav__link">
+      7.1.1 传感器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.1.2 传感器实验" class="md-nav__link">
+      7.1.2 传感器实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      7.2 行为识别
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        7.2 行为识别
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.2.1 Wi-Fi 动作识别" class="md-nav__link">
+      7.2.1 Wi-Fi 动作识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.2.2 智能手表手势识别" class="md-nav__link">
+      7.2.2 智能手表手势识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      7.3 身份认证
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        7.3 身份认证
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.3.1 频率选择" class="md-nav__link">
+      7.3.1 频率选择
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.3.2 声纹识别" class="md-nav__link">
+      7.3.2 声纹识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      八. 物联网定位与追踪
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        八. 物联网定位与追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1" checked>
+    
+    <label class="md-nav__link" for="nav-8-1">
+      8.1 无线测距
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        8.1 无线测距
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        8.1.1 信号强度测距
+      </label>
+    
+    <a href="./" title="8.1.1 信号强度测距" class="md-nav__link md-nav__link--active">
+      8.1.1 信号强度测距
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 接收信号强度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rssi" class="md-nav__link">
+    2. RSSI测距原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rssi" class="md-nav__link">
+    3. RSSI测距
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 参考文献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../飞行时间/" title="8.1.2 飞行时间测距" class="md-nav__link">
+      8.1.2 飞行时间测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.1.3 多普勒效应测距" class="md-nav__link">
+      8.1.3 多普勒效应测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.1.4 FMCW测距" class="md-nav__link">
+      8.1.4 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      8.2 定位技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        8.2 定位技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7.1基于距离测量的定位/" title="8.2.1 基于距离测量的定位" class="md-nav__link">
+      8.2.1 基于距离测量的定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7.2基于信号分布特征的定位/" title="8.2.2 基于信号分布特征的定位" class="md-nav__link">
+      8.2.2 基于信号分布特征的定位
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      8.3 追踪技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        8.3 追踪技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7.3基于距离变化量的位置追踪/" title="8.3.1 基于距离变化量的位置追踪" class="md-nav__link">
+      8.3.1 基于距离变化量的位置追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.3.2 基于相位的追踪" class="md-nav__link">
+      8.3.2 基于相位的追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      九. 物联网综合应用平台
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        九. 物联网综合应用平台
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../5.物联网感知/定位感知实验.md" title="9.1 定位感知" class="md-nav__link">
+      9.1 定位感知
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.2 阿里云平台" class="md-nav__link">
+      9.2 阿里云平台
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.3 LoRa测试床" class="md-nav__link">
+      9.3 LoRa测试床
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.4 物联网开发" class="md-nav__link">
+      9.4 物联网开发
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 接收信号强度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rssi" class="md-nav__link">
+    2. RSSI测距原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rssi" class="md-nav__link">
+    3. RSSI测距
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 参考文献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">信号强度测距<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 接收信号强度<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>接收信号强度（Received Signal Strength，RSS），有时也称接收信号强度指示（Received Signal Strength Indication，RSSI），是无线传输层用来判定链接质量的重要指标，传输层根据RSS判断是否增大发送端的发送强度。</p>
+<p>通常情况下，能量强度用功率表示，单位是瓦特（W）。但无线信号能量较弱，通常在毫瓦（mW）级别。因此普遍的做法是将信号的能量以1mW为基准，以对数形式指示信号强度，单位为dBm(Decibel-milliwatts)：分贝毫瓦。所以在无线信号中，1mW就是0dBm，能量小于1mW的信号RSSI为负数，能量大于1mW的信号RSSI为正数。</p>
+<p><span><span class="MathJax_Preview">dB</span><script type="math/tex">dB</script></span>是一个纯计数单位，<span><span class="MathJax_Preview">dB = 10\lg X</span><script type="math/tex">dB = 10\lg X</script></span>，可以轻易把一个很大/很小的数表示出来。
+上面的<span><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>是一个带有量纲（毫瓦）的两个功率的比值的表示方法，是一个表示功率绝对值的单位，其计算公式为：<span><span class="MathJax_Preview">10\lg(功率值/1mW)</span><script type="math/tex">10\lg(功率值/1mW)</script></span>。</p>
+<p>例如：如果发射功率为<span><span class="MathJax_Preview">1mW</span><script type="math/tex">1mW</script></span>，按<span><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>单位进行折算后的值应为：<span><span class="MathJax_Preview">10 \lg 1mW/1mW = 0dBm</span><script type="math/tex">10 \lg 1mW/1mW = 0dBm</script></span>；对于<span><span class="MathJax_Preview">40W</span><script type="math/tex">40W</script></span>的功率,则<span><span class="MathJax_Preview">10 \lg(40W/1mW)=46dBm</span><script type="math/tex">10 \lg(40W/1mW)=46dBm</script></span>。</p>
+<p>最常用的<span><span class="MathJax_Preview">2W＝33dBm</span><script type="math/tex">2W＝33dBm</script></span>，<span><span class="MathJax_Preview">20W＝43dBm</span><script type="math/tex">20W＝43dBm</script></span>。<span><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>与<span><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>之间的差值就可以用<span><span class="MathJax_Preview">dB</span><script type="math/tex">dB</script></span>来表示。比如<span><span class="MathJax_Preview">46dBm-43dBm=3dB</span><script type="math/tex">46dBm-43dBm=3dB</script></span>，表示<span><span class="MathJax_Preview">40W</span><script type="math/tex">40W</script></span>功率是<span><span class="MathJax_Preview">20W</span><script type="math/tex">20W</script></span>功率的<span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span>倍。</p>
+<h2 id="2-rssi">2. RSSI测距原理<a class="headerlink" href="#2-rssi" title="Permanent link">&para;</a></h2>
+<p>理解RSSI的定义和单位后，我们再来看看RSSI的影响因素。通常，RSSI受发送功率、路径衰减、接收增益和系统处理增益四个元素影响。其计算公式可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+RSSI = txPower + pathloss + rxGain + SystemGain
+</div>
+<script type="math/tex; mode=display">
+RSSI = txPower + pathloss + rxGain + SystemGain
+</script>
+</div>
+<p>其中发送功率、接收增益、系统增益都是定值，而路径衰减在理想情况下与传播距离直接相关。因此无线信号的发射功率和接收功率之间的关系可以用下式表示</p>
+<div>
+<div class="MathJax_Preview">
+PR = \frac{PT}{r^n}
+</div>
+<script type="math/tex; mode=display">
+PR = \frac{PT}{r^n}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">PR</span><script type="math/tex">PR</script></span>是无线信号的接收功率，<span><span class="MathJax_Preview">PT</span><script type="math/tex">PT</script></span>是无线信号的发射功率，<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>是收发单元之间的距离，<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>是传播因子，数值大小取决于无线信号传播的环境（该公式为远场近似，<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>很小时不成立）。</p>
+<p>对上式两边取对数可得:</p>
+<div>
+<div class="MathJax_Preview">
+10\lg(PR) = A - 10n\lg(r)
+</div>
+<script type="math/tex; mode=display">
+10\lg(PR) = A - 10n\lg(r)
+</script>
+</div>
+<p>由于发送功率已知，<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>可以看作信号传输1m远时接收信号的功率。上式左部<span><span class="MathJax_Preview">10\lg(PR)</span><script type="math/tex">10\lg(PR)</script></span>是接收信号功率转换为dBm的表达式，因此可以直接写成下面的表达形式</p>
+<div>
+<div class="MathJax_Preview">
+PR（in\quad dBm）=A-10n\lg(r)
+</div>
+<script type="math/tex; mode=display">
+PR（in\quad dBm）=A-10n\lg(r)
+</script>
+</div>
+<p>上式中可以得到常数<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>的数值决定了接收信号强度和信号传输距离的关系，因此我们接下来分析这两个常数对信号传输距离的影响。
+先假定<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>不变，使<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>变化，可以得到如下图所示的关系曲线图。</p>
+<p><img alt="" src="../res/RSS1.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. n不变，A变化时接收信号强度与传输距离关系图</div>
+</center></p>
+<p>从上图可以观察到，若信号传播因子n为定值，无线信号在近场传播时强度快速衰减，远距离时信号呈缓慢线性衰减。而当发射信号功率增加时，增加的传播距离近似为发射信号功率增加量和曲线在平缓阶段的斜率的比值。</p>
+<p>接下来我们分析当<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>不变，取不同的<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>，RSSI与信号传播距离的关系。</p>
+<p><img alt="" src="../res/RSS2.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. A不变，n变化时接收信号强度与传输距离关系图</div>
+</center></p>
+<p>如上图所示。当<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>取值越小时，信号在传播过程衰减越小，信号可以传播较远的距离。从上图还可以看到，良好的传播因子特性（<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>越小）或增加发射信号功率都能增加信号传播距离。传播因子主要取决于无线信号在空气中的衰减、反射、多径效应等干扰，如果干扰较小的话，传播因子n值越小，信号传播距离越远，无线信号的传播曲线越接近于理论曲线，基于RSSI的测距就会越精确。</p>
+<h2 id="3-rssi">3. RSSI测距<a class="headerlink" href="#3-rssi" title="Permanent link">&para;</a></h2>
+<p>利用RSSI测距必须事先知道A值和n值，A值为无线收发节点相距1m时接收节点接收无线信号强度值，n值是无线信号的传播因子，这两个值都是经验值，和具体使用的硬件节点和无线信号传播的环境密切相关，所以测距前必须在应用环境中把两个经验值标定好，标定的准确与否，直接关系到测距定位的精度。</p>
+<p>此外，如果无线节点系统应用在室外的话，野外的气象条件变化对无线信号的传输也会产生影响。在野外主要考虑的气象条件因素是温度和湿度变化，经过实验验证，温度和湿度条件变化对无线信号传输的影响是没有规律的，但影响效果不明显，可以采取均值或前后测量值加权等方法将其影响消除。</p>
+<p>利用RSSI测距时，要避免RSSI的不稳定性，使RSSI值越精确的体现无线信号的传输距离，通过设计各种滤波器使RSSI的值平滑。
+最常用也是较容易实现的两种滤波器形式是平均值和加权滤波器，其中平均值滤波器是最基本的滤波形式，但是它需要收发节点之间进行多次数据传输；
+加权滤波器只需要两次RSSI测量数据，虽然要求数据少，但是也会保证RSSI值的变化平滑。</p>
+<h2 id="4">4. 参考文献<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>RSSI测距原理及公式：<a href="http://www.elecfans.com/baike/wuxian/20171120582385.html">http://www.elecfans.com/baike/wuxian/20171120582385.html</a></li>
+<li>iBeacon测距及稳定程序的实现：refined-x.com/2019/03/30/微信小程序iBeacon测距及稳定程序的实现/</li>
+<li><a href="https://en.wikipedia.org/wiki/Received_signal_strength_indication">https://en.wikipedia.org/wiki/Received_signal_strength_indication</a></li>
+</ol>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../404/" title="7.3.2 声纹识别" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                7.3.2 声纹识别
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../飞行时间/" title="8.1.2 飞行时间测距" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                8.1.2 飞行时间测距
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/iot-book" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

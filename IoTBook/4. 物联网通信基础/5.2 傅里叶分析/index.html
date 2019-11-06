@@ -1,0 +1,1757 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="zh">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>傅里叶分析 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="IoT Book" class="md-header-nav__button md-logo">
+          
+            <img src="../../../images/nicon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              IoT Book
+            </span>
+            <span class="md-header-nav__topic">
+              
+                傅里叶分析
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="IoT Book" class="md-nav__button md-logo">
+      
+        <img src="../../../images/nicon.png" width="48" height="48">
+      
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1. 前言/物联网导论/" title="一. 前言" class="md-nav__link">
+      一. 前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2. 物联网简介/物联网简介/" title="二. 物联网简介" class="md-nav__link">
+      二. 物联网简介
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 开发环境
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 开发环境
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../平台搭建/android开发基础/" title="3.1 Android 环境" class="md-nav__link">
+      3.1 Android 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../平台搭建/matlab基础/" title="3.2 MATLAB 环境" class="md-nav__link">
+      3.2 MATLAB 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      四. 物联网网络协议
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        四. 物联网网络协议
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/物联网连接技术/" title="4.1 物联网连接技术" class="md-nav__link">
+      4.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.2 Wi-Fi无线局域网/" title="4.2 Wi-Fi无线局域网" class="md-nav__link">
+      4.2 Wi-Fi无线局域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.3 蓝牙/" title="4.3 蓝牙" class="md-nav__link">
+      4.3 蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.4 ZigBee/" title="4.4 ZigBee" class="md-nav__link">
+      4.4 ZigBee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.5 毫米波通信/" title="4.5 毫米波通信" class="md-nav__link">
+      4.5 毫米波通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.6 可见光通信/" title="4.6 可见光通信" class="md-nav__link">
+      4.6 可见光通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/4.7 低功耗广域网/" title="4.7 低功耗广域网" class="md-nav__link">
+      4.7 低功耗广域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/蓝牙实验/" title="4.8 蓝牙连接实验" class="md-nav__link">
+      4.8 蓝牙连接实验
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3. 物联网通信协议/LoRa编码和通信实验/" title="4.9 LoRa编码和通信实验" class="md-nav__link">
+      4.9 LoRa编码和通信实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      五. 物联网通信基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        五. 物联网通信基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5.1 采样和量化/" title="5.1 采样和量化" class="md-nav__link">
+      5.1 采样和量化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5.2 傅立叶分析.md" title="5.2 傅立叶分析" class="md-nav__link">
+      5.2 傅立叶分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5.3 无线信道/" title="5.3 无线信道" class="md-nav__link">
+      5.3 无线信道
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5.4 滤波/" title="5.4 信号滤波" class="md-nav__link">
+      5.4 信号滤波
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.2 调制解调方法及其声音实现/" title="5.5 调制解调方法" class="md-nav__link">
+      5.5 调制解调方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      六. 物联网网络构建技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        六. 物联网网络构建技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../8. 物联网网络构建/8.1 低功耗物联网概述/" title="6.1 低功耗物联网" class="md-nav__link">
+      6.1 低功耗物联网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.2 多跳自组织网" class="md-nav__link">
+      6.2 多跳自组织网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      6.3 网络冲突处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        6.3 网络冲突处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.3.1 链路模型及网络容量" class="md-nav__link">
+      6.3.1 链路模型及网络容量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.3.2 网络冲突处理方法" class="md-nav__link">
+      6.3.2 网络冲突处理方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.3.2 实验：ZigZag的声音实现" class="md-nav__link">
+      6.3.2 实验：ZigZag的声音实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      6.4 跨协议识别与通信
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        6.4 跨协议识别与通信
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.4.1 跨协议识别" class="md-nav__link">
+      6.4.1 跨协议识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="6.4.2 跨协议通信" class="md-nav__link">
+      6.4.2 跨协议通信
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      七. 物联网感知技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        七. 物联网感知技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      7.1 传感器感知
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        7.1 传感器感知
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.1.1 传感器" class="md-nav__link">
+      7.1.1 传感器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.1.2 传感器实验" class="md-nav__link">
+      7.1.2 传感器实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      7.2 行为识别
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        7.2 行为识别
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.2.1 Wi-Fi 动作识别" class="md-nav__link">
+      7.2.1 Wi-Fi 动作识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.2.2 智能手表手势识别" class="md-nav__link">
+      7.2.2 智能手表手势识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      7.3 身份认证
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        7.3 身份认证
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.3.1 频率选择" class="md-nav__link">
+      7.3.1 频率选择
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="7.3.2 声纹识别" class="md-nav__link">
+      7.3.2 声纹识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      八. 物联网定位与追踪
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        八. 物联网定位与追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      8.1 无线测距
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        8.1 无线测距
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../6. 定位与追踪应用/信号强度测距/" title="8.1.1 信号强度测距" class="md-nav__link">
+      8.1.1 信号强度测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../6. 定位与追踪应用/飞行时间/" title="8.1.2 飞行时间测距" class="md-nav__link">
+      8.1.2 飞行时间测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.1.3 多普勒效应测距" class="md-nav__link">
+      8.1.3 多普勒效应测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.1.4 FMCW测距" class="md-nav__link">
+      8.1.4 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      8.2 定位技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        8.2 定位技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../6. 定位与追踪应用/7.1基于距离测量的定位/" title="8.2.1 基于距离测量的定位" class="md-nav__link">
+      8.2.1 基于距离测量的定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../6. 定位与追踪应用/7.2基于信号分布特征的定位/" title="8.2.2 基于信号分布特征的定位" class="md-nav__link">
+      8.2.2 基于信号分布特征的定位
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      8.3 追踪技术
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        8.3 追踪技术
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../6. 定位与追踪应用/7.3基于距离变化量的位置追踪/" title="8.3.1 基于距离变化量的位置追踪" class="md-nav__link">
+      8.3.1 基于距离变化量的位置追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="8.3.2 基于相位的追踪" class="md-nav__link">
+      8.3.2 基于相位的追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      九. 物联网综合应用平台
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        九. 物联网综合应用平台
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../5.物联网感知/定位感知实验.md" title="9.1 定位感知" class="md-nav__link">
+      9.1 定位感知
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.2 阿里云平台" class="md-nav__link">
+      9.2 阿里云平台
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.3 LoRa测试床" class="md-nav__link">
+      9.3 LoRa测试床
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" title="9.4 物联网开发" class="md-nav__link">
+      9.4 物联网开发
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 傅里叶级数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 傅里叶变换
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 离散傅里叶变换
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 快速傅里叶变换
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-fft" class="md-nav__link">
+    4.1. FFT的一个应用：大数乘法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 参考文献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">傅里叶分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>前面的研究我们可以看出，正弦信号是具备很好的属性，我们都很熟悉，也很好处理的。可是实际中有一个问题，不是每一个信号都是正弦信号，那如何处理这些信号呢。研究中我们有一个方法，可以把一个未知的问题转化为已知的问题，那么一个很自然的想法就是，能不能将一个未知的不好处理的信号转化为已知的好处理的信号。傅里叶分析就是实现这种转换的一个有力工具！傅里叶分析的最基本的作用就是建立信号在时域和频域之间的转换关系，从而一些在时域上难以解决的问题，可以变换到频域进行分析，反之亦然。
+<!-- 那么傅里叶变换是怎么得到的呢。我们先不看这么复杂的过程，先来看一个简单的例子。 --></p>
+<h2 id="1">1. 傅里叶级数<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>傅里叶级数源于一个对周期函数进行分解的猜想：十七世纪中叶，拉格朗日等数学家发现，某些周期函数可以由三角函数的和来表示。如下面例子所示，对于一个周期为<span><span class="MathJax_Preview">2\pi</span><script type="math/tex">2\pi</script></span>的锯齿形波，通过不断叠加具有不同的周期的三角函数，我们可以使叠加结果逐渐逼近原本的锯齿形波。我们使用MATLAB仿真来更加直观地理解这一过程：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 原始信号：周期为2pi的锯齿形波</span>
+<span class="n">fs</span> <span class="p">=</span> <span class="mf">1e3</span><span class="p">;</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">6</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span>
+<span class="n">y</span> <span class="p">=</span> <span class="o">-</span><span class="nb">pi</span> <span class="o">+</span> <span class="nb">mod</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">);</span>
+<span class="n">figure</span><span class="p">;</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="MATLAB产生周期2\pi\pi的锯齿波" src="../res/基础概念/Fourier/锯齿波.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. MATLAB产生周期2pi的锯齿波</div>
+</center>
+<!-- <center>图. MATLAB产生周期2pi的锯齿波</center> --></p>
+<!-- 接下来，我们使用三角函数对生成的这个锯齿波进行拟合。锯齿波的最小周期为$2\pi$，因此我们首先使用具有相同最小周期的正弦波$\sin(x)$，观察其对锯齿波的拟合情况： -->
+
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 使用最小周期为2pi的基础正弦波sin(x)拟合锯齿波</span>
+<span class="n">z</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="n">hold</span> <span class="n">on</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.5</span><span class="o">*</span><span class="nb">pi</span><span class="p">],[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">],</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;blue&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.6</span><span class="o">*</span><span class="nb">pi</span><span class="p">]);</span>
+    <span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.3</span> <span class="mf">3.3</span><span class="p">]);</span>
+    <span class="n">box</span> <span class="n">on</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="一阶拟合结果" src="../res/基础概念/Fourier/一阶拟合.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 一阶拟合结果</div>
+</center>
+<!-- <center>图. 一阶拟合结果</center> --></p>
+<!-- $\sin(x)$与锯齿波周期完全一致 ($\sin(x)$的系数$a=-2$，三角函数的系数将在后文中说明，此处暂不讨论)。比较$a\sin(x)$和锯齿波$y(x)$的大小，发现在$0$到$\pi$的区间内，$a\sin(x)-y(x)$先正后负，且在之后的每一段长度为$\pi$的区间中，$a\sin(x)$和$y(x)$都满足这一规律。因此，我们在$a\sin(x)$的基础上叠加一个周期为$\pi$且输出值先负后正的正弦信号$\sin(2x)$，用于补偿一阶拟合与锯齿波的差异： -->
+
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 叠加最小周期为pi的基础正弦波sin(2x)做二阶拟合</span>
+<span class="n">z</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">hold</span> <span class="n">on</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.5</span><span class="o">*</span><span class="nb">pi</span><span class="p">],[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">],</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;blue&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.6</span><span class="o">*</span><span class="nb">pi</span><span class="p">]);</span>
+    <span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.3</span> <span class="mf">3.3</span><span class="p">]);</span>
+    <span class="n">box</span> <span class="n">on</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="二阶拟合结果" src="../res/基础概念/Fourier/二阶拟合.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 二阶拟合结果</div>
+</center>
+<!-- <center>图. 二阶拟合结果</center> --></p>
+<p>继续叠加与锯齿波具有相同周期的三角函数 (即<span><span class="MathJax_Preview">\sin(nx)</span><script type="math/tex">\sin(nx)</script></span>，其中<span><span class="MathJax_Preview">n\in \mathbb{R}</span><script type="math/tex">n\in \mathbb{R}</script></span>)，使拟合的结果不断地逼近初始的锯齿形波：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 不同阶数三角函数叠加结果示意</span>
+<span class="n">figure</span><span class="p">;</span>
+<span class="n">z</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="n">fplot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;三阶拟合&#39;</span><span class="p">);</span>
+
+<span class="n">z</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="n">fplot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;四阶拟合&#39;</span><span class="p">);</span>
+
+<span class="n">z</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="n">fplot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;五阶拟合&#39;</span><span class="p">);</span>
+
+<span class="n">z</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span><span class="n">fplot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;六阶拟合&#39;</span><span class="p">);</span>
+
+<span class="k">function</span><span class="w"> </span><span class="nf">fplot</span><span class="p">(</span>t,y,z<span class="p">)</span><span class="w"></span>
+<span class="n">hold</span> <span class="n">on</span><span class="p">;</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.5</span><span class="o">*</span><span class="nb">pi</span><span class="p">],[</span><span class="mi">0</span> <span class="mi">0</span><span class="p">],</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.6</span><span class="o">*</span><span class="nb">pi</span><span class="p">]);</span>
+    <span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.3</span> <span class="mf">3.3</span><span class="p">]);</span>
+    <span class="n">box</span> <span class="n">on</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="锯齿形波三阶到六阶拟合结果" src="../res/基础概念/Fourier/六阶拟合.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 锯齿形波三阶到六阶拟合结果</div>
+</center>
+<!-- <center>图. 锯齿形波三到六阶拟合结果</center> --></p>
+<p>从上面的例子可以看到，为了拟合一个周期函数，我们需要使用多种不同周期的三角函数，调整他们的振幅并叠加。那么，给定任意一个周期函数，是否都能将其表示为三角函数和的形式？如果可以表示，则每个用于叠加的三角函数周期是多少？函数振幅又是多少？</p>
+<p>傅里叶针对上述问题进行研究，设计出了无穷级数形式的周期函数展开方法，后人称该周期函数展开方法为傅里叶级数（Fourier Series）。傅里叶宣称，任何周期函数（无论连续与否）皆可用傅里叶级数表示。傅里叶级数给出了周期函数展开成三角函数的理论证明，确定了展开式中各项的周期和振幅。但在级数使用范围这一问题上，傅里叶的结论并不准确，德国数学家狄利克雷证明了某些情况下的周期函数无法用傅里叶级数表示，并率先给出了周期函数可展开成傅里叶级数的条件，即狄利克雷条件：
+<!-- 他考虑单变量周期函数形成的向量空间，并以无限多个余弦和正弦函数构成单范正交集，由此设计出无穷级数形式的展开式，后人称为傅里叶级数(Fourier series)。 --></p>
+<ol>
+<li>此函数必须是有界的(bounded)，即对于任意<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，<span><span class="MathJax_Preview">|f(x)|&lt;M</span><script type="math/tex">|f(x)|<M</script></span>，<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>是一正实数；</li>
+<li>在任意区间内，除了有限个不连续点，<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>必须是连续函数；</li>
+<li>在任意区间内，<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>必须仅包含有限个极值；</li>
+<li>在一周期内，<span><span class="MathJax_Preview">|f(x)|</span><script type="math/tex">|f(x)|</script></span>的积分必须收敛。</li>
+</ol>
+<p>尽管适用性限定于满足迪利克雷条件的函数，傅里叶级数现今已然是应用数学的基本工具，在信号处理、图像处理、计量经济、震动分析、声学、光学等领域都有广泛的应用。</p>
+<p>本文剩余部分将介绍傅里叶级数的具体内容，探究其将周期函数分解为三角函数和的过程。</p>
+<p>从上文的分析中我们知道，傅里叶级数分解周期函数，本质上只需要解决两个问题：
+<strong>1. 周期函数的分解结果应该包含哪些项？</strong>
+<strong>2. 每一项的系数分别是多少？</strong></p>
+<p>首先回答第一个问题：
+遵循从特殊到一般的规律，我们先考虑一种特殊的函数——常数函数。对于常数函数，相隔任意位置取值的结果都相同，因此根据周期函数的定义，常数函数是周期函数且周期可以是任意实数。常数本身已经是最简的形式，因此，对常数函数进行分解，结果应该只包含唯一的常数项。更一般的，对任意一个包含常数分量的周期函数，其分解结果中一定包含一个常数项。</p>
+<p>接下来我们考虑，除常数项外，周期函数的分解结果还应该包含哪些项？
+<!-- 如何用<span><span class="MathJax_Preview">sin(x)</span><script type="math/tex">sin(x)</script></span>和<span><span class="MathJax_Preview">cos(x)</span><script type="math/tex">cos(x)</script></span>进行分解，考虑以下几个问题：
+**(1). 分解结果中是否同时含有<span><span class="MathJax_Preview">sin(x)</span><script type="math/tex">sin(x)</script></span>和<span><span class="MathJax_Preview">cos(x)</span><script type="math/tex">cos(x)</script></span>？** -->
+我们知道三角函数包括<span><span class="MathJax_Preview">\sin(x)</span><script type="math/tex">\sin(x)</script></span>和<span><span class="MathJax_Preview">\cos(x)</span><script type="math/tex">\cos(x)</script></span>，其中<span><span class="MathJax_Preview">\sin(x)</span><script type="math/tex">\sin(x)</script></span>是奇函数，而<span><span class="MathJax_Preview">\cos(x)</span><script type="math/tex">\cos(x)</script></span>是偶函数。如果分别用<span><span class="MathJax_Preview">f_{odd}(x)</span><script type="math/tex">f_{odd}(x)</script></span>和<span><span class="MathJax_Preview">f_{even}(x)</span><script type="math/tex">f_{even}(x)</script></span>分别表示奇函数和偶函数，则函数运算的奇偶性可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+f_{odd} = f_{odd} \pm f_{odd}\\
+f_{even} = f_{even} \pm f_{even}
+</div>
+<script type="math/tex; mode=display">
+f_{odd} = f_{odd} \pm f_{odd}\\
+f_{even} = f_{even} \pm f_{even}
+</script>
+</div>
+<p>即奇函数与奇函数相加减只能得到奇函数，偶函数与偶函数相加减只能得到偶函数。而任意函数<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>，都可以被表示为：</p>
+<div>
+<div class="MathJax_Preview">
+f(x) = \frac{f(x)+f(-x)}{2} + \frac{f(x)-f(-x)}{2}
+</div>
+<script type="math/tex; mode=display">
+f(x) = \frac{f(x)+f(-x)}{2} + \frac{f(x)-f(-x)}{2}
+</script>
+</div>
+<p>显然<span><span class="MathJax_Preview">f(x)+f(-x)</span><script type="math/tex">f(x)+f(-x)</script></span>是偶函数，而<span><span class="MathJax_Preview">f(x)-f(-x)</span><script type="math/tex">f(x)-f(-x)</script></span>是奇函数，因此可以得到结论：对任意函数<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>（无论奇偶）进行分解，其结果一定同时包含奇函数和偶函数。因此，单独使用<span><span class="MathJax_Preview">\sin(x)</span><script type="math/tex">\sin(x)</script></span>或<span><span class="MathJax_Preview">\cos(x)</span><script type="math/tex">\cos(x)</script></span>都无法表示所有的周期函数分解结果，分解一个一般的周期函数，一定需要同时使用<span><span class="MathJax_Preview">\sin(x)</span><script type="math/tex">\sin(x)</script></span>和<span><span class="MathJax_Preview">\cos(x)</span><script type="math/tex">\cos(x)</script></span>。</p>
+<!-- **(2). 如何保证三角函数组合的周期与输入函数的周期相同？** -->
+
+<p>我们现在已经知道，周期函数的分解结果一定同时包含<span><span class="MathJax_Preview">\sin(x)</span><script type="math/tex">\sin(x)</script></span>项和<span><span class="MathJax_Preview">\cos(x)</span><script type="math/tex">\cos(x)</script></span>项，接下来需要确定每个三角函数项的周期应该是多少？显然，当分解一个周期为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>的函数时，如果能够保证每个分解分量的周期都为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>，那么他们相加结果的周期一定等于<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>。对三角函数而言，周期为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>的三角函数都可以表示为：<span><span class="MathJax_Preview">sin(\frac{2\pi n}{T}x)</span><script type="math/tex">sin(\frac{2\pi n}{T}x)</script></span>或<span><span class="MathJax_Preview">cos(\frac{2\pi n}{T}x)</span><script type="math/tex">cos(\frac{2\pi n}{T}x)</script></span>，其中<span><span class="MathJax_Preview">n\in \mathbb{N}</span><script type="math/tex">n\in \mathbb{N}</script></span>。因此，如果已知输入函数的周期<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>，则使用<span><span class="MathJax_Preview">sin(\frac{2\pi n}{T}x)</span><script type="math/tex">sin(\frac{2\pi n}{T}x)</script></span>或<span><span class="MathJax_Preview">cos(\frac{2\pi n}{T}x)</span><script type="math/tex">cos(\frac{2\pi n}{T}x)</script></span>进行加减，一定能保证组合的结果与输入函数的周期相同。</p>
+<p>通过以上分析，我们可以得到，当分解一个周期函数，其分解结果应该满足以下三点：</p>
+<ul>
+<li>有常数项</li>
+<li>同时包含<span><span class="MathJax_Preview">sin(x)</span><script type="math/tex">sin(x)</script></span>和<span><span class="MathJax_Preview">cos(x)</span><script type="math/tex">cos(x)</script></span> （奇函数和偶函数可以组合出任意函数）</li>
+<li>所有分量，最小周期都为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>或<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>的整数分之一</li>
+</ul>
+<p>故给定一个周期为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>的函数<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>，其三角函数分解的结果可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+f(x)=C+\sum_{n=1}^{\infty}\left(a_{n} \cos \left(\frac{2 \pi n}{T} x\right)+b_{n} \sin \left(\frac{2 \pi n}{T} x\right)\right), C \in \mathbb{R}
+</div>
+<script type="math/tex; mode=display">
+f(x)=C+\sum_{n=1}^{\infty}\left(a_{n} \cos \left(\frac{2 \pi n}{T} x\right)+b_{n} \sin \left(\frac{2 \pi n}{T} x\right)\right), C \in \mathbb{R}
+</script>
+</div>
+<p>通过上面的式子，我们用一组最基础的三角函数，实现了对任意周期函数的表示。</p>
+<p>接下来解决第二个问题：如何确定上式中各分解项的系数？</p>
+<!-- $$
+C\quad a_n\quad b_n
+$$ -->
+
+<p>在上面的求和式中，除系数外的其他部分（即<span><span class="MathJax_Preview">cos(\frac{2 \pi n}{T} x)</span><script type="math/tex">cos(\frac{2 \pi n}{T} x)</script></span>和<span><span class="MathJax_Preview">sin(\frac{2 \pi n}{T} x)</span><script type="math/tex">sin(\frac{2 \pi n}{T} x)</script></span>）不会随<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>的不同而变化，而常数项<span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>也可以认为是在<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>的基础上针对不同<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>进行缩放的结果。因此，我们可以把</p>
+<div>
+<div class="MathJax_Preview">
+\{1,cos(\frac{2 \pi n}{T} x),sin(\frac{2 \pi n}{T} x)\}
+</div>
+<script type="math/tex; mode=display">
+\{1,cos(\frac{2 \pi n}{T} x),sin(\frac{2 \pi n}{T} x)\}
+</script>
+</div>
+<p>视作一组基底，而把系数<span><span class="MathJax_Preview">\{C\; a_n\; b_n\}</span><script type="math/tex">\{C\; a_n\; b_n\}</script></span>视为<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>在这组基底下的坐标。有了这个结论之后，我们再来看如何求坐标。</p>
+<p>我们先看个向量的例子，假设<span><span class="MathJax_Preview">\vec{u}</span><script type="math/tex">\vec{u}</script></span>和<span><span class="MathJax_Preview">\vec{v}</span><script type="math/tex">\vec{v}</script></span>是两个相互正交的向量基底（即<span><span class="MathJax_Preview">\vec{u} \cdot \vec{v} = 0</span><script type="math/tex">\vec{u} \cdot \vec{v} = 0</script></span>），则任意向量<span><span class="MathJax_Preview">\vec{w}</span><script type="math/tex">\vec{w}</script></span>可以通过<span><span class="MathJax_Preview">\vec{u}</span><script type="math/tex">\vec{u}</script></span>和<span><span class="MathJax_Preview">\vec{v}</span><script type="math/tex">\vec{v}</script></span>的线性组合得到：</p>
+<div>
+<div class="MathJax_Preview">
+\vec{w}=a \vec{u}+b \vec{v}
+</div>
+<script type="math/tex; mode=display">
+\vec{w}=a \vec{u}+b \vec{v}
+</script>
+</div>
+<p>例如当<span><span class="MathJax_Preview">a=2, b=3</span><script type="math/tex">a=2, b=3</script></span>时，<span><span class="MathJax_Preview">\vec{w}</span><script type="math/tex">\vec{w}</script></span>的图示为</p>
+<p><img alt="正交基示意" src="../res/基础概念/Fourier/正交基.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 正交基示意</div>
+</center>
+<!-- <center>图. 正交基示意</center> --></p>
+<p>显然，在这种情况下，对任意<span><span class="MathJax_Preview">\vec{w}</span><script type="math/tex">\vec{w}</script></span>，正交基的系数（<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>或<span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>）等于<span><span class="MathJax_Preview">\vec{w}</span><script type="math/tex">\vec{w}</script></span>在该正交基上的投影除以该正交基的长度，即：</p>
+<div>
+<div class="MathJax_Preview">
+a = \frac{\vec{w} \cdot \vec{u}}{\vec{u} \cdot \vec{u}}=\frac{(1,5) \cdot(-1,1)}{(-1,1) \cdot(-1,1)}=2
+</div>
+<script type="math/tex; mode=display">
+a = \frac{\vec{w} \cdot \vec{u}}{\vec{u} \cdot \vec{u}}=\frac{(1,5) \cdot(-1,1)}{(-1,1) \cdot(-1,1)}=2
+</script>
+</div>
+<p>我们将上述结论推广到三角函数基中（即<span><span class="MathJax_Preview">sin(nt)</span><script type="math/tex">sin(nt)</script></span>和<span><span class="MathJax_Preview">cos(nt)</span><script type="math/tex">cos(nt)</script></span>），在无限维的希尔伯特空间中，函数向量的点积可以定义：</p>
+<div>
+<div class="MathJax_Preview">
+\overrightarrow{f(x)} \cdot \overrightarrow{g(x)}=\int_{0}^{T} f(x) g(x) d x
+</div>
+<script type="math/tex; mode=display">
+\overrightarrow{f(x)} \cdot \overrightarrow{g(x)}=\int_{0}^{T} f(x) g(x) d x
+</script>
+</div>
+<p>其中，<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>是函数向量，<span><span class="MathJax_Preview">g(x)</span><script type="math/tex">g(x)</script></span>是基，<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>是<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>的周期。那么，对于我们之前分析的三角函数基底</p>
+<div>
+<div class="MathJax_Preview">
+\{1,\cos(\frac{2 \pi n}{T} x),\sin(\frac{2 \pi n}{T} x)\}
+</div>
+<script type="math/tex; mode=display">
+\{1,\cos(\frac{2 \pi n}{T} x),\sin(\frac{2 \pi n}{T} x)\}
+</script>
+</div>
+<p>显然该集合中的任意两基底互相正交：</p>
+<div>
+<div class="MathJax_Preview">
+\overrightarrow{\sin} (\frac{2 \pi n}{T} x) \cdot \overrightarrow{\cos} (\frac{2 \pi n}{T} x)=\int_{0}^{T} \sin (\frac{2 \pi n}{T} x) \cdot \cos (\frac{2 \pi n}{T} x) d t=0
+</div>
+<script type="math/tex; mode=display">
+\overrightarrow{\sin} (\frac{2 \pi n}{T} x) \cdot \overrightarrow{\cos} (\frac{2 \pi n}{T} x)=\int_{0}^{T} \sin (\frac{2 \pi n}{T} x) \cdot \cos (\frac{2 \pi n}{T} x) d t=0
+</script>
+</div>
+<p>既然是正交基，那么根据刚才的分析，<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>在这组基底下的坐标等于：</p>
+<div>
+<div class="MathJax_Preview">
+a_{n}=\frac{\int_{0}^{T} f(x) \cos \left(\frac{2 \pi n}{T} x\right) d x}{\int_{0}^{T} \cos ^{2}\left(\frac{2 \pi n}{T} x\right) d x}=\frac{2}{T} \int_{0}^{T} f(x) \cos \left(\frac{2 \pi n}{T} x\right) d x
+</div>
+<script type="math/tex; mode=display">
+a_{n}=\frac{\int_{0}^{T} f(x) \cos \left(\frac{2 \pi n}{T} x\right) d x}{\int_{0}^{T} \cos ^{2}\left(\frac{2 \pi n}{T} x\right) d x}=\frac{2}{T} \int_{0}^{T} f(x) \cos \left(\frac{2 \pi n}{T} x\right) d x
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+b_{n}=\frac{\int_{0}^{T} f(x) \sin \left(\frac{2 \pi n}{T} x\right) d x}{\int_{0}^{T} \sin ^{2}\left(\frac{2 \pi n}{T} x\right) d x}=\frac{2}{T} \int_{0}^{T} f(x) \sin \left(\frac{2 \pi n}{T} x\right) d x
+</div>
+<script type="math/tex; mode=display">
+b_{n}=\frac{\int_{0}^{T} f(x) \sin \left(\frac{2 \pi n}{T} x\right) d x}{\int_{0}^{T} \sin ^{2}\left(\frac{2 \pi n}{T} x\right) d x}=\frac{2}{T} \int_{0}^{T} f(x) \sin \left(\frac{2 \pi n}{T} x\right) d x
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+C =\frac{\int_{0}^{T} f(x) d x}{\int_{0}^{T} d x}=\frac{1}{T} \int_{0}^{T} f(x) d x
+</div>
+<script type="math/tex; mode=display">
+C =\frac{\int_{0}^{T} f(x) d x}{\int_{0}^{T} d x}=\frac{1}{T} \int_{0}^{T} f(x) d x
+</script>
+</div>
+<p>最终我们可以得到</p>
+<div>
+<div class="MathJax_Preview">
+f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left(a_{n} \cos \left(\frac{2 \pi n x}{T}\right)+b_{n} \sin \left(\frac{2 \pi n x}{T}\right)\right)
+</div>
+<script type="math/tex; mode=display">
+f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left(a_{n} \cos \left(\frac{2 \pi n x}{T}\right)+b_{n} \sin \left(\frac{2 \pi n x}{T}\right)\right)
+</script>
+</div>
+<p>其中：</p>
+<div>
+<div class="MathJax_Preview">
+{a_{n}=\frac{2}{T} \int_{x_{0}}^{x_{0}+T} f(x) \cdot \cos \left(\frac{2 \pi n x}{T}\right) d x, n \in\{0\} \bigcup \mathbb{N}}
+</div>
+<script type="math/tex; mode=display">
+{a_{n}=\frac{2}{T} \int_{x_{0}}^{x_{0}+T} f(x) \cdot \cos \left(\frac{2 \pi n x}{T}\right) d x, n \in\{0\} \bigcup \mathbb{N}}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+{b_{n}=\frac{2}{T} \int_{x_{0}}^{x_{0}+T} f(x) \cdot \sin \left(\frac{2 \pi n x}{T}\right) d x, n \in \mathbb{N}}
+</div>
+<script type="math/tex; mode=display">
+{b_{n}=\frac{2}{T} \int_{x_{0}}^{x_{0}+T} f(x) \cdot \sin \left(\frac{2 \pi n x}{T}\right) d x, n \in \mathbb{N}}
+</script>
+</div>
+<p>此外，根据欧拉公式：<span><span class="MathJax_Preview">e^{jx}=\cos(x)+j\sin(x)</span><script type="math/tex">e^{jx}=\cos(x)+j\sin(x)</script></span>和<span><span class="MathJax_Preview">e^{-jx}=\cos(x)-j\sin(x)</span><script type="math/tex">e^{-jx}=\cos(x)-j\sin(x)</script></span>，我们可以得到</p>
+<div>
+<div class="MathJax_Preview">
+\cos(x) = \frac{e^{jx}+e^{-jx}}{2} \qquad
+\sin(x) = \frac{e^{jx}-e^{-jx}}{2}
+</div>
+<script type="math/tex; mode=display">
+\cos(x) = \frac{e^{jx}+e^{-jx}}{2} \qquad
+\sin(x) = \frac{e^{jx}-e^{-jx}}{2}
+</script>
+</div>
+<p>代入到用正余弦表示的傅里叶级数展开式中，我们就得到了傅里叶级数的复数表达式：</p>
+<div>
+<div class="MathJax_Preview">
+f(x) = \frac{a_0}{2}+\sum_{n=1}^{\infty}(\frac{a_n+b_n}{2}\cdot e^{j\frac{2\pi n x}{T}}+\frac{a_n-b_n}{2}\cdot e^{-j\frac{2\pi n x}{T}})
+</div>
+<script type="math/tex; mode=display">
+f(x) = \frac{a_0}{2}+\sum_{n=1}^{\infty}(\frac{a_n+b_n}{2}\cdot e^{j\frac{2\pi n x}{T}}+\frac{a_n-b_n}{2}\cdot e^{-j\frac{2\pi n x}{T}})
+</script>
+</div>
+<p>至此，给定任意一个满足迪利克雷条件的周期函数，我们都能将其转化为三角函数的线性组合，并且可以准确求出对于每一阶三角函数，对应的傅里叶系数(Fourier Coefficient)应该是多少。</p>
+<p>接下来，我们用一个例子，带大家更直观地理解傅里叶级数的计算过程。考虑我们有一个周期为<span><span class="MathJax_Preview">2\pi</span><script type="math/tex">2\pi</script></span>的方波，现在需要将其展开为三角函数表示的无穷级数形式。
+首先使用MATLAB构造周期为<span><span class="MathJax_Preview">2\pi</span><script type="math/tex">2\pi</script></span>的方波函数：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 方波的傅里叶级数展开</span>
+<span class="c">% 构造周期为2pi的方波</span>
+<span class="n">fs</span> <span class="p">=</span> <span class="mf">1e3</span><span class="p">;</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">6</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">square</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+<span class="n">figure</span><span class="p">;</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span> <span class="mi">2</span><span class="p">]);</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="MATLAB构造周期为2pi的矩形波" src="../res/基础概念/Fourier/方波.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. MATLAB构造周期为2pi的矩形波</div>
+</center></p>
+<p>根据傅里叶级数，我们可以计算每一阶三角函数对应的傅里叶系数：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+    a_{n} &amp;= \frac{1}{\pi} \int_{0}^{2\pi} f(x) \cdot \cos (n x) d x \\
+    &amp;= \frac{1}{\pi} \int_{0}^{\pi} 1 \cdot \cos (n x) d x + \frac{1}{\pi} \int_{\pi}^{2\pi} -1 \cdot \cos \left(n x\right) dx.
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    a_{n} &= \frac{1}{\pi} \int_{0}^{2\pi} f(x) \cdot \cos (n x) d x \\
+    &= \frac{1}{\pi} \int_{0}^{\pi} 1 \cdot \cos (n x) d x + \frac{1}{\pi} \int_{\pi}^{2\pi} -1 \cdot \cos \left(n x\right) dx.
+\end{aligned}
+</script>
+</div>
+<p>类似的，</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+b_{n}&amp;=\frac{1}{\pi} \int_{0}^{2\pi} f(x) \cdot \sin \left(n x\right) d x \\
+&amp;= \frac{1}{\pi} \int_{0}^{\pi} 1 \cdot \sin \left(n x\right) d x + \frac{1}{\pi} \int_{\pi}^{2\pi} -1 \cdot \sin \left(n x\right) dx.
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+b_{n}&=\frac{1}{\pi} \int_{0}^{2\pi} f(x) \cdot \sin \left(n x\right) d x \\
+&= \frac{1}{\pi} \int_{0}^{\pi} 1 \cdot \sin \left(n x\right) d x + \frac{1}{\pi} \int_{\pi}^{2\pi} -1 \cdot \sin \left(n x\right) dx.
+\end{aligned}
+</script>
+</div>
+<p>因此，我们可以使用上面的式子，在MATLAB中计算展开成无穷级数后，各阶三角函数的傅里叶系数：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">% 计算傅里叶系数</span>
+<span class="n">z</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">));</span>
+<span class="n">syms</span> <span class="n">x</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">11</span>
+    <span class="c">% cos(nx)的傅里叶系数</span>
+    <span class="n">Fx1</span> <span class="p">=</span> <span class="mi">1</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">Fx2</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">an</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="nb">pi</span><span class="o">*</span><span class="n">double</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">Fx1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="nb">pi</span><span class="o">*</span><span class="n">double</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">Fx2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">));</span>
+    <span class="c">% sin(nx)的傅里叶系数</span>
+    <span class="n">Fx1</span> <span class="p">=</span> <span class="mi">1</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">Fx2</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">bn</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="nb">pi</span><span class="o">*</span><span class="n">double</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">Fx1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">pi</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="nb">pi</span><span class="o">*</span><span class="n">double</span><span class="p">(</span><span class="n">int</span><span class="p">(</span><span class="n">Fx2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="nb">pi</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">));</span>
+
+    <span class="n">z</span> <span class="p">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">an</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">bn</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+    <span class="c">% 绘图</span>
+    <span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nb">ceil</span><span class="p">(</span><span class="nb">i</span><span class="o">/</span><span class="mi">2</span><span class="p">));</span><span class="n">hold</span> <span class="n">on</span>
+        <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+        <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+        <span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span> <span class="mi">2</span><span class="p">]);</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="矩形波傅里叶级数展开" src="./res/基础概念/Fourier/矩形波傅里叶.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 矩形波傅里叶级数展开</div>
+</center></p>
+<h2 id="2">2. 傅里叶变换<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>使用傅里叶级数，我们可以将任意满足迪利克雷条件的周期函数，展开成正弦信号和余弦信号的和。由于展开式中的每一个正弦和余弦分量仅包含单一的频率，因此我们可以进而从中提取信号中各频率分量的强度——即信号频谱。至此，我们利用傅里叶级数，最终实现了信号从时域到频域的转换。</p>
+<p><img alt="傅里叶级数实现信号从时域到频域的转换" src="../res/基础概念/Fourier/Fourier_synthesis.svg" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 傅里叶级数实现信号从时域到频域的转换</div>
+</center></p>
+<p>但是，傅里叶级数仅仅适用于满足迪利克雷条件的周期函数，对于更一般的非周期函数，我们又该如何将它从时域转换到频域呢？为了解决这一问题，傅里叶公爵在傅立级数的基础上进一步提出了傅里叶变换(Fourier Transform)的方法，用于实现非周期的一般信号在时域和频域之间的变换。</p>
+<p>在傅里叶级数中，输入的信号必须是周期信号，时域信号的周期<span><span class="MathJax_Preview">T_0</span><script type="math/tex">T_0</script></span>决定了频域上相邻两个输出之间的距离，即<span><span class="MathJax_Preview">\delta f = \frac{1}{T_0}</span><script type="math/tex">\delta f = \frac{1}{T_0}</script></span>。当输入信号的周期不断增大，得到频域输出之间的距离随之不断减少。当周期<span><span class="MathJax_Preview">T_0</span><script type="math/tex">T_0</script></span>不断增加直至趋近于<span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span>，此时周期信号退化为非周期性的一般时域信号，而该信号对应的频域输出距离此时也趋近于<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>，即非周期的时域信号对应一连续的频域输出。</p>
+<p><img alt="从傅里叶级数到傅里叶变换" src="./res/基础概念/Fourier/傅里叶变换.png" />
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 从傅里叶级数到傅里叶变换</div>
+</center></p>
+<p>讲到这，我们先暂停一会，花一点时间思考：频域连续究竟意味着什么？在之前介绍傅里叶级数的时候，我们说过傅里叶级数源于一个“使用三角函数对周期函数进行分解”的猜想。在分解一个周期为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>、且满足迪利克雷条件的函数时，我们所作的工作是选取以<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>为周期的正余弦函数做为基底，计算目标函数在各个基底上的投影。由于基底的频率是离散的(<span><span class="MathJax_Preview">n\times\delta f = \frac{n}{T}</span><script type="math/tex">n\times\delta f = \frac{n}{T}</script></span>)，因此频域的输出也是离散的。参考这一过程，当某个函数<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>的频域输出为连续值，说明要分解<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>，需要使用所有频率的正余弦做为基底（而不仅仅是周期为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>的正余弦函数），因此<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>的分解可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+f(x)=\sum_{n=-\infty}^{\infty} c_{n} \cdot e^{i \frac{2 \pi n x}{T}} \Longrightarrow f(x)=\int_{-\infty}^{\infty} F(\omega) e^{i \omega x} d \omega
+</div>
+<script type="math/tex; mode=display">
+f(x)=\sum_{n=-\infty}^{\infty} c_{n} \cdot e^{i \frac{2 \pi n x}{T}} \Longrightarrow f(x)=\int_{-\infty}^{\infty} F(\omega) e^{i \omega x} d \omega
+</script>
+</div>
+<p>其中，<span><span class="MathJax_Preview">F(\omega)</span><script type="math/tex">F(\omega)</script></span>表示频率<span><span class="MathJax_Preview">\omega</span><script type="math/tex">\omega</script></span>处的傅里叶系数，参考复数形式傅里叶级数中求系数的方法，当<span><span class="MathJax_Preview">T\rightarrow\infty</span><script type="math/tex">T\rightarrow\infty</script></span>，可以得到频率<span><span class="MathJax_Preview">\omega</span><script type="math/tex">\omega</script></span>处的系数<span><span class="MathJax_Preview">F(\omega)</span><script type="math/tex">F(\omega)</script></span>：</p>
+<div>
+<div class="MathJax_Preview">
+{c_{n}=\frac{1}{T} \int_{x_{0}}^{x_{0}+T} f(x) \cdot e^{-i \frac{2 \pi n x}{T}} d x} \Rightarrow F(\omega)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} f(x) e^{-i \omega x} d x
+</div>
+<script type="math/tex; mode=display">
+{c_{n}=\frac{1}{T} \int_{x_{0}}^{x_{0}+T} f(x) \cdot e^{-i \frac{2 \pi n x}{T}} d x} \Rightarrow F(\omega)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} f(x) e^{-i \omega x} d x
+</script>
+</div>
+<p>显然<span><span class="MathJax_Preview">F(\omega)</span><script type="math/tex">F(\omega)</script></span>就是<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>对应到频域上的输出，从<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>到<span><span class="MathJax_Preview">F(\omega)</span><script type="math/tex">F(\omega)</script></span>的过程就是傅里叶变换(Fourier Transform, FT)。反之，从<span><span class="MathJax_Preview">F(\omega)</span><script type="math/tex">F(\omega)</script></span>到<span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>的过程称为傅里叶逆变换(Inverse Fourier Transform, IFT)。显然，和傅里叶级数一样，能进行傅里叶变换的时域信号必须满足迪利克雷条件。</p>
+<h2 id="3">3. 离散傅里叶变换<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>傅里叶变换要求的输入是连续信号，而如我们在第一节所讨论的，计算机可以处理的信号只能是通过采样得到的离散信号。因此，在傅里叶变换的基础上，我们提出了离散傅里叶变换（Discrete Fourier Transform, DFT），它可以将离散的时域采样信号变换到。对于<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>点序列<span><span class="MathJax_Preview">\{x[n]\}_{0 \leq n&lt;N}</span><script type="math/tex">\{x[n]\}_{0 \leq n<N}</script></span>，它的DFT为</p>
+<div>
+<div class="MathJax_Preview">
+\hat{x}[k]=\sum_{n=0}^{N-1} e^{-i \frac{2 \pi}{N} n k} x[n] \quad k=0,1, \ldots, N-1
+</div>
+<script type="math/tex; mode=display">
+\hat{x}[k]=\sum_{n=0}^{N-1} e^{-i \frac{2 \pi}{N} n k} x[n] \quad k=0,1, \ldots, N-1
+</script>
+</div>
+<p>DFT的逆变换（IDFT）为：</p>
+<div>
+<div class="MathJax_Preview">
+x[n]=\frac{1}{N} \sum_{k=0}^{N-1} e^{i \frac{2 \pi}{N} n k} \hat{x}[k] \quad n=0,1, \ldots, N-1
+</div>
+<script type="math/tex; mode=display">
+x[n]=\frac{1}{N} \sum_{k=0}^{N-1} e^{i \frac{2 \pi}{N} n k} \hat{x}[k] \quad n=0,1, \ldots, N-1
+</script>
+</div>
+<p>实际上，DFT和IDFT变换式中和式前面的归一化系数并不重要。在上面的定义中，DFT和IDFT前的系数分别为1和<span><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>，有时会将这两个系数都改成<span><span class="MathJax_Preview">\frac{1}{\sqrt{N}}</span><script type="math/tex">\frac{1}{\sqrt{N}}</script></span>。</p>
+<p>DFT虽然可以计算有限时间内的频谱，但它的计算复杂度是<span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>的，计算量过大，限制了在实际中的应用。下面我们介绍的FFT算法可以把DFT的计算复杂度降为<span><span class="MathJax_Preview">O(n\log n)</span><script type="math/tex">O(n\log n)</script></span>，从而将傅里叶变换推往实用。</p>
+<h2 id="4">4. 快速傅里叶变换<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>在20世纪60年代中期，一种称之为快速傅里叶变换（Fast Fourier Transform, FFT）的算法被引入，它是快速计算序列的离散傅里叶变换（DFT）或其逆变换的方法。这一算法在1965年被库利（Cooley）和图基（Tukey）独立地发现，其实它也有相当长的历史。事实上，这一算法在高斯的手稿中已能找到。之所以使得它成为重要的近代发现是由于FFT被证明是非常适合于高效的数字实现，并且它将计算变换所需要的时间减少了几个数量级。有了这一算法，在利用离散时间傅里叶级数和变换中许多有趣而过去认为不切实际的想法突然变得实际起来，并且使离散时间信号于系统分析技术的发展加速向前迈进。</p>
+<p>傅里叶分析将信号从原始域（通常是时间或空间）转换到频域的表示或者逆过来转换。FFT会通过把DFT矩阵分解为稀疏（大多为零）因子之积来快速计算此类变换。因此，它能够将计算DFT的复杂度从只用DFT定义计算需要的 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，降低到 <span><span class="MathJax_Preview">O(n\log n)</span><script type="math/tex">O(n\log n)</script></span>，其中 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 为数据大小。</p>
+<p>快速傅里叶变换广泛的应用于工程、科学和数学领域。这里的基本思想在1965年才得到普及，但早在1805年就已推导出来。1994年美国数学家吉尔伯特·斯特朗把FFT描述为“我们一生中最重要的数值算法”，它还被IEEE科学与工程计算期刊列入20世纪十大算法。</p>
+<h3 id="41-fft">4.1. FFT的一个应用：大数乘法<a class="headerlink" href="#41-fft" title="Permanent link">&para;</a></h3>
+<p>在学习程序设计课程的时候，我们都写过大数乘法，其实现是模拟手工列竖式计算，计算复杂度为<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>。通过FFT，我们可以将大数乘法的复杂度变为<span><span class="MathJax_Preview">O(n\log n)</span><script type="math/tex">O(n\log n)</script></span>。</p>
+<p>设<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>是两个很大的数，<span><span class="MathJax_Preview">C=A\cdot B</span><script type="math/tex">C=A\cdot B</script></span>。把这两个数写成多项式的形式，（不足位数补前导零）</p>
+<div>
+<div class="MathJax_Preview">
+A(x)=\sum_{i=0}^{n-1}a_i x^i \qquad
+B(x)=\sum_{i=0}^{n-1}b_i x^i
+</div>
+<script type="math/tex; mode=display">
+A(x)=\sum_{i=0}^{n-1}a_i x^i \qquad
+B(x)=\sum_{i=0}^{n-1}b_i x^i
+</script>
+</div>
+<p>以下对<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的叙述对<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>同理。其中<span><span class="MathJax_Preview">a_0, a_1, \cdots, a_{n−1}</span><script type="math/tex">a_0, a_1, \cdots, a_{n−1}</script></span>分别表示<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的第一位、第二位……第<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>位。这样我们就能用一个向量<span><span class="MathJax_Preview">(a_0, a_1, \cdots ,a_{n−1})</span><script type="math/tex">(a_0, a_1, \cdots ,a_{n−1})</script></span>来表示<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>，这种表示方法叫做系数表示法，当<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>取10时就是我们常用的十进制。</p>
+<p>我们知道多项式除了有系数表示法，还有点值表示法（拉格朗日插值），<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>个点可以唯一确定一个多项式。例如当我们知道<span><span class="MathJax_Preview">(0, A(0)), (1, A(1)), \cdots, (n-1, A(n-1))</span><script type="math/tex">(0, A(0)), (1, A(1)), \cdots, (n-1, A(n-1))</script></span>这些点时，<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>也就是已知的。</p>
+<p>下面我们考虑这样一种计算方法</p>
+<ol>
+<li>将<span><span class="MathJax_Preview">A, B</span><script type="math/tex">A, B</script></span>的系数表示变为点值表示。</li>
+<li>计算点值表示的乘积，即<span><span class="MathJax_Preview">(0, C(0)), \cdots, (n-1, C(n-1))=(0, A(0)\cdot B(0)), \cdots, (n-1, A(n-1)\cdot B(n-1))</span><script type="math/tex">(0, C(0)), \cdots, (n-1, C(n-1))=(0, A(0)\cdot B(0)), \cdots, (n-1, A(n-1)\cdot B(n-1))</script></span></li>
+<li><span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>的点值表示已经确定了<span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>，将其转化为系数表示即求得对应大数乘积。</li>
+</ol>
+<p>步骤2的复杂度为<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，但步骤1和3的朴素算法复杂度是<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，看似没有降低总体的复杂度，但这个思路给了我们优化它的可能。</p>
+<p>观察大数的多项式表示，其实是一个求和，而DFT也是一个求和。如果<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>取为DFT里对应各频率的单位复根（点值表示法的取点是任意的，我们可以在复平面上任取<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>个点），那么“将<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的系数表示变为点值表示”这一操作等价于“求解<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的离散傅里叶变换”，点值表示化为系数表示则对应于逆傅里叶变换。由于FFT的存在，步骤1和3的算法复杂度都变成了<span><span class="MathJax_Preview">O(n\log n)</span><script type="math/tex">O(n\log n)</script></span>，于是总体计算大数乘法的时间复杂度也变成了<span><span class="MathJax_Preview">O(n\log n)</span><script type="math/tex">O(n\log n)</script></span>。</p>
+<!-- ### 2.5 离散时间傅里叶变换
+### 2.6 拉普拉斯变换
+### 2.7 Z变换
+### 2.8 短时傅里叶变换 (STFT)
+### 2.9 小波变换
+### 2.10 线性时不变系统 -->
+
+<h2 id="5">5. 参考文献<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://zh.wikipedia.org/wiki/Fast_Fourier_transform">Wikipedia/Fast_Fourier_transform</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Fourier_transform">Wikipedia/Fourier_transform</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Communication_Systems/Fading_Channels">Wikibooks/Fading_Channels</a></li>
+</ol>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/iot-book" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
