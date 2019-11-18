@@ -1396,11 +1396,12 @@ C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
 </pre></div>
 </td></tr></table>
 
-<p>接下来我们需要消去CFO(Carrier Frequency Offset)和TO(Time Offset)的影响。如何消去，参加代码，这里仅介绍为何有CFO和TO的影响。
+<p>接下来我们介绍CFO(Carrier Frequency Offset)和TO(Time Offset)的影响。
 假设我们发送的chirp信号扫频范围在2k(Hz)-4k(Hz)，到了接受端，收到的信号扫频范围可能会变成2k+100(Hz)-4k+100(Hz)，这个频偏是由于硬件处理，发射及接收信号造成的，我们称之为CFO。
 当我们解码的时候，截取信号的窗口可能和信号没有完全对齐，这样也会带来一个频率偏移，我们称之为TO。
-下面图分别示例了没有CFO窗口对齐和没对齐，有CFO窗口对齐和没对齐的四种解码结果。
-<img alt="通信流程" src="..\images\LoRa\CFO_TO.PNG" /></p>
+消除CFO可以通过发送单频前导码进行信道估计，消除TO可以参考ZigZag实验章节，利用相关性找到信号的准确起点。
+<!-- 下面图分别示例了没有CFO窗口对齐和没对齐，有CFO窗口对齐和没对齐的四种解码结果。
+<img alt="通信流程" src="..\images\LoRa\CFO_TO.PNG" /> --></p>
 <p>最后一步即利用FFT bin的结果解出最后的数据。代码中的操作是解出编码0和非0数据的FFT bin结果(id0和id)以及编码数据的间隔<code>delta_f</code>，利用<code>(id-id0)/delta_f</code>接出最后的数据。</p>
 <h2 id="4-lora">4. LoRa编码和通信实验<a class="headerlink" href="#4-lora" title="Permanent link">&para;</a></h2>
 <p>接下来就是激动人心的动手体验环节了。一共设计了三个实验，目的在于理解和体验LoRa的编解码方法以及射频通信过程。当然你还可以学会一定的信号处理方法。</p>
