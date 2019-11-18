@@ -1206,15 +1206,11 @@ LoRa接收灵敏度高达 -148 dBm。以偏小的数据速率（0.3-50kbps）换
 </div>
 </div>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>
-</pre></div>
-</td></tr></table>
-
 <p>我们将频率随着时间线性增加的Chirp信号叫做upChirp，将频率随着时间线性减小的Chirp信号叫做downChirp。LoRa信号就由这样一个个Chirp组成，具体格式如下图。前面10个upChirp作为LoRa信号的前导码(注意第9和第10个upChirp其实做了一些编码)，之后跟着2.25个downChirp，叫做SFD，标识数据段的开始，后面就是LoRa信号编码的数据区了。
 <img alt="LoRa包" src="..\images\LoRa\pkt.PNG" /></p>
 <h3 id="22-lora">2.2 LoRa编码<a class="headerlink" href="#22-lora" title="Permanent link">&para;</a></h3>
 <p>LoRa通过循环平移upChirp进行数据的编码，比如将BW等分成4分，分别编码00，01，10，11，如下所示。
-<img alt="LoRa循环频移编码" src="..\images\LoRa\LoRa循环频移编码.PNG" /><br />
+<img alt="LoRa循环频移编码" src="..\images\LoRa\LoRa循环频移编码.PNG" />
 LoRa解码过程，实质就是求出chirp偏移量的多少，其做法通常是这样的：首先将收到的chirp信号与downChirp点乘，这一过程叫做Dechirp，这个操作能够将收到的chirp信号能量进行集中，是LoRa的抗噪及传输远距离的原因之一。</p>
 <p>Dechirp之后，对得到的信号进一步使用FFT(傅里叶变换)，即可在某一个位置获得一个峰值，这个峰值落入的FFT bin对应的就是这个chirp编码的数据。对于非0编码，如果采样率高于带宽的话，会得到两个峰，我们可以将这两个峰进行叠加来增强峰的高度，并且求出对应的位置。下面两图分别对应编码0和非0数据的解码过程。
 <div align="center">
@@ -1227,10 +1223,11 @@ LoRa解码过程，实质就是求出chirp偏移量的多少，其做法通常�
 <center>解码非0偏移</center>
 </div>
 
-<p></div> </p>
+</div>
+
 <h3 id="23-lora">2.3 LoRa编解码原理解析<a class="headerlink" href="#23-lora" title="Permanent link">&para;</a></h3>
 <p>我们知道，chirp信号可以分为upChirp和downChirp，如下图所示。up-chirp从最低频率开始，随时间增加逐渐上升至最高频率。而down-chirp则与之相反，从最高频率逐渐下降至最低频率。LoRa定义最高频率和最低频率之间的差值为LoRa带宽，记作<span><span class="MathJax_Preview">BW</span><script type="math/tex">BW</script></span>。
-<img alt="upChirp和downChirp" src="..\images\LoRa\Chirp.png" /><br />
+<img alt="upChirp和downChirp" src="..\images\LoRa\Chirp.png" />
 基准upChirp的最低频率为<span><span class="MathJax_Preview">f_0=-\frac{BW}{2}</span><script type="math/tex">f_0=-\frac{BW}{2}</script></span>，最高频率为<span><span class="MathJax_Preview">f_1=\frac{BW}{2}</span><script type="math/tex">f_1=\frac{BW}{2}</script></span>，信号长度为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>。因此其频率可以表示为<span><span class="MathJax_Preview">f(t)=f_0+kt</span><script type="math/tex">f(t)=f_0+kt</script></span>，其中<span><span class="MathJax_Preview">k=\frac{BW}{T}</span><script type="math/tex">k=\frac{BW}{T}</script></span>表示扫频梯度。由此，基准up-chirp可以表示为：
 $$
 C(t)=e^{j2\pi(f_0+kt)\times t}
@@ -1256,7 +1253,7 @@ C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
 </div>
 <p>随后，LoRa对得到的单频信号进行傅里叶变换(之后的章节会详细说明)，将时域信号转化为频域波峰，波峰的下标即对应信号编码的数据。</p>
 <p>整个LoRa解码流程如下图所示，对应两种信号的解码，左为基准upChirp，右为编码后的upChirp。第一行为信号的时间-频率图，第二行为信号的时间-幅度图，第三行为信号乘downChirp后的时间-幅度图，第四行为傅里叶变换结果，注意左边在0的位置有峰。</p>
-<p><img alt="" src="..\images\LoRa\loraDecoder.png" />  </p>
+<p><img alt="" src="..\images\LoRa\loraDecoder.png" /></p>
 <h2 id="3-lora">3. 用声音实现LoRa通信<a class="headerlink" href="#3-lora" title="Permanent link">&para;</a></h2>
 <h3 id="31-lora">3.1 LoRa信号通信过程<a class="headerlink" href="#31-lora" title="Permanent link">&para;</a></h3>
 <p>首先我们需要了解LoRa通信的过程，这同时也是大多数射频信号通信的过程。注意这里是一个很简化的版本，想要详细了解，可以自己进一步学习。</p>
@@ -1285,12 +1282,13 @@ C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">data</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span>^<span class="n">sf</span> <span class="o">-</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span>^<span class="n">sf</span> <span class="o">-</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span>^<span class="n">sf</span> <span class="o">-</span> <span class="mi">6</span><span class="p">];</span> <span class="c">% 编码3个6</span>
 <span class="n">pkt</span> <span class="p">=</span> <span class="n">u</span><span class="p">.</span><span class="n">genPacket</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
 <span class="n">zos</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nchirp</span><span class="o">*</span><span class="mi">5</span><span class="p">);</span>
-<span class="n">chirp_sound</span> <span class="p">=</span> <span class="nb">cat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">zos</span><span class="p">,</span> <span class="n">pkt</span><span class="p">);</span>      <span class="c">%基带信号  </span>
+<span class="n">chirp_sound</span> <span class="p">=</span> <span class="nb">cat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">zos</span><span class="p">,</span> <span class="n">pkt</span><span class="p">);</span>      <span class="c">%基带信号</span>
 </pre></div>
 </td></tr></table>
 
-<p>之后上变频，即将基带信号乘上高频信号，这里设置的高频信号为16e3。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">car_chirp_sound</span> <span class="p">=</span> <span class="nb">real</span><span class="p">(</span><span class="n">chirp_sound</span><span class="o">.*</span><span class="nb">exp</span><span class="p">(</span><span class="mi">1</span><span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">));</span>
+<p>之后上变频：将基带信号的实部乘上一个余弦高频信号，基带信号的实部乘上一个正弦高频信号（有负号），最后将它们加起来，其实部作为真实发送的信号。
+这里设置的高频信号为 <span><span class="MathJax_Preview">f_c = 16e3</span><script type="math/tex">f_c = 16e3</script></span> Hz。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">car_chirp_sound</span> <span class="p">=</span> <span class="nb">real</span><span class="p">(</span><span class="n">chirp_sound</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">chirp_sound</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">));</span>
 </pre></div>
 </td></tr></table>
 
@@ -1320,17 +1318,70 @@ C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
 4
 5
 6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 下变频  从高频信息提取低频信号(基带信号)</span>
-<span class="n">real_chirp_sound</span> <span class="p">=</span> <span class="n">recv_sound_bf</span><span class="o">.*</span><span class="nb">real</span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="mi">1</span><span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">));</span>
-<span class="n">imag_chirp_sound</span> <span class="p">=</span> <span class="n">recv_sound_bf</span><span class="o">.*</span><span class="nb">imag</span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">));</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 下变频  从高频信息提取低频信号(基带信号)</span>
+<span class="n">real_chirp_sound</span> <span class="p">=</span> <span class="n">recv_sound_bf</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">imag_chirp_sound</span> <span class="p">=</span> <span class="n">recv_sound_bf</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">));</span>
 <span class="c">%% 低通滤波</span>
-<span class="c">% rec_chirp_sound = real_chirp_sound + 1j*imag_chirp_sound;</span>
-<span class="c">% rec_chirp_sound = BPassFilter(rec_chirp_sound, 4e3, 2e3, fs);</span>
 <span class="n">real_cs</span> <span class="p">=</span> <span class="n">BPassFilter</span><span class="p">(</span><span class="n">real_chirp_sound</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">,</span> <span class="mf">2e3</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
-<span class="n">img_cs</span> <span class="p">=</span> <span class="n">BPassFilter</span><span class="p">(</span><span class="n">imag_chirp_sound</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">,</span> <span class="mf">2e3</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
-<span class="n">rec_chirp_sound</span> <span class="p">=</span> <span class="n">real_cs</span> <span class="o">+</span> <span class="mi">1</span><span class="nb">j</span><span class="o">*</span><span class="n">img_cs</span><span class="p">;</span>
+<span class="n">imag_cs</span> <span class="p">=</span> <span class="n">BPassFilter</span><span class="p">(</span><span class="n">imag_chirp_sound</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">,</span> <span class="mf">2e3</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
+<span class="n">rec_chirp_sound</span> <span class="p">=</span> <span class="n">real_cs</span> <span class="o">+</span> <span class="mi">1</span><span class="nb">j</span><span class="o">*</span><span class="n">imag_cs</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
+<p>BPassFilter 函数代码如下：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">% 本函数利用窗函数法设计带通滤波器，主要用来滤出单一频率，即中心频率</span>
+<span class="c">% data是输入的数据, centerFre是带通的中心频率, offsetFre是频偏,最终带通为centerFre +- offsetFre/2</span>
+<span class="c">% ,sampFre是采样率</span>
+<span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">BPassFilter</span><span class="p">(</span>data, centerFre, offsetFre, sampFre<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c">% 设计I型带通滤波器</span>
+    <span class="n">M</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">;</span>    <span class="c">% 滤波器阶数（必须是偶数）</span>
+    <span class="n">Ap</span> <span class="p">=</span> <span class="mf">0.82</span><span class="p">;</span> <span class="c">% 通带衰减</span>
+    <span class="n">As</span> <span class="p">=</span> <span class="mi">45</span><span class="p">;</span>   <span class="c">% 阻带衰减</span>
+    <span class="n">Wp1</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">centerFre</span> <span class="o">-</span> <span class="n">offsetFre</span><span class="p">)</span><span class="o">/</span><span class="n">sampFre</span><span class="p">;</span>  <span class="c">% 算出下边频</span>
+    <span class="n">Wp2</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">centerFre</span> <span class="o">+</span> <span class="n">offsetFre</span><span class="p">)</span><span class="o">/</span><span class="n">sampFre</span><span class="p">;</span>  <span class="c">% 算出上边频</span>
+
+    <span class="c">% 矩形窗</span>
+    <span class="n">N</span> <span class="p">=</span> <span class="nb">ceil</span><span class="p">(</span><span class="mf">3.6</span><span class="o">*</span><span class="n">sampFre</span><span class="o">/</span><span class="n">offsetFre</span><span class="p">);</span> <span class="c">% 计算滤波器阶数,采用矩形窗，3dB截频在中心频率到上下边频的中点</span>
+    <span class="n">M</span> <span class="p">=</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">M</span> <span class="p">=</span> <span class="nb">mod</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">M</span> <span class="p">;</span> <span class="c">% 使滤波器为I型(偶数)</span>
+
+    <span class="c">% 单位脉冲响应的下脚标</span>
+    <span class="n">h</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>  <span class="c">% 单位冲击响应变量赋初值</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">((</span> <span class="n">k</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">h</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="p">=</span> <span class="n">Wp2</span><span class="o">/</span><span class="nb">pi</span> <span class="o">-</span> <span class="n">Wp1</span><span class="o">/</span><span class="nb">pi</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="n">h</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="p">=</span> <span class="n">Wp2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">Wp2</span><span class="o">.*</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">Wp2</span><span class="o">*</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">)))</span> <span class="o">-</span> <span class="n">Wp1</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">Wp1</span><span class="o">*</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">Wp1</span><span class="o">*</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">)));</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">y</span> <span class="p">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+<span class="k">end</span>
 </pre></div>
 </td></tr></table>
 
@@ -1385,7 +1436,7 @@ C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
 <p><strong>实验步骤：</strong></p>
 <ul>
 <li>
-<p>(1) 尝试使用Matalb编码chirp信号，并画出其时域和频域信息，供自己观赏。<br />
+<p>(1) 尝试使用Matalb编码chirp信号，并画出其时域和频域信息，供自己观赏。
 提示：可以使用Matlab自带的Chirp函数或者直接用Chirp的数学表达式2*pi*f*t+k*pi*t^2。至于画时域图和频域图，可以自己学习参考课程资料给的代码。</p>
 </li>
 <li>
