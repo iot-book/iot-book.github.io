@@ -474,22 +474,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
-    4.1 预热实验
+  <a href="#41-lora" class="md-nav__link">
+    4.1 LoRa编码实验
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#42" class="md-nav__link">
-    4.2 编码实验
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43" class="md-nav__link">
-    4.3 思考
+    4.2 传输性能分析
   </a>
   
 </li>
@@ -1123,22 +1116,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
-    4.1 预热实验
+  <a href="#41-lora" class="md-nav__link">
+    4.1 LoRa编码实验
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#42" class="md-nav__link">
-    4.2 编码实验
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43" class="md-nav__link">
-    4.3 思考
+    4.2 传输性能分析
   </a>
   
 </li>
@@ -1328,7 +1314,7 @@ C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
 </pre></div>
 </td></tr></table>
 
-<p>BPassFilter 函数代码如下：</p>
+<p>其中，BPassFilter 函数代码如下：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1385,7 +1371,7 @@ C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
 </pre></div>
 </td></tr></table>
 
-<p>第三步是解码，这一步首先要对齐信号，我们采用移动窗口累加信号能量，以此划分大致信号在的区间</p>
+<p>第三步是解码，这一步首先要对齐信号，我们根据信号能量，大致信号所在的区间。通过滑动窗口平均，可以过滤部分能量突变的情况。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1404,55 +1390,83 @@ C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
 <img alt="通信流程" src="..\images\LoRa\CFO_TO.PNG" /> --></p>
 <p>最后一步即利用FFT bin的结果解出最后的数据。代码中的操作是解出编码0和非0数据的FFT bin结果(id0和id)以及编码数据的间隔<code>delta_f</code>，利用<code>(id-id0)/delta_f</code>接出最后的数据。</p>
 <h2 id="4-lora">4. LoRa编码和通信实验<a class="headerlink" href="#4-lora" title="Permanent link">&para;</a></h2>
-<p>接下来就是激动人心的动手体验环节了。一共设计了三个实验，目的在于理解和体验LoRa的编解码方法以及射频通信过程。当然你还可以学会一定的信号处理方法。</p>
-<h3 id="41">4.1 预热实验<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
-<p><strong>实验内容：</strong> 运行提供的代码和程序体验LoRa编解码和通信。</p>
+<!-- 接下来就是激动人心的动手体验环节了。一共设计了三个实验，目的在于理解和体验LoRa的编解码方法以及射频通信过程。当然你还可以学会一定的信号处理方法。 -->
+
+<p>本实验的目标是使同学们理解LoRa编解码方法和射频通信过程，实验过程中需要用到一些信号处理方法。</p>
+<!-- ### 4.1 预热实验
+
+**实验内容：** 
+
+本部分实验，请同学们运行提供的代码和程序体验LoRa编解码和通信。
+
+**实验步骤：**
+
+- 解压缩课程资料。可以看到下面的目录
+
+![课程资料](..\images\LoRa\课程资料.PNG)
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 课程资料</div>
+</center>
+
+其中code里面含有生成和解析声音的代码(genSound.m和anaSound.m)，接收app里面含有我们用Android写的app--music.apk，可以发送和接收声音。接收的数据存放了两个我们之前用手机接收的声音数据(m.wav和o.wav)。PPT是本次讲解用的，可以课后查看。Readme也提供了简单的课程资料介绍。
+
+- 生成声音信号。用Matlab打开code文件夹，运行genSound.m，不出意外的话，在同级目录下会出现chirpSound.wav文件，.wav是一种声音存储格式，这就是用LoRa chirp生成的声音文件。
+
+- 安装music.apk并开始录音。这里是基于Android平台的，只有ios的同学可以询问助教借用实验的Android机。下面是music.apk界面。
+
+![app](..\images\LoRa\music_apk.jpg)
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 应用程序界面</div>
+</center>
+
+点击开始录音即会录，点击停止录音即停止当前的录音，并将生成的文件存到对应的位置，按钮下面标明了存储的路径。
+
+- 发射声音。用手机或者电脑等可以播放声音的设备播放chirpSound.wav文件，提供的music.apk点击选择音频也可以进行播放，但是通常用自带的播放器就行了。
+
+chirp信号中文翻译名为啁啾，因为它像鸟的叫声，大家实验一下，看是否是这样。
+
+- 解码声音。找到录取的声音，将其传到电脑上面，然后再次使用Matlab运行anaSound.m，就可以对声音进行解析，并且输出最后的数据。不出意外的话，就可以看到编码的数据666了。
+
+![解码结果](..\images\LoRa\res.PNG)
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 解码结果</div>
+</center>
+
+注意更改声音文件的路径，之前提供了两个声音文件，即使你没有发射接收操作，你也可以直接运行进行解码，当然最好是体验一整套通信流程。 -->
+
+<h3 id="41-lora">4.1 LoRa编码实验<a class="headerlink" href="#41-lora" title="Permanent link">&para;</a></h3>
+<p><strong>实验内容：</strong></p>
+<!-- 体验了通信流程，当然里面也包含了chirp的编码操作。大家就可以开始自力更生，自己试着生成chirp信号并编码啦！ -->
+
+<p>使用MATLAB，模拟LoRa编解码过程。</p>
 <p><strong>实验步骤：</strong></p>
 <ul>
-<li>解压缩课程资料。可以看到下面的目录</li>
+<li>(1) 尝试使用MATLAB编码chirp信号，并绘制时域和频域图像，分析构造信号的正确性。</li>
 </ul>
-<p><img alt="课程资料" src="..\images\LoRa\课程资料.PNG" /></p>
-<p>其中code里面含有生成和解析声音的代码(genSound.m和anaSound.m)，接收app里面含有我们用Android写的app--music.apk，可以发送和接收声音。接收的数据存放了两个我们之前用手机接收的声音数据(m.wav和o.wav)。PPT是本次讲解用的，可以课后查看。Readme也提供了简单的课程资料介绍。</p>
+<p>提示：可以使用MATLAB自带的Chirp函数或者直接用Chirp的数学表达式2*pi*f*t+k*pi*t^2。
+<!-- 至于画时域图和频域图，可以自己学习参考课程资料给的代码。 --></p>
 <ul>
-<li>
-<p>生成声音信号。用Matlab打开code文件夹，运行genSound.m，不出意外的话，在同级目录下会出现chirpSound.wav文件，.wav是一种声音存储格式，这就是用LoRa chirp生成的声音文件。</p>
-</li>
-<li>
-<p>安装music.apk并开始录音。这里是基于Android平台的，只有ios的同学可以询问助教借用实验的Android机。下面是music.apk界面。
-<img alt="app" src="..\images\LoRa\music_apk.jpg" /></p>
-</li>
+<li>(2) 尝试使用生成的chirp信号编码数据，设计对应的解码器并验证其功能。</li>
 </ul>
-<p>点击开始录音即会录，点击停止录音即停止当前的录音，并将生成的文件存到对应的位置，按钮下面标明了存储的路径。</p>
-<ul>
-<li>发射声音。用手机或者电脑等可以播放声音的设备播放chirpSound.wav文件，提供的music.apk点击选择音频也可以进行播放，但是通常用自带的播放器就行了。</li>
-</ul>
-<p>chirp信号中文翻译名为啁啾，因为它像鸟的叫声，大家实验一下，看是否是这样。</p>
-<ul>
-<li>解码声音。找到录取的声音，将其传到电脑上面，然后再次使用Matlab运行anaSound.m，就可以对声音进行解析，并且输出最后的数据。不出意外的话，就可以看到编码的数据666了。</li>
-</ul>
-<p><img alt="解码结果" src="..\images\LoRa\res.PNG" /></p>
-<p>注意更改声音文件的路径，之前提供了两个声音文件，即使你没有发射接收操作，你也可以直接运行进行解码，当然最好是体验一整套通信流程。</p>
-<h3 id="42">4.2 编码实验<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
-<p><strong>实验内容：</strong> 体验了通信流程，当然里面也包含了chirp的编码操作。大家就可以开始自力更生，自己试着生成chirp信号并编码啦！</p>
+<p>提示：编码策略可以参考LoRa循环偏移的编码策略，也设计自己的编码方法。
+<!-- 解码的代码也可以参考提供的课程资料里的代码。 --></p>
+<h3 id="42">4.2 传输性能分析<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<!-- - 大家都生成了自己的chirp，那么就可以探索一下chirp编码到底能不能更加抗噪，并且传输距离更远呢？ -->
+
 <p><strong>实验步骤：</strong></p>
 <ul>
 <li>
-<p>(1) 尝试使用Matalb编码chirp信号，并画出其时域和频域信息，供自己观赏。
-提示：可以使用Matlab自带的Chirp函数或者直接用Chirp的数学表达式2*pi*f*t+k*pi*t^2。至于画时域图和频域图，可以自己学习参考课程资料给的代码。</p>
-</li>
-<li>
-<p>(2) 尝试用自己生成的chirp信号编码数据6或者其他你想编码的数据，并试着自己去解码。</p>
-</li>
-</ul>
-<p>提示：这个可以自己开脑洞去编码，只要你自己能把自己定义的数据解出来。解码的代码也可以参考提供的课程资料里的代码。</p>
-<h3 id="43">4.3 思考<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
-<ul>
-<li>大家都生成了自己的chirp，那么就可以探索一下chirp编码到底能不能更加抗噪，并且传输距离更远呢？</li>
-</ul>
-<p><strong>实验步骤：</strong></p>
-<ul>
-<li>
-<p>比较发射正弦波和LoRa chirp两种声音信号通信距离，能量强度等等。既然会生成了chirp，那么生成正弦波也不在话下喽......</p>
+<p>比较发射正弦波和LoRa chirp两种声音信号通信距离，能量强度等等。
+<!-- - 既然会生成了chirp，那么生成正弦波也不在话下喽...... --></p>
 </li>
 <li>
 <p>如何让LoRa chirp信号传得更远？有哪些优化方法？可以自己动手试试。</p>

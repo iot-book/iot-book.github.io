@@ -1,0 +1,4 @@
+#Sat Dec 08 15:56:33 CST 2018
+base.0=/Users/szp/Desktop/szp/LABORATORY/AccelerometerDetector/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/szp/Desktop/szp/LABORATORY/AccelerometerDetector/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
