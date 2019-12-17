@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -982,7 +982,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -994,7 +994,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -1006,7 +1006,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -1018,7 +1018,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../../../10. 物联网应用平台/物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -1238,19 +1238,19 @@ padding: 2px;">图. 智能手机中常见的传感器</div>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">private</span> <span class="kd">final</span> <span class="n">SensorManager</span> <span class="n">mSensorManager</span><span class="o">;</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">private</span> <span class="kd">final</span> <span class="n">SensorManager</span> <span class="n">mSensorManager</span><span class="p">;</span>
 <span class="c1">// 在onCreate()中获取SensorManager实例</span>
 <span class="nd">@Override</span>
-<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">...</span>
-    <span class="n">mSensorManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">SensorManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">SENSOR_SERVICE</span><span class="o">);</span>
-    <span class="o">...</span>
-<span class="o">}</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="n">mSensorManager</span> <span class="o">=</span> <span class="p">(</span><span class="n">SensorManager</span><span class="p">)</span> <span class="n">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">SENSOR_SERVICE</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
 <p>利用SensorManager还可以搜索当前手机上安装的全部传感器列表：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span> <span class="n">deviceSensors</span> <span class="o">=</span> <span class="n">sensorManager</span><span class="o">.</span><span class="na">getSensorList</span><span class="o">(</span><span class="n">Sensor</span><span class="o">.</span><span class="na">TYPE_ALL</span><span class="o">);</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Sensor</span><span class="o">&gt;</span> <span class="n">deviceSensors</span> <span class="o">=</span> <span class="n">sensorManager</span><span class="p">.</span><span class="na">getSensorList</span><span class="p">(</span><span class="n">Sensor</span><span class="p">.</span><span class="na">TYPE_ALL</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
@@ -1264,14 +1264,14 @@ padding: 2px;">图. 智能手机中常见的传感器</div>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">private</span> <span class="kd">final</span> <span class="n">Sensor</span> <span class="n">mAccelerometer</span><span class="o">;</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">private</span> <span class="kd">final</span> <span class="n">Sensor</span> <span class="n">mAccelerometer</span><span class="p">;</span>
 <span class="c1">// 在onCreate()中获取SensorManager实例</span>
 <span class="nd">@Override</span>
-<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">...</span>
-    <span class="n">mAccelerometer</span> <span class="o">=</span> <span class="n">mSensorManager</span><span class="o">.</span><span class="na">getDefaultSensor</span><span class="o">(</span><span class="n">Sensor</span><span class="o">.</span><span class="na">TYPE_ACCELEROMETER</span><span class="o">);</span>
-    <span class="o">...</span>
-<span class="o">}</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="n">mAccelerometer</span> <span class="o">=</span> <span class="n">mSensorManager</span><span class="p">.</span><span class="na">getDefaultSensor</span><span class="p">(</span><span class="n">Sensor</span><span class="p">.</span><span class="na">TYPE_ACCELEROMETER</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1303,21 +1303,21 @@ Sensor.TYPE_PRESSURE：压力传感器</p>
 12
 13
 14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">private</span> <span class="kd">final</span> <span class="n">TestSensorListener</span> <span class="n">mSensorListener</span><span class="o">;</span>
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">private</span> <span class="kd">final</span> <span class="n">TestSensorListener</span> <span class="n">mSensorListener</span><span class="p">;</span>
 <span class="c1">// 在onCreate()中初始化监听器，监听器在第四步中重写</span>
 <span class="nd">@Override</span>
-<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">...</span>
-    <span class="n">mSensorListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestSensorListener</span><span class="o">();</span>
-    <span class="o">...</span>
-<span class="o">}</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="n">mSensorListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestSensorListener</span><span class="p">();</span>
+    <span class="p">...</span>
+<span class="p">}</span>
 
 <span class="c1">// 在onResume()中注册监听器</span>
 <span class="nd">@Override</span>
-<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
-    <span class="n">mSensorManager</span><span class="o">.</span><span class="na">registerListener</span><span class="o">(</span><span class="n">mSensorListener</span><span class="o">,</span> <span class="n">mAccelerometer</span><span class="o">,</span> <span class="n">SensorManager</span><span class="o">.</span><span class="na">SENSOR_DELAY_UI</span><span class="o">);</span>
-<span class="o">}</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">super</span><span class="p">.</span><span class="na">onResume</span><span class="p">();</span>
+    <span class="n">mSensorManager</span><span class="p">.</span><span class="na">registerListener</span><span class="p">(</span><span class="n">mSensorListener</span><span class="p">,</span> <span class="n">mAccelerometer</span><span class="p">,</span> <span class="n">SensorManager</span><span class="p">.</span><span class="na">SENSOR_DELAY_UI</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1338,11 +1338,11 @@ SensorManager.SENSOR_DELAY_UI：适合普通应用的频率，这种模式比较
 4
 5
 6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nd">@Override</span>
-<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">super</span><span class="p">.</span><span class="na">onPause</span><span class="p">();</span>
     <span class="c1">// 注销监听函数</span>
-    <span class="n">mSensorManager</span><span class="o">.</span><span class="na">unregisterListener</span><span class="o">(</span><span class="n">mSensorListener</span><span class="o">);</span>
-<span class="o">}</span>
+    <span class="n">mSensorManager</span><span class="p">.</span><span class="na">unregisterListener</span><span class="p">(</span><span class="n">mSensorListener</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1361,19 +1361,19 @@ SensorManager.SENSOR_DELAY_UI：适合普通应用的频率，这种模式比较
 10
 11
 12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">TestSensorListener</span> <span class="kd">implements</span> <span class="n">SensorEventListener</span> <span class="o">{</span>
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">TestSensorListener</span> <span class="kd">implements</span> <span class="n">SensorEventListener</span> <span class="p">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSensorChanged</span><span class="o">(</span><span class="n">SensorEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSensorChanged</span><span class="p">(</span><span class="n">SensorEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// 读取加速度传感器数值，values数组0,1,2分别对应x,y,z轴的加速度</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;onSensorChanged: &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="na">values</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="na">values</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="na">values</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
-    <span class="o">}</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;onSensorChanged: &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="p">.</span><span class="na">values</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="p">.</span><span class="na">values</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="p">.</span><span class="na">values</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+    <span class="p">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAccuracyChanged</span><span class="o">(</span><span class="n">Sensor</span> <span class="n">sensor</span><span class="o">,</span> <span class="kt">int</span> <span class="n">accuracy</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;onAccuracyChanged&quot;</span><span class="o">);</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAccuracyChanged</span><span class="p">(</span><span class="n">Sensor</span> <span class="n">sensor</span><span class="p">,</span> <span class="kt">int</span> <span class="n">accuracy</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;onAccuracyChanged&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
 
-<span class="o">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1387,6 +1387,7 @@ padding: 2px;">图. 加速度传感器实验效果</div>
 </center></p>
                 
                   
+                
                 
               
               
@@ -1461,7 +1462,7 @@ padding: 2px;">图. 加速度传感器实验效果</div>
       
     </div>
     
-      <script src="../../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         

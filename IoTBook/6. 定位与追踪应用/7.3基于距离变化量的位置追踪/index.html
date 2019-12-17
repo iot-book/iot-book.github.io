@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -837,7 +837,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../5.物联网感知/定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -849,7 +849,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -861,7 +861,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -873,7 +873,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -1056,11 +1056,11 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
  9
 10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">function</span><span class="w"> </span>[ lmps ] <span class="p">=</span><span class="w"> </span><span class="nf">getLMPS</span><span class="p">(</span> y <span class="p">)</span><span class="w">  </span><span class="c">%输入是窗口信号的强度，输出的该窗口信号的lmps</span>
 <span class="n">lmp</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> 
-<span class="n">lmps</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span><span class="p">=</span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>   <span class="c">%计算除首尾的采样点的lmp</span>
-    <span class="k">if</span> <span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&gt;</span><span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&gt;</span><span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">lmp</span> <span class="p">=</span> <span class="n">lmp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">end</span>  <span class="c">%如果该采样点是局部最大值，则lmp+1</span>
+<span class="n">lmps</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i=2:length(y)-1   %计算除首尾的采样点的lmp</span><span class="p"></span>
+<span class="n">    if </span><span class="s">y(i)&gt;y(i-1) &amp;&amp; y(i)&gt;y(i+1)</span><span class="p"></span>
+        <span class="n">lmp</span> <span class="p">=</span> <span class="n">lmp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">    end  </span><span class="s">%如果该采样点是局部最大值，则lmp+1</span><span class="p"></span>
     <span class="n">lmps</span> <span class="p">=</span> <span class="n">lmps</span> <span class="o">+</span><span class="n">lmp</span><span class="p">;</span>  <span class="c">%lmps是所有采样点的lmp的和</span>
 <span class="k">end</span>
 <span class="n">lmps</span> <span class="p">=</span> <span class="n">lmps</span> <span class="o">+</span> <span class="n">lmp</span><span class="p">;</span>   <span class="c">%最后一个采样点的lmp一定与倒数第二个相同</span>
@@ -1097,9 +1097,9 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">lmps1</span> <span class="p">=</span>
-    <span class="mi">26</span>
-<span class="n">lmps2</span> <span class="p">=</span>
-    <span class="mi">27</span>
+<span class="n">    26</span>
+<span class="s">lmps2 =</span><span class="p"></span>
+<span class="n">    27</span>
 </pre></div>
 </td></tr></table>
 
@@ -1114,15 +1114,16 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">lmps1</span> <span class="p">=</span>
-    <span class="mi">26</span>
-<span class="n">lmps2</span> <span class="p">=</span>
-    <span class="mi">26</span>
+<span class="n">    26</span>
+<span class="s">lmps2 =</span><span class="p"></span>
+<span class="n">    26</span>
 </pre></div>
 </td></tr></table>
 
 <p>从运行结果可以看出，如果信号的相位偏移量小于2π/q，我们就无法通过该方法分辨出这个相位偏移量。这说明，理论上<span><span class="MathJax_Preview">2\pi/q</span><script type="math/tex">2\pi/q</script></span>就是该方法的最小相位分辨率。</p>
                 
                   
+                
                 
               
               
@@ -1162,7 +1163,7 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
       
     </div>
     
-      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         

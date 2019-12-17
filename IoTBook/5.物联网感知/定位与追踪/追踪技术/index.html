@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -896,13 +896,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    论文方法介绍
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#32-vernier" class="md-nav__link">
     3.2. Vernier
   </a>
@@ -967,7 +960,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -979,7 +972,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -991,7 +984,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -1003,7 +996,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../../../10. 物联网应用平台/物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -1099,13 +1092,6 @@
           <li class="md-nav__item">
   <a href="#31-llap-low-latency-acoustic-phase" class="md-nav__link">
     3.1. LLAP (Low-Latency Acoustic Phase)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    论文方法介绍
   </a>
   
 </li>
@@ -1333,12 +1319,12 @@ d = \frac{cT}{B}\Delta f
 <span class="n">f1</span> <span class="p">=</span> <span class="mi">20500</span><span class="p">;</span> <span class="c">% end freq</span>
 <span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="n">T</span><span class="p">;</span>
 <span class="n">data</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="s">&#39;linear&#39;</span><span class="p">);</span>
-<span class="n">output</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">88</span>
-    <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1921</span><span class="p">)];</span>
-<span class="k">end</span>
+<span class="n">output</span> <span class="p">=</span> <span class="p">[];</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:88</span><span class="p"></span>
+    <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1921</span><span class="p">)];</span><span class="n"></span>
+<span class="n">end</span>
 
-<span class="c">%% 接收信号读取，并滤波</span>
+<span class="s">%% 接收信号读取，并滤波</span><span class="p"></span>
 <span class="p">[</span><span class="n">mydata</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;fmcw_receive.wav&#39;</span><span class="p">);</span>
 <span class="n">mydata</span> <span class="p">=</span> <span class="n">mydata</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span>
 
@@ -1348,12 +1334,12 @@ d = \frac{cT}{B}\Delta f
 <span class="n">plot</span><span class="p">(</span><span class="n">mydata</span><span class="p">);</span>
 
 <span class="c">%% 生成pseudo-transmitted信号</span>
-<span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">88</span>
-    <span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[</span><span class="n">pseudo_T</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">*</span><span class="n">fs</span><span class="o">+</span><span class="mi">1</span><span class="p">)];</span>
-<span class="k">end</span>
+<span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[];</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:88</span><span class="p"></span>
+    <span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[</span><span class="n">pseudo_T</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">*</span><span class="n">fs</span><span class="o">+</span><span class="mi">1</span><span class="p">)];</span><span class="n"></span>
+<span class="n">end</span>
 
-<span class="c">% fmcw信号的起始位置在start处</span>
+<span class="s">% fmcw信号的起始位置在start处</span><span class="p"></span>
 <span class="c">% 若start有偏差会造成什么影响？</span>
 <span class="n">start</span> <span class="p">=</span> <span class="mi">38750</span><span class="p">;</span>
 <span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">start</span><span class="p">),</span><span class="n">pseudo_T</span><span class="p">];</span>
@@ -1370,14 +1356,14 @@ d = \frac{cT}{B}\Delta f
 <span class="n">fftlen</span> <span class="p">=</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">64</span><span class="p">;</span>
 
 <span class="c">%% 计算每个chirp信号所对应的频率偏移</span>
-<span class="n">idxs</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="n">start</span><span class="p">:</span><span class="n">len</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">len</span><span class="o">*</span><span class="mi">87</span>
+<span class="n">idxs</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = start:len:start+len*87</span><span class="p"></span>
     <span class="n">FFT_out</span> <span class="p">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">len</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="n">fftlen</span><span class="p">));</span>
     <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">FFT_out</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">fftlen</span><span class="o">/</span><span class="mi">2</span><span class="p">))));</span>
-    <span class="n">idxs</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="nb">i</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="n">len</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">idx</span><span class="p">;</span>
-<span class="k">end</span>
+    <span class="n">idxs</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="nb">i</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="n">len</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">idx</span><span class="p">;</span><span class="n"></span>
+<span class="n">end</span>
 
-<span class="c">%% 依据频率差公式计算出距离</span>
+<span class="s">%% 依据频率差公式计算出距离</span><span class="p"></span>
 <span class="n">start_idx</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">delta_distance</span> <span class="p">=</span> <span class="p">(</span><span class="n">idxs</span><span class="o">-</span><span class="n">start_idx</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="o">/</span><span class="n">fftlen</span><span class="o">*</span><span class="mi">340</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="p">(</span><span class="n">f1</span><span class="o">-</span><span class="n">f0</span><span class="p">);</span>
 
@@ -1401,7 +1387,8 @@ padding: 2px;">图. FMCW测距结果</div>
 <h3 id="31-llap-low-latency-acoustic-phase">3.1. LLAP (Low-Latency Acoustic Phase)<a class="headerlink" href="#31-llap-low-latency-acoustic-phase" title="Permanent link">&para;</a></h3>
 <p>代码基于论文Mobicom16“Device-Free Gesture Tracking Using Acoustic Signals"实现</p>
 <p>参考代码：<a href="https://github.com/Samsonsjarkal/LLAP/blob/master/llap/Control/RangeFinder.cpp">https://github.com/Samsonsjarkal/LLAP/blob/master/llap/Control/RangeFinder.cpp</a></p>
-<h3 id="_2">论文方法介绍<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<!-- ### 论文方法介绍 -->
+
 <p>​        本文利用发射的声音信号在被测物体上反射，并分析反射信号的相位来对物体进行追踪。现在介绍的方法适用于一维追踪，可以通过增多发射声音信号的设备来实现二维或三维的追踪，原理相同。</p>
 <p>​        首先从单一频率的信号开始分析。设发射信号为<span><span class="MathJax_Preview">A\cos(2\pi ft)</span><script type="math/tex">A\cos(2\pi ft)</script></span>，<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>为信号幅度，<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>为信号频率。为了声音信号对人耳的干扰尽可能小，信号频率应在人耳听力范围的边界或者边界以外，论文中的信号频率在<span><span class="MathJax_Preview">17kHz</span><script type="math/tex">17kHz</script></span>以上；另外，生活中常见的声音采集设备（如录音机、手机等）采样率为<span><span class="MathJax_Preview">48kHz</span><script type="math/tex">48kHz</script></span>，为了满足奈奎斯特-香农采样定律，发射信号的频率不能超过<span><span class="MathJax_Preview">24kHz</span><script type="math/tex">24kHz</script></span>，在论文中，选取的信号频率范围为<span><span class="MathJax_Preview">17kHz\sim 23kHz</span><script type="math/tex">17kHz\sim 23kHz</script></span>。</p>
 <p>​         信号经过被测物体的反射，设接收到的信号为<span><span class="MathJax_Preview">2A'_p\cos(2\pi ft - 2\pi fd_p(t)/c-\theta p)</span><script type="math/tex">2A'_p\cos(2\pi ft - 2\pi fd_p(t)/c-\theta p)</script></span>，<span><span class="MathJax_Preview">2A'_p</span><script type="math/tex">2A'_p</script></span>为反射信号的幅度，<span><span class="MathJax_Preview">d_p(t)</span><script type="math/tex">d_p(t)</script></span>为被测物体随时间变化的相对位移，<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>为声速，因此<span><span class="MathJax_Preview">2\pi fd_p(t)/c</span><script type="math/tex">2\pi fd_p(t)/c</script></span>一项表示由于物体运动带来的相位偏移，<span><span class="MathJax_Preview">\theta_p</span><script type="math/tex">\theta_p</script></span>是由于硬件的延迟、反射带来的半波损失等造成的相位偏移，这部分认为是常量，不随时间变化。为了在信号中提取<span><span class="MathJax_Preview">d_p(t)</span><script type="math/tex">d_p(t)</script></span>，论文采用<span><span class="MathJax_Preview">I/Q</span><script type="math/tex">I/Q</script></span>调制解调的方式，在反射信号中消去含有频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>的项：</p>
@@ -1442,7 +1429,7 @@ padding: 2px;">图. FMCW测距结果</div>
 <p>生成的声音信号文件为**sample.wav**，位于与代码同级目录下。</p>
 <p><em>AnalyseSound.m</em></p>
 <p>本程序实现LLAP的主要算法</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">soundFile</span> <span class="p">=</span> &quot;&quot; <span class="c">% 待分析的声音文件名</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">soundFile</span> <span class="p">=</span> <span class="s">&quot;&quot;</span> <span class="c">% 待分析的声音文件名</span>
 </pre></div>
 </td></tr></table>
 
@@ -1515,11 +1502,11 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
  9
 10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">function</span><span class="w"> </span>[ lmps ] <span class="p">=</span><span class="w"> </span><span class="nf">getLMPS</span><span class="p">(</span> y <span class="p">)</span><span class="w">  </span><span class="c">%输入是窗口信号的强度，输出的该窗口信号的lmps</span>
 <span class="n">lmp</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="n">lmps</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span><span class="p">=</span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>   <span class="c">%计算除首尾的采样点的lmp</span>
-    <span class="k">if</span> <span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&gt;</span><span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&gt;</span><span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">lmp</span> <span class="p">=</span> <span class="n">lmp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">end</span>  <span class="c">%如果该采样点是局部最大值，则lmp+1</span>
+<span class="n">lmps</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i=2:length(y)-1   %计算除首尾的采样点的lmp</span><span class="p"></span>
+<span class="n">    if </span><span class="s">y(i)&gt;y(i-1) &amp;&amp; y(i)&gt;y(i+1)</span><span class="p"></span>
+        <span class="n">lmp</span> <span class="p">=</span> <span class="n">lmp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">    end  </span><span class="s">%如果该采样点是局部最大值，则lmp+1</span><span class="p"></span>
     <span class="n">lmps</span> <span class="p">=</span> <span class="n">lmps</span> <span class="o">+</span><span class="n">lmp</span><span class="p">;</span>  <span class="c">%lmps是所有采样点的lmp的和</span>
 <span class="k">end</span>
 <span class="n">lmps</span> <span class="p">=</span> <span class="n">lmps</span> <span class="o">+</span> <span class="n">lmp</span><span class="p">;</span>   <span class="c">%最后一个采样点的lmp一定与倒数第二个相同</span>
@@ -1556,9 +1543,9 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">lmps1</span> <span class="p">=</span>
-    <span class="mi">26</span>
-<span class="n">lmps2</span> <span class="p">=</span>
-    <span class="mi">27</span>
+<span class="n">    26</span>
+<span class="s">lmps2 =</span><span class="p"></span>
+<span class="n">    27</span>
 </pre></div>
 </td></tr></table>
 
@@ -1573,9 +1560,9 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">lmps1</span> <span class="p">=</span>
-    <span class="mi">26</span>
-<span class="n">lmps2</span> <span class="p">=</span>
-    <span class="mi">26</span>
+<span class="n">    26</span>
+<span class="s">lmps2 =</span><span class="p"></span>
+<span class="n">    26</span>
 </pre></div>
 </td></tr></table>
 
@@ -1591,6 +1578,7 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
 </ul>
                 
                   
+                
                 
               
               
@@ -1624,13 +1612,13 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
           </a>
         
         
-          <a href="../../../404/" title="8.1 定位感知" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                8.1 定位感知
+                8.2 阿里云平台
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -1665,7 +1653,7 @@ padding: 2px;">图. Vernier测量相位变化示意图</div>
       
     </div>
     
-      <script src="../../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         

@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -837,7 +837,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../5.物联网感知/定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -849,7 +849,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -861,7 +861,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -873,7 +873,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -1064,12 +1064,12 @@ chirp频率自18kHz线性增加到20.5kHz，持续时间40ms。
 <span class="n">f1</span> <span class="p">=</span> <span class="mi">20500</span><span class="p">;</span> <span class="c">% end freq</span>
 <span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="n">T</span><span class="p">;</span>
 <span class="n">data</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="s">&#39;linear&#39;</span><span class="p">);</span>
-<span class="n">output</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">88</span>
-    <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1921</span><span class="p">)];</span>
-<span class="k">end</span>
+<span class="n">output</span> <span class="p">=</span> <span class="p">[];</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:88</span><span class="p"></span>
+    <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1921</span><span class="p">)];</span><span class="n"></span>
+<span class="n">end</span>
 
-<span class="c">%% 接收信号读取，并滤波</span>
+<span class="s">%% 接收信号读取，并滤波</span><span class="p"></span>
 <span class="p">[</span><span class="n">mydata</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;fmcw_receive.wav&#39;</span><span class="p">);</span>
 <span class="n">mydata</span> <span class="p">=</span> <span class="n">mydata</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span>
 
@@ -1079,13 +1079,13 @@ chirp频率自18kHz线性增加到20.5kHz，持续时间40ms。
 <span class="n">plot</span><span class="p">(</span><span class="n">mydata</span><span class="p">);</span>
 
 <span class="c">%% 生成pseudo-transmitted信号</span>
-<span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">88</span>
-    <span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[</span><span class="n">pseudo_T</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">*</span><span class="n">fs</span><span class="o">+</span><span class="mi">1</span><span class="p">)];</span>
-<span class="k">end</span>
+<span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[];</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:88</span><span class="p"></span>
+    <span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[</span><span class="n">pseudo_T</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">*</span><span class="n">fs</span><span class="o">+</span><span class="mi">1</span><span class="p">)];</span><span class="n"></span>
+<span class="n">end</span>
 
 
-<span class="c">% fmcw信号的起始位置在start处</span>
+<span class="s">% fmcw信号的起始位置在start处</span><span class="p"></span>
 <span class="c">% 若start有偏差会造成什么影响？</span>
 <span class="n">start</span> <span class="p">=</span> <span class="mi">38750</span><span class="p">;</span>
 <span class="n">pseudo_T</span> <span class="p">=</span> <span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">start</span><span class="p">),</span><span class="n">pseudo_T</span><span class="p">];</span>
@@ -1099,14 +1099,14 @@ chirp频率自18kHz线性增加到20.5kHz，持续时间40ms。
 <span class="n">fftlen</span> <span class="p">=</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">64</span><span class="p">;</span> <span class="c">%做快速傅里叶变换时补零的长度。在数据后补零可以使的采样点增多，频率分辨率提高。可以自行尝试不同的补零长度对于计算结果的影响。</span>
 
 <span class="c">%% 计算每个chirp信号所对应的频率偏移</span>
-<span class="n">idxs</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="n">start</span><span class="p">:</span><span class="n">len</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">len</span><span class="o">*</span><span class="mi">87</span>
+<span class="n">idxs</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = start:len:start+len*87</span><span class="p"></span>
     <span class="n">FFT_out</span> <span class="p">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">len</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="n">fftlen</span><span class="p">));</span>
     <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">FFT_out</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">fftlen</span><span class="o">/</span><span class="mi">2</span><span class="p">))));</span>
-    <span class="n">idxs</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="nb">i</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="n">len</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">idx</span><span class="p">;</span>
-<span class="k">end</span>
+    <span class="n">idxs</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="nb">i</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="n">len</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">idx</span><span class="p">;</span><span class="n"></span>
+<span class="n">end</span>
 
-<span class="c">%% 依据频偏公式计算出距离</span>
+<span class="s">%% 依据频偏公式计算出距离</span><span class="p"></span>
 <span class="n">start_idx</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">delta_distance</span> <span class="p">=</span> <span class="p">(</span><span class="n">idxs</span><span class="o">-</span><span class="n">start_idx</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="o">/</span><span class="n">fftlen</span><span class="o">*</span><span class="mi">340</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="p">(</span><span class="n">f1</span><span class="o">-</span><span class="n">f0</span><span class="p">);</span>
 
@@ -1119,6 +1119,7 @@ chirp频率自18kHz线性增加到20.5kHz，持续时间40ms。
 </td></tr></table>
                 
                   
+                
                 
               
               
@@ -1158,7 +1159,7 @@ chirp频率自18kHz线性增加到20.5kHz，持续时间40ms。
       
     </div>
     
-      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         

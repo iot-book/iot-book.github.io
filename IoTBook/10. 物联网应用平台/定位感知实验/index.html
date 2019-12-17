@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -837,7 +837,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../5.物联网感知/定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -849,7 +849,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -861,7 +861,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -873,7 +873,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -986,12 +986,12 @@
 <h2 id="1-android-gps">1. Android GPS定位<a class="headerlink" href="#1-android-gps" title="Permanent link">&para;</a></h2>
 <h3 id="11">1.1. 获取系统定位服务<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
 <p>Android在操作系统底层实现了GPS硬件驱动，并封装了服务管理类<code>LocationManager</code>供应用开发者获取设备当前的位置信息。<code>LocationManager</code>是获取位置信息的入口级类，开发者要获取位置信息前，需要首先通过调用系统服务，初始化一个<code>LocationManger</code>对象：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">LocationManager</span>  <span class="n">locationManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">LocationManager</span><span class="o">)</span> <span class="n">Context</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">LOCATION_SERVICE</span><span class="o">);</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">LocationManager</span>  <span class="n">locationManager</span> <span class="o">=</span> <span class="p">(</span><span class="n">LocationManager</span><span class="p">)</span> <span class="n">Context</span><span class="p">.</span><span class="na">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">LOCATION_SERVICE</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
 <p><code>LocationManager</code>对象以<code>Location</code>对象的形式提供设备当前的位置信息，<code>Location</code>是一个描述地理位置信息的类，记录了经纬度、海拔高度、获取坐标时间、速度、方位等数据。从<code>LocationManager</code>获得<code>Location</code>对象的方法是<code>getLastKnowLocation()</code>。这里要注意的是，除了GPS，安卓还支持Wi-Fi、蜂窝基站和AGPS等另外三种定位方式，因此通过<code>LocationManager.getLastKnowLocation()</code>获取GPS地理位置信息时，需要指明位置信息的提供者是<code>LocationManager.GPS_PROVIDER</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="n">locationManager</span><span class="o">.</span><span class="na">getLastKnownLocation</span><span class="o">(</span><span class="n">LocationManager</span><span class="o">.</span><span class="na">GPS_PROVIDER</span><span class="o">);</span> <span class="c1">// 通过GPS获取位置</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="n">locationManager</span><span class="p">.</span><span class="na">getLastKnownLocation</span><span class="p">(</span><span class="n">LocationManager</span><span class="p">.</span><span class="na">GPS_PROVIDER</span><span class="p">);</span> <span class="c1">// 通过GPS获取位置</span>
 </pre></div>
 </td></tr></table>
 
@@ -1017,15 +1017,15 @@
  8
  9
 10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="c1">// 运行时权限管理</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">)</span>
-        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span>
-        <span class="o">&amp;&amp;</span> <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">)</span>
-        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">)</span>
-<span class="o">{</span>
-    <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span>
-                    <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">,</span>
-                    <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">},</span><span class="mi">100</span><span class="o">);</span>
-<span class="o">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">ActivityCompat</span><span class="p">.</span><span class="na">checkSelfPermission</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="p">)</span>
+        <span class="o">!=</span> <span class="n">PackageManager</span><span class="p">.</span><span class="na">PERMISSION_GRANTED</span>
+        <span class="o">&amp;&amp;</span> <span class="n">ActivityCompat</span><span class="p">.</span><span class="na">checkSelfPermission</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="p">)</span>
+        <span class="o">!=</span> <span class="n">PackageManager</span><span class="p">.</span><span class="na">PERMISSION_GRANTED</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ActivityCompat</span><span class="p">.</span><span class="na">requestPermissions</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span>
+                    <span class="k">new</span> <span class="n">String</span><span class="o">[]</span><span class="p">{</span><span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="p">,</span>
+                    <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="p">},</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1142,106 +1142,106 @@ padding: 2px;">图. 安卓模拟器设置虚拟GPS数据，APP读数并显示</d
  97
  98
  99
-100</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">androidx.appcompat.app.AppCompatActivity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">androidx.core.app.ActivityCompat</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.Manifest</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.pm.PackageManager</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.location.Location</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.location.LocationManager</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.baidu.mapapi.map.BaiduMap</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.baidu.mapapi.map.MapView</span><span class="o">;</span>
+100</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">androidx.appcompat.app.AppCompatActivity</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">androidx.core.app.ActivityCompat</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.Manifest</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.content.pm.PackageManager</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.location.Location</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.location.LocationManager</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.baidu.mapapi.map.BaiduMap</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.baidu.mapapi.map.MapView</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
 
-    <span class="kd">private</span> <span class="n">LocationManager</span> <span class="n">locationManager</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">TextView</span> <span class="n">textLocationShow</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btnLocation</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">LocationManager</span> <span class="n">locationManager</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">TextView</span> <span class="n">textLocationShow</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btnLocation</span><span class="p">;</span>
 
-    <span class="kd">private</span> <span class="n">MapView</span> <span class="n">mMapView</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">BaiduMap</span> <span class="n">mBaiduMap</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">MapView</span> <span class="n">mMapView</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">BaiduMap</span> <span class="n">mBaiduMap</span><span class="p">;</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
 
         <span class="c1">// 获取定位服务</span>
-        <span class="n">locationManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">LocationManager</span><span class="o">)</span> <span class="k">this</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">LOCATION_SERVICE</span><span class="o">);</span>
+        <span class="n">locationManager</span> <span class="o">=</span> <span class="p">(</span><span class="n">LocationManager</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="na">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="na">LOCATION_SERVICE</span><span class="p">);</span>
         <span class="c1">// 初始化View组件信息及相关点击事件</span>
-        <span class="n">initViews</span><span class="o">();</span>
-    <span class="o">}</span>
+        <span class="n">initViews</span><span class="p">();</span>
+    <span class="p">}</span>
 
 
     <span class="cm">/**</span>
 <span class="cm">     * 方法描述：初始化View组件信息及相关点击事件</span>
 <span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initViews</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">textLocationShow</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">text_location_show</span><span class="o">);</span>
-        <span class="n">btnLocation</span> <span class="o">=</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_location</span><span class="o">);</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initViews</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">textLocationShow</span> <span class="o">=</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">text_location_show</span><span class="p">);</span>
+        <span class="n">btnLocation</span> <span class="o">=</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">btn_location</span><span class="p">);</span>
         <span class="c1">// 获取地图控件引用</span>
-        <span class="n">mMapView</span> <span class="o">=</span> <span class="o">(</span><span class="n">MapView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bmapView</span><span class="o">);</span>
+        <span class="n">mMapView</span> <span class="o">=</span> <span class="p">(</span><span class="n">MapView</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">bmapView</span><span class="p">);</span>
         <span class="c1">// 点击按钮显示坐标</span>
-        <span class="n">btnLocation</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">btnLocation</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
             <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">getLocation</span><span class="o">();</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">getLocation</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
 
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">getLocation</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// 运行时权限管理</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">)</span>
-                <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span>
-                <span class="o">&amp;&amp;</span> <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">)</span>
-                <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span>
-                    <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">,</span>
-                    <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">},</span><span class="mi">100</span><span class="o">);</span>
-            <span class="k">return</span><span class="o">;</span>
-        <span class="o">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ActivityCompat</span><span class="p">.</span><span class="na">checkSelfPermission</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="p">)</span>
+                <span class="o">!=</span> <span class="n">PackageManager</span><span class="p">.</span><span class="na">PERMISSION_GRANTED</span>
+                <span class="o">&amp;&amp;</span> <span class="n">ActivityCompat</span><span class="p">.</span><span class="na">checkSelfPermission</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="p">)</span>
+                <span class="o">!=</span> <span class="n">PackageManager</span><span class="p">.</span><span class="na">PERMISSION_GRANTED</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ActivityCompat</span><span class="p">.</span><span class="na">requestPermissions</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span>
+                    <span class="k">new</span> <span class="n">String</span><span class="o">[]</span><span class="p">{</span><span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="p">,</span>
+                    <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="p">},</span><span class="mi">100</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
 
         <span class="c1">// 通过GPS服务获取位置信息</span>
-        <span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="n">locationManager</span><span class="o">.</span><span class="na">getLastKnownLocation</span><span class="o">(</span><span class="n">LocationManager</span><span class="o">.</span><span class="na">GPS_PROVIDER</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">location</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">updateUI</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+        <span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="n">locationManager</span><span class="p">.</span><span class="na">getLastKnownLocation</span><span class="p">(</span><span class="n">LocationManager</span><span class="p">.</span><span class="na">GPS_PROVIDER</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">location</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">updateUI</span><span class="p">(</span><span class="n">location</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
     <span class="cm">/**</span>
 <span class="cm">     * 方法描述：在View上更新位置信息的显示</span>
 <span class="cm">     * @param location</span>
 <span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">updateUI</span><span class="o">(</span><span class="n">Location</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">double</span> <span class="n">longitude</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">();</span>
-        <span class="kt">double</span> <span class="n">latitude</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">();</span>
-        <span class="n">textLocationShow</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;当前经度：&quot;</span> <span class="o">+</span> <span class="n">longitude</span> <span class="o">+</span> <span class="s">&quot;\n当前纬度：&quot;</span> <span class="o">+</span> <span class="n">latitude</span><span class="o">);</span>
-    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">updateUI</span><span class="p">(</span><span class="n">Location</span> <span class="n">location</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">longitude</span> <span class="o">=</span> <span class="n">location</span><span class="p">.</span><span class="na">getLongitude</span><span class="p">();</span>
+        <span class="kt">double</span> <span class="n">latitude</span> <span class="o">=</span> <span class="n">location</span><span class="p">.</span><span class="na">getLatitude</span><span class="p">();</span>
+        <span class="n">textLocationShow</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="s">&quot;当前经度：&quot;</span> <span class="o">+</span> <span class="n">longitude</span> <span class="o">+</span> <span class="s">&quot;\n当前纬度：&quot;</span> <span class="o">+</span> <span class="n">latitude</span><span class="p">);</span>
+    <span class="p">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onResume</span><span class="p">();</span>
         <span class="c1">// 在activity执行onResume时执行mMapView.onResume()，实现地图生命周期管理</span>
-        <span class="n">mMapView</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
-    <span class="o">}</span>
+        <span class="n">mMapView</span><span class="p">.</span><span class="na">onResume</span><span class="p">();</span>
+    <span class="p">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onPause</span><span class="p">();</span>
         <span class="c1">// 在activity执行onPause时执行mMapView.onPause()，实现地图生命周期管理</span>
-        <span class="n">mMapView</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
-    <span class="o">}</span>
+        <span class="n">mMapView</span><span class="p">.</span><span class="na">onPause</span><span class="p">();</span>
+    <span class="p">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onDestroy</span><span class="p">();</span>
         <span class="c1">// 在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理</span>
-        <span class="n">mMapView</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+        <span class="n">mMapView</span><span class="p">.</span><span class="na">onDestroy</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1309,18 +1309,18 @@ padding: 2px;">图. 安卓模拟器设置虚拟GPS数据，APP读数并显示</d
 59</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cm">/**</span>
 <span class="cm">* 实现位置监听接口</span>
 <span class="cm">*/</span>
-<span class="kd">private</span> <span class="n">LocationListener</span> <span class="n">locationListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocationListener</span><span class="o">()</span> <span class="o">{</span>
+<span class="kd">private</span> <span class="n">LocationListener</span> <span class="n">locationListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocationListener</span><span class="p">()</span> <span class="p">{</span>
     <span class="cm">/**</span>
 <span class="cm">    * 位置信息变化时触发:当坐标改变时触发此函数，如果Provider传进相同的坐标，它就不会被触发</span>
 <span class="cm">    * @param location</span>
 <span class="cm">    */</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onLocationChanged</span><span class="o">(</span><span class="n">Location</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;时间：&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;经度：&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">());</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;纬度：&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">());</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;海拔：&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="o">.</span><span class="na">getAltitude</span><span class="o">());</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onLocationChanged</span><span class="p">(</span><span class="n">Location</span> <span class="n">location</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;时间：&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="p">.</span><span class="na">getTime</span><span class="p">());</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;经度：&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="p">.</span><span class="na">getLongitude</span><span class="p">());</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;纬度：&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="p">.</span><span class="na">getLatitude</span><span class="p">());</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;海拔：&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="p">.</span><span class="na">getAltitude</span><span class="p">());</span>
+    <span class="p">}</span>
 
     <span class="cm">/**</span>
 <span class="cm">    * GPS状态变化时触发:Provider被disable时触发此函数，比如GPS被关闭</span>
@@ -1329,48 +1329,48 @@ padding: 2px;">图. 安卓模拟器设置虚拟GPS数据，APP读数并显示</d
 <span class="cm">    * @param extras</span>
 <span class="cm">    */</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStatusChanged</span><span class="o">(</span><span class="n">String</span> <span class="n">provider</span><span class="o">,</span> <span class="kt">int</span> <span class="n">status</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">extras</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">switch</span> <span class="o">(</span><span class="n">status</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStatusChanged</span><span class="p">(</span><span class="n">String</span> <span class="n">provider</span><span class="p">,</span> <span class="kt">int</span> <span class="n">status</span><span class="p">,</span> <span class="n">Bundle</span> <span class="n">extras</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// GPS状态为可见时</span>
-            <span class="k">case</span> <span class="n">LocationProvider</span><span class="o">.</span><span class="na">AVAILABLE</span><span class="o">:</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">&quot;onStatusChanged：当前GPS状态为可见状态&quot;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="n">LocationProvider</span><span class="p">.</span><span class="na">AVAILABLE</span><span class="p">:</span>
+                <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span> <span class="s">&quot;onStatusChanged：当前GPS状态为可见状态&quot;</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
             <span class="c1">// GPS状态为服务区外时</span>
-            <span class="k">case</span> <span class="n">LocationProvider</span><span class="o">.</span><span class="na">OUT_OF_SERVICE</span><span class="o">:</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">&quot;onStatusChanged:当前GPS状态为服务区外状态&quot;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="n">LocationProvider</span><span class="p">.</span><span class="na">OUT_OF_SERVICE</span><span class="p">:</span>
+                <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span> <span class="s">&quot;onStatusChanged:当前GPS状态为服务区外状态&quot;</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
             <span class="c1">// GPS状态为暂停服务时</span>
-            <span class="k">case</span> <span class="n">LocationProvider</span><span class="o">.</span><span class="na">TEMPORARILY_UNAVAILABLE</span><span class="o">:</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">&quot;onStatusChanged:当前GPS状态为暂停服务状态&quot;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-                <span class="k">break</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+            <span class="k">case</span> <span class="n">LocationProvider</span><span class="p">.</span><span class="na">TEMPORARILY_UNAVAILABLE</span><span class="p">:</span>
+                <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span> <span class="s">&quot;onStatusChanged:当前GPS状态为暂停服务状态&quot;</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
     <span class="cm">/**</span>
 <span class="cm">    * 方法描述：GPS开启时触发</span>
 <span class="cm">    * @param provider</span>
 <span class="cm">    */</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onProviderEnabled</span><span class="o">(</span><span class="n">String</span> <span class="n">provider</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="s">&quot;onProviderEnabled:方法被触发&quot;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
-        <span class="n">getLocation</span><span class="o">();</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onProviderEnabled</span><span class="p">(</span><span class="n">String</span> <span class="n">provider</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span> <span class="s">&quot;onProviderEnabled:方法被触发&quot;</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+        <span class="n">getLocation</span><span class="p">();</span>
+    <span class="p">}</span>
 
     <span class="cm">/**</span>
 <span class="cm">    * 方法描述： GPS禁用时触发</span>
 <span class="cm">    * @param provider</span>
 <span class="cm">    */</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onProviderDisabled</span><span class="o">(</span><span class="n">String</span> <span class="n">provider</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onProviderDisabled</span><span class="p">(</span><span class="n">String</span> <span class="n">provider</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="o">}</span>
-<span class="o">};</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </pre></div>
 </td></tr></table>
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// 注册监听，当时间为间隔100毫秒或位移变化超过0米时更新</span>
-<span class="n">locationManager</span><span class="o">.</span><span class="na">requestLocationUpdates</span><span class="o">(</span><span class="n">LocationManager</span><span class="o">.</span><span class="na">GPS_PROVIDER</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">locationListener</span><span class="o">);</span>
+<span class="n">locationManager</span><span class="p">.</span><span class="na">requestLocationUpdates</span><span class="p">(</span><span class="n">LocationManager</span><span class="p">.</span><span class="na">GPS_PROVIDER</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">locationListener</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
@@ -1464,17 +1464,17 @@ padding: 2px;">图. 集成jar文件</div>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="p">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">();</span>
         <span class="c1">// 在使用SDK各组件之前初始化context信息，传入ApplicationContext</span>
-        <span class="n">SDKInitializer</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">SDKInitializer</span><span class="p">.</span><span class="na">initialize</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
         <span class="c1">// 自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.</span>
         <span class="c1">// 包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。</span>
-        <span class="n">SDKInitializer</span><span class="o">.</span><span class="na">setCoordType</span><span class="o">(</span><span class="n">CoordType</span><span class="o">.</span><span class="na">BD09LL</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+        <span class="n">SDKInitializer</span><span class="p">.</span><span class="na">setCoordType</span><span class="p">(</span><span class="n">CoordType</span><span class="p">.</span><span class="na">BD09LL</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1512,33 +1512,33 @@ padding: 2px;">图. 集成jar文件</div>
 24
 25
 26
-27</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">MapView</span> <span class="n">mMapView</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+27</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">MapView</span> <span class="n">mMapView</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
         <span class="c1">// 获取地图控件引用</span>
-        <span class="n">mMapView</span> <span class="o">=</span> <span class="o">(</span><span class="n">MapView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bmapView</span><span class="o">);</span>
-    <span class="o">}</span>
+        <span class="n">mMapView</span> <span class="o">=</span> <span class="p">(</span><span class="n">MapView</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">bmapView</span><span class="p">);</span>
+    <span class="p">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
-       <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="p">()</span> <span class="p">{</span>
+       <span class="kd">super</span><span class="p">.</span><span class="na">onResume</span><span class="p">();</span>
        <span class="c1">// 在activity执行onResume时执行mMapView.onResume()，实现地图生命周期管理</span>
-       <span class="n">mMapView</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
-    <span class="o">}</span>
+       <span class="n">mMapView</span><span class="p">.</span><span class="na">onResume</span><span class="p">();</span>
+    <span class="p">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="o">()</span> <span class="o">{</span>
-      <span class="kd">super</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onPause</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">super</span><span class="p">.</span><span class="na">onPause</span><span class="p">();</span>
       <span class="c1">// 在activity执行onPause时执行mMapView.onPause()，实现地图生命周期管理</span>
-      <span class="n">mMapView</span><span class="o">.</span><span class="na">onPause</span><span class="o">();</span>
-    <span class="o">}</span>
+      <span class="n">mMapView</span><span class="p">.</span><span class="na">onPause</span><span class="p">();</span>
+    <span class="p">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
-      <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">super</span><span class="p">.</span><span class="na">onDestroy</span><span class="p">();</span>
       <span class="c1">// 在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理</span>
-      <span class="n">mMapView</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
-    <span class="o">}</span>
+      <span class="n">mMapView</span><span class="p">.</span><span class="na">onDestroy</span><span class="p">();</span>
+    <span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1563,16 +1563,16 @@ padding: 2px;">图. 在应用中显示地图控件</div>
  9
 10
 11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// 地图控件管理对象</span>
-<span class="n">BaiduMap</span> <span class="n">mBaiduMap</span> <span class="o">=</span> <span class="n">mMapView</span><span class="o">.</span><span class="na">getMap</span><span class="o">();</span>
+<span class="n">BaiduMap</span> <span class="n">mBaiduMap</span> <span class="o">=</span> <span class="n">mMapView</span><span class="p">.</span><span class="na">getMap</span><span class="p">();</span>
 <span class="c1">// 开启地图控件的定位功能</span>
-<span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setMyLocationEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">mBaiduMap</span><span class="p">.</span><span class="na">setMyLocationEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 <span class="c1">// 获取经纬度及海拔高度信息，存入百度地图指定的坐标信息类MyLocationData</span>
-<span class="n">MyLocationData</span> <span class="n">locData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyLocationData</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-        <span class="o">.</span><span class="na">accuracy</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getAccuracy</span><span class="o">())</span>
-        <span class="o">.</span><span class="na">latitude</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">())</span>
-        <span class="o">.</span><span class="na">longitude</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">()).</span><span class="na">build</span><span class="o">();</span>
+<span class="n">MyLocationData</span> <span class="n">locData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyLocationData</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span>
+        <span class="p">.</span><span class="na">accuracy</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="na">getAccuracy</span><span class="p">())</span>
+        <span class="p">.</span><span class="na">latitude</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="na">getLatitude</span><span class="p">())</span>
+        <span class="p">.</span><span class="na">longitude</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="na">getLongitude</span><span class="p">()).</span><span class="na">build</span><span class="p">();</span>
 <span class="c1">// 在地图上显示定位图标</span>
-<span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setMyLocationData</span><span class="o">(</span><span class="n">locData</span><span class="o">);</span>
+<span class="n">mBaiduMap</span><span class="p">.</span><span class="na">setMyLocationData</span><span class="p">(</span><span class="n">locData</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
@@ -1586,6 +1586,7 @@ padding: 2px;">图. 在地图控件上显示实时位置</div>
 </center></p>
                 
                   
+                
                 
               
               
@@ -1625,7 +1626,7 @@ padding: 2px;">图. 在地图控件上显示实时位置</div>
       
     </div>
     
-      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         

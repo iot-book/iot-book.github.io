@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -974,7 +974,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../../定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -986,7 +986,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../../../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -998,7 +998,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../../../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -1010,7 +1010,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../../../../10. 物联网应用平台/物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -1327,10 +1327,10 @@ padding: 2px;">图. 手表三轴示意图</div>
 <span class="n">A</span> <span class="p">=</span> <span class="n">A</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="p">:);</span>
 
 <span class="n">temA</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="n">temA</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="n">samplingTime</span> <span class="p">:</span> <span class="n">A</span><span class="p">(</span><span class="k">end</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">2</span> <span class="p">:</span> <span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">temA</span><span class="p">(:,</span> <span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">spline</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(:,</span> <span class="nb">i</span><span class="p">),</span> <span class="n">temA</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">));</span>
-<span class="k">end</span>
+<span class="n">temA</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="n">samplingTime</span> <span class="p">:</span> <span class="n">A</span><span class="p">(</span><span class="k">end</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">&#39;</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 2 : size(A, 2)</span><span class="p"></span>
+    <span class="n">temA</span><span class="p">(:,</span> <span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">spline</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(:,</span> <span class="nb">i</span><span class="p">),</span> <span class="n">temA</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">));</span><span class="n"></span>
+<span class="n">end</span>
 </pre></div>
 </td></tr></table>
 
@@ -1424,13 +1424,13 @@ padding: 2px;">图. X轴和Y轴的加速度、速度以及位移曲线</div>
 8
 9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">w</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">;</span>
 <span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">]);</span>
+<span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">]);</span><span class="n"></span>
 
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="nb">size</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">hold</span> <span class="n">on</span><span class="p">;</span>
+<span class="n">for </span><span class="s">i = 1 : size(D, 1)</span><span class="p"></span>
+<span class="n">    hold </span><span class="s">on</span><span class="p">;</span>
     <span class="n">plot</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s">&#39;ro&#39;</span><span class="p">);</span>
-    <span class="n">pause</span><span class="p">(</span><span class="n">dt</span><span class="p">);</span>
-<span class="k">end</span>
+    <span class="n">pause</span><span class="p">(</span><span class="n">dt</span><span class="p">);</span><span class="n"></span>
+<span class="n">end</span>
 </pre></div>
 </td></tr></table>
 
@@ -1452,6 +1452,7 @@ padding: 2px;">图. trace</div>
 </ol>
                 
                   
+                
                 
               
               
@@ -1526,7 +1527,7 @@ padding: 2px;">图. trace</div>
       
     </div>
     
-      <script src="../../../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         

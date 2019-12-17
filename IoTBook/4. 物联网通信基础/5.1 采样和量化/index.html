@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -905,7 +905,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../5.物联网感知/定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -917,7 +917,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -929,7 +929,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -941,7 +941,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -1261,33 +1261,33 @@ padding: 2px;">表. 采样值、 量化和编码的结果</div>
 26
 27
 28</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="c1">//文件输出流</span>
-<span class="n">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
-<span class="n">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span><span class="n">os</span><span class="o">);</span>
-<span class="n">DataOutputStream</span> <span class="n">dos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataOutputStream</span><span class="o">(</span><span class="n">bos</span><span class="o">);</span>
+<span class="n">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+<span class="n">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="p">(</span><span class="n">os</span><span class="p">);</span>
+<span class="n">DataOutputStream</span> <span class="n">dos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataOutputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">);</span>
 
 <span class="c1">//获取在当前采样和信道参数下，每次读取到的数据buffer的大小</span>
-<span class="n">bufferSize</span> <span class="o">=</span> <span class="n">AudioRecord</span><span class="o">.</span><span class="na">getMinBufferSize</span><span class="o">(</span><span class="n">SamplingRate</span><span class="o">,</span> <span class="n">channelConfiguration</span><span class="o">,</span> <span class="n">audioEncoding</span><span class="o">);</span>
+<span class="n">bufferSize</span> <span class="o">=</span> <span class="n">AudioRecord</span><span class="p">.</span><span class="na">getMinBufferSize</span><span class="p">(</span><span class="n">SamplingRate</span><span class="p">,</span> <span class="n">channelConfiguration</span><span class="p">,</span> <span class="n">audioEncoding</span><span class="p">);</span>
 <span class="c1">//建立audioRecord实例</span>
-<span class="n">AudioRecord</span> <span class="n">audioRecord</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AudioRecord</span><span class="o">(</span><span class="n">MediaRecorder</span><span class="o">.</span><span class="na">AudioSource</span><span class="o">.</span><span class="na">MIC</span><span class="o">,</span> <span class="n">SamplingRate</span><span class="o">,</span> <span class="n">channelConfiguration</span><span class="o">,</span> <span class="n">audioEncoding</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
+<span class="n">AudioRecord</span> <span class="n">audioRecord</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AudioRecord</span><span class="p">(</span><span class="n">MediaRecorder</span><span class="p">.</span><span class="na">AudioSource</span><span class="p">.</span><span class="na">MIC</span><span class="p">,</span> <span class="n">SamplingRate</span><span class="p">,</span> <span class="n">channelConfiguration</span><span class="p">,</span> <span class="n">audioEncoding</span><span class="p">,</span> <span class="n">bufferSize</span><span class="p">);</span>
 
 <span class="c1">//设置用来承接从audiorecord实例中获取的原始数据的数组</span>
-<span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">];</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">]</span><span class="p">;</span>
 <span class="c1">//启动audioRecord</span>
-<span class="n">audioRecord</span><span class="o">.</span><span class="na">startRecording</span><span class="o">();</span>
+<span class="n">audioRecord</span><span class="p">.</span><span class="na">startRecording</span><span class="p">();</span>
 
 <span class="c1">//设置正在录音的参数isRecording为true</span>
-<span class="n">isRecording</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+<span class="n">isRecording</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="c1">//只要isRecording为true就一直从audioRecord读出数据，并写入文件输出流。</span>
 <span class="c1">//当停止按钮被按下，isRecording会变为false，循环停止</span>
-<span class="k">while</span> <span class="o">(</span><span class="n">isRecording</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">bufferReadResult</span> <span class="o">=</span> <span class="n">audioRecord</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">bufferReadResult</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">dos</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buffer</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">isRecording</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">bufferReadResult</span> <span class="o">=</span> <span class="n">audioRecord</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bufferSize</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">bufferReadResult</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dos</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 <span class="c1">//停止audioRecord，关闭输出流</span>
-<span class="n">audioRecord</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
-<span class="n">dos</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">audioRecord</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
+<span class="n">dos</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
 </pre></div>
 </td></tr></table>
 
@@ -1303,6 +1303,7 @@ padding: 2px;">表. 采样值、 量化和编码的结果</div>
 </ol>
                 
                   
+                
                 
               
               
@@ -1377,7 +1378,7 @@ padding: 2px;">表. 采样值、 量化和编码的结果</div>
       
     </div>
     
-      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         

@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -884,7 +884,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../5.物联网感知/定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -896,7 +896,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -908,7 +908,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -920,7 +920,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -1000,9 +1000,9 @@
 首先在文件“AndroidManifest.xml”中为录音应用申请录音和存储许可：
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.RECORD_AUDIO&quot;</span><span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span><span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</span><span class="o">/&gt;</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.RECORD_AUDIO&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</span><span class="o">/&gt;</span>
 </pre></div>
 </td></tr></table>
 在 android 6.0以上版本中还需要在运行时动态请求permission.需要实现函数GetPermission()，并在onCreate()函数中调用。
@@ -1023,24 +1023,24 @@
 15
 16
 17
-18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">private</span> <span class="kt">void</span> <span class="nf">GetPermission</span><span class="o">()</span> <span class="o">{</span>
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">private</span> <span class="kt">void</span> <span class="nf">GetPermission</span><span class="p">()</span> <span class="p">{</span>
 
         <span class="cm">/*在此处插入运行时权限获取的代码*/</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECORD_AUDIO</span><span class="o">)!=</span>
-                <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">||</span>
-        <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">WRITE_EXTERNAL_STORAGE</span><span class="o">)!=</span>
-                <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">||</span>
-                <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">READ_EXTERNAL_STORAGE</span><span class="o">)!=</span>
-                        <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span>
-        <span class="o">)</span>
-        <span class="o">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ActivityCompat</span><span class="p">.</span><span class="na">checkSelfPermission</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">RECORD_AUDIO</span><span class="p">)</span><span class="o">!=</span>
+                <span class="n">PackageManager</span><span class="p">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">||</span>
+        <span class="n">ActivityCompat</span><span class="p">.</span><span class="na">checkSelfPermission</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">WRITE_EXTERNAL_STORAGE</span><span class="p">)</span><span class="o">!=</span>
+                <span class="n">PackageManager</span><span class="p">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">||</span>
+                <span class="n">ActivityCompat</span><span class="p">.</span><span class="na">checkSelfPermission</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">READ_EXTERNAL_STORAGE</span><span class="p">)</span><span class="o">!=</span>
+                        <span class="n">PackageManager</span><span class="p">.</span><span class="na">PERMISSION_GRANTED</span>
+        <span class="p">)</span>
+        <span class="p">{</span>
 
-            <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="k">this</span><span class="o">,</span>
-                    <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">android</span><span class="o">.</span><span class="na">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECORD_AUDIO</span><span class="o">,</span>
-                            <span class="n">android</span><span class="o">.</span><span class="na">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">WRITE_EXTERNAL_STORAGE</span><span class="o">,</span>
-                            <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">READ_EXTERNAL_STORAGE</span><span class="o">},</span> <span class="mi">0</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+            <span class="n">ActivityCompat</span><span class="p">.</span><span class="na">requestPermissions</span><span class="p">(</span><span class="k">this</span><span class="p">,</span>
+                    <span class="k">new</span> <span class="n">String</span><span class="o">[]</span><span class="p">{</span><span class="n">android</span><span class="p">.</span><span class="na">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">RECORD_AUDIO</span><span class="p">,</span>
+                            <span class="n">android</span><span class="p">.</span><span class="na">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">WRITE_EXTERNAL_STORAGE</span><span class="p">,</span>
+                            <span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">READ_EXTERNAL_STORAGE</span><span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 </pre></div>
 </td></tr></table>
 设计应用界面：
@@ -1068,41 +1068,41 @@
 19
 20
 21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>   <span class="o">&lt;</span><span class="n">Button</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;@+id/start_record&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">&quot;wrap_content&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_height</span><span class="o">=</span><span class="s">&quot;wrap_content&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_marginStart</span><span class="o">=</span><span class="s">&quot;152dp&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_marginLeft</span><span class="o">=</span><span class="s">&quot;152dp&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_marginTop</span><span class="o">=</span><span class="s">&quot;124dp&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">text</span><span class="o">=</span><span class="s">&quot;start record&quot;</span>
-        <span class="n">app</span><span class="o">:</span><span class="n">layout_constraintStart_toStartOf</span><span class="o">=</span><span class="s">&quot;parent&quot;</span>
-        <span class="n">app</span><span class="o">:</span><span class="n">layout_constraintTop_toTopOf</span><span class="o">=</span><span class="s">&quot;parent&quot;</span> <span class="o">/&gt;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;@+id/start_record&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_marginStart</span><span class="o">=</span><span class="s">&quot;152dp&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_marginLeft</span><span class="o">=</span><span class="s">&quot;152dp&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_marginTop</span><span class="o">=</span><span class="s">&quot;124dp&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">text</span><span class="o">=</span><span class="s">&quot;start record&quot;</span>
+        <span class="n">app</span><span class="p">:</span><span class="n">layout_constraintStart_toStartOf</span><span class="o">=</span><span class="s">&quot;parent&quot;</span>
+        <span class="n">app</span><span class="p">:</span><span class="n">layout_constraintTop_toTopOf</span><span class="o">=</span><span class="s">&quot;parent&quot;</span> <span class="o">/&gt;</span>
 
     <span class="o">&lt;</span><span class="n">Button</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;@+id/stop_record&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">&quot;wrap_content&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_height</span><span class="o">=</span><span class="s">&quot;wrap_content&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_marginStart</span><span class="o">=</span><span class="s">&quot;152dp&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_marginLeft</span><span class="o">=</span><span class="s">&quot;152dp&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">layout_marginTop</span><span class="o">=</span><span class="s">&quot;108dp&quot;</span>
-        <span class="n">android</span><span class="o">:</span><span class="n">text</span><span class="o">=</span><span class="s">&quot;stop record&quot;</span>
-        <span class="n">app</span><span class="o">:</span><span class="n">layout_constraintStart_toStartOf</span><span class="o">=</span><span class="s">&quot;parent&quot;</span>
-        <span class="n">app</span><span class="o">:</span><span class="n">layout_constraintTop_toBottomOf</span><span class="o">=</span><span class="s">&quot;@+id/start_record&quot;</span> <span class="o">/&gt;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;@+id/stop_record&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_marginStart</span><span class="o">=</span><span class="s">&quot;152dp&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_marginLeft</span><span class="o">=</span><span class="s">&quot;152dp&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">layout_marginTop</span><span class="o">=</span><span class="s">&quot;108dp&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">text</span><span class="o">=</span><span class="s">&quot;stop record&quot;</span>
+        <span class="n">app</span><span class="p">:</span><span class="n">layout_constraintStart_toStartOf</span><span class="o">=</span><span class="s">&quot;parent&quot;</span>
+        <span class="n">app</span><span class="p">:</span><span class="n">layout_constraintTop_toBottomOf</span><span class="o">=</span><span class="s">&quot;@+id/start_record&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 </td></tr></table>
 可以借助android:id项指定按钮的id，以及利用android:text项指定按钮上展示的文字。按钮的布局方式以及位置也可以自行调整。
 在MainActivity中定义两个相应的button变量来代表这两个按钮：
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Button</span> <span class="n">StartRecord</span><span class="o">,</span> <span class="n">StopRecord</span><span class="o">;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Button</span> <span class="n">StartRecord</span><span class="p">,</span> <span class="n">StopRecord</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
 在 onCreate函数中讲这两个变量与两个按钮对应起来，并把stop record按钮设置为不可用：
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">StartRecord</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">start_record</span><span class="o">);</span>
-<span class="n">StopRecord</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">stop_record</span><span class="o">);</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">StartRecord</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">start_record</span><span class="p">);</span>
+<span class="n">StopRecord</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">stop_record</span><span class="p">);</span>
 <span class="c1">//在录音键被按下之前，不允许按停止键</span>
-<span class="n">StopRecord</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<span class="n">StopRecord</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 为两个按钮添加点击响应函数：
@@ -1143,42 +1143,42 @@
 35
 36
 37</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">//完成每个按钮的功能</span>
-<span class="n">StartRecord</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">StartRecord</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
         <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">//恢复停止录音按钮，并禁用开始录音按钮</span>
-        <span class="n">StopRecord</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-        <span class="n">StartRecord</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-        <span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">StopRecord</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+        <span class="n">StartRecord</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+        <span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="p">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="p">()</span> <span class="p">{</span>
                 <span class="nd">@Override</span>
-                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
                 <span class="c1">//设置用于临时保存录音原始数据的文件的名字</span>
-                <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStorageDirectory</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">()+</span><span class="s">&quot;/myrecorder/raw.wav&quot;</span><span class="o">;</span>
+                <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">.</span><span class="na">getExternalStorageDirectory</span><span class="p">().</span><span class="na">getAbsolutePath</span><span class="p">()</span><span class="o">+</span><span class="s">&quot;/myrecorder/raw.wav&quot;</span><span class="p">;</span>
                 <span class="c1">//调用开始录音函数，并把原始数据保存在指定的文件中</span>
-                <span class="n">StartRecord</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+                <span class="n">StartRecord</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
                 <span class="c1">//获取此刻的时间</span>
-                <span class="n">Date</span> <span class="n">now</span> <span class="o">=</span> <span class="n">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
+                <span class="n">Date</span> <span class="n">now</span> <span class="o">=</span> <span class="n">Calendar</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">getTime</span><span class="p">();</span>
                 <span class="c1">//用此刻时间为最终的录音wav文件命名</span>
-                <span class="n">String</span> <span class="n">filepath</span> <span class="o">=</span><span class="n">Environment</span><span class="o">.</span><span class="na">getExternalStorageDirectory</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">()+</span><span class="s">&quot;/myrecorder/&quot;</span><span class="o">+</span><span class="n">now</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">&quot;.wav&quot;</span><span class="o">;</span>
+                <span class="n">String</span> <span class="n">filepath</span> <span class="o">=</span><span class="n">Environment</span><span class="p">.</span><span class="na">getExternalStorageDirectory</span><span class="p">().</span><span class="na">getAbsolutePath</span><span class="p">()</span><span class="o">+</span><span class="s">&quot;/myrecorder/&quot;</span><span class="o">+</span><span class="n">now</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span><span class="o">+</span><span class="s">&quot;.wav&quot;</span><span class="p">;</span>
                 <span class="c1">//把录到的原始数据写入到wav文件中。</span>
-                <span class="n">copyWaveFile</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">filepath</span><span class="o">);</span>
-                <span class="o">}</span>
-        <span class="o">});</span>
+                <span class="n">copyWaveFile</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">filepath</span><span class="p">);</span>
+                <span class="p">}</span>
+        <span class="p">});</span>
         <span class="c1">//开启线程</span>
-        <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-        <span class="o">}</span>
-<span class="o">});</span>
+        <span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="p">}</span>
+<span class="p">});</span>
 
-<span class="n">StopRecord</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+<span class="n">StopRecord</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
         <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">//停止录音</span>
-        <span class="n">isRecording</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="n">isRecording</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
         <span class="c1">//恢复开始录音按钮，并禁用停止录音按钮</span>
-        <span class="n">StopRecord</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-        <span class="n">StartRecord</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-        <span class="o">}</span>
-<span class="o">});</span>
+        <span class="n">StopRecord</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+        <span class="n">StartRecord</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">});</span>
 </pre></div>
 </td></tr></table>
 实现录音功能：</p>
@@ -1193,15 +1193,15 @@
  8
  9
 10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">//48K采样率</span>
-<span class="kt">int</span> <span class="n">SamplingRate</span> <span class="o">=</span> <span class="mi">48000</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">SamplingRate</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span>
 <span class="c1">//格式：双声道</span>
-<span class="kt">int</span> <span class="n">channelConfiguration</span> <span class="o">=</span> <span class="n">AudioFormat</span><span class="o">.</span><span class="na">CHANNEL_IN_STEREO</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">channelConfiguration</span> <span class="o">=</span> <span class="n">AudioFormat</span><span class="p">.</span><span class="na">CHANNEL_IN_STEREO</span><span class="p">;</span>
 <span class="c1">//16Bit</span>
-<span class="kt">int</span> <span class="n">audioEncoding</span> <span class="o">=</span> <span class="n">AudioFormat</span><span class="o">.</span><span class="na">ENCODING_PCM_16BIT</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">audioEncoding</span> <span class="o">=</span> <span class="n">AudioFormat</span><span class="p">.</span><span class="na">ENCODING_PCM_16BIT</span><span class="p">;</span>
 <span class="c1">//是否在录制</span>
-<span class="kt">boolean</span> <span class="n">isRecording</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">isRecording</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 <span class="c1">//每次从audiorecord输入流中获取到的buffer的大小</span>
-<span class="kt">int</span> <span class="n">bufferSize</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">bufferSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
 接下来我们详细来看录音函数的实现：
@@ -1249,49 +1249,49 @@
 42
 43
 44</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">//开始录音</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">StartRecord</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">StartRecord</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
 
         <span class="c1">//生成原始数据文件</span>
-        <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
         <span class="c1">//如果文件已经存在，就先删除再创建</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span>
-                <span class="n">file</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
-        <span class="k">try</span> <span class="o">{</span>
-                <span class="n">file</span><span class="o">.</span><span class="na">createNewFile</span><span class="o">();</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="o">(</span><span class="s">&quot;未能创建&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-        <span class="o">}</span>
-        <span class="k">try</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span>
+                <span class="n">file</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
+        <span class="k">try</span> <span class="p">{</span>
+                <span class="n">file</span><span class="p">.</span><span class="na">createNewFile</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;未能创建&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">try</span> <span class="p">{</span>
                 <span class="c1">//文件输出流</span>
-                <span class="n">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
-                <span class="n">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span><span class="n">os</span><span class="o">);</span>
-                <span class="n">DataOutputStream</span> <span class="n">dos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataOutputStream</span><span class="o">(</span><span class="n">bos</span><span class="o">);</span>
+                <span class="n">OutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+                <span class="n">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="p">(</span><span class="n">os</span><span class="p">);</span>
+                <span class="n">DataOutputStream</span> <span class="n">dos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataOutputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">);</span>
                 <span class="c1">//获取在当前采样和信道参数下，每次读取到的数据buffer的大小</span>
-                <span class="n">bufferSize</span> <span class="o">=</span> <span class="n">AudioRecord</span><span class="o">.</span><span class="na">getMinBufferSize</span><span class="o">(</span><span class="n">SamplingRate</span><span class="o">,</span> <span class="n">channelConfiguration</span><span class="o">,</span> <span class="n">audioEncoding</span><span class="o">);</span>
+                <span class="n">bufferSize</span> <span class="o">=</span> <span class="n">AudioRecord</span><span class="p">.</span><span class="na">getMinBufferSize</span><span class="p">(</span><span class="n">SamplingRate</span><span class="p">,</span> <span class="n">channelConfiguration</span><span class="p">,</span> <span class="n">audioEncoding</span><span class="p">);</span>
                 <span class="c1">//建立audioRecord实例</span>
-                <span class="n">AudioRecord</span> <span class="n">audioRecord</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AudioRecord</span><span class="o">(</span><span class="n">MediaRecorder</span><span class="o">.</span><span class="na">AudioSource</span><span class="o">.</span><span class="na">MIC</span><span class="o">,</span> <span class="n">SamplingRate</span><span class="o">,</span> <span class="n">channelConfiguration</span><span class="o">,</span> <span class="n">audioEncoding</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
+                <span class="n">AudioRecord</span> <span class="n">audioRecord</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AudioRecord</span><span class="p">(</span><span class="n">MediaRecorder</span><span class="p">.</span><span class="na">AudioSource</span><span class="p">.</span><span class="na">MIC</span><span class="p">,</span> <span class="n">SamplingRate</span><span class="p">,</span> <span class="n">channelConfiguration</span><span class="p">,</span> <span class="n">audioEncoding</span><span class="p">,</span> <span class="n">bufferSize</span><span class="p">);</span>
 
                 <span class="c1">//设置用来承接从audiorecord实例中获取的原始数据的数组</span>
-                <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">];</span>
+                <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">]</span><span class="p">;</span>
                 <span class="c1">//启动audioRecord</span>
-                <span class="n">audioRecord</span><span class="o">.</span><span class="na">startRecording</span><span class="o">();</span>
+                <span class="n">audioRecord</span><span class="p">.</span><span class="na">startRecording</span><span class="p">();</span>
                 <span class="c1">//设置正在录音的参数isRecording为true</span>
-                <span class="n">isRecording</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="n">isRecording</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
                 <span class="c1">//只要isRecording为true就一直从audioRecord读出数据，并写入文件输出流。</span>
                 <span class="c1">//当停止按钮被按下，isRecording会变为false，循环停止</span>
-                <span class="k">while</span> <span class="o">(</span><span class="n">isRecording</span><span class="o">)</span> <span class="o">{</span>
-                <span class="kt">int</span> <span class="n">bufferReadResult</span> <span class="o">=</span> <span class="n">audioRecord</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
-                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">bufferReadResult</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-                        <span class="n">dos</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buffer</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
-                <span class="o">}</span>
-                <span class="o">}</span>
+                <span class="k">while</span> <span class="p">(</span><span class="n">isRecording</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">bufferReadResult</span> <span class="o">=</span> <span class="n">audioRecord</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bufferSize</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">bufferReadResult</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">dos</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="p">}</span>
                 <span class="c1">//停止audioRecord，关闭输出流</span>
-                <span class="n">audioRecord</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
-                <span class="n">dos</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Throwable</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="s">&quot;MainActivity&quot;</span><span class="o">,</span> <span class="s">&quot;录音失败&quot;</span><span class="o">);</span>
-        <span class="o">}</span>
-<span class="o">}</span>
+                <span class="n">audioRecord</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
+                <span class="n">dos</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Throwable</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="s">&quot;MainActivity&quot;</span><span class="p">,</span> <span class="s">&quot;录音失败&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 接下来需要把录到的原始数据写入带格式的wav文件：
@@ -1386,98 +1386,98 @@
 89
 90
 91
-92</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">copyWaveFile</span><span class="o">(</span><span class="n">String</span> <span class="n">inFileName</span><span class="o">,</span> <span class="n">String</span> <span class="n">outFileName</span><span class="o">)</span>
-    <span class="o">{</span>
-        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="kt">long</span> <span class="n">totalAudioLen</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+92</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">copyWaveFile</span><span class="p">(</span><span class="n">String</span> <span class="n">inFileName</span><span class="p">,</span> <span class="n">String</span> <span class="n">outFileName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="kt">long</span> <span class="n">totalAudioLen</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="c1">//wav文件比原始数据文件多出了44个字节，除去表头和文件大小的8个字节剩余文件长度比原始数据多36个字节</span>
-        <span class="kt">long</span> <span class="n">totalDataLen</span> <span class="o">=</span> <span class="n">totalAudioLen</span> <span class="o">+</span> <span class="mi">36</span><span class="o">;</span>
-        <span class="kt">long</span> <span class="n">longSampleRate</span> <span class="o">=</span> <span class="n">SamplingRate</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">channels</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">long</span> <span class="n">totalDataLen</span> <span class="o">=</span> <span class="n">totalAudioLen</span> <span class="o">+</span> <span class="mi">36</span><span class="p">;</span>
+        <span class="kt">long</span> <span class="n">longSampleRate</span> <span class="o">=</span> <span class="n">SamplingRate</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">channels</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="c1">//每分钟录到的数据的字节数</span>
-        <span class="kt">long</span> <span class="n">byteRate</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">SamplingRate</span> <span class="o">*</span> <span class="n">channels</span> <span class="o">/</span> <span class="mi">8</span><span class="o">;</span>
+        <span class="kt">long</span> <span class="n">byteRate</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">SamplingRate</span> <span class="o">*</span> <span class="n">channels</span> <span class="o">/</span> <span class="mi">8</span><span class="p">;</span>
 
-        <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">];</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">]</span><span class="p">;</span>
         <span class="k">try</span>
-        <span class="o">{</span>
-            <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">inFileName</span><span class="o">);</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">outFileName</span><span class="o">);</span>
+        <span class="p">{</span>
+            <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="n">inFileName</span><span class="p">);</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="n">outFileName</span><span class="p">);</span>
             <span class="c1">//获取真实的原始数据长度</span>
-            <span class="n">totalAudioLen</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">getChannel</span><span class="o">().</span><span class="na">size</span><span class="o">();</span>
-            <span class="n">totalDataLen</span> <span class="o">=</span> <span class="n">totalAudioLen</span> <span class="o">+</span> <span class="mi">36</span><span class="o">;</span>
+            <span class="n">totalAudioLen</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">getChannel</span><span class="p">().</span><span class="na">size</span><span class="p">();</span>
+            <span class="n">totalDataLen</span> <span class="o">=</span> <span class="n">totalAudioLen</span> <span class="o">+</span> <span class="mi">36</span><span class="p">;</span>
             <span class="c1">//为wav文件写文件头</span>
-            <span class="n">WriteWaveFileHeader</span><span class="o">(</span><span class="n">out</span><span class="o">,</span> <span class="n">totalAudioLen</span><span class="o">,</span> <span class="n">totalDataLen</span><span class="o">,</span> <span class="n">longSampleRate</span><span class="o">,</span> <span class="n">channels</span><span class="o">,</span> <span class="n">byteRate</span><span class="o">);</span>
+            <span class="n">WriteWaveFileHeader</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">totalAudioLen</span><span class="p">,</span> <span class="n">totalDataLen</span><span class="p">,</span> <span class="n">longSampleRate</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">byteRate</span><span class="p">);</span>
             <span class="c1">//把原始数据写入到wav文件中。</span>
-            <span class="k">while</span><span class="o">(</span><span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">data</span><span class="o">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span>
-            <span class="o">{</span>
-                <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span>
-        <span class="o">{</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">out</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">in</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+            <span class="n">out</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
             <span class="c1">// TODO Auto-generated catch block</span>
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span>
-        <span class="o">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
             <span class="c1">// TODO Auto-generated catch block</span>
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
 
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">WriteWaveFileHeader</span><span class="o">(</span><span class="n">FileOutputStream</span> <span class="n">out</span><span class="o">,</span> <span class="kt">long</span> <span class="n">totalAudioLen</span><span class="o">,</span>
-                                     <span class="kt">long</span> <span class="n">totalDataLen</span><span class="o">,</span> <span class="kt">long</span> <span class="n">longSampleRate</span><span class="o">,</span> <span class="kt">int</span> <span class="n">channels</span><span class="o">,</span> <span class="kt">long</span> <span class="n">byteRate</span><span class="o">)</span>
-            <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="kt">byte</span><span class="o">[]</span> <span class="n">header</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">44</span><span class="o">];</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;R&#39;</span><span class="o">;</span> <span class="c1">// RIFF/WAVE header</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;I&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;F&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;F&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">(</span><span class="n">totalDataLen</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">totalDataLen</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">totalDataLen</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">totalDataLen</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;W&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">10</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;V&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">11</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;E&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">12</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;f&#39;</span><span class="o">;</span> <span class="c1">// &#39;fmt &#39; chunk</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">13</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;m&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">14</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;t&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">15</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39; &#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">16</span><span class="o">]</span> <span class="o">=</span> <span class="mi">16</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">17</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">18</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">19</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">20</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// WAV type format = 1</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">21</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">22</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="n">channels</span><span class="o">;</span> <span class="c1">//指示是单声道还是双声道</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">23</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">24</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">(</span><span class="n">longSampleRate</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span> <span class="c1">//采样频率</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">25</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">longSampleRate</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">26</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">longSampleRate</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">27</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">longSampleRate</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">28</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">(</span><span class="n">byteRate</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span> <span class="c1">//每分钟录到的字节数</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">29</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">byteRate</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">30</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">byteRate</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">31</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">byteRate</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">32</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">8</span><span class="o">);</span> <span class="c1">// block align</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">33</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">34</span><span class="o">]</span> <span class="o">=</span> <span class="mi">16</span><span class="o">;</span> <span class="c1">// bits per sample</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">35</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">36</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;d&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">37</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">38</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;t&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">39</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="o">;</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">40</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">(</span><span class="n">totalAudioLen</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span> <span class="c1">//真实数据的长度</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">41</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">totalAudioLen</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">42</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">totalAudioLen</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
-        <span class="n">header</span><span class="o">[</span><span class="mi">43</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="o">((</span><span class="n">totalAudioLen</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="o">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">);</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">WriteWaveFileHeader</span><span class="p">(</span><span class="n">FileOutputStream</span> <span class="n">out</span><span class="p">,</span> <span class="kt">long</span> <span class="n">totalAudioLen</span><span class="p">,</span>
+                                     <span class="kt">long</span> <span class="n">totalDataLen</span><span class="p">,</span> <span class="kt">long</span> <span class="n">longSampleRate</span><span class="p">,</span> <span class="kt">int</span> <span class="n">channels</span><span class="p">,</span> <span class="kt">long</span> <span class="n">byteRate</span><span class="p">)</span>
+            <span class="kd">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">header</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">44</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;R&#39;</span><span class="p">;</span> <span class="c1">// RIFF/WAVE header</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;I&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;F&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;F&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="n">totalDataLen</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">totalDataLen</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">6</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">totalDataLen</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">7</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">totalDataLen</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">8</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;W&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">9</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">10</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;V&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">11</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;E&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">12</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;f&#39;</span><span class="p">;</span> <span class="c1">// &#39;fmt &#39; chunk</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">13</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;m&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">14</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;t&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">15</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">16</span><span class="o">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">17</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">18</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">19</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">20</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// WAV type format = 1</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">21</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">22</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="n">channels</span><span class="p">;</span> <span class="c1">//指示是单声道还是双声道</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">23</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">24</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="n">longSampleRate</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span> <span class="c1">//采样频率</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">25</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">longSampleRate</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">26</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">longSampleRate</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">27</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">longSampleRate</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">28</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="n">byteRate</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span> <span class="c1">//每分钟录到的字节数</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">29</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">byteRate</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">30</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">byteRate</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">31</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">byteRate</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">32</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">8</span><span class="p">);</span> <span class="c1">// block align</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">33</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">34</span><span class="o">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// bits per sample</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">35</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">36</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;d&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">37</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">38</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;t&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">39</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">40</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="n">totalAudioLen</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span> <span class="c1">//真实数据的长度</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">41</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">totalAudioLen</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">42</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">totalAudioLen</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+        <span class="n">header</span><span class="o">[</span><span class="mi">43</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="p">((</span><span class="n">totalAudioLen</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
         <span class="c1">//把header写入wav文件</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">header</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">44</span><span class="o">);</span>
-    <span class="o">}</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">44</span><span class="p">);</span>
+    <span class="p">}</span>
 </pre></div>
 </td></tr></table>
 运行效果：
@@ -1500,6 +1500,7 @@
 <p>到这里你已经成功的用自己实现的android应用录制到一个wav的声音文件了。下一个章节中，我们将探索如何用matlab读取并展示我们录到的声音。</p>
                 
                   
+                
                 
               
               
@@ -1574,7 +1575,7 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         

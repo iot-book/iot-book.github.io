@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -938,7 +938,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.1 定位感知" class="md-nav__link">
+    <a href="../../5.物联网感知/定位感知实验.md" title="8.1 定位感知" class="md-nav__link">
       8.1 定位感知
     </a>
   </li>
@@ -950,7 +950,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.2 阿里云平台" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/阿里云平台/阿里云物联网平台介绍/" title="8.2 阿里云平台" class="md-nav__link">
       8.2 阿里云平台
     </a>
   </li>
@@ -962,7 +962,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.3 LoRa测试床" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/LoRa测试床/LoRa测试床/" title="8.3 LoRa测试床" class="md-nav__link">
       8.3 LoRa测试床
     </a>
   </li>
@@ -974,7 +974,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../404/" title="8.4 物联网开发" class="md-nav__link">
+    <a href="../../10. 物联网应用平台/物联网开发/物联网开发/" title="8.4 物联网开发" class="md-nav__link">
       8.4 物联网开发
     </a>
   </li>
@@ -1207,21 +1207,21 @@ padding: 2px;">图. 设置多种编码长度</div>
 <span class="c">%   把字符串转换成二进制串</span>
 <span class="n">ascii</span> <span class="p">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
 <span class="n">L</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">ascii</span><span class="p">);</span>
-<span class="n">binary</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
-<span class="k">for</span> <span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">L</span>
+<span class="n">binary</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span><span class="n"></span>
+<span class="n">for </span><span class="s">i=1:L</span><span class="p"></span>
     <span class="n">binary_str</span> <span class="p">=</span> <span class="n">dec2bin</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
-    <span class="n">binary_str_index</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">binary_str</span><span class="p">);</span>
-    <span class="k">for</span> <span class="nb">j</span> <span class="p">=</span> <span class="mi">8</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span>
-        <span class="k">if</span> <span class="n">binary_str_index</span> <span class="o">&gt;</span><span class="mi">0</span>
-            <span class="n">binary</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="n">str2num</span><span class="p">(</span><span class="n">binary_str</span><span class="p">(</span><span class="n">binary_str_index</span><span class="p">));</span>
-        <span class="k">else</span>
-            <span class="n">binary</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">end</span>
-        <span class="n">binary_str_index</span> <span class="p">=</span> <span class="n">binary_str_index</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="k">end</span>
-<span class="k">end</span>
-<span class="n">binary</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">binary</span><span class="o">&#39;</span><span class="p">,[</span><span class="n">L</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
-<span class="k">end</span>
+    <span class="n">binary_str_index</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">binary_str</span><span class="p">);</span><span class="n"></span>
+<span class="n">    for </span><span class="s">j = 8:-1:1</span><span class="p"></span>
+<span class="n">        if </span><span class="s">binary_str_index &gt;0</span><span class="p"></span>
+            <span class="n">binary</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="n">str2num</span><span class="p">(</span><span class="n">binary_str</span><span class="p">(</span><span class="n">binary_str_index</span><span class="p">));</span><span class="n"></span>
+<span class="n">        else</span>
+<span class="n">            </span><span class="s">binary(i,j) = 0</span><span class="p">;</span>
+<span class="n">        end</span>
+<span class="n">        </span><span class="s">binary_str_index = binary_str_index-1</span><span class="p">;</span>
+<span class="n">    end</span>
+<span class="s">end</span><span class="p"></span>
+<span class="n">binary</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">binary</span><span class="o">&#39;</span><span class="p">,[</span><span class="n">L</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span><span class="n"></span>
+<span class="n">end</span>
 </pre></div>
 </td></tr></table>
 
@@ -1236,11 +1236,11 @@ padding: 2px;">图. 设置多种编码长度</div>
 8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">message</span> <span class="p">=</span> <span class="n">string2bin</span><span class="p">(</span> <span class="n">str</span> <span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="c">%调用函数把字符串转为二进制串</span>
 <span class="c">%因为我们设计的编码是每个码元代表2个bit，这里要把二进制串转为4进制串</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="n">m_Length</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
-<span class="n">message4</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">m_Length</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">message4</span> <span class="p">=</span> <span class="p">[];</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:m_Length/2</span><span class="p"></span>
     <span class="c">% 把二进制串中的每两位进行结合，得到四进制串</span>
-    <span class="n">message4</span> <span class="p">=</span> <span class="p">[</span><span class="n">message4</span><span class="p">,</span><span class="n">message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="n">message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)];</span>
-<span class="k">end</span>
+    <span class="n">message4</span> <span class="p">=</span> <span class="p">[</span><span class="n">message4</span><span class="p">,</span><span class="n">message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="n">message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)];</span><span class="n"></span>
+<span class="n">end</span>
 </pre></div>
 </td></tr></table>
 
@@ -1268,16 +1268,16 @@ padding: 2px;">图. 设置多种编码长度</div>
 21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">output</span> <span class="p">=</span> <span class="p">[];</span>
 <span class="c">% 根据四进制串中的值，将impulse和对应的空白信号添加到输出信号中</span>
 <span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">m_Length</span><span class="o">/</span><span class="mi">2</span>
-    <span class="k">if</span> <span class="n">message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span>
-        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause0</span><span class="p">];</span>
-    <span class="k">elseif</span> <span class="n">message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span>
-        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause1</span><span class="p">];</span>
-    <span class="k">elseif</span> <span class="n">message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">==</span><span class="mi">2</span>
-        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause2</span><span class="p">];</span>
-    <span class="k">else</span>
-        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause3</span><span class="p">];</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+<span class="n">    if </span><span class="s">message4(i)==0</span><span class="p"></span>
+        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause0</span><span class="p">];</span><span class="n"></span>
+<span class="n">    elseif </span><span class="s">message4(i)==1</span><span class="p"></span>
+        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause1</span><span class="p">];</span><span class="n"></span>
+<span class="n">    elseif </span><span class="s">message4(i)==2</span><span class="p"></span>
+        <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">,</span><span class="n">pause2</span><span class="p">];</span><span class="n"></span>
+<span class="n">    else</span>
+<span class="n">        </span><span class="s">output = [output,impulse,pause3]</span><span class="p">;</span>
+<span class="n">    end</span>
+<span class="s">end</span><span class="p"></span>
 <span class="c">% 在输出信号前加一段空白，避免播放器在信号刚开始的位置出现失真的情况。</span>
 <span class="n">output</span> <span class="p">=</span> <span class="p">[</span><span class="n">pause3</span><span class="p">,</span><span class="n">output</span><span class="p">,</span><span class="n">impulse</span><span class="p">];</span>
 <span class="c">% 在figure中画出输出的时域信号</span>
@@ -1306,8 +1306,8 @@ padding: 2px;">图. 编码生成的时域信号</div>
 5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 读取录音文件中的数据</span>
 <span class="p">[</span><span class="n">data</span><span class="p">,</span> <span class="n">fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s">&#39;r.wav&#39;</span><span class="p">);</span>
 <span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-<span class="n">hold</span> <span class="n">on</span><span class="p">;</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">);</span><span class="n"></span>
+<span class="n">hold </span><span class="s">on</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
 
@@ -1373,9 +1373,9 @@ padding: 2px;">图. 脉冲信号和时域窗口</div>
     <span class="c">%得到目标频率傅里叶变换结果中对应的index</span>
     <span class="n">index_impulse</span> <span class="p">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">f</span><span class="o">/</span><span class="n">fs</span><span class="o">*</span><span class="n">window</span><span class="p">);</span>
     <span class="c">%考虑到声音通信过程中的频率偏移，我们取以目标频率为中心的5个频率采样点中最大的一个来代表目标频率的强度</span>
-    <span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="n">index_impulse</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="n">index_impulse</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span>
-<span class="k">end</span>
-<span class="c">% 在figure中展示每个窗口对应的18kHz信号的强度</span>
+    <span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="n">index_impulse</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="n">index_impulse</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span><span class="n"></span>
+<span class="n">end</span>
+<span class="s">% 在figure中展示每个窗口对应的18kHz信号的强度</span><span class="p"></span>
 <span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">);</span>
 </pre></div>
@@ -1410,15 +1410,15 @@ padding: 2px;">图. 时域上的18kHz信号强度的局部放大</div>
 10
 11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">% 滑动平均（均值滤波）</span>
 <span class="n">sliding_window</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="n">impulse_fft_tmp</span> <span class="p">=</span> <span class="n">impulse_fft</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="o">+</span><span class="n">sliding_window</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">sliding_window</span>
-    <span class="n">impulse_fft_tmp</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">mean</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="n">sliding_window</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">sliding_window</span><span class="p">));</span>
-<span class="k">end</span>
-<span class="n">impulse_fft</span> <span class="p">=</span> <span class="n">impulse_fft_tmp</span><span class="p">;</span>
+<span class="n">impulse_fft_tmp</span> <span class="p">=</span> <span class="n">impulse_fft</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1+sliding_window:1:n-sliding_window</span><span class="p"></span>
+    <span class="n">impulse_fft_tmp</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">mean</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="n">sliding_window</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">sliding_window</span><span class="p">));</span><span class="n"></span>
+<span class="n">end</span>
+<span class="s">impulse_fft = impulse_fft_tmp</span><span class="p">;</span>
 <span class="c">% 在figure中展示平滑后的impulse_fft</span>
 <span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">);</span>
-<span class="n">hold</span> <span class="n">on</span><span class="p">;</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">);</span><span class="n"></span>
+<span class="n">hold </span><span class="s">on</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
 
@@ -1441,13 +1441,13 @@ padding: 2px;">图. 经过滑动平均的18kHz信号强度的局部放大</div>
 8
 9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">% 取出impulse 起始位置（峰的中间位置）</span>
 <span class="n">position_impulse</span><span class="p">=[];</span><span class="c">%用于存储峰值的index</span>
-<span class="n">half_window</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span><span class="p">=</span> <span class="n">half_window</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="n">half_window</span>
+<span class="n">half_window</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i= half_window+1:1:n-half_window</span><span class="p"></span>
     <span class="c">%进行峰值判断</span>
-    <span class="k">if</span> <span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.3</span> <span class="o">&amp;&amp;</span> <span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">==</span><span class="n">max</span><span class="p">(</span><span class="n">impulse_fft</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="n">half_window</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">half_window</span><span class="p">))</span>
-        <span class="n">position_impulse</span><span class="p">=[</span><span class="n">position_impulse</span><span class="p">,</span><span class="nb">i</span><span class="p">];</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+<span class="n">    if </span><span class="s">impulse_fft(i)&gt;0.3 &amp;&amp; impulse_fft(i)==max(impulse_fft(i-half_window:i+half_window))</span><span class="p"></span>
+        <span class="n">position_impulse</span><span class="p">=[</span><span class="n">position_impulse</span><span class="p">,</span><span class="nb">i</span><span class="p">];</span><span class="n"></span>
+<span class="n">    end</span>
+<span class="s">end</span><span class="p"></span>
 </pre></div>
 </td></tr></table>
 
@@ -1468,8 +1468,8 @@ padding: 2px;">图. 经过滑动平均的18kHz信号强度的局部放大</div>
 14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 在图中表示出脉冲起始位置并计算相邻两个脉冲之间的间隔</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="n">N</span><span class="p">]=</span> <span class="nb">size</span><span class="p">(</span><span class="n">position_impulse</span><span class="p">);</span>
 <span class="c">%定义变量delta_impulse用于存储相邻两个脉冲之间的间隔</span>
-<span class="n">delta_impulse</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">delta_impulse</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:N-1</span><span class="p"></span>
     <span class="c">%在18kHz信号的强度图中标出脉冲起始位置</span>
     <span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
     <span class="n">plot</span><span class="p">([</span><span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">),</span><span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.8</span><span class="p">],</span><span class="s">&#39;m&#39;</span><span class="p">);</span>
@@ -1477,8 +1477,8 @@ padding: 2px;">图. 经过滑动平均的18kHz信号强度的局部放大</div>
     <span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="n">plot</span><span class="p">([</span><span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">),</span><span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span><span class="s">&#39;m&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
     <span class="c">%计算两个相邻脉冲之间的间隔。-100是减去脉冲信号长度</span>
-    <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span>  <span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span><span class="mi">100</span><span class="p">;</span>
-<span class="k">end</span>
+    <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span>  <span class="n">position_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span><span class="mi">100</span><span class="p">;</span><span class="n"></span>
+<span class="n">end</span>
 </pre></div>
 </td></tr></table>
 
@@ -1555,35 +1555,35 @@ padding: 2px;">图. 18kHz信号强度峰值并没有出现在信号起始处</di
 30
 31</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">%% 解码</span>
 <span class="c">%由于每个码元对应2bit，所以先把间隔对应到4进制数</span>
-<span class="n">decode_message4</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
-    <span class="k">if</span> <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">&gt;-</span><span class="mi">10</span> <span class="o">&amp;&amp;</span><span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">50</span> <span class="o">&lt;</span><span class="mi">10</span>
-        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">elseif</span> <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&gt;-</span><span class="mi">10</span> <span class="o">&amp;&amp;</span><span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&lt;</span><span class="mi">10</span>
-        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">elseif</span> <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">150</span> <span class="o">&gt;-</span><span class="mi">10</span> <span class="o">&amp;&amp;</span><span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">150</span> <span class="o">&lt;</span><span class="mi">10</span>
-        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">elseif</span> <span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">200</span> <span class="o">&gt;-</span><span class="mi">10</span> <span class="o">&amp;&amp;</span><span class="n">delta_impulse</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">200</span> <span class="o">&lt;</span><span class="mi">10</span>
-        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+<span class="n">decode_message4</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:N-1</span><span class="p"></span>
+<span class="n">    if </span><span class="s">delta_impulse(i) - 50 &gt;-10 &amp;&amp;delta_impulse(i) - 50 &lt;10</span><span class="p"></span>
+        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="n"></span>
+<span class="n">    elseif </span><span class="s">delta_impulse(i) - 100 &gt;-10 &amp;&amp;delta_impulse(i) - 100 &lt;10</span><span class="p"></span>
+        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">    elseif </span><span class="s">delta_impulse(i) - 150 &gt;-10 &amp;&amp;delta_impulse(i) - 150 &lt;10</span><span class="p"></span>
+        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span><span class="n"></span>
+<span class="n">    elseif </span><span class="s">delta_impulse(i) - 200 &gt;-10 &amp;&amp;delta_impulse(i) - 200 &lt;10</span><span class="p"></span>
+        <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span><span class="n"></span>
+<span class="n">    end</span>
+<span class="s">end</span><span class="p"></span>
 <span class="c">% 把四进制转化为二进制</span>
-<span class="n">decode_message</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
-    <span class="k">if</span> <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="n">decode_message</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:N-1</span><span class="p"></span>
+<span class="n">    if </span><span class="s">decode_message4(i) == 0</span><span class="p"></span>
         <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
-        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
-    <span class="k">elseif</span> <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span><span class="n"></span>
+<span class="n">    elseif </span><span class="s">decode_message4(i) == 1</span><span class="p"></span>
         <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
-        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span>
-    <span class="k">elseif</span> <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">    elseif </span><span class="s">decode_message4(i) == 2</span><span class="p"></span>
         <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span>
-        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span>
-    <span class="k">elseif</span> <span class="n">decode_message4</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">0</span><span class="p">;</span><span class="n"></span>
+<span class="n">    elseif </span><span class="s">decode_message4(i) == 3</span><span class="p"></span>
         <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span>
-        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+        <span class="n">decode_message</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="mi">2</span><span class="p">)=</span><span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">    end</span>
+<span class="s">end</span><span class="p"></span>
 </pre></div>
 </td></tr></table>
 
@@ -1608,13 +1608,13 @@ padding: 2px;">图. 18kHz信号强度峰值并没有出现在信号起始处</di
 <span class="n">L</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">binary</span><span class="p">);</span>
 <span class="n">str</span> <span class="p">=</span> <span class="p">[];</span>
 <span class="n">binary</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">binary</span><span class="o">&#39;</span><span class="p">,[</span><span class="mi">8</span><span class="p">,</span><span class="n">L</span><span class="o">/</span><span class="mi">8</span><span class="p">]);</span>
-<span class="n">binary</span> <span class="p">=</span> <span class="n">binary</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">L</span><span class="o">/</span><span class="mi">8</span>
-    <span class="n">s</span><span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="nb">j</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">8</span>
-        <span class="n">s</span> <span class="p">=</span> <span class="n">s</span><span class="o">+</span><span class="mi">2</span>^<span class="p">(</span><span class="mi">8</span><span class="o">-</span><span class="nb">j</span><span class="p">)</span><span class="o">*</span><span class="n">binary</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">);</span>
-    <span class="k">end</span>
-    <span class="n">str</span> <span class="p">=</span> <span class="p">[</span><span class="n">str</span><span class="p">,</span><span class="n">char</span><span class="p">(</span><span class="n">s</span><span class="p">)];</span>
+<span class="n">binary</span> <span class="p">=</span> <span class="n">binary</span><span class="o">&#39;</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i=1:L/8</span><span class="p"></span>
+    <span class="n">s</span><span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="n"></span>
+<span class="n">    for </span><span class="s">j = 1:8</span><span class="p"></span>
+        <span class="n">s</span> <span class="p">=</span> <span class="n">s</span><span class="o">+</span><span class="mi">2</span>^<span class="p">(</span><span class="mi">8</span><span class="o">-</span><span class="nb">j</span><span class="p">)</span><span class="o">*</span><span class="n">binary</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">);</span><span class="n"></span>
+<span class="n">    end</span>
+<span class="n">    </span><span class="s">str = [str,char(s)]</span><span class="p">;</span>
 <span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
@@ -1697,14 +1697,14 @@ padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
 7
 8
 9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">datas</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
-<span class="n">sig</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="n">data</span> <span class="p">=</span> <span class="n">datas</span>
-    <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="mi">0</span>
-        <span class="n">sig</span> <span class="p">=</span> <span class="p">[</span><span class="n">sig</span><span class="p">,</span> <span class="n">smb0</span><span class="p">];</span>
-    <span class="k">else</span>
-        <span class="n">sig</span> <span class="p">=</span> <span class="p">[</span><span class="n">sig</span><span class="p">,</span> <span class="n">smb1</span><span class="p">];</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+<span class="n">sig</span> <span class="p">=</span> <span class="p">[];</span><span class="n"></span>
+<span class="n">for </span><span class="s">data = datas</span><span class="p"></span>
+<span class="n">    if </span><span class="s">data == 0</span><span class="p"></span>
+        <span class="n">sig</span> <span class="p">=</span> <span class="p">[</span><span class="n">sig</span><span class="p">,</span> <span class="n">smb0</span><span class="p">];</span><span class="n"></span>
+<span class="n">    else</span>
+<span class="n">        </span><span class="s">sig = [sig, smb1]</span><span class="p">;</span>
+<span class="n">    end</span>
+<span class="s">end</span><span class="p"></span>
 </pre></div>
 </td></tr></table>
 
@@ -1747,14 +1747,14 @@ padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
  9
 10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sig_rec</span><span class="p">=</span><span class="n">sig_carrier</span><span class="o">.*</span><span class="n">carrier_wave</span><span class="p">;</span>   <span class="c">%乘以载波</span>
 <span class="c">% 低通滤波</span>
-<span class="n">base_sig</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">symbol_len</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">sig_rec</span><span class="p">)</span>
+<span class="n">base_sig</span> <span class="p">=</span> <span class="p">[];</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:symbol_len:length(sig_rec)</span><span class="p"></span>
     <span class="n">smb</span> <span class="p">=</span> <span class="n">sig_rec</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">symbol_len</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
 
     <span class="c">%低通滤掉高频</span>
     <span class="n">sig_baseband</span> <span class="p">=</span> <span class="n">BPassFilter</span><span class="p">(</span><span class="n">smb</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
-    <span class="n">base_sig</span> <span class="p">=</span> <span class="p">[</span><span class="n">base_sig</span><span class="p">,</span> <span class="n">sig_baseband</span><span class="p">];</span>
-<span class="k">end</span>
+    <span class="n">base_sig</span> <span class="p">=</span> <span class="p">[</span><span class="n">base_sig</span><span class="p">,</span> <span class="n">sig_baseband</span><span class="p">];</span><span class="n"></span>
+<span class="n">end</span>
 </pre></div>
 </td></tr></table>
 
@@ -1770,16 +1770,16 @@ padding: 2px;">图. 增加振幅级别可以提高编码效率</div>
  9
 10
 11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">decode_datas</span> <span class="p">=</span> <span class="p">[];</span>
-<span class="n">thresh</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">symbol_len</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">base_sig</span><span class="p">)</span>
+<span class="n">thresh</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">for </span><span class="s">i = 1:symbol_len:length(base_sig)</span><span class="p"></span>
     <span class="n">smb</span> <span class="p">=</span> <span class="n">base_sig</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">symbol_len</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-    <span class="n">A</span> <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">smb</span><span class="p">));</span>
-    <span class="k">if</span> <span class="n">A</span> <span class="o">&gt;</span> <span class="n">thresh</span>
-        <span class="n">decode_datas</span> <span class="p">=</span> <span class="p">[</span><span class="n">decode_datas</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
-    <span class="k">else</span>
-        <span class="n">decode_datas</span> <span class="p">=</span> <span class="p">[</span><span class="n">decode_datas</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+    <span class="n">A</span> <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">smb</span><span class="p">));</span><span class="n"></span>
+<span class="n">    if </span><span class="s">A &gt; thresh</span><span class="p"></span>
+        <span class="n">decode_datas</span> <span class="p">=</span> <span class="p">[</span><span class="n">decode_datas</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span><span class="n"></span>
+<span class="n">    else</span>
+<span class="n">        </span><span class="s">decode_datas = [decode_datas, 0]</span><span class="p">;</span>
+<span class="n">    end</span>
+<span class="s">end</span><span class="p"></span>
 </pre></div>
 </td></tr></table>
 
@@ -2228,6 +2228,7 @@ $$
                 
                   
                 
+                
               
               
                 
@@ -2301,7 +2302,7 @@ $$
       
     </div>
     
-      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
       
         
         
