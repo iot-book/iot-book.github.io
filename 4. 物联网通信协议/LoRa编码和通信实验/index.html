@@ -1,0 +1,1670 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>低功耗广域网编码和通信实验 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="IoT Book" class="md-header-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            IoT Book
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              低功耗广域网编码和通信实验
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IoT Book" class="md-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CH0_Front/%E5%89%8D%E6%B2%BF2/" class="md-nav__link">
+      第2版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1.%20%E5%89%8D%E8%A8%80/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+      第1版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      第1章 物联网概述
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第1章 物联网概述" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        第1章 物联网概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.%20%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      1.1 起源与发展
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      第2章 物联网开发
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第2章 物联网开发" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        第2章 物联网开发
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/android%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.1 Android 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/matlab%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.2 MATLAB 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      第3章 物联网网络协议
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第3章 物联网网络协议" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        第3章 物联网网络协议
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E7%89%A9%E8%81%94%E7%BD%91%E8%BF%9E%E6%8E%A5%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+      3.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.2%20Wi-Fi%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/" class="md-nav__link">
+      3.2 Wi-Fi无线局域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.3%20%E8%93%9D%E7%89%99/" class="md-nav__link">
+      3.3 蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.4%20ZigBee/" class="md-nav__link">
+      3.4 ZigBee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.5%20%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.5 毫米波通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.6%20%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.6 可见光通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E8%93%9D%E7%89%99%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      3.7 蓝牙连接实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      第4章 信号处理基础
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第4章 信号处理基础" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        第4章 信号处理基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/" class="md-nav__link">
+      4.1 信号生成、发送和接收
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      4.2 从模拟到数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/" class="md-nav__link">
+      4.3 信号采样与采样定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/" class="md-nav__link">
+      4.4 信号量化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+      4.5 案例：声音采集与播放
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      第5章 傅里叶分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第5章 傅里叶分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        第5章 傅里叶分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/" class="md-nav__link">
+      5.1 历史与发展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/" class="md-nav__link">
+      5.2 傅里叶级数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.3 傅里叶变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" class="md-nav__link">
+      5.4 离散傅里叶分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.5 案例：短时傅里叶与频谱
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      第6章 无线信道
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第6章 无线信道" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        第6章 无线信道
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S1_%E4%BF%A1%E9%81%93%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+      6.1 定义与概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-nav__link">
+      6.2 路径损耗与阴影衰落
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      6.3 多径信道模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S4_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      6.4 案例：信道仿真与测量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      第7章 信号滤波
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第7章 信号滤波" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        第7章 信号滤波
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      7.1 滤波定义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S2_%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+      7.2 滤波器设计
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S3_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      7.3 案例：使用滤波器对录音信号降噪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      第8章 数据调制和解调
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第8章 数据调制和解调" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        第8章 数据调制和解调
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      8.1 引言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.2 幅度调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.3 频率调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.4 相位调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/" class="md-nav__link">
+      8.5 载波上变频
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      8.6 调制方法综合应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      8.7 简单无线通信系统的实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      第9章 LoRa原理与实现
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第9章 LoRa原理与实现" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        第9章 LoRa原理与实现
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      9.1 LoRa编码技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      9.2 LoRa编解码与通信实验
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+      9.3 LoRa冲突解码算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%A6%82%E8%BF%B0%E5%92%8C%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+      9.4 LoRa测试床概述和功能
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S5_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      9.5 LoRa测试床技术实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S6_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/" class="md-nav__link">
+      9.6 LoRa设备远程更新
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.7 LoRa Backscatter通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.8 LoRa Backscatter感知
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      第11章 无线测距
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第11章 无线测距" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        第11章 无线测距
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.1 基于信号强度测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.2 基于传播时间测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S3_FMCW%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.3 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      第12章 无线定位
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第12章 无线定位" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon"></span>
+        第12章 无线定位
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S1_TOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.1 ToA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.2 TDoA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S3_%E5%9F%BA%E4%BA%8E%E5%88%B0%E8%BE%BE%E8%A7%92%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.3 基于信号指纹定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S4_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.4 基于到达角定位
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      第13章 无线追踪
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第13章 无线追踪" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        <span class="md-nav__icon md-icon"></span>
+        第13章 无线追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.1 基于多普勒效应追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.2 基于FMCW追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.3 基于信号相位追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15">
+    
+    <label class="md-nav__link" for="nav-15">
+      第14章 无线感知实例
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第14章 无线感知实例" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        <span class="md-nav__icon md-icon"></span>
+        第14章 无线感知实例
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%89%B9%E5%BE%81%E7%9A%84%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" class="md-nav__link">
+      14.1 基于信号特征的手势识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S4_%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%98%B5%E5%88%97%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.2 基于麦克风阵列的定位方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S2_%E5%A3%B0%E9%9F%B3%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/%E9%A2%91%E7%8E%87%E9%80%89%E6%8B%A9/" class="md-nav__link">
+      14.3 基于信号特征的设备认证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S3_UWB%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.4 UWB设备环境配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S6_WIFI%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.5 WiFi CSI的获取
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S5_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.6 蓝牙AoA测量角度的方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1lpwan" class="md-nav__link">
+    1.LPWAN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lora" class="md-nav__link">
+    2. LoRa及其编码技术
+  </a>
+  
+    <nav class="md-nav" aria-label="2. LoRa及其编码技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lora" class="md-nav__link">
+    2.1 LoRa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-lora" class="md-nav__link">
+    2.2 LoRa编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-lora" class="md-nav__link">
+    2.3 LoRa编解码原理解析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lora" class="md-nav__link">
+    3. 用声音实现LoRa通信
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 用声音实现LoRa通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-lora" class="md-nav__link">
+    3.1 LoRa信号通信过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 声音实现
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lora" class="md-nav__link">
+    4. LoRa编码和通信实验
+  </a>
+  
+    <nav class="md-nav" aria-label="4. LoRa编码和通信实验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-lora" class="md-nav__link">
+    4.1 LoRa编码实验
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 传输性能分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">低功耗广域网编码和通信实验<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="1lpwan">1.LPWAN<a class="headerlink" href="#1lpwan" title="Permanent link">&para;</a></h2>
+<p>LPWAN (Low Power Wide Area Network)指的是低功耗广域网，其特点在于极低功耗，长距离以及海量连接，适用于物联网万物互联的场景。LPWAN不只是一种技术，而是代表了一族有着各种形式的低功耗广域网技术，如下图所示。其中LoRa使用的是一种扩频技术，而NB-IoT使用的是窄带技术，这两种LPWAN技术在世界和中国都是很受欢迎的两种技术。</p>
+<div align="center">
+<div style="width:360px; height:auto; float:left; display:inline; margin-right:5px">
+<center><img src="..\images\LoRa\LPWAN.png" alt="LPWAN技术" height="100%" width="100%"/></center>
+<center>[LPWAN技术一览][1]</center>
+</div>
+
+<div>
+<center><img src="..\images\LoRa\Wireless_Tech.PNG" alt="无线技术" height="50%" width="48%"/></center>
+<center>Wireless Technology[2]</center>
+</div>
+</div>
+
+<p>无线通信技术从数据率和通信范围两个维度的比较如上图，不难看出，LPWAN填补了我们常见通信技术(比如WIFI，Bluetooth，4G/5G等)的一片空白，即通信距离长，通讯速率不高。虽然LPWAN通信速率不高，但是依然能够满大部分物联网通信的需求，同时其超低功耗也是它收到青睐的原因。</p>
+<h2 id="2-lora">2. LoRa及其编码技术<a class="headerlink" href="#2-lora" title="Permanent link">&para;</a></h2>
+<h3 id="21-lora">2.1 LoRa<a class="headerlink" href="#21-lora" title="Permanent link">&para;</a></h3>
+<p>LoRa 是 Long Range Communication的简称，是 Semtech 公司定义的一种基于扩频技术的物理层调制方式。
+LoRa 使用 CSS （Chirp Spread Spectrum）线性扩频，频率充满整个带宽，因此抗干扰极强，对多径和多普勒效应的抵抗也更强。
+LoRa接收灵敏度高达 -148 dBm。以偏小的数据速率（0.3-50kbps）换取更高的通讯距离（市内3km，郊区15km）和低功耗（长达10年）。</p>
+<p>Chirp是指频率随时间改变(增加或者减少)的信号，具体到LoRa通信，采用的是线性Chirp，即频率随时间线性增加或者减少的信号，如下两图，分别从时域和频域两部分展示了一段频率随着时间线性增加的Chirp信号。</p>
+<div align="center">
+<div style="width:310px; height:auto; float:left; display:inline; margin-right:5px">
+<center><img src="..\images\LoRa\Chirp_time.png" alt="Chirp时域图" height="100%" width="100%"/></center>
+<center>Chirp时域图。横坐标为时间，纵坐标为信号幅度</center>
+</div>
+
+<div>
+<center><img src="..\images\LoRa\Chirp_freq.png" alt="Chirp频域图" height="36%" width="43%"/></center>
+<center>Chirp频域图。横坐标为时间，纵坐标为频率</center>
+</div>
+</div>
+
+<p>我们将频率随着时间线性增加的Chirp信号叫做upChirp，将频率随着时间线性减小的Chirp信号叫做downChirp。LoRa信号就由这样一个个Chirp组成，具体格式如下图。前面10个upChirp作为LoRa信号的前导码(注意第9和第10个upChirp其实做了一些编码)，之后跟着2.25个downChirp，叫做SFD，标识数据段的开始，后面就是LoRa信号编码的数据区了。
+<img alt="LoRa包" src="..\images\LoRa\pkt.PNG" /></p>
+<h3 id="22-lora">2.2 LoRa编码<a class="headerlink" href="#22-lora" title="Permanent link">&para;</a></h3>
+<p>LoRa通过循环平移upChirp进行数据的编码，比如将BW等分成4分，分别编码00，01，10，11，如下所示。
+<img alt="LoRa循环频移编码" src="..\images\LoRa\LoRa循环频移编码.PNG" />
+LoRa解码过程，实质就是求出chirp偏移量的多少，其做法通常是这样的：首先将收到的chirp信号与downChirp点乘，这一过程叫做Dechirp，这个操作能够将收到的chirp信号能量进行集中，是LoRa的抗噪及传输远距离的原因之一。</p>
+<p>Dechirp之后，对得到的信号进一步使用FFT(傅里叶变换)，即可在某一个位置获得一个峰值，这个峰值落入的FFT bin对应的就是这个chirp编码的数据。对于非0编码，如果采样率高于带宽的话，会得到两个峰，我们可以将这两个峰进行叠加来增强峰的高度，并且求出对应的位置。下面两图分别对应编码0和非0数据的解码过程。</p>
+<div align="center">
+<div style="width:310px; height:auto; float:left; display:inline; margin-right:5px">
+<center><img src="..\images\LoRa\decode_0.PNG" alt="解码0偏移" height="100%" width="100%"/></center>
+<center>解码0</center>
+</div>
+
+<div>
+<center><img src="..\images\LoRa\decode_1.PNG" alt="解码非0偏移" height="100%" width="50%"/></center>
+<center>解码非0偏移</center>
+</div>
+</div>
+
+<h3 id="23-lora">2.3 LoRa编解码原理解析<a class="headerlink" href="#23-lora" title="Permanent link">&para;</a></h3>
+<p>我们知道，chirp信号可以分为upChirp和downChirp，如下图所示。up-chirp从最低频率开始，随时间增加逐渐上升至最高频率。而down-chirp则与之相反，从最高频率逐渐下降至最低频率。LoRa定义最高频率和最低频率之间的差值为LoRa带宽，记作<span><span class="MathJax_Preview">BW</span><script type="math/tex">BW</script></span>。
+<img alt="upChirp和downChirp" src="..\images\LoRa\Chirp.png" />
+基准upChirp的最低频率为<span><span class="MathJax_Preview">f_0=-\frac{BW}{2}</span><script type="math/tex">f_0=-\frac{BW}{2}</script></span>，最高频率为<span><span class="MathJax_Preview">f_1=\frac{BW}{2}</span><script type="math/tex">f_1=\frac{BW}{2}</script></span>，信号长度为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>。因此其频率可以表示为<span><span class="MathJax_Preview">f(t)=f_0+kt</span><script type="math/tex">f(t)=f_0+kt</script></span>，其中<span><span class="MathJax_Preview">k=\frac{BW}{T}</span><script type="math/tex">k=\frac{BW}{T}</script></span>表示扫频梯度。由此，基准up-chirp可以表示为：
+$$
+C(t)=e^{j2\pi(f_0+kt)\times t}
+$$</p>
+<p>当编码数据时，LoRa首先令基准upChirp乘上一个固定频率的偏移分量，偏移后的信号可以表示为<span><span class="MathJax_Preview">C(t)e^{j2\pi ft}</span><script type="math/tex">C(t)e^{j2\pi ft}</script></span>。随后，LoRa将所有频率高于<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span>的信号段循环频移至<span><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span>频率处，频移后的信号如下图(e)所示。如果定义了N种不同的偏移频率，最多可以编码<span><span class="MathJax_Preview">SF=log_2N</span><script type="math/tex">SF=log_2N</script></span>比特的数据。</p>
+<p>LoRa数据解码由频率解扩频(Dechirp)和傅里叶变换(FFT)两个步骤组成。对于一个收到的数据包，LoRa首先令数据包中每个编码的chirp信号与基准downChirp相乘。与upChirp类似，基准downChirp可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+C^*(t)=e^{j2\pi(f_1-kt)\times t}
+</div>
+<script type="math/tex; mode=display">
+C^*(t)=e^{j2\pi(f_1-kt)\times t}
+</script>
+</div>
+<p>当<span><span class="MathJax_Preview">f_0 = -f_1</span><script type="math/tex">f_0 = -f_1</script></span>时，<span><span class="MathJax_Preview">C^*(t)</span><script type="math/tex">C^*(t)</script></span>是<span><span class="MathJax_Preview">C(t)</span><script type="math/tex">C(t)</script></span>的共轭，因此这个相乘的结果是一个单频信号，其频率等于编码chirp的频率偏移量：</p>
+<div>
+<div class="MathJax_Preview">
+C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
+</div>
+<script type="math/tex; mode=display">
+C^*(t)\times C(t)e^{j2\pi ft}=e^{j2\pi ft}
+</script>
+</div>
+<p>随后，LoRa对得到的单频信号进行傅里叶变换(之后的章节会详细说明)，将时域信号转化为频域波峰，波峰的下标即对应信号编码的数据。</p>
+<p>整个LoRa解码流程如下图所示，对应两种信号的解码，左为基准upChirp，右为编码后的upChirp。第一行为信号的时间-频率图，第二行为信号的时间-幅度图，第三行为信号乘downChirp后的时间-幅度图，第四行为傅里叶变换结果，注意左边在0的位置有峰。</p>
+<p><img alt="" src="..\images\LoRa\loraDecoder.png" /></p>
+<h2 id="3-lora">3. 用声音实现LoRa通信<a class="headerlink" href="#3-lora" title="Permanent link">&para;</a></h2>
+<h3 id="31-lora">3.1 LoRa信号通信过程<a class="headerlink" href="#31-lora" title="Permanent link">&para;</a></h3>
+<p>首先我们需要了解LoRa通信的过程，这同时也是大多数射频信号通信的过程。注意这里是一个很简化的版本，想要详细了解，可以自己进一步学习。</p>
+<p>在发射端，原始数据首先进行调制，比如这里将数据调制到Chirp，得到一个基带信号，基带信号是频率很低的信号，传输距离受限，要达到预期的通信距离，对天线要求就很苛刻了。所以通常的做法是将这个基带信号调制到高频信号上，这一过程叫做上变频。之后，就是将信号传输出去，通过一个信道(比如空气，水等介质)，被接收者接收。</p>
+<p>接收端的操作基本与发射端“相反”。首先是下变频得到低频率的基带信号，之后进行对应的解调得到原始数据。</p>
+<p>射频信号通常需要对应的收发机进行发射和接收，这里我们通过声音去模拟这一通信的过程。之所以选择用声音去模拟实现，是因为声音可以用手机播放和录取，易于实践。</p>
+<p><img alt="通信流程" src="..\images\LoRa\通信流程.PNG" /></p>
+<h3 id="32">3.2 声音实现<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>我们采用Matlab去生成声音，然后通过手机去播放(发射)，使用另一台手机去录音(接收)。最后再将这段信号传到电脑端进行最后的解调。</p>
+<p><strong>发射端</strong></p>
+<p>由于手机采样率限制，信号频率带宽不能很高，这里设置信号带宽bw=2*e3，采样率fs=48e3，编码sf=7个比特，也就是可编码数据为0-2^sf，这样可以计算出一个chirp的采样点数</p>
+<div class="highlight"><pre><span></span><code><span class="n">bw</span> <span class="p">=</span> <span class="mf">2e3</span><span class="p">;</span>  <span class="c">% 带宽</span>
+<span class="n">fs</span> <span class="p">=</span> <span class="mf">48e3</span><span class="p">;</span> <span class="c">% 采样率</span>
+<span class="n">sf</span> <span class="p">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="n">Nchirp</span> <span class="p">=</span> <span class="mi">2</span>^<span class="n">sf</span><span class="o">/</span><span class="n">bw</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span> <span class="c">%一个Chirp的采样点数</span>
+</code></pre></div>
+<p>接下来生成Chirp和基带LoRa信号，这里编码了3个6，之前加了一段0信号，是为了使信号长一点，编码录音的时候错过有效信号。对于编码数据，在实现上可以不同。</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span>^<span class="n">sf</span> <span class="o">-</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span>^<span class="n">sf</span> <span class="o">-</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span>^<span class="n">sf</span> <span class="o">-</span> <span class="mi">6</span><span class="p">];</span> <span class="c">% 编码3个6</span>
+<span class="n">pkt</span> <span class="p">=</span> <span class="n">u</span><span class="p">.</span><span class="n">genPacket</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="n">zos</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Nchirp</span><span class="o">*</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">chirp_sound</span> <span class="p">=</span> <span class="nb">cat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">zos</span><span class="p">,</span> <span class="n">pkt</span><span class="p">);</span>      <span class="c">%基带信号</span>
+</code></pre></div>
+<p>之后上变频：将基带信号的实部乘上一个余弦高频信号，基带信号的虚部乘上一个正弦高频信号（有负号），最后将它们加起来作为真实发送的信号。
+这里设置的高频信号为 <span><span class="MathJax_Preview">f_c = 16e3</span><script type="math/tex">f_c = 16e3</script></span> Hz。</p>
+<div class="highlight"><pre><span></span><code><span class="n">car_chirp_sound</span> <span class="p">=</span> <span class="nb">real</span><span class="p">(</span><span class="n">chirp_sound</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="nb">imag</span><span class="p">(</span><span class="n">chirp_sound</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+</code></pre></div>
+<p>注意，这里模拟射频信号，故使用了I/Q两路信号，并将其转成了复数形式，但是实际信道传输的信号使是信号，故最终只能取实部发送。具体的做法，感兴趣的可以自行深入学习。</p>
+<p>最后即将生成的信号存成声音文件，这里是.wav格式，接下来进行播放即可。</p>
+<div class="highlight"><pre><span></span><code><span class="n">audiowrite</span><span class="p">(</span><span class="s">&#39;chirpSound.wav&#39;</span><span class="p">,</span> <span class="n">car_chirp_sound</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="s">&#39;BitsPerSample&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>接收端</strong></p>
+<p>使用手机收到数据(也是.wav格式)之后，需要对这个数据进行解码。读入数据，获取得到数据和采样率，通常只需要取一半即可。</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">recv_sound</span><span class="p">,</span> <span class="n">fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">(</span><span class="n">soundFile</span><span class="p">);</span> <span class="c">% [sample_points, fs]</span>
+<span class="n">recv_sound</span> <span class="p">=</span> <span class="n">recv_sound</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+<p>第一步是滤波去噪，去除不是想要频段的噪声。</p>
+<div class="highlight"><pre><span></span><code><span class="n">recv_sound_bf</span> <span class="p">=</span> <span class="n">BPassFilter</span><span class="p">(</span><span class="n">recv_sound</span><span class="p">,</span> <span class="mf">18e3</span><span class="p">,</span> <span class="mf">4e3</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+</code></pre></div>
+<p>第二步即下变频，并通过低通滤波，提取基带信号。</p>
+<div class="highlight"><pre><span></span><code><span class="c">%% 下变频  从高频信息提取低频信号(基带信号)</span>
+<span class="n">real_chirp_sound</span> <span class="p">=</span> <span class="n">recv_sound_bf</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">imag_chirp_sound</span> <span class="p">=</span> <span class="n">recv_sound_bf</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">));</span>
+<span class="c">%% 低通滤波</span>
+<span class="n">real_cs</span> <span class="p">=</span> <span class="n">BPassFilter</span><span class="p">(</span><span class="n">real_chirp_sound</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">,</span> <span class="mf">2e3</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
+<span class="n">imag_cs</span> <span class="p">=</span> <span class="n">BPassFilter</span><span class="p">(</span><span class="n">imag_chirp_sound</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">,</span> <span class="mf">2e3</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
+<span class="n">rec_chirp_sound</span> <span class="p">=</span> <span class="n">real_cs</span> <span class="o">+</span> 1<span class="nb">j</span><span class="o">*</span><span class="n">imag_cs</span><span class="p">;</span>
+</code></pre></div>
+<p>其中，BPassFilter 函数代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="c">% 本函数利用窗函数法设计带通滤波器，主要用来滤出单一频率，即中心频率</span>
+<span class="c">% data是输入的数据, centerFre是带通的中心频率, offsetFre是频偏,最终带通为centerFre +- offsetFre/2</span>
+<span class="c">% ,sampFre是采样率</span>
+<span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">BPassFilter</span><span class="p">(</span>data, centerFre, offsetFre, sampFre<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c">% 设计I型带通滤波器</span>
+    <span class="n">M</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">;</span>    <span class="c">% 滤波器阶数（必须是偶数）</span>
+    <span class="n">Ap</span> <span class="p">=</span> <span class="mf">0.82</span><span class="p">;</span> <span class="c">% 通带衰减</span>
+    <span class="n">As</span> <span class="p">=</span> <span class="mi">45</span><span class="p">;</span>   <span class="c">% 阻带衰减</span>
+    <span class="n">Wp1</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">centerFre</span> <span class="o">-</span> <span class="n">offsetFre</span><span class="p">)</span><span class="o">/</span><span class="n">sampFre</span><span class="p">;</span>  <span class="c">% 算出下边频</span>
+    <span class="n">Wp2</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">centerFre</span> <span class="o">+</span> <span class="n">offsetFre</span><span class="p">)</span><span class="o">/</span><span class="n">sampFre</span><span class="p">;</span>  <span class="c">% 算出上边频</span>
+
+    <span class="c">% 矩形窗</span>
+    <span class="n">N</span> <span class="p">=</span> <span class="nb">ceil</span><span class="p">(</span><span class="mf">3.6</span><span class="o">*</span><span class="n">sampFre</span><span class="o">/</span><span class="n">offsetFre</span><span class="p">);</span> <span class="c">% 计算滤波器阶数,采用矩形窗，3dB截频在中心频率到上下边频的中点</span>
+    <span class="n">M</span> <span class="p">=</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">M</span> <span class="p">=</span> <span class="nb">mod</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">M</span> <span class="p">;</span> <span class="c">% 使滤波器为I型(偶数)</span>
+
+    <span class="c">% 单位脉冲响应的下脚标</span>
+    <span class="n">h</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>  <span class="c">% 单位冲击响应变量赋初值</span>
+    <span class="n">for</span> <span class="s">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">((</span> <span class="n">k</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">h</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="p">=</span> <span class="n">Wp2</span><span class="o">/</span><span class="nb">pi</span> <span class="o">-</span> <span class="n">Wp1</span><span class="o">/</span><span class="nb">pi</span><span class="p">;</span>
+        <span class="n">else</span>
+            <span class="s">h(k)</span> <span class="p">=</span> <span class="n">Wp2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">Wp2</span><span class="o">.*</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">Wp2</span><span class="o">*</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">)))</span> <span class="o">-</span> <span class="n">Wp1</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">Wp1</span><span class="o">*</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">Wp1</span><span class="o">*</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="p">)));</span>
+        <span class="n">end</span>
+    <span class="s">end</span>
+    <span class="n">y</span> <span class="p">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+<span class="n">end</span>
+</code></pre></div>
+<p>第三步是解码，这一步首先要对齐信号，我们根据信号能量，大致信号所在的区间。通过滑动窗口平均，可以过滤部分能量突变的情况。</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="p">=</span> <span class="n">movmean</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">rec_chirp_sound</span><span class="p">),</span><span class="n">mwin</span><span class="p">);</span>
+<span class="n">thresh</span> <span class="p">=</span> <span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">))</span><span class="o">/</span><span class="mi">3</span> <span class="o">+</span> <span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="n">inds</span> <span class="p">=</span> <span class="nb">find</span><span class="p">(</span><span class="n">A</span> <span class="o">&gt;</span> <span class="n">thresh</span><span class="p">);</span>  <span class="c">% 找信号高于thresh的下标位置</span>
+<span class="n">cut_rec_cs</span> <span class="p">=</span> <span class="n">rec_chirp_sound</span><span class="p">(</span><span class="n">inds</span><span class="p">(</span><span class="mi">1</span><span class="p">):(</span><span class="n">inds</span><span class="p">(</span><span class="k">end</span><span class="p">)</span><span class="o">+</span><span class="n">Nchirp</span><span class="p">));</span>  <span class="c">% 截取信号</span>
+</code></pre></div>
+<p>接下来我们介绍CFO(Carrier Frequency Offset)和TO(Time Offset)的影响。
+假设我们发送的chirp信号扫频范围在2k(Hz)-4k(Hz)，到了接受端，收到的信号扫频范围可能会变成2k+100(Hz)-4k+100(Hz)，这个频偏是由于硬件处理，发射及接收信号造成的，我们称之为CFO。
+当我们解码的时候，截取信号的窗口可能和信号没有完全对齐，这样也会带来一个频率偏移，我们称之为TO。
+消除CFO可以通过发送单频前导码进行信道估计，消除TO可以参考ZigZag实验章节，利用相关性找到信号的准确起点。</p>
+<!-- 下面图分别示例了没有CFO窗口对齐和没对齐，有CFO窗口对齐和没对齐的四种解码结果。
+![通信流程](..\images\LoRa\CFO_TO.PNG) -->
+
+<p>最后一步即利用FFT bin的结果解出最后的数据。代码中的操作是解出编码0和非0数据的FFT bin结果(id0和id)以及编码数据的间隔<code>delta_f</code>，利用<code>(id-id0)/delta_f</code>接出最后的数据。</p>
+<h2 id="4-lora">4. LoRa编码和通信实验<a class="headerlink" href="#4-lora" title="Permanent link">&para;</a></h2>
+<!-- 接下来就是激动人心的动手体验环节了。一共设计了三个实验，目的在于理解和体验LoRa的编解码方法以及射频通信过程。当然你还可以学会一定的信号处理方法。 -->
+<p>本实验的目标是使同学们理解LoRa编解码方法和射频通信过程，实验过程中需要用到一些信号处理方法。</p>
+<!-- ### 4.1 预热实验
+
+**实验内容：** 
+
+本部分实验，请同学们运行提供的代码和程序体验LoRa编解码和通信。
+
+**实验步骤：**
+
+- 解压缩课程资料。可以看到下面的目录
+
+![课程资料](..\images\LoRa\课程资料.PNG)
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 课程资料</div>
+</center>
+
+其中code里面含有生成和解析声音的代码(genSound.m和anaSound.m)，接收app里面含有我们用Android写的app--music.apk，可以发送和接收声音。接收的数据存放了两个我们之前用手机接收的声音数据(m.wav和o.wav)。PPT是本次讲解用的，可以课后查看。Readme也提供了简单的课程资料介绍。
+
+- 生成声音信号。用Matlab打开code文件夹，运行genSound.m，不出意外的话，在同级目录下会出现chirpSound.wav文件，.wav是一种声音存储格式，这就是用LoRa chirp生成的声音文件。
+
+- 安装music.apk并开始录音。这里是基于Android平台的，只有ios的同学可以询问助教借用实验的Android机。下面是music.apk界面。
+
+![app](..\images\LoRa\music_apk.jpg)
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 应用程序界面</div>
+</center>
+
+点击开始录音即会录，点击停止录音即停止当前的录音，并将生成的文件存到对应的位置，按钮下面标明了存储的路径。
+
+- 发射声音。用手机或者电脑等可以播放声音的设备播放chirpSound.wav文件，提供的music.apk点击选择音频也可以进行播放，但是通常用自带的播放器就行了。
+
+chirp信号中文翻译名为啁啾，因为它像鸟的叫声，大家实验一下，看是否是这样。
+
+- 解码声音。找到录取的声音，将其传到电脑上面，然后再次使用Matlab运行anaSound.m，就可以对声音进行解析，并且输出最后的数据。不出意外的话，就可以看到编码的数据666了。
+
+![解码结果](..\images\LoRa\res.PNG)
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 解码结果</div>
+</center>
+
+注意更改声音文件的路径，之前提供了两个声音文件，即使你没有发射接收操作，你也可以直接运行进行解码，当然最好是体验一整套通信流程。 -->
+
+<h3 id="41-lora">4.1 LoRa编码实验<a class="headerlink" href="#41-lora" title="Permanent link">&para;</a></h3>
+<p><strong>实验内容：</strong></p>
+<!-- 体验了通信流程，当然里面也包含了chirp的编码操作。大家就可以开始自力更生，自己试着生成chirp信号并编码啦！ -->
+<p>使用MATLAB，模拟LoRa编解码过程。</p>
+<p><strong>实验步骤：</strong></p>
+<ul>
+<li>(1) 尝试使用MATLAB编码chirp信号，并绘制时域和频域图像，分析构造信号的正确性。</li>
+</ul>
+<p>提示：可以使用MATLAB自带的Chirp函数或者直接用Chirp的数学表达式2*pi*f*t+k*pi*t^2。</p>
+<!-- 至于画时域图和频域图，可以自己学习参考课程资料给的代码。 -->
+
+<ul>
+<li>(2) 尝试使用生成的chirp信号编码数据，设计对应的解码器并验证其功能。</li>
+</ul>
+<p>提示：编码策略可以参考LoRa循环偏移的编码策略，也设计自己的编码方法。</p>
+<!-- 解码的代码也可以参考提供的课程资料里的代码。 -->
+
+<h3 id="42">4.2 传输性能分析<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<!-- - 大家都生成了自己的chirp，那么就可以探索一下chirp编码到底能不能更加抗噪，并且传输距离更远呢？ -->
+
+<p><strong>实验步骤：</strong></p>
+<ul>
+<li>比较发射正弦波和LoRa chirp两种声音信号通信距离，能量强度等等。</li>
+</ul>
+<!-- - 既然会生成了chirp，那么生成正弦波也不在话下喽...... -->
+
+<ul>
+<li>如何让LoRa chirp信号传得更远？有哪些优化方法？可以自己动手试试。</li>
+</ul>
+<h2 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[1] 《信息通信技术》 2017年01期 低功耗广域网络技术综述</li>
+<li>[2] <a href="https://conferences.sigcomm.org/events/apnet2018/slides/plora.pptx">Sigcomm 2018: PLoRa: A Passive Long-Range Data Network from Ambient LoRa Transmissions</a></li>
+<li>[3] <a href="https://revspace.nl/DecodingLora">https://revspace.nl/DecodingLora</a></li>
+<li>[4] <a href="http://wiki.thulpwan.top/index.php/LoRa">http://wiki.thulpwan.top/index.php/LoRa</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

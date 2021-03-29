@@ -1,0 +1,1808 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>11.2 基于传播时间测距 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="IoT Book" class="md-header-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            IoT Book
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              11.2 基于传播时间测距
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IoT Book" class="md-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CH0_Front/%E5%89%8D%E6%B2%BF2/" class="md-nav__link">
+      第2版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1.%20%E5%89%8D%E8%A8%80/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+      第1版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      第1章 物联网概述
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第1章 物联网概述" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        第1章 物联网概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.%20%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      1.1 起源与发展
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      第2章 物联网开发
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第2章 物联网开发" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        第2章 物联网开发
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/android%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.1 Android 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/matlab%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.2 MATLAB 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      第3章 物联网网络协议
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第3章 物联网网络协议" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        第3章 物联网网络协议
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E7%89%A9%E8%81%94%E7%BD%91%E8%BF%9E%E6%8E%A5%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+      3.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.2%20Wi-Fi%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/" class="md-nav__link">
+      3.2 Wi-Fi无线局域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.3%20%E8%93%9D%E7%89%99/" class="md-nav__link">
+      3.3 蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.4%20ZigBee/" class="md-nav__link">
+      3.4 ZigBee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.5%20%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.5 毫米波通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.6%20%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.6 可见光通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E8%93%9D%E7%89%99%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      3.7 蓝牙连接实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      第4章 信号处理基础
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第4章 信号处理基础" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        第4章 信号处理基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/" class="md-nav__link">
+      4.1 信号生成、发送和接收
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      4.2 从模拟到数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/" class="md-nav__link">
+      4.3 信号采样与采样定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/" class="md-nav__link">
+      4.4 信号量化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+      4.5 案例：声音采集与播放
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      第5章 傅里叶分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第5章 傅里叶分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        第5章 傅里叶分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/" class="md-nav__link">
+      5.1 历史与发展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/" class="md-nav__link">
+      5.2 傅里叶级数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.3 傅里叶变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" class="md-nav__link">
+      5.4 离散傅里叶分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.5 案例：短时傅里叶与频谱
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      第6章 无线信道
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第6章 无线信道" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        第6章 无线信道
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S1_%E4%BF%A1%E9%81%93%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+      6.1 定义与概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-nav__link">
+      6.2 路径损耗与阴影衰落
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      6.3 多径信道模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S4_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      6.4 案例：信道仿真与测量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      第7章 信号滤波
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第7章 信号滤波" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        第7章 信号滤波
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      7.1 滤波定义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S2_%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+      7.2 滤波器设计
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S3_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      7.3 案例：使用滤波器对录音信号降噪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      第8章 数据调制和解调
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第8章 数据调制和解调" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        第8章 数据调制和解调
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      8.1 引言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.2 幅度调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.3 频率调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.4 相位调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/" class="md-nav__link">
+      8.5 载波上变频
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      8.6 调制方法综合应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      8.7 简单无线通信系统的实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      第9章 LoRa原理与实现
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第9章 LoRa原理与实现" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        第9章 LoRa原理与实现
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      9.1 LoRa编码技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      9.2 LoRa编解码与通信实验
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+      9.3 LoRa冲突解码算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%A6%82%E8%BF%B0%E5%92%8C%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+      9.4 LoRa测试床概述和功能
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S5_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      9.5 LoRa测试床技术实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S6_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/" class="md-nav__link">
+      9.6 LoRa设备远程更新
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.7 LoRa Backscatter通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.8 LoRa Backscatter感知
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12" checked>
+    
+    <label class="md-nav__link" for="nav-12">
+      第11章 无线测距
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第11章 无线测距" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        第11章 无线测距
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.1 基于信号强度测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        11.2 基于传播时间测距
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      11.2 基于传播时间测距
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    信号传播时间
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tof" class="md-nav__link">
+    ToF测距
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beepbeep" class="md-nav__link">
+    BeepBeep测距
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beepbeep_1" class="md-nav__link">
+    BeepBeep手机测距实现
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi-tof" class="md-nav__link">
+    WiFi ToF的测距方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftm" class="md-nav__link">
+    如何进行FTM测量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S3_FMCW%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.3 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      第12章 无线定位
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第12章 无线定位" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon"></span>
+        第12章 无线定位
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S1_TOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.1 ToA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.2 TDoA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S3_%E5%9F%BA%E4%BA%8E%E5%88%B0%E8%BE%BE%E8%A7%92%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.3 基于信号指纹定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S4_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.4 基于到达角定位
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      第13章 无线追踪
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第13章 无线追踪" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        <span class="md-nav__icon md-icon"></span>
+        第13章 无线追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.1 基于多普勒效应追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.2 基于FMCW追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.3 基于信号相位追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15">
+    
+    <label class="md-nav__link" for="nav-15">
+      第14章 无线感知实例
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第14章 无线感知实例" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        <span class="md-nav__icon md-icon"></span>
+        第14章 无线感知实例
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%89%B9%E5%BE%81%E7%9A%84%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" class="md-nav__link">
+      14.1 基于信号特征的手势识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S4_%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%98%B5%E5%88%97%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.2 基于麦克风阵列的定位方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S2_%E5%A3%B0%E9%9F%B3%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/%E9%A2%91%E7%8E%87%E9%80%89%E6%8B%A9/" class="md-nav__link">
+      14.3 基于信号特征的设备认证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S3_UWB%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.4 UWB设备环境配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S6_WIFI%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.5 WiFi CSI的获取
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S5_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.6 蓝牙AoA测量角度的方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    信号传播时间
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tof" class="md-nav__link">
+    ToF测距
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beepbeep" class="md-nav__link">
+    BeepBeep测距
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beepbeep_1" class="md-nav__link">
+    BeepBeep手机测距实现
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi-tof" class="md-nav__link">
+    WiFi ToF的测距方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftm" class="md-nav__link">
+    如何进行FTM测量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">基于信号传播时间测距<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">信号传播时间<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>飞行时间（TOF，Time of Flight），指信号在介质内传播时间。已知信号在介质中传播速度的情况下，使用飞行时间可以估算出信号经过的距离。</p>
+<p>发送端和接收端的精确时间同步，是测量信号飞行时间的前提。因此如何解决时钟同步问题，是飞行时间测距工作的一个重点，也是难点。传统网络工作中提出了多种网络时间同步机制，例如网络时间协议（Network Time Protocol, NTP)，它也是互联网的时间同步机制。此外，GPS技术也能为不同设备提供全局时间同步，它的原理是在GPS卫星上运行一个高精度的铯原子钟，GPS客户机通过接收卫星发送的伪随机序列，实现与卫星时钟的同步。</p>
+<p>现有的时间同步方法在实际使用中仍存在较大的局限性。例如NTP协议主要针对静态网络，并且需要频繁交换消息来不断校准时钟频率偏移带来的误差。此外，NTP协议通常只能达到毫秒级的精度，因此无法满足高精度测距等应用场景的需求。GPS能使设备以纳秒级精度与世界标准时间UTC同步，但GPS受环境遮挡影响大，只适用于室外空旷无遮挡的环境。且GPS设备成本昂贵，功耗也较大，因此无法适用于低功耗物联网节点。</p>
+<p>在发送端和接收端时间同步的前提下，接收端就可以记录发送端在哪一时刻开始传输；随后，在收到信号的第一时间，接收端记录信号到达时刻的时间戳；最后，利用接收时间戳减去发送时刻即可得到信号飞行时间。</p>
+<p>本章我们将会介绍多个在实际系统中利用ToF进行测距和定位的案例。</p>
+<h2 id="tof">ToF测距<a class="headerlink" href="#tof" title="Permanent link">&para;</a></h2>
+<p>使用<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>表示发送端到接收端的距离，<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>表示信号的传播速度（例如声速），<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>表示测量得到的飞行时间，那么可以得到：</p>
+<div>
+<div class="MathJax_Preview">
+    d = c\times t
+</div>
+<script type="math/tex; mode=display">
+    d = c\times t
+</script>
+</div>
+<p>这一方法要求能准确获知信号发送时间，即要求发送端和接收端之间进行严格的时间同步。</p>
+<p><strong>利用信号反射实现</strong></p>
+<p>由于直接TOA测距，同步发送端和接收端时间存在困难，因此有方法提出令接收端和发送段为同一设备，从而在计算飞行时间时避免收发机的时间同步。</p>
+<p>一种常见的做法是令测距对象作为反射体，直接反射传输的信号。这种方法要求反射体具有一定的体积，并且收发机能在全双工模式工作，即发送信号的同时能接收来自目标对象反射的信号。</p>
+<p>令一种方法是利用两个设备分别作为发送端和接收端：发送端于时刻<span><span class="MathJax_Preview">𝑡_0</span><script type="math/tex">𝑡_0</script></span>发送信号，接收端收到信号后，等待时间<span><span class="MathJax_Preview">\Delta 𝑡</span><script type="math/tex">\Delta 𝑡</script></span>后返回同样的波，发送端记录收到回复的时刻<span><span class="MathJax_Preview">𝑡_1</span><script type="math/tex">𝑡_1</script></span>，从而得到距离距离：<span><span class="MathJax_Preview">𝑑=(𝑣(t_1-t_0-\Delta t))/2</span><script type="math/tex">𝑑=(𝑣(t_1-t_0-\Delta t))/2</script></span>。这种方法既不要求接收端和发送端时钟同步，也不需要设备具有全双工功能。但实际实现时，由于设备软硬件调度、延迟等不确定因素，接收端很难控制等待时间恰好为<span><span class="MathJax_Preview">\Delta t</span><script type="math/tex">\Delta t</script></span>，因此实际测得的距离也存在较大误差。</p>
+<p><strong>利用波速差实现</strong></p>
+<p>考虑到发送端和接收端时钟不同步问题带来的飞行时间误差，有研究工作提出通过利用波速差解决同步问题。</p>
+<p>一个很简单的例子是，我们可以令发送端同时发送一道电磁波和声波，然后在接收端记录电磁波的到达时刻<span><span class="MathJax_Preview">𝑡_𝑟</span><script type="math/tex">𝑡_𝑟</script></span>和声波到达时刻<span><span class="MathJax_Preview">𝑡_𝑠</span><script type="math/tex">𝑡_𝑠</script></span>。则根据这两个不同的到达时刻，可以计算出发送端与接收端之间的距离：</p>
+<div>
+<div class="MathJax_Preview">
+d = \frac{v_r\times v_s \times(t_s-t_r)}{v_r-v_s}
+</div>
+<script type="math/tex; mode=display">
+d = \frac{v_r\times v_s \times(t_s-t_r)}{v_r-v_s}
+</script>
+</div>
+<p>由于<span><span class="MathJax_Preview">𝑣_𝑟=3\times 10^8 m/s</span><script type="math/tex">𝑣_𝑟=3\times 10^8 m/s</script></span>远大于<span><span class="MathJax_Preview">𝑣_𝑠=340m/s</span><script type="math/tex">𝑣_𝑠=340m/s</script></span>，因此距离计算式可简化为：<span><span class="MathJax_Preview">𝑑=𝑣_𝑠\times (𝑡_𝑠-𝑡_𝑟)</span><script type="math/tex">𝑑=𝑣_𝑠\times (𝑡_𝑠-𝑡_𝑟)</script></span></p>
+<h2 id="beepbeep">BeepBeep测距<a class="headerlink" href="#beepbeep" title="Permanent link">&para;</a></h2>
+<p>2007年的SenSys上提出了一种基于声波信号传播时间的测距方法。待测距的两台设备均需要具有扬声器和麦克风，如下图所示：</p>
+<p><center>
+<img src="./fig/device.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. BeepBeep测距示意图</div>
+<p></center>
+​
+设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>都需要发送和接收声波。每台设备不仅接收另一台设备发来的声波，同时也接收该设备本身发送的声波。BeepBeep的测距原理如下：</p>
+<p><center>
+<img src="./fig/ranging.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. BeepBeep测距原理图</div>
+<p></center></p>
+<p>上图中有表示设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> (<span><span class="MathJax_Preview">M_A</span><script type="math/tex">M_A</script></span>)和设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>(<span><span class="MathJax_Preview">M_B</span><script type="math/tex">M_B</script></span>)的两条箭头，代表两台设备的时间线，从左到右按时间顺序进行对应的操作，步骤如下：</p>
+<ol>
+<li>
+<p><span><span class="MathJax_Preview">t^*_{A0}</span><script type="math/tex">t^*_{A0}</script></span>时刻，设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>在应用程序中执行播放声音的命令，但由于软硬件调度等因素，设备A真实播放声音的起始时刻为<span><span class="MathJax_Preview">t_{A0}</span><script type="math/tex">t_{A0}</script></span>，相对于<span><span class="MathJax_Preview">t^*_{A0}</span><script type="math/tex">t^*_{A0}</script></span>时刻有一个延迟。</p>
+</li>
+<li>
+<p>设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>会在自身的麦克风上收到自己播放的声音，声音实际到达设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>麦克风的时刻为<span><span class="MathJax_Preview">t_{A1}</span><script type="math/tex">t_{A1}</script></span>，但由于软硬件调度等因素，设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>在应用程序中收到声音的时刻会滞后一段时间，在<span><span class="MathJax_Preview">t^*_{A1}</span><script type="math/tex">t^*_{A1}</script></span>时刻应用程序才开始接收声音。</p>
+</li>
+<li>
+<p>设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>也会收到设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>播放的声音，并且和设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>类似，声音实际到达设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>麦克风的时刻为<span><span class="MathJax_Preview">t_{B1}</span><script type="math/tex">t_{B1}</script></span>，而设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>的应用程序开始接收声音的时刻为<span><span class="MathJax_Preview">t^*_{B1}</span><script type="math/tex">t^*_{B1}</script></span>。</p>
+</li>
+<li>
+<p>设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>接收设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>发送的声音后，在<span><span class="MathJax_Preview">t^∗_{B2}</span><script type="math/tex">t^∗_{B2}</script></span>时刻执行发送声音的指令，和设备A类似，声音实际播放的时刻为<span><span class="MathJax_Preview">t_{B2}</span><script type="math/tex">t_{B2}</script></span>。</p>
+</li>
+<li>
+<p>在<span><span class="MathJax_Preview">t_{B3}</span><script type="math/tex">t_{B3}</script></span>时刻设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>发送的声音到达自身的麦克风，但在应用程序中开始收到声音的时刻为<span><span class="MathJax_Preview">t^∗_{B3}</span><script type="math/tex">t^∗_{B3}</script></span>。</p>
+</li>
+<li>
+<p>在<span><span class="MathJax_Preview">t_{A3}</span><script type="math/tex">t_{A3}</script></span>时刻设备B发送的声音到达设备A的麦克风，但在应用程序中设备A开始收到声音的时刻为<span><span class="MathJax_Preview">t^∗_{A3}</span><script type="math/tex">t^∗_{A3}</script></span>。</p>
+</li>
+</ol>
+<p>有了上述的时刻，我们可以推导出两台设备之间的距离和各个时刻之间的公式。设声速为<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>，定义<span><span class="MathJax_Preview">d_{X,Y}</span><script type="math/tex">d_{X,Y}</script></span>为设备<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>的扬声器到设备<span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span>麦克风距离，例如<span><span class="MathJax_Preview">d_{A,B}</span><script type="math/tex">d_{A,B}</script></span>为设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的扬声器到设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>的麦克风的距离，<span><span class="MathJax_Preview">d_{A,A}</span><script type="math/tex">d_{A,A}</script></span>为设备A的扬声器到自己的麦克风的距离，则有：</p>
+<div>
+<div class="MathJax_Preview">
+d_{A,A}=c(t_{A1}-t_{A0}), d_{A,B}=c(t_{B1}-t_{A0}), d_{B,A}=c(t_{A3}-t_{B2}), d_{B,B}=c(t_{B3}-t_{B2})
+</div>
+<script type="math/tex; mode=display">
+d_{A,A}=c(t_{A1}-t_{A0}), d_{A,B}=c(t_{B1}-t_{A0}), d_{B,A}=c(t_{A3}-t_{B2}), d_{B,B}=c(t_{B3}-t_{B2})
+</script>
+</div>
+<p>设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>的间距<span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span>可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+D = \frac{1}{2}(d_{A,B}+d_{B,A})
+</div>
+<script type="math/tex; mode=display">
+D = \frac{1}{2}(d_{A,B}+d_{B,A})
+</script>
+</div>
+<p>​       化简后有：</p>
+<div>
+<div class="MathJax_Preview">
+D = \frac{𝑐}{2}[(𝑡_{𝐴3}−𝑡_{𝐴1})-(𝑡_{𝐵3}−𝑡_{𝐵1})]+𝑑_{𝐴,𝐴}+𝑑_{𝐵,𝐵}
+</div>
+<script type="math/tex; mode=display">
+D = \frac{𝑐}{2}[(𝑡_{𝐴3}−𝑡_{𝐴1})-(𝑡_{𝐵3}−𝑡_{𝐵1})]+𝑑_{𝐴,𝐴}+𝑑_{𝐵,𝐵}
+</script>
+</div>
+<p>​其中<span><span class="MathJax_Preview">𝑑_{𝐴,𝐴}</span><script type="math/tex">𝑑_{𝐴,𝐴}</script></span>和<span><span class="MathJax_Preview">𝑑_{𝐵,𝐵}</span><script type="math/tex">𝑑_{𝐵,𝐵}</script></span>都和设备本身的设计有关，可以在测距之前提前测量得到。因此测距结果只和两个时间差<span><span class="MathJax_Preview">𝑡_{𝐴3}−𝑡_{𝐴1}</span><script type="math/tex">𝑡_{𝐴3}−𝑡_{𝐴1}</script></span>和<span><span class="MathJax_Preview">𝑡_{𝐵3}−𝑡_{𝐵1}</span><script type="math/tex">𝑡_{𝐵3}−𝑡_{𝐵1}</script></span>有关，并且两个时间差可以分别在设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>上测量出来，而不需要设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>进行时钟对齐。</p>
+<p>​以设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>为例，设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>在测距过程中保持麦克风打开，在接收到的声音信号中，我们需要找到设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>自己发送的声音被接收到的时刻<span><span class="MathJax_Preview">𝑡^*_{𝐴1}</span><script type="math/tex">𝑡^*_{𝐴1}</script></span>，和设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>发送的声音被接收到的时刻<span><span class="MathJax_Preview">𝑡^*_{𝐴3}</span><script type="math/tex">𝑡^*_{𝐴3}</script></span>，然后用<span><span class="MathJax_Preview">t^*_{𝐴3}−𝑡^*_{𝐴1}</span><script type="math/tex">t^*_{𝐴3}−𝑡^*_{𝐴1}</script></span>来近似<span><span class="MathJax_Preview">𝑡_{𝐴3}−𝑡_{𝐴1}</span><script type="math/tex">𝑡_{𝐴3}−𝑡_{𝐴1}</script></span>。</p>
+<p>​这样，两台设备之间的测距问题就转化成了测量接收信号起始位置的问题。</p>
+<h2 id="beepbeep_1">BeepBeep手机测距实现<a class="headerlink" href="#beepbeep_1" title="Permanent link">&para;</a></h2>
+<p>​在该代码示例中，我们采用两台电脑作为测距设备，使用<code>Matlab</code>编写代码。为了能够把设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>测量的时间差传回设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>以进行距离计算，代码在设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>之间建立了TCP连接，通过局域网进行数据传输。在这里，设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>作为TCP连接的服务端，设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>作为客户端。</p>
+<p>设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>：</p>
+<div class="highlight"><pre><span></span><code><span class="c">%%</span>
+<span class="c">% TCP连接，IP地址和端口可以自己设置，只需保证设备A和设备B一致即可</span>
+<span class="n">IP</span> <span class="p">=</span> <span class="s">&#39;0.0.0.0&#39;</span><span class="p">;</span>
+<span class="n">PortN</span> <span class="p">=</span> <span class="mi">20000</span><span class="p">;</span>
+
+<span class="c">%设备A发送调频连续波信号(chirp)，频率从4000Hz变化到6000Hz，持续0.5秒</span>
+<span class="n">fs</span> <span class="p">=</span> <span class="mi">48000</span><span class="p">;</span>
+<span class="n">T</span> <span class="p">=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">f1</span> <span class="p">=</span> <span class="mi">4000</span><span class="p">;</span> <span class="n">f2</span> <span class="p">=</span> <span class="mi">6000</span><span class="p">;</span> <span class="n">f3</span> <span class="p">=</span> <span class="mi">8000</span><span class="p">;</span>
+<span class="n">t</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">fs</span> <span class="o">*</span> <span class="n">T</span><span class="p">);</span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">f2</span><span class="p">);</span>
+<span class="c">%%</span>
+<span class="c">% 启动TCP连接的服务端</span>
+<span class="n">Server</span> <span class="p">=</span> <span class="n">tcpip</span><span class="p">(</span><span class="n">IP</span><span class="p">,</span> <span class="n">PortN</span><span class="p">,</span> <span class="s">&#39;NetworkRole&#39;</span><span class="p">,</span> <span class="s">&#39;server&#39;</span><span class="p">);</span>
+<span class="n">fopen</span><span class="p">(</span><span class="n">Server</span><span class="p">);</span>
+<span class="c">%%</span>
+<span class="n">Rec</span> <span class="p">=</span> <span class="n">audiorecorder</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">Server</span><span class="p">,</span> <span class="s">&#39;Server Ready&#39;</span><span class="p">);</span>    <span class="c">%服务端发送消息给客户端，设备A准备开始发送声波</span>
+<span class="n">rdy</span> <span class="p">=</span> <span class="n">fgetl</span><span class="p">(</span><span class="n">Server</span><span class="p">);</span>                            <span class="c">%服务端收到客户端准备就绪的消息</span>
+<span class="n">record</span><span class="p">(</span><span class="n">Rec</span><span class="p">,</span> <span class="n">T</span> <span class="o">*</span> <span class="mi">6</span><span class="p">);</span>                             <span class="c">%设备A开始录音</span>
+<span class="n">soundsc</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>                             <span class="c">%设备A发送声音</span>
+<span class="n">pause</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="mi">6</span><span class="p">);</span>                                           <span class="c">%等待录音结束</span>
+<span class="c">%%</span>
+<span class="n">recvData</span> <span class="p">=</span> <span class="n">getaudiodata</span><span class="p">(</span><span class="n">Rec</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">spectrogram</span><span class="p">(</span><span class="n">recvData</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
+
+<span class="c">%找到信号起始位置</span>
+<span class="n">z1</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">f2</span><span class="p">);</span> <span class="n">z1</span> <span class="p">=</span> <span class="n">z1</span><span class="p">(</span><span class="k">end</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">z2</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">f3</span><span class="p">);</span> <span class="n">z2</span> <span class="p">=</span> <span class="n">z2</span><span class="p">(</span><span class="k">end</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">p1</span><span class="p">]</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">conv</span><span class="p">(</span><span class="n">recvData</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="s">&#39;valid&#39;</span><span class="p">));</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">p2</span><span class="p">]</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">conv</span><span class="p">(</span><span class="n">recvData</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="s">&#39;valid&#39;</span><span class="p">));</span>
+
+<span class="c">%从频谱图中可以比对找到的信号开始位置是否准确</span>
+<span class="n">p1</span> <span class="p">=</span> <span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">fs</span><span class="p">;</span>
+<span class="n">p2</span> <span class="p">=</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">fs</span><span class="p">;</span>
+<span class="n">hold</span> <span class="s">on</span><span class="p">;</span>
+<span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="s">&#39;r-&#39;</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">p2</span><span class="p">,</span> <span class="n">p2</span><span class="p">],</span> <span class="s">&#39;b-&#39;</span><span class="p">);</span>
+
+<span class="c">%从客户端处收到设备B计算的信号起始位置差，转换成时间差</span>
+<span class="n">psub</span> <span class="p">=</span> <span class="n">fgetl</span><span class="p">(</span><span class="n">Server</span><span class="p">);</span>
+<span class="n">psub</span> <span class="p">=</span> <span class="n">str2double</span><span class="p">(</span><span class="n">psub</span><span class="p">)</span> <span class="o">/</span> <span class="n">fs</span><span class="p">;</span>
+
+<span class="c">%声速取343m/s，设备A和设备B自身的麦克风与扬声器间距取值20cm</span>
+<span class="n">dAA</span> <span class="p">=</span> <span class="mf">0.2</span><span class="p">;</span>
+<span class="n">dBB</span> <span class="p">=</span> <span class="mf">0.2</span><span class="p">;</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;Result: %f\n&#39;</span><span class="p">,</span> <span class="mi">343</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span> <span class="o">-</span> <span class="n">psub</span><span class="p">)</span> <span class="o">+</span> <span class="n">dAA</span> <span class="o">+</span> <span class="n">dBB</span><span class="p">);</span>
+
+<span class="c">%%</span>
+<span class="n">fclose</span><span class="p">(</span><span class="n">Server</span><span class="p">);</span>
+</code></pre></div>
+<p>设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span></p>
+<div class="highlight"><pre><span></span><code><span class="c">%%</span>
+<span class="c">% TCP连接，IP地址和端口可以自己设置，只需保证设备A和设备B一致即可</span>
+<span class="n">IP</span> <span class="p">=</span> <span class="s">&#39;0.0.0.0&#39;</span><span class="p">;</span>
+<span class="n">PortN</span> <span class="p">=</span> <span class="mi">20000</span><span class="p">;</span>
+
+<span class="c">%设备B发送调频连续波信号(chirp)，频率从6000Hz变化到8000Hz，持续0.5秒</span>
+<span class="n">fs</span> <span class="p">=</span> <span class="mi">48000</span><span class="p">;</span>
+<span class="n">T</span> <span class="p">=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">f1</span> <span class="p">=</span> <span class="mi">4000</span><span class="p">;</span> <span class="n">f2</span> <span class="p">=</span> <span class="mi">6000</span><span class="p">;</span> <span class="n">f3</span> <span class="p">=</span> <span class="mi">8000</span><span class="p">;</span>
+<span class="n">t</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">fs</span> <span class="o">*</span> <span class="n">T</span><span class="p">);</span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">f3</span><span class="p">);</span>
+<span class="c">%%</span>
+<span class="c">% 启动TCP连接的客户端</span>
+<span class="n">Client</span> <span class="p">=</span> <span class="n">tcpip</span><span class="p">(</span><span class="n">IP</span><span class="p">,</span> <span class="n">PortN</span><span class="p">,</span> <span class="s">&#39;NetworkRole&#39;</span><span class="p">,</span> <span class="s">&#39;client&#39;</span><span class="p">);</span>
+<span class="n">fopen</span><span class="p">(</span><span class="n">Client</span><span class="p">);</span>
+<span class="c">%%</span>
+<span class="n">Rec</span> <span class="p">=</span> <span class="n">audiorecorder</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">rdy</span> <span class="p">=</span> <span class="n">fgetl</span><span class="p">(</span><span class="n">Client</span><span class="p">);</span>                            <span class="c">%客户端收到服务端准备就绪的消息</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="s">&#39;Client Ready&#39;</span><span class="p">);</span>    <span class="c">%客户端发送消息给服务端，设备B准备开始发送声波</span>
+<span class="n">record</span><span class="p">(</span><span class="n">Rec</span><span class="p">,</span> <span class="n">T</span> <span class="o">*</span> <span class="mi">6</span><span class="p">);</span>                             <span class="c">%设备B开始录音</span>
+<span class="n">pause</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="mi">3</span><span class="p">);</span>                                           <span class="c">%接收设备A发送的声音</span>
+<span class="n">soundsc</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>                             <span class="c">%设备B发送声音</span>
+<span class="n">pause</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="mi">3</span><span class="p">);</span>                                           <span class="c">%等待录音结束</span>
+<span class="c">%%</span>
+<span class="n">recvData</span> <span class="p">=</span> <span class="n">getaudiodata</span><span class="p">(</span><span class="n">Rec</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">spectrogram</span><span class="p">(</span><span class="n">recvData</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
+
+<span class="c">%找到信号起始位置</span>
+<span class="n">z1</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">f2</span><span class="p">);</span> <span class="n">z1</span> <span class="p">=</span> <span class="n">z1</span><span class="p">(</span><span class="k">end</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">z2</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">f3</span><span class="p">);</span> <span class="n">z2</span> <span class="p">=</span> <span class="n">z2</span><span class="p">(</span><span class="k">end</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">p1</span><span class="p">]</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">conv</span><span class="p">(</span><span class="n">recvData</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="s">&#39;valid&#39;</span><span class="p">));</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">p2</span><span class="p">]</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">conv</span><span class="p">(</span><span class="n">recvData</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="s">&#39;valid&#39;</span><span class="p">));</span>
+
+<span class="c">%将计算的信号起始位置差发送给服务端</span>
+<span class="n">psub</span> <span class="p">=</span> <span class="n">num2str</span><span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="n">psub</span><span class="p">);</span>
+
+<span class="c">%从频谱图中可以比对找到的信号开始位置是否准确</span>
+<span class="n">p1</span> <span class="p">=</span> <span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">fs</span><span class="p">;</span>
+<span class="n">p2</span> <span class="p">=</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">fs</span><span class="p">;</span>
+<span class="n">hold</span> <span class="s">on</span><span class="p">;</span>
+<span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p1</span><span class="p">],</span> <span class="s">&#39;r-&#39;</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">p2</span><span class="p">,</span> <span class="n">p2</span><span class="p">],</span> <span class="s">&#39;b-&#39;</span><span class="p">);</span>
+<span class="c">%%</span>
+<span class="n">fclose</span><span class="p">(</span><span class="n">Client</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p><strong>思考</strong>
+1. BeepBeep的设计消除了哪些软/硬件带来的误差？哪些误差还没有消除？
+2. 如果要缩短一次测距所花费的时间，有哪些可能的改进方向？提示：是否一定要等到接收完设备<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>发送的声波，设备<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>才能播放声波？</p>
+</blockquote>
+<h2 id="wifi-tof">WiFi ToF的测距方法<a class="headerlink" href="#wifi-tof" title="Permanent link">&para;</a></h2>
+<p>最新的WiFi支持ToF进行测距。WiFi ToF通过测量无线AP (<code>Responder</code>)与基站 (<code>Initiator</code>)之间的信号的往返时间来对距离进行估计。在IEEE 802.11mc修正案中，WiFi Fine Time Measurement（WiFi FTM）协议被提出，用以实现较高精度的基于WiFi的定位。</p>
+<p><strong>协议原理</strong></p>
+<p>由于基站与AP之间的时间无法做到纳秒级的时间同步，单程的信号在发射端与接收端之间的时间戳的差并不能够反映准确的信号传播时间。而利用双向单边测距的原理即可在基站与AP之间完成往返时间的测量。测量的具体过程如下：</p>
+<p>基站首先向AP端发送一个FTM请求（FTM request），接下来AP端会向<code>Initiator</code>端回复进行确认，并发送正式的FTM帧，其中FTM帧在AP端的天线上的发送时间为<span><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span>，在基站端的接收时间为<span><span class="MathJax_Preview">t_2</span><script type="math/tex">t_2</script></span>，基站在接收到FTM帧后也会立即回复，并记录发送的时间<span><span class="MathJax_Preview">t_3</span><script type="math/tex">t_3</script></span>，这次回复在AP端被接收到的时间是<span><span class="MathJax_Preview">t_4</span><script type="math/tex">t_4</script></span></p>
+<p><center>
+    <img src="./fig/ftm-1.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">FTM测距原理1 图片来源：<a href="#refer-1">[1]</a></div>
+</center></p>
+<p>根据双向单边测距的原理，距离<span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span>可以由以下公式给出，其中<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>是光速。</p>
+<div>
+<div class="MathJax_Preview">
+2*D = ((t_4-t_1)-(t_3-t_2))*c
+</div>
+<script type="math/tex; mode=display">
+2*D = ((t_4-t_1)-(t_3-t_2))*c
+</script>
+</div>
+<p><center>
+    <img src="./fig/ftm-2.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">FTM测距原理2 图片来源：<a href="#refer-1">[1]</a></div>
+</center></p>
+<p>在实际的FTM协议中，FTM帧会重复的出现在一个<code>burst</code>的周期内，利用多次测量的平均值来对测距误差进行降低。
+在FTM协议中，只有<code>Initiator</code>端可以获取距离信息，这是因为在一次<code>burst</code>请求中，第N+1次FTM帧（由AP发往基站端）中会携带有上一次FTM应答的<span><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span>以及<span><span class="MathJax_Preview">t_4</span><script type="math/tex">t_4</script></span>信息。这就意味着N+1次FTM应答只能获取N个距离值，并且只有在基站端才能获取完整的<span><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span>到<span><span class="MathJax_Preview">t_4</span><script type="math/tex">t_4</script></span>的时间戳信息。</p>
+<h2 id="ftm">如何进行FTM测量<a class="headerlink" href="#ftm" title="Permanent link">&para;</a></h2>
+<p>在较新的Linux内核及版本&gt;9.0的Android系统上，都已经完善了对于FTM协议的支持。</p>
+<p><strong>Android端FTM协议测量</strong>
+1. FTM协议必须基于特定的硬件平台实现，目前支持的设备可以参见Google的<a href="https://developer.android.com/guide/topics/connectivity/wifi-rtt#supported-phones">开发者文档</a>
+2. 需要获取以下权限
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_WIFI_STATE&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.CHANGE_WIFI_STATE&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_FINE_LOCATION&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+3. 必须从已扫描获取的WiFi列表中构建测距请求</p>
+<p>相关样例代码如下
+<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm">* 检测设备是否支持WIFI RTT</span>
+<span class="cm">*/</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">getPackageManager</span><span class="p">().</span><span class="na">hasSystemFeature</span><span class="p">(</span><span class="n">PackageManager</span><span class="p">.</span><span class="na">FEATURE_WIFI_RTT</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// 设备具有WIFI RTT支持</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// 设备不具有WIFI RTT支持</span>
+<span class="p">}</span>
+<span class="c1">// 构建测距请求</span>
+<span class="n">RangingRequest</span><span class="p">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RangingRequest</span><span class="p">.</span><span class="na">Builder</span><span class="p">();</span>
+<span class="n">builder</span><span class="p">.</span><span class="na">addAccessPoints</span><span class="p">(</span><span class="n">ftmAPs</span><span class="p">);</span>
+<span class="n">RangingRequest</span> <span class="n">req</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">Executor</span> <span class="n">executor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DirectExecutor</span><span class="p">();</span>
+<span class="n">wifiRttManager</span><span class="p">.</span><span class="na">startRanging</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">executor</span><span class="p">,</span> <span class="k">new</span> <span class="n">RangingResultCallback</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRangingFailure</span><span class="p">(</span><span class="kt">int</span> <span class="n">code</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;onRangingFailure&quot;</span><span class="p">,</span> <span class="s">&quot;Fail in ranging:&quot;</span> <span class="o">+</span> <span class="n">Integer</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">code</span><span class="p">));</span>
+        <span class="n">runOnUiThread</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span> <span class="s">&quot;测距请求失败&quot;</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+        <span class="p">});</span>
+
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRangingResults</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">RangingResult</span><span class="o">&gt;</span> <span class="n">results</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;onRangingResults&quot;</span><span class="p">,</span> <span class="s">&quot;Success in ranging:&quot;</span><span class="p">);</span>
+        <span class="c1">// 处理数据</span>
+
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></p>
+<p><strong>Linux端FTM协议测量</strong></p>
+<p>对于Linux Kernal在5.4及以上的系统，直接安装最新版本的<code>iw</code>及<code>hostapd</code>工具，以及较新的Intel无线网卡（如AX200、AX201），即可搭建测距测试平台。</p>
+<p>执行测距需要设置<code>Responder</code>端 (AP)与<code>Initiator</code>端 (phone)，下面给出如何进行测距的操作说明：</p>
+<p><strong><code>Responder</code>端</strong></p>
+<p>首先创建配置文件<code>hostapd.conf</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 改成机器上的网卡接口名称</span>
+<span class="nv">interface</span><span class="o">=</span>wlp2s0
+<span class="nv">driver</span><span class="o">=</span>nl80211
+<span class="c1"># 改成网卡的MAC地址</span>
+<span class="nv">bssid</span><span class="o">=</span>c8:58:c0:a6:67:bf
+<span class="c1"># 改一个合适的SSID</span>
+<span class="nv">ssid</span><span class="o">=</span>FTM-TEST
+<span class="nv">hw_mode</span><span class="o">=</span>g
+<span class="nv">ieee80211n</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">ht_capab</span><span class="o">=[</span>HT40+<span class="o">][</span>SHORT-GI-40<span class="o">]</span>
+<span class="nv">channel</span><span class="o">=</span><span class="m">2</span>
+<span class="nv">wmm_enabled</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">wme_enabled</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">ctrl_interface</span><span class="o">=</span>/var/run/hostapd
+<span class="nv">ctrl_interface_group</span><span class="o">=</span><span class="m">0</span>
+ftm_<span class="sb">`</span>Responder<span class="sb">`</span><span class="o">=</span><span class="m">1</span>
+ftm_<span class="sb">`</span>Initiator<span class="sb">`</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<p>启动 AP</p>
+<div class="highlight"><pre><span></span><code>sudo hostapd &lt;配置文件路径&gt;
+</code></pre></div>
+<p>若无法启动，可以尝试重启网卡：</p>
+<div class="highlight"><pre><span></span><code>sudo nmcli radio wifi off
+sudo rfkill unblock wlan
+sudo ifconfig wlp2s0 up <span class="c1"># 改成当前的网卡接口名称</span>
+</code></pre></div>
+<p><strong><code>Initiator</code>端</strong></p>
+<p>使用<code>iw</code>工具扫描 AP列表，获取支持FTM协议的AP：</p>
+<p><div class="highlight"><pre><span></span><code>sudo iw dev &lt;interface&gt; scan &gt; scan.txt <span class="c1"># 输出到文件</span>
+</code></pre></div>
+在扫描结果的文件中搜索 <code>FTM</code>，找到支持FTM的 Wifi，记下 <code>MAC 地址</code> 和中心频率<code>freq</code>。例如（已省略部分信息）：</p>
+<div class="highlight"><pre><span></span><code>BSS 20:16:b9:70:8a:91(on wlp4s0)
+    freq: 2417
+    SSID: FTM-TEST-2
+    Extended capabilities:
+         * FTM `Responder`
+         * FTM `Initiator`
+</code></pre></div>
+<p>创建配置文件，配置文件中，一行代表一个 <code>Responder</code>，其格式如下：</p>
+<div class="highlight"><pre><span></span><code>&lt;addr&gt; bw=&lt;[20|40|80|80+80|160]&gt; cf=&lt;center_freq&gt; [cf1=&lt;center_freq1&gt;] [cf2=&lt;center_freq2&gt;] [ftms_per_burst=&lt;samples per burst&gt;] [asap] [bursts_exp=&lt;num of bursts exponent&gt;] [burst_period=&lt;burst period&gt;] [retries=&lt;num of retries&gt;] [burst_duration=&lt;burst duration&gt;] [tb]
+</code></pre></div>
+<p>执行测距：
+<div class="highlight"><pre><span></span><code>sudo iw &lt;interface&gt; measurement ftm_request &lt;配置文件路径&gt;
+</code></pre></div></p>
+<h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="http://gpsworld.com/how-to-achieve-1-meter-accuracy-in-android">How To Achieve 1 Meter Accuracy In Android</a> <div id="refer-1"></div></li>
+<li>Peng, Chunyi &amp; Shen, Guobin &amp; Zhang, Yongguang &amp; Li, Yanlin &amp; Tan, Kun. (2007). BeepBeep: A high accuracy acoustic ranging system using COTS mobile devices. SenSys. 1-14. 10.1145/1322263.1322265. </li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                11.1 基于信号强度测距
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../S3_FMCW%E6%B5%8B%E8%B7%9D/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                11.3 FMCW测距
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

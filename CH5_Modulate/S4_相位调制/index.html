@@ -1,0 +1,1789 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>8.4 相位调制 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="IoT Book" class="md-header-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            IoT Book
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              8.4 相位调制
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IoT Book" class="md-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CH0_Front/%E5%89%8D%E6%B2%BF2/" class="md-nav__link">
+      第2版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1.%20%E5%89%8D%E8%A8%80/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+      第1版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      第1章 物联网概述
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第1章 物联网概述" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        第1章 物联网概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.%20%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      1.1 起源与发展
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      第2章 物联网开发
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第2章 物联网开发" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        第2章 物联网开发
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/android%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.1 Android 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/matlab%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.2 MATLAB 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      第3章 物联网网络协议
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第3章 物联网网络协议" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        第3章 物联网网络协议
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E7%89%A9%E8%81%94%E7%BD%91%E8%BF%9E%E6%8E%A5%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+      3.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.2%20Wi-Fi%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/" class="md-nav__link">
+      3.2 Wi-Fi无线局域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.3%20%E8%93%9D%E7%89%99/" class="md-nav__link">
+      3.3 蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.4%20ZigBee/" class="md-nav__link">
+      3.4 ZigBee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.5%20%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.5 毫米波通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.6%20%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.6 可见光通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E8%93%9D%E7%89%99%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      3.7 蓝牙连接实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      第4章 信号处理基础
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第4章 信号处理基础" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        第4章 信号处理基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/" class="md-nav__link">
+      4.1 信号生成、发送和接收
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      4.2 从模拟到数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/" class="md-nav__link">
+      4.3 信号采样与采样定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/" class="md-nav__link">
+      4.4 信号量化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+      4.5 案例：声音采集与播放
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      第5章 傅里叶分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第5章 傅里叶分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        第5章 傅里叶分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/" class="md-nav__link">
+      5.1 历史与发展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/" class="md-nav__link">
+      5.2 傅里叶级数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.3 傅里叶变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" class="md-nav__link">
+      5.4 离散傅里叶分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.5 案例：短时傅里叶与频谱
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      第6章 无线信道
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第6章 无线信道" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        第6章 无线信道
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S1_%E4%BF%A1%E9%81%93%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+      6.1 定义与概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-nav__link">
+      6.2 路径损耗与阴影衰落
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      6.3 多径信道模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S4_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      6.4 案例：信道仿真与测量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      第7章 信号滤波
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第7章 信号滤波" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        第7章 信号滤波
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      7.1 滤波定义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S2_%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+      7.2 滤波器设计
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S3_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      7.3 案例：使用滤波器对录音信号降噪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10" checked>
+    
+    <label class="md-nav__link" for="nav-10">
+      第8章 数据调制和解调
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第8章 数据调制和解调" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        第8章 数据调制和解调
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      8.1 引言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.2 幅度调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.3 频率调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        8.4 相位调制
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      8.4 相位调制
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#iq" class="md-nav__link">
+    I/Q与相位的关系？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bpsk" class="md-nav__link">
+    BPSK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qpsk" class="md-nav__link">
+    QPSK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qpsk_1" class="md-nav__link">
+    使用声波信号实现QPSK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8psk" class="md-nav__link">
+    8PSK
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/" class="md-nav__link">
+      8.5 载波上变频
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      8.6 调制方法综合应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      8.7 简单无线通信系统的实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      第9章 LoRa原理与实现
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第9章 LoRa原理与实现" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        第9章 LoRa原理与实现
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      9.1 LoRa编码技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      9.2 LoRa编解码与通信实验
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+      9.3 LoRa冲突解码算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%A6%82%E8%BF%B0%E5%92%8C%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+      9.4 LoRa测试床概述和功能
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S5_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      9.5 LoRa测试床技术实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S6_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/" class="md-nav__link">
+      9.6 LoRa设备远程更新
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.7 LoRa Backscatter通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.8 LoRa Backscatter感知
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      第11章 无线测距
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第11章 无线测距" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        第11章 无线测距
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.1 基于信号强度测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.2 基于传播时间测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S3_FMCW%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.3 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      第12章 无线定位
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第12章 无线定位" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon"></span>
+        第12章 无线定位
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S1_TOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.1 ToA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.2 TDoA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S3_%E5%9F%BA%E4%BA%8E%E5%88%B0%E8%BE%BE%E8%A7%92%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.3 基于信号指纹定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S4_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.4 基于到达角定位
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      第13章 无线追踪
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第13章 无线追踪" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        <span class="md-nav__icon md-icon"></span>
+        第13章 无线追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.1 基于多普勒效应追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.2 基于FMCW追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.3 基于信号相位追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15">
+    
+    <label class="md-nav__link" for="nav-15">
+      第14章 无线感知实例
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第14章 无线感知实例" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        <span class="md-nav__icon md-icon"></span>
+        第14章 无线感知实例
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%89%B9%E5%BE%81%E7%9A%84%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" class="md-nav__link">
+      14.1 基于信号特征的手势识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S4_%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%98%B5%E5%88%97%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.2 基于麦克风阵列的定位方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S2_%E5%A3%B0%E9%9F%B3%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/%E9%A2%91%E7%8E%87%E9%80%89%E6%8B%A9/" class="md-nav__link">
+      14.3 基于信号特征的设备认证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S3_UWB%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.4 UWB设备环境配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S6_WIFI%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.5 WiFi CSI的获取
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S5_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.6 蓝牙AoA测量角度的方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#iq" class="md-nav__link">
+    I/Q与相位的关系？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bpsk" class="md-nav__link">
+    BPSK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qpsk" class="md-nav__link">
+    QPSK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qpsk_1" class="md-nav__link">
+    使用声波信号实现QPSK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8psk" class="md-nav__link">
+    8PSK
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">相位调制<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>​       相位调制，简称调相，也就是相位偏移键控(Phase-shift keying , PSK)，使用信号中不同的相位来调制数据。根据使用的相位数量上的区别，相位调制又可分为二相位偏移键控(Binary PSK, BPSK), 四相位偏移键控(Quadrature PSK, QPSK)和八相位偏移键控(8PSK)等。</p>
+<p>​       这些调制的方法我相信大家都或多或少的有听说过，但是真是要实现起来，大家可能还是得想一想，这个具体是怎么实现的，就未必很熟悉了。如果将声音作为信号，实现一个基于声音的传输系统，这样可能就更复杂了。本章主要要讲的就是这个事情，希望能够通过这一部分的介绍，大家能够完整的了解一个类似真实系统的过程。</p>
+<p>​       在进行信号处理时，或者我们看到很多论文时，经常会听到I和Q路这个概念，这个概念对于初次接触的人可能会比较难懂。很多人即便是经常使用，例如在定位中经常I和Q来计算相位从而计算距离等，但使用过程中可能也未必真正了解其中的含义。</p>
+<p>​       我们以PSK为例介绍I和Q的情况。为了生成不同信号的相位，当然我们最直接的方法可以改变单路信号的相位，例如<span><span class="MathJax_Preview">sin(2\pi f t + \phi)</span><script type="math/tex">sin(2\pi f t + \phi)</script></span>，其中<span><span class="MathJax_Preview">\phi</span><script type="math/tex">\phi</script></span>就是信号的相位。我们可以生成一个具备不同相位的正弦波，利用这个正弦波来进行数据传输。</p>
+<p>​       为了更加一般化的理解这个过程，目前普遍使用的实现PSK的方法是I/Q正交调制。其原理是使用两路正交的信号分别编码两路数据，每路数据单独调制，并将两路信号直接相加，从而使相加的信号具备不同的相位。正交的两路信号通常选用<span><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>和<span><span class="MathJax_Preview">cos(2\pi ft)</span><script type="math/tex">cos(2\pi ft)</script></span>，通过改变正弦和余弦函数的幅度来得到相加后不同相位的信号。例如，<span><span class="MathJax_Preview">\frac{\sqrt{2}}{2}sin(2\pi ft)+\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">\frac{\sqrt{2}}{2}sin(2\pi ft)+\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t + \frac{\pi}{4})</script></span>可以代表一个初相位为<span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>的信号，<span><span class="MathJax_Preview">\frac{\sqrt{2}}{2}sin(2\pi ft)-\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t - \frac{\pi}{4})</span><script type="math/tex">\frac{\sqrt{2}}{2}sin(2\pi ft)-\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t - \frac{\pi}{4})</script></span>可以代表一个初相位为<span><span class="MathJax_Preview">-\frac{\pi}{4}</span><script type="math/tex">-\frac{\pi}{4}</script></span>的信号。<span><span class="MathJax_Preview">\frac{\sqrt{2}}{2}</span><script type="math/tex">\frac{\sqrt{2}}{2}</script></span>这个系数是为了相加后的信号幅度为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>。</p>
+<p>​       如果我们把<span><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>的幅度作为横坐标，<span><span class="MathJax_Preview">cos(2\pi ft)</span><script type="math/tex">cos(2\pi ft)</script></span>的幅度作为纵坐标，就可以在一个平面直角坐标系中画出一个点，把一个PSK调制方法中所有的幅度组合都画在图中，则会得到一系列点，这个图叫做该调制方法的**星座映射图**，或简称**星座图**。由于在PSK中，我们通常要求I/Q两路信号相加后的信号幅度为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，所以PSK的星座图上所有的点都位于单位圆上。</p>
+<p>​       从另外的一种角度来看，我们来理解一下I/Q两路调制。</p>
+<p>​       不考虑是相位调制，我们考虑在调制的过程中我们就使用<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">cos(2\pi f t)</span><script type="math/tex">cos(2\pi f t)</script></span>同时调制信号，为什么可以用这两路呢，因为这两路信号是正交的。我们可以将这两路认为是I路和Q路信号。发送端我们可以在这两路信号上设置成不同的幅度，那么接收端可以分别计算出不同的幅度，从而将数据解码出来。</p>
+<p>​       这时的I和Q就对应到由I轴和Q轴组成的星座图上的一个点（这就是星座图的来源），以此来看，我们如果可以使用星座图上的任意I和Q组合（即星座图上的任意点）来编码数据。编码过程中使用的星座图上点的数量跟编码的bit数有直接关系。</p>
+<ul>
+<li>使用星座图上的2个点，每次编码1个bit，例如BPSK。</li>
+<li>使用星座图上的4个点，每次编码2个bit，例如QPSK。</li>
+<li>使用星座图上的8个点，每次编码3个bit，例如8PSK。</li>
+</ul>
+<p>​       理论上也可以任意使用星座图上的n个点，每次能编码<span><span class="MathJax_Preview">\log_2 n</span><script type="math/tex">\log_2 n</script></span>个bit。从理论上来说，这n个点都可以从接收到的信号中解码出来。当然在实际编码中不会任意选取，都会有规律的选取。</p>
+<p>​       确定好点的位置后，我们就很容易得到编码的数据。例如</p>
+<ul>
+<li>在BPSK中，两个点的位置(I Q)分别为(1, 0), (-1, 0)，我们可以用(1, 0)编码bit 1，用(-1, 0)编码bit 0。即编码数据用的是<span><span class="MathJax_Preview">I*sin(2\pi f t)+ Q*cos(2\pi f t) = 1*sin(2\pi f t)+ 0*cos(2\pi f t)=sin(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t)+ Q*cos(2\pi f t) = 1*sin(2\pi f t)+ 0*cos(2\pi f t)=sin(2\pi f t)</script></span>和 <span><span class="MathJax_Preview">I*sin(2\pi f t)+ Q*cos(2\pi f t) = -1*sin(2\pi f t)+ 0*cos(2\pi f t)=-sin(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t)+ Q*cos(2\pi f t) = -1*sin(2\pi f t)+ 0*cos(2\pi f t)=-sin(2\pi f t)</script></span>。因此接收端收到的数据只能是<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>,基于收到的数据我们解出I和Q，从而对应到1和0。</li>
+<li>在QPSK中，四个点的位置(I Q)分别为<span><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</script></span>, 因此我们可以编码2个bit，我们可以用<span><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</script></span>编码bit 00，用<span><span class="MathJax_Preview">(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</span><script type="math/tex">(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</script></span>编码bit 10，依此类推。基于收到的数据我们解出I和Q，从而对应的bit。</li>
+</ul>
+<blockquote>
+<p>思考：接收端如何从收到的数据出计算出每个点在星座图上的位置，即如何计算I和Q？</p>
+</blockquote>
+<h2 id="iq">I/Q与相位的关系？<a class="headerlink" href="#iq" title="Permanent link">&para;</a></h2>
+<p>​       上面的整个过程，其实我们都没看到跟相位有关系，那为什么我们把上面的方法都叫做xPSK，为什么称之为相位调制？同时在实际信号处理和很多论文中，都通过I和Q计算信号的相位。例如在很多硬件设备上，都会直接给你解码后的I和Q的值，很多基于相位进行定位、追踪和感知的工作都使用这个I和Q来直接计算相位。</p>
+<p>​       我们来看看上述过程I/Q到底和相位有什么关系。</p>
+<p>​       调制后的数据为<span><span class="MathJax_Preview">I*sin(2\pi f t) + Q* cos(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t) + Q* cos(2\pi f t)</script></span>(不同的资料中表示会稍有不同)，即<span><span class="MathJax_Preview">\sqrt{I^2 + Q^2}sin(2\pi f t + \arctan \frac{Q}{I})</span><script type="math/tex">\sqrt{I^2 + Q^2}sin(2\pi f t + \arctan \frac{Q}{I})</script></span>。大家可以试着自己推导一下。</p>
+<p>​       也就是说，星座图上不同的点，实际上就对应到结果里面不同的相位（<span><span class="MathJax_Preview">\arctan \frac{Q}{I}</span><script type="math/tex">\arctan \frac{Q}{I}</script></span>），这也是为什么这个方法被称为xPSK。</p>
+<ul>
+<li>BPSK，对应不同相位信号为<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>，实际上等价于<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>，将数据调制到了0和<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>两种不同的相位上。</li>
+<li>QPSK，对应不同相位信号为<span><span class="MathJax_Preview">sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{3\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{3\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{5\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{5\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{7\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{7\pi}{4})</script></span>, 将数据调制到了<span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{3\pi}{4}</span><script type="math/tex">\frac{3\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{5\pi}{4}</span><script type="math/tex">\frac{5\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{7\pi}{4}</span><script type="math/tex">\frac{7\pi}{4}</script></span>四种不同相位上。</li>
+</ul>
+<blockquote>
+<p>思考：BPSK、QPSK等星座图上的不同点，如何进行解码。</p>
+</blockquote>
+<p>​       如果理解了上述过程，也就比较好理解为什么大家经常看到的传统通信里面都用这样的方法来表示调制的过程。</p>
+<h2 id="bpsk">BPSK<a class="headerlink" href="#bpsk" title="Permanent link">&para;</a></h2>
+<p>​       看完了基本原理，实际上主要的实现都可以完成了。</p>
+<p>​       我们首先来看最简单的BPSK如何来实现。跟之前介绍的一样，我们使用相位差为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的两种信号<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>：对应不同相位信号为<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>，实际上等价于<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>，将数据调制到了0和<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>两种不同的相位上。</p>
+<p><center>
+<img src = "./fig/bpsk-basic.png" width=600px>
+</center>
+<center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 相位为0和相位为pi的信号</div>
+<p></center></p>
+<p>​       有了这两个码元，我们就可以根据输入的待调制的信息来选择不同相位的信号。当输入为0时，我们选择相位为0的信号，当输入为1时，我们选择相位为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的信号。输入信号和对应的生成的BPSK调制过的信号如下图所示。</p>
+<p><center>
+<img src = "./fig/bpsk-encode.png" width=600px>
+</center>
+<center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 调制后的BPSK信号</div>
+<p></center></p>
+<p>​       这样，我们可以将bit 0和1编码到这两种不同的信号上</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>相位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td><span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>​       从I/Q调制的角度去理解，此时“0”对应的信号为<span><span class="MathJax_Preview">1*sin(2\pi ft)+0*cos(2\pi ft)</span><script type="math/tex">1*sin(2\pi ft)+0*cos(2\pi ft)</script></span>，"1"对应的信号为<span><span class="MathJax_Preview">-1*sin(2\pi ft)+0*cos(2\pi ft)</span><script type="math/tex">-1*sin(2\pi ft)+0*cos(2\pi ft)</script></span>，其星座映射图为：</p>
+<p><center>
+<img src = "./fig/bpsk-star.png" width=600px>
+</center>
+<center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. BPSK星座图</div>
+<p></center></p>
+<h2 id="qpsk">QPSK<a class="headerlink" href="#qpsk" title="Permanent link">&para;</a></h2>
+<p>​       QPSK使用4种相位的信号来调制信息。对应不同相位信号为<span><span class="MathJax_Preview">sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{3\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{3\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{5\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{5\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{7\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{7\pi}{4})</script></span>, 将数据调制到了<span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{3\pi}{4}</span><script type="math/tex">\frac{3\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{5\pi}{4}</span><script type="math/tex">\frac{5\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{7\pi}{4}</span><script type="math/tex">\frac{7\pi}{4}</script></span>四种不同相位上。</p>
+<p>​       对应IQ星座图上的四个点为<span><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</script></span>.</p>
+<p>​       用<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>和<span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>分别代表两路待调制的数据，使用I/Q调制后的信号为：</p>
+<div>
+<div class="MathJax_Preview">
+s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
+</div>
+<script type="math/tex; mode=display">
+s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
+</script>
+</div>
+<p>此时数据和相位之间的映射关系是：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>i</th>
+<th>q</th>
+<th>s(t)</th>
+<th>相位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>1</td>
+<td>1</td>
+<td><span><span class="MathJax_Preview">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</span><script type="math/tex">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>01</td>
+<td>1</td>
+<td>-1</td>
+<td><span><span class="MathJax_Preview">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</span><script type="math/tex">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{7 \pi}{4}</span><script type="math/tex">\frac{7 \pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>-1</td>
+<td>1</td>
+<td><span><span class="MathJax_Preview">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{3 \pi}{4}</span><script type="math/tex">\frac{3 \pi}{4}</script></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>-1</td>
+<td>-1</td>
+<td><span><span class="MathJax_Preview">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{5 \pi}{4}</span><script type="math/tex">\frac{5 \pi}{4}</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>其星座映射图为：</p>
+<p><center>
+<img src = "./fig/qpsk-star.png" width=600px>
+</center>
+<center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. QPSK星座图</div>
+<p></center></p>
+<p>为了使输出信号<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的幅度为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，我们需要对I和Q信号除以<span><span class="MathJax_Preview">\sqrt{2}</span><script type="math/tex">\sqrt{2}</script></span>，因此，数据和I,Q对应关系应该是如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>I</th>
+<th>Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>01</td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>11</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>​       下图展示了I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。图中对应的I路和Q路数据分别是：<span><span class="MathJax_Preview">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span>,<span><span class="MathJax_Preview">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span></p>
+<p><center>
+<img src = "./fig/qpsk-encode.png" width=600px>
+</center>
+<center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. IQ信号和调制后的QPSK信号</div>
+<p></center></p>
+<p>​       在解码时，利用其正交特性，分别对两路信号在一个周期内进行积分运算，得到每路信号中编码的数据。以解码I路信号为例：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{split}
+\int_{0}^{\frac{1}{f}}(s(t)* sin(2\pi ft)) &amp;=  \int_{0}^{\frac{1}{f}}((i* sin(2\pi ft) + q* cos(2\pi ft))*sin(2\pi ft)) \\
+&amp;=
+\int_{0}^{\frac{1}{f}}(i*sin(2\pi ft)^2 +q*cos(2\pi ft)*sin(2\pi ft) \\
+&amp;=
+\int_{0}^{\frac{1}{f}}(i*\frac{1-cos(4 \pi ft)}{2} +q*sin(4\pi ft)) \\
+&amp;=
+\int_{0}^{\frac{1}{f}}i*\frac{1}{2} - \int_{0}^{\frac{1}{f}}i*\frac{cos(4 \pi ft)}{2}) +\int_{0}^{\frac{1}{f}}q*sin(4\pi ft)) \\
+&amp;=
+\frac{i}{2} -0 + 0 \\
+&amp;=
+\frac{i}{2}\\
+\end{split}
+</div>
+<script type="math/tex; mode=display">
+\begin{split}
+\int_{0}^{\frac{1}{f}}(s(t)* sin(2\pi ft)) &=  \int_{0}^{\frac{1}{f}}((i* sin(2\pi ft) + q* cos(2\pi ft))*sin(2\pi ft)) \\
+&=
+\int_{0}^{\frac{1}{f}}(i*sin(2\pi ft)^2 +q*cos(2\pi ft)*sin(2\pi ft) \\
+&=
+\int_{0}^{\frac{1}{f}}(i*\frac{1-cos(4 \pi ft)}{2} +q*sin(4\pi ft)) \\
+&=
+\int_{0}^{\frac{1}{f}}i*\frac{1}{2} - \int_{0}^{\frac{1}{f}}i*\frac{cos(4 \pi ft)}{2}) +\int_{0}^{\frac{1}{f}}q*sin(4\pi ft)) \\
+&=
+\frac{i}{2} -0 + 0 \\
+&=
+\frac{i}{2}\\
+\end{split}
+</script>
+</div>
+<p>​       对Q路信号的解码与之同理，只需要把积分中相乘的正弦信号换成余弦信号即可。</p>
+<p>​       在实际传输过程中，由于噪声的影响，我们通过上述公式得到的坐标<span><span class="MathJax_Preview">(i,q)</span><script type="math/tex">(i,q)</script></span>可能并不是精确地落在星座图上的4个点之一，而是在一个点附近。因此在代码实现时，我们需要找到离<span><span class="MathJax_Preview">(i,q)</span><script type="math/tex">(i,q)</script></span>最近的星座图上的点。由此可知，该调制方式具有一定的抵抗噪声的能力。</p>
+<h2 id="qpsk_1">使用声波信号实现QPSK<a class="headerlink" href="#qpsk_1" title="Permanent link">&para;</a></h2>
+<p>调制：</p>
+<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="nf">Modulator</span><span class="p">(</span>codes, fileName, sigSNR<span class="p">)</span><span class="w"></span>
+<span class="c">%输入参数：</span>
+<span class="c">%codes: 待调制的数据，0/1数组</span>
+<span class="c">%fileName：保存到本地的信号文件</span>
+<span class="c">%sigSNR：模拟信道的信噪比</span>
+<span class="c">%调用样例：</span>
+<span class="c">%Modulator([1,1,0,0,1,0,1,0], &#39;data&#39;)</span>
+<span class="c">%调用结果：</span>
+<span class="c">%同文件夹下生成一个‘data.wav’音频文件</span>
+<span class="n">fs</span> <span class="p">=</span> <span class="mi">48000</span><span class="p">;</span>
+<span class="n">T</span> <span class="p">=</span> <span class="mf">0.025</span><span class="p">;</span>
+<span class="n">f</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">T</span><span class="p">;</span>
+
+<span class="c">%若信号长度不是偶数，则补0（QPSK调制的是长度为偶数的二进制串）</span>
+<span class="n">cLen</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">codes</span><span class="p">);</span>
+<span class="n">if</span> <span class="s">mod(cLen,</span> <span class="s">2)</span> <span class="p">==</span> <span class="mi">1</span>
+    <span class="n">codes</span> <span class="p">=</span> <span class="p">[</span><span class="n">codes</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+    <span class="n">cLen</span> <span class="p">=</span> <span class="n">cLen</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">end</span>
+
+<span class="s">%生成I信号和Q信号</span>
+<span class="n">sigI</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span> <span class="p">:</span> <span class="n">T</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">));</span>
+<span class="n">sigQ</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span> <span class="p">:</span> <span class="n">T</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">));</span>
+
+<span class="c">%生成两路基带信号，并相加</span>
+<span class="n">sigL</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">sigI</span><span class="p">);</span>
+<span class="n">sig</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigL</span> <span class="o">*</span> <span class="n">cLen</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">for</span> <span class="s">i</span> <span class="p">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">cLen</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">fI</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">codes</span><span class="p">(</span><span class="nb">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">fQ</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">codes</span><span class="p">(</span><span class="nb">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">sig</span><span class="p">((</span><span class="nb">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigL</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="nb">i</span> <span class="o">*</span> <span class="n">sigL</span><span class="p">)</span> <span class="p">=</span> <span class="n">fI</span> <span class="o">*</span> <span class="n">sigI</span> <span class="o">+</span> <span class="n">fQ</span> <span class="o">*</span> <span class="n">sigQ</span><span class="p">;</span>
+<span class="n">end</span>
+
+<span class="s">%模拟信道，添加白噪声</span>
+<span class="n">sig</span> <span class="p">=</span> <span class="n">awgn</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">sigSNR</span><span class="p">,</span> <span class="s">&#39;measured&#39;</span><span class="p">);</span>
+<span class="c">%将信号幅度恢复为1</span>
+<span class="n">sig</span> <span class="p">=</span> <span class="n">sig</span> <span class="o">/</span> <span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sig</span><span class="p">));</span>
+
+<span class="n">audiowrite</span><span class="p">([</span><span class="n">fileName</span><span class="p">,</span> <span class="s">&#39;.wav&#39;</span><span class="p">],</span> <span class="n">sig</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
+
+<span class="n">end</span>
+</code></pre></div>
+<p>解调：</p>
+<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>codes <span class="p">=</span><span class="w"> </span><span class="nf">Demodulator</span><span class="p">(</span>fileName<span class="p">)</span><span class="w"></span>
+<span class="c">%输入参数：</span>
+<span class="c">%fileName：调制数据得到的信号文件</span>
+<span class="c">%输出：</span>
+<span class="c">%codes: 解调结果，0/1数组</span>
+<span class="c">%调用样例：(同文件夹内需要有&#39;data.wav&#39;文件)</span>
+<span class="c">%Demodulator(‘data’)</span>
+<span class="c">%调用结果：</span>
+<span class="c">%输出[1,1,0,0,1,0,1,0]</span>
+<span class="p">[</span><span class="n">sig</span><span class="p">,</span> <span class="n">fs</span><span class="p">]</span> <span class="p">=</span> <span class="n">audioread</span><span class="p">([</span><span class="n">fileName</span><span class="p">,</span> <span class="s">&#39;.wav&#39;</span><span class="p">]);</span>
+<span class="n">sig</span> <span class="p">=</span> <span class="n">sig</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">T</span> <span class="p">=</span> <span class="mf">0.025</span><span class="p">;</span>
+<span class="n">f</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">T</span><span class="p">;</span>
+
+<span class="c">%生成I信号和Q信号</span>
+<span class="n">sigI</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span> <span class="p">:</span> <span class="n">T</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">));</span>
+<span class="n">sigQ</span> <span class="p">=</span> <span class="nb">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">pi</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span> <span class="p">:</span> <span class="n">T</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">));</span>
+
+<span class="c">%生成星座图上的4个点对应的标准基带信号，保存在一个4行的矩阵中</span>
+<span class="n">sigL</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">sigI</span><span class="p">);</span>
+<span class="n">sigMat</span> <span class="p">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="k">...</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">.*</span> <span class="nb">repmat</span><span class="p">(</span><span class="n">sigI</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="k">...</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">.*</span> <span class="nb">repmat</span><span class="p">(</span><span class="n">sigQ</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+
+<span class="n">cLen</span> <span class="p">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">length</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigL</span><span class="p">;</span>
+<span class="n">codes</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cLen</span><span class="p">);</span>
+
+<span class="n">for</span> <span class="s">i</span> <span class="p">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">cLen</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">seg</span> <span class="p">=</span> <span class="n">sig</span><span class="p">((</span><span class="nb">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigL</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="nb">i</span> <span class="o">*</span> <span class="n">sigL</span><span class="p">);</span>
+    <span class="c">%通过积分的方式（积分针对的是连续信号，离散信号则是对点积求和），判断当前的这一段信号和哪个标准信号距离最近。积分的结果越大代表两个信号越相似。</span>
+    <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">maxI</span><span class="p">]</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">sigMat</span> <span class="o">*</span> <span class="n">seg</span><span class="o">&#39;</span><span class="p">);</span>
+    <span class="n">codes</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">maxI</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">codes</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="nb">mod</span><span class="p">(</span><span class="n">maxI</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">end</span>
+
+<span class="s">end</span>
+</code></pre></div>
+<p>​       在解调的代码实现中，为了使代码更加紧凑以及运行效率更高，在生成标准基带信号时采用了矩阵的形式。更加直观但效率稍低的方法是用4个变量分别代表一路标准基带信号，然后在后续的代码中分别进行计算。大家在实现这一部分的代码时可以通过逐步调试的方式，理解每一步骤的目的。</p>
+<p>​       注意，上面<code>Modulator</code>生成的声音文件，就是数据发送过程中调制出来的信号，我们可以在手机上播放此声音文件，然后在接收端录音，然后对录到的声音用<code>Demodulator</code>进行解码。整个过程就跟无线电磁波发送数据（例如WiFi）的过程一样。</p>
+<h2 id="8psk">8PSK<a class="headerlink" href="#8psk" title="Permanent link">&para;</a></h2>
+<p>​       理解了BPSK和QPSK，再理解8PSK就相对容易了。当我们把QPSK的星座映射图中的坐标轴上也加上数据点，就可以得到8PSK的星座映射图：</p>
+<p><center>
+<img src = "./fig/8psk-star.png" width=600px>
+</center>
+<center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 8PSK星座图</div>
+<p></center></p>
+<p>为了使叠加的信号的相位满足星座映射图，数据和IQ之间的映射应该为：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>I</th>
+<th>Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td><span><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>001</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>010</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>011</td>
+<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>​       随着星座图上的点越来越多，每个点代表的信息量也相应增加，BPSK的一个点只代表1bit，而8PSK的一个点可以代表3 bit。但与此同时，相邻两个点之间的距离也越来越近，意味着调制方式的抗噪声能力越来越差。在传输速率和抗噪声能力之间存在一个权衡的问题，需要根据实际信道状况来选择合适的调制方式。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                8.3 频率调制
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                8.5 载波上变频
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

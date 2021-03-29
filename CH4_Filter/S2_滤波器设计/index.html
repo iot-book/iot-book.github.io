@@ -1,0 +1,1784 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>7.2 滤波器设计 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="IoT Book" class="md-header-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            IoT Book
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              7.2 滤波器设计
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IoT Book" class="md-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CH0_Front/%E5%89%8D%E6%B2%BF2/" class="md-nav__link">
+      第2版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1.%20%E5%89%8D%E8%A8%80/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+      第1版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      第1章 物联网概述
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第1章 物联网概述" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        第1章 物联网概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.%20%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      1.1 起源与发展
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      第2章 物联网开发
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第2章 物联网开发" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        第2章 物联网开发
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/android%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.1 Android 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/matlab%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.2 MATLAB 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      第3章 物联网网络协议
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第3章 物联网网络协议" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        第3章 物联网网络协议
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E7%89%A9%E8%81%94%E7%BD%91%E8%BF%9E%E6%8E%A5%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+      3.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.2%20Wi-Fi%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/" class="md-nav__link">
+      3.2 Wi-Fi无线局域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.3%20%E8%93%9D%E7%89%99/" class="md-nav__link">
+      3.3 蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.4%20ZigBee/" class="md-nav__link">
+      3.4 ZigBee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.5%20%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.5 毫米波通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.6%20%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.6 可见光通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E8%93%9D%E7%89%99%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      3.7 蓝牙连接实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      第4章 信号处理基础
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第4章 信号处理基础" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        第4章 信号处理基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/" class="md-nav__link">
+      4.1 信号生成、发送和接收
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      4.2 从模拟到数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/" class="md-nav__link">
+      4.3 信号采样与采样定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/" class="md-nav__link">
+      4.4 信号量化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+      4.5 案例：声音采集与播放
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      第5章 傅里叶分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第5章 傅里叶分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        第5章 傅里叶分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/" class="md-nav__link">
+      5.1 历史与发展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/" class="md-nav__link">
+      5.2 傅里叶级数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.3 傅里叶变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" class="md-nav__link">
+      5.4 离散傅里叶分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.5 案例：短时傅里叶与频谱
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      第6章 无线信道
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第6章 无线信道" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        第6章 无线信道
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S1_%E4%BF%A1%E9%81%93%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+      6.1 定义与概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-nav__link">
+      6.2 路径损耗与阴影衰落
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      6.3 多径信道模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S4_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      6.4 案例：信道仿真与测量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      第7章 信号滤波
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第7章 信号滤波" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        第7章 信号滤波
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      7.1 滤波定义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        7.2 滤波器设计
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      7.2 滤波器设计
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    滤波器设计
+  </a>
+  
+    <nav class="md-nav" aria-label="滤波器设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    滑动平均的效果分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    滤波器设计参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    常见滤波器及其特性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    案例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S3_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      7.3 案例：使用滤波器对录音信号降噪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      第8章 数据调制和解调
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第8章 数据调制和解调" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        第8章 数据调制和解调
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      8.1 引言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.2 幅度调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.3 频率调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.4 相位调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/" class="md-nav__link">
+      8.5 载波上变频
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      8.6 调制方法综合应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      8.7 简单无线通信系统的实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      第9章 LoRa原理与实现
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第9章 LoRa原理与实现" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        第9章 LoRa原理与实现
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      9.1 LoRa编码技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      9.2 LoRa编解码与通信实验
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+      9.3 LoRa冲突解码算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%A6%82%E8%BF%B0%E5%92%8C%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+      9.4 LoRa测试床概述和功能
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S5_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      9.5 LoRa测试床技术实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S6_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/" class="md-nav__link">
+      9.6 LoRa设备远程更新
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.7 LoRa Backscatter通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.8 LoRa Backscatter感知
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      第11章 无线测距
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第11章 无线测距" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        第11章 无线测距
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.1 基于信号强度测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.2 基于传播时间测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S3_FMCW%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.3 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      第12章 无线定位
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第12章 无线定位" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon"></span>
+        第12章 无线定位
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S1_TOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.1 ToA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.2 TDoA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S3_%E5%9F%BA%E4%BA%8E%E5%88%B0%E8%BE%BE%E8%A7%92%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.3 基于信号指纹定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S4_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.4 基于到达角定位
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      第13章 无线追踪
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第13章 无线追踪" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        <span class="md-nav__icon md-icon"></span>
+        第13章 无线追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.1 基于多普勒效应追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.2 基于FMCW追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.3 基于信号相位追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15">
+    
+    <label class="md-nav__link" for="nav-15">
+      第14章 无线感知实例
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第14章 无线感知实例" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        <span class="md-nav__icon md-icon"></span>
+        第14章 无线感知实例
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%89%B9%E5%BE%81%E7%9A%84%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" class="md-nav__link">
+      14.1 基于信号特征的手势识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S4_%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%98%B5%E5%88%97%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.2 基于麦克风阵列的定位方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S2_%E5%A3%B0%E9%9F%B3%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/%E9%A2%91%E7%8E%87%E9%80%89%E6%8B%A9/" class="md-nav__link">
+      14.3 基于信号特征的设备认证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S3_UWB%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.4 UWB设备环境配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S6_WIFI%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.5 WiFi CSI的获取
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH11_Sensing/S5_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.6 蓝牙AoA测量角度的方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    滤波器设计
+  </a>
+  
+    <nav class="md-nav" aria-label="滤波器设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    滑动平均的效果分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    滤波器设计参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    常见滤波器及其特性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    案例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">滤波器设计<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">滤波器设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>到现在，我们已经知道滤波器的主要设计参数和基本工作方式，即已经知道了滤波器的优化方法和优化目标。现在的问题是，给定滤波要求，对任意一组输入，我们要如何确定窗口长度<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>和滤波器系数<span><span class="MathJax_Preview">h(k)</span><script type="math/tex">h(k)</script></span>？</p>
+<p><strong>仔细观察滑动窗口内加权求和的计算操作，我们可以发现滤波过程实际上是输入向量<span><span class="MathJax_Preview">x(n)</span><script type="math/tex">x(n)</script></span>与系数向量<span><span class="MathJax_Preview">h(k)</span><script type="math/tex">h(k)</script></span>的卷积</strong>， 即：</p>
+<div>
+<div class="MathJax_Preview">
+y(n)=\sum_{k=0}^{M}h(k)x(n-k)=h(k)*x(n)
+</div>
+<script type="math/tex; mode=display">
+y(n)=\sum_{k=0}^{M}h(k)x(n-k)=h(k)*x(n)
+</script>
+</div>
+<blockquote>
+<p>思考为什么这一过程会有滤波的效果？</p>
+<p>那为什么这一过程会改变频率起到滤波的效果呢？
+我们知道对于傅里叶变换和逆傅里叶变换这一类线性系统，在一个域上的卷积等于变换到另一个域上的点乘，时域上的卷积等价于在频域上的乘积。因此，卷积的结果在频域上我们可以得到</p>
+</blockquote>
+<div>
+<div class="MathJax_Preview">
+Y(\omega) = H(\omega)\cdot X(\omega)
+</div>
+<script type="math/tex; mode=display">
+Y(\omega) = H(\omega)\cdot X(\omega)
+</script>
+</div>
+<p>因此，令时域信号与滤波器系数做卷积，其效果等价于：使用滤波器系数<span><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span>做DFT的结果<span><span class="MathJax_Preview">H(m)</span><script type="math/tex">H(m)</script></span>，在频域上直接与目标信号做点乘滤波。
+<strong>简单来说时域卷积效果等价于频域的乘积</strong>，也就是说滤波是在时域上进行卷积，那么看滤波的效果只需要看对应频域的乘积就可以了，时刻记住这一点，对于我们理解滤波器，设计滤波器都非常重要。</p>
+<p>基于这个理解，滤波器的设计理想情况下看起来就很简单了。我们只需要将<span><span class="MathJax_Preview">H(\omega)</span><script type="math/tex">H(\omega)</script></span>在我们希望的频率处值为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，而在我们希望过滤掉的频率处值为<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>。例如如果是要设计一个低通滤波器，只保留100 Hz以下的频率而过滤掉100 Hz以上的频率的话，我们可以将<span><span class="MathJax_Preview">H(\omega)</span><script type="math/tex">H(\omega)</script></span>设置为 </p>
+<div>
+<div class="MathJax_Preview">
+H(\omega)=\left\{
+\begin{aligned}
+1, &amp;\quad 0 \leq \omega &lt; 2\pi\cdot100 \\
+0, &amp;\quad otherwise\\
+\end{aligned}
+\right.
+</div>
+<script type="math/tex; mode=display">
+H(\omega)=\left\{
+\begin{aligned}
+1, &\quad 0 \leq \omega < 2\pi\cdot100 \\
+0, &\quad otherwise\\
+\end{aligned}
+\right.
+</script>
+</div>
+<p>在图上看起来，这个频域响应函数<span><span class="MathJax_Preview">H(\omega)</span><script type="math/tex">H(\omega)</script></span>其实就是一个矩形窗。</p>
+<!-- [TODO] 加上图，表示频域相乘和时域卷积的关系，频域用矩形窗。 -->
+
+<p><center>
+<img src="./fig/fig.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 频域相乘和时域卷积的关系示意</div>
+<p></center></p>
+<p>从上面可以看出来，只要能够设计出来一个频域上响应为矩形窗口的滤波器，我们就能够完美的实现低通滤波。当然对于其他的滤波器，我们也改变频域矩形窗口的大小和位置，来实现其他完美的滤波。</p>
+<blockquote>
+<p>思考：怎样设计出来频域上是这样理想矩形窗的滤波器？</p>
+</blockquote>
+<p>但是实际上，大家回忆其傅里叶分析那一部分的内容就应该知道，频域为矩形窗的响应函数，对应到时域信号形式为sinc函数。我们要在时域上将输入信号与sinc函数做卷积。这样显然有两个很大的问题：
+1. sinc函数为无限长，在实际操作中无法与无限长sinc函数做卷积。
+2. sinc函数在时间上的取值范围为<span><span class="MathJax_Preview">-\infty</span><script type="math/tex">-\infty</script></span>到<span><span class="MathJax_Preview">+\infty</span><script type="math/tex">+\infty</script></span>，也就是意味着使用sinc函数卷积的过程中要使用到未来的信号，这在实际上也无法进行操作。</p>
+<p><strong>很显然，通过这样的方法得到完美的滤波器是不可能的。</strong> </p>
+<h3 id="_3">滑动平均的效果分析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>而实际上，我们来看看之前我们说的滑动平均滤波器实际效果怎么样。
+例如考虑使用一个长度为5的滑动窗口，滤波器系数全部设为<span><span class="MathJax_Preview">\frac{1}{5}</span><script type="math/tex">\frac{1}{5}</script></span>，即<span><span class="MathJax_Preview">h(k)=[\frac{1}{5} \frac{1}{5} \frac{1}{5} \frac{1}{5} \frac{1}{5}]</span><script type="math/tex">h(k)=[\frac{1}{5} \frac{1}{5} \frac{1}{5} \frac{1}{5} \frac{1}{5}]</script></span>。
+对这样一个系数向量做DTFT，根据如下的DTFT公式</p>
+<div>
+<div class="MathJax_Preview">
+X[k]=\sum_{n=0}^{N-1} x[n] \, e^{-j n \omega}
+</div>
+<script type="math/tex; mode=display">
+X[k]=\sum_{n=0}^{N-1} x[n] \, e^{-j n \omega}
+</script>
+</div>
+<p>我们可以得到 </p>
+<div>
+<div class="MathJax_Preview">
+H(\omega) = \sum_{n=0}^{4}\frac{1}{5}e^{-j n \omega}
+</div>
+<script type="math/tex; mode=display">
+H(\omega) = \sum_{n=0}^{4}\frac{1}{5}e^{-j n \omega}
+</script>
+</div>
+<p>显然我们将在频域上得到一个以频率0为中心、由一个主瓣和若干旁瓣共同组成的类sinc波（如下图实线所示）。
+因此使用滑动平均的滤波效果就是将这个
+这与我们期望的理想滤波器（虚线所示）相差甚远。</p>
+<p><center>
+<img src="./fig/dft.jpg" width=600px>
+</center></p>
+<!-- ![滑动平均在频域上的效果](./fig/dft.jpg) -->
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 滑动平均在频域上的效果</div>
+<p></center></p>
+<p>这样的低通滤波器，显然无法完全消除所有高于频率阈值的信号分量，同时也会导致低于阈值的有效信号发生变形。</p>
+<p><center>
+<img src="./fig/filter2.jpg" width=600px>
+</center></p>
+<!-- ![非完美滤波器效果](./fig/filter2.jpg) -->
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 非完美滤波器效果</div>
+<p></center></p>
+<p>上图可以看到，由于窗口长度和滤波器系数选择的不合理（全部都是<span><span class="MathJax_Preview">\frac{1}{5}</span><script type="math/tex">\frac{1}{5}</script></span>），简单低通滤波器的滤波效果并不理想。那么，我们要如何确定窗口长度<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>和滤波器系数<span><span class="MathJax_Preview">h(k)</span><script type="math/tex">h(k)</script></span>，使得滤波器的效果尽可能好呢？</p>
+<p><center>
+<img src="./fig/ideal.jpg" width=600px>
+</center></p>
+<!-- ![理想低通滤波器要求无限长度的滤波器系数向量](./fig/ideal.jpg) -->
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 理想低通滤波器要求无限长度的滤波器系数向量</div>
+<p></center></p>
+<p>在继续介绍滤波器实现之前，我们先来明确一组等价的概念：<strong>滤波器长度=滑动窗口长度=滤波抽头长度=滤波器系数向量长度</strong>，这几个看似不同的说法经常出现在各种与滤波器相关的资料中，但他们所表达的含义是一样的。给定一组真实信号输入，显然滤波器的长度是有限的。且考虑长度为<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>的滤波器会抽除输入信号头部<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>个数据点，因此滤波器长度应该要远小于输入信号的长度。</p>
+<p>实际滤波时，虽然得到理想的滤波器系数比较困难，一个简单可行的办法是对理想滤波器逆傅里叶变换对应的系数截取一段有限长度的结果，用作滤波器系数。如下图所示，随着滤波器系数长度的增加，其傅里叶变换的结果约接近理想滤波器。同时，我们也发现DFT结果中，接近频率阈值处存在振幅抖动，这就是我们常说的吉布斯效应。为了消除吉布斯效应，并使通频带外信号得到更好的抑制，学者们提出了许多不同的加窗策略，这又是另一个非常有趣的主题，有兴趣的同学可以在课后自行了解。</p>
+<p><center>
+<img src="./fig/filter-len.jpg" width=600px>
+</center></p>
+<!-- ![](./fig/filter-len.jpg) -->
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 不同窗口长度</div>
+<p></center></p>
+<h2 id="_4">滤波器设计参数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>在上一节，我们介绍了通过调整滑动平均的窗口大小<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>和加权值（即滤波器系数<span><span class="MathJax_Preview">h(k)</span><script type="math/tex">h(k)</script></span>）可以直接影响滤波效果。滤波器设计的核心，就是探索如何通过改变这些参数实现不同的目标。下面介绍几个常用的滤波器设计参数，大家在看相关论文和使用相关代码的时候经常会碰到这些参数：</p>
+<ul>
+<li>中心频率（Center Frequency）：滤波器通带的频率<span><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span>，一般取<span><span class="MathJax_Preview">f_0=(f_1+f_2)/2</span><script type="math/tex">f_0=(f_1+f_2)/2</script></span>，<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span>、<span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span>为带通或带阻滤波器左、右相对下降<span><span class="MathJax_Preview">1dB</span><script type="math/tex">1dB</script></span>或<span><span class="MathJax_Preview">3dB</span><script type="math/tex">3dB</script></span>边频点。窄带滤波器常以插损最小点为中心频率计算通带带宽。</li>
+<li>截止频率（Cutoff Frequency）：指低通滤波器的通带右边频点及高通滤波器的通带左边频点。通常以<span><span class="MathJax_Preview">1dB</span><script type="math/tex">1dB</script></span>或<span><span class="MathJax_Preview">3dB</span><script type="math/tex">3dB</script></span>相对损耗点来标准定义。相对损耗的参考基准为：低通以DC处插损为基准，高通则以未出现寄生阻带的足够高通带频率处插损为基准。</li>
+<li>通带带宽：指需要通过的频谱宽度，<span><span class="MathJax_Preview">BW =(f_2-f_1)</span><script type="math/tex">BW =(f_2-f_1)</script></span>。<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span>、<span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span>为以中心频率<span><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span>处插入损耗为基准。</li>
+<li>插入损耗（Insertion Loss）：由于滤波器的引入对电路中原有信号带来的衰耗，以中心或截止频率处损耗表征，如要求全带内插损需强调。</li>
+<li>纹波（Ripple）：指1dB或3dB带宽（截止频率）范围内，插损随频率在损耗均值曲线基础上波动的峰值。</li>
+<li>带内波动（Passband Ripple）：通带内插入损耗随频率的变化量。1dB带宽内的带内波动是1dB。</li>
+<li>带内驻波比（VSWR）：衡量滤波器通带内信号是否良好匹配传输的一项重要指标。理想匹配VSWR=1：1，失配时VSWR 大于1。对于一个实际的滤波器而言，满足VSWR小于1.5：1的带宽一般小于通带带宽，其占通带带宽的比例与滤波器阶数和插损相关。</li>
+<li>回波损耗（Return Loss）：端口信号输入功率与反射功率之比的分贝（dB）数，也等于<span><span class="MathJax_Preview">20Log10\rho</span><script type="math/tex">20Log10\rho</script></span>，<span><span class="MathJax_Preview">\rho</span><script type="math/tex">\rho</script></span>为电压反射系数。输入功率被端口全部吸收时回波损耗为无穷大。</li>
+<li>阻带抑制度：衡量滤波器选择性能好坏的重要指标。该指标越高说明对带外干扰信号抑制的越好。通常有两种提法：一种为要求对某一给定带外频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>抑制多少dB，计算方法为<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>处衰减量；另一种为提出表征滤波器幅频响应与理想矩形接近程度的指标——矩形系数。滤波器阶数越多矩形度越高——即K越接近理想值1，制作难度当然也就越大。</li>
+<li>延迟（Td）：指信号通过滤波器所需要的时间，数值上为传输相位函数对角频率的导数，即<span><span class="MathJax_Preview">Td=df/dv</span><script type="math/tex">Td=df/dv</script></span>。</li>
+<li>带内相位线性度：该指标表征滤波器对通带内传输信号引入的相位失真大小。按线性相位响应函数设计的滤波器具有良好的相位线性度。</li>
+</ul>
+<p>一句话来进行总结，由于理想的滤波器没法实现，所以为了描述实际的滤波器的性能和效果，我们给一个滤波器滤波的效果定义了这一系列参数。
+<center>
+<img src="./fig/filter3.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 滤波器设计参数</div>
+<p></center></p>
+<h2 id="_5">常见滤波器及其特性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>通过前文的介绍，我们可以感受到滤波器的设计实际上是一件复杂且具有挑战性的事。针对不同的应用场景和滤波需求，我们需要设计具有不同性质的滤波器。实际上，我们在实际使用中通常直接采用前人设计好的几个经典的滤波器：如巴特沃斯滤波器、切比雪夫滤波器、椭圆滤波器、贝塞尔滤波器等。这些滤波器分别有各自的特点，例如巴特沃斯滤波器在通带内响应曲线极其平坦，而椭圆滤波器则旨在尽可能压缩过渡带的宽度。下图展示了集中常用滤波器的频域响应特性。</p>
+<p><center>
+<img src="./fig/filter1.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 几种不同特点的常用滤波器：巴特沃斯滤波器（左上）、I型切比雪夫滤波器（右上）、II型切比雪夫滤波器（左下）、椭圆函数滤波器（右下）</div>
+<p></center></p>
+<p><strong>巴特沃斯滤波器</strong></p>
+<p>特点：通频带内的频率响应曲线最大限度平坦，没有起伏，而在阻频带则逐渐下降为零。</p>
+<p>一阶巴特沃斯滤波器的衰减率为每倍频6分贝，每十倍频20分贝；二阶巴特沃斯滤波器的衰减率为每倍频12分贝；三阶巴特沃斯滤波器的衰减率为每倍频18分贝，如此类推。巴特沃斯滤波器的振幅对角频率单调下降，并且也是唯一的无论阶数，振幅对角频率曲线都保持同样的形状的滤波器。对巴特沃斯滤波器而言，阶数越高，频率响应在阻频带振幅衰减速度越快，而振幅对角频率曲线的形状保持不变。</p>
+<p>在MATLAB的DSP工具包中内置了巴特沃斯滤波器的实现函数，可以直接通过butter函数是求Butterworth数字滤波器的系数。butter函数的调用形式有以下几种：</p>
+<p><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]</span> <span class="p">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">wn</span><span class="p">)</span>
+</code></pre></div>
+n是滤波器的阶数，根据需要选择合适的整数，Wn是自然频率，Wn = 截止频率*2/采样频率，如果要留下小于截至频率的信号，用这种格式。而在有些情况下，我们希望保留在某两个频率之间的信号（即带通滤波），此时可以使用以下这种调用格式：
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]=</span><span class="n">butter</span><span class="p">(</span><span class="n">n</span><span class="p">,[</span><span class="n">Wn1</span> <span class="n">Wn2</span><span class="p">])</span> <span class="c">%Wn1和Wn2用空格隔开</span>
+</code></pre></div></p>
+<p>使用上述butter函数求出B和A的值后，用滤波函数filter进行滤波：<code>y=filter(B,A,x)</code>，其中x是要进行滤波的信号。</p>
+<p>的MATLAB调用示例：</p>
+<div class="highlight"><pre><span></span><code><span class="n">wp</span><span class="p">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">5000</span><span class="p">;</span><span class="n">ws</span><span class="p">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">12000</span><span class="p">;</span><span class="n">Rp</span><span class="p">=</span><span class="mi">2</span><span class="p">;</span><span class="n">Rs</span><span class="p">=</span><span class="mi">30</span><span class="p">;</span>
+<span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="n">wc</span><span class="p">]=</span><span class="n">buttord</span><span class="p">(</span><span class="n">wp</span><span class="p">,</span><span class="n">ws</span><span class="p">,</span><span class="n">Rp</span><span class="p">,</span><span class="n">Rs</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">);</span><span class="c">% s is the anology filter </span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]=</span><span class="n">butter</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">wc</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="n">sk</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="mi">511</span><span class="p">;</span> <span class="n">fk</span><span class="p">=</span><span class="mi">0</span><span class="p">:</span><span class="mi">14000</span><span class="o">/</span><span class="mi">512</span><span class="p">:</span><span class="mi">14000</span><span class="p">;</span><span class="n">wk</span><span class="p">=</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fk</span><span class="p">;</span>
+<span class="n">Hk</span><span class="p">=</span><span class="n">freqs</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">wk</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fk</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Hk</span><span class="p">)),</span><span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="p">;</span><span class="n">hold</span> <span class="s">on</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;频率(khz)&#39;</span><span class="p">);</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;幅度（db）&#39;</span><span class="p">);</span>
+<span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">5</span><span class="p">]);</span>
+
+<span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="n">wc</span><span class="p">]=</span><span class="n">buttord</span><span class="p">(</span><span class="n">wp</span><span class="p">,</span><span class="n">ws</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">Rs</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">);</span><span class="c">% s is the anology filter </span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]=</span><span class="n">butter</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">wc</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="n">Hk</span><span class="p">=</span><span class="n">freqs</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">wk</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fk</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Hk</span><span class="p">)),</span><span class="s">&#39;g&#39;</span><span class="p">);</span>
+
+<span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="n">wc</span><span class="p">]=</span><span class="n">buttord</span><span class="p">(</span><span class="n">wp</span><span class="p">,</span><span class="n">ws</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">Rs</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">);</span><span class="c">% s is the anology filter </span>
+<span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">]=</span><span class="n">butter</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">wc</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="n">Hk</span><span class="p">=</span><span class="n">freqs</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">wk</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fk</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Hk</span><span class="p">)),</span><span class="s">&#39;b&#39;</span><span class="p">);</span>
+
+<span class="n">legend</span><span class="p">(</span><span class="s">&#39;Rp=2&#39;</span><span class="p">,</span><span class="s">&#39;Rp=10&#39;</span><span class="p">,</span><span class="s">&#39;Rp=20&#39;</span><span class="p">,</span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="s">&#39;northeast&#39;</span><span class="p">,</span><span class="s">&#39;Orientation&#39;</span><span class="p">,</span><span class="s">&#39;horizontal&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><center>
+<img src="./fig/BTWZ.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 巴特沃斯滤波器频率响应图线</div>
+<p></center></p>
+<p><strong>切比雪夫滤波器</strong></p>
+<p>特点：和理想滤波器的频率响应曲线之间的误差最小，但是在通频带内存在幅度波动。和巴特沃斯滤波器相比，切比雪夫滤波器在过渡带衰减快，但频率响应的幅频特性不如前者平坦。</p>
+<p>切比雪夫滤波器是在通带或阻带上频率响应幅度等波纹波动的滤波器，振幅特性在通带内是等波纹。在阻带内是单调的称为切比雪夫I型滤波器；振幅特性在通带内是单调的，在阻带内是等波纹的称为切比雪夫II型滤波器。采用何种形式的切比雪夫滤波器取决于实际用途。</p>
+<p>MATLAB工具包中提供了cheby1和cheby2函数分别用于构造切比雪夫I型滤波器和切比雪夫II型滤波器。其调用形式为：</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span> <span class="p">=</span> <span class="n">cheby1</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">Rp</span><span class="p">,</span><span class="n">Wp</span><span class="p">)</span>
+<span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">]</span> <span class="p">=</span> <span class="n">cheby1</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">Rp</span><span class="p">,</span><span class="n">Wp</span><span class="p">,</span><span class="n">ftype</span><span class="p">)</span>
+</code></pre></div>
+<p>其中n为阶数，Rp为通带中损失上限，Wp为截止频率（一般通过cheb1ord获得）。函数返回得到滤波器系数矩阵[b,a]。</p>
+<p>使用切比雪夫I型滤波器实现信号低通滤波实例：</p>
+<div class="highlight"><pre><span></span><code><span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="c">%  Cheby1Filter.m</span>
+<span class="c">%  切比雪夫Ⅰ型滤波器的设计</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="n">clear</span><span class="p">;</span>
+<span class="n">close</span> <span class="s">all</span><span class="p">;</span>
+<span class="n">clc</span><span class="p">;</span>
+
+<span class="n">fs</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="c">%Hz 采样频率</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">N</span>  <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="c">%序列长度</span>
+<span class="n">t</span> <span class="p">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">Ts</span><span class="p">;</span>
+<span class="n">delta_f</span> <span class="p">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">fs</span><span class="o">/</span><span class="n">N</span><span class="p">;</span>
+<span class="n">f1</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>
+<span class="n">f2</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">f3</span> <span class="p">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="n">f4</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
+<span class="n">x1</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f1</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">x2</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f2</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">x3</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f3</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">x4</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f4</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">x</span> <span class="p">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">+</span> <span class="n">x4</span><span class="p">;</span> <span class="c">%待处理信号由四个分量组成</span>
+
+<span class="n">X</span> <span class="p">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="o">/</span><span class="n">N</span><span class="p">;</span>
+<span class="n">X_angle</span> <span class="p">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="nb">angle</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">)));</span>
+<span class="n">f</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">delta_f</span><span class="p">;</span>
+
+<span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;原信号&#39;</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X</span><span class="p">);</span>
+<span class="n">grid</span> <span class="s">on</span><span class="p">;</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;原信号频谱幅度特性&#39;</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X_angle</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;原信号频谱相位特性&#39;</span><span class="p">);</span>
+<span class="n">grid</span> <span class="s">on</span><span class="p">;</span>
+
+<span class="c">%设计一个切比雪夫低通滤波器,要求把50Hz的频率分量保留,其他分量滤掉</span>
+<span class="n">wp</span> <span class="p">=</span> <span class="mi">55</span><span class="o">/</span><span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>  <span class="c">%通带截止频率,取50~100中间的值,并对其归一化</span>
+<span class="n">ws</span> <span class="p">=</span> <span class="mi">90</span><span class="o">/</span><span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>  <span class="c">%阻带截止频率,取50~100中间的值,并对其归一化</span>
+<span class="n">alpha_p</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c">%通带允许最大衰减为 db</span>
+<span class="n">alpha_s</span> <span class="p">=</span> <span class="mi">40</span><span class="p">;</span><span class="c">%阻带允许最小衰减为 db</span>
+<span class="c">%获取阶数和截止频率</span>
+<span class="p">[</span> <span class="n">N1</span> <span class="n">wc1</span> <span class="p">]</span> <span class="p">=</span> <span class="n">cheb1ord</span><span class="p">(</span> <span class="n">wp</span> <span class="p">,</span> <span class="n">ws</span> <span class="p">,</span> <span class="n">alpha_p</span> <span class="p">,</span> <span class="n">alpha_s</span><span class="p">);</span>
+<span class="c">%获得转移函数系数</span>
+<span class="p">[</span> <span class="n">b</span> <span class="n">a</span> <span class="p">]</span> <span class="p">=</span> <span class="n">cheby1</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span><span class="n">alpha_p</span><span class="p">,</span><span class="n">wc1</span><span class="p">,</span><span class="s">&#39;low&#39;</span><span class="p">);</span>
+<span class="c">%滤波</span>
+<span class="n">filter_lp_s</span> <span class="p">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+<span class="n">X_lp_s</span> <span class="p">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">filter_lp_s</span><span class="p">)))</span><span class="o">/</span><span class="n">N</span><span class="p">;</span>
+<span class="n">X_lp_s_angle</span> <span class="p">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="nb">angle</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">filter_lp_s</span><span class="p">)));</span>
+<span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">freqz</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">);</span> <span class="c">%滤波器频谱特性</span>
+<span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">filter_lp_s</span><span class="p">);</span>
+<span class="n">grid</span> <span class="s">on</span><span class="p">;</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;低通滤波后时域图形&#39;</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X_lp_s</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;低通滤波后频域幅度特性&#39;</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">X_lp_s_angle</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;低通滤波后频域相位特性&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><center>
+<img src="./fig/qbxf.png" width=900px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 切比雪夫滤波器低通滤波效果示意</div>
+<p></center></p>
+<p><strong>椭圆滤波器</strong></p>
+<p>特点：在通带等纹波（阻带平坦或等纹波），阻带下降最快。</p>
+<p><strong>贝塞尔滤波器</strong></p>
+<p>特点：通带等纹波，阻带下降慢，即幅频特性的选频特性最差。但是，贝塞尔滤波器具有最佳的线性相位特性。</p>
+<p>贝赛尔(Bessel)滤波器是具有最大平坦的群延迟（线性相位响应）的线性过滤器。贝赛尔滤波器常用在音频天桥系统中。模拟贝赛尔滤波器描绘为几乎横跨整个通频带的恒定的群延迟，因而在通频带上保持了被过滤的信号波形。贝塞尔(Bessel)滤波器具有最平坦的幅度和相位响应。带通（通常为用户关注区域）的相位响应近乎呈线性。Bessel滤波器可用于减少所有IIR滤波器固有的非线性相位失真。</p>
+<!-- （设计介绍、特性、MATLAB调用方法） -->
+
+<h2 id="_6">案例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>最后，请大家利用MATLAB自带的<code>filter()</code>函数，尝试对输入含高频噪声的信号进行低通滤波：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c">% sampling frequency</span>
+<span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">x</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">awgn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;measured&#39;</span><span class="p">);</span> <span class="c">% snr = 10dB</span>
+
+<span class="n">windowSize</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">b</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">windowSize</span><span class="p">)</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">windowSize</span><span class="p">);</span>
+<span class="n">a</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">z</span> <span class="p">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">y</span><span class="p">;</span> <span class="n">z</span><span class="p">]);</span>
+<span class="n">legend</span><span class="p">(</span><span class="s">&#39;Input Data&#39;</span><span class="p">,</span><span class="s">&#39;Filtered Data&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><center>
+<img src="./fig/cpt_filter.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. MATLAB低通滤波效果</div>
+<p></center></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%A6%82%E5%BF%B5/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                7.1 滤波定义
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../S3_%E6%A1%88%E4%BE%8B/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                7.3 案例：使用滤波器对录音信号降噪
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

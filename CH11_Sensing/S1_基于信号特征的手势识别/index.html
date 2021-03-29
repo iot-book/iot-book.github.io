@@ -1,0 +1,1730 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lob">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>14.1 基于信号特征的手势识别 - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="IoT Book" class="md-header-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            IoT Book
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              14.1 基于信号特征的手势识别
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IoT Book" class="md-nav__button md-logo" aria-label="IoT Book">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CH0_Front/%E5%89%8D%E6%B2%BF2/" class="md-nav__link">
+      第2版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1.%20%E5%89%8D%E8%A8%80/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+      第1版前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      第1章 物联网概述
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第1章 物联网概述" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        第1章 物联网概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../2.%20%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/%E7%89%A9%E8%81%94%E7%BD%91%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      1.1 起源与发展
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      第2章 物联网开发
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第2章 物联网开发" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        第2章 物联网开发
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/android%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.1 Android 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/matlab%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      2.2 MATLAB 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      第3章 物联网网络协议
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第3章 物联网网络协议" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        第3章 物联网网络协议
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E7%89%A9%E8%81%94%E7%BD%91%E8%BF%9E%E6%8E%A5%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+      3.1 物联网连接技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.2%20Wi-Fi%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91/" class="md-nav__link">
+      3.2 Wi-Fi无线局域网
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.3%20%E8%93%9D%E7%89%99/" class="md-nav__link">
+      3.3 蓝牙
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.4%20ZigBee/" class="md-nav__link">
+      3.4 ZigBee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.5%20%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.5 毫米波通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/4.6%20%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+      3.6 可见光通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4.%20%E7%89%A9%E8%81%94%E7%BD%91%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/%E8%93%9D%E7%89%99%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      3.7 蓝牙连接实验
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      第4章 信号处理基础
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第4章 信号处理基础" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        第4章 信号处理基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/" class="md-nav__link">
+      4.1 信号生成、发送和接收
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      4.2 从模拟到数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/" class="md-nav__link">
+      4.3 信号采样与采样定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/" class="md-nav__link">
+      4.4 信号量化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH1_Signal/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+      4.5 案例：声音采集与播放
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      第5章 傅里叶分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第5章 傅里叶分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        第5章 傅里叶分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/" class="md-nav__link">
+      5.1 历史与发展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/" class="md-nav__link">
+      5.2 傅里叶级数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.3 傅里叶变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" class="md-nav__link">
+      5.4 离散傅里叶分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH2_Fourier/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+      5.5 案例：短时傅里叶与频谱
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      第6章 无线信道
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第6章 无线信道" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        第6章 无线信道
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S1_%E4%BF%A1%E9%81%93%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+      6.1 定义与概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-nav__link">
+      6.2 路径损耗与阴影衰落
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      6.3 多径信道模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH3_WirelessChannel/S4_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      6.4 案例：信道仿真与测量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      第7章 信号滤波
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第7章 信号滤波" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        第7章 信号滤波
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      7.1 滤波定义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S2_%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+      7.2 滤波器设计
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S3_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+      7.3 案例：使用滤波器对录音信号降噪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      第8章 数据调制和解调
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第8章 数据调制和解调" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon"></span>
+        第8章 数据调制和解调
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      8.1 引言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.2 幅度调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.3 频率调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/" class="md-nav__link">
+      8.4 相位调制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/" class="md-nav__link">
+      8.5 载波上变频
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      8.6 调制方法综合应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH5_Modulate/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      8.7 简单无线通信系统的实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      第9章 LoRa原理与实现
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第9章 LoRa原理与实现" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        第9章 LoRa原理与实现
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      9.1 LoRa编码技术
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+      9.2 LoRa编解码与通信实验
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+      9.3 LoRa冲突解码算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%A6%82%E8%BF%B0%E5%92%8C%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+      9.4 LoRa测试床概述和功能
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S5_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+      9.5 LoRa测试床技术实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH6_LoRa/S6_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/" class="md-nav__link">
+      9.6 LoRa设备远程更新
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.7 LoRa Backscatter通信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../404/" class="md-nav__link">
+      9.8 LoRa Backscatter感知
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      第11章 无线测距
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第11章 无线测距" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        第11章 无线测距
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.1 基于信号强度测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.2 基于传播时间测距
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH8_Ranging/S3_FMCW%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+      11.3 FMCW测距
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      第12章 无线定位
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第12章 无线定位" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon"></span>
+        第12章 无线定位
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S1_TOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.1 ToA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.2 TDoA定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S3_%E5%9F%BA%E4%BA%8E%E5%88%B0%E8%BE%BE%E8%A7%92%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.3 基于信号指纹定位
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH9_LocalizationAlgo/S4_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      12.4 基于到达角定位
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      第13章 无线追踪
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第13章 无线追踪" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        <span class="md-nav__icon md-icon"></span>
+        第13章 无线追踪
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.1 基于多普勒效应追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.2 基于FMCW追踪
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH10_Tracking/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      13.3 基于信号相位追踪
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15" checked>
+    
+    <label class="md-nav__link" for="nav-15">
+      第14章 无线感知实例
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="第14章 无线感知实例" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        <span class="md-nav__icon md-icon"></span>
+        第14章 无线感知实例
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        14.1 基于信号特征的手势识别
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      14.1 基于信号特征的手势识别
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    主要原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab" class="md-nav__link">
+    示例代码与数据（matlab）
+  </a>
+  
+    <nav class="md-nav" aria-label="示例代码与数据（matlab）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    录音端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    数据处理代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    数据文件样例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    结果展示
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S4_%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%98%B5%E5%88%97%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.2 基于麦克风阵列的定位方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S2_%E5%A3%B0%E9%9F%B3%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/%E9%A2%91%E7%8E%87%E9%80%89%E6%8B%A9/" class="md-nav__link">
+      14.3 基于信号特征的设备认证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S3_UWB%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.4 UWB设备环境配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S6_WIFI%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.5 WiFi CSI的获取
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S5_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+      14.6 蓝牙AoA测量角度的方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    主要原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab" class="md-nav__link">
+    示例代码与数据（matlab）
+  </a>
+  
+    <nav class="md-nav" aria-label="示例代码与数据（matlab）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    录音端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    数据处理代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    数据文件样例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    结果展示
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">基于信号特征的手势识别<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>无线感知是物联网领域的一个研究热点。其主要原理是利用感知目标对信号的影响来进行感知。通过分析信号的变化，进而推断出感知目标的情况（如位置、动作、朝向等）。</p>
+<p>为了便于大家的理解，我们这里使用声波信号对手势进行识别，其余场景的思路是类似的。
+利用声波进行手势识别的第一个思路是通过发射FMCW或OFDM子载波，进而通过反射信号计算相位变化来检测手指的运动距离，从而对手势进行识别检测。这一部分基本是基于声波进行定位和追踪了，在前面的章节中我们有详细的介绍。我们在这里就不展开介绍了。
+当然这些工作存在着以下问题：
+- 手势在运动过程中的反射的变化非常复杂，手掌不能简单建模为单一反射点
+- 声波受到多径效应的影响会出现频率选择性衰落
+- 静态物体的反射会导致识别困难</p>
+<p>在这一部分，我们使用声波信道信息来对手势进行识别。我们尝试利用CIR信息对手势进行识别的工作（如果还不清楚CIR是什么，请回顾信道特征这一章节）。</p>
+<p>手势识别的流程如图所示
+<center>
+<img src="./fig/1.jpg" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">手势识别的流程</div>
+<p></center></p>
+<h2 id="_2">主要原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>信道冲击响应（CIR）提取</strong></p>
+<div>
+<div class="MathJax_Preview">
+r[n] = s[n] * h[n]
+</div>
+<script type="math/tex; mode=display">
+r[n] = s[n] * h[n]
+</script>
+</div>
+<p>利用发射一段经过特殊设计的已知声波<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span> ，运动过程中的手势会将其反射，在麦克风端接收到<span><span class="MathJax_Preview">r[n]</span><script type="math/tex">r[n]</script></span> ，利用信道估计方法即可提取<span><span class="MathJax_Preview">h[n]</span><script type="math/tex">h[n]</script></span>。通过对<span><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span>的分析与处理，我们就可以获取细粒度的反射信息，进而对手势变化过程中导致的反射变化特征进行提取。
+2. <strong>消除环境干扰</strong>
+   环境中除了存在由于手势运动带来的反射，其他的静态物体也会产生反射
+   - 利用相邻时间片的CIR在幅值和相位上做差分的方法提取其变化量，减小静态反射带来的干扰
+   - CIR图像的Y轴代表了距离信息，根据手势识别的范围，只提取指定距离范围内的CIR变化量
+3. <strong>特征提取与建立分类网络</strong>
+   利用上面测量CIR数据数据及处理的方法，可以收集大量实际运动过程中的数据，再将这些数据及对应的手势标签输入到经过设计的机器学习网络中训练分类器。在预测阶段，通过输入实际的运动数据到分类器中，就可以获取到相对应的手势类别（如相对麦克风左右晃动或前后晃动）。</p>
+</li>
+</ol>
+<h2 id="matlab">示例代码与数据（matlab）<a class="headerlink" href="#matlab" title="Permanent link">&para;</a></h2>
+<h3 id="_3">录音端<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span> <span class="p">=</span> <span class="mi">48000</span><span class="p">;</span>
+<span class="c">%% 设置</span>
+<span class="n">T</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% 单个chirp周期</span>
+<span class="n">t</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="p">);</span>
+<span class="n">startFreq</span> <span class="p">=</span> <span class="mi">18000</span><span class="p">;</span> <span class="c">% chirp起始频率</span>
+<span class="n">endFreq</span> <span class="p">=</span> <span class="mi">22000</span><span class="p">;</span> <span class="c">% chirp终止频率</span>
+<span class="n">interval_T</span> <span class="p">=</span> <span class="mf">0.00</span><span class="p">;</span> <span class="c">% chirp间的间隔时间 设置为0即无间隔</span>
+<span class="n">sampleCycles</span> <span class="p">=</span> <span class="mi">80</span><span class="p">;</span> <span class="c">% chirp重复次数</span>
+<span class="n">tt</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">interval_T</span><span class="p">,</span><span class="n">fs</span><span class="o">*</span><span class="n">interval_T</span><span class="p">);</span>
+<span class="n">intervalSignal</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">endFreq</span><span class="o">*</span><span class="n">tt</span><span class="p">);</span>
+
+<span class="n">warmUpT</span> <span class="p">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="c">% 预热周期用于预热扬声器，避免扬声器的惯性影响起始的信号质量</span>
+<span class="n">t_warm</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">warmUpT</span><span class="p">,</span><span class="n">fs</span><span class="o">*</span><span class="n">warmUpT</span><span class="p">);</span>
+<span class="n">warmUpSignal</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">startFreq</span><span class="o">*</span><span class="n">t_warm</span><span class="p">);</span>
+
+<span class="n">y</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">startFreq</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">endFreq</span><span class="p">);</span> <span class="c">% chirp信号</span>
+<span class="n">dy</span> <span class="p">=</span> <span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">endFreq</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">startFreq</span><span class="p">);</span> <span class="c">% 下降的chirp信号，忽略</span>
+
+<span class="c">%% 生成待播放的信号</span>
+<span class="n">playData</span> <span class="p">=</span> <span class="p">[];</span>
+
+<span class="n">for</span> <span class="s">i</span> <span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">sampleCycles</span>
+    <span class="n">playData</span> <span class="p">=</span> <span class="p">[</span><span class="n">playData</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">intervalSignal</span><span class="p">];</span>
+<span class="n">end</span>
+<span class="s">filename</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&quot;fmcw_s%d_e%d_c%d_t%d.wav&quot;</span><span class="p">,</span><span class="n">startFreq</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span><span class="n">endFreq</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span><span class="n">sampleCycles</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">audiowrite</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">playData</span><span class="p">,</span> <span class="n">fs</span><span class="p">);</span>
+
+<span class="c">%% 选择要播放的设备</span>
+
+<span class="n">info</span> <span class="p">=</span> <span class="n">audiodevinfo</span><span class="p">;</span>
+<span class="n">outputDevID</span> <span class="p">=</span> <span class="n">info</span><span class="p">.</span><span class="n">output</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">ID</span><span class="p">;</span> <span class="c">% *设备ID根据实际情况选择!!*</span>
+<span class="n">playData</span> <span class="p">=</span> <span class="p">[</span><span class="n">warmUpSignal</span> <span class="n">playData</span><span class="p">];</span>
+<span class="n">player1</span> <span class="p">=</span> <span class="n">audioplayer</span><span class="p">([</span><span class="n">playData</span><span class="p">;</span> <span class="nb">zeros</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">playData</span><span class="p">))],</span><span class="n">fs</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="n">outputDevID</span><span class="p">);</span>
+
+
+<span class="c">%% 选择要录音的设备</span>
+<span class="n">inputDevID</span> <span class="p">=</span> <span class="n">info</span><span class="p">.</span><span class="n">input</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">ID</span><span class="p">;</span><span class="c">% *设备ID根据实际情况选择!!*</span>
+<span class="n">rec1</span> <span class="p">=</span> <span class="n">audiorecorder</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">inputDevID</span><span class="p">);</span>
+
+
+<span class="n">play</span><span class="p">(</span><span class="n">player1</span><span class="p">)</span>
+<span class="n">record</span><span class="p">(</span><span class="n">rec1</span><span class="p">,</span><span class="n">sampleCycles</span><span class="o">*</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pause</span><span class="p">(</span><span class="n">sampleCycles</span><span class="o">*</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ry</span> <span class="p">=</span> <span class="n">getaudiodata</span><span class="p">(</span><span class="n">rec1</span><span class="p">);</span>
+<span class="n">figure</span>
+<span class="s">plot(ry)</span>
+
+<span class="c">%% 选择要保存的文件</span>
+<span class="c">% save(&#39;record_static.mat&#39;)</span>
+<span class="c">% save(&#39;record_dynamic.mat&#39;)</span>
+</code></pre></div>
+<h3 id="_4">数据处理代码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">close</span> <span class="s">all</span><span class="p">;</span>
+<span class="n">load</span><span class="p">(</span><span class="s">&#39;record_static.mat&#39;</span><span class="p">)</span>
+<span class="c">%% 常量</span>
+<span class="n">chunk</span> <span class="p">=</span> <span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="n">interval_T</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">chirpLen</span> <span class="p">=</span> <span class="n">T</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">B</span> <span class="p">=</span> <span class="n">endFreq</span> <span class="o">-</span> <span class="n">startFreq</span><span class="p">;</span>
+<span class="n">maxRange</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">c</span> <span class="p">=</span> <span class="mi">343</span><span class="p">;</span>
+<span class="n">fMax</span> <span class="p">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">B</span><span class="o">*</span><span class="p">(</span><span class="n">maxRange</span><span class="o">/</span><span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="n">T</span><span class="p">);</span>
+<span class="n">N</span> <span class="p">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="n">CIRData</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">([</span><span class="n">sampleCycles</span><span class="p">,</span><span class="n">fMax</span><span class="o">*</span><span class="n">N</span><span class="p">]);</span>
+<span class="n">channel</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="c">%% chirp对齐</span>
+
+<span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">lags</span><span class="p">]</span> <span class="p">=</span> <span class="n">xcorr</span><span class="p">(</span><span class="n">ry</span><span class="p">(:,</span><span class="n">channel</span><span class="p">),</span><span class="n">y</span><span class="p">);</span>
+<span class="n">figure</span>
+<span class="s">plot(ry(:,channel))</span>
+
+<span class="p">[</span><span class="n">pk</span><span class="p">,</span> <span class="n">lk</span><span class="p">]</span> <span class="p">=</span> <span class="n">findpeaks</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="s">&#39;MinPeakDistance&#39;</span><span class="p">,</span><span class="mf">0.8</span><span class="o">*</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="p">);</span> <span class="c">% 寻找峰值</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">I</span><span class="p">]</span> <span class="p">=</span> <span class="n">maxk</span><span class="p">(</span><span class="n">pk</span><span class="p">,</span><span class="n">sampleCycles</span><span class="p">);</span><span class="c">% 寻找最大的sampleCycles个峰值</span>
+<span class="n">figure</span> 
+<span class="s">plot(lags,r)</span>
+<span class="n">hold</span> <span class="s">on</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">(</span><span class="n">lk</span><span class="p">),</span><span class="n">pk</span><span class="p">,</span><span class="s">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">(</span><span class="n">lk</span><span class="p">(</span><span class="n">I</span><span class="p">)),</span><span class="n">pk</span><span class="p">(</span><span class="n">I</span><span class="p">),</span><span class="s">&#39;pg&#39;</span><span class="p">)</span>
+
+<span class="n">asc_indexs</span> <span class="p">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">I</span><span class="p">);</span> <span class="c">% index从小到大排序</span>
+<span class="n">indexs</span> <span class="p">=</span> <span class="n">lags</span><span class="p">(</span><span class="n">lk</span><span class="p">(</span><span class="n">I</span><span class="p">));</span>
+<span class="n">start_index</span> <span class="p">=</span> <span class="n">min</span><span class="p">(</span><span class="n">indexs</span><span class="p">);</span> <span class="c">% 找到开始的</span>
+
+<span class="c">%% 计算</span>
+
+<span class="n">for</span> <span class="s">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">sampleCycles</span>
+    <span class="n">offset</span> <span class="p">=</span> <span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">chunk</span><span class="p">;</span>
+    <span class="n">sig_up</span> <span class="p">=</span> <span class="n">ry</span><span class="p">(</span><span class="n">offset</span><span class="o">+</span><span class="n">start_index</span><span class="p">:</span><span class="n">offset</span><span class="o">+</span><span class="n">chirpLen</span><span class="o">+</span><span class="n">start_index</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">channel</span><span class="p">);</span>
+    <span class="n">sig_up</span> <span class="p">=</span> <span class="n">highpass</span><span class="p">(</span><span class="n">sig_up</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span>
+    <span class="n">mixSigUp</span> <span class="p">=</span> <span class="n">sig_up</span> <span class="o">.*</span> <span class="n">y</span><span class="o">&#39;</span><span class="p">;</span> <span class="c">%% 混合信号，接受到的信号与实际信号相乘</span>
+    <span class="n">fmixSigUp</span> <span class="p">=</span> <span class="n">lowpass</span><span class="p">(</span><span class="n">mixSigUp</span><span class="p">,</span><span class="n">fMax</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span> <span class="c">% 低通滤波</span>
+    <span class="n">fftOut</span> <span class="p">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">fmixSigUp</span><span class="p">,</span><span class="n">fs</span><span class="o">*</span><span class="n">N</span><span class="p">));</span> <span class="c">% fft</span>
+    <span class="n">CIRData</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span> <span class="p">=</span> <span class="n">fftOut</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">fMax</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">/</span> <span class="n">pk</span><span class="p">(</span><span class="n">I</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span> <span class="c">% 除以 pk(I(i))进行幅值补偿</span>
+
+<span class="n">end</span>
+
+<span class="s">%%</span> <span class="s">绘图</span>
+<span class="n">time</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">T</span><span class="p">:</span><span class="n">T</span><span class="o">*</span><span class="n">sampleCycles</span><span class="p">;</span>
+<span class="n">range</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">N</span><span class="p">:</span><span class="n">fMax</span><span class="p">)</span> <span class="o">*</span><span class="n">T</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">B</span><span class="p">;</span>
+
+<span class="n">diffCIR</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">sampleCycles</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">fMax</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="n">for</span> <span class="s">i=2:sampleCycles-1</span>
+    <span class="n">diffCIR</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span> <span class="p">=(</span><span class="nb">abs</span><span class="p">(</span> <span class="n">CIRData</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span><span class="o">-</span><span class="n">CIRData</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,:)));</span>
+<span class="n">end</span>
+
+<span class="s">figure(100)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">imagesc</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">range</span><span class="p">,</span><span class="n">CIRData</span><span class="o">&#39;</span><span class="p">)</span>
+<span class="n">colormap</span><span class="p">(</span><span class="n">linspecer</span><span class="p">)</span>
+<span class="n">colorbar</span>
+<span class="s">title(&#39;静态-反射数据&#39;)</span>
+<span class="c">% c1 = caxis;</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">imagesc</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">range</span><span class="p">,</span><span class="n">diffCIR</span><span class="o">&#39;</span><span class="p">)</span>
+<span class="n">colormap</span><span class="p">(</span><span class="n">linspecer</span><span class="p">)</span>
+<span class="n">colorbar</span>
+<span class="s">c1</span> <span class="p">=</span> <span class="n">caxis</span><span class="p">;</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;静态-处理后数据&#39;</span><span class="p">)</span>
+<span class="c">% c2 = caxis;</span>
+<span class="c">% c3 = [min([c1 c2]), max([c1 c2])];</span>
+<span class="c">% caxis(c3)</span>
+<span class="n">figure</span>
+<span class="s">plot(CIRData(:,1))</span>
+<span class="n">hold</span> <span class="s">on</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">pk</span><span class="p">(</span><span class="n">I</span><span class="p">))</span>
+
+
+<span class="n">load</span><span class="p">(</span><span class="s">&#39;record_dynamic.mat&#39;</span><span class="p">)</span>
+
+<span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">lags</span><span class="p">]</span> <span class="p">=</span> <span class="n">xcorr</span><span class="p">(</span><span class="n">ry</span><span class="p">(:,</span><span class="n">channel</span><span class="p">),</span><span class="n">y</span><span class="p">);</span>
+<span class="n">figure</span>
+<span class="s">plot(ry(:,channel))</span>
+
+<span class="p">[</span><span class="n">pk</span><span class="p">,</span><span class="n">lk</span><span class="p">]</span> <span class="p">=</span> <span class="n">findpeaks</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="p">),</span><span class="s">&#39;MinPeakDistance&#39;</span><span class="p">,</span><span class="mf">0.8</span><span class="o">*</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="p">);</span>
+<span class="p">[</span><span class="n">pv</span><span class="p">,</span><span class="n">I</span><span class="p">]</span> <span class="p">=</span> <span class="n">maxk</span><span class="p">(</span><span class="n">pk</span><span class="p">,</span><span class="n">sampleCycles</span><span class="p">);</span>
+<span class="n">figure</span> 
+<span class="s">plot(lags,r)</span>
+<span class="n">hold</span> <span class="s">on</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">(</span><span class="n">lk</span><span class="p">),</span><span class="n">pk</span><span class="p">,</span><span class="s">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">(</span><span class="n">lk</span><span class="p">(</span><span class="n">I</span><span class="p">)),</span><span class="n">pk</span><span class="p">(</span><span class="n">I</span><span class="p">),</span><span class="s">&#39;pg&#39;</span><span class="p">)</span>
+
+<span class="n">asc_indexs</span> <span class="p">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">I</span><span class="p">);</span>
+<span class="n">indexs</span> <span class="p">=</span> <span class="n">lags</span><span class="p">(</span><span class="n">lk</span><span class="p">(</span><span class="n">I</span><span class="p">));</span>
+<span class="n">start_index</span> <span class="p">=</span> <span class="n">min</span><span class="p">(</span><span class="n">indexs</span><span class="p">);</span>
+
+<span class="c">%% 计算</span>
+
+<span class="n">for</span> <span class="s">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">sampleCycles</span>
+    <span class="n">offset</span> <span class="p">=</span> <span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">chunk</span><span class="p">;</span>
+    <span class="n">sig_up</span> <span class="p">=</span> <span class="n">ry</span><span class="p">(</span><span class="n">offset</span><span class="o">+</span><span class="n">start_index</span><span class="p">:</span><span class="n">offset</span><span class="o">+</span><span class="n">chirpLen</span><span class="o">+</span><span class="n">start_index</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">channel</span><span class="p">);</span>
+    <span class="n">sig_up</span> <span class="p">=</span> <span class="n">highpass</span><span class="p">(</span><span class="n">sig_up</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span>
+    <span class="n">mixSigUp</span> <span class="p">=</span> <span class="n">sig_up</span> <span class="o">.*</span> <span class="n">y</span><span class="o">&#39;</span><span class="p">;</span>
+    <span class="n">fmixSigUp</span> <span class="p">=</span> <span class="n">lowpass</span><span class="p">(</span><span class="n">mixSigUp</span><span class="p">,</span><span class="n">fMax</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span>
+    <span class="n">fftOut</span> <span class="p">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">fmixSigUp</span><span class="p">,</span><span class="n">fs</span><span class="o">*</span><span class="n">N</span><span class="p">));</span>
+    <span class="n">CIRData</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span> <span class="p">=</span> <span class="n">fftOut</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">fMax</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">/</span> <span class="n">pk</span><span class="p">(</span><span class="n">I</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+<span class="n">end</span>
+
+<span class="s">%%</span> <span class="s">绘图</span>
+<span class="n">time</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">T</span><span class="p">:</span><span class="n">T</span><span class="o">*</span><span class="n">sampleCycles</span><span class="p">;</span>
+<span class="n">range</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">N</span><span class="p">:</span><span class="n">fMax</span><span class="p">)</span> <span class="o">*</span><span class="n">T</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">B</span><span class="p">;</span>
+
+<span class="n">diffCIR</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">sampleCycles</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">fMax</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="n">for</span> <span class="s">i</span> <span class="p">=</span> <span class="mi">2</span><span class="p">:</span><span class="n">sampleCycles</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">diffCIR</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span> <span class="p">=(</span><span class="nb">abs</span><span class="p">(</span> <span class="n">CIRData</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span><span class="o">-</span><span class="n">CIRData</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,:)));</span>
+<span class="n">end</span>
+
+<span class="s">figure(100)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">imagesc</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">range</span><span class="p">,</span><span class="n">CIRData</span><span class="o">&#39;</span><span class="p">)</span>
+<span class="n">colormap</span><span class="p">(</span><span class="n">linspecer</span><span class="p">)</span>
+<span class="n">colorbar</span>
+<span class="s">title(&#39;左右晃动手势-反射数据&#39;)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">imagesc</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">range</span><span class="p">,</span><span class="n">diffCIR</span><span class="o">&#39;</span><span class="p">)</span>
+<span class="n">colormap</span><span class="p">(</span><span class="n">linspecer</span><span class="p">)</span>
+<span class="n">colorbar</span>
+<span class="s">c2</span> <span class="p">=</span> <span class="n">caxis</span><span class="p">;</span>
+<span class="n">c3</span> <span class="p">=</span> <span class="p">[</span><span class="n">min</span><span class="p">([</span><span class="n">c1</span> <span class="n">c2</span><span class="p">]),</span> <span class="n">max</span><span class="p">([</span><span class="n">c1</span> <span class="n">c2</span><span class="p">])];</span>
+<span class="n">caxis</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;左右晃动手势-数据处理后&#39;</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">caxis</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_5">数据文件样例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="./file/record_dynamic.mat">record_dynamic.mat</a></li>
+<li><a href="./file/record_static.mat">record_static.mat</a></li>
+</ul>
+<h2 id="_6">结果展示<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><center>
+<img src="./fig/2.jpg" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">数据结果图</div>
+<p></center></p>
+<p>收集到CIR特征数据后，就可以利用提取到的不同手势的反射CIR数据特征，训练分类器对手势进行分类。训练分类器的部分就不再进行介绍。</p>
+<h2 id="_7">参考文献<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[1] <a href="https://dl.acm.org/doi/10.1109/INFOCOM41043.2020.9155402">Push the Limit of Acoustic Gesture Recognition (Y. Wang, J. Shen and Y. Zheng)</a><div id="refer-1"></div></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../CH10_Tracking/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                13.3 基于信号相位追踪
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../S4_%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%98%B5%E5%88%97%E6%84%9F%E7%9F%A5/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                14.2 基于麦克风阵列的定位方法
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
