@@ -1418,24 +1418,17 @@ padding: 2px;">手势识别的流程</div>
 <p></center></p>
 <h2 id="_2">主要原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p><strong>信道冲击响应（CIR）提取</strong></p>
-<div>
-<div class="MathJax_Preview">
-r[n] = s[n] * h[n]
-</div>
-<script type="math/tex; mode=display">
-r[n] = s[n] * h[n]
-</script>
-</div>
-<p>利用发射一段经过特殊设计的已知声波<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span> ，运动过程中的手势会将其反射，在麦克风端接收到<span><span class="MathJax_Preview">r[n]</span><script type="math/tex">r[n]</script></span> ，利用信道估计方法即可提取<span><span class="MathJax_Preview">h[n]</span><script type="math/tex">h[n]</script></span>。通过对<span><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span>的分析与处理，我们就可以获取细粒度的反射信息，进而对手势变化过程中导致的反射变化特征进行提取。
-2. <strong>消除环境干扰</strong>
-   环境中除了存在由于手势运动带来的反射，其他的静态物体也会产生反射
-   - 利用相邻时间片的CIR在幅值和相位上做差分的方法提取其变化量，减小静态反射带来的干扰
-   - CIR图像的Y轴代表了距离信息，根据手势识别的范围，只提取指定距离范围内的CIR变化量
-3. <strong>特征提取与建立分类网络</strong>
-   利用上面测量CIR数据数据及处理的方法，可以收集大量实际运动过程中的数据，再将这些数据及对应的手势标签输入到经过设计的机器学习网络中训练分类器。在预测阶段，通过输入实际的运动数据到分类器中，就可以获取到相对应的手势类别（如相对麦克风左右晃动或前后晃动）。</p>
-</li>
+<li><strong>信道冲击响应（CIR）提取</strong>
+    $$
+    r[n] = s[n] * h[n]
+    $$
+    利用发射一段经过特殊设计的已知声波<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span> ，运动过程中的手势会将其反射，在麦克风端接收到<span><span class="MathJax_Preview">r[n]</span><script type="math/tex">r[n]</script></span> ，利用信道估计方法即可提取<span><span class="MathJax_Preview">h[n]</span><script type="math/tex">h[n]</script></span>。通过对<span><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span>的分析与处理，我们就可以获取细粒度的反射信息，进而对手势变化过程中导致的反射变化特征进行提取。</li>
+<li><strong>消除环境干扰</strong>
+   环境中除了存在由于手势运动带来的反射，其他的静态物体也会产生反射</li>
+<li>利用相邻时间片的CIR在幅值和相位上做差分的方法提取其变化量，减小静态反射带来的干扰</li>
+<li>CIR图像的Y轴代表了距离信息，根据手势识别的范围，只提取指定距离范围内的CIR变化量</li>
+<li><strong>特征提取与建立分类网络</strong>
+   利用上面测量CIR数据数据及处理的方法，可以收集大量实际运动过程中的数据，再将这些数据及对应的手势标签输入到经过设计的机器学习网络中训练分类器。在预测阶段，通过输入实际的运动数据到分类器中，就可以获取到相对应的手势类别（如相对麦克风左右晃动或前后晃动）。</li>
 </ol>
 <h2 id="matlab">示例代码与数据（matlab）<a class="headerlink" href="#matlab" title="Permanent link">&para;</a></h2>
 <h3 id="_3">录音端<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
