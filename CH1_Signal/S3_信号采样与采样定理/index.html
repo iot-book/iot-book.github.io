@@ -704,8 +704,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CH4_Filter/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%A6%82%E5%BF%B5/" class="md-nav__link">
-      7.1 滤波定义
+    <a href="../../CH4_Filter/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      7.1 数字滤波器简介
     </a>
   </li>
 
@@ -716,8 +716,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CH4_Filter/S2_%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
-      7.2 滤波器设计
+    <a href="../../CH4_Filter/S2_%E6%BB%91%E5%8A%A8%E5%B9%B3%E5%9D%87%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+      7.2 滑动平均滤波器
     </a>
   </li>
 
@@ -728,8 +728,44 @@
 
 
   <li class="md-nav__item">
-    <a href="../../CH4_Filter/S3_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
-      7.3 案例：使用滤波器对录音信号降噪
+    <a href="../../CH4_Filter/S3_FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+      7.3 FIR数字滤波器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S4_IIR%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+      7.4 IIR数字滤波器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S5_%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%26%E5%B7%B4%E7%89%B9%E6%B2%83%E6%96%AF/" class="md-nav__link">
+      7.5 高级IIR滤波器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CH4_Filter/S6_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%AF%94%E8%BE%83%E4%B8%8E%E9%80%89%E6%8B%A9/" class="md-nav__link">
+      7.6 案例：滤波器比较与选择
     </a>
   </li>
 
@@ -1327,7 +1363,7 @@
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 5Hz信号时域图</div>
 <p></center></p>
-<p>​       在上图中，我们取的采样点比较密集，因此图像看上去是一条连续的曲线。代码中，**信号频率**为<span><span class="MathJax_Preview">5Hz</span><script type="math/tex">5Hz</script></span>，而**采样频率**为<span><span class="MathJax_Preview">200Hz</span><script type="math/tex">200Hz</script></span>，这种情况下看到的信号很正常，符合正弦信号的特点。</p>
+<p>​       在上图中，我们取的采样点比较密集，因此图像看上去是一条连续的曲线。代码中，<strong>信号频率</strong> 为<span><span class="MathJax_Preview">5Hz</span><script type="math/tex">5Hz</script></span>，而 <strong>采样频率</strong> 为<span><span class="MathJax_Preview">200Hz</span><script type="math/tex">200Hz</script></span>，这种情况下看到的信号很正常，符合正弦信号的特点。</p>
 <p>​       我们再尝试另外一组参数组合。当我们将信号频率稍微做一些修改后，信号的时域图像就变成下图所示的样子：</p>
 <div class="highlight"><pre><span></span><code><span class="c">%% 信号的产生过程</span>
 <span class="c">%% 产生一个频率为100Hz、时长为1s的信号；</span>
@@ -1344,10 +1380,9 @@
 <p></center></p>
 <p>​       注意，同样是正弦信号，得到的结果从上图看，已经完全不是我们想象中的正弦图像了，大家想想看看这个是什么原因。</p>
 <p>​       从上面两幅信号时域图的对比中，我们思考为什么会有这样的不同，同样是每秒200个采样点，频率不同的正弦信号所画出来的图会有完全不一样的结果。</p>
-<p>​       我们很自然的有几个更深入的问题：连续的信号能否用离散的信号表示出来？如果能表示，是不是就得用无穷多的离散信号样本来表达？如果不需要无穷多的离散信号样本，到底需要多少才足够？</p>
-<p>​       这里牵涉到了信号采样中的一个重要问题，我们将这个问题更加具体、形式化地进行描述。假设信号中的频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>（一个信号可能包含多种频率），那么应该以多大的采样频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>对信号进行采样才合理呢？这里的“合理”是指我们通过采样后的离散信号，可以完全恢复出原本的连续信号（举例来说，从一组数据点中恢复出原始连续信号的一个数学表达式）。显然不可能采用无限大的采样频率，这样在计算机上无法处理。即使采用很大的采样频率，实际上也非常不经济，因为会占用大量的存储空间。这个问题也就变成信号的频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>，那么最小的采样频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>为多少。</p>
-<p>​       **奈奎斯特采样定律**告诉我们，为了进行合理地采样，采样频率必须满足<span><span class="MathJax_Preview">fs\ge2*f</span><script type="math/tex">fs\ge2*f</script></span>。采样过程所应遵循的规律，又称取样定理、抽样定理。采样定理说明了采样频率与信号频谱之间的关系，是连续信号转换为离散信号的基本依据。</p>
-<p>​       按照采样定律，在上面的“100<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>信号时域图”中，尽管我们看不到理想中的正弦图像，但因为“采样率<span><span class="MathJax_Preview">200Hz</span><script type="math/tex">200Hz</script></span>满足了至少是信号最大频率<span><span class="MathJax_Preview">100Hz</span><script type="math/tex">100Hz</script></span>的两倍”的条件，我们还是可以根据这些数据点恢复出原始的连续信号，即<span><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>。</p>
+<p>​       我们很自然的有几个更深入的问题：对于一个给定的连续信号，我们能不能够通过采样的方法完整的还原出原始信号？如果可以，我们到底应该要用多大的采样率来采样这个信号？</p>
+<p>​       这里牵涉到了信号采样中的一个重要问题，我们将这个问题更加具体、形式化地进行描述。假设信号中的频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>（一个信号可能包含多种频率），那么应该以多大的采样频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>对信号进行采样才合理呢？这里的“合理”是指我们通过采样后的离散信号，可以完全恢复出原本的连续信号（举例来说，从一组数据点中恢复出原始连续信号的一个数学表达式）。显然我们不可能采用无限大的采样频率，这样在计算机上无法处理，不具备实际的可操作性。采样频率的增大会带来额外的开销，实际上也非常不经济，例如会占用大量的存储空间。那么如果信号的频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>，那么最小的采样频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>为多少。</p>
+<p>​       <strong>奈奎斯特采样定律</strong> 告诉我们，为了进行合理地采样，保证采样后的数据能够还原出原来的信号，采样后的信号包含原来信号的所有特征。采样频率必须满足<span><span class="MathJax_Preview">fs\ge 2*f</span><script type="math/tex">fs\ge 2*f</script></span>，<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>是给定连续信号的频率。采样过程所应遵循的规律，又称取样定理、抽样定理。采样定理说明了采样频率与信号频谱之间的关系，是连续信号转换为离散信号的基本依据。</p>
 <p>​       如果采样率低于信号最大频率的两倍会怎样呢？我们来看一组更加有意思的例子：</p>
 <div class="highlight"><pre><span></span><code><span class="c">%% 信号的产生过程</span>
 <span class="c">%% 产生一个频率为401Hz、时长为1s的信号；</span>
@@ -1378,14 +1413,12 @@
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 401Hz信号时域图，采样率402Hz</div>
 <p></center></p>
 <p>​       上图看上去也是一个理想的正弦波信号，但是仔细观察横轴的时间刻度可以发现，这是一个频率为<span><span class="MathJax_Preview">1Hz</span><script type="math/tex">1Hz</script></span>的正弦波。</p>
-<p>​       当采样率无法满足采样定律的要求时，就称发生了**混叠现象**。而为什么会导致最后的频率为1Hz，大家也可以再思考一下，跟401<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>的信号频率和402<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>的采样率有什么联系。</p>
+<p>​       当采样率无法满足采样定律的要求时，就称发生了**混叠现象**。而为什么会导致最后的频率为1Hz，大家也可以再思考一下，跟401<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>的信号频率和402<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>的采样率有什么联系。用于演示混叠现象的经典例子之一是所谓的“车轮效应”。在影片里当马车越走越快时，马车车轮似乎越走越慢，之后甚至朝反方向旋转，为什么？</p>
 <blockquote>
 <p>思考
 1. 假设要将最大频率为8KHz的歌曲信号转成数字信号，需要的采样率至少是多少？
 2. 为什么用<span><span class="MathJax_Preview">402Hz</span><script type="math/tex">402Hz</script></span>的采样率去采样<span><span class="MathJax_Preview">401Hz</span><script type="math/tex">401Hz</script></span>的信号，会得到<span><span class="MathJax_Preview">1Hz</span><script type="math/tex">1Hz</script></span>的正弦信号？
-3. 一般地，如果原始信号频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>，采样频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>满足<span><span class="MathJax_Preview">f &lt; fs &lt; 2*f</span><script type="math/tex">f < fs < 2*f</script></span>，那么采样后（混叠后）的信号频率将会是多少？这样会对通信产生什么影响？
-4. 用于演示混叠现象的经典例子之一是所谓的“车轮效应”。在影片里当马车越走越快时，马车车轮似乎越走越慢，之后甚至朝反方向旋转，为什么？    <br />
-</p>
+3. 一般地，如果原始信号频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>，采样频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>满足<span><span class="MathJax_Preview">f &lt; fs &lt; 2*f</span><script type="math/tex">f < fs < 2*f</script></span>，那么采样后（混叠后）的信号频率将会是多少？这样会对通信产生什么影响？</p>
 </blockquote>
 <h2 id="_2">参考资料和文献<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ol>
