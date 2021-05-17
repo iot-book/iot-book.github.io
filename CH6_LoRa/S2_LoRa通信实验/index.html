@@ -1399,7 +1399,7 @@
 <p>在这节我们介绍LoRa的调制与解调，也即如何在物理波形和比特数据之间进行转换。</p>
 <p>LoRa 使用 CSS （Chirp Spread Spectrum）线性扩频调制，频率线性扫过整个带宽，因此抗干扰极强，对多径和多普勒效应的抵抗也很强。LoRa的基本通信单元是linear chirp，也即频率随时间线性增加（或减小）的信号。我们将频率随着时间线性增加的chirp符号叫做upchirp，将频率随着时间线性减小的chirp符号叫做downchirp。如下两图分别从时域波形和时频域展示了一个upchirp的图像：</p>
 <p><center>
-<img src="./fig/Chirp_time.png" width="300px">
+<img src="./fig/chirp-time.png" width="300px">
 </center>
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1407,15 +1407,16 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. Chirp时域图。横坐标为时间，纵坐标为信号幅度。</div>
 <p></center></p>
-<p><center>
+<!-- <center>
 <img src="./fig/Chirp_freq.png" width="300px">
 </center>
-<center></p>
+<center>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
 padding: 2px;">图. Chirp时频图。横坐标为时间，纵坐标为频率。</div>
-<p></center></p>
+</center> -->
+
 <p><center>
 <img src="./fig/Chirp.png" width="400px">
 </center>
@@ -1423,7 +1424,7 @@ padding: 2px;">图. Chirp时频图。横坐标为时间，纵坐标为频率。<
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. upchirp和downchirp</div>
+padding: 2px;">图. upchirp时频图。横坐标为时间，纵坐标为频率</div>
 <p></center></p>
 <p>一个chirp怎么编码数据呢？LoRa的做法是通过循环平移chirp进行数据的编码，依不同的起始频率代表不同的数据。如下图所示，在带宽B内四等分标定四个起始频率，我们可以得到4种类型的符号，分别表示00，01，10，11。我们将图(a)所示从最低频率扫频到最高频率的chirp符号称为basic upchirp。</p>
 <p><center>
@@ -1457,7 +1458,7 @@ padding: 2px;">图. LoRa数据包时频图</div>
 <p></center></p>
 <p>一个完整的LoRa数据包结构包含三个部分：前导码（Preamble）、SFD（Start Frame Delimiter）和数据部分（Data）。 前导码包含6~65535个basic upchirp和两个标识网络号的其他chirp符号。接着是2.25个basic downchirp，作为SFD标识数据段的开始。后面的数据段则包含着若干编码了数据的data chirp。</p>
 <p>LoRa解调过程，实质就是求出chirp符号的起始频率，其做法通常是这样的：首先将收到的基带upchirp信号与downchirp点乘，化为单频信号，这一操作叫做dechirp（解扩频）。Dechirp能够将chirp信号能量集中到单一频率，是LoRa的抗噪及传输远距离的原因之一。</p>
-<p>Dechirp之后，对得到的信号进一步做FFT(快速傅里叶变换)，即可在频域获得一个峰值，这个峰值位置对应的频率即是起始频率，我们因此得到对应的<span><span class="MathJax_Preview">SF</span><script type="math/tex">SF</script></span>个比特。对于非basic upchirp而言，如果采样率高于带宽的话，会得到两个峰，我们可以将这两个峰进行叠加来增强峰的高度，来求出对应的位置。下面两图分别对应basic upchirp和非basic upchirp的解调过程。</p>
+<p>Dechirp之后，对得到的信号进一步做FFT(快速傅里叶变换)，即可在频域获得一个峰值，这个峰值位置对应的频率即是起始频率，我们因此得到对应的<span><span class="MathJax_Preview">SF</span><script type="math/tex">SF</script></span>个比特。对于非basic upchirp而言，如果采样率高于带宽的话，会得到两个峰，我们可以将这两个峰进行叠加来增强峰的高度，进而求出对应的位置。下面两图分别对应basic upchirp和非basic upchirp的解调过程。</p>
 <p><center>
 <img src="./fig/decode_0.png" width="400px">
 </center>
@@ -1477,14 +1478,19 @@ color: #999;
 padding: 2px;">图. 解调非basic upchirp</div>
 <p></center></p>
 <p>我们再以数学式子的形式将上面的过程更细致地梳理一遍。</p>
-<p>upchirp从最低频率开始，随时间增加逐渐上升至最高频率。而downchirp则与之相反，从最高频率逐渐下降至最低频率。最高频率和最低频率之间的差值为LoRa的带宽<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>。设basic upchirp的最低频率为<span><span class="MathJax_Preview">f_0=-\frac{B}{2}</span><script type="math/tex">f_0=-\frac{B}{2}</script></span>，最高频率为<span><span class="MathJax_Preview">f_1=\frac{B}{2}</span><script type="math/tex">f_1=\frac{B}{2}</script></span>，chirp长度为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>。因此其频率可以表示为<span><span class="MathJax_Preview">f(t)=f_0+kt</span><script type="math/tex">f(t)=f_0+kt</script></span>，其中<span><span class="MathJax_Preview">k=\frac{BW}{T}</span><script type="math/tex">k=\frac{BW}{T}</script></span>表示扫频速度。由此，basic upchirp可以表示为：
-$$
-C(t)=e^{j2\pi(f_0+kt) t}
-$$</p>
+<p>upchirp从最低频率开始，随时间增加逐渐上升至最高频率。而downchirp则与之相反，从最高频率逐渐下降至最低频率。最高频率和最低频率之间的差值为LoRa的带宽<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>。设basic upchirp的最低频率为<span><span class="MathJax_Preview">f_0=-\frac{B}{2}</span><script type="math/tex">f_0=-\frac{B}{2}</script></span>，最高频率为<span><span class="MathJax_Preview">f_1=\frac{B}{2}</span><script type="math/tex">f_1=\frac{B}{2}</script></span>，chirp长度为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>。因此其频率可以表示为<span><span class="MathJax_Preview">f(t)=f_0+kt</span><script type="math/tex">f(t)=f_0+kt</script></span>，其中<span><span class="MathJax_Preview">k=\frac{BW}{T}</span><script type="math/tex">k=\frac{BW}{T}</script></span>表示扫频速度。线性变化的频率对时间做积分可以得到二次形式的相位<span><span class="MathJax_Preview">\phi(t) = 2\pi (f_0 t + \frac{1}{2}kt^2)</span><script type="math/tex">\phi(t) = 2\pi (f_0 t + \frac{1}{2}kt^2)</script></span>。由此，basic upchirp可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+C(t)=e^{j2\pi(f_0+\frac{1}{2}kt) t}
+</div>
+<script type="math/tex; mode=display">
+C(t)=e^{j2\pi(f_0+\frac{1}{2}kt) t}
+</script>
+</div>
 <blockquote>
 <p>思考：这里频率为什么会有负的，意义是什么？</p>
 </blockquote>
-<p>当嵌入数据时，LoRa首先令basic upchirp乘上一个固定频率的偏移分量，偏移后的信号可以表示为<span><span class="MathJax_Preview">C(t)e^{j2\pi ft}</span><script type="math/tex">C(t)e^{j2\pi ft}</script></span>。随后，LoRa将所有频率高于<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span>的信号段循环频移至<span><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span>频率处，频移后的信号如下图(e)所示。如果定义了 <span><span class="MathJax_Preview">2^{SF}</span><script type="math/tex">2^{SF}</script></span> 种不同的偏移频率，最多可以表示 <span><span class="MathJax_Preview">SF</span><script type="math/tex">SF</script></span> 比特的数据。</p>
+<p>当嵌入数据时，LoRa首先令basic upchirp乘上一个固定频率的偏移分量，偏移后的信号可以表示为<span><span class="MathJax_Preview">C(t)e^{j2\pi \Delta ft}</span><script type="math/tex">C(t)e^{j2\pi \Delta ft}</script></span>。随后，LoRa将所有频率高于<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span>的信号段循环频移至<span><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span>频率处，频移后的信号如下图(e)所示。如果定义了 <span><span class="MathJax_Preview">2^{SF}</span><script type="math/tex">2^{SF}</script></span> 种不同的偏移频率，最多可以表示 <span><span class="MathJax_Preview">SF</span><script type="math/tex">SF</script></span> 比特的数据。</p>
 <p>在解调部分，我们要进行dechirp和FFT。对于一个收到的数据包，LoRa首先令数据包中每个数据upchirp与basic downchirp相乘。与upchirp类似，basic downchirp可以表示为：</p>
 <div>
 <div class="MathJax_Preview">
@@ -1497,13 +1503,13 @@ C^*(t)=e^{j2\pi(f_1-kt) t}
 <p>当<span><span class="MathJax_Preview">f_0 = -f_1</span><script type="math/tex">f_0 = -f_1</script></span>时，<span><span class="MathJax_Preview">C^*(t)</span><script type="math/tex">C^*(t)</script></span>是<span><span class="MathJax_Preview">C(t)</span><script type="math/tex">C(t)</script></span>的共轭，因此这个相乘的结果是一个单频信号，其频率等于编码chirp的频率偏移量：</p>
 <div>
 <div class="MathJax_Preview">
-C^*(t)\cdot C(t)e^{j2\pi ft}=e^{j2\pi ft}
+C^*(t)\cdot C(t)e^{j2\pi \Delta ft}=e^{j2\pi \Delta ft}
 </div>
 <script type="math/tex; mode=display">
-C^*(t)\cdot C(t)e^{j2\pi ft}=e^{j2\pi ft}
+C^*(t)\cdot C(t)e^{j2\pi \Delta ft}=e^{j2\pi \Delta ft}
 </script>
 </div>
-<p>对<span><span class="MathJax_Preview">e^{j2\pi ft}</span><script type="math/tex">e^{j2\pi ft}</script></span>做FFT将时域信号转化为频域波峰，波峰的下标即对应信号编码的数据。</p>
+<p>对<span><span class="MathJax_Preview">e^{j2\pi \Delta ft}</span><script type="math/tex">e^{j2\pi \Delta ft}</script></span>做FFT将时域信号转化为频域波峰，波峰的下标即对应信号编码的数据。</p>
 <p>整个LoRa解码流程如下图所示，对应两种信号的解码，左为basic upchirp，右为非basic upchirp。第一行为信号的时间-频率图，第二行为信号的时间-幅度图，第三行为信号乘downchirp后的时间-幅度图，第四行为傅里叶变换结果，注意左边在0的位置有峰。</p>
 <p><center>
 <img src="./fig/loraDecoder.png" width="800px">
@@ -1515,11 +1521,17 @@ color: #999;
 padding: 2px;">图. LoRa解调流程</div>
 <p></center></p>
 <blockquote>
-<p>需要特别指出的是：
-1. 上述解调过程只是其中的一种方法，也有很多其他的方法，比如有一些研究工作就利用时域上观察频率变化规律来解码（大家可以想想这个有什么根本问题）。
-2. 上述解调过程中其实还有很多细节，例如如何达到最好的解调效果、如何精准地找到频率等。这些目前都没有完全展开，请读者参考论文[6]和代码实现<a href="https://github.com/jkadbear/LoRaPHY">LoRaPHY</a>仔细思考。</p>
+<p>需要特别指出的是：</p>
+<ol>
+<li>
+<p>上述解调过程只是其中的一种方法，也有很多其他的方法，比如有一些研究工作就利用时域上观察频率变化规律来解码（大家可以想想这个有什么根本问题）。</p>
+</li>
+<li>
+<p>上述解调过程中其实还有很多细节，例如如何达到最好的解调效果、如何精准地找到频率等。这些目前都没有完全展开，请读者参考论文[6]和代码实现<a href="https://github.com/jkadbear/LoRaPHY">LoRaPHY</a>仔细思考。</p>
+</li>
+</ol>
 </blockquote>
-<p>接下来我们介绍CFO（Carrier Frequency Offset，载波频偏）和TO（Time Offset，时间偏移）的影响。 假设我们发送的chirp信号扫频范围在 470MHz ~ 470.5MHz，到了接受端，收到的信号扫频范围可能会变成 470MHz+<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ~ 470.125MHz+<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ，这个频偏是由于收发端时钟不一致造成的，我们称之为CFO。 当我们解码的时候，截取信号的窗口可能没有和chirp符号完全对齐，这样也会带来一个频率偏移，我们称之为TO。 下图展示了有无CFO、窗口是否对齐的四种解调结果。</p>
+<p>接下来我们介绍CFO（Carrier Frequency Offset，载波频偏）和TO（Time Offset，时间偏移）的影响。 假设我们发送的chirp信号扫频范围在 470MHz ~ 470.5MHz，到了接受端，收到的信号扫频范围可能会变成 470MHz+<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ~ 470.5MHz+<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ，这个频偏是由于收发端时钟不一致造成的，我们称之为CFO。 当我们解码的时候，截取信号的窗口可能没有和chirp符号完全对齐，这样也会带来一个频率偏移，我们称之为TO。 下图展示了有无CFO、窗口是否对齐的四种解调结果。</p>
 <p><center>
 <img src="./fig/CFO_TO.png" width="600px">
 </center>
@@ -1588,9 +1600,9 @@ padding: 2px;">图. 生成的LoRa数据包</div>
 </code></pre></div>
 <p>输出结果为：</p>
 <blockquote>
-<p>[demodulate] symbols: 481 177 417 33 97 73 249 401 181 91 299 379 9 2 1 1 1 64
-[decode] data: 1 2 3 4 119 16
-[decode] checksum: 119 16</p>
+<p>[demodulate] symbols: 481 177 417 33 97 73 249 401 181 91 299 379 9 2 1 1 1 64</p>
+<p>[decode] data: 1 2 3 4 119 16</p>
+<p>[decode] checksum: 119 16</p>
 </blockquote>
 <h2 id="lora_3">基于声波的LoRa通信<a class="headerlink" href="#lora_3" title="Permanent link">&para;</a></h2>
 <p>在这一节，我们来实现基于声波的LoRa通信。采用Matlab生成声音，然后通过手机去播放(发射)，使用另一台手机去录音(接收)。最后再将这段信号传到电脑端进行最后的解码。</p>
@@ -1683,7 +1695,7 @@ padding: 2px;">图. 通信流程</div>
     <span class="n">y</span> <span class="p">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
 <span class="n">end</span>
 </code></pre></div>
-<p>第三步是解码，这一步首先要对齐信号，我们根据信号能量，大致信号所在的区间。通过滑动窗口平均，可以过滤部分能量突变的情况。</p>
+<p>第三步是解码，这一步首先要对齐信号，我们根据信号能量找到大致信号所在的区间（由于前导码的存在，这一步并非必要的）。通过滑动窗口平均，可以过滤部分能量突变的情况。</p>
 <div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="p">=</span> <span class="n">movmean</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">rec_chirp_sound</span><span class="p">),</span> <span class="n">mwin</span><span class="p">);</span>
 <span class="n">thresh</span> <span class="p">=</span> <span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">))</span><span class="o">/</span><span class="mi">3</span> <span class="o">+</span> <span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
 <span class="n">inds</span> <span class="p">=</span> <span class="nb">find</span><span class="p">(</span><span class="n">A</span> <span class="o">&gt;</span> <span class="n">thresh</span><span class="p">);</span>  <span class="c">% 找信号高于thresh的下标位置</span>
