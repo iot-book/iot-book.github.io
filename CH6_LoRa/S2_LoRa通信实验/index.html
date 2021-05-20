@@ -1399,7 +1399,7 @@
 <p>在这节我们介绍LoRa的调制与解调，也即如何在物理波形和比特数据之间进行转换。</p>
 <p>LoRa 使用 CSS （Chirp Spread Spectrum）线性扩频调制，频率线性扫过整个带宽，因此抗干扰极强，对多径和多普勒效应的抵抗也很强。LoRa的基本通信单元是linear chirp，也即频率随时间线性增加（或减小）的信号。我们将频率随着时间线性增加的chirp符号叫做upchirp，将频率随着时间线性减小的chirp符号叫做downchirp。如下两图分别从时域波形和时频域展示了一个upchirp的图像：</p>
 <p><center>
-<img src="./fig/chirp-time.png" width="300px">
+<img src="./fig/Chirp_time.png" width="300px">
 </center>
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1424,7 +1424,7 @@ padding: 2px;">图. Chirp时频图。横坐标为时间，纵坐标为频率。<
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. upchirp时频图。横坐标为时间，纵坐标为频率</div>
+padding: 2px;">图. upchirp的时频图。横坐标为时间，纵坐标为频率</div>
 <p></center></p>
 <p>一个chirp怎么编码数据呢？LoRa的做法是通过循环平移chirp进行数据的编码，依不同的起始频率代表不同的数据。如下图所示，在带宽B内四等分标定四个起始频率，我们可以得到4种类型的符号，分别表示00，01，10，11。我们将图(a)所示从最低频率扫频到最高频率的chirp符号称为basic upchirp。</p>
 <p><center>
@@ -1521,15 +1521,9 @@ color: #999;
 padding: 2px;">图. LoRa解调流程</div>
 <p></center></p>
 <blockquote>
-<p>需要特别指出的是：</p>
-<ol>
-<li>
-<p>上述解调过程只是其中的一种方法，也有很多其他的方法，比如有一些研究工作就利用时域上观察频率变化规律来解码（大家可以想想这个有什么根本问题）。</p>
-</li>
-<li>
-<p>上述解调过程中其实还有很多细节，例如如何达到最好的解调效果、如何精准地找到频率等。这些目前都没有完全展开，请读者参考论文[6]和代码实现<a href="https://github.com/jkadbear/LoRaPHY">LoRaPHY</a>仔细思考。</p>
-</li>
-</ol>
+<p>需要特别指出的是：
+1. 上述解调过程只是其中的一种方法，也有很多其他的方法，比如有一些研究工作就利用时域上观察频率变化规律来解码（大家可以想想这个有什么根本问题）。
+2. 上述解调过程中其实还有很多细节，例如如何达到最好的解调效果、如何精准地找到频率等。这些目前都没有完全展开，请读者参考论文[6]和代码实现<a href="https://github.com/jkadbear/LoRaPHY">LoRaPHY</a>仔细思考。</p>
 </blockquote>
 <p>接下来我们介绍CFO（Carrier Frequency Offset，载波频偏）和TO（Time Offset，时间偏移）的影响。 假设我们发送的chirp信号扫频范围在 470MHz ~ 470.5MHz，到了接受端，收到的信号扫频范围可能会变成 470MHz+<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ~ 470.5MHz+<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ，这个频偏是由于收发端时钟不一致造成的，我们称之为CFO。 当我们解码的时候，截取信号的窗口可能没有和chirp符号完全对齐，这样也会带来一个频率偏移，我们称之为TO。 下图展示了有无CFO、窗口是否对齐的四种解调结果。</p>
 <p><center>
@@ -1600,9 +1594,9 @@ padding: 2px;">图. 生成的LoRa数据包</div>
 </code></pre></div>
 <p>输出结果为：</p>
 <blockquote>
-<p>[demodulate] symbols: 481 177 417 33 97 73 249 401 181 91 299 379 9 2 1 1 1 64</p>
-<p>[decode] data: 1 2 3 4 119 16</p>
-<p>[decode] checksum: 119 16</p>
+<p>[demodulate] symbols: 481 177 417 33 97 73 249 401 181 91 299 379 9 2 1 1 1 64
+[decode] data: 1 2 3 4 119 16
+[decode] checksum: 119 16</p>
 </blockquote>
 <h2 id="lora_3">基于声波的LoRa通信<a class="headerlink" href="#lora_3" title="Permanent link">&para;</a></h2>
 <p>在这一节，我们来实现基于声波的LoRa通信。采用Matlab生成声音，然后通过手机去播放(发射)，使用另一台手机去录音(接收)。最后再将这段信号传到电脑端进行最后的解码。</p>
