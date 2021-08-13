@@ -1,0 +1,2322 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+      
+        <meta name="author" content="WiSys Lab">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+    
+    
+      
+        <title>4.1 定义与概念 - IoTBook - 清华大学 - 王继良</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f7f47774.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IoTBook - 清华大学 - 王继良" class="md-header__button md-logo" aria-label="IoTBook - 清华大学 - 王继良" data-md-component="logo">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IoTBook - 清华大学 - 王继良
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.1 定义与概念
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IoTBook - 清华大学 - 王继良" class="md-nav__button md-logo" aria-label="IoTBook - 清华大学 - 王继良" data-md-component="logo">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    IoTBook - 清华大学 - 王继良
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_%E5%89%8D%E8%A8%802/" class="md-nav__link">
+        第2版前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_%E5%89%8D%E8%A8%801/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        第1版前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_%E7%89%A9%E8%81%94%E7%BD%91%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        第1章 物联网概述
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        第2章 信号处理基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          第2章 信号处理基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/" class="md-nav__link">
+        2.1 信号生成、发送和接收
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        2.2 从模拟到数字
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        2.3 信号采样与采样定理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/" class="md-nav__link">
+        2.4 信号量化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        2.5 案例：声音采集与播放
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        第3章 傅里叶分析
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          第3章 傅里叶分析
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/" class="md-nav__link">
+        3.1 历史与发展
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/" class="md-nav__link">
+        3.2 傅里叶级数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        3.3 傅里叶变换
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" class="md-nav__link">
+        3.4 离散傅里叶分析
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        3.5 案例：短时傅里叶与频谱
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        第4章 无线信道
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          第4章 无线信道
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4.1 定义与概念
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        4.1 定义与概念
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    信道定义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cir" class="md-nav__link">
+    信道冲击响应（CIR）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cfr" class="md-nav__link">
+    信道频率响应（CFR）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csi" class="md-nav__link">
+    信道状态信息（CSI）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    信道状态估计
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-nav__link">
+        4.2 路径损耗与阴影衰落
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        4.3 多径信道模型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S4_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+        4.4 案例：信道仿真与测量
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        第5章 信号滤波
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          第5章 信号滤波
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        5.1 数字滤波器简介
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S2_%E6%BB%91%E5%8A%A8%E5%B9%B3%E5%9D%87%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        5.2 滑动平均滤波器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S3_FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        5.3 FIR数字滤波器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S4_IIR%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        5.4 IIR数字滤波器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S5_%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%26%E5%B7%B4%E7%89%B9%E6%B2%83%E6%96%AF/" class="md-nav__link">
+        5.5 高级IIR滤波器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S6_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%AF%94%E8%BE%83%E4%B8%8E%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        5.6 案例：滤波器比较与选择
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        第6章 数据调制和解调
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          第6章 数据调制和解调
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        6.1 引言
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        6.2 幅度调制
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        6.3 频率调制
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        6.4 相位调制
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/" class="md-nav__link">
+        6.5 载波上变频
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        6.6 调制方法综合应用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+        6.7 简单无线通信系统的实现
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        第7章 短距离无线通信技术
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          第7章 短距离无线通信技术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S1_WiFi/" class="md-nav__link">
+        7.1 Wi-Fi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S2_%E8%93%9D%E7%89%99/" class="md-nav__link">
+        7.2 蓝牙
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S3_ZigBee/" class="md-nav__link">
+        7.3 ZigBee
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S4_%E6%A1%88%E4%BE%8B%EF%BC%88%E8%93%9D%E7%89%99%EF%BC%89/" class="md-nav__link">
+        7.4 案例：蓝牙连接实验
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        第8章 反向散射通信技术
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第8章 反向散射通信技术" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          第8章 反向散射通信技术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        8.1 RFID
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        8.2 LoRa Backscatter
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      <label class="md-nav__link" for="__nav_11">
+        第9章 LoRa
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          第9章 LoRa
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        9.1 LoRa 发展简史
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+        9.2 LoRa 调制解调技术
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+        9.3 LoRa 冲突解码算法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A%E6%A6%82%E8%BF%B0%E5%92%8C%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        9.4 LoRa 测试床介绍与实现
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S6_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/" class="md-nav__link">
+        9.5 LoRa 设备远程更新
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      <label class="md-nav__link" for="__nav_12">
+        第10章 可见光通信
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          第10章 可见光通信
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/S1_%E4%BA%A7%E7%94%9F%E8%83%8C%E6%99%AF/" class="md-nav__link">
+        10.1 Li-Fi的产生背景
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/S2_Li-Fi%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/" class="md-nav__link">
+        10.2 Li-Fi的优缺点
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      <label class="md-nav__link" for="__nav_13">
+        第11章 毫米波通信
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          第11章 毫米波通信
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/S1_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1%E7%9A%84%E5%85%B4%E8%B5%B7/" class="md-nav__link">
+        11.1 毫米波通信的兴起
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/S2_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/" class="md-nav__link">
+        11.2 毫米波通信的优缺点
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      <label class="md-nav__link" for="__nav_14">
+        第12章 无线测距
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          第12章 无线测距
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        12.1 基于信号强度测距
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        12.2 基于传播时间测距
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S3_FMCW%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        12.3 FMCW测距
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      <label class="md-nav__link" for="__nav_15">
+        第13章 无线定位
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          第13章 无线定位
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S1_TOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        13.1 ToA定位
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        13.2 TDoA定位
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S3_%E5%9F%BA%E4%BA%8E%E5%88%B0%E8%BE%BE%E8%A7%92%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        13.3 基于到达角定位
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S4_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E7%9A%84%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        13.4 基于信号指纹定位
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
+      
+      <label class="md-nav__link" for="__nav_16">
+        第14章 无线追踪
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
+        <label class="md-nav__title" for="__nav_16">
+          <span class="md-nav__icon md-icon"></span>
+          第14章 无线追踪
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        14.1 基于多普勒效应追踪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        14.2 基于FMCW追踪
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        14.3 基于信号相位追踪
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+      
+      <label class="md-nav__link" for="__nav_17">
+        第15章 传感器感知
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
+        <label class="md-nav__title" for="__nav_17">
+          <span class="md-nav__icon md-icon"></span>
+          第15章 传感器感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S1_%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        15.1 传感器原理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S2_%E6%83%AF%E6%80%A7%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+        15.2 惯性传感器感知
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%89%E5%8D%93%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        15.3 案例：安卓传感器编程
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
+      
+      <label class="md-nav__link" for="__nav_18">
+        第16章 声波感知
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
+        <label class="md-nav__title" for="__nav_18">
+          <span class="md-nav__icon md-icon"></span>
+          第16章 声波感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S1_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        16.1 声波感知技术简介
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S2_%E4%B8%BB%E5%8A%A8%E5%BC%8F%E5%A3%B0%E6%B3%A2%E5%AE%9A%E4%BD%8D%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        16.2 主动式声波定位方法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S3_%E8%A2%AB%E5%8A%A8%E5%BC%8F%E5%A3%B0%E6%B3%A2%E5%AE%9A%E4%BD%8D%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        16.3 被动式声波定位方法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S4_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A3%B0%E6%B3%A2%E4%BF%A1%E5%8F%B7%E7%89%B9%E5%BE%81%E7%9A%84%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" class="md-nav__link">
+        16.4 案例：基于声波信号特征的手势识别
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%A3%B0%E9%9F%B3%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/" class="md-nav__link">
+        16.5 案例：声音设备认证
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S6_%E6%A1%88%E4%BE%8B%EF%BC%9A%E9%BA%A6%E5%85%8B%E9%A3%8E%E9%98%B5%E5%88%97%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+        16.6 案例：麦克风阵列感知
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      <label class="md-nav__link" for="__nav_19">
+        第17章 Wi-Fi感知
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
+        <label class="md-nav__title" for="__nav_19">
+          <span class="md-nav__icon md-icon"></span>
+          第17章 Wi-Fi感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S1_%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" class="md-nav__link">
+        17.1 信道状态信息获取
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S2_CSI%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/" class="md-nav__link">
+        17.2 CSI分析实例
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+      
+      <label class="md-nav__link" for="__nav_20">
+        第18章 蓝牙感知
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
+        <label class="md-nav__title" for="__nav_20">
+          <span class="md-nav__icon md-icon"></span>
+          第18章 蓝牙感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_蓝牙感知/S1_蓝牙寻向原理/index.md" class="md-nav__link">
+        18.1 蓝牙寻向原理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_蓝牙感知/S2_蓝牙定位设备/index.md" class="md-nav__link">
+        18.2 蓝牙定位设备
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_蓝牙感知/S3_定位算法/index.md" class="md-nav__link">
+        18.3 定位算法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_蓝牙感知/S4_应用/index.md" class="md-nav__link">
+        18.4 应用
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        第19章 Backscatter感知
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
+      
+      <label class="md-nav__link" for="__nav_22">
+        第20章 UWB感知
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
+        <label class="md-nav__title" for="__nav_22">
+          <span class="md-nav__icon md-icon"></span>
+          第20章 UWB感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB感知/S1_UWB简介/index.md" class="md-nav__link">
+        20.1 UWB简介
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB感知/S2_UWB设备与开发环境/index.md" class="md-nav__link">
+        20.2 UWB设备与开发环境
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB感知/S3_UWB定位算法/index.md" class="md-nav__link">
+        20.3 UWB定位算法
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        第21章 LoRa感知
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        第22章 毫米波感知
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
+      
+      <label class="md-nav__link" for="__nav_25">
+        第23章 可见光感知
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
+        <label class="md-nav__title" for="__nav_25">
+          <span class="md-nav__icon md-icon"></span>
+          第23章 可见光感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S1_%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        23.1 概述
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S2_%E4%B8%BB%E5%8A%A8%E5%BC%8F/" class="md-nav__link">
+        23.2 主动式设备定位
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S3_%E8%A2%AB%E5%8A%A8%E5%BC%8F/" class="md-nav__link">
+        23.3 被动式标签定位和姿态估计
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
+      
+      <label class="md-nav__link" for="__nav_26">
+        附录
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="附录" data-md-level="1">
+        <label class="md-nav__title" for="__nav_26">
+          <span class="md-nav__icon md-icon"></span>
+          附录
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_附录/android开发基础.md" class="md-nav__link">
+        2.1 Android 环境搭建
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_附录/matlab基础.md" class="md-nav__link">
+        2.2 MATLAB 环境搭建
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    信道定义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cir" class="md-nav__link">
+    信道冲击响应（CIR）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cfr" class="md-nav__link">
+    信道频率响应（CFR）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csi" class="md-nav__link">
+    信道状态信息（CSI）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    信道状态估计
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">无线信道<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">信道定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>就像车辆运输需要道路一样，信号的传输也需要通过信道。根据维基百科的定义，信道又称为通道、频道或者波道，是信号在通信系统中传输的通道，由信号从发射端到接收端所经过的所有传输媒质所构成，广义的信道定义还包括传输信号的相关设备。理解信道是理解数据传输的重要基础，在物联网领域的前沿研究工作——从物联网通信到物联网感知——都是以通信信道为基础的，他们或要解决信道带来的问题，或利用信道带来的特点。</p>
+<p>在学习这一部分的过程中，我们始终要围绕着下面的问题：</p>
+<ul>
+<li>什么是信道？</li>
+<li>怎样表示信道?</li>
+</ul>
+<p>首先我们知道传输目的，就是通过接收到的信号还原出发送的信号。而在这个过程中，我们首先要搞清楚如何表示信号（调制）以及如何表示信道（传输的影响）。假设发送信号为<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, 那么接收到到的信号为<span><span class="MathJax_Preview">f(s)</span><script type="math/tex">f(s)</script></span>,其中函数<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>就是信道对信号的影响，传输的目的就是基于接收到的<span><span class="MathJax_Preview">f(s)</span><script type="math/tex">f(s)</script></span>计算出<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>。当然最理想的情况下，信道不会对信号产生任何影响，那么接收到的<span><span class="MathJax_Preview">f(s) = s</span><script type="math/tex">f(s) = s</script></span>。</p>
+<p>通俗地来理解信道，一个信号从发送端通过一定的媒介到达接收端。这就是一个典型通信过程，就包括发射端-信道-接收端三个部分。例如你晚上写的作业，第二天交到老师的手上，你就是发送端，作业就是你的数据，作业本以及交的这个过程就是信道，老师就是接收方。
+所以要保证老师看到你的作业，首先你写的内容至少要保证没有问题，你会想尽办法保证写的东西是正确的，怕老师看不清会把字写大一些，为了让老师知道是谁的作业会把名字写上，作业里面的重点会标记好，这些都是传输端做的保证发送稳定性的方法。同时你也会尽量保证作业本能够稳定的交到老师手上，这是减少信道的影响，下雨了你会将作业小心的保护起来等，老师收到作业知道才知道你写的内容。确保老师看到作业的时候，知道你当时写了什么内容。</p>
+<p>更确切的说，信道可以分为狭义信道和广义信道两类：</p>
+<p><strong>狭义信道：</strong> 按照传输媒质来划分，可以分为有线信道、无线信道和存储信道三类。值得注意的是，磁带、磁盘等数据存储媒质也可以被看作是一种通信信道。将数据写入存储媒质的过程即等效于发射机将信号传输到信道的过程，将数据从存储媒质读出的过程即等效于接收机从信道接收信号的过程。</p>
+<p><strong>广义信道：</strong> 按照信道功能进行划分，可以分为调制信道和编码信道两类。调制信道是指信号从调制器的输出端传输到解调器的输入端经过的部分。对于调制和解调的研究者来说，信号在调制信道上经过的传输媒质和变换设备都对信号做出了某种形式的变换，研究者只关心这些变换的输入和输出的关系，并不关心实现这一系列变换的具体物理过程。这一系列变换的输入与输出之间的关系。编码信道是指数字信号由编码器输出端传输到译码器输入端经过的部分。对于编译码的研究者来说，编码器输出的数字序列经过编码信道上的一系列变换之后，在译码器的输入端成为另一组数字序列，研究者只关心这两组数字序列之间的变换关系，而并不关心这一系列变换发生的具体物理过程，甚至并不关心信号在调制信道上的具体变化。</p>
+<p><center>
+<img src="./fig/CH3_信道.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 信道示意</div>
+<p></center></p>
+<p>理解信道是理解通信和感知的重要基础，因为很多通信处理和感知方法都是基于信道来实现的，理解信道的过程首先需要理解信道对信号的基本影响（如衰减、多径效应等），以及这些影响如何来科学的进行表示。这就是这章要讲的全部，理解这些之后，对于通信过程中碰到的大部分问题其实就比较明确和容易理解了，之前我们说过信道的理解也是物联网感知的基础，理解了信道后对于理解物联网无线定位和感知也比较方便了。</p>
+<h2 id="cir">信道冲击响应（CIR）<a class="headerlink" href="#cir" title="Permanent link">&para;</a></h2>
+<!-- 从单位冲击响应讲起，介绍冲击响应通过信道的变化，然后介绍如何一般化这种影响，介绍信道参数H等。 -->
+<p>信道研究的第一步，是要建立对信道的描述，即表示出任意输入信号通过该信道后的响应信号。但可能的输入信号波形有成千上万种，针对某个特定信道，我们不可能在该信道上对每一种波形的响应都进行研究，因此我们必须要找到那个可以用于构造任意波形的“单位1”。</p>
+<p>幸运的是，在信道描述方面，单位脉冲信号就是一种非常理想的“单位1”：我们可以将任意信号可以分解成若干不同时延的单位脉冲信号的线性叠加。这样一来，通过研究单位脉冲通过信道后的响应，我们可以计算出任意信号通过信道后的结果。例如，假设发送端不是单位冲击信号，而是两倍高度的冲击信号，那么很自然的接收方的信号也会变成了两倍高度。当然这里我们假设信号是线性的，非线性的信道我们暂时不考虑，在大部分的分析中，线性信道的假设是足够且合理的了，本材料后面的部分也都是基于线性信道进行介绍的。注意大家看到的大部分论文等也都基于线性信道，所以后面材料中除非特别说明，都是假设线性信道。</p>
+<p>我们用一个例子来说明如何用单位脉冲信号的信道响应（CIR）来表示任意信号通过信道后的响应输出。为例方便表示，以下说明将使用离散信号形式。离散形式的单位脉冲信号可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+\delta[n]=\left\{\begin{array}{ll}
+1, &amp; n=0 \\
+0, &amp; n \neq 0
+\end{array}\right.
+</div>
+<script type="math/tex; mode=display">
+\delta[n]=\left\{\begin{array}{ll}
+1, & n=0 \\
+0, & n \neq 0
+\end{array}\right.
+</script>
+</div>
+<p>即只在0时刻输出为“1”，其他时刻输出为“0”。通过采样，任意信号可以表示为离散形式，如下图所示。</p>
+<p><center>
+<img src="./fig/Channel1.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 通过采样，任意信号可以表示为若干单位脉冲信号的组合</div>
+<p></center></p>
+<p>每一个信号采样点可以看作一个具有特定时延和幅度缩放的单位冲击信号。例如在时刻1幅度为0.9的采样点，可以表示为<span><span class="MathJax_Preview">0.9\times \delta[n-1]</span><script type="math/tex">0.9\times \delta[n-1]</script></span>。类似的，我们可以将整段信号所有<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个采样点表示为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个单位脉冲的和，即：</p>
+<div>
+<div class="MathJax_Preview">
+s[n] = \sum_{k=0}^{N-1} Ampl[k]\times \delta[n-k]
+</div>
+<script type="math/tex; mode=display">
+s[n] = \sum_{k=0}^{N-1} Ampl[k]\times \delta[n-k]
+</script>
+</div>
+<p>对于线性信道，如果我们知道单位脉冲信号<span><span class="MathJax_Preview">\delta[n]</span><script type="math/tex">\delta[n]</script></span>通过该信道后的响应<span><span class="MathJax_Preview">\delta'[n]</span><script type="math/tex">\delta'[n]</script></span>，则我们可以直接计算得到任意信号<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>通过该信道后的响应信号：</p>
+<div>
+<div class="MathJax_Preview">
+s'[n]  = \sum_{k=0}^{N-1} Ampl[k]\times \delta'[n-k]
+</div>
+<script type="math/tex; mode=display">
+s'[n]  = \sum_{k=0}^{N-1} Ampl[k]\times \delta'[n-k]
+</script>
+</div>
+<!-- 我们通常使用信道冲击响应（Channel Impulse Response，CIR）来表示信道的特征。给定一个信道，当输入端输入一个单位脉冲信号，在输出端得到的响应信号即为该信道的CIR。 -->
+
+<!-- 为了研究信道的特点，通常情况我们会考虑一种叫做CIR的指标。信道冲击响应（Channel Impulse Response，CIR），顾名思义，即当输入一个单位脉冲信号时，信道输出端的响应信号。在通信过程中，信道会影响在其上通过的信号，使信号的振幅、频率、相位发生改变。不同的信道对通信信号的作用效果不同，我们可以使用信道冲击响应（CIR）来不同信道的影响分别进行描述。 -->
+
+<!-- 在介绍信道冲击响应之前，我们先来了解一下什么是冲击信号。冲击信号通常指单位脉冲信号，该信号在除时刻零以外的点上都等于零，且在整个时间域上的积分等于1。其函数定义如下：
+
+$$
+\delta(t) = 0, t\neq 0 
+$$
+
+且满足函数值在从负无穷到正无穷区间内积分为1：
+
+$$
+\int_{-\infty}^{\infty}\delta(x)dx = 1
+$$
+
+对于离散时间系统来说，单位脉冲信号可以表示为： -->
+
+<p>接下来，我们回到信道冲击响应（CIR），探究单位脉冲信号通过信道后通常会发生怎样的变化。信道对单位脉冲信号的影响通常体现在两方面：一是由于路径损耗和阴影衰落造成脉冲信号的能量发生衰减；二是由于信道中存在多个传播路径导致在接收端先后收到多个不同脉冲信号副本的叠加。</p>
+<p><center>
+<img src="./fig/Channel2.png" width=400px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 信道响应示意：图中箭头代表了单位冲击信号经过信道后产生了不同的延迟和衰减的信号副本。</div>
+<p></center></p>
+<p>上图直观地展示了信道对单位冲击信号的影响：一个单位冲击信号在通过信道到达接收端的过程中，由于可能经过不同的传播路径，因此在接收端将产生不同传播时延的信号副本。这些时延副本分别具有不同的信号衰减和频率相位变化。在接收端看来，收到的信号（信道冲击响应）就是这些不同延迟的信号副本的叠加。</p>
+<!-- 事实上，我们可以把信道看做一个滤波器，这个滤波器的参数（通常用$h$表示）就如上图所示。 -->
+
+<!-- > 思考：假设知道了某信道的单位冲击响应，如果计算任意信号通过该信道后的结果？ -->
+
+<p><center>
+<img src="./fig/Channel3.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 不同时延、不同衰减CIR示意。</div>
+<p></center></p>
+<p><center>
+<img src="./fig/Channel4.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. CIR的线性叠加可表示任意信号的信道响应。</div>
+<p></center></p>
+<p>如上图所示，通过对CIR做不同延时、不同衰减的线性叠加，我们可以表示出任意输入信号<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>的信道响应输出。接下来，让我们思考如何在数学上来表示信道冲击响应（CIR）。</p>
+<p>通过前面的介绍，我们知道一个单位脉冲信号通过信道后得到的响应是多个不同延时、不同衰减、不同相位的脉冲信号副本的叠加。我们用<span><span class="MathJax_Preview">h[n]</span><script type="math/tex">h[n]</script></span>代表单位冲击响应通过信道后的结果，<span><span class="MathJax_Preview">h[n]</span><script type="math/tex">h[n]</script></span>中的每一个值表示单位脉冲经过对应延时后的衰减和相位变化，例如<span><span class="MathJax_Preview">h[1]=0.9e^{j\varphi}</span><script type="math/tex">h[1]=0.9e^{j\varphi}</script></span>表示单位脉冲通过信道后在时刻1产生一个幅度为0.9、相位变化为<span><span class="MathJax_Preview">\varphi</span><script type="math/tex">\varphi</script></span>的信号副本。</p>
+<p>假设脉冲通过一个信道产生的最大延时为<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>，即在<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>时刻发送的信号，通过信道中最长的传播路径后，可以在时刻<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>到达接收端，这个最大时延又被称为 <strong>信道时延拓展</strong> 。因此，接收端在任意时刻收到的信号，实际上是其之前<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>个时刻内发送信号的叠加，即</p>
+<div>
+<div class="MathJax_Preview">
+r[n] = s[n]\times h[0] + s[n-1] \times h[1] + \cdots + s[n-M]\times h[M]
+</div>
+<script type="math/tex; mode=display">
+r[n] = s[n]\times h[0] + s[n-1] \times h[1] + \cdots + s[n-M]\times h[M]
+</script>
+</div>
+<p>上面这个式子可以写成卷积的形式：</p>
+<div>
+<div class="MathJax_Preview">
+r[n] = \sum_{k=0}^{M}s[n-k]h[k] = s\otimes h
+</div>
+<script type="math/tex; mode=display">
+r[n] = \sum_{k=0}^{M}s[n-k]h[k] = s\otimes h
+</script>
+</div>
+<p>即，如果已知信道的单位脉冲响应<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>和任意输入信号<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>，输出信号可以直接表示为脉冲响应和输入信号的卷积。</p>
+<!-- 对于单位脉冲信号$\delta(t)$，在线性时不变的假设下，经过信道后在接收端收到的信号为 
+
+$$ 
+y(t)=\int_{-\infty}^{\infty} \delta(\tau) h(t-\tau) d \tau= h(t)
+$$
+
+对于任意输入信号$x(t)$，可以用连续域卷积的方法得出所对应的输出$y(t)$
+
+$$
+y(t)=\int_{-\infty}^{\infty} x(\tau) h(t-\tau) d \tau=x(t) * h(t)
+$$
+
+
+
+对于离散时间系统来说，脉冲响应一般用序列$h[n]$来表示，相对应的离散输入信号，也就是单位脉冲函数满足离散狄拉克函数$\delta[n]$的形式，$\delta[n]$的定义函数如下：
+
+$$
+\delta[n]=\left\{\begin{array}{ll}
+1, & n=0 \\
+0, & n \neq 0
+\end{array}\right.
+$$
+
+在输入为$\delta [n]$时，离散系统的脉冲响应$h[n]$包含了系统的所有信息。所以对于任意输入信号$x[]$，可以用离散域卷积（求和）的方法得出所对应的输出信号$y[]$。
+$x[]$可以表示为$x[n] = x[k]\delta[n-k], k = 0, 1, \ldots, +\infty$,由于$\delta[n]$通过信道后的结果为$h[n]$，由于线性信道的特点，$\delta[n-k]$通过信道后的结果为$h[n-k]$，进一步$x[k]\delta[n-k]$通过信道后的结果是$x[k]h[n-k]$。因此，对于信号$x[n]$，通过信道后的结果为
+
+$$
+y[n]=\sum_{k=0}^{\infty} x[k] h[n-k]
+$$ -->
+
+<blockquote>
+<p>思考：为什么是卷积运算？</p>
+</blockquote>
+<p>实际上，卷积运算也表明了信道的一个特点，即任意时刻在接收端收到的信号，受其之前若干时刻发送信号的影响。用知乎上的一个例子来类比，别人打你一拳是脉冲输入，但你的身体会疼几个小时，不是瞬间疼痛，给你多几拳，即多个脉冲，你的疼痛感再连续叠加，很直观地说明了信道对信号传输的影响。</p>
+<blockquote>
+<p><strong>举例1</strong> 
+- 给定一个信道，直接路径和两条反射路径衰减为0.9，0.5和0.8，延迟分别为15<span><span class="MathJax_Preview">\mu s</span><script type="math/tex">\mu s</script></span>和<span><span class="MathJax_Preview">40\mu s</span><script type="math/tex">40\mu s</script></span>，相位偏移分别为<span><span class="MathJax_Preview">35rad</span><script type="math/tex">35rad</script></span>和<span><span class="MathJax_Preview">70rad</span><script type="math/tex">70rad</script></span>，则信道冲击响应矩阵<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>可以表示为？
+- 在此信道中发送一个正弦信号<span><span class="MathJax_Preview">x(t)=sin(t)</span><script type="math/tex">x(t)=sin(t)</script></span>，则接收到端收到的信号可以表示为？若发送一个任意信号<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>，接收端收到的信号可以表示为？
+- 如果存在噪声<span><span class="MathJax_Preview">N(t)</span><script type="math/tex">N(t)</script></span>，对收到的信号会产生怎样的影响？</p>
+</blockquote>
+<p>在数据传输中，实际上重要的一个过程就是通过接收到的<span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>和测量的<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>，计算传输的<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>。这其中带来了另外一个重要的问题就是如何来测量信道冲击响应<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>。</p>
+<p>理想情况下，我们可以在发送端发送一个单位冲击信号，然后在接收端接收该信号对应的响应作为信道冲击响应<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>。但实际上，发送一个理想的冲击信号是很困难的，因此在实际操作中，我们一般通过发送其他的已知信号来测量信道冲击相应，比如在无线通信技术中常用的preamble或pilot signal，就可以利用来计算信道冲击响应。</p>
+<h2 id="cfr">信道频率响应（CFR）<a class="headerlink" href="#cfr" title="Permanent link">&para;</a></h2>
+<p>信号的多径传播在时域上表现为时延扩展，信道的冲击响应通常就代表了这一信息。信道的这些影响在频域上带来的影响是选择性衰。直观上看这是由于信道中有不同延时的路径，通过不同路径的信号在接收端叠加增强或相消，使不同的频率的信号发生不同的衰减。例如当两路多径信号到达接收端的时间差恰好为某频率的半周期，则对应频率的信号在接收端发生明显衰减；如果正好是整数倍的周期，则对应频率的信号是叠加增强的。</p>
+<p>因此，我们通常也用信道的频率响应（Channel Frequency Response，CFR）从幅频特性和相频特性来分别描述信道对信号传播的影响。在带宽无限的条件下，CFR与CIR互为时域和频域的等效参数，也就是通过傅里叶变换和逆变换能够转化这两个结果，下图展示了具有频率选择性衰落特征信道的频率响应。</p>
+<p><center>
+<img src="./fig/channel-response-freq.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. 信道频域响应示意：图中箭头代表了单位信号经过信道后不同频率的影响。</div>
+<p></center></p>
+<p>在实际通信系统中，我们通常将时域上的信道冲击响应变换到频域，通过比较输入信号和输出信号的频域特征，我们就可以计算出相应频域上的冲击响应，进而计算出相应信道的时域参数。实际上，频域的信道响应和和时域响应是等价的，只不过一个是时间域上的表示，一个是频率域上的表示，两者可以互相转化。频域的信道响应也是大量定位和感知工作的信息来源，借助特定信号的信道频率响应，我们可以计算不同多径路径的传播特征。</p>
+<!-- 单位脉冲信号通过信道后，仍然是发送信号的衰减和延迟的组合，我们通常把一个单位冲击信号通过信道的结果叫做单位冲击响应，要注意这个单位冲击响应就完全描述了一个信道，换句话说， -->
+
+<h2 id="csi">信道状态信息（CSI）<a class="headerlink" href="#csi" title="Permanent link">&para;</a></h2>
+<p>理解了CIR和CFR，就比较好理解信道状态信息（CSI）了。信道状态信息(Channel State Information，CSI)与CFR一样，都从频域描述信道对传输信号的影响，他们的差异在于，CFR作为一般化的参数可以描述任意频率处的信道影响，而CSI通常用于OFDM系统中描述各个子信道的信道属性，即信道增益矩阵<span><span class="MathJax_Preview">H</span><script type="math/tex">H</script></span>（有时也称为信道矩阵，信道衰落矩阵）中每个元素的值。假设发送端装备<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>根天线，接收端装备<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>根天线，通信时使用<span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>个子载波，则每次采样得到CSI矩阵的元素数量为<span><span class="MathJax_Preview">M\times N\times K</span><script type="math/tex">M\times N\times K</script></span>，每个元素以复数形式<span><span class="MathJax_Preview">a_ie^{-j\theta_i}</span><script type="math/tex">a_ie^{-j\theta_i}</script></span>出现，对应每个子载波的幅度和相位。CSI可以使通信系统适应当前的信道条件，在无线通信系统中为高可靠性高速率的通信提供了保障。CSI可以看作CFR的一种离散采样的形式，采样的频率点为OFDM对应的不同载波频率。</p>
+<p>CSI可以分为瞬时CSI（Instantaneous CSI）和统计CSI（Statistical CSI）。瞬时CSI意味着当前信道状态已知，因此可以调整发射信号来优化接收信号以达到空间复用或减少比特错误率。统计CSI表示信道的统计特性，如衰落分布的类型、平均信道增益、空间相关性等，这些信息也能用来进行传输优化。在某些快衰落系统中，信道状态在symbol级别都会发生极速的变化，此时应该使用统计CSI。另一方面，在慢衰落系统中，可以在合理精度内得到瞬时CSI估计，在该估计过时前可被用来进行传输适应。</p>
+<p>对于CSI的更多介绍，可以参考：ps.zpj.io。</p>
+<!-- 前文我们已经介绍了，信道脉冲响应可以表示为不同延迟的信号副本在时域上的叠加，即原始信号与信号脉冲响应矩阵$h$的卷积：$y(t) = \sum_i s(t-\tau_i)\times A_ie^{j\phi_i}=s(t)\otimes h$。 -->
+
+<!-- 如果把单位冲击响应的每一个时间点信号都看作一个值，对于任意信号，如果我们用$H = [h_1, h_2, \ldots, h_k]$表示信道给单位信号带来的延迟和衰减的话，那么给定任意信号x，通过信道后变成的样子应该为：
+
+如果加上噪声，正常情况下得到的噪声应该为：$y = H*x + noise$。 -->
+
+<h2 id="_3">信道状态估计<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>通过前文介绍，我们知道由于无线环境数复杂多变，信号传播到达接收端时，其幅度、相位和频率都会发生很大的改变。因此，为了尽可能恢复出原始信号，我们需要进行信道估计和信道均衡。一个良好的估计和均衡算法对于接收端的性能来说至关重要，决定了信号最终的解出率。</p>
+<p>根据是否借助导频信息，信道估计算法可以分为盲估计、半盲估计和非盲信道估计三种。盲信道估计无需借助导频符号，也不占用频谱资源，只利用接收信号本身固有的特征，来获取信道信息。实际上，在具体使用时，因为盲信道估计计算量复杂，收敛较慢，不适合现实的实时交互通信系统。针对盲信道估计的缺陷，半盲信道估计在发射端的调制信号中插入了少量导频。相较于盲信道估计而言，半盲信道估计可以借鉴少量导频信号的频率响应来进行信道估计，因此，其性能要好于盲信道估计。但半盲估计通常假设参考的导频信号不对数据传输造成额外影响，训练序列长度受限，因此可能出现相位模糊（基于子空间的方法）、误差传播（如判决反馈类方法）、收敛慢或陷入局部极小等问题，这在一定程度上限制了它的实用性。非盲估计则是使用一段特殊设计的导频信号来辅助信道估计，基于导频辅助的非盲信道估计算法可以分为两个部分：一是导频位置处的信道估计算法；二是非导频位置处的插值算法。非盲估计是目前通信系统常用的信道估计方式。</p>
+<p><strong>1. LS算法</strong></p>
+<p>下面介绍一种基于最小二乘（LS）算法的非盲信道估计方法。信道估计的本质，是表示出信道的单位脉冲响应CIR。按照前面的定义，最好最直接的办法当然是直接发送一个单位冲击信号，然后接收方看看收到的信号是什么样子。很显然，实际中我们无法这样子去做，因为我们无法发出这样的信号，也就无法利用这样的信号来测量信道。那真实的情况如何做呢，一般的做法为发送已知内容的信号<span><span class="MathJax_Preview">x(t)</span><script type="math/tex">x(t)</script></span>，看看收到的信号<span><span class="MathJax_Preview">y(t)</span><script type="math/tex">y(t)</script></span>，理论上<span><span class="MathJax_Preview">y(t) = x(t)*h(t)</span><script type="math/tex">y(t) = x(t)*h(t)</script></span>。通过这个公式，我们可以算出<span><span class="MathJax_Preview">h(t)</span><script type="math/tex">h(t)</script></span>的值，从而得到信道参数。在真实的数据包发送中，这个<span><span class="MathJax_Preview">x(t)</span><script type="math/tex">x(t)</script></span>可以为数据包中的前导码等，前导码一般内容是固定的，所以对于任何接收者来说都是已知的，这样通过分析接收到的信号和发送信号的变化，计算出<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>。这也是为什么很多材料中说前导码可以起到信道估计的作用。</p>
+<blockquote>
+<p>思考：在实际操作中我们如何通过<span><span class="MathJax_Preview">y(t) = x(t)*h(t)</span><script type="math/tex">y(t) = x(t)*h(t)</script></span>，在原始信号<span><span class="MathJax_Preview">x(t)</span><script type="math/tex">x(t)</script></span>和接收信号<span><span class="MathJax_Preview">y(t)</span><script type="math/tex">y(t)</script></span>已知的情况下，如何将信道冲击响应<span><span class="MathJax_Preview">h(t)</span><script type="math/tex">h(t)</script></span>还原出来？注意这里<span><span class="MathJax_Preview">*</span><script type="math/tex">*</script></span>是卷积操作。</p>
+</blockquote>
+<p>由于在时域的卷积操作效果等价于在频域做乘积，因此通过傅里叶变换将信号变换到频域后，假设发送端参考信号为X，Y为接收参考信号，信道表示为H，噪声为N，关系表达式为</p>
+<div>
+<div class="MathJax_Preview">
+Y=XH+N
+</div>
+<script type="math/tex; mode=display">
+Y=XH+N
+</script>
+</div>
+<p>LS算法的基本原理就是使接收信号和无噪声数据之差的平方达到最小：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\widetilde{H} &amp;= argmin|Y-XH|^2\\
+&amp;=argmin [(Y-XH)(Y-XH)^T]
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\widetilde{H} &= argmin|Y-XH|^2\\
+&=argmin [(Y-XH)(Y-XH)^T]
+\end{aligned}
+</script>
+</div>
+<p>令<span><span class="MathJax_Preview">\widetilde{H}</span><script type="math/tex">\widetilde{H}</script></span>等于其极限值，即当<span><span class="MathJax_Preview">argmin|Y-XH|^2</span><script type="math/tex">argmin|Y-XH|^2</script></span>等于<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>，可以得到：</p>
+<div>
+<div class="MathJax_Preview">
+[(Y-XH)(Y-XH)^T] = 0
+</div>
+<script type="math/tex; mode=display">
+[(Y-XH)(Y-XH)^T] = 0
+</script>
+</div>
+<p>对上式中的<span><span class="MathJax_Preview">H</span><script type="math/tex">H</script></span>求导，得到：</p>
+<div>
+<div class="MathJax_Preview">
+(X^TX)^{-1}X^TY = X^{-1}Y = H + N/X
+</div>
+<script type="math/tex; mode=display">
+(X^TX)^{-1}X^TY = X^{-1}Y = H + N/X
+</script>
+</div>
+<p>因此，LS算法的信道响应可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
+\widetilde{H} = \bigg[\frac{Y(0)}{X(0)}\quad\frac{Y(1)}{X(1)}\quad \cdots\quad \frac{Y(N-1)}{X(N-1)}\bigg]^T
+</div>
+<script type="math/tex; mode=display">
+\widetilde{H} = \bigg[\frac{Y(0)}{X(0)}\quad\frac{Y(1)}{X(1)}\quad \cdots\quad \frac{Y(N-1)}{X(N-1)}\bigg]^T
+</script>
+</div>
+<p>由上式可见，LS利用发送端的导频信息，即可以对信道矩阵进行估计，结构简单，计算量小，但它没有考虑接收信号中的噪声、以及子载波间的干扰，所以估计精度有限。在信噪比高的时候，LS算法的效果比较好，当信道噪声较大时，估计性能会大大降低。</p>
+<p>下面代码展示了如何使用LS算法估计信道频率响应<span><span class="MathJax_Preview">H</span><script type="math/tex">H</script></span>：</p>
+<div class="highlight"><pre><span></span><code><span class="c">%% Rx_data1为收到信号</span><span class="w"></span>
+<span class="c">%% pilot_seq为原始前导码、</span><span class="w"></span>
+
+<span class="c">%% 提取前导码信号</span><span class="w"></span>
+<span class="n">Rx_data2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Rx_data1</span><span class="p">(</span><span class="n">N_cp</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,:);</span><span class="w"></span>
+
+<span class="c">%% FFT</span><span class="w"></span>
+<span class="n">Rx_pilot</span><span class="p">=</span><span class="nb">fft</span><span class="p">(</span><span class="n">Rx_data2</span><span class="p">);</span><span class="w"></span>
+<span class="n">pilot_fft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">pilot_seq</span><span class="p">);</span><span class="w"></span>
+
+<span class="c">%% 信道估计</span><span class="w"></span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Rx_pilot</span><span class="o">./</span><span class="n">pilot_fft</span><span class="p">;</span><span class="w"> </span>
+<span class="c">% 分段线性插值：</span><span class="w"></span>
+<span class="c">%    插值点处函数值由连接其最邻近的两侧点的线性函数预测。</span><span class="w"></span>
+<span class="c">%    对超出已知点集的插值点用指定插值方法计算函数值。</span><span class="w"></span>
+<span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">interp1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="s">&#39;linear&#39;</span><span class="p">,</span><span class="s">&#39;extrap&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><strong>2. LMMSE算法</strong></p>
+<p>如果对估计精度的要求高些，LS 可能就达不到了，所以可以采用这种使线性均方误差最小的方式，在平方和的基础上再进行平均。LMMSE算法是在LS算法的基础上发展的，主要目的是为了消除噪声的影响。但LMMSE算法的缺点是计算量大，特别是矩阵的求逆过程是相当的复杂，这在实际应用中很难实现的。</p>
+<p>使用求导法推导MMSE算法的过程如下：</p>
+<p><center>
+<img src="./fig/LMMSE.png" width=800px>
+</center></p>
+<p><strong>3. 基于 LS 的 DFT 算法</strong></p>
+<p>这种算法不仅利用快速算法将计算过程大为简化，而且还可以人为的消除部分噪声的干扰。我们知道，信号在通过信道的时候对信道的响应通常只有一小段，而实际上，有很多能量小的点我们都可以把它当作是多余的部分，只考虑集中的几个能量大的点。如果我们有选择性的来选取响应点，将其他点的响应当作0来处理，一定程度上就能补偿原本 LS 算法中噪声的影响。</p>
+<p><center>
+<img src="./fig/DFT算法.png" width=600px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. DFT算法过程</div>
+<p></center></p>
+<h2 id="_4">参考文献<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Zheng Yang, Zimu Zhou, and Yunhao Liu. 2013. From RSSI to CSI: Indoor localization via channel response. <em>ACM Comput. Surv.</em> 46, 2, Article 25 (December 2013), 32 pages. DOI: <a href="https://doi.org/10.1145/2543581.2543592">https://doi.org/10.1145/2543581.2543592</a></li>
+<li>Xie Y, Li Z, Li M. Precise power delay profiling with commodity Wi-Fi[J]. IEEE Transactions on Mobile Computing, 2018, 18(6): 1342-1355.</li>
+<li><a href="https://zh.wikipedia.org/wiki/Communication_channel">Wikipedia/Communication_channel</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Multipath_propagation">Wikipedia/Multipath</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Fading">Wikipedia/Fading</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Channel_state_information">Wikipedia/Channel_state_information</a></li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.5 案例：短时傅里叶与频谱" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.5 案例：短时傅里叶与频谱
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-footer__link md-footer__link--next" aria-label="下一页: 4.2 路径损耗与阴影衰落" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              4.2 路径损耗与阴影衰落
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            清华大学 -- 王继良
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.5.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
