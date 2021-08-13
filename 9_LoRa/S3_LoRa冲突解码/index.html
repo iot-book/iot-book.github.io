@@ -1525,7 +1525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_蓝牙感知/S1_蓝牙寻向原理/index.md" class="md-nav__link">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S1_%E8%93%9D%E7%89%99%E5%AF%BB%E5%90%91%E5%8E%9F%E7%90%86/" class="md-nav__link">
         18.1 蓝牙寻向原理
       </a>
     </li>
@@ -1537,7 +1537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_蓝牙感知/S2_蓝牙定位设备/index.md" class="md-nav__link">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1549,7 +1549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_蓝牙感知/S3_定位算法/index.md" class="md-nav__link">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1561,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_蓝牙感知/S4_应用/index.md" class="md-nav__link">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1876,7 +1876,7 @@ padding: 2px;">图. Choir利用硬件频率偏移分离冲突信号</div>
 <p></center></p>
 <p>在解调过程中，来自不同节点的数据包信号具有不同的小数点频率偏移，因而可以根据该频率偏移把不同的LoRa编码符号对应到不同的发送节点，从而实现冲突解码。使用Choir解码网络中的冲突信号，最高可以将LoRa的整体网络吞吐量提高6.84倍。</p>
 <p><center>
-<img src="./fig/Choir.png" width=600px>
+<img src="./fig/choir.png" width=600px>
 </center></p>
 <p><center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -1886,7 +1886,7 @@ padding: 2px;">图. Choir利用波峰小数点频率差异解冲突</div>
 <p></center></p>
 <p>除了利用频域特征区分信号，也有研究者提出借助时域信号特征、根据不同节点数据包信号到达网关的时间差异来分离冲突编码符号。ICNP’19的工作mLoRa[4]就是一项利用信号时域特征消除冲突的典型工作。具体来说，当多个数据包先后抵达网关发生冲突，收到信号最起始的一部分是无冲突且可被正常提取的。利用这一段信号我们可以知道冲突信号中一个正确的符号是什么，进而可以构造出该符号并将其消去。消除该符号后，剩余信号中又可以得到一段非冲突信号，因此可以依次迭代以上的操作，直至将所有的冲突数据包全部分离出来。</p>
 <p><center>
-<img src="./fig/mlora.png" width=600px>
+<img src="./fig/mLoRa.png" width=600px>
 </center></p>
 <p><center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
