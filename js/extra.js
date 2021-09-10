@@ -14,7 +14,7 @@ window.MathJax = {
       fonts: "STIXGeneral,'Arial Unicode MS'"
     }
   },
-  displayAlign: "left",
+  displayAlign: "center",
   showProcessingMessages: false,
   messageStyle: "none"
 };
