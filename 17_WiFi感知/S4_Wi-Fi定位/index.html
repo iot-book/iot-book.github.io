@@ -1843,7 +1843,7 @@ padding: 2px;">图. RSS定位示意</div>
 <p>在WiFi网络中，AP常常要周期性发送beacon帧，包含了一些网络信息、服务组ID（无线网络的名字）、支持的传输速率，以及一些其它的系统信息。这个beacon帧是用在WiFi中的很多的控制帧之一，它大约100ms发送一次，RSS通常是使用这个beacon帧来测量的。</p>
 <p>beacon帧是未加密的，所以即使是一个封闭的网络（移动设备未能连接上）也能用来定位。beacon帧接近于周期性地被发送，但并不是完全周期性的，当检测到传输媒介阻塞的时候需要延迟发送，一旦检测到不阻塞的时候就发送，下一次发送还是会在之前预计的100ms时刻，即使离上一次发送还不足100ms。更进一步，如果AP工作在多个信道上，为了避免冲突，在测量RSS之前，移动设备必须花时间扫描各个信道。</p>
 <p>[TODO加上更多内容]</p>
-<p>我们自己提出了一个非常简单方便的利用指纹分辨不同用户的方法，参考<a href="!http://tns.thss.tsinghua.edu.cn/~jiliang/publications/MOBIHOC2016-NiFi.pdf">Linsong Cheng, Jiliang Wang: How can I guard my AP?: non-intrusive user identification for mobile devices using WiFi signals. MobiHoc 2016: 91-100</a></p>
+<p>我们自己提出了一个非常简单方便的利用指纹分辨不同用户的方法，参考<a href="http://tns.thss.tsinghua.edu.cn/~jiliang/publications/MOBIHOC2016-NiFi.pdf">Linsong Cheng, Jiliang Wang: How can I guard my AP?: non-intrusive user identification for mobile devices using WiFi signals. MobiHoc 2016: 91-100</a></p>
 <p>另外还有很多复杂的，例如基于CSI的指纹定位方法等，基本思路我们在无线定位这一部分进行过介绍，这里就不再次展开了。</p>
 <h2 id="_1">参考论文<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ol>
