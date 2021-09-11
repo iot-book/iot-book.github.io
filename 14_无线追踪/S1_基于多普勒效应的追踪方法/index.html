@@ -1546,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1558,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1570,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1870,8 +1870,10 @@
                 
                 <h1 id="_1">基于多普勒效应的追踪方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">目标追踪技术<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>目标追踪技术能够利用目标运动过程中信号特征（如频率、相位）的变化等信息，感知目标空间位置的变化，追踪目标的运动轨迹。本章将以基于距离变化量的运动追踪为例介绍目标追踪技术。</p>
-<p>不同于基于距离测量的定位方法，基于距离变化量的运动追踪方法不直接测量距离，进而得到距离变化，而是通过距离变化导致的信号频率、相位等信息的变化间接测量距离变化。</p>
+<p>目标追踪最直接的方法是基于定位，如果我们能够将目标的位置计算出来，那么很容易的我们通过不断计算目标的位置就能实现对目标进行追踪的目标。</p>
+<p>而定位和追踪实际上要求是不一样的，在实际系统中，我们可以不用对目标进行绝对定位，就能实现追踪的效果（即计算目标的相对运动方向和距离），如果知道了目标的初始位置，就能实现对目标的连续追踪和定位。
+目标追踪技术能够利用目标运动过程中信号特征（如频率、相位）的变化等信息，感知目标空间位置的变化，追踪目标的运动轨迹。本章将以基于距离变化量的运动追踪为例介绍目标追踪技术。
+不同于基于距离测量的定位方法，基于距离变化量的运动追踪方法不直接测量距离，进而得到距离变化，而是通过距离变化导致的信号频率、相位等信息的变化间接测量距离变化。</p>
 <h2 id="_3">多普勒效应<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>多普勒效应是指信号源与接收者发生相对运动时，接收者接收的信号频率与信号源发出的信号频率不同的现象。</p>
 <p><center>
@@ -1946,6 +1948,9 @@ D_v  =  \frac{D_f}{f_0}c = \frac{f_sc}{f_0L_w}
 <span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">filter</span><span class="p">(</span><span class="n">bp_filter</span><span class="p">,</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>然后使用长度为1024采样点的窗口对接收到的信号进行短时傅里叶变换，其中进行256倍的补零提高频率的分辨率。</p>
+<blockquote>
+<p>思考为什么需要这个操作</p>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="c">%% 使用STFT计算频率偏移</span><span class="w"></span>
 <span class="c">% 窗口大小1024个采样点</span><span class="w"></span>
 <span class="n">slice_len</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="w"></span>
@@ -1957,7 +1962,7 @@ D_v  =  \frac{D_f}{f_0}c = \frac{f_sc}{f_0L_w}
 <span class="c">% 在fft时补256倍的0，提高fft分辨率</span><span class="w"></span>
 <span class="n">fft_len</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1024</span><span class="o">*</span><span class="mi">256</span><span class="p">;</span><span class="w"></span>
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">slice_num</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
-<span class="w">    </span><span class="c">%对每个窗口进行fft，取频率谱的峰值频率作为改时间窗口的信号频率</span><span class="w"></span>
+<span class="w">    </span><span class="c">%对每个窗口进行fft，取频率谱的峰值频率作为该时间窗口的信号频率</span><span class="w"></span>
 <span class="w">    </span><span class="n">fft_out</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">data</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">slice_len</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="nb">i</span><span class="o">*</span><span class="n">slice_len</span><span class="o">+</span><span class="n">slice_len</span><span class="p">),</span><span class="n">fft_len</span><span class="p">));</span><span class="w"></span>
 <span class="w">    </span><span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">fft_out</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">fft_len</span><span class="o">/</span><span class="mi">2</span><span class="p">))));</span><span class="w"></span>
 <span class="w">    </span><span class="n">slice_f</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="o">/</span><span class="n">fft_len</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>

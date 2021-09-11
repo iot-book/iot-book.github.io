@@ -920,13 +920,20 @@
       
         <li class="md-nav__item">
   <a href="#lora_2" class="md-nav__link">
-    基于声波的LoRa通信
+    LoRa 编码与解码
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#lora_3" class="md-nav__link">
+    基于声波的LoRa通信
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lora_4" class="md-nav__link">
     LoRa网络搭建
   </a>
   
@@ -1546,7 +1553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1558,7 +1565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1570,7 +1577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1836,13 +1843,20 @@
       
         <li class="md-nav__item">
   <a href="#lora_2" class="md-nav__link">
-    基于声波的LoRa通信
+    LoRa 编码与解码
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#lora_3" class="md-nav__link">
+    基于声波的LoRa通信
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lora_4" class="md-nav__link">
     LoRa网络搭建
   </a>
   
@@ -1874,9 +1888,10 @@
 <p>MATLAB版本用于原型验证和离线操作，基于GNURadio平台的C++版本则是一个实时的高性能LoRa实现。希望这两个代码库可以更好地帮助大家学习和研究LoRa。未来我们还将开源FPGA上LoRa编解码的硬件实现。</p>
 <p>MATLAB 版本 LoRaPHY: <a href="https://github.com/jkadbear/LoRaPHY">https://github.com/jkadbear/LoRaPHY</a></p>
 <p>GNURadio 版本 gr-lora：<a href="https://github.com/jkadbear/gr-lora">https://github.com/jkadbear/gr-lora</a></p>
+<p><strong>相关论文的介绍见</strong>[7]: Zhenqiang Xu, Pengjin Xie, Jiliang Wang. "Pyramid: Real-Time LoRa Collision Decoding withPeak Tracking", IEEE INFOCOM 2021. [PDF]</p>
 <p>大家开始学习LoRa前，不必要先看我们提供的复杂代码，先跟着我们来了解LoRa的基本原理，然后我们会展示一个基于声波的LoRa模拟，这也方便大家更加直观的理解LoRa，在此基础上，大家可以再去使用和研究真实LoRa通信，使用我们的代码。</p>
 <blockquote>
-<p>在理解LoRa同时，希望大家特别注意体会LoRa是通过什么样的设计来支撑远距离、低功耗的传输特性的。这是在目前很多研究中被忽略的。</p>
+<p>在理解LoRa同时，希望大家特别注意体会LoRa是通过什么样的设计来支撑远距离、低功耗的传输特性的。这是在目前很多研究中被忽略的，导致很多工作说是基于LoRa，但是已经完全没有了LoRa的特点。</p>
 </blockquote>
 <h2 id="lora_1">LoRa 调制与解调<a class="headerlink" href="#lora_1" title="Permanent link">&para;</a></h2>
 <p>在这节我们介绍LoRa的调制与解调，也即如何在物理波形和比特数据之间进行转换。</p>
@@ -2153,7 +2168,7 @@ padding: 2px;">图. 利用up-down对齐进行CFO消去[6]</div>
 <blockquote>
 <p>请大家基于上图思考如何在TO和CFO都存在的情况下，准确地计算出TO和CFO。如果还不太熟悉的话建议去看一下我们的论文[6]，在我们早期的几个关于LoRa论文中都有介绍。</p>
 </blockquote>
-<p>利用Up-Chirp和Down-Chirp做时间、频率同步的MATLAB实现代码如下：</p>
+<p>利用Up-Chirp和Down-Chirp做时间、频率同步的MATLAB实现代码如下：[TODO 代码修改完善]</p>
 <div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="nf">[outsig, t_offset,f_offset] = frame_sync</span><span class="p">(</span>frame_sig, DEBUG, SF, BW, Fs<span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="n">nsamp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Fs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>^<span class="n">SF</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">BW</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">nfft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nsamp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
@@ -2216,7 +2231,7 @@ padding: 2px;">图. 利用up-down对齐进行CFO消去[6]</div>
 <span class="w">    </span><span class="n">outsig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">frame_sig</span><span class="p">(</span><span class="n">sig_st</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
 </code></pre></div>
-<p>## LoRa 编码与解码</p>
+<h2 id="lora_2">LoRa 编码与解码<a class="headerlink" href="#lora_2" title="Permanent link">&para;</a></h2>
 <p>在这节我们介绍LoRa的编码与解码，也即如何在起始频率的自然二进制表示和数据包中的数据之间进行转换。这是个纯粹的比特到比特的变换，因而只考虑其中一个方向读者就能全部理解了。</p>
 <p>考虑解码过程，如何从波峰的下标转化为真正的编码数据？在LoRa中需要经过以下几个步骤：
 1. 格雷码编码（Gray coding）
@@ -2419,7 +2434,7 @@ e^{j2\pi \left(-\frac{B}{2}+\frac{B}{T}t\right)t}
 <p><img alt="" src="fig/interleaving.png" /></p>
 <p>其中  $ y_i^j $  代表第  $ i $  个字节中高低 4 位的校验位。</p>
 <p>基于上表，我们可以任意更改前 4 个 symbol 的值。例如，我们希望数据部分第一个 symbol 是 0，那么首先将 0 减一得 1111111，再 Gray 编码得 1000000，对应  $ x_4<sup>1\overline{x_3</sup>5}x_3<sup>1\overline{x_2</sup>5}x_2<sup>1\overline{x_1</sup>5}\overline{x_1^1} $ ，令  $ x_1^1=1, x_1^5=1, x_2^1=0, x_2^5=1, x_3^1=0, x_3^5=1, x_4^1=1$ ，不妨发送 0x11, 0x10, 0x10, 0x01。</p>
-<h2 id="lora_2">基于声波的LoRa通信<a class="headerlink" href="#lora_2" title="Permanent link">&para;</a></h2>
+<h2 id="lora_3">基于声波的LoRa通信<a class="headerlink" href="#lora_3" title="Permanent link">&para;</a></h2>
 <p>在这一节，我们来实现基于声波的LoRa通信。采用Matlab生成声音，然后通过手机去播放(发射)，使用另一台手机去录音(接收)。最后再将这段信号传到电脑端进行最后的解码。</p>
 <p>首先我们需要了解LoRa通信的过程，这同时也是大多数射频信号通信的过程。注意这里是一个很简化的版本。</p>
 <p>在发射端，原始数据首先进行调制得到一个基带信号，基带信号是频率很低的信号，传输距离受限，要达到预期的通信距离，对天线要求就很苛刻了。所以通常的做法是将这个基带信号调制到高频信号上，这一过程叫做上变频。之后，就是将信号传输出去，通过一个信道(比如空气、水等介质)，被接收者接收。</p>
@@ -2593,7 +2608,7 @@ padding: 2px;">图. 解码结果</div>
 1. 比较发射正弦波和LoRa chirp两种声音信号通信距离，能量强度等等。
 2. 如何让LoRa chirp信号传得更远？有哪些优化方法？可以自己动手试试。</p>
 </blockquote>
-<h2 id="lora_3">LoRa网络搭建<a class="headerlink" href="#lora_3" title="Permanent link">&para;</a></h2>
+<h2 id="lora_4">LoRa网络搭建<a class="headerlink" href="#lora_4" title="Permanent link">&para;</a></h2>
 <p>使用实际的LoRa节点和网关，我们可以搭建起一个LoRa网络。
 一个LoRa网络包含节点，网关，服务器三部分。因此，搭建一个LoRa网络就需要分别对这三个部分进行搭建和实现：</p>
 <ul>

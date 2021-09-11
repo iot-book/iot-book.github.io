@@ -1136,13 +1136,6 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    问题与挑战
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
     参考文献
   </a>
   
@@ -1539,7 +1532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1551,7 +1544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1563,7 +1556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1829,13 +1822,6 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    问题与挑战
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
     参考文献
   </a>
   
@@ -1855,9 +1841,10 @@
                 
                 
                 <h1 id="_1">三边定位算法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>在上一章中我们介绍了多种测距算法，利用信号强度、信号到达时间、反射信号传播时间等信息，我们可以测量基站到其他设备或物体的距离。在上一章的基础上，在本节我们将介绍三边定位算法，利用该算法，我们可以从测距结果中计算出目标设备的位置。</p>
+<p>除了测距以外，物联网中对设备或者人进行定位是一项重要的需求。
+在上一章中我们介绍了多种测距算法，利用信号强度、信号到达时间、反射信号传播时间等信息，我们可以测量基站到其他设备或物体的距离。在上一章的基础上，在本节我们将介绍三边定位算法，利用该算法，我们可以从测距结果中计算出目标设备的位置。</p>
 <h2 id="_2">三边定位基本原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>三边定位算法的基本原理如图13-1所示，假设我们要定位图中电子标签（红色天线），图中各基站的位置为已知。在计算标签位置之前，我们先通过上一章介绍的测距方法，得到各基站到标签的距离<span><span class="MathJax_Preview">d_i</span><script type="math/tex">d_i</script></span>。根据测距结果，我们以基站的位置为圆心，做半径为<span><span class="MathJax_Preview">d_i</span><script type="math/tex">d_i</script></span>的圆。通过搜索空间中多个基站处绘制圆弧的焦点，我们可以最终求出标签的位置。图13-1展示了已知基站1，2，3的坐标以及标签到基站的距离，通过三圆求交的方法得到标签的位置。</p>
+<p>三边定位算法的基本原理如下图所示，假设我们要定位图中电子标签（红色天线），图中各基站的位置为已知。在计算标签位置之前，我们先通过上一章介绍的测距方法，得到各基站到标签的距离<span><span class="MathJax_Preview">d_i</span><script type="math/tex">d_i</script></span>。根据测距结果，我们以基站的位置为圆心，做半径为<span><span class="MathJax_Preview">d_i</span><script type="math/tex">d_i</script></span>的圆。通过搜索空间中多个基站处绘制圆弧的焦点，我们可以最终求出标签的位置。下图展示了已知基站1，2，3的坐标以及标签到基站的距离，通过三圆求交的方法得到标签的位置。</p>
 <p><center>
 <img src="./fig/三边定位.png" width=600px>
 </center></p>
@@ -1865,7 +1852,7 @@
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图13-1. 三边定位基本原理</div>
+padding: 2px;">图. 三边定位基本原理</div>
 <p></center></p>
 <p>三边定位搜索圆弧交点的过程实际上等价于求解方程组：假设三个基站的坐标已知，分别记为<span><span class="MathJax_Preview">(x_1,y_1)</span><script type="math/tex">(x_1,y_1)</script></span>, <span><span class="MathJax_Preview">(x_2,y_2)</span><script type="math/tex">(x_2,y_2)</script></span>, <span><span class="MathJax_Preview">(x_3,y_3)</span><script type="math/tex">(x_3,y_3)</script></span>。待定位标签的坐标记为<span><span class="MathJax_Preview">(x,y)</span><script type="math/tex">(x,y)</script></span>，到三个网关的距离分别为<span><span class="MathJax_Preview">d_1</span><script type="math/tex">d_1</script></span>, <span><span class="MathJax_Preview">d_2</span><script type="math/tex">d_2</script></span>, <span><span class="MathJax_Preview">d_3</span><script type="math/tex">d_3</script></span>。则我们可以联立方程组：</p>
 <div>
@@ -1877,8 +1864,7 @@ padding: 2px;">图13-1. 三边定位基本原理</div>
 </script>
 </div>
 <p>通过求解上述方程组，可以得到标签坐标。上述三边定位算法可以很容易地推广到三维场景。在进行三维定位时，我们只需要在测量出基站到节点的距离后，在每个基站处用圆球去建模，即以基站坐标和球心做半径为<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>的圆球，标签一定位于球面的某个点上。因此我们通过求多个球面的唯一交点，即可确定标签在三维空间中的位置。</p>
-<h2 id="_3">问题与挑战<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>尽管三边定位的原理比较简单，但在实际系统中实现这一算法仍然面临许多困难和挑战。考虑到测距误差的存在，以不同基站为中心绘制的圆弧或球面可能不交于一点。实际上，由于测距算法只能得到实际距离在一定误差范围内的结果，给定一个基站坐标，我们通常只能假设标签在以基站为中心的、具有一定宽度的圆环范围内。这样一来，如何设计坐标计算方法以最小化定位误差就成了实际系统部署时必须考虑的问题。</p>
+<p>三边定位的原理比较简单，但在实际系统中实现这一算法仍然面临许多困难和挑战。考虑到测距误差的存在，以不同基站为中心绘制的圆弧或球面可能不交于一点。实际上，由于测距算法只能得到实际距离在一定误差范围内的结果，给定一个基站坐标，我们通常只能假设标签在以基站为中心的、具有一定宽度的圆环范围内。这样一来，如何设计坐标计算方法以最小化定位误差就成了实际系统部署时必须考虑的问题。</p>
 <p>除此之外，在实际环境中，基站的数量可能多于三个，当基站数量多于坐标维度时，如何选择最优基站也成为在定位时必须要解决的问题。</p>
 <p>在实现时，为了解决测距误差对定位的影响，我们通常采用最优化二乘法的方法求解目标标签的坐标。不妨假设已知的基站坐标为<span><span class="MathJax_Preview">P_{ai} \ (i=1,2,3...N)</span><script type="math/tex">P_{ai} \ (i=1,2,3...N)</script></span>，<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>为基站数量。待求解的目标标签坐标为<span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span>。那么我们可以计算理论上标签到各个基站的距离<span><span class="MathJax_Preview">d_i</span><script type="math/tex">d_i</script></span></p>
 <div>
@@ -1983,9 +1969,10 @@ X=(A^TA)^{-1}A^Tb \tag{9}
 </code></pre></div>
 <p>上述代码中，nodeList表示基站的位置坐标，nodeNumber表示基站的数量，disList表示标签到各基站的距离。分别求得A和B以后，根据式(9)即可求得定位点的坐标X。</p>
 <p>在实际应用中，我们需要根据实际情况选择更合适的方法，代替最小二乘法实现位置的近似计算，实现更高的定位精度。对于某些近似方法，可能无法实现对方程的直接求解，或是直接求解方程很困难，此时可以使用数值方法进行近似求解，常见的方法有梯度下降法等。</p>
+<p>[TODO] 加上更多的位置求解方法。</p>
 <!-- （延伸阅读：https://github.com/megagao/IndoorPos） -->
 
-<h2 id="_4">参考文献<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>[1] IEEE 802 Working Group et al. 2011. Ieee standard for local and metropolitan
 area networks—Part 15.4: Low-rate wireless personal area networks (lr-wpans).
 IEEE Std 802 (2011), 4–2011.</p>

@@ -1483,7 +1483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1495,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1507,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1723,6 +1723,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1881,6 +1888,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1913,6 +1927,11 @@
 <h2 id="_6">小结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>基于可见光信号的感知方法可以通过光源的发光特征实现光源身份感知，利用 SLAM 标签或图像识别技术也可以实现对普通物体或人体的身份识别。但现有的对设备进行定位的方法中，基于可见光空间分布特征的方法仍然需要对发光设备进行特殊的改造，系统部署困难；基于相机成像几何关系的方法需要同时在相机画面中捕捉到多个已知位置的物点，且依赖于对相机内参数的精准测量。这类方法为了达到较高的定位精度，通常将已知位置的物点之间的距离设置的比较大，要求相机同时捕捉到多个已知位置的物点的操作缺乏用户友好性。现有对普通物体或人体的定位方法依赖于相机对 SLAM 视觉标签的定位，也需要相机精准的内参数。相机的标称参数往往和实际参数间存在误差，而物距通常是像距的上百倍，相机内参数的微小误差往往会造成很大的测量误差，且相机每改变一次焦距内参数就发生一次变化。经常性地对应用场景中的相机进行标定会导致极大的人力开销。</p>
 <p>本章将基于利用可见光信号进行设备身份与位置感知的需求，向大家介绍基于可见光信号的主动式设备位置感知和被动式标签位置感知和姿态估计两方面内容，使大家初步了解可见光感知的具体实现方法。</p>
+<h2 id="_7">参考文献<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Lingkun Li, Pengjin Xie, Jiliang Wang. "RainbowLight: Towards Low Cost Ambient Light Positioning with Mobile Phones", ACM MOBICOM 2018.</li>
+<li>Pengjin Xie, Lingkun Li, Jiliang Wang, Yunhao Liu. "LiTag: localization and posture estimation with passive visible light tags", ACM SenSys 2020.</li>
+</ol>
                 
               
               

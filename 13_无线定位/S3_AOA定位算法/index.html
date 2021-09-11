@@ -1560,7 +1560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1572,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1584,7 +1584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1898,13 +1898,13 @@
                 
                 <h1 id="aoa">AOA定位算法<a class="headerlink" href="#aoa" title="Permanent link">&para;</a></h1>
 <p>基于信号到达角度（Angle of Arrival，AoA）的定位算法是一种常见的无线定位算法，在很多前沿的研究工作中也都可以看到。计算到达角听起来很复杂，很多人都没有直接实践的经历，缺乏一个直接的体会。AoA的核心思想是通过硬件设备感知其他设备发送信号的到达角度，计算接收节点和发送节点的相对方向，通常来说主要依赖的是多天线阵列（Antenna Array）。基于AoA计算的角度，然后可以利用三角测量法等方式计算出位置未知的节点的位置。雷达技术和最近的物联网前沿定位感知技术等，都用到了AoA算法。</p>
-<p>本部分就通过原理和实际代码的实现，展示AoA的基本方法。在后面的“声波感知”章节，我们还会展示如何利用实际的声波信号和多麦克风阵列实现AoA算法，真实地计算出信道到达角度。</p>
+<p>本部分就通过原理和实际代码的实现，展示AoA的基本方法。在后面的<a href="https://iot-book.github.io/16_声波感知/S2_声波定位">“声波感知”章节</a>，我们还会展示如何利用实际的声波信号和多麦克风阵列实现AoA算法，真实地计算出信道到达角度。</p>
 <h2 id="_1">获取到达角<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>获取到达角通常需要使用阵列技术进行。如图13-4所示，在多天线阵列中，对于不同的角度进来的信号，各个天线上收到信号的会存在一个时间差，这个时延就对应到了信号的到达角，这也是AoA算法的基本思路。所以核心问题就是如何计算到达不同天线上信号的时间差。</p>
+<p>获取到达角通常需要使用天线阵列技术进行。如下图所示，在多天线阵列中，对于从不同角度到达天线阵列的信号，各个天线上收到信号的会存在一个时间差，这个时间差就对应到了信号的到达角，这也是AoA算法的基本思路。所以AoA核心问题就是如何计算到达不同天线上信号的时间差。这个问题说复杂也复杂，说简单也简单，基本原理简单，要做好是很不容易的。</p>
 <p>常见的计算不同天线上信号到达时间差的方法有两种：</p>
 <ul>
 <li>使用信号时延估计的方法对阵列接收到的信号时延进行确定，结合信号的传播速度及阵列的几何分布即可获取到达角信息。</li>
-<li>使用波束成形技术，对不同方向的信号进行加强，检测不同方向上的信号强度信息来对到达角进行确定。</li>
+<li>使用波束成形技术，也就是大家常常听说的 <strong>Beamforming</strong> ，对不同方向的信号进行加强，检测不同方向上的信号强度信息来对到达角进行确定。</li>
 </ul>
 <p>这些算法大家在平时可能都听得很多，但是不一定实现过。这一章和后面的几章里面我们将会带大家一起实现。</p>
 <p><center>
@@ -1913,18 +1913,18 @@
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">图13-4. 阵列几何形状对于不同方向信号增益的差异性 图片来源:<a href="#refer-1">[1]</a></div>
+    padding: 2px;">图. 阵列几何形状对于不同方向信号增益的差异性 图片来源:<a href="#refer-1">[1]</a></div>
 </center></p>
 <h2 id="_2">基于延迟求和的波束成形算法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>对于离散信号而言，通过基于延迟求和的波束成形算法对来波方向进行计算是较为简单直接的方式。</p>
-<p>对于图13-4所示的三麦克风阵列系统而言，如果在其三个麦克风的后端添加了一个求和模块，对于来自不同方向的声波，其增益是不同的。从图中所示的例子来看，对于来自-45°和45°的声波，其增益均为1。然而对于来自0°的声波、其信号增益为3。使用这样的原理，我们就可以对每个麦克风接收到的离散的信号添加不同的延时值，使其在不改变阵列物理形状的条件下，对来自特定方向的声波信号进行增强。</p>
+<p>对于上图所示的三个麦克风组成的阵列系统而言，如果在其三个麦克风的后端添加了一个求和模块，对于来自不同方向的声波，其增益是不同的。从图中所示的例子来看，对于来自-45°和45°的声波，其增益均为1。然而对于来自0°的声波、其信号增益为3。使用这样的原理，我们就可以对每个麦克风接收到的离散的信号添加不同的延时值，使其在不改变阵列物理形状的条件下，对来自特定方向的声波信号进行增强。</p>
 <p><center>
     <img src="./fig/delay-and-sum-2.png" width=600px>
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">图13-5. 延迟求和的波束成形 图片来源:<a href="#refer-1">[1]</a></div>
+    padding: 2px;">图. 延迟求和的波束成形 图片来源:<a href="#refer-1">[1]</a></div>
 </center></p>
 <h2 id="srp">基于SRP的波束成形方法<a class="headerlink" href="#srp" title="Permanent link">&para;</a></h2>
 <p>可控波束响应（Steered-Response Power,SRP）是一种波束成形算法<a href="#refer-2">[2]</a>，而通过延迟求和的波束成形器，它可以加强来自任意方向上的信号。在三维定位场景中，SRP算法通过遍历搜索空间中的点，得到该点（潜在的声源点）与麦克风阵列之间的TDoA，再对信号进行延迟求和。遍历空间中的所有点后，SRP算法把输出声音能量最大的点作为估计的声源。SRP算法的主要原理如下:</p>
@@ -1950,10 +1950,15 @@ S_{m_1}(e^{j\omega})S_{m_2}^*(e^{j\omega})e^{j\omega\tau_{m1,m2}(x)} d\omega
     \tau_{m1,m2}(x) = \lfloor f_s \frac{|{x-x_{m_1}}|-|{x-x_{m_2}|}}{c} \rceil
 </script>
 </div>
-<p>与广义互相关算法类似，空间<span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>中功率最大的点即为估计的声源位置。
-$$
-\hat{x}<em>s = \argmax</em>{x\in g}P(x)
-$$</p>
+<p>与广义互相关算法类似，空间<span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>中功率最大的点即为估计的声源位置。</p>
+<div>
+<div class="MathJax_Preview">
+\hat{x}_s = \argmax_{x\in g}P(x)
+</div>
+<script type="math/tex; mode=display">
+\hat{x}_s = \argmax_{x\in g}P(x)
+</script>
+</div>
 <h2 id="srp_1">经过相位变换的可控波束响应SRP<a class="headerlink" href="#srp_1" title="Permanent link">&para;</a></h2>
 <p>SRP算法对于混响和噪声环境的鲁棒性不强，DiBiase等人提出了将相位变换应用到SRP算法上的改进方法SRP-PHAT（Steered-Response Power Phase Transform），较大的提高了其在混响和噪声环境的表现。其主要思想与之前的GCC-PHAT算法类似，都是在频域上引入加权函数<span><span class="MathJax_Preview">\Phi_{m_1,m_2}(e^{j\omega})</span><script type="math/tex">\Phi_{m_1,m_2}(e^{j\omega})</script></span>，对信号的频谱进行白化处理。</p>
 <div>
@@ -1977,9 +1982,11 @@ P(x) = \frac{1}{2\pi}\sum_{m_1=1}^M \sum_{m_2=1}^M
 </script>
 </div>
 <p>SRP-PHAT在实际应用中仍然存在着一些问题，例如若需要达到较高的精确度，空间中执行波束成形搜索点数是巨大的，需要耗费巨大的计算资源，这导致了在一些设备上通过SRP算法难以达到实时定位的问题。</p>
+<!-- [TODO 加上一些更加直观的代码，有时间过来加] -->
+
 <h2 id="_3">根据到达角进行定位<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p><center>
-    <img src="./fig/AoA_example.png" width=600px>
+    <img src="./fig/AOA_example.png" width=600px>
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;

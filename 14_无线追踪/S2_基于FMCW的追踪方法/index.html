@@ -1559,7 +1559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1571,7 +1571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1583,7 +1583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1896,12 +1896,17 @@
                 
                 <h1 id="fmcw">基于FMCW的追踪方法<a class="headerlink" href="#fmcw" title="Permanent link">&para;</a></h1>
 <h2 id="fmcw_1">FMCW简介<a class="headerlink" href="#fmcw_1" title="Permanent link">&para;</a></h2>
-<p>FMCW（Frequency Modulated Continuous Wave，调频连续波）是一种在高精度雷达测距中使用的技术。FMCW技术有很长的使用历史，使用范围非常广泛。近些年来，FMCW在物联网的定位和感知的场景里面使用很多。很多前沿的研究工作利用FMCW信号实现定位和感知。</p>
-<p>FMCW基本原理为发射频率连续波，其频率随时间变化的情况如下图所示，FMCW的频率周期性地随时间递增（从<span><span class="MathJax_Preview">f_{min}</span><script type="math/tex">f_{min}</script></span>到<span><span class="MathJax_Preview">f_{max}</span><script type="math/tex">f_{max}</script></span>）或递减（从<span><span class="MathJax_Preview">f_{max}</span><script type="math/tex">f_{max}</script></span>到<span><span class="MathJax_Preview">f_{min}</span><script type="math/tex">f_{min}</script></span>）。一个频率变换周期为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>的递增FMCW信号<span><span class="MathJax_Preview">R(t)</span><script type="math/tex">R(t)</script></span>可以表示为：
-$$
+<p>FMCW（Frequency Modulated Continuous Wave，调频连续波）是一种在高精度雷达测距中使用的技术。FMCW技术有很长的使用历史，使用范围非常广泛，起始在很多传统的场景中已经用得很多了，例如在雷达领域里面。建议大家多参考以前领域的工作，很多前沿研究里面的技术都是有出现过的，在传统领域里面有过相关研究的。近些年来，FMCW在物联网的定位和感知的场景里面使用很多。很多前沿的研究工作利用FMCW信号实现定位和感知。</p>
+<p>FMCW基本原理为发射频率连续波，其频率随时间变化的情况如下图所示，FMCW的频率周期性地随时间递增（从<span><span class="MathJax_Preview">f_{min}</span><script type="math/tex">f_{min}</script></span>到<span><span class="MathJax_Preview">f_{max}</span><script type="math/tex">f_{max}</script></span>）或递减（从<span><span class="MathJax_Preview">f_{max}</span><script type="math/tex">f_{max}</script></span>到<span><span class="MathJax_Preview">f_{min}</span><script type="math/tex">f_{min}</script></span>）。一个频率变换周期为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>的递增FMCW信号<span><span class="MathJax_Preview">R(t)</span><script type="math/tex">R(t)</script></span>可以表示为：</p>
+<div>
+<div class="MathJax_Preview">
 R(t) = \cos\left(2\pi\left(f_{min} + \frac{B}{2T}t\right)t\right)
-$$
-其中<span><span class="MathJax_Preview">B=f_{max}– f_{min}</span><script type="math/tex">B=f_{max}– f_{min}</script></span>表示频率变化的带宽。 </p>
+</div>
+<script type="math/tex; mode=display">
+R(t) = \cos\left(2\pi\left(f_{min} + \frac{B}{2T}t\right)t\right)
+</script>
+</div>
+<p>其中<span><span class="MathJax_Preview">B=f_{max}– f_{min}</span><script type="math/tex">B=f_{max}– f_{min}</script></span>表示频率变化的带宽。 </p>
 <p>[TODO] 这个图好像有问题？</p>
 <p><center>
 <img src="./fig/fmcw.png" width=600px>
@@ -1944,29 +1949,50 @@ d = \frac{cT}{2B}\Delta f
 d = \frac{cT}{2B}\Delta f
 </script>
 </div>
+<p>基于到多个基站的距离变化，我们就能够实现基于FMCW的定位追踪。</p>
 <h3 id="_2">利用接收信号和发送信号的频率差<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>使用FMCW可以利用接收信号和发送信号的频率差值测量距离变化。我们基于声波生成FMCW信号，介绍如何提取接收信号与发送信号的频率差。</p>
-<p>假定声源S静止不动，可录音设备D相对声源S静止，声源发出信号为：
-$$
+<p>假定声源S静止不动，可录音设备D相对声源S静止，声源发出信号为：</p>
+<div>
+<div class="MathJax_Preview">
 S(t) = cos\bigg(2\pi\big(f_{min} + \frac{B}{2T}t\big)t\bigg)
-$$
-其中，<span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>为发射信号，<span><span class="MathJax_Preview">f_{min}</span><script type="math/tex">f_{min}</script></span>为FMCW频率的最小值，<span><span class="MathJax_Preview">B = f_{max} - f_{min}</span><script type="math/tex">B = f_{max} - f_{min}</script></span>为 FMCW频率的带宽，<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>为周期，<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>为一个周期内的时间，即<span><span class="MathJax_Preview">0 &lt; t &lt; T</span><script type="math/tex">0 < t < T</script></span>。因此，接收端接收到的信号为：
-$$
+</div>
+<script type="math/tex; mode=display">
+S(t) = cos\bigg(2\pi\big(f_{min} + \frac{B}{2T}t\big)t\bigg)
+</script>
+</div>
+<p>其中，<span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>为发射信号，<span><span class="MathJax_Preview">f_{min}</span><script type="math/tex">f_{min}</script></span>为FMCW频率的最小值，<span><span class="MathJax_Preview">B = f_{max} - f_{min}</span><script type="math/tex">B = f_{max} - f_{min}</script></span>为 FMCW频率的带宽，<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>为周期，<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>为一个周期内的时间，即<span><span class="MathJax_Preview">0 &lt; t &lt; T</span><script type="math/tex">0 < t < T</script></span>。因此，接收端接收到的信号为：</p>
+<div>
+<div class="MathJax_Preview">
 L(t) = Acos\bigg( 2\pi \big(f_{min} + \frac{B}{2T}(t-t_d) \big) \big(t-t_d \big) \bigg)
-$$
-其中，A为衰减因子，<span><span class="MathJax_Preview">t_d</span><script type="math/tex">t_d</script></span>为信号从发射端到接收端所需要的时间延迟。根据积化和差公式（<span><span class="MathJax_Preview">cosAcosB = \big(cos(A+B) + cos(A-B)\big)/2</span><script type="math/tex">cosAcosB = \big(cos(A+B) + cos(A-B)\big)/2</script></span>），我们将<span><span class="MathJax_Preview">S(t)</span><script type="math/tex">S(t)</script></span>与<span><span class="MathJax_Preview">L(t)</span><script type="math/tex">L(t)</script></span>相乘，再过滤去高频部分（即只留下<span><span class="MathJax_Preview">cos(A-B)</span><script type="math/tex">cos(A-B)</script></span>的项），得到：
-$$
+</div>
+<script type="math/tex; mode=display">
+L(t) = Acos\bigg( 2\pi \big(f_{min} + \frac{B}{2T}(t-t_d) \big) \big(t-t_d \big) \bigg)
+</script>
+</div>
+<p>其中，A为衰减因子，<span><span class="MathJax_Preview">t_d</span><script type="math/tex">t_d</script></span>为信号从发射端到接收端所需要的时间延迟。根据积化和差公式（<span><span class="MathJax_Preview">cosAcosB = \big(cos(A+B) + cos(A-B)\big)/2</span><script type="math/tex">cosAcosB = \big(cos(A+B) + cos(A-B)\big)/2</script></span>），我们将<span><span class="MathJax_Preview">S(t)</span><script type="math/tex">S(t)</script></span>与<span><span class="MathJax_Preview">L(t)</span><script type="math/tex">L(t)</script></span>相乘，再过滤去高频部分（即只留下<span><span class="MathJax_Preview">cos(A-B)</span><script type="math/tex">cos(A-B)</script></span>的项），得到：</p>
+<div>
+<div class="MathJax_Preview">
 V(t)=\frac{A}{2} \cos \left(2 \pi f_{\min } t_{d}+\frac{\pi B\left(2 t t_{d}-t_{d}^{2}\right)}{T}\right)
-$$
-假设可录音设备与音响之间距离为R，则有<span><span class="MathJax_Preview">t_d = \frac{R}{c}</span><script type="math/tex">t_d = \frac{R}{c}</script></span>，代入<span><span class="MathJax_Preview">V(t)</span><script type="math/tex">V(t)</script></span>可以得到：
-$$
-V(t)=\frac{A}{2} \cos \left(2 \pi f_{\min } \frac{R}{c}+\left(\frac{2 \pi B R t}{c T}-\frac{\pi B R<sup>{2}}{c</sup>{2} T}\right)\right)
-$$
-此时的<span><span class="MathJax_Preview">V(t)</span><script type="math/tex">V(t)</script></span>是个单频信号。对其进行傅里叶变换，在频率 <span><span class="MathJax_Preview">𝑓=𝐵𝑅/𝑐𝑇</span><script type="math/tex">𝑓=𝐵𝑅/𝑐𝑇</script></span> 处可观察到一个峰值，根据波峰的频率即可最终确定接收信号与发送信号的频率差，进而测得声源和麦克风间的距离<span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span>。</p>
+</div>
+<script type="math/tex; mode=display">
+V(t)=\frac{A}{2} \cos \left(2 \pi f_{\min } t_{d}+\frac{\pi B\left(2 t t_{d}-t_{d}^{2}\right)}{T}\right)
+</script>
+</div>
+<p>假设可录音设备与音响之间距离为R，则有<span><span class="MathJax_Preview">t_d = \frac{R}{c}</span><script type="math/tex">t_d = \frac{R}{c}</script></span>，代入<span><span class="MathJax_Preview">V(t)</span><script type="math/tex">V(t)</script></span>可以得到：</p>
+<div>
+<div class="MathJax_Preview">
+V(t)=\frac{A}{2} \cos \left(2 \pi f_{\min } \frac{R}{c}+\left(\frac{2 \pi B R t}{c T}-\frac{\pi B R^{2}}{c^{2} T}\right)\right)
+</div>
+<script type="math/tex; mode=display">
+V(t)=\frac{A}{2} \cos \left(2 \pi f_{\min } \frac{R}{c}+\left(\frac{2 \pi B R t}{c T}-\frac{\pi B R^{2}}{c^{2} T}\right)\right)
+</script>
+</div>
+<p>此时的<span><span class="MathJax_Preview">V(t)</span><script type="math/tex">V(t)</script></span>是个单频信号。对其进行傅里叶变换，在频率 <span><span class="MathJax_Preview">𝑓=𝐵𝑅/𝑐𝑇</span><script type="math/tex">𝑓=𝐵𝑅/𝑐𝑇</script></span> 处可观察到一个峰值，根据波峰的频率即可最终确定接收信号与发送信号的频率差，进而测得声源和麦克风间的距离<span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span>。</p>
 <p>如果使用FMCW信号的反射进行距离测量，设备需要在接收反射信号时消除强度较大发射信号，避免其对反射信号的干扰。而利用FMCW信号的接收信号和反射信号的频率差进行距离测量，需要在发射设备与接收设备之间进行精确的时钟同步。这两种方法在实际场景下都较难以实现，我们可以避免精确的时间同步，利用接收设备接收到FMCW信号和虚拟的发送信号分析距离的变化，进行运动的追踪。</p>
 <h2 id="fmcw_3">FMCW追踪案例<a class="headerlink" href="#fmcw_3" title="Permanent link">&para;</a></h2>
 <p>本节使用接受设备接收到的FMCW信号，创建虚拟的发送信号进行设备间距离变化的追踪。</p>
-<p>发送的信号中含有88段chirp信号，每两个chirp信号之间有与chirp信号等长的空白间隔。</p>
+<p>发送的信号中含有88段FMCW信号，每两个FMCW信号之间有与FMCW信号等长的空白间隔。</p>
 <div class="highlight"><pre><span></span><code><span class="c">%% 发送信号生成</span><span class="w"></span>
 <span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span><span class="w"></span>
 <span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.04</span><span class="p">;</span><span class="w"></span>
@@ -1984,11 +2010,14 @@ $$
 <span class="p">[</span><span class="n">mydata</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">audioread</span><span class="p">(</span><span class="s">&#39;fmcw_receive.wav&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="n">mydata</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">mydata</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 
-<span class="n">hd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">design</span><span class="p">(</span><span class="n">fdesign</span><span class="p">.</span><span class="n">bandpass</span><span class="p">(</span><span class="s">&#39;N,F3dB1,F3dB2&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">17000</span><span class="p">,</span><span class="mi">23000</span><span class="p">,</span><span class="n">fs</span><span class="p">),</span><span class="s">&#39;butter&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">hd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">design</span><span class="p">(</span><span class="n">fdesign</span><span class="p">.</span><span class="n">bandpass</span><span class="p">(</span><span class="s">&#39;N, F3dB1, F3dB2&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">17000</span><span class="p">,</span><span class="w"> </span><span class="mi">23000</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;butter&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="n">mydata</span><span class="p">=</span><span class="nb">filter</span><span class="p">(</span><span class="n">hd</span><span class="p">,</span><span class="n">mydata</span><span class="p">);</span><span class="w"></span>
 <span class="c">% figure;</span><span class="w"></span>
 <span class="c">% plot(mydata);</span><span class="w"></span>
 </code></pre></div>
+<blockquote>
+<p>思考滤波器是如何使用的。</p>
+</blockquote>
 <p>为分析距离变化，生成一个pseudo-transmitted信号，该信号是虚拟的发送信号。使用该信号，计算接收信号和该信号的频率变化，实现距离变化的追踪。</p>
 <p>系统的具体步骤为：</p>
 <ul>
@@ -2004,7 +2033,7 @@ $$
 </li>
 <li>
 <ol>
-<li>得到每个接收到的chirp信号相对起始位置的频率偏移，进而得到每一时刻的距离。</li>
+<li>得到每个接收到的FMCW信号相对起始位置的频率偏移，进而得到每一时刻的距离。</li>
 </ol>
 </li>
 </ul>

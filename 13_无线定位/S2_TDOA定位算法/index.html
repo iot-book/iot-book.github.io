@@ -1141,13 +1141,6 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    基本原理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
     定位算法
   </a>
   
@@ -1161,7 +1154,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     参考文献
   </a>
   
@@ -1546,7 +1539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1558,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1570,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1829,13 +1822,6 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    基本原理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
     定位算法
   </a>
   
@@ -1849,7 +1835,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     参考文献
   </a>
   
@@ -1869,12 +1855,11 @@
                 
                 
                 <h1 id="tdoa">TDOA定位算法<a class="headerlink" href="#tdoa" title="Permanent link">&para;</a></h1>
-<p>三边定位算法要求我们预先测量标签到多个基站的距离。实际上，当基站坐标已知时，我们无需测距，直接通过标签信号到达不同基站的时间差异，就可以直接分析出标签的位置，这就是TDOA定位。</p>
-<h2 id="_1">基本原理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>TDOA定位算法，又称到达时间差定位，顾名思义，就是利用无线信号到达不同基站的时间差确定目标标签的位置。设标签信号到达不同基站的时间差为<span><span class="MathJax_Preview">\Delta t</span><script type="math/tex">\Delta t</script></span>，乘上信号传输的速度<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>，就可以求出无线信号到达不同基站的路程差<span><span class="MathJax_Preview">\Delta d</span><script type="math/tex">\Delta d</script></span>。在此基础上，我们就可以利用几何知识(即双曲线)求解出目标的位置。</p>
+<p>三边定位算法要求我们预先测量标签到多个基站的距离。实际上，我们无需测距也能直接定出标签的位置。主要的思想通过标签信号到达不同基站的时间差异，就可以直接分析出标签的位置，这就是TDOA（Time Difference of Arrival）定位。</p>
+<p>TDOA定位算法又称到达时间差定位，顾名思义，就是利用无线信号到达不同基站的时间差确定目标标签的位置。设标签信号到达不同基站的时间差为<span><span class="MathJax_Preview">\Delta t</span><script type="math/tex">\Delta t</script></span>，乘上信号传输的速度<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>，就可以求出无线信号到达不同基站的路程差<span><span class="MathJax_Preview">\Delta d</span><script type="math/tex">\Delta d</script></span>。给定两个基站，如果知道标签到两个基站的里程差为<span><span class="MathJax_Preview">\Delta d</span><script type="math/tex">\Delta d</script></span>，就可以推算出标签可能在以两个基站为焦点的双曲线上。在此基础上，我们就可以利用几何知识(即双曲线)求解出目标的位置。</p>
+<h2 id="_1">定位算法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在进一步介绍之前，我们先规范一下使用的名词称呼。我们将待测距、定位的目标称为标签(<span><span class="MathJax_Preview">Tag</span><script type="math/tex">Tag</script></span>)，将位置已知的节点、设备统称为基站(<span><span class="MathJax_Preview">Anchor</span><script type="math/tex">Anchor</script></span>)。</p>
-<h2 id="_2">定位算法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>如图13-2所示，TDOA定位算法主要可以分为两种情况：</p>
+<p>如下图所示，TDOA定位算法主要可以分为两种情况：</p>
 <p><center>
 <img src="./fig/tdoa.png" width=600px>
 </center></p>
@@ -1882,15 +1867,16 @@
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图13-2. TDOA定位方法原理</div>
+padding: 2px;">图. TDOA定位方法原理</div>
 <p></center></p>
 <ul>
 <li><strong>第一种情况</strong>，由标签向基站发送数据，基站在收到数据后，打上相应的时间戳。这样标签到各个基站的路程差就对应时间差。</li>
-<li><strong>第二种情况</strong>，所有基站同时向标签发送数据，标签记录信号到达时间差。可以看到，要实现这样的TDOA系统，基站间的时间同步是必须的。在支持定位的设备数量上面，第二种方法比第一种明显更多，但它涉及基站调度问题，实现上更加复杂。</li>
+<li><strong>第二种情况</strong>，所有基站同时向标签发送数据，标签记录信号到达时间差。</li>
 </ul>
-<p>TDOA的系统在研究和实际中均有很广泛的用途。由此衍生的各种定位方法和系统也层出不穷。下面我们介绍一种前沿的基于并发传输的TDOA定位方法。</p>
+<p>可以看到要实现这样的TDOA系统，基站间需要时间同步。
+TDOA的系统在研究和实际中均有很广泛的用途。由此衍生的各种定位方法和系统也层出不穷。下面我们介绍一种基于并发传输的TDOA定位方法。</p>
 <h2 id="tdoa_1">基于并发传输的TDOA定位方法<a class="headerlink" href="#tdoa_1" title="Permanent link">&para;</a></h2>
-<p>通过上面的分析，我们知道TDOA依赖时间同步来同步基站，从而实现基站的同时接收或者同时发送数据。但在实际系统部署中，实现严格的时间同步很难，而且需要额外的部署开销。因此，寻求新方法打破这一限制就很必要。而基于并发传输的TDOA方法就是这样一种方法[1][2]。</p>
+<p>通过上面的分析，我们知道TDOA依赖时间同步来同步基站，从而实现基站的同时接收或者同时发送数据。但在实际系统部署中，实现严格的时间同步很难，而且需要额外的部署开销。因此，寻求新方法打破这一限制就很必要。而基于并发传输的TDOA方法就是这样一种方法。</p>
 <p><center>
 <img src="./fig/并发TDOA.png" width=600px>
 </center></p>
@@ -1898,22 +1884,11 @@ padding: 2px;">图13-2. TDOA定位方法原理</div>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图13-3. 并发TDOA</div>
+padding: 2px;">图. 并发TDOA</div>
 <p></center></p>
-<p>图13-3(a)展示了定位系统架构，这里引入了一个名叫发起节点(initiator)的角色，其位置也是已知的。发起节点主动发起一次通信给四个基站，四个基站收到这个消息之后，分别延时一段很小的时间(纳秒级别)，因此可以将他们近似等同于同时发送信息。当标签收到来自基站的信息后，由于基站的消息间隔极小，一般情况下是解析不了这些消息的。但是却不妨碍标签生成相应的信道响应信息(Channel Impulse Response， CIR) (大家可以回顾“无线信道”章节关于信道响应信息部分内容)。图13-3(b)显示了标签测量得到的CIR信息，其中四个峰值分别对应四个基站。每个CIR对应的时间间隔是已知且固定的(<span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span>)，这样两个基站到标签的时间差(<span><span class="MathJax_Preview">\Delta t</span><script type="math/tex">\Delta t</script></span>)可以通过计算CIR上两个基站对应的间隔(<span><span class="MathJax_Preview">inter\_cir</span><script type="math/tex">inter\_cir</script></span>)，然后采用<span><span class="MathJax_Preview">\Delta t = inter\_cir \times \tau</span><script type="math/tex">\Delta t = inter\_cir \times \tau</script></span>求出。</p>
-<p>值得注意的是，并非所有的通信信号及设备具备纳米级分辨率。而超宽带(Ultra-wideband, UWB)正是这样一种射频信号。UWB信号指的是带宽至少为<span><span class="MathJax_Preview">500 MHz</span><script type="math/tex">500 MHz</script></span>的无线信号。也正得益于这样的超宽带，UWB具有纳秒级的时间分辨率，因此具有极高的测距定位精度。我们将在“UWB感知”章节，通过实际的例子介绍如何使用UWB设备实现基于并行传输的TDOA定位算法。</p>
-<blockquote>
-<p>思考： 并发传输的TDOA方法可以支持无数标签，因此极大的提高了定位系统的容量。但是并发传输是基于设备的CIR评测，而CIR评测受环境影响很大，而且目前UWB设备的CIR分辨度为1ns，对应30cm的距离，限制了方法的精度。同时，并发传输依然可能存在信号冲突问题等等。那么有没有更加优雅的TDOA方法，这样的方法既简单，鲁棒又能保持很高的精度呢？</p>
-</blockquote>
-<h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>[1] Pablo Corbalán, Gian Pietro Picco, and Sameera Palipana. 2019. Chorus: UWB
-concurrent transmissions for GPS-like passive localization of countless targets. In
-2019 18<sup>th</sup> ACM/IEEE International Conference on Information Processing in Sensor
-Networks (IPSN). IEEE, 133–144.</p>
-<p>[2] Bernhard Gro𝛽windhager, Michael Stocker, Michael Rath, Carlo Alberto Boano,
-and Kay Römer. 2019. SnapLoc: An ultra-fast UWB-based indoor localization
-system for an unlimited number of tags. In 2019 18<sup>th</sup> ACM/IEEE International
-Conference on Information Processing in Sensor Networks (IPSN). IEEE, 61–72.</p>
+<p>上图展示了这样一个定位系统架构，这里引入了一个名叫发起节点(initiator)的角色，其位置也是已知的。发起节点主动发起一次通信给四个基站，四个基站收到这个消息之后，分别延时一段很小的时间(纳秒级别)，因此可以将他们近似等同于同时发送信息。当标签收到来自基站的信息后，由于基站的消息间隔极小，一般情况下是解析不了这些消息的。但是却不妨碍标签生成相应的信道响应信息(Channel Impulse Response， CIR) (大家可以回顾“无线信道”章节关于信道响应信息部分内容)。上图显示了标签测量得到的CIR信息，其中四个峰值分别对应四个基站。每个CIR对应的时间间隔是已知且固定的(<span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span>)，这样两个基站到标签的时间差(<span><span class="MathJax_Preview">\Delta t</span><script type="math/tex">\Delta t</script></span>)可以通过计算CIR上两个基站对应的间隔(<span><span class="MathJax_Preview">inter\_cir</span><script type="math/tex">inter\_cir</script></span>)，然后采用<span><span class="MathJax_Preview">\Delta t = inter\_cir \times \tau</span><script type="math/tex">\Delta t = inter\_cir \times \tau</script></span>求出。</p>
+<p>值得注意的是，并非所有的通信信号及设备具备纳米级分辨率。比较典型的具备纳米级分辨率的信号时超宽带(Ultra-wideband, UWB)。UWB信号带宽大于<span><span class="MathJax_Preview">500 MHz</span><script type="math/tex">500 MHz</script></span>。也正得益于大宽带，UWB具有纳秒级的时间分辨率，因此具有极高的测距定位精度。我们将在<a href="https://iot-book.github.io/20_UWB感知/S1_UWB设备与开发环境/">“UWB感知”章节</a>，通过实际的例子介绍如何使用UWB设备实现基于并行传输的TDOA定位算法。</p>
+<h2 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
                 
               
               

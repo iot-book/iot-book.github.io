@@ -1546,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1558,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1570,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1869,9 +1869,10 @@
                 
                 
                 <h1 id="_1">无线指纹定位算法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>基于信号指纹的定位算法，主要是利用信号的某些特征在空间中的分布特点而实现的匹配定位方法。信号的特征作为信号指纹，与空间位置进行对应映射。</p>
+<p>除了前面两大类基于时间或者时间差的定位算法外，还有一类基于信号指纹的定位算法。
+这一类定位算法主要是利用信号的某些特征在空间中的分布特点而实现的匹配定位方法。信号的特征作为信号指纹，与空间位置进行对应映射。</p>
 <h2 id="_2">基本原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>基于“指纹”的定位方法的基本思想是：首先对定位空间中的每个采样点进行训练，即采集每个采样点的信号特征，构成指纹数据库；若要对某个待定位点进行定位，则采集该点的信号特征，并于指纹数据库进行对比，将数据库中与待定位点信号特征最接近的训练采样点，作为该定位点的定位结果。</p>
+<p>基于“指纹”的定位方法的基本思想是：首先采集定位空间中的每个采样点进行训练，即采集每个采样点的信号特征，构成指纹数据库；若要对某个待定位点进行定位，则采集该点的信号特征，并于指纹数据库进行对比，将数据库中与待定位点信号特征最接近的训练采样点，作为该定位点的定位结果。</p>
 <p>目前最常用的信号分布定位算法是利用Wi-Fi指纹进行定位。本节剩余部分将以Wi-Fi指纹定位技术为例，介绍指纹定位技术的基本流程，并结合当下研究热点，介绍机器学习技术在信号分布定位方法中的应用。</p>
 <h2 id="wi-fi">Wi-Fi指纹定位<a class="headerlink" href="#wi-fi" title="Permanent link">&para;</a></h2>
 <p>Wi-Fi信号的分布特征常被用于在室内场景中定位，利用Wi-Fi信号特征定位无需额外部署硬件设备，是一个非常节省成本的方法。Wi-Fi指纹定位的核心思想，是把实际环境中的位置和某种“指纹”联系起来，一个位置对应一个独特的指纹。这个指纹可以是单维或多维的，比如从某个特定位置的信号中提取指纹，那么指纹可以是这个信号的一个特征或多个特征（最常见的是信号强度）。</p>
@@ -1879,26 +1880,24 @@
 <p>位置指纹的具体内容多种多样，任何与位置相关的特征都能被用来做为位置指纹。比如某个位置上无线信号的多径特征、某个位置上是否能检测到接入点或基站、某个位置上接收到来自基站信号的RSS、某个位置上通信往返时间或延迟，这些都能作为一个位置指纹，或者也可以将其组合起来作为位置指纹。</p>
 <p>获取到位置指纹信息后，我们就可以利用位置指纹进行定位。这一过程通常包含两个阶段：离线阶段和在线阶段。在离线阶段，为了采集各个位置上的指纹，构建一个数据库，需要在指定的区域进行繁琐的勘测，采集好的数据有时也称为训练集。在在线阶段，系统将估计待定位的移动设备的位置。</p>
 <p><strong>离线阶段</strong></p>
-<p>位置和指纹的对应关系的建立通常在离线阶段进行。通常会将目标地理区域分成若干个矩形网格，在每一个网格点上，通过一段时间的数据采样（5到15分钟，大约每秒采集一次）得到来自各个AP的平均RSS，采集的时候移动设备可能有不同的朝向和角度。除了平均RSS，我们也可以记录RSS样本的分布（或者其他的一些统计参数，比如标准差）作为指纹。</p>
+<p>位置和指纹的对应关系的建立通常在离线阶段进行。通常会将目标地理区域分成若干个矩形网格，在每一个网格点上，通过一段时间的数据采样（5到15分钟，大约每秒采集一次）得到来自各个AP的平均RSS，采集的时候移动设备可能有不同的朝向和角度。除了平均RSS，我们也可以记录RSS样本的分布（或者其他的一些统计参数，比如标准差）作为指纹。实际系统中不会只采集RSS这种简单数据，会采集更加复杂特征丰富的数据，例如信号的CSI（回顾前面CSI是什么意思，思考为什么CSI信息的特征更加丰富）。</p>
 <p>借助采集结果，这些网格点坐标和对应的指纹就组成一个数据库，这个过程有时称为标注阶段（calibration phase），这个指纹数据库有时也称为无线电地图（radio map）。通常情况下，物理世界中的位置点转换到信号空间中后，会呈现一些没有规律的模式。有些信号向量即使在物理空间中离得很远，在信号空间中却有可能很近。</p>
 <blockquote>
 <p>思考： 指纹在信号空间分布的不规律性会对定位造成哪些挑战？</p>
 </blockquote>
 <p><strong>在线阶段</strong></p>
-<p>当进入在线阶段，一个移动设备处于这个地理区域之中，但是不知道它的具体位置。假设这个移动设备测量到了来自各个AP的RSS，RSS向量的测量值<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>被传输到网络中。要确定移动设备的位置，就是要找到在指纹库中找到和<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>最匹配的指纹<span><span class="MathJax_Preview">\rho</span><script type="math/tex">\rho</script></span>。一旦找到了最佳的匹配，那么移动设备的位置就被估计为这个最佳匹配的指纹所对应的位置。</p>
+<p>当进入在线阶段，一个移动设备处于这个地理区域之中，但是不知道它的具体位置。假设这个移动设备测量到了来自各个AP的信号特征（如RSS，CSI），这些信号向量的测量值<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>被传输到网络中。要确定移动设备的位置，就是要找到在指纹库中找到和<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>最匹配的指纹<span><span class="MathJax_Preview">\rho</span><script type="math/tex">\rho</script></span>。一旦找到了最佳的匹配，那么移动设备的位置就被估计为这个最佳匹配的指纹所对应的位置。</p>
 <p>根据向量<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>和<span><span class="MathJax_Preview">\rho</span><script type="math/tex">\rho</script></span>的匹配规则不同，基于位置指纹的定位可以分成两种类型。一种是确定性的算法，其核心是比较信号特征（比如向量<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>）和存在指纹库中的预先计算出来的统计值。另一种是是概率性的算法，计算信号特征属于某个分布（存储在指纹库中）的可能性。</p>
 <p><strong>总结</strong></p>
 <p>Wi-Fi几乎无处不在的可用性使其成为一个很有吸引力的定位方法（无需额外的硬件花费），位置指纹法由于其原理的简单、实现难度低，成为了室内定位的主要选择。然而位置指纹法需要很繁琐的数据采集工作，并且可能需要随着环境的变化而经常更新。此外，由于无线电传播的复杂多变，位置指纹的收集本身也不是容易的问题。一些测量、分析和仿真已经表明可以采取一些经验的方法来减少指纹采集的工作量。如果对定位精度的要求不高，诸如子区域定位或位置指纹的有机构建等其他方法可以用来减少指纹采集的工作量。</p>
 <h2 id="_3">机器学习在信号分布特征定位中的应用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>虽然我们只是一个证明基于信号强度分布进行定位的可行性的定性方法，但是我们中对定位的实现思路值得我们认真审视。对信号分布特征的匹配，其实质是通过某些特征，对目标点的位置进行分类或回归的过程。而分类模型和回归模型的本质的一样的，分类模型是回归模型的离散化输出。因此，对信号进行特征匹配的方法就是基于信号分布特征的定位方法的核心。而机器学习是目前流行的一种特征匹配方法。</p>
 <p>如果我们重新考虑基于指纹的定位方法的基本思想，我们发现，其基本思想就是对定位空间进行了分割，本质上就是对定位空间根据某种标准（通常是信号的某种特征）进行了类别的划分。定位空间的每个网格，即为该分类方法中的一个类别。而定位的过程，即是对目标位置进行分类的过程。</p>
-<p>当我们用分类的思想对定位方法进行抽象后，我们可以发现，基于指纹的定位方法的核心过程为“确定分类方式-特征提取-训练分类器-测试数据”。显然，机器学习是实现该过程的一种有效的方法。例如我们，将定位空间划分为3*3的网格，这就确定了分类的方式：将空间划分为3*3共9个类别。接下来，为了提取用于分类的声音信号的特征，我们测量了每个网格内4个采样位置上10个频率信号的强度信息。随后利用这些信息训练了神经网络，该神经网络就是一个分类器。最后，对目标位置的定位，即为利用该分类器对目标位置进行分类并获得结果。</p>
+<p>当我们用分类的思想对定位方法进行抽象后，我们可以发现，基于指纹的定位方法的核心过程为“确定分类方式-特征提取-训练分类器-测试数据”。显然，机器学习是实现该过程的一种有效的方法。例如我们，将定位空间划分为3*3的网格，这就确定了分类的方式：将空间划分为3*3共9个类别。接下来，为了提取用于分类的声音信号的特征，我们测量了每个网格内4个采样位置上10个频率信号的特征信息。随后利用这些信息训练了神经网络，该神经网络就是一个分类器。最后，对目标位置的定位，即为利用该分类器对目标位置进行分类并获得结果。</p>
 <p>同样的，如果我们使用其他的机器学习技术，例如支持向量机等，同样可以得到类似的结果。我们甚至可以将多种分类器结合起来，以提高分类的准确率，从而提高定位精度。但是利用分类器实现定位也存在缺点，一个显而易见的问题在于，其定位的精度依赖于分类的精细程度，分类越精细（例如选择几何尺寸更小的网格），其定位的分辨能力越高，训练和建模的复杂程度也越高（因为基于指纹的方法需要在每个网格采集数据进行训练和建模）。</p>
 <h2 id="_4">参考文献<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[1] Zhou, Rui, et al. "Device-free localization based on CSI fingerprints and deep neural networks." 2018 15<sup>th</sup> Annual IEEE International Conference on Sensing, Communication, and Networking (SECON). IEEE, 2018.</li>
-<li>[2] Linsong Cheng, Jiliang Wang. "How Can I Guard My AP? Non-intrusive User Identification for Mobile Devices Using WiFi Signals", ACM MOBIHOC 2016.</li>
-<li>[3] Xiaolong Zheng, Jiliang Wang, Longfei Shangguan, Zimu Zhou, Yunhao Liu. "Smokey: Ubiquitous Smoking Detection with Commercial WiFi Infrastructures", IEEE INFOCOM 2016.</li>
+<li>[1] Linsong Cheng, Jiliang Wang. "How Can I Guard My AP? Non-intrusive User Identification for Mobile Devices Using WiFi Signals", ACM MOBIHOC 2016.</li>
+<li>[2] Xiaolong Zheng, Jiliang Wang, Longfei Shangguan, Zimu Zhou, Yunhao Liu. "Smokey: Ubiquitous Smoking Detection with Commercial WiFi Infrastructures", IEEE INFOCOM 2016.</li>
 </ul>
                 
               

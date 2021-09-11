@@ -1381,29 +1381,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#matlab" class="md-nav__link">
-    示例代码与数据（matlab）
+  <a href="#_3" class="md-nav__link">
+    示例代码与数据
   </a>
   
-    <nav class="md-nav" aria-label="示例代码与数据（matlab）">
+    <nav class="md-nav" aria-label="示例代码与数据">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     录音端
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     数据处理代码
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     数据文件样例
   </a>
   
@@ -1415,14 +1415,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     结果展示
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     参考文献
   </a>
   
@@ -1573,7 +1573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1585,7 +1585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1597,7 +1597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1862,29 +1862,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#matlab" class="md-nav__link">
-    示例代码与数据（matlab）
+  <a href="#_3" class="md-nav__link">
+    示例代码与数据
   </a>
   
-    <nav class="md-nav" aria-label="示例代码与数据（matlab）">
+    <nav class="md-nav" aria-label="示例代码与数据">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     录音端
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     数据处理代码
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     数据文件样例
   </a>
   
@@ -1896,14 +1896,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     结果展示
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     参考文献
   </a>
   
@@ -1922,15 +1922,16 @@
               
                 
                 
-                <h1 id="_1">基于信号特征的手势识别<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+                <h1 id="_1">声波手势识别<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>无线感知是物联网领域的一个研究热点。其主要原理是利用感知目标对信号的影响来进行感知。通过分析信号的变化，进而推断出感知目标的情况（如位置、动作、朝向等）。</p>
-<p>为了便于大家的理解，我们这里使用声波信号对手势进行识别，其余场景的思路是类似的。
-利用声波进行手势识别的第一个思路是通过发射FMCW或OFDM子载波，进而通过反射信号计算相位变化来检测手指的运动距离，从而对手势进行识别检测。这一部分基本是基于声波进行定位和追踪了，在前面的章节中我们有详细的介绍。我们在这里就不展开介绍了。
+<p>为了便于大家的理解，我们这里使用声波信号对手势进行识别，其余场景的思路是类似的。理解了这个对于大家理解基于WiFi CSI或者其他无线信号特征做动作识别等有很大的帮助。大家可以仔细思考一下下面的这个过程。</p>
+<p>利用声波进行手势识别的第一个问题是如何获得信号状态信息，在WiFi中我们可以直接获取CSI，大家并不需要思考怎么获取到的（实际上在前面信号那一章节我们已经介绍了CSI的主要原理）。</p>
+<p>第一个思路是通过发射FMCW或OFDM子载波，进而通过反射信号计算相位变化来检测手指的运动距离，从而对手势进行识别检测。这一部分基本是基于声波进行定位和追踪了，在前面的章节中我们有详细的介绍。我们在这里就不展开介绍了。
 当然这些工作存在着以下问题：
 - 手势在运动过程中的反射的变化非常复杂，手掌不能简单建模为单一反射点
 - 声波受到多径效应的影响会出现频率选择性衰落
 - 静态物体的反射会导致识别困难</p>
-<p>在这一部分，我们使用声波信道信息来对手势进行识别。我们尝试利用CIR信息对手势进行识别的工作（如果还不清楚CIR是什么，请回顾信道特征这一章节）。</p>
+<p>在这一部分，我们使用声波信道信息来对手势进行识别。我们尝试利用CIR信息对手势进行识别的工作（如果还不清楚CIR是什么，请回顾信道特征这一章节），这一过程就跟现在很多CSI做感知的工作非常类似了，这一系列的论文已经非常非常多了，现在还在层出不穷，他们的基本的思路都是一样的，建议大家可以以声波感知为出发点来理解无线感知。</p>
 <p>手势识别的流程如图所示
 <center>
 <img src="./fig/1.jpg" width=600px>
@@ -1955,8 +1956,8 @@ padding: 2px;">手势识别的流程</div>
 <li><strong>特征提取与建立分类网络</strong>
    利用上面测量CIR数据数据及处理的方法，可以收集大量实际运动过程中的数据，再将这些数据及对应的手势标签输入到经过设计的机器学习网络中训练分类器。在预测阶段，通过输入实际的运动数据到分类器中，就可以获取到相对应的手势类别（如相对麦克风左右晃动或前后晃动）。</li>
 </ol>
-<h2 id="matlab">示例代码与数据（matlab）<a class="headerlink" href="#matlab" title="Permanent link">&para;</a></h2>
-<h3 id="_3">录音端<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h2 id="_3">示例代码与数据<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">录音端<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span><span class="w"></span>
 <span class="c">%% 设置</span><span class="w"></span>
 <span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"> </span><span class="c">% 单个chirp周期</span><span class="w"></span>
@@ -2008,7 +2009,7 @@ padding: 2px;">手势识别的流程</div>
 <span class="c">% save(&#39;record_static.mat&#39;)</span><span class="w"></span>
 <span class="c">% save(&#39;record_dynamic.mat&#39;)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="_4">数据处理代码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">数据处理代码<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nb">close</span><span class="w"> </span><span class="nb">all</span><span class="p">;</span><span class="w"></span>
 <span class="nb">load</span><span class="p">(</span><span class="s">&#39;record_static.mat&#39;</span><span class="p">)</span><span class="w"></span>
 <span class="c">%% 常量</span><span class="w"></span>
@@ -2049,8 +2050,7 @@ padding: 2px;">手势识别的流程</div>
 <span class="w">    </span><span class="n">mixSigUp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sig_up</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">y</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">%% 混合信号，接受到的信号与实际信号相乘</span><span class="w"></span>
 <span class="w">    </span><span class="n">fmixSigUp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lowpass</span><span class="p">(</span><span class="n">mixSigUp</span><span class="p">,</span><span class="n">fMax</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span><span class="n">fs</span><span class="p">);</span><span class="w"> </span><span class="c">% 低通滤波</span><span class="w"></span>
 <span class="w">    </span><span class="n">fftOut</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">fmixSigUp</span><span class="p">,</span><span class="n">fs</span><span class="o">*</span><span class="n">N</span><span class="p">));</span><span class="w"> </span><span class="c">% fft</span><span class="w"></span>
-<span class="w">    </span><span class="n">CIRData</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fftOut</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">fMax</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="n">pk</span><span class="p">(</span><span class="n">I</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span><span class="w"> </span><span class="c">% 除以 pk(I(i))进行幅值补偿</span><span class="w"></span>
-
+<span class="w">    </span><span class="n">CIRData</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fftOut</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">fMax</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="n">pk</span><span class="p">(</span><span class="n">I</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span><span class="w"> </span><span class="c">% 除以 pk(I(i))进行幅值补偿 </span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
 
 <span class="c">%% 绘图</span><span class="w"></span>
@@ -2140,12 +2140,12 @@ padding: 2px;">手势识别的流程</div>
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 <span class="nb">caxis</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="_5">数据文件样例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">数据文件样例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="./file/record_dynamic.mat">record_dynamic.mat</a></li>
 <li><a href="./file/record_static.mat">record_static.mat</a></li>
 </ul>
-<h2 id="_6">结果展示<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">结果展示<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p><center>
 <img src="./fig/2.jpg" width=600px>
 </center></p>
@@ -2155,11 +2155,14 @@ display: inline-block;
 color: #999;
 padding: 2px;">数据结果图</div>
 <p></center></p>
-<p>收集到CIR特征数据后，就可以利用提取到的不同手势的反射CIR数据特征，训练分类器对手势进行分类。训练分类器的部分就不再进行介绍。</p>
-<h2 id="_7">参考文献<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[1] <a href="https://dl.acm.org/doi/10.1109/INFOCOM41043.2020.9155402">Push the Limit of Acoustic Gesture Recognition (Y. Wang, J. Shen and Y. Zheng)</a><div id="refer-1"></div></li>
-</ul>
+<p>收集到CIR特征数据后，就可以利用提取到的不同手势的反射CIR数据特征，训练分类器对手势进行分类。训练分类器这部分的方法很多，特点也不一样，我们就先不再进行介绍。</p>
+<p>[TODO 未来有空可以补充，但是这部分可以使用的方法很多，大家可以直接参考经典方法]</p>
+<h2 id="_8">参考文献<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Linsong Cheng, Zhao Wang, Yunting Zhang, Weiyi Wang, Weimin Xu, Jiliang Wang. "Towards Single Source based Acoustic Localization", IEEE INFOCOM 2020.</li>
+<li>Yunting Zhang, Jiliang Wang, Weiyi Wang, Zhao Wang, Yunhao Liu. "Vernier: Accurate and Fast Acoustic Motion Tracking Using Mobile Devices", IEEE INFOCOM 2018. </li>
+<li>Pengjing Xie, Jingchao Feng, Zhichao Cao, Jiliang Wang. "GeneWave: Fast Authentication and Key Agreement on Commodity Mobile Devices", IEEE ICNP 2017</li>
+</ol>
                 
               
               

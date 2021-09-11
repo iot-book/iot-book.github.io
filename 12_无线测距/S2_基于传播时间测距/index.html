@@ -1573,7 +1573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1585,7 +1585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1597,7 +1597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1929,10 +1929,15 @@
 <p>这一部分我们来介绍常见的ToF的测量方法，大家在看到论文或者自己需要使用的时候可以作为参考。</p>
 <h3 id="_2">同步测量方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>如果发送端和接收端的精确时间同步，从发送方发送一个数据包到达接收方，如果能够准确记录发送和接收时间的话，是可以准备测量信号飞行时间的。即在发送端和接收端时间同步的前提下，接收端就可以记录发送端在哪一时刻开始传输；随后，在收到信号的第一时间，接收端记录信号到达时刻的时间戳；最后，利用接收时间戳减去发送时刻即可得到信号飞行时间。
-使用<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>表示发送端到接收端的距离，<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>表示信号的传播速度（例如声速），<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>表示测量得到的飞行时间，那么可以得到：
-$$
+使用<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>表示发送端到接收端的距离，<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>表示信号的传播速度（例如声速），<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>表示测量得到的飞行时间，那么可以得到：</p>
+<div>
+<div class="MathJax_Preview">
 d = c\times t
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+d = c\times t
+</script>
+</div>
 <p>因此如何解决时钟同步问题，是飞行时间测距工作的一个重点，也是难点。传统网络工作中提出了多种网络时间同步机制，例如网络时间协议（Network Time Protocol, NTP)，它也是互联网的时间同步机制。此外，全球定位系统（GPS）技术也能为不同设备提供全局时间同步，它的原理是在GPS卫星上运行一个高精度的铯原子钟，GPS客户机通过接收卫星发送的伪随机序列，实现与卫星时钟的同步。</p>
 <p>现有的时间同步方法在实际使用中仍存在较大的局限性。例如NTP协议主要针对静态网络，并且需要频繁交换消息来不断校准时钟频率偏移带来的误差。此外，NTP协议毫秒级的精度无法满足高精度测距等应用场景的需求。GPS能达到纳秒级精度的同步，但GPS受环境遮挡影响大，只适用于室外空旷无遮挡的环境，无法适用于室内低功耗物联网节点。</p>
 <h3 id="_3">利用信号反射实现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -1944,10 +1949,15 @@ $$</p>
 <p>在第二种方法中，需要发送端和接收端进行双向通信，又可以分为单边双向测距和双边双向测距两类方法，也将在后面的小节中介绍。</p>
 <h3 id="_4">利用波速差实现<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>如果可以利用两种不同的信号的话，两种信号之间的波速差也可以被用来作为测距。</p>
-<p>例如我们可以令发送端同时发送一道电磁波和声波，然后在接收端记录电磁波的到达时刻<span><span class="MathJax_Preview">𝑡_𝑟</span><script type="math/tex">𝑡_𝑟</script></span>和声波的到达时刻<span><span class="MathJax_Preview">𝑡_𝑠</span><script type="math/tex">𝑡_𝑠</script></span>。则根据这两个不同的到达时刻，可以计算出发送端与接收端之间的距离：
-$$
+<p>例如我们可以令发送端同时发送一道电磁波和声波，然后在接收端记录电磁波的到达时刻<span><span class="MathJax_Preview">𝑡_𝑟</span><script type="math/tex">𝑡_𝑟</script></span>和声波的到达时刻<span><span class="MathJax_Preview">𝑡_𝑠</span><script type="math/tex">𝑡_𝑠</script></span>。则根据这两个不同的到达时刻，可以计算出发送端与接收端之间的距离：</p>
+<div>
+<div class="MathJax_Preview">
 d = \frac{v_r\times v_s \times(t_s-t_r)}{v_r-v_s}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+d = \frac{v_r\times v_s \times(t_s-t_r)}{v_r-v_s}
+</script>
+</div>
 <p>由于<span><span class="MathJax_Preview">𝑣_𝑟=3\times 10^8 m/s</span><script type="math/tex">𝑣_𝑟=3\times 10^8 m/s</script></span>远大于<span><span class="MathJax_Preview">𝑣_𝑠=340m/s</span><script type="math/tex">𝑣_𝑠=340m/s</script></span>，因此距离计算式可简化为：<span><span class="MathJax_Preview">𝑑=𝑣_𝑠\times (𝑡_𝑠-𝑡_𝑟)</span><script type="math/tex">𝑑=𝑣_𝑠\times (𝑡_𝑠-𝑡_𝑟)</script></span></p>
 <h2 id="fmcwtof">使用FMCW测量ToF<a class="headerlink" href="#fmcwtof" title="Permanent link">&para;</a></h2>
 <p>FMCW（Frequency Modulated Continuous Wave，调频连续波）是一种在高精度雷达测距中使用的技术,FMCW是频率随着时间线性增长的信号。FMCW技术有很长的使用历史，使用范围非常广泛。近些年来，FMCW在物联网的定位和感知的场景里面使用很多。很多前沿的研究工作，利用基于电磁波或者声波的FMCW信号，来进行定位和感知的应用。
@@ -2023,10 +2033,15 @@ T_f = \frac{(t_4-t_1)-(t_3-t_2)}{2} \tag{1}
 T_f = \frac{(t_4-t_1)-(t_3-t_2)}{2} \tag{1}
 </script>
 </div>
-<p><strong>误差分析</strong>：我们假设误差来自于硬件的时钟漂移，因此我们对设备<span><span class="MathJax_Preview">A，B</span><script type="math/tex">A，B</script></span>的时钟进行如下建模[2]：
-$$
+<p><strong>误差分析</strong>：我们假设误差来自于硬件的时钟漂移，因此我们对设备<span><span class="MathJax_Preview">A，B</span><script type="math/tex">A，B</script></span>的时钟进行如下建模[2]：</p>
+<div>
+<div class="MathJax_Preview">
 \hat{t}_a=(1+e_a)t_a  {\quad} (a=1,4) \tag{2}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\hat{t}_a=(1+e_a)t_a  {\quad} (a=1,4) \tag{2}
+</script>
+</div>
 <div>
 <div class="MathJax_Preview">
 \hat{t}_b=(1+e_b)t_b  {\quad} (b=2,3) \tag{3}
@@ -2121,7 +2136,7 @@ err &= \hat{T}_f - T_f \\
 <p>不妨假设<span><span class="MathJax_Preview">T_f= 100 ns</span><script type="math/tex">T_f= 100 ns</script></span>, 例如如果我们使用的是Decawave发布的DW1000芯片，那么<span><span class="MathJax_Preview">((t_3-t_2)-(t_5-t_4)) \in (0ns,8ns)</span><script type="math/tex">((t_3-t_2)-(t_5-t_4)) \in (0ns,8ns)</script></span>，这里我们取最坏的情况<span><span class="MathJax_Preview">8ns</span><script type="math/tex">8ns</script></span>，设备的时钟漂移为<span><span class="MathJax_Preview">20ppm</span><script type="math/tex">20ppm</script></span>，那么我们可以计算得到误差约为<span><span class="MathJax_Preview">2 ps</span><script type="math/tex">2 ps</script></span>，对应<span><span class="MathJax_Preview">0.6mm</span><script type="math/tex">0.6mm</script></span>的测距误差。可以看到，双边双向测距在理论上的精度远优于单边双向测距的方法。</p>
 <p>另外，上面的计算方法依然受两个设备的时钟漂移影响，其实我们可以使用更加优化的算法，消去其中一个设备的时钟影响，这也是为什么我们说双边双向测距相当于在单边双向测距基础上做了时间同步。进一步阅读见[2]。</p>
 <h1 id="_5">测距案例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
-<p>实际系统中的测距大多数是基于上面的几个思路，在本材料中我们会展示多个系统测距的案例和实际代码，包括基于声波的BeepBeep测距方法[1]和WiFi的FTM(Fine Time Measurement)协议[3]。[TODO] 添加章节链接。</p>
+<p>实际系统中的测距大多数是基于上面的几个思路，在本材料中我们会展示多个系统测距的案例和实际代码，包括<a href="https://iot-book.github.io/16_声波感知/S1_声波测距/">基于声波的BeepBeep测距方法</a>[1]和<a href="https://iot-book.github.io/17_WiFi感知/S3_案例：WiFI ToF测距/">WiFi的FTM(Fine Time Measurement)协议</a>[3]。</p>
 <h2 id="_6">参考文献<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>[1] Peng, Chunyi &amp; Shen, Guobin &amp; Zhang, Yongguang &amp; Li, Yanlin &amp; Tan, Kun. (2007). BeepBeep: A high accuracy acoustic ranging system using COTS mobile devices. SenSys. 1-14. 10.1145/1322263.1322265. </p>
 <p>[2] Dries Neirynck, Eric Luk, and Michael McLaughlin. 2016. An alternative doublesided

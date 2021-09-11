@@ -615,7 +615,7 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    动手试试
+    实践案例——声音滤波
   </a>
   
 </li>
@@ -1539,7 +1539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1551,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1563,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1836,7 +1836,7 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    动手试试
+    实践案例——声音滤波
   </a>
   
 </li>
@@ -1892,10 +1892,9 @@ color: #999;
 padding: 2px;">图. 9-point滑动平均滤波器和一阶递归滤波器阶跃响应曲线。</div>
 <p></center></p>
 <p>上图也反映了，这两种滤波器在时域滤波的性能上实际上相差无几，通常可以根据个人喜好在两者之间进行选择。但是，在考虑大规模数据滤波和编程复杂度问题是，我们在选择滤波器时就需要在开发时间和执行时间之间进行权衡。如果我们希望减少开发时间，并愿意接受较慢的过滤器，例如，我们可能需要一次滤波几千个点。由于整个程序仅需几秒钟即可运行，因此花时间优化算法毫无意义。 我们通常会选择使用递归过滤器，这样编程和修改将稍微容易一些，并且执行速度也不会很慢。但是，如果我们需要一次滤波几亿个点，我们则应该选择使用滑动平均，并通过算法优化使得计算速度尽可能快。</p>
-<h2 id="_2">动手试试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h1 id="_3">实践案例——声音滤波<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<h2 id="_2">实践案例——声音滤波<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>借助滤波器，我们可以保留或抑制信号中特定频率的内容。这是物联网信号处理中的常用也必不可少的操作。很多同学们对这一部分基本概念有所了解，但是具体操作起来仍然比较陌生，尤其是之前很多同学并没有实际使用的经验。
-在理解了基本原理之后，我们展示使用滤波来处理真实信号的案例。本部分将以录音降噪程序为例，向大家展示如何设计并实现具有特定功能的数字滤波器。我们处理一段混有高频噪声的录音信号，通过低通滤波抑制噪声信号，从而达到给录音降噪的目的。完整的实现代码及录音文件请访问XXX获取。</p>
+在理解了基本原理之后，我们展示使用滤波来处理真实信号的案例。本部分将以录音降噪程序为例，向大家展示如何设计并实现具有特定功能的数字滤波器。我们处理一段混有高频噪声的录音信号，通过低通滤波抑制噪声信号，从而达到给录音降噪的目的。</p>
 <p><strong>时域滤波</strong></p>
 <p>从时域看，通过滑动平均可以将高频噪声带来的毛刺波动尽可能的平滑，并保留低频信号的波形特征。滑动平均的主要可调整参数为窗口大小，下面我们将实现基于滑动平均信号整形，用于抑制录音信号中的噪声。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">clc</span><span class="p">;</span><span class="w"> </span><span class="nb">clear</span><span class="p">;</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="s">all</span><span class="p">;</span><span class="w"> </span><span class="n">clear</span><span class="w"> </span><span class="s">sound</span><span class="w"></span>

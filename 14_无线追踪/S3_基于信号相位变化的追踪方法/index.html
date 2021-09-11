@@ -1532,7 +1532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1544,7 +1544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1556,7 +1556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1841,8 +1841,8 @@
                 
                 
                 <h1 id="_1">基于信号相位的追踪方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>相位定位追踪是物联网定位追踪中的常用方法，尤其近些年出现了一系列基于相位的定位和追踪方法，在研究领域里面层出不穷，将基于相位的追踪方法不断变化，大家如果有经常看物联网相关论文应该会比较熟悉。大家如果要深入的学习，应该去先思考信号的本身基本特点，就很容易理解基于相位的追踪方法，相关的方法也是很早以前就出现了，在物联网中的应用让我们更加有直观的感受。</p>
 <h2 id="_2">相位追踪的原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>相位定位追踪是物联网定位追踪中的常用方法，尤其近些年出现了一系列基于相位的定位和追踪方法，使用了电磁波、声波信号等。大家如果有经常看物联网相关论文应该会比较熟悉。</p>
 <p>相位定位的基本原理就是测量信号的相位变化，在数据调制那一章我们已经介绍过了相位，大家可以回去再看一下。
 在定位过程中，相位追踪可以从几个不同的方面来进行理解。
 假设信号源发送的固定频率信号为<span><span class="MathJax_Preview">R(t)=Acos(2\pi ft)</span><script type="math/tex">R(t)=Acos(2\pi ft)</script></span>，信号经过路径<span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>传播，传播路径长度随时间的变化为<span><span class="MathJax_Preview">d_p(t)</span><script type="math/tex">d_p(t)</script></span>。接收到的经路径<span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>的声音信号可以表示为：</p>
@@ -1854,9 +1854,10 @@ R_p(t)=A_p(t)cos(2\pi ft-\frac{2\pi fd_p(t)}{c}-\theta_p)
 R_p(t)=A_p(t)cos(2\pi ft-\frac{2\pi fd_p(t)}{c}-\theta_p)
 </script>
 </div>
-<p>其中<span><span class="MathJax_Preview">A_p(t)</span><script type="math/tex">A_p(t)</script></span>为接收信号的幅度，<span><span class="MathJax_Preview">2\pi fd_p(t)/c</span><script type="math/tex">2\pi fd_p(t)/c</script></span>为传播引起的相位偏移，<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>为声速，<span><span class="MathJax_Preview">\theta_p</span><script type="math/tex">\theta_p</script></span>是由于硬件的延迟、反射带来的半波损失等造成的相位偏移，这部分可以认为是常量，不随时间变化。若从接收信号<span><span class="MathJax_Preview">R_p(t)</span><script type="math/tex">R_p(t)</script></span>中获取相位信息。根据相位，可以得到传播路径长度<span><span class="MathJax_Preview">d_p(t)</span><script type="math/tex">d_p(t)</script></span>的变化情况，实现接收者运动路径的追踪。</p>
+<p>其中<span><span class="MathJax_Preview">A_p(t)</span><script type="math/tex">A_p(t)</script></span>为接收信号的幅度，<span><span class="MathJax_Preview">2\pi fd_p(t)/c</span><script type="math/tex">2\pi fd_p(t)/c</script></span>为传播引起的相位偏移，<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>为声速，<span><span class="MathJax_Preview">\theta_p</span><script type="math/tex">\theta_p</script></span>是由于硬件的延迟、反射带来的半波损失等造成的相位偏移，这部分可以认为是常量，不随时间变化。若能从接收信号<span><span class="MathJax_Preview">R_p(t)</span><script type="math/tex">R_p(t)</script></span>中获取相位信息。根据相位，可以得到传播路径长度<span><span class="MathJax_Preview">d_p(t)</span><script type="math/tex">d_p(t)</script></span>的变化情况，实现接收者运动路径的追踪。</p>
 <p>若利用位于不同位置，发送不同频率声波的多个声源，在已知起始位置的情况下，根据设备在一段时间内的与不同声源距离的变化，可以计算得到设备空间位置的变化情况，实现高精度的定位与追踪。</p>
 <h2 id="_3">相位追踪的实现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>相位这个词咱们如果是从这个材料的开始看到这里，一定不会陌生。如果没有看的话，建议先看信号数字调制和解调这一部分[TODO加上链接]，这一部分已经把相位讲的比较清楚了。实际上看完那部分，大家不用看这部分就能理解如何利用相位做追踪了，这也是为什么在我们这个材料里面先要花很多时间介绍傅里叶、数据调制解调等。</p>
 <p>为了在接收的信号中提取路径长度<span><span class="MathJax_Preview">d_p(t)</span><script type="math/tex">d_p(t)</script></span>，采用I/Q调制解调的方式消去含有频率<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>的项。</p>
 <p>由于</p>
 <div>
@@ -1932,7 +1933,7 @@ R_p(t)\sin(2\pi f t)=-\frac{A_p(t)}{2}\sin(-2\pi f \frac{d_p(t)}{c}-\theta_p)+\f
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间(s)&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;距离(m)&#39;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-<p>使用10.1节的数据，设备先远离声源移动10cm，然后远离声源移动20cm，最后移动回到初始位置。追踪结果如下</p>
+<p>使用前面的数据[TODO加上链接]，设备先远离声源移动10cm，然后远离声源移动20cm，最后移动回到初始位置。追踪结果如下</p>
 <p><center>
     <img src=".\fig\result_LLAP.png" width=600px>
 </center></p>

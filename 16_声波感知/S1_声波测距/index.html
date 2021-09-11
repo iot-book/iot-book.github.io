@@ -1539,7 +1539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1551,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1563,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1895,11 +1895,14 @@ V(t)=\frac{A}{2} \cos \left(2 \pi f_{\min } \frac{R}{c}+\left(\frac{2 \pi B R t}
 </script>
 </div>
 <p>此时的<span><span class="MathJax_Preview">V(t)</span><script type="math/tex">V(t)</script></span>是个单频信号。对其进行傅里叶变换，在频率 <span><span class="MathJax_Preview">𝑓=𝐵𝑅/𝑐𝑇</span><script type="math/tex">𝑓=𝐵𝑅/𝑐𝑇</script></span> 处可观察到一个峰值，根据波峰的下标即可最终确定接收信号与发送信号的频率差。</p>
+<blockquote>
+<p>这里面我们可能需要使用手机来进行声波发送和接收，实际上就是手机播放声音和录音。如果你对这一部分没有经验的话，可以参考我们准备的附录中的材料[TODO 添加上链接]。</p>
+</blockquote>
 <p><strong>FMCW测距实现</strong></p>
 <p>直接使用FMCW信号测距时，需要发送设备与接收设备之间进行精准的时钟同步，这样才能保证可以在接收端通过信号相乘提取发送信号与接收信号之间的频率差。在实际系统中，我们可以通过使用同一设备收、发信号以实现上述时钟同步需求。因此，当需要测量设备到某个目标物体的距离时，我们令设备发送FMCW信号，信号达到目标物体并被目标反射后回到测距设备，测距设备收集反射信号并将其与发出信号进行比对以实现测距。上述过程要求测距设备能够运行在全双工模式，即发射信号的同时可以接收信号。</p>
-<p>FMCW测距代码实现（使用Matlab语言）：
+<p>FMCW测距代码实现：
 - 目标：使用FMCW声波信号测量设备与目标物体之间的距离。
-- 发送信号：88个chirp信号，每两个chirp信号之间有与chirp信号等长的空白间隔。
+- 发送信号：88个FMCW信号，每两个FMCW信号之间有与FMCW信号等长的空白间隔。
 - 具体步骤：
   - 1. 生成pseudo-transmitted信号。
   - 2. 将pseudo-transmitted信号与接收信号相乘，并做傅里叶变换，得到频率偏移。
@@ -1920,7 +1923,7 @@ V(t)=\frac{A}{2} \cos \left(2 \pi f_{\min } \frac{R}{c}+\left(\frac{2 \pi B R t}
 <span class="p">[</span><span class="n">mydata</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">audioread</span><span class="p">(</span><span class="s">&#39;fmcw_receive.wav&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="n">mydata</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">mydata</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 
-<span class="n">hd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">design</span><span class="p">(</span><span class="n">fdesign</span><span class="p">.</span><span class="n">bandpass</span><span class="p">(</span><span class="s">&#39;N,F3dB1,F3dB2&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">17000</span><span class="p">,</span><span class="mi">23000</span><span class="p">,</span><span class="n">fs</span><span class="p">),</span><span class="s">&#39;butter&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">hd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">design</span><span class="p">(</span><span class="n">fdesign</span><span class="p">.</span><span class="n">bandpass</span><span class="p">(</span><span class="s">&#39;N,F3dB1,F3dB2&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">17000</span><span class="p">,</span><span class="mi">23000</span><span class="p">,</span><span class="n">fs</span><span class="p">),</span><span class="s">&#39;butter&#39;</span><span class="p">);</span><span class="w"> </span><span class="c">% 做一下滤波，想想为什么</span><span class="w"></span>
 <span class="n">mydata</span><span class="p">=</span><span class="nb">filter</span><span class="p">(</span><span class="n">hd</span><span class="p">,</span><span class="n">mydata</span><span class="p">);</span><span class="w"></span>
 <span class="c">% figure;</span><span class="w"></span>
 <span class="c">% plot(mydata);</span><span class="w"></span>
@@ -1971,7 +1974,7 @@ color: #999;
 padding: 2px;">图. FMCW测距</div>
 <p></center></p>
 <h2 id="beepbeep">BeepBeep测距<a class="headerlink" href="#beepbeep" title="Permanent link">&para;</a></h2>
-<p>2007年的SenSys上提出了一种基于声波信号传播时间的测距方法BeepBeep[1]。待测距的两台设备均需要具有扬声器和麦克风，如下图所示：</p>
+<p>BeepBeep是2007年提出了一种基于声波信号传播时间的测距方法[1]。待测距的两台设备均需要具有扬声器和麦克风，如下图所示：</p>
 <p><center>
 <img src="./fig/device.png" width=600px>
 </center></p>

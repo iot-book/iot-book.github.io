@@ -1539,7 +1539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1551,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1563,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1855,6 +1855,7 @@
                 
                 
                 <h1 id="wifi-tof">WiFi ToF的测距方法<a class="headerlink" href="#wifi-tof" title="Permanent link">&para;</a></h1>
+<p>这一部分测距工作是在WiFi场景中对前面<a href="https://iot-book.github.io/12_无线测距/S2_基于传播时间测距/">无线测距</a>部分的直接应用。基本的思路是双边双向测距，实现两个WiFi设备之间的精准ToF测量。</p>
 <p>最新的WiFi支持ToF进行测距。WiFi ToF通过测量无线AP (<code>Responder</code>)与基站 (<code>Initiator</code>)之间的信号的往返时间来对距离进行估计。在IEEE 802.11mc修正案中，WiFi Fine Time Measurement（WiFi FTM）协议被提出，用以实现较高精度的基于WiFi的定位。</p>
 <h2 id="_1">协议原理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>由于基站与AP之间的时间无法做到纳秒级的时间同步，单程的信号在发射端与接收端之间的时间戳的差并不能够反映准确的信号传播时间。而利用双向单边测距的原理即可在基站与AP之间完成往返时间的测量。测量的具体过程如下：</p>
@@ -1886,6 +1887,9 @@
 </center></p>
 <p>在实际的FTM协议中，FTM帧会重复的出现在一个<code>burst</code>的周期内，利用多次测量的平均值来对测距误差进行降低。
 在FTM协议中，只有<code>Initiator</code>端可以获取距离信息，这是因为在一次<code>burst</code>请求中，第N+1次FTM帧（由AP发往基站端）中会携带有上一次FTM应答的<span><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span>以及<span><span class="MathJax_Preview">t_4</span><script type="math/tex">t_4</script></span>信息。这就意味着N+1次FTM应答只能获取N个距离值，并且只有在基站端才能获取完整的<span><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span>到<span><span class="MathJax_Preview">t_4</span><script type="math/tex">t_4</script></span>的时间戳信息。</p>
+<blockquote>
+<p>思考为什么多次测量能降低误差，能降低多少误差。</p>
+</blockquote>
 <h2 id="ftm">如何进行FTM测量<a class="headerlink" href="#ftm" title="Permanent link">&para;</a></h2>
 <p>在较新的Linux内核及版本&gt;9.0的Android系统上，都已经完善了对于FTM协议的支持。</p>
 <p><strong>Android端FTM协议测量</strong>
@@ -1977,6 +1981,7 @@ sudo ifconfig wlp2s0 up <span class="c1"># 改成当前的网卡接口名称</sp
 <p>执行测距：
 <div class="highlight"><pre><span></span><code>sudo iw &lt;interface&gt; measurement ftm_request &lt;配置文件路径&gt;
 </code></pre></div></p>
+<p>从我们使用体验来看，现在FTM测量仍然属于不断完善的阶段，另外系统中现在能够拿到的都是直接FTM测量的结果，即上述双边双向测量的直接结果，如果能够拿出来更多的底层测量时间信息，这个结果仍然能被进一步优化。</p>
 <h2 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="http://gpsworld.com/how-to-achieve-1-meter-accuracy-in-android">How To Achieve 1 Meter Accuracy In Android</a> <div id="refer-1"></div></li>

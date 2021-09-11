@@ -1454,6 +1454,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    相关论文
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1545,7 +1552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1557,7 +1564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1569,7 +1576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1853,6 +1860,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    相关论文
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1874,8 +1888,9 @@
 <li><a href="https://dhalperi.github.io/linux-80211n-csitool/">Linux 802.11n CSI Tool</a></li>
 <li><a href="https://stevenmhernandez.github.io/ESP32-CSI-Tool/">ESP32 CSI Toolkit</a></li>
 <li><a href="https://wands.sg/research/wifi/AtherosCSI/">Atheros CSI Tool</a></li>
+<li><a href="https://ps.zpj.io">PicoScenes-WiFi</a></li>
 </ul>
-<p>这些工具对应的硬件分别是Intel 5300无线网卡、ESP32 Node MCU、部分高通芯片的无线网卡。我们以其中的Linux 802.11n CSI Tool为例说明如何获取WIFI CSI信息:</p>
+<p>这些工具对应的硬件分别是Intel 5300无线网卡、ESP32 Node MCU、部分高通芯片的无线网卡等。实时上CSI信息在驱动内部是早就被使用，主要是如何将信息拿出来，所以大部分工作都是解决如何从驱动中将信息拿出来，如果这部分由驱动厂商来做，将会做得很好。我们以其中的Linux 802.11n CSI Tool为例说明如何获取WIFI CSI信息:</p>
 <h3 id="_1">软硬件要求<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>我们需要使用Intel 5300无线网卡以及装有Linux 4.15内核的操作系统(如Ubuntu 16.04.4)</p>
 <p>我们按照https://github.com/spanev/linux-80211n-csitool的安装指南，在较新的内核（4.15）上安装CSI工具。</p>
@@ -1917,6 +1932,10 @@ sudo depmod
 sudo cp linux-80211n-csitool-supplementary/firmware/iwlwifi-5000-2.ucode.sigcomm2010 /lib/firmware/
 sudo ln -s iwlwifi-5000-2.ucode.sigcomm2010 /lib/firmware/iwlwifi-5000-2.ucode
 </code></pre></div></li>
+</ol>
+<h2 id="_3">相关论文<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Smokey: Ubiquitous smoking detection with commercial WiFi infrastructures, X Zheng, J Wang, L Shangguan, Z Zhou, Y Liu, IEEE INFOCOM 2016</li>
 </ol>
                 
               

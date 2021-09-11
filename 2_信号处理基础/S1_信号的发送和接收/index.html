@@ -1495,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1507,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1519,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1811,6 +1811,9 @@
 <span class="nb">audiowrite</span><span class="p">(</span><span class="s">&#39;sound.wav&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">Fs</span><span class="p">);</span><span class="w">         </span><span class="c">% 保存声音</span><span class="w"></span>
 </code></pre></div>
 <p>​       上面的代码完整地实现了声波的生成、发送（播放）和保存成本地文件的功能。其中出现了 <strong>采样</strong> 这一概念，还有两个频率： <strong>采样频率</strong> 和 <strong>信号频率</strong> 。这些概念以及它们之间的联系与区别将在之后的小节介绍。</p>
+<blockquote>
+<p>这个材料里面很多代码是基于<code>Matlab</code>来写的，如果没有使用过，可以查看附录中的材料作为参考，网上也有很多其他的参考资料。</p>
+</blockquote>
 <p>​       Matlab同样可以实现声波的接收功能，代码如下：</p>
 <div class="highlight"><pre><span></span><code><span class="n">Fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span><span class="w">                             </span><span class="c">% 采样频率（单位：Hz）</span><span class="w"></span>
 <span class="n">Rec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">audiorecorder</span><span class="p">(</span><span class="n">Fs</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">         </span><span class="c">% 定义录音对象</span><span class="w"></span>

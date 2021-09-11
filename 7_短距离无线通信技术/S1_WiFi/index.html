@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wi-fi" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -732,53 +732,9 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          7.1 Wi-Fi
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         7.1 Wi-Fi
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-ieee-80211" class="md-nav__link">
-    1. IEEE 802.11协议简史
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2. 星型网络连接
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 介质访问控制协议
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1539,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.2 蓝牙定位设备
       </a>
     </li>
@@ -1551,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.3 定位算法
       </a>
     </li>
@@ -1563,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../404/" class="md-nav__link">
         18.4 应用
       </a>
     </li>
@@ -1814,35 +1770,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-ieee-80211" class="md-nav__link">
-    1. IEEE 802.11协议简史
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2. 星型网络连接
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 介质访问控制协议
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1854,11 +1781,12 @@
               
                 
                 
-                <p>学习了之前的调制解调的底层技术，剩下的就是如何基于这一系列技术来实现物联网场景中需要的各种无线传输协议了。本部分我们主要介绍无线协议部分，有线协议假设大家都在计算机网络学习过程中都较为了解了。</p>
+                <h1 id="_1">引言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>学习了之前的调制解调的底层技术，剩下的就是如何基于这一系列技术来实现物联网场景中需要的各种无线传输协议了。本部分我们主要介绍无线协议部分，有线协议假设大家都在计算机网络学习过程中都较为了解了。</p>
 <p>根据物联网应用的不同需求，我们可以将物联网中使用到的无线协议大致分为四个不同类别。按照传输能耗和距离来说，第一类是远距离高速率的传输协议，典型协议包括蜂窝网络通信技术，如3G、4G、5G相关技术等，这是我们目前移动通信使用的典型技术。第二类是近距离高速率传输技术，如WiFi、蓝牙等，这些技术传输距离在几十到几百米级别，主要用在家庭环境和日常应用中，使用非常广泛，前面两类可能是一般用户最常使用到的网络协议了，也符合传统网络应用的主要特点和需求。第三类是近距离低功耗传输技术，如传统物联网中ZigBee、RFID、低功耗蓝牙等，这是物联网最近发展起来的技术，能够提供近距离低速率的传输。第四类是远距离低功耗传输技术，前面三类技术大都要求较高的信噪比，对障碍的穿透性较小，无法在复杂环境中实现远距离低功耗传输。低功耗广域网技术填补这一技术空白，低功耗广域网技术以极低功耗进行远距离传输（如几公里到几十公里），具备极低信噪比下的通信能力。</p>
 <p>在物联网通信中，通信距离、通信速率、通信功耗就像不可能三角一样通常难以兼得，在实际设计中会根据需求有所取舍，例如WiFi选择高数据率，就会适当放低通信距离和通信功耗的要求。同样手机上使用的移动通信技术主要选择了通信距离和通信速率，放低通信功耗的要求。
 所以技术还是那些技术，限制还是那些限制，一方面大家在设计适应不同场景的无线通信技术，如WiFi、蓝牙、5G等，另外一方面大家在给定技术的条件下想方设法的在接近技术的极限。</p>
-<h1 id="wi-fi">Wi-Fi无线局域网<a class="headerlink" href="#wi-fi" title="Permanent link">&para;</a></h1>
+<h1 id="wi-fi">Wi-Fi<a class="headerlink" href="#wi-fi" title="Permanent link">&para;</a></h1>
 <p>如今无线局域网Wi-Fi是人们日常生活中访问因特网的重要手段之一，它可以通过一个或多个体积很小的接入点，为一定区域内的（家庭、校园、餐厅、机场等）众多用户提供因特网访问服务。在IEEE为无线局域网制定IEEE 802.11规范之前，存在许多不同的无线局域网标准，这样的缺点是用户在A区域（例如餐厅）上网需要在电脑上安装一种类型的网卡，当他回到B区域（例如办公室）则需要为电脑更换另一种类型的网卡。除了浪费时间和硬件成本外，在不同协议覆盖重叠区域内，无线信号的干扰降低了网络访问的性能。因此为了规范和统一无线局域网的行为，从上世纪90年代至今IEEE制定了802.11系列协议。</p>
 <h2 id="1-ieee-80211">1. IEEE 802.11协议简史<a class="headerlink" href="#1-ieee-80211" title="Permanent link">&para;</a></h2>
 <p>如表1所示，不同的IEEE 802.11协议的差异主要体现在使用频段、调制模式、信道差分等物理层技术。IEEE 802.11协议中典型的使用频段有两个，其一是2.4—2.485GHz公共频段，其二是5.1—5.8GHz高频频段。由于2.4—2.485GHz是公共频段，微波炉、无绳电话和无线传感器网络也使用这个频段，因此信号噪声和干扰可能会稍大。5.1—5.8GHz高频段的传输主要受制于视线传输和多径传播效应，一般用于在室内环境中，其覆盖范围要稍小。不同的调制模式决定了不同的传输带宽，在噪声较高或无线连接较弱的环境中可减小每个信号区间内的传输速率来保证无误传输。下面我们来归纳一下802.11协议族不同协议类型物理层的主要特点。</p>
