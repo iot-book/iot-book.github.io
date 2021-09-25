@@ -18,7 +18,7 @@
     
     
       
-        <title>8.2 RFID - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>Backscatter的起源 - 物联网前沿实践 - 清华大学 - 王继良</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rfid" class="md-skip">
+        <a href="#backscatter" class="md-skip">
           跳转至
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              8.2 RFID
+              Backscatter的起源
             
           </span>
         </div>
@@ -776,14 +776,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
       
       <label class="md-nav__link" for="__nav_10">
         第8章 Backscatter通信
@@ -801,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -811,65 +809,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          8.2 RFID
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#rfid_1" class="md-nav__link">
-    RFID的起源
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rfid_2" class="md-nav__link">
-    RFID协议标准
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rfidwisp" class="md-nav__link">
-    可计算RFID——WISP
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1814,35 +1758,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#rfid_1" class="md-nav__link">
-    RFID的起源
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rfid_2" class="md-nav__link">
-    RFID协议标准
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rfidwisp" class="md-nav__link">
-    可计算RFID——WISP
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1854,11 +1769,7 @@
               
                 
                 
-                <h1 id="rfid">RFID<a class="headerlink" href="#rfid" title="Permanent link">&para;</a></h1>
-<p>RFID（ <strong>R</strong> adio  <strong>F</strong> requency  <strong>ID</strong> entification，射频识别）技术使用一种RFID阅读器(Reader)通过射频信号对RFID标签(Tag)进行非接触式信息传输，并且通过所传输的信息，RFID reader可以识别被嵌入RFID tag的物品的身份信息。</p>
-<p>一个RFID系统主要由标签、天线、阅读器（阅读器通常集成了传送器、接收器和微处理器）构成。每个RFID标签内部存有唯一的电子编码，用来标识目标对象。标签进入RFID阅读器扫描区以后，接收到阅读器发出的射频信号，凭借感应电流获得的能量发送出存储在芯片中的编号。</p>
-<p>RFID tag可以嵌入到不同形状和不同类型的物品中，适用范围广泛，所呈现出的形态有标签、卡片、纽扣等。数以亿计的RFID标签广泛用于库存管理、智能物流、资产跟踪、室内定位等场景中。</p>
-<h2 id="rfid_1">RFID的起源<a class="headerlink" href="#rfid_1" title="Permanent link">&para;</a></h2>
+                <h1 id="backscatter">Backscatter的起源<a class="headerlink" href="#backscatter" title="Permanent link">&para;</a></h1>
 <p>在上个世纪40年代，苏联开发出了一种窃听设备 the Great Seal bug（金唇）。该设备的构造十分简单，由一个接收特定频段的天线，和一个连接到天线的空腔构成。空中的声波会撞击这个空腔，并使其发生震动，而震动引起的形变会改变这个空腔的电容，从而改变入射电磁波的幅度、相位等特征（类似于调制技术）。在接收端，反射回来的电磁波便可以解调出空腔拾取的声音信号。 </p>
 <p><center>
 <img src="./fig/thething.png" width=450px>
@@ -1869,49 +1780,87 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 窃听设备 the Great Seal bug</div>
 <p></center></p>
-<p>在1945年，苏联少年先锋队将一个精致的的木质美国国徽赠送给了美国驻苏联大使，而这个国徽正是一个上述的窃听设备。值得一提的是，由于这个设备无需供电，其在美国驻苏联大使馆的大使办公室中工作了七年才被发现并取下。 the Great Seal bug是无源的，且同样需要外部的激励信号，被认为是现代RFID技术的前身。</p>
-<h2 id="rfid_2">RFID协议标准<a class="headerlink" href="#rfid_2" title="Permanent link">&para;</a></h2>
-<p>RFID的标准主要包括物理特性、空中接口规范、编码规则、读写器协议、测试应用规范、信息安全协议等。目前，全球RFID标准制定者主要为分别是ISO/IEC和EPCGlobal。下面，我们将以EPC Global Class1 Gen2标准为例，介绍RFID物理层和MAC层的简要知识。</p>
-<p>RFID阅读器使用PIE（脉冲间隔编码）与ASK（振幅键控）向标签发送Query等命令。脉冲间隔编码的“0”是短暂的高电平跟随短暂的低电平，而“1”是长时间的高电平跟随短暂的低电平。RFID标签使用包络检测器可以得到高低电平交替的基带信号，并判断高电平的持续时间就可接收到RFID阅读器发送到的指令。接着RFID阅读器发出单频连续波 ( <strong>C</strong> ontinuous  <strong>W</strong> ave, CW)，CW既作为供给标签的无线电源，又作为标签产生的基带信号的载波。</p>
+<p>在1945年，苏联少年先锋队将一个精致的的木质美国国徽赠送给了美国驻苏联大使，而这个国徽正是一个上述的窃听设备。值得一提的是，由于这个设备无需供电，其在美国驻苏联大使馆的大使办公室中工作了七年才被发现并取下。 the Great Seal bug是无源的，且同样需要外部的激励信号，被认为是Backscatter技术的前身。</p>
+<h1 id="backscatter_1">Backscatter基础原理<a class="headerlink" href="#backscatter_1" title="Permanent link">&para;</a></h1>
+<p>Backscatter通信又可以被称为反向散射通信。之前我们看到的通信方式大多可以被认为是主动式的通信方式，即发送方主动产生电磁波，并在基于这个电磁波进行调制传输信号。反向散射通信是采用的另外一种模式，发送方不需要主动产生信号，而是通过反射别的设备产生的电磁波来进行通信。</p>
+<p>反向散射通常是通过如下的基本思想实现的，发送方控制其天线在完全吸收信号/完全反射两种状态中切换，相应，反射出来的信号就会具备不同的振幅，这个振幅就可以用来代表不同的信息。</p>
+<p>为了更深入的理解反向散射标签如何在两种状态中切换，进而改变反射信号的振幅，我们在这一章对backscatter的基础原理进行介绍。</p>
+<p>当电磁波在传播中遇到具有不同阻抗的两种介质的边界时，电磁波将会被一定程度的吸收或反射回去。所以，只需要在天线处进行阻抗的切换，就可以实现信息的传输。Backscatter技术可使射频设备的功耗若干个数量级，因此在物联网的各种应用中，Backscatter技术有很大的优势。</p>
+<p>如果向一个Backscatter设备发送一个激励信号<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>，则其反射出信号<span><span class="MathJax_Preview">S_{out}</span><script type="math/tex">S_{out}</script></span>可以由下式描述：</p>
+<div>
+<div class="MathJax_Preview">
+S_{out} = \frac{Z_{a}-Z_{c}}{Z_{a}+Z_{c}}S_{in}
+</div>
+<script type="math/tex; mode=display">
+S_{out} = \frac{Z_{a}-Z_{c}}{Z_{a}+Z_{c}}S_{in}
+</script>
+</div>
+<p>其中，<span><span class="MathJax_Preview">Z_{a}</span><script type="math/tex">Z_{a}</script></span>和<span><span class="MathJax_Preview">Z_{c}</span><script type="math/tex">Z_{c}</script></span>和分别表示天线的阻抗（一般为<span><span class="MathJax_Preview">50\Omega</span><script type="math/tex">50\Omega</script></span>）以及连接到天线的电路对应的阻抗。</p>
+<p>下面以RFID系统为例介绍，RFID系统使用反射信号的振幅高低编码数据（在下节详细介绍）。我们将标签的<span><span class="MathJax_Preview">Z_{c}</span><script type="math/tex">Z_{c}</script></span>值设置在0和<span><span class="MathJax_Preview">Z_{a}</span><script type="math/tex">Z_{a}</script></span>之间切换，在电路实现中是切换图5中的<span><span class="MathJax_Preview">S_{1}</span><script type="math/tex">S_{1}</script></span>连接到的阻抗值。分别将<span><span class="MathJax_Preview">Z_{a}=0</span><script type="math/tex">Z_{a}=0</script></span>和<span><span class="MathJax_Preview">Z_{a}=Z_{c}</span><script type="math/tex">Z_{a}=Z_{c}</script></span>代入上面的公式，可以得到<span><span class="MathJax_Preview">S_{out}=S_{in}</span><script type="math/tex">S_{out}=S_{in}</script></span>（这里<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>为前文提到的CW）和<span><span class="MathJax_Preview">S_{out}=0</span><script type="math/tex">S_{out}=0</script></span>。RFID reader可以通过反射回信号的振幅就可以判定基带的高低电平。</p>
 <p><center>
-<img src="./fig/PIE.png" width=450px>
+<img src="./fig/RFID.png" width=650px>
 </center></p>
 <p><center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. PIE编码</div>
+padding: 2px;">图. RFID标签通过改变阻抗控制反射信号的振幅</div>
 <p></center></p>
-<p>标签使用FM0编码与ASK调制将数据搭载到阅读器发出的CW上。FM0在每个新符号开始时做一次反相（1→0/0→1)，编码“0”时，在符号中间做一次反相，编码“1”时，符号在整个传输过程中保持不变。在进行ASK调制时，标签使用阅读器发出的CW作为载波，无法主动控制信号的电平，因此标签控制其天线在完全吸收/完全反射两种状态中切换，相应，反射信号的振幅就搭载了标签的基带信号。由于标签仅仅需要控制一个射频开关，从CW获取的感应电流就可以为其提供能量。</p>
-<p><center>
-<img src="./fig/FM0.png" width=450px>
-</center></p>
-<p><center></p>
-<div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">图. FM0编码</div>
-<p></center></p>
-<p>为了防止标签之间的碰撞，RFID使用了基于时隙ALOHA的MAC层协议。假设有若干个tag进入了某个reader的读取范围，其基本的流程如下：</p>
-<ul>
-<li>Reader发送Query指令，其中，包含了参数 <strong>Q</strong>（默认为4）。并且阅读器和所有标签同时开始计时</li>
-<li>标签在接收到Query指令后，首先随机选择一个16位的数字 <strong>handle</strong> ，接着在<span><span class="MathJax_Preview">[0,...,2^{Q}-1]</span><script type="math/tex">[0,...,2^{Q}-1]</script></span> 之间随机选择一个值 <strong>slot_time</strong> </li>
-<li>如果 <strong>slot_time</strong> <strong>=0</strong>，标签立刻回复其随机选择的 <strong>handle</strong> ；如果 <strong>slot_time</strong> <strong>!=0</strong> ，则标签等到计时器运行到 <strong>slot_time</strong> 再回复 <strong>handle</strong> </li>
-<li>在经过<span><span class="MathJax_Preview">2^{Q}</span><script type="math/tex">2^{Q}</script></span>个slot后，如果reader统计每个slot收到的 <strong>handle</strong> ，对那些没有发生冲突的 <strong>handle</strong> ，依次发送 <strong>ACK_handle</strong> 。在向某个tag发送 <strong>ACK_handle</strong> 后，该tag返回其需要发送的数据，例如EPC编号，其余的tag等待，直到收到阅读器发来相应的 <strong>ACK_handle</strong> </li>
-</ul>
-<h2 id="rfidwisp">可计算RFID——WISP<a class="headerlink" href="#rfidwisp" title="Permanent link">&para;</a></h2>
-<p>传统的RFID标签仅仅能发送其编号信息，为了使得RFID标签进行更加复杂的计算、甚至环境感知任务，研究人员提出了可计算RFID的概念。其中，最为知名的是英特尔公司与华盛顿大学联合启动的一个名为：Wireless Identification and Sensing Platform (WISP)的项目。WISP标签在保证了无源、与商用RFID reader兼容的同时，搭载了一个超低功耗微控制器，开发人员可以根据不同的任务需求，通过编写固件让WISP标签完成一些传统RFID标签无法实现的复杂运算。同时WISP上集成了温度、加速度等传感器，能够对周围的环境进行感知。</p>
-<p><center>
-<img src="./fig/WISP.png" width=450px>
-</center></p>
-<p><center></p>
-<div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">图. WISP标签</div>
-<p></center></p>
-<p>为了在WISP上进行RFID相关的实验和应用，你需要如下工具：WISP标签本身；Impinj R420（美版或亚洲版）或Impinj R1000阅读器（美版或亚洲版）；MSP-FET430UIF调试工具；Code Composer Studio (CCS) 集成开发环境 。在获取了相应的工具后，使用WISP大致有如下几个步骤：1）从<a href="https://github.com/ransford/sllurp">这个链接</a>获取官方的WISP固件（该固件包含了RFID C1G2协议控制和处理的功能；2）将WISP与MSP-FET430UIF调试工具相连，在CCS中对WISP的固件进行开发；3）RFID reader的硬件配置，包括天线、网络、电源等；4）通过sllurp（WISP官方推荐的一个Python库）或Impinj公司的ItemTest应用程序对RFID reader进行软件配置并进行读取测试。</p>
-<p>如果读者对使用WISP进行可计算RFID的开发有进一步的兴趣，可以访问<a href="https://sites.google.com/uw.edu/wisp-wiki/home">WISP的Wiki</a>获取详细信息。</p>
+<h2 id="backscatter_2">基于频移的Backscatter<a class="headerlink" href="#backscatter_2" title="Permanent link">&para;</a></h2>
+<p>在RFID中，激励信号<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>，与反射信号<span><span class="MathJax_Preview">S_{out}</span><script type="math/tex">S_{out}</script></span>处在同一频段，导致他们之间存在互干扰。为了减轻这种干扰，我们可以将<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>通过频移(Frequency Shifting)的手段使其远离<span><span class="MathJax_Preview">S_{out}</span><script type="math/tex">S_{out}</script></span>所处的频段。这样，在接收处便可通过一个滤波器排除来自不同频段的干扰。</p>
+<p>接着我们以使用FSK（频移键控）的Backscatter为例向大家介绍Backscatter中常见的频移操作。如果将开关<span><span class="MathJax_Preview">S_{1}</span><script type="math/tex">S_{1}</script></span>在两个状态间切换的频率设置为<span><span class="MathJax_Preview">f_{0}</span><script type="math/tex">f_{0}</script></span>，相当于将<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>乘上了<span><span class="MathJax_Preview">\{0, 1, 0, 1, \ldots, 0, 1\}</span><script type="math/tex">\{0, 1, 0, 1, \ldots, 0, 1\}</script></span>这样的序列，也就是频率为<span><span class="MathJax_Preview">f_{0}</span><script type="math/tex">f_{0}</script></span>的方波<span><span class="MathJax_Preview">S_{square}(f_{0}t)</span><script type="math/tex">S_{square}(f_{0}t)</script></span>。如果忽略掉方波的高次谐波，将方波近似为同频的余弦信号<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>。可以得到：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{equation}
+  \begin{split}
+    S_{out} &amp;= S_{square}(f_{0}t) \cdot S_{in}\\
+    &amp; \approx cos(f_{0}t) \cdot S_{in}\\
+  &amp; = \frac{1}{2}(e^{j2 \pi f_{0}t}+e^{-j2 \pi f_{0}t})S_{in}
+  \end{split}
+\end{equation}
+</div>
+<script type="math/tex; mode=display">
+\begin{equation}
+  \begin{split}
+    S_{out} &= S_{square}(f_{0}t) \cdot S_{in}\\
+    & \approx cos(f_{0}t) \cdot S_{in}\\
+  & = \frac{1}{2}(e^{j2 \pi f_{0}t}+e^{-j2 \pi f_{0}t})S_{in}
+  \end{split}
+\end{equation}
+</script>
+</div>
+<p>该式的含义为，Backscatter反射出的信号<span><span class="MathJax_Preview">S_{out}</span><script type="math/tex">S_{out}</script></span>将激励信号<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>分别向上和向下频移<span><span class="MathJax_Preview">f_{0}</span><script type="math/tex">f_{0}</script></span>。如果Backscatter标签根据需要发送的内容，切换<span><span class="MathJax_Preview">f_{0}</span><script type="math/tex">f_{0}</script></span>的取值，接收端就可以对比激励信号与<span><span class="MathJax_Preview">S_{out}</span><script type="math/tex">S_{out}</script></span>的频率差，以得到Backscatter标签发送的FSK数据。</p>
+<p>请读者在Matlab中运行下面的代码，理解对<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>的频移操作，以及接收机如何解出backscatter信号。</p>
+<div class="highlight"><pre><span></span><code><span class="c">% 注：以下的代码假设直接在基带进行频移操作，实际的通信过程中发射机与接收机需要经过上变频和</span><span class="w"></span>
+<span class="c">% 下变频等操作，为了方便理解，在这里略去 </span><span class="w"></span>
+
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">)</span><span class="o">/</span><span class="mf">128e3</span><span class="p">;</span><span class="w"></span>
+<span class="n">s_in</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span>1<span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mf">100e3</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="c">% 生成激励信号S_in，为一个单频信号</span><span class="w"></span>
+
+<span class="n">s_backscatter_bit0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mf">16e3</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="n">s_backscatter_bit1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mf">32e3</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="c">% tag以不同频率控制开关以发送&quot;0&quot;或&quot;1&quot;</span><span class="w"></span>
+
+<span class="n">s_out_bit0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s_in</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">s_backscatter_bit0</span><span class="p">;</span><span class="w"></span>
+<span class="n">s_out_bit1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s_in</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">s_backscatter_bit1</span><span class="p">;</span><span class="w"></span>
+<span class="c">% tag生成不同频率的信号与s_in相乘，得到s_out</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">s_out_bit0</span><span class="p">))));</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">s_in</span><span class="p">))));</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">off</span><span class="w"></span>
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">s_out_bit1</span><span class="p">))));</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">fftshift</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">s_in</span><span class="p">))));</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">off</span><span class="w"></span>
+<span class="c">% 画出发送&quot;0&quot;或者&quot;1&quot;（即频移不同频率）的频谱</span><span class="w"></span>
+</code></pre></div>
+<blockquote>
+<p>思考：Backscatter除了利用不同的频移频率来编码数据，同样可以通过改变<span><span class="MathJax_Preview">S_{square}</span><script type="math/tex">S_{square}</script></span>的初相位，在频移的同时使用PSK的方式通信，这是如何实现的？</p>
+</blockquote>
                 
               
               
@@ -1928,47 +1877,12 @@ padding: 2px;">图. WISP标签</div>
         
 <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 8.1 Backscatter基本原理" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              8.1 Backscatter基本原理
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../S3_%E6%96%B0%E5%BD%A2%E5%BC%8F%E7%9A%84Backscatter%EF%BC%9A%E4%BB%8EWiFi%E5%88%B0LoRa/" class="md-footer__link md-footer__link--next" aria-label="下一页: 8.3 泛在信号Backscatter" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              8.3 泛在信号Backscatter
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

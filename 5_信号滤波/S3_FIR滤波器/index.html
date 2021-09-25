@@ -848,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -860,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1855,8 +1855,8 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 理想低通滤波器。</div>
 <p></center></p>
-<p>看到这里，很多同学也许会疑惑，对给定信号做频域滤波，为什么要通过卷积的形式？直接将信号变换到频域，然后将阻带对应的信号分量置为零不是更直接吗？事实上，在一些对处理时间要求不严格的应用场景中，这种做法确实是可行的。考虑在实际应用中我们收集到的信号都是时域信号，我们需要先通过傅里叶变换将信号变换到频域，然后调整频域上不同频率处信号的能量，最后将调整后的信号通过逆傅里叶变换重新恢复到频域。在上述过程中，信号经历了从时域到频域再到时域的多次变换，当信号持续到底需要实时处理时，上述方法很难做到实时支持。由于频域相乘等价于时域卷积，因此我们在实现FIR滤波器时，通常的做法是设计时域的卷积核（滤波器内核），通过卷积的方式对时域信号直接进行滤波。下面介绍如何设计时域卷积核。</p>
-<p>对理想滤波器的频率响应进行傅里叶逆变换（IFFT）可产生理想的滤波器内核（即滤波器的时域脉冲响应），如下图所示，理想低通滤波器的时域脉冲响应曲线为一sinc函数，通常形式为：<span><span class="MathJax_Preview">sin(x)/x</span><script type="math/tex">sin(x)/x</script></span>，具体表达式如下：</p>
+<p>看到这里，很多同学也许会疑惑，对给定信号做频域滤波，为什么要通过卷积的形式？直接将信号变换到频域，然后将阻带对应的信号分量置为零不是更直接吗？事实上，在一些对处理时间要求不严格的应用场景中，这种做法确实是可行的。考虑在实际应用中我们收集到的信号都是时域信号，我们需要先通过傅里叶变换将信号变换到频域，然后调整频域上不同频率处信号的能量，最后将调整后的信号通过逆傅里叶变换重新恢复到频域。在上述过程中，需要实现这样的滤波效果，相当于了无限长的卷积核，这在实际中是无法做到的，另外信号经历了从时域到频域再到时域的多次变换，当信号持续到底需要实时处理时，上述方法很难做到实时支持。由于频域相乘等价于时域卷积，因此我们在实现FIR滤波器时，通常的做法是设计时域的卷积核（滤波器内核），通过卷积的方式对时域信号直接进行滤波。下面介绍如何设计时域卷积核。</p>
+<p>对理想滤波器的频率响应进行傅里叶逆变换（IFFT）可产生理想的滤波器内核（即滤波器的时域脉冲响应），如下图所示，理想低通滤波器的时域脉冲响应曲线为一<span><span class="MathJax_Preview">sinc</span><script type="math/tex">sinc</script></span>函数，通常形式为：<span><span class="MathJax_Preview">sin(x)/x</span><script type="math/tex">sin(x)/x</script></span>，具体表达式如下：</p>
 <div>
 <div class="MathJax_Preview">
 h[i] = \frac{sin(2\pi f_c i)}{i\pi}
@@ -1865,7 +1865,7 @@ h[i] = \frac{sin(2\pi f_c i)}{i\pi}
 h[i] = \frac{sin(2\pi f_c i)}{i\pi}
 </script>
 </div>
-<p>使用该滤波器内核对输入信号进行卷积可提供理想的低通滤波器。但问题是，sinc函数分布范围从负无穷一直到正无穷，不会随着时间增长而下降到零振幅。虽然在数学形式上，这个无限长的滤波器内核没有问题，但它对于计算机来说却是一个巨大的障碍——计算机显然无法处理无限长的信号。</p>
+<p>使用该滤波器内核对输入信号进行卷积可提供理想的低通滤波器。但问题是，<span><span class="MathJax_Preview">sinc</span><script type="math/tex">sinc</script></span>函数分布范围从负无穷一直到正无穷，不会随着时间增长而下降到零振幅。虽然在数学形式上，这个无限长的滤波器内核没有问题，但它对于计算机来说却是一个巨大的障碍——计算机显然无法处理无限长的信号。</p>
 <p><center>
 <img src="./figs/脉冲响应-理想低通滤波器.png" width=400px>
 </center></p>
@@ -1875,7 +1875,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 理想低通滤波器的时域脉冲响应。</div>
 <p></center></p>
-<p>为了解决这个问题，我们将对上图中的sinc函数做两方面的修改：首先，由于计算机能处理的信号点的数量是有限的，我们将理想低通滤波器的卷积核截断为<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>个点，在截断时围绕主瓣对称选择，其中<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>为偶数。这样的截断等价于将这些<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>点之外的所有卷积核样本点都设置为零。 其次，由于大部分程序设计语言智能支持正索引，我们将整个序列向右移动，使其分布范围为从<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>到<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>，这允许仅使用正索引来表示过滤器内核。经过这样处理之后的滤波器内核如下图所示：</p>
+<p>为了解决这个问题，我们可以对上图中的<span><span class="MathJax_Preview">sinc</span><script type="math/tex">sinc</script></span>函数做两方面的修改：首先，由于计算机能处理的信号点的数量是有限的，我们将理想低通滤波器的卷积核截断为<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>个点，在截断时围绕主瓣对称选择，其中<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>为偶数。这样的截断等价于将这些<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>点之外的所有卷积核样本点都设置为零。 其次，由于大部分程序设计语言智能支持正索引，我们将整个序列向右移动，使其分布范围为从<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>到<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>，这允许仅使用正索引来表示过滤器内核。经过这样处理之后的滤波器内核如下图所示：</p>
 <p><center>
 <img src="./figs/截断脉冲响应-理想低通滤波器.png" width=400px>
 </center></p>
@@ -1895,7 +1895,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 截断sinc函数得到低通滤波器内核对应的频域响应曲线。</div>
 <p></center></p>
-<p>上面的例子告诉我们，理想滤波器的很多特性（如通带不失真、阻带全抑制、零过渡带）是我们期望的，但理想和现实总归是存在差距的，在实际情况下我们无法实现理想滤波器，因此只能通过各种手段使实际实现的滤波器性能尽可能与理想滤波器逼近。下面我们将介绍几种滤波器内核优化方法，使我们实现的滤波器可以尽可能逼近理想滤波器的效果。</p>
+<p>上面的例子告诉我们，理想滤波器的很多特性（如通带不失真、阻带全抑制、零过渡带）是我们期望的，但理想和现实是存在差距的，在实际情况下我们无法实现理想滤波器，因此只能通过各种手段使实际实现的滤波器性能尽可能与理想滤波器逼近。下面我们将介绍几种滤波器内核优化方法，使我们实现的滤波器可以尽可能逼近理想滤波器的效果。</p>
 <p>窗函数可以有效改善FIR滤波器的实际滤波效果。下图(a)展示了Blackman窗函数曲线，通过将截断后滤波器内核与窗函数相乘，可以得到一个新的滤波器内核，如下图(b)所示。</p>
 <p><center>
 <img src="./figs/加窗后滤波器内核.png" width=800px>
@@ -1934,7 +1934,7 @@ w[i] = 0.42 - 0.5cos(2\pi i/M) + 0.08cos(4\pi i/M)
 w[i] = 0.42 - 0.5cos(2\pi i/M) + 0.08cos(4\pi i/M)
 </script>
 </div>
-<p>下图展示了<span><span class="MathJax_Preview">M=50</span><script type="math/tex">M=50</script></span>时这两个函数的形状。 在实际应用中应该使用这两个窗函数中的哪个，这其实是参数之间的权衡。如下图所示，汉明窗的滚降速度（即过渡带宽度）比Blackman快20％。然而，Blackman具有更好的阻带衰减。确切地说，Blackman的阻带衰减为-74dB，而汉明窗的阻带衰减仅为-53dB。尽管在图中看不明显，但Blackman的通带纹波仅为0.02％，而汉明窗的通带纹波通常为0.2％。因此，在一般情况下，Blackman是我们在信号处理时首先考虑的窗函数，因为与较差的阻带衰减相比，缓慢的滚降是更容易处理的。</p>
+<p>下图展示了<span><span class="MathJax_Preview">M=50</span><script type="math/tex">M=50</script></span>时这两个函数的形状。 在实际应用中应该使用这两个窗函数中的哪个，这其实是参数之间的权衡。如下图所示，汉明窗的滚降速度（即过渡带宽度）比Blackman快20％。然而，Blackman具有更好的阻带衰减。确切地说，Blackman的阻带衰减为-74dB，而汉明窗的阻带衰减仅为-53dB。尽管在图中看不明显，但Blackman的通带纹波仅为0.02％，而汉明窗的通带纹波通常为0.2％。因此，在一般情况下，Blackman是我们在信号处理时首先考虑的窗函数，因为与较差的阻带衰减相比，缓慢的滚降是更容易处理的。具体如何使用还是得请大家具体情况具体分析。</p>
 <p><center>
 <img src="./figs/窗函数对比.png" width=1000px>
 </center></p>
@@ -1944,7 +1944,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 窗函数效果对比。</div>
 <p></center></p>
-<p>除了窗函数，滤波器内核的长度（即<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>的大小）同样影响滤波器的效果。下图展示了不同长度的滤波器内核对频域滤波效果的影响。滤波器内核截取的采样点越多，其频域响应的过渡带越窄，对应的计算开销也越大。因此如何选择合适的滤波器内核长度是在实际应用中必须权衡的问题。根据工程经验，我们一般讲滤波器内核的长度设置为<span><span class="MathJax_Preview">M=F_s\times 4/BW</span><script type="math/tex">M=F_s\times 4/BW</script></span>，其中<span><span class="MathJax_Preview">F_s</span><script type="math/tex">F_s</script></span>是采样频率，<span><span class="MathJax_Preview">BW</span><script type="math/tex">BW</script></span>是信号带宽。</p>
+<p>除了窗函数，滤波器内核的长度（即<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>的大小）同样影响滤波器的效果。下图展示了不同长度的滤波器内核对频域滤波效果的影响。滤波器内核截取的采样点越多，其频域响应的过渡带越窄，对应的计算开销也越大。因此如何选择合适的滤波器内核长度是在实际应用中必须权衡的问题。根据工程经验，我们一般可以将滤波器内核的长度设置为<span><span class="MathJax_Preview">M=F_s\times 4/BW</span><script type="math/tex">M=F_s\times 4/BW</script></span>，其中<span><span class="MathJax_Preview">F_s</span><script type="math/tex">F_s</script></span>是采样频率，<span><span class="MathJax_Preview">BW</span><script type="math/tex">BW</script></span>是信号带宽。还是之前那句话，大家要具体问题具体分析，多尝试看结果。很多时候你的论文最后实验结果不好，很可能不是你方法问题，是你数据处理的细节做得不好，所以数据处理的细节大家得一定注意。</p>
 <p><center>
 <img src="./figs/滤波器内核长度.png" width=400px>
 </center></p>
@@ -2011,7 +2011,7 @@ padding: 2px;">图. 滤波器内核长度对滤波器效果影响。</div>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

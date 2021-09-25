@@ -862,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -874,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1869,23 +1869,7 @@
                 
                 
                 <h1 id="_1">路径损耗和阴影衰落<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>本章介绍由路径损耗（path loss）和阴影（shadowing）效应所引起的接收信号功率随距离变化的规律。路径损耗是由电磁信号在空间中的辐射传播特性造成的，一般认为路径损耗与传播距离直接相关，在相同的传播条件下、信号经过相同的传播距离产生的路径损耗相同。阴影效应是由发射机和接收机之间的障碍物造成的，这些障碍物通过吸收、反射、散射和绕射等方式衰减信号功率，严重时甚至会阻断信号。本章将首先介绍最基础的信号传播模型——自由空间路径损耗模型；然后给出基于大量障碍物的对数正态阴影衰落模型；最后介绍信号质量估计最常用使用的一个指标——信噪比。</p>
-<!-- 衰落（Fading）或者说衰减是指由于信道的变化导致接收信号的幅度发生变化的现象，即信号衰落。导致信号衰落的信道被称作衰落信道。 -->
-
-<!-- 衰落可按时间、空间、频率，三个角度来分类。
-
-- [ ] **空间衰落** （首先讲清楚信号强度随着距离和衰落和变化的趋势吧？）
-
-在空间上，分为瑞利衰落和莱斯衰落。瑞利衰落适用于从发射机到接收机不存在直射信号的情况；相反，莱斯衰落适用于发射机到接收机存在直射路径的情况。
-
-- [ ] **时间衰落（？？）**
-
-在时间上，分为慢衰落和快衰落。慢衰落描述的是信号幅度的长期变化，是传播环境在较长时间、较大范围内发生变化的结果，因此又被称为长期衰落、大尺度衰落。快衰落则描述了信号幅度的瞬时变化，与多径传播有关，又被称为短期衰落、小尺度衰落。慢衰落是快衰落的中值。
-
-- [ ] **频率衰落（？？）**
-
-  在频率上，分为平坦性衰落和选择性衰落。相干带宽是描述时延扩展的指标，是表征多径信道特性的一个重要参数。它是指某一特定的频率范围，在该频率范围内的任意两个频率分量都具有很强的幅度相关性，即在相干带宽范围内，多径信道具有恒定的增益和线性相位。通常，相干带宽近似等于最大多径时延的倒数。从频域看，如果相干带宽小于发送信道的带宽，则该信道特性会导致接收信号波形产生频率选择性衰落，即某些频率成分信号的幅值可以增强，而另外一些频率成分信号的幅值会被削弱。当信号带宽远小于相干带宽时，所有的信号频率呈现出一样的强度衰落，称之为平坦性衰落。 -->
-
+<p>本章介绍由路径损耗（path loss）和阴影（shadowing）效应所引起的接收信号随距离变化的规律。路径损耗是由电磁信号在空间中的辐射传播特性造成的，一般认为路径损耗与传播距离直接相关，在相同的传播条件下、信号经过相同的传播距离产生的路径损耗相同。阴影效应是由发射机和接收机之间的障碍物造成的，这些障碍物通过吸收、反射、散射和绕射等方式衰减信号功率，严重时甚至会阻断信号。本章将首先介绍最基础的信号传播模型——自由空间路径损耗模型；然后给出基于大量障碍物的对数正态阴影衰落模型；最后介绍信号质量估计最常用使用的一个指标——信噪比。</p>
 <h2 id="_2">路径损耗模型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>路径损耗，或称传播损耗，指电波在空间传播所产生的损耗，是由发射功率的辐射扩散及信道的传播特性造成的，反映宏观范围内接收信号功率均值的变化。如下图所示，在自由空间中，电磁辐射的强度根据平方反比定律随着距离的增加而减小，因为同样的能量在一个面积上与距离源的距离平方成正比。</p>
 <p><center>
@@ -1901,7 +1885,7 @@ padding: 2px;">图. 电磁波在空间中传播状态</div>
 - 由发射功率的辐射扩散和信道的传播特性造成
 - 一般认为对于相同的收发距离，路径损耗相同
 - 引起长距离（100m~1000m）上的功率变化</p>
-<p>假设信号经过自由空间到达距离<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>处的接收机，发射机和接收机之间没有任何障碍物，信号沿直线传播。这样的信道称为视距(line-of-sight, LOS)信道，相应的接收信号称为LOS信号或互射信号。自由空间路径损耗使接收信号相对于发送信号引入了一个复数因子, 产生接收信号：</p>
+<p>假设信号经过自由空间到达距离<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>处的接收机，发射机和接收机之间没有任何障碍物，信号沿直线传播。这样的信道称为视距(Line-Of-Sight, LOS)信道，相应的接收信号称为LOS信号。自由空间路径损耗使接收信号相对于发送信号引入了一个复数因子, 产生接收信号：</p>
 <div>
 <div class="MathJax_Preview">
 r(t) = Re\bigg\{\frac{\lambda \sqrt{G_l}e^{-j2\pi d/\lambda}}{4\pi d}\cdot u(t)e^{j2\pi f_ct}\bigg\}
@@ -1920,7 +1904,7 @@ r(t) = Re\bigg\{\frac{\lambda \sqrt{G_l}e^{-j2\pi d/\lambda}}{4\pi d}\cdot u(t)e
 \frac{P_r}{P_t} = \bigg(\frac{\sqrt{G_l}\lambda}{4\pi d}\bigg)^2
 </script>
 </div>
-<p>可见接收功率与收发天线间距离<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>的平方成反比、与信号波长的平方<span><span class="MathJax_Preview">\lambda^2</span><script type="math/tex">\lambda^2</script></span>成正比。因此，载波频率越高、信号波长越短，则接收功率越小。接收功率与波长<span><span class="MathJax_Preview">lambda</span><script type="math/tex">lambda</script></span>有关是因为接收天线的有效面积和波长有关。</p>
+<p>可见接收功率与收发天线间距离<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>的平方成反比、与信号波长的平方<span><span class="MathJax_Preview">\lambda^2</span><script type="math/tex">\lambda^2</script></span>成正比。因此，载波频率越高、信号波长越短，则接收功率越小。接收功率与波长<span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>有关是因为接收天线的有效面积和波长有关。</p>
 <p>对应的路径损耗可以表示为：</p>
 <div>
 <div class="MathJax_Preview">
@@ -1963,7 +1947,7 @@ padding: 2px;">图. 自由空间中电磁波能量随距离衰减曲线</div>
 <h2 id="_3">阴影衰落<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>阴影衰落由发射机和接收机之间的障碍物造成，这些障碍物通过吸收、反射、散射和绕射等方式衰减信号功率，严重时会阻断信号，引起障碍物尺度距离（室外为10m~100m，室内更小）上的功率变化。在移动通信传播环境中，电波在传播路径上遇到起伏的山丘、建筑物、树林等障碍物阻挡，形成电波的阴影区，就会造成信号场强中值的缓慢变化，引起衰落。通常把这种现象称为阴影效应，由此引起的衰落又称为阴影慢衰落。另外，由于气象条件的变化，电波折射系数随时间的平缓变化，使得同一地点接收到的信号场强中值也随时间缓慢地变化。但因为在陆地移动通信中随着时间的慢变化远小于随地形的慢变化，因而常常在工程设计中忽略了随时间的慢变化，而仅考虑随地形的慢变化。它是由于在电波传输路径上受到建筑物或山丘等的阻挡所产生的阴影效应而产生的损耗。它反映了中等范围内数百波长量级接收电平的均值变化而产生的损耗，一般遵从对数正态分布。</p>
 <p>阴影衰落造成信号在无线信道传播过程中发生随机变化，传播路径上的反射面和反射体也在随机变化，从而导致给定距距离处接收信号的功率的存在随机性。为了准确地描述信道对信号的影响，我们需要建立一个模型来描述这些因素造成的信号随机衰减。</p>
-<p>造成信号随机衰减的因素，一般包括障碍物的位置、障碍物大小、障碍物材料的介电特性、以及反射面和散射体的变化情况。在实际传输场景中，这些因素一般都是未知的，因此只能用统计模型来表征这种随机衰减，最常用的模型是对数正态阴影模型，它已经被实测数据证实，可以精确地建模室外和室内无线传播环境中接收功率的变化。</p>
+<p>造成信号随机衰减的因素，一般包括障碍物的位置、障碍物大小、障碍物材料的介电特性、以及反射面和散射体的变化情况。在实际传输场景中，这些因素一般都是未知的，因此只能用统计模型来表征这种随机衰减，最常用的模型是对数正态阴影模型，它已经被实测数据证实，可以用来建模室外和室内无线传播环境中接收功率的变化。</p>
 <p>对数正态阴影模型把发射和接收功率的比值<span><span class="MathJax_Preview">\psi=P_t/P_r</span><script type="math/tex">\psi=P_t/P_r</script></span>，假设为一个对数正态分布的随机变量，即</p>
 <div>
 <div class="MathJax_Preview">
@@ -1984,7 +1968,7 @@ p(\psi)=\frac{\xi}{\sqrt{2 \pi} \sigma_{\psi_{\mathrm{dB}}} \psi} \exp \left[-\f
 </div>
 <p>对数正态分布由两个参数<span><span class="MathJax_Preview">\mu_{\psi_{dB}}</span><script type="math/tex">\mu_{\psi_{dB}}</script></span>和<span><span class="MathJax_Preview">\sigma_{\psi_{dB}}</span><script type="math/tex">\sigma_{\psi_{dB}}</script></span>确定， 因为<span><span class="MathJax_Preview">\psi=P_t/P_r</span><script type="math/tex">\psi=P_t/P_r</script></span>总大于<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，故<span><span class="MathJax_Preview">\mu_{\psi_{dB}}</span><script type="math/tex">\mu_{\psi_{dB}}</script></span>总大于或等于0。</p>
 <p>用实测数据确定阴影衰落模型的均值和标准差时，会遇到这样一个问题，就是应该取真值的平均还是取分贝值的平均。方差的计算也存在同样的问题。实际中常常是对测量值的分贝值取平均，来确定平均路径损耗和方差。原因包括以下几点：首先，对数正态模型的数学分析是建立在分贝测量值之上的；其次，有文献表明分贝平均可以使估计误差更小；其三，功率随距离下降的模型一般是对分贝功率测量值和对数距离的关系进行折线近近似。</p>
-<p>大量室外信道测量表明，标准差<span><span class="MathJax_Preview">\sigma_{\psi_{dB}}</span><script type="math/tex">\sigma_{\psi_{dB}}</script></span>的范围在<span><span class="MathJax_Preview">4dB~13dB</span><script type="math/tex">4dB~13dB</script></span>之间，平均值<span><span class="MathJax_Preview">\mu_{\psi_{dB}}</span><script type="math/tex">\mu_{\psi_{dB}}</script></span>取决于路径损耗和所在区域内的建筑物属性。<span><span class="MathJax_Preview">\mu_{\psi_{dB}}</span><script type="math/tex">\mu_{\psi_{dB}}</script></span>随距离变化，一是由干路径损耗随距离变化，二是因为距离增加时障碍物的数量会增加，造成平均衰减增加。</p>
+<p>大量室外信道测量表明，标准差<span><span class="MathJax_Preview">\sigma_{\psi_{dB}}</span><script type="math/tex">\sigma_{\psi_{dB}}</script></span>的范围在<span><span class="MathJax_Preview">4dB</span><script type="math/tex">4dB</script></span>~<span><span class="MathJax_Preview">13dB</span><script type="math/tex">13dB</script></span>之间，平均值<span><span class="MathJax_Preview">\mu_{\psi_{dB}}</span><script type="math/tex">\mu_{\psi_{dB}}</script></span>取决于路径损耗和所在区域内的建筑物属性。<span><span class="MathJax_Preview">\mu_{\psi_{dB}}</span><script type="math/tex">\mu_{\psi_{dB}}</script></span>随距离变化，一是由干路径损耗随距离变化，二是因为距离增加时障碍物的数量会增加，造成平均衰减增加。</p>
 <p>当阴影衰落主要由阻挡衰减决定时，分贝平均接收功率的高斯模型可以用下面的哀减模型来分析。信号穿过宽度为d的物休时，其衰减近似为</p>
 <div>
 <div class="MathJax_Preview">
@@ -1994,7 +1978,7 @@ s(d)=e^{-\alpha d t}
 s(d)=e^{-\alpha d t}
 </script>
 </div>
-<p>式子中<span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>是依赖千陓碍物材料和介电性质的衰减常数。若第<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>个障碍物的衰减常数是<span><span class="MathJax_Preview">\alpha_i</span><script type="math/tex">\alpha_i</script></span>、障碍物宽度为随机值<span><span class="MathJax_Preview">d_i</span><script type="math/tex">d_i</script></span>，那么信号穿过该区域时的衰减为</p>
+<p>式子中<span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>是依赖于障碍物材料和介电性质的衰减常数。若第<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>个障碍物的衰减常数是<span><span class="MathJax_Preview">\alpha_i</span><script type="math/tex">\alpha_i</script></span>、障碍物宽度为随机值<span><span class="MathJax_Preview">d_i</span><script type="math/tex">d_i</script></span>，那么信号穿过该区域时的衰减为</p>
 <div>
 <div class="MathJax_Preview">
 s\left(d_{t}\right)=e^{-\alpha \sum_{i} d_{i}}=e^{-\alpha d_{t}}
@@ -2044,9 +2028,9 @@ color: #999;
 padding: 2px;">图. MATLAB AWGN函数效果示意</div>
 <p></center></p>
 <blockquote>
-<p>思考：你知道mean(abs(wgn(1e6, 1, 5, 50, 'dBm', 'complex')))的数学期望是什么吗？</p>
-<p>答案：<span><span class="MathJax_Preview">\sqrt{\frac{\pi}{2}\cdot 10^{0.1\cdot (5-30)}\cdot 50\cdot \frac{1}{2}}</span><script type="math/tex">\sqrt{\frac{\pi}{2}\cdot 10^{0.1\cdot (5-30)}\cdot 50\cdot \frac{1}{2}}</script></span> （你可能需要了解所涉及的matlab函数的功能以及瑞利分布）</p>
-<p><strong>动手试一试</strong> 生成具有不同信噪比的声波信号，从时域、频域分别观察他们的区别。</p>
+<p>思考：你知道mean(abs(wgn(1e6, 1, 5, 50, 'dBm', 'complex')))的数学期望是什么吗？
+答案：<span><span class="MathJax_Preview">\sqrt{\frac{\pi}{2}\cdot 10^{0.1\cdot (5-30)}\cdot 50\cdot \frac{1}{2}}</span><script type="math/tex">\sqrt{\frac{\pi}{2}\cdot 10^{0.1\cdot (5-30)}\cdot 50\cdot \frac{1}{2}}</script></span> （你可能需要了解所涉及的matlab函数的功能以及瑞利分布）</p>
+<p><strong>动手试一试</strong> 生成具有不同信噪比的声波信号，从时域、频域分别观察他们的区别，实际听一下看看不同SNR的声波信号有什么区别。</p>
 </blockquote>
 <h2 id="_5">参考文献<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ol>
@@ -2110,7 +2094,7 @@ padding: 2px;">图. MATLAB AWGN函数效果示意</div>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

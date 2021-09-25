@@ -801,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -813,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -834,9 +834,39 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          8.3 泛在信号Backscatter
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         8.3 泛在信号Backscatter
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    参考论文
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1770,6 +1800,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    参考论文
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1782,10 +1827,11 @@
                 
                 
                 <h1 id="backscatterwifilora">新形式的Backscatter：从WiFi到LoRa<a class="headerlink" href="#backscatterwifilora" title="Permanent link">&para;</a></h1>
-<p>RFID的使用需要专用的阅读器，并且激励信号占用了专用的频段。于是，一个热点的研究思路是：利用环境中已有的射频信号，如：WiFi，蓝牙和LoRa信号等，作为激励信号，或者通过特殊的反射手段，将调频连续波CW转换为携带了Backscatter数据的合法WiFi，蓝牙或者LoRa数据包，并可以被商用的终端接收到。</p>
-<p>下面，我们将以一个名为Hitchhike的基于WiFi 802.11b的系统为例，介绍WiFi backscatter。</p>
+<p>RFID的使用需要专用的阅读器，并且激励信号占用了专用的频段。于是，一个热点的研究思路是：利用环境中已有的射频信号，如：WiFi，蓝牙和LoRa信号等，作为激励信号。</p>
+<p>我们完成了一个基于LoRa的backscatter工作，利用环境中广泛存在的LoRa信号，实现远距离高并发的反向散射通信。其中我们设计的节点不需要主动产生信号，不需要电池来产生载波信号，而是利用环境中的信号实现远距离反向散射通信，最远距离达到了2km。</p>
+<p>下面，我们将以一个名为Hitchhike的基于WiFi 802.11b的系统为例，介绍WiFi backscatter。然后逐步介绍不同的backscatter工作。</p>
 <p>HitchHike的系统架构十分简单：环境中已有的WiFi设备像往常一样，发送着802.11b数据包，tag将这些数据包频移后，在新的频段上生成一个新的802.11b数据包。接收机在两个频段分别接收这两个包，接着，将原本的包与当前的包的内容进行对比便可解出tag发送的数据。</p>
-<p>为了理解HitchHike通信的原理，首先对802.11b进行简略的介绍。1 Mbps速率802.11b中的一个symbol使用正向的或负反向的Barker序列表示。可以这样理解：<span><span class="MathJax_Preview">bit_0=barker(t)</span><script type="math/tex">bit_0=barker(t)</script></span>，<span><span class="MathJax_Preview">bit_1 = barker(t) \cdot e^{j\pi}</span><script type="math/tex">bit_1 = barker(t) \cdot e^{j\pi}</script></span>。假设激励信号<span><span class="MathJax_Preview">S_{in}(t)=\left \{ barker(t)\; or \; barker(t) \cdot e^{j\pi} \right \} \cdot e^{j2\pi f_{c}t}</span><script type="math/tex">S_{in}(t)=\left \{ barker(t)\; or \; barker(t) \cdot e^{j\pi} \right \} \cdot e^{j2\pi f_{c}t}</script></span>，同样使用频移的手段，将<span><span class="MathJax_Preview">S_{in}(t)</span><script type="math/tex">S_{in}(t)</script></span>乘上一个方波，并且将方波近似为余弦波<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>。但是，仅仅控制这个余弦波的频率是不够的，在上一节的末尾，让读者进行思考如何在频移同时改变初相位，在这里就需要运用上。在利用方波频移的同时，我们只需要控制{0,1}的先后顺序便可以控制相位，例如：{0,1,0,1,0,1,...}和{1,0,1,0,1,0,...}的相位就相差了<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>，感兴趣的读者可以利用傅里叶变化观察它们的相位谱。。所以，余弦波<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>在这里需要被表示为<span><span class="MathJax_Preview">cos(f_{0}t+\varphi)</span><script type="math/tex">cos(f_{0}t+\varphi)</script></span>。在这里，我们使<span><span class="MathJax_Preview">\varphi= 0 \; or \; \pi</span><script type="math/tex">\varphi= 0 \; or \; \pi</script></span>，tag使用固定的频率<span><span class="MathJax_Preview">f_{0}</span><script type="math/tex">f_{0}</script></span>而通过这两种不同的相位编码比特“1”或“0”。所以我们有：</p>
+<p>为了理解HitchHike通信的原理，首先对802.11b进行简略的介绍，更多详细内容大家可以去短距离无线通信技术那一章节[TODO加上链接]。1 Mbps速率802.11b中的一个symbol使用正向的或负反向的Barker序列表示。可以这样理解：<span><span class="MathJax_Preview">bit_0=barker(t)</span><script type="math/tex">bit_0=barker(t)</script></span>，<span><span class="MathJax_Preview">bit_1 = barker(t) \cdot e^{j\pi}</span><script type="math/tex">bit_1 = barker(t) \cdot e^{j\pi}</script></span>。假设激励信号<span><span class="MathJax_Preview">S_{in}(t)=\left \{ barker(t)\; or \; barker(t) \cdot e^{j\pi} \right \} \cdot e^{j2\pi f_{c}t}</span><script type="math/tex">S_{in}(t)=\left \{ barker(t)\; or \; barker(t) \cdot e^{j\pi} \right \} \cdot e^{j2\pi f_{c}t}</script></span>，同样使用频移的手段，将<span><span class="MathJax_Preview">S_{in}(t)</span><script type="math/tex">S_{in}(t)</script></span>乘上一个方波，并且将方波近似为余弦波<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>。但是，仅仅控制这个余弦波的频率是不够的，在上一节的末尾，让读者进行思考如何在频移同时改变初相位，在这里就需要运用上这个技术。在利用方波频移的同时，我们只需要控制{0,1}的先后顺序便可以控制相位，例如：{0,1,0,1,0,1,...}和{1,0,1,0,1,0,...}的相位就相差了<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>，感兴趣的读者可以利用傅里叶变化观察它们的相位谱。。所以，余弦波<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>在这里需要被表示为<span><span class="MathJax_Preview">cos(f_{0}t+\varphi)</span><script type="math/tex">cos(f_{0}t+\varphi)</script></span>。在这里，我们使<span><span class="MathJax_Preview">\varphi= 0 \; or \; \pi</span><script type="math/tex">\varphi= 0 \; or \; \pi</script></span>，tag使用固定的频率<span><span class="MathJax_Preview">f_{0}</span><script type="math/tex">f_{0}</script></span>而通过这两种不同的相位编码比特“1”或“0”。所以我们有：</p>
 <div>
 <div class="MathJax_Preview">
   \begin{split}
@@ -1817,7 +1863,10 @@
 \end{equation}
 </script>
 </div>
-<p>接着，接收机使用下变频，得到的基带信号：</p>
+<blockquote>
+<p>思考为什么会产生不同部分的信号，可以去看一下我们的论文[1]。</p>
+</blockquote>
+<p>接着，接收端使用下变频，得到的基带信号（不理解这个概念的，请自觉去看前面无线调制解调那一部分的内容，我们的材料可是self-contained，环环相扣的，哈哈）：</p>
 <div>
 <div class="MathJax_Preview">
 \begin{equation}
@@ -1839,7 +1888,7 @@
 </script>
 </div>
 <p>如上式，得到的基带信号只是原本的正或负Barker码点乘或不点乘<span><span class="MathJax_Preview">e^{j \pi}</span><script type="math/tex">e^{j \pi}</script></span>，显然其还是合法的正或负Barker序列，因此该基带信号同样可以被接收机解出。接着，只需要逐symbol对比，如果backscatter的symbol与原始symbol同号，那么<span><span class="MathJax_Preview">\varphi=0</span><script type="math/tex">\varphi=0</script></span>，反之<span><span class="MathJax_Preview">\varphi=\pi</span><script type="math/tex">\varphi=\pi</script></span>。换而言之，对两路结果做异或操作即可解出backscatter信号。</p>
-<p>在HitchHike后，还涌现出了很多基于更高版本WiFi以及BLE等协议的Backscatter。但是这些系统，包括RFID通常都有一个十分致命的缺陷，就是通信距离被限制在不足20米的范围内。如此的通信距离只能满足很小一部分IoT应用的需求，因此，如何提高Backscatter系统的通信距离就成为了目前新的研究热点。为了提升Backscatter的通信距离，研究人员将目光投向了LPWAN，尤其是LoRa上。与LoRa结合的Backscatter系统可以实现上千米的通信距离，其特殊的调制方式也为大规模的Backscatter并行通信提供了可能。下面，我们将介绍若干个基于LoRa的Backscatter通信系统。</p>
+<p>在HitchHike后，还涌现出了很多基于更高版本WiFi以及BLE等协议的Backscatter。但是这些系统，包括RFID通常都有一个十分致命的缺陷，就是通信距离被限制在不足20米的范围内。如此的通信距离只能满足很小一部分IoT应用的需求，因此，如何提高Backscatter系统的通信距离就成为了目前新的研究热点。为了提升Backscatter的通信距离，研究人员将目光投向了LPWAN，尤其是LoRa上。与LoRa结合的Backscatter系统可以实现上千米的通信距离，其特殊的调制方式也为大规模的Backscatter并行通信提供了可能。下面，我们将介绍几个基于LoRa的Backscatter通信系统。</p>
 <p>PLoRa使用环境中的LoRa信号为激励信号，标签使用两根天线和两个射频开关分别对激励信号进行频移。发送比特“0”时，两根天线将激励信号（这里是环境中的LoRa信号）频移<span><span class="MathJax_Preview">f_{0}</span><script type="math/tex">f_{0}</script></span>（即上一小节介绍的方法：通过切换开关<span><span class="MathJax_Preview">S_{1}</span><script type="math/tex">S_{1}</script></span>将<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>乘上一个近似为余弦信号的方波）。发送“1”时，两个开关中的一个将激励信号频移<span><span class="MathJax_Preview">f_{0}+\frac{BW}{2}</span><script type="math/tex">f_{0}+\frac{BW}{2}</script></span>，另一个将激励信号频移<span><span class="MathJax_Preview">f_{0}-\frac{BW}{2}</span><script type="math/tex">f_{0}-\frac{BW}{2}</script></span>，其中<span><span class="MathJax_Preview">BW</span><script type="math/tex">BW</script></span>为chirp信号的带宽。如图，Backscatter标签分别发送了“0”和“1”两个比特。接着，我们分别对这四个窗口的信号进行对比。窗口1与窗口2的chirp拥有相同的起始频率，而窗口3实际上是两个颜色较浅窗口的重叠部分，它与窗口4的起始频率不同。因此，如果分别对他们做Dechirp和FFT后，窗口1和窗口2对应的峰值位置相同，而窗口3和窗口4对应的峰值位置相异，且正好差<span><span class="MathJax_Preview">\frac{BW}{2}</span><script type="math/tex">\frac{BW}{2}</script></span>。因此，可以在两个频段上分别接收激励信号与Backscatter信号，并逐个symbol比对峰值是否落在同一位置，从而解出Backscatter信号。</p>
 <p><center>
 <img src="./fig/PLoRa.png" width=450px>
@@ -1852,20 +1901,25 @@ padding: 2px;">图. PLoRa编码“0”和“1”</div>
 <p></center></p>
 <p>值得注意的是：峰值位置相同或者相差<span><span class="MathJax_Preview">\frac{BW}{2}</span><script type="math/tex">\frac{BW}{2}</script></span>的性质与激励信号的chirp的起始频率无关。特别是在标签发送“1”时，两路开关不同的频移频率恰好可以在窗口内将Backscatter chirp拼接成一个完整且起始频率相差<span><span class="MathJax_Preview">\frac{BW}{2}</span><script type="math/tex">\frac{BW}{2}</script></span>的chirp。这是PLoRa可以将环境中LoRa信号作为激励信号的基础，因为环境中LoRa的传输的起始频率对标签来说是随机的。最终，将PLoRa标签放置在距离激励信号源20cm处，其发出的数据包可以被远至1.1km外的网关接收到。</p>
 <p>另一项工作：LoRa Backscatter实现了tag自行调制chirp和谐波消除技术。与 PLoRa不同的是：这里的激励信号不再是环境中的LoRa信号，而是类似RFID中的CW，Backscatter标签自行调制出chirp信号。为了理解这个过程，请回忆上个小节介绍的公式：<span><span class="MathJax_Preview">S_{out} = \frac{Z_{a}-Z_{c}}{Z_{a}+Z_{c}}S_{in}</span><script type="math/tex">S_{out} = \frac{Z_{a}-Z_{c}}{Z_{a}+Z_{c}}S_{in}</script></span>，我们可以通过改变<span><span class="MathJax_Preview">Z_{c}</span><script type="math/tex">Z_{c}</script></span>从而将<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>乘上不同的系数，因此我们将公式写成这种形式<span><span class="MathJax_Preview">S_{out} = k(t)\cdot S_{in}</span><script type="math/tex">S_{out} = k(t)\cdot S_{in}</script></span>。在解释使用FSK的Backscatter时，<span><span class="MathJax_Preview">k(t)</span><script type="math/tex">k(t)</script></span>是一个在0和1之间切换的方波序列，即：<span><span class="MathJax_Preview">k(t)=\{0,1,0,1,...,0,1\}</span><script type="math/tex">k(t)=\{0,1,0,1,...,0,1\}</script></span>。其中，0和1持续的时间是固定的，为了调制出chirp信号，作者将<span><span class="MathJax_Preview">k(t)</span><script type="math/tex">k(t)</script></span>设置为0或1持续时间越来越短的序列，举个例子：<span><span class="MathJax_Preview">k(t)=\{0,0,0,0,1,1,1,1,0,0,0,1,1,1,0,0,1,1,0,1\}</span><script type="math/tex">k(t)=\{0,0,0,0,1,1,1,1,0,0,0,1,1,1,0,0,1,1,0,1\}</script></span>。这样做的效果如图，如果是持续时间不变的方波，和上一小节的效果一样，只是将激励信号频移了一个固定的值；而如果是不断变窄的方波，意味着频移的频率逐渐变大，图n中右边的Backscatter信号就类似于一个chirp。通过更细粒度的频移频率控制，Backscatter标签可以生成更加连续、且任意起始频率的chirp信号，并可以被商用网关接收到其反射的数据包。</p>
-<p>在刚刚的讨论中，我们都将方波近似成了余弦波，但事实上方波会产生<span><span class="MathJax_Preview">1，3，5,...,2n+1</span><script type="math/tex">1，3，5,...,2n+1</script></span>次谐波（不熟悉的读者可以回顾第五章傅里叶分析的内容）。而且根据上一个小节的分析，方波还会产生一个负频率，在频谱上的表现是将激励信号向上频移的同时也向下频移了相同的频率，造成围绕着激励信号互为镜像的两个部分。图n描述了真实的频谱，除了目标的Backscatter信号，还出现了大量谐波与镜像，这会占用大量的频谱资源。</p>
+<p>在刚刚的讨论中，我们都将方波近似成了余弦波，但事实上方波会产生<span><span class="MathJax_Preview">1，3，5,...,2n+1</span><script type="math/tex">1，3，5,...,2n+1</script></span>次谐波（不熟悉的同学可以回顾第五章傅里叶分析的内容，这也是为什么我们这个材料前面会讲那么多的基础）。而且根据上一个小节的分析，方波还会产生一个负频率，在频谱上的表现是将激励信号向上频移的同时也向下频移了相同的频率，造成围绕着激励信号互为镜像的两个部分。图n描述了真实的频谱，除了目标的Backscatter信号，还出现了大量谐波与镜像，这会占用大量的频谱资源。</p>
 <p>LoRa Backscatter中使用了多级阻抗来解决谐波与镜像问题。首先我们讨论如何只将一个<span><span class="MathJax_Preview">S_{in}</span><script type="math/tex">S_{in}</script></span>向上频移一个固定的频率，而不产生镜像和谐波。之前在<span><span class="MathJax_Preview">S_{out} = k(t)\cdot S_{in}</span><script type="math/tex">S_{out} = k(t)\cdot S_{in}</script></span>中，<span><span class="MathJax_Preview">k(t)</span><script type="math/tex">k(t)</script></span>是在0与1之间切换的序列，但电路中的阻抗是复数，通过连接不同的副阻抗<span><span class="MathJax_Preview">Z_{c}</span><script type="math/tex">Z_{c}</script></span>，可以使<span><span class="MathJax_Preview">k(t)</span><script type="math/tex">k(t)</script></span>变为一个在一系列复数值中切换的序列。假设<span><span class="MathJax_Preview">k(t)=\{1,1j,-1,-1j,...\}</span><script type="math/tex">k(t)=\{1,1j,-1,-1j,...\}</script></span>，在这四个值中以<span><span class="MathJax_Preview">f_{0}</span><script type="math/tex">f_{0}</script></span>的速率切换，我们可以将<span><span class="MathJax_Preview">k(t)</span><script type="math/tex">k(t)</script></span>分解为：</p>
 <div>
 <div class="MathJax_Preview">
-k(t)=\frac{4}{\pi}\sum^{\infty}_{n=0}\frac{1}{2n+1}e^{j2\pi (2n+1)f_{0}t}
+k(t)=\frac{2 \sqrt{2}}{\pi}\sum^{\infty}_{n=0}\frac{1}{2n+1}e^{j2\pi (2n+1)f_{0}t}
 </div>
 <script type="math/tex; mode=display">
-k(t)=\frac{4}{\pi}\sum^{\infty}_{n=0}\frac{1}{2n+1}e^{j2\pi (2n+1)f_{0}t}
+k(t)=\frac{2 \sqrt{2}}{\pi}\sum^{\infty}_{n=0}\frac{1}{2n+1}e^{j2\pi (2n+1)f_{0}t}
 </script>
 </div>
 <p>请注意，由于之前<span><span class="MathJax_Preview">k(t)</span><script type="math/tex">k(t)</script></span>仅使用<span><span class="MathJax_Preview">\{0,1\}</span><script type="math/tex">\{0,1\}</script></span>两个取值,因此只能得到形如<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>的单频信号，这是一个实信号，有上边带与下边带（对应向上与向下频移）。而现在，模拟出了形如<span><span class="MathJax_Preview">e^{j2\pi f_{0}t}</span><script type="math/tex">e^{j2\pi f_{0}t}</script></span>的单频信号，这是一个复信号，只有上边带，因此仅将激励信号向上频移。</p>
-<p>然而，在消除了下边带后，<span><span class="MathJax_Preview">k(t)</span><script type="math/tex">k(t)</script></span>的表达式中<span><span class="MathJax_Preview">e^{j2\pi (2n+1)f_{0}t}</span><script type="math/tex">e^{j2\pi (2n+1)f_{0}t}</script></span>表明了其仍存在基数次谐波。为了解决这个问题，作者使用了更多级的阻抗值，以之前使用方波<span><span class="MathJax_Preview">S_{square}(f_{0}t)</span><script type="math/tex">S_{square}(f_{0}t)</script></span>近似一个余弦信号<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>为例，仅仅使用两个电平<span><span class="MathJax_Preview">\{0，1,...\}</span><script type="math/tex">\{0，1,...\}</script></span>显然太“粗糙”了，如果使用更多级别的电平，比如这样一个序列<span><span class="MathJax_Preview">\{0,\frac{1}{2},1,\frac{1}{2},...\}</span><script type="math/tex">\{0,\frac{1}{2},1,\frac{1}{2},...\}</script></span>，如图n所示，得到的信号就更“像”一个余弦信号<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>了。读者可以用傅里叶级数展开一下，这个更“像”余弦信号的序列消除了三次谐波。</p>
+<p>然而，在消除了下边带后，<span><span class="MathJax_Preview">k(t)</span><script type="math/tex">k(t)</script></span>的表达式中<span><span class="MathJax_Preview">e^{j2\pi (2n+1)f_{0}t}</span><script type="math/tex">e^{j2\pi (2n+1)f_{0}t}</script></span>表明了其仍存在基数次谐波。为了解决这个问题，作者使用了更多级的阻抗值，以之前使用方波<span><span class="MathJax_Preview">S_{square}(f_{0}t)</span><script type="math/tex">S_{square}(f_{0}t)</script></span>近似一个余弦信号<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>为例，仅仅使用两个电平<span><span class="MathJax_Preview">\{0，1,...\}</span><script type="math/tex">\{0，1,...\}</script></span>显然太“粗糙”了，如果使用更多级别的电平，比如这样一个序列<span><span class="MathJax_Preview">\{0,\frac{1}{2},1,\frac{1}{2},...\}</span><script type="math/tex">\{0,\frac{1}{2},1,\frac{1}{2},...\}</script></span>，如图n所示[TODO加上图]，得到的信号就更“像”一个余弦信号<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>了。读者可以用傅里叶级数展开一下，这个更“像”余弦信号的序列消除了三次谐波。</p>
 <p>将上面的情形推广到复信号，我们的目标不再是构造一个余弦信号<span><span class="MathJax_Preview">cos(f_{0}t)</span><script type="math/tex">cos(f_{0}t)</script></span>，而是一个复平面上绕着原点转动的向量<span><span class="MathJax_Preview">e^{j2\pi f_{0}t}</span><script type="math/tex">e^{j2\pi f_{0}t}</script></span>。同样，刚刚我们仅将该单位圆分成四份，开关在这四种阻抗之间切换。那么，如果将圆分成更多分，那切换的过程也就更“像”目标向量<span><span class="MathJax_Preview">e^{j2\pi f_{0}t}</span><script type="math/tex">e^{j2\pi f_{0}t}</script></span>。在这篇文章中，作者使用了8种阻抗以模拟<span><span class="MathJax_Preview">e^{j2\pi f_{0}t}</span><script type="math/tex">e^{j2\pi f_{0}t}</script></span>，消除了3、5、7、9次的谐波（更高次的谐波由于开关切换到不同阻抗的延迟不会产生）。</p>
-<p>最终，作者实现了不产生镜像和谐波的单一频率频移，同样，如果将开关切换这8种阻抗的速度不断变快，就可以反射出纯净的chirp信号。最终，在标签距离单频信号源5m时，Backscatter信号可以被远至2.8km外的网关接收到。</p>
+<p>最终，通过这样的思路可以实现了不产生镜像和谐波的单一频率频移，如果将开关切换这8种阻抗的速度不断变快，就可以反射出纯净的chirp信号。最终，在标签距离单频信号源5m时，Backscatter信号可以被远至2.8km外的网关接收到。</p>
+<p>[TODO] 加上其他的backscatter工作，还有很多相关的有意思的技术和应用，整理好后都加上，给我点时间。。。记得催我自己一把。。实现代码也加上。冲！</p>
+<h2 id="_1">参考论文<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Jinyan Jiang, Zhenqiang Xu, Jiliang Wang. "Long-Range Ambient LoRa Backscatter with Parallel Decoding", ACM MobiCom 2021.</li>
+</ol>
                 
               
               
@@ -1885,7 +1939,7 @@ k(t)=\frac{4}{\pi}\sum^{\infty}_{n=0}\frac{1}{2n+1}e^{j2\pi (2n+1)f_{0}t}
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../S1_RFID/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 8.2 RFID" rel="prev">
+        <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S4_%E6%A1%88%E4%BE%8B%EF%BC%88%E8%93%9D%E7%89%99%EF%BC%89/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 7.4 案例：蓝牙连接实验" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1894,7 +1948,7 @@ k(t)=\frac{4}{\pi}\sum^{\infty}_{n=0}\frac{1}{2n+1}e^{j2\pi (2n+1)f_{0}t}
               <span class="md-footer__direction">
                 上一页
               </span>
-              8.2 RFID
+              7.4 案例：蓝牙连接实验
             </div>
           </div>
         </a>
@@ -1922,7 +1976,7 @@ k(t)=\frac{4}{\pi}\sum^{\infty}_{n=0}\frac{1}{2n+1}e^{j2\pi (2n+1)f_{0}t}
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

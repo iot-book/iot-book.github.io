@@ -862,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -874,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1870,7 +1870,8 @@
                 
                 <h1 id="_1">滑动平均滤波器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">简介<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>移动平均滤波器在数字信号处理中是最常见的滤波器，主要原因是它是最容易理解和使用。滑动平均滤波器非常适合用于减少随机噪声，同时保持清晰的阶跃响应，这使其成为时域编码信号的首选滤波器。但是，从频域看，滑动平均滤波器是对频域编码信号最不友好的滤波器，它几乎没有能力将一个频带与另一个频带分开。由滑动平均滤波器发展来的滤波器还包括高斯滤波，布莱克曼滤波和多次滑动平均滤波，这些改进的滑动平均滤波器在频域中具有稍好的性能，但以增加的计算时间为代价。</p>
+<p>为了理解滤波器，我们已大家最常用的滑动平均滤波器为例来进行说明。
+滑动平均滤波器在数字信号处理中是最常见的滤波器，滑动平均滤波器非常适合用于减少随机噪声，同时保持清晰的阶跃响应，这使其成为时域编码信号的首选滤波器。但是，从频域看，滑动平均滤波器是对频域编码信号最不友好的滤波器，它几乎没有能力将一个频带与另一个频带分开。由滑动平均滤波器发展来的滤波器还包括高斯滤波，布莱克曼滤波和多次滑动平均滤波，这些改进的滑动平均滤波器在频域中具有稍好的性能，但以增加的计算时间为代价。</p>
 <h2 id="_3">滑动平均的卷积实现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>说起滑动平均，大家应该都很熟悉，这种利用滑动窗口计算数据集中不同子集平均数的数据分析方法，广泛应用在数据分析和财务统计中。例如利用滑动平均分析股票价格、交易量、研究国内生产总值、就业或其他宏观经济时间序列等，滑动平均的主要特点是可以消除短期波动，突出长期趋势或周期。接下来我们将通过一个实际的例子，带领大家回顾滑动平均的实现过程。</p>
 <!-- 事实上，通过接下来的介绍，我们会发现滑动平均这种消除短期波动的特点，本质上等同于使用滤波器滤除高频噪声的过程，即滑动平均的效果实际上是对输入数据实施了低通滤波。我们接下来以一个实际的例子，说明滑动平均和低通滤波的关系。 -->
@@ -2064,12 +2065,12 @@ padding: 2px;">图. 选择不同滑动窗口时，滑动平均滤波器效果</d
 <p>要理解为什么滑动平均滤波器是最佳的随机噪声抑制方案，请想象我们要设计一个具有固定边缘清晰度的滤波器。例如，假设我们要求一个滤波器的阶跃响应上升沿不得长于11个采样点，在此要求下，所有基于卷积实现的滤波器（FIR滤波器）的卷积核长度都不得超过11个点。由于可以得到优化问题：如何选择滤波器内核中的11个值，以最小化输出信号上的噪声？对于随机噪声场景而言，每一个采样点的噪声都是随机的，因此，通过在卷积核中为输入点中的任意一个分配较大的系数来对它们中的任何一个进行优先处理是没有用的。 当对所有输入样本同等对待（即滑动平均）时，可获得最佳的噪声抑制效果。</p>
 <h2 id="_5">频率响应<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>之前我们说过，滑动平均在时域上可以提供最佳的随机噪声抑制效果，但从频域看，滑动平均滤波器在频带分离任务上表现非常糟糕。我们先用一个MATLAB的仿真实例来观察滑动平均滤波器的频域响应：</p>
-<div class="highlight"><pre><span></span><code><span class="c">%% Impaulse Response of moving average filter</span><span class="w"></span>
-<span class="c">% Generating Impaulse</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c">%% Impulse Response of moving average filter</span><span class="w"></span>
+<span class="c">% Generating Impulse</span><span class="w"></span>
 <span class="n">din</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1e4</span><span class="p">);</span><span class="w"></span>
 <span class="n">din</span><span class="p">(</span><span class="mf">5e3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">% Impaulse Response of moving average filter</span><span class="w"></span>
+<span class="c">% Impulse Response of moving average filter</span><span class="w"></span>
 <span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
 <span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">));</span><span class="w"></span>
 <span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
@@ -2099,9 +2100,10 @@ padding: 2px;">图. 选择不同滑动窗口时，滑动平均滤波器效果</d
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. 滑动平均滤波器的频率响应。滑动平均滤波器的过渡带较长，且阻带抑制较差，因此它是一个非常糟糕的低通滤波器。</div>
+padding: 2px;">图. 滑动平均滤波器的频率响应。滑动平均滤波器的过渡带较长，且阻带抑制较差，因此它是一个不太好的低通滤波器。</div>
 <p></center></p>
-<p>事实上，通过计算矩形脉冲的傅里叶变换，我们在数学上描述滑动平均滤波器的频域响应：</p>
+<p>事实上，我们知道时域上的卷积等于频域上的乘积，反过来时域上的乘积等于频域上的卷积。
+所以要看滑动平均的滤波器的频率响应，我们首先要注意到滑动平均滤波器相当于将信号与一个矩形窗口做卷积（例如<span><span class="MathJax_Preview">1/5,1/5,1/5,1/5,1/5</span><script type="math/tex">1/5,1/5,1/5,1/5,1/5</script></span>）。因此要计算滑动平均滤波的频率响应，我们先计算矩形窗频域情况（通过快速傅里叶变换），然后我们可以知道滑动平均滤波对频率的影响了。不难计算出来，滑动平均滤波器的频域响应：</p>
 <div>
 <div class="MathJax_Preview">
 H[f] = \frac{sin(\pi fM)}{Msin(\pi f)}
@@ -2110,7 +2112,10 @@ H[f] = \frac{sin(\pi fM)}{Msin(\pi f)}
 H[f] = \frac{sin(\pi fM)}{Msin(\pi f)}
 </script>
 </div>
-<p><span><span class="MathJax_Preview">H[f]</span><script type="math/tex">H[f]</script></span>的形式与sinc函数相一致，其特点是过渡带滚降缓慢、阻带抑制不明显。因此，单纯使用移动平均滤波，无法将一个频带与另一个频带分开。请记住，时域的良好性能会导致频域的性能较差，反之亦然。简而言之，移动平均值是一个非常出色的平滑滤波器（时域中的作用），但是却是一个非常糟糕的低通滤波器（频域中的作用）。</p>
+<blockquote>
+<p>联系傅里叶变换那一节内容，思考这里是如何计算出来的。</p>
+</blockquote>
+<p><span><span class="MathJax_Preview">H[f]</span><script type="math/tex">H[f]</script></span>的形式与<span><span class="MathJax_Preview">sinc</span><script type="math/tex">sinc</script></span>函数相一致，其特点是过渡带滚降缓慢、阻带抑制不明显。因此，单纯使用移动平均滤波，无法将一个频带与另一个频带分开。简而言之，移动平均值是一个非常出色的平滑滤波器（时域中的作用），但是却是一个不太好的低通滤波器（频域中的作用）。</p>
                 
               
               
@@ -2167,7 +2172,7 @@ H[f] = \frac{sin(\pi fM)}{Msin(\pi f)}
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

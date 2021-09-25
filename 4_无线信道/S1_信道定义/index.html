@@ -876,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -888,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1904,10 +1904,10 @@
 <li>什么是信道？</li>
 <li>怎样表示信道?</li>
 </ul>
-<p>首先我们知道传输目的，就是通过接收到的信号还原出发送的信号。而在这个过程中，我们首先要搞清楚如何表示信号（调制）以及如何表示信道（传输的影响）。假设发送信号为<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, 那么接收到到的信号为<span><span class="MathJax_Preview">f(s)</span><script type="math/tex">f(s)</script></span>,其中函数<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>就是信道对信号的影响，传输的目的就是基于接收到的<span><span class="MathJax_Preview">f(s)</span><script type="math/tex">f(s)</script></span>计算出<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>。当然最理想的情况下，信道不会对信号产生任何影响，那么接收到的<span><span class="MathJax_Preview">f(s) = s</span><script type="math/tex">f(s) = s</script></span>。</p>
+<p>首先我们知道传输目的，本质上来说就是基于接收到的信号计算出发送的信号。而在这个过程中，我们首先要搞清楚如何表示信号（调制）以及如何表示信道（传输的影响）。假设发送信号为<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, 那么接收到到的信号为<span><span class="MathJax_Preview">f(s)</span><script type="math/tex">f(s)</script></span>,其中函数<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>就是信道对信号的影响，传输的目的就是基于接收到的<span><span class="MathJax_Preview">f(s)</span><script type="math/tex">f(s)</script></span>计算出<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>。当然最理想的情况下，信道不会对信号产生任何影响，那么接收到的<span><span class="MathJax_Preview">f(s) = s</span><script type="math/tex">f(s) = s</script></span>。</p>
 <p>通俗地来理解信道，一个信号从发送端通过一定的媒介到达接收端。这就是一个典型通信过程，就包括发射端-信道-接收端三个部分。例如你晚上写的作业，第二天交到老师的手上，你就是发送端，作业就是你的数据，作业本以及交的这个过程就是信道，老师就是接收方。
 所以要保证老师看到你的作业，首先你写的内容至少要保证没有问题，你会想尽办法保证写的东西是正确的，怕老师看不清会把字写大一些，为了让老师知道是谁的作业会把名字写上，作业里面的重点会标记好，这些都是传输端做的保证发送稳定性的方法。同时你也会尽量保证作业本能够稳定的交到老师手上，这是减少信道的影响，下雨了你会将作业小心的保护起来等，老师收到作业知道才知道你写的内容。确保老师看到作业的时候，知道你当时写了什么内容。</p>
-<p>更确切的说，信道可以分为狭义信道和广义信道两类：</p>
+<p>信道可以分为狭义信道和广义信道两类：</p>
 <p><strong>狭义信道：</strong> 按照传输媒质来划分，可以分为有线信道、无线信道和存储信道三类。值得注意的是，磁带、磁盘等数据存储媒质也可以被看作是一种通信信道。将数据写入存储媒质的过程即等效于发射机将信号传输到信道的过程，将数据从存储媒质读出的过程即等效于接收机从信道接收信号的过程。</p>
 <p><strong>广义信道：</strong> 按照信道功能进行划分，可以分为调制信道和编码信道两类。调制信道是指信号从调制器的输出端传输到解调器的输入端经过的部分。对于调制和解调的研究者来说，信号在调制信道上经过的传输媒质和变换设备都对信号做出了某种形式的变换，研究者只关心这些变换的输入和输出的关系，并不关心实现这一系列变换的具体物理过程。这一系列变换的输入与输出之间的关系。编码信道是指数字信号由编码器输出端传输到译码器输入端经过的部分。对于编译码的研究者来说，编码器输出的数字序列经过编码信道上的一系列变换之后，在译码器的输入端成为另一组数字序列，研究者只关心这两组数字序列之间的变换关系，而并不关心这一系列变换发生的具体物理过程，甚至并不关心信号在调制信道上的具体变化。</p>
 <p><center>
@@ -1919,12 +1919,15 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 信道示意</div>
 <p></center></p>
-<p>理解信道是理解通信和感知的重要基础，因为很多通信处理和感知方法都是基于信道来实现的，理解信道的过程首先需要理解信道对信号的基本影响（如衰减、多径效应等），以及这些影响如何来科学的进行表示。这就是这章要讲的全部，理解这些之后，对于通信过程中碰到的大部分问题其实就比较明确和容易理解了，之前我们说过信道的理解也是物联网感知的基础，理解了信道后对于理解物联网无线定位和感知也比较方便了。</p>
+<p>理解信道是理解通信的基础，也是理解物联网通信和感知的重要基础。因为很多通信处理和感知方法都要处理或者利用信道的影响，理解信道的过程首先需要理解信道对信号的基本影响（如衰减、多径效应等），以及这些影响如何来科学的进行表示。这就是这章要讲的全部，理解这些之后，对于通信过程中碰到的大部分问题其实就比较明确和容易理解了，之前我们说过信道的理解也是物联网感知的基础，理解了信道后对于理解物联网无线定位和感知也比较方便了。</p>
 <h2 id="cir">信道冲击响应（CIR）<a class="headerlink" href="#cir" title="Permanent link">&para;</a></h2>
 <!-- 从单位冲击响应讲起，介绍冲击响应通过信道的变化，然后介绍如何一般化这种影响，介绍信道参数H等。 -->
 <p>信道研究的第一步，是要建立对信道的描述，即表示出任意输入信号通过该信道后的响应信号。但可能的输入信号波形有成千上万种，针对某个特定信道，我们不可能在该信道上对每一种波形的响应都进行研究，因此我们必须要找到那个可以用于构造任意波形的“单位1”。</p>
 <p>幸运的是，在信道描述方面，单位脉冲信号就是一种非常理想的“单位1”：我们可以将任意信号可以分解成若干不同时延的单位脉冲信号的线性叠加。这样一来，通过研究单位脉冲通过信道后的响应，我们可以计算出任意信号通过信道后的结果。例如，假设发送端不是单位冲击信号，而是两倍高度的冲击信号，那么很自然的接收方的信号也会变成了两倍高度。当然这里我们假设信号是线性的，非线性的信道我们暂时不考虑，在大部分的分析中，线性信道的假设是足够且合理的了，本材料后面的部分也都是基于线性信道进行介绍的。注意大家看到的大部分论文等也都基于线性信道，所以后面材料中除非特别说明，都是假设线性信道。</p>
-<p>我们用一个例子来说明如何用单位脉冲信号的信道响应（CIR）来表示任意信号通过信道后的响应输出。为例方便表示，以下说明将使用离散信号形式。离散形式的单位脉冲信号可以表示为：</p>
+<p>我们用一个例子来说明如何用单位脉冲信号的信道响应（CIR， Channel Impulse Response）来表示任意信号通过信道后的响应输出。为例方便表示，以下说明将使用离散信号形式。离散形式的单位脉冲信号可以表示为：</p>
+<blockquote>
+<p>CIR这个词大家在阅读论文的时候很常见，它的计算方法是这样来的。</p>
+</blockquote>
 <div>
 <div class="MathJax_Preview">
 \delta[n]=\left\{\begin{array}{ll}
@@ -1949,7 +1952,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 通过采样，任意信号可以表示为若干单位脉冲信号的组合</div>
 <p></center></p>
-<p>每一个信号采样点可以看作一个具有特定时延和幅度缩放的单位冲击信号。例如在时刻1幅度为0.9的采样点，可以表示为<span><span class="MathJax_Preview">0.9\times \delta[n-1]</span><script type="math/tex">0.9\times \delta[n-1]</script></span>。类似的，我们可以将整段信号所有<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个采样点表示为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个单位脉冲的和，即：</p>
+<p>每一个信号采样点可以看作一个具有特定时延和幅度缩放的单位冲击信号。例如在时刻1幅度为0.9的采样点，可以表示为<span><span class="MathJax_Preview">0.9 \delta[n-1]</span><script type="math/tex">0.9 \delta[n-1]</script></span>。类似的，我们可以将整段信号所有<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个采样点表示为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个单位脉冲的和，即：</p>
 <div>
 <div class="MathJax_Preview">
 s[n] = \sum_{k=0}^{N-1} Ampl[k]\times \delta[n-k]
@@ -2018,7 +2021,8 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. CIR的线性叠加可表示任意信号的信道响应。</div>
 <p></center></p>
-<p>如上图所示，通过对CIR做不同延时、不同衰减的线性叠加，我们可以表示出任意输入信号<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>的信道响应输出。接下来，让我们思考如何在数学上来表示信道冲击响应（CIR）。</p>
+<p>如上图所示，通过对CIR做不同延时、不同衰减的线性叠加，我们可以表示出任意输入信号<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>的信道响应输出。</p>
+<p>接下来，让我们思考如何在数学上来表示信道冲击响应（CIR）。</p>
 <p>通过前面的介绍，我们知道一个单位脉冲信号通过信道后得到的响应是多个不同延时、不同衰减、不同相位的脉冲信号副本的叠加。我们用<span><span class="MathJax_Preview">h[n]</span><script type="math/tex">h[n]</script></span>代表单位冲击响应通过信道后的结果，<span><span class="MathJax_Preview">h[n]</span><script type="math/tex">h[n]</script></span>中的每一个值表示单位脉冲经过对应延时后的衰减和相位变化，例如<span><span class="MathJax_Preview">h[1]=0.9e^{j\varphi}</span><script type="math/tex">h[1]=0.9e^{j\varphi}</script></span>表示单位脉冲通过信道后在时刻1产生一个幅度为0.9、相位变化为<span><span class="MathJax_Preview">\varphi</span><script type="math/tex">\varphi</script></span>的信号副本。</p>
 <p>假设脉冲通过一个信道产生的最大延时为<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>，即在<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>时刻发送的信号，通过信道中最长的传播路径后，可以在时刻<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>到达接收端，这个最大时延又被称为 <strong>信道时延拓展</strong> 。因此，接收端在任意时刻收到的信号，实际上是其之前<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>个时刻内发送信号的叠加，即</p>
 <div>
@@ -2093,7 +2097,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 信道频域响应示意：图中箭头代表了单位信号经过信道后不同频率的影响。</div>
 <p></center></p>
-<p>在实际通信系统中，我们通常将时域上的信道冲击响应变换到频域，通过比较输入信号和输出信号的频域特征，我们就可以计算出相应频域上的冲击响应，进而计算出相应信道的时域参数。实际上，频域的信道响应和和时域响应是等价的，只不过一个是时间域上的表示，一个是频率域上的表示，两者可以互相转化。频域的信道响应也是大量定位和感知工作的信息来源，借助特定信号的信道频率响应，我们可以计算不同多径路径的传播特征。</p>
+<p>在实际通信系统中，我们通常将时域上的信道冲击响应变换到频域，通过比较输入信号和输出信号的频域特征，我们就可以计算出相应频域上的冲击响应，进而计算出相应信道的时域参数。实际上，频域的信道响应和和时域响应是等价的，只不过一个是时间域上的表示，一个是频率域上的表示，两者可以互相转化。频域的信道响应也是目前研究里面大量物联网定位和感知工作的重要信息来源，借助特定信号的信道频率响应，我们可以计算不同多径路径的传播特征，从中分析出对定位和感知有用的信息。</p>
 <!-- 单位脉冲信号通过信道后，仍然是发送信号的衰减和延迟的组合，我们通常把一个单位冲击信号通过信道的结果叫做单位冲击响应，要注意这个单位冲击响应就完全描述了一个信道，换句话说， -->
 
 <h2 id="csi">信道状态信息（CSI）<a class="headerlink" href="#csi" title="Permanent link">&para;</a></h2>
@@ -2107,7 +2111,7 @@ padding: 2px;">图. 信道频域响应示意：图中箭头代表了单位信号
 如果加上噪声，正常情况下得到的噪声应该为：$y = H*x + noise$。 -->
 
 <h2 id="_3">信道状态估计<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>通过前文介绍，我们知道由于无线环境数复杂多变，信号传播到达接收端时，其幅度、相位和频率都会发生很大的改变。因此，为了尽可能恢复出原始信号，我们需要进行信道估计和信道均衡。一个良好的估计和均衡算法对于接收端的性能来说至关重要，决定了信号最终的解出率。</p>
+<p>通过前文介绍，我们知道由于无线环境数复杂多变，信号传播到达接收端时，其幅度、相位和频率都会发生很大的改变。因此，为了尽可能恢复出原始信号，我们需要进行信道估计和信道均衡。一个良好的估计和均衡算法对于接收端的性能来说至关重要，决定了信号能否最终被解码出来。</p>
 <p>根据是否借助导频信息，信道估计算法可以分为盲估计、半盲估计和非盲信道估计三种。盲信道估计无需借助导频符号，也不占用频谱资源，只利用接收信号本身固有的特征，来获取信道信息。实际上，在具体使用时，因为盲信道估计计算量复杂，收敛较慢，不适合现实的实时交互通信系统。针对盲信道估计的缺陷，半盲信道估计在发射端的调制信号中插入了少量导频。相较于盲信道估计而言，半盲信道估计可以借鉴少量导频信号的频率响应来进行信道估计，因此，其性能要好于盲信道估计。但半盲估计通常假设参考的导频信号不对数据传输造成额外影响，训练序列长度受限，因此可能出现相位模糊（基于子空间的方法）、误差传播（如判决反馈类方法）、收敛慢或陷入局部极小等问题，这在一定程度上限制了它的实用性。非盲估计则是使用一段特殊设计的导频信号来辅助信道估计，基于导频辅助的非盲信道估计算法可以分为两个部分：一是导频位置处的信道估计算法；二是非导频位置处的插值算法。非盲估计是目前通信系统常用的信道估计方式。</p>
 <p><strong>1. LS算法</strong></p>
 <p>下面介绍一种基于最小二乘（LS）算法的非盲信道估计方法。信道估计的本质，是表示出信道的单位脉冲响应CIR。按照前面的定义，最好最直接的办法当然是直接发送一个单位冲击信号，然后接收方看看收到的信号是什么样子。很显然，实际中我们无法这样子去做，因为我们无法发出这样的信号，也就无法利用这样的信号来测量信道。那真实的情况如何做呢，一般的做法为发送已知内容的信号<span><span class="MathJax_Preview">x(t)</span><script type="math/tex">x(t)</script></span>，看看收到的信号<span><span class="MathJax_Preview">y(t)</span><script type="math/tex">y(t)</script></span>，理论上<span><span class="MathJax_Preview">y(t) = x(t)*h(t)</span><script type="math/tex">y(t) = x(t)*h(t)</script></span>。通过这个公式，我们可以算出<span><span class="MathJax_Preview">h(t)</span><script type="math/tex">h(t)</script></span>的值，从而得到信道参数。在真实的数据包发送中，这个<span><span class="MathJax_Preview">x(t)</span><script type="math/tex">x(t)</script></span>可以为数据包中的前导码等，前导码一般内容是固定的，所以对于任何接收者来说都是已知的，这样通过分析接收到的信号和发送信号的变化，计算出<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>。这也是为什么很多材料中说前导码可以起到信道估计的作用。</p>
@@ -2157,7 +2161,7 @@ $$</p>
 <span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">interp1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="s">&#39;linear&#39;</span><span class="p">,</span><span class="s">&#39;extrap&#39;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p><strong>2. LMMSE算法</strong></p>
-<p>如果对估计精度的要求高些，LS 可能就达不到了，所以可以采用这种使线性均方误差最小的方式，在平方和的基础上再进行平均。LMMSE算法是在LS算法的基础上发展的，主要目的是为了消除噪声的影响。但LMMSE算法的缺点是计算量大，特别是矩阵的求逆过程是相当的复杂，这在实际应用中很难实现的。</p>
+<p>如果对估计精度的要求高些，LS 可能就达不到了，所以可以采用这种使线性均方误差最小的方式，在平方和的基础上再进行平均。LMMSE算法是在LS算法的基础上发展的，主要目的是为了消除噪声的影响。但LMMSE算法的缺点是计算量大，特别是矩阵的求逆过程是相当的复杂，这在实际应用中较难实现。</p>
 <p>使用求导法推导MMSE算法的过程如下：</p>
 <p><center>
 <img src="./fig/LMMSE.png" width=800px>
@@ -2238,7 +2242,7 @@ padding: 2px;">图. DFT算法过程</div>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

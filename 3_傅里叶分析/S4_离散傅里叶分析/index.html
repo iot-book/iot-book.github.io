@@ -909,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -921,7 +921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1965,7 +1965,7 @@
                 <h1 id="_1">离散傅里叶分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">离散傅里叶级数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>从傅里叶级数到傅里叶变换，我们从离散频域变到了连续频域，但它们处理的都是连续时间信号，而在实际信号处理中我们不会处理连续的信号，更多地会面对因为采样而在时间上离散的信号。我们同样关心这些信号的频谱。因此我们仿照前面的做法，从研究离散的周期序列开始，推导离散傅里叶级数。也就是我们假设我们能够采样到一个周期信号，怎么根据采样的结果来分析这个信号。</p>
-<p>设有一个离散的周期序列<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>（我们用方括号表示里面的变量是离散的），其周期为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>。按照傅里叶的思想，我们可以将它展开为一系列三角波的和。在之前的傅里叶级数展开中，我们选择的频率是基频的0倍、1倍、2倍……周期为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列其基频是<span><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>，那么我们应选取的三角波是<span><span class="MathJax_Preview">e^{j2\pi\frac{0}{N}n}, e^{\pm j2\pi\frac{1}{N}n}, e^{\pm j2\pi\frac{3}{N}n}, \cdots</span><script type="math/tex">e^{j2\pi\frac{0}{N}n}, e^{\pm j2\pi\frac{1}{N}n}, e^{\pm j2\pi\frac{3}{N}n}, \cdots</script></span>, 但稍加观察我们会发现，并非像连续情形下出现了无穷多种频率，离散情况下这些三角波事实上只有<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>种，因为<span><span class="MathJax_Preview">e^{j2\pi\frac{k+N}{N}n} = e^{j2\pi\frac{k}{N}n}</span><script type="math/tex">e^{j2\pi\frac{k+N}{N}n} = e^{j2\pi\frac{k}{N}n}</script></span>。连续傅里叶级数导出了一个无穷维的希尔伯特空间，而离散情况下只存在<span><span class="MathJax_Preview">\frac{0}{N}, \frac{1}{N}\dots, \frac{N-1}{N}</span><script type="math/tex">\frac{0}{N}, \frac{1}{N}\dots, \frac{N-1}{N}</script></span>这样的频率，所以离散傅里叶级数对应一个有限维的希尔伯特空间。类似的，我们也说周期序列<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>可表为</p>
+<p>设有一个离散的周期序列<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>（我们用方括号表示里面的变量是离散的），其周期为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>。按照傅里叶的思想，我们可以将它展开为一系列三角波的和。在之前的傅里叶级数展开中，我们选择的频率是基频的0倍、1倍、2倍……周期为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列其基频是<span><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>，那么我们应选取的三角波是<span><span class="MathJax_Preview">e^{j2\pi\frac{0}{N}n}, e^{\pm j2\pi\frac{1}{N}n}, e^{\pm j2\pi\frac{2}{N}n}, \cdots</span><script type="math/tex">e^{j2\pi\frac{0}{N}n}, e^{\pm j2\pi\frac{1}{N}n}, e^{\pm j2\pi\frac{2}{N}n}, \cdots</script></span>, 但稍加观察我们会发现，并非像连续情形下出现了无穷多种频率，离散情况下这些三角波事实上只有<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>种，因为<span><span class="MathJax_Preview">e^{j2\pi\frac{k+N}{N}n} = e^{j2\pi\frac{k}{N}n}</span><script type="math/tex">e^{j2\pi\frac{k+N}{N}n} = e^{j2\pi\frac{k}{N}n}</script></span>。连续傅里叶级数导出了一个无穷维的希尔伯特空间，而离散情况下只存在<span><span class="MathJax_Preview">\frac{0}{N}, \frac{1}{N}\dots, \frac{N-1}{N}</span><script type="math/tex">\frac{0}{N}, \frac{1}{N}\dots, \frac{N-1}{N}</script></span>这样的频率，所以离散傅里叶级数对应一个有限维的希尔伯特空间。类似的，我们也说周期序列<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>可表为</p>
 <div>
 <div class="MathJax_Preview">
 x[n] = \sum_{k=0}^{N-1}c_k \mathbf{e_k}.
@@ -2102,7 +2102,7 @@ c_k = \sum_{n=N_1}^{N_2} \widetilde{x}[n] e^{-j2\pi \frac{k}{N}n}.
 c_k = \sum_{n=N_1}^{N_2} \widetilde{x}[n] e^{-j2\pi \frac{k}{N}n}.
 </script>
 </div>
-<p>令<span><span class="MathJax_Preview">N_1 \to -\infty</span><script type="math/tex">N_1 \to -\infty</script></span>，<span><span class="MathJax_Preview">N_2 \to +\infty</span><script type="math/tex">N_2 \to +\infty</script></span>，则<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>变为<span><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>。若求和式收敛，则</p>
+<p>令<span><span class="MathJax_Preview">N_1 \to -\infty</span><script type="math/tex">N_1 \to -\infty</script></span>，<span><span class="MathJax_Preview">N_2 \to +\infty</span><script type="math/tex">N_2 \to +\infty</script></span>，则<span><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>变为<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>。若求和式收敛，则</p>
 <div>
 <div class="MathJax_Preview">
 c_k = \sum_{n=-\infty}^{+\infty} x[n] e^{-j2\pi \frac{k}{N}n}.
@@ -2488,7 +2488,7 @@ padding: 2px;">图. 采样一个周期的100Hz正弦波（左：时域图像，�
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">图. 采样五个周期的100Hz正弦波（左：时域图像，中：FFT幅度谱，右：FFT相位谱）</div>
+padding: 2px;">图. 采样五个周期的100 Hz正弦波（左：时域图像，中：FFT幅度谱，右：FFT相位谱）</div>
 <p></center></p>
 <p>上图分别展示了采样长度为一个周期和五个周期的<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz正弦波的时域、频域图像。我们在图中画出了负的频率，这是很正常的，因为一个实数总能写成两个共轭复数的和，因而具有一个正频率和与之对应的负频率。总的来说，实数信号的频谱总是对称的，通常我们仅看其中的一半。FFT的结果是复数，因而既有幅度也有相位信息，上图除了展示FFT幅度谱外，还展示了FFT相位谱。一般来说幅度谱较为常用，因为它可以告诉我们信号中某个频率占有多少比重，相位谱使用较少但也是很重要的，如在OFDM调制中非常关注FFT相位。</p>
 <p>图中一个奇怪的现象是，当我们只采样了一个周期的信号时，未补零的频谱告诉我们信号中只含有<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的频率，补了16倍零的更细粒度的频谱却告诉我们最大成分的频率并非<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz（蓝色圆圈与黑色曲线最高点明显不重合）。这是为什么呢？因为在FFT看来，一个实数正弦波包含有两个频率，分别是<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz和<span><span class="MathJax_Preview">-100</span><script type="math/tex">-100</script></span>Hz，由于信号的有限性，这两个频率会产生旁瓣从而互相干扰，于是原本应指向<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的峰被扰动偏移了。这个效应会随着旁瓣的变小而趋弱。</p>
@@ -2709,7 +2709,7 @@ padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅�
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

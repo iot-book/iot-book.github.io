@@ -811,7 +811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -823,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1827,9 +1827,10 @@
   <span class="c1">//...//</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>​       上面的代码简单来看表示了一个如下的过程：首先有一个ADC不断的将声音信号转化成为数字信号，这个数字信号是存储在一个buffer里面的，需要我们从buffer中将数据不断的读取出来，然后保存成一定格式的声音信号。这个过程类似网络的数据处理。网络数据首先通过网卡的处理，网卡有一个很重要的功能就是将物理信号转化为数字信号。回忆一下在网络编程中（如果还没有实践过，就想象一下实际电脑上网络传输的实现），我们需要将收到的数据从buffer中读取出来。这一个例子也展示了大多数ADC转化的功能，数据被转换并且保存在一个buffer中，然后对buffer中的数据进行处理。当然进一步来看的话，这个buffer中的数据如何处理也是有不同的手段的，有一些是需要轮询，不断的去看buffer中是否有数据；有一些是基于中断，一旦有数据到来，就会产生一个中断通知进行数据处理。这两种处理方法都可以实现非阻塞模式，即用户无需在这个地方等待buffer内容。还有一种是阻塞模式，用户需要等待buffer内容，当buffer中有数据时才能够继续往下处理。几种模式各有优缺点，这也是数据处理中，尤其是通信和与硬件打交道的数据处理中经常要面临的问题。如果数据处理不及时，数据就会被覆盖导致丢失，这个问题在网络传输中也会遇到。</p>
+<p>​       上面的代码简单来看表示了一个如下的过程：
+首先有一个ADC不断的将声音信号转化成为数字信号（因此采样量化过程由硬件已经完成了，我们通常不用管了，如果真的要做通信前端的时候，这部分才是需要考虑的），这个数字信号是存储在一个buffer里面的，需要我们从buffer中将数据不断的读取出来，然后保存成一定格式的声音信号。这个过程类似网络的数据处理。网络数据首先通过网卡的处理，网卡有一个很重要的功能就是将物理信号转化为数字信号。回忆一下在网络编程中（如果还没有实践过，就想象一下实际电脑上网络传输的实现），我们需要将收到的数据从buffer中读取出来。进一步来看，如何处理这个buffer中的数据也是有不同的手段的，第一种是轮询，简单的说就是不断地去看buffer中是否有数据；第二种是中断，一旦有数据到来，就会产生一个中断通知进行数据处理。这两种处理方法都可以实现非阻塞模式，即用户无需在这个地方等待buffer内容。还有一种是阻塞模式，用户需要等待buffer内容，当buffer中有数据时才能够继续往下处理。几种模式各有优缺点，这是数据处理中，尤其是通信和与硬件打交道的数据处理中经常要面临的问题。例如如果数据处理不及时，数据就会被覆盖导致丢失，这个问题在网络传输中也会遇到。</p>
 <p>​       将数据读取出来之后，我们就有了采样和量化过后的数据，这才是真实计算机能够处理的数据，注意原始的声音我们是保存不下来的。</p>
-<p>​       另外我们还想通过这一部分代码介绍几个重要概念，这也是平时大家在网络学习的过程中容易忽视的概念，因为之前网络学习中接触最底层基础的信号处理较少。在启动录音的过程中，需要设置几个参数，第一个就是采样率，目前设置的是<span><span class="MathJax_Preview">48 KHz</span><script type="math/tex">48 KHz</script></span>（到前面看看这个采样率对实际恢复数据的影响，就理解为什么这个参数很重要了），能够将人耳能听到的声音和人说话的声音录下来（思考一下人耳能听到的声音和人说话的声音大概的频率范围应该是多少）。第二个是量化位数，这里设置的是16位，即每一个采样点用16bit来量化。第三个是声道数量，目前选择的是双声道，即有两路数据。这样的配置也就意味着，如果原始声音信号的频率是小于<span><span class="MathJax_Preview">24 KHz</span><script type="math/tex">24 KHz</script></span>的，那么<span><span class="MathJax_Preview">48 KHz</span><script type="math/tex">48 KHz</script></span>的采样率是能够完全还原出原始的声音信号的。</p>
+<p>​       另外我们还想通过这一部分代码介绍几个重要概念，这也是平时大家在网络学习的过程中容易忽视的概念，因为之前网络学习中接触最底层基础的信号处理较少。在启动录音的过程中，需要设置几个参数，第一个就是采样率，目前设置的是<span><span class="MathJax_Preview">48 KHz</span><script type="math/tex">48 KHz</script></span>（到前面看看这个采样率对实际恢复数据的影响，就理解为什么这个参数很重要了），能够将人耳能听到的声音和人说话的声音录下来（思考一下人耳能听到的声音和人说话的声音大概的频率范围应该是多少）。第二个是量化位数，这里设置的是16位，即每一个采样点用16bit来量化（思考这能将声音量化成多少位）。第三个是声道数量，目前选择的是双声道，即有两路数据。这样的配置也就意味着，如果原始声音信号的频率是小于<span><span class="MathJax_Preview">24 KHz</span><script type="math/tex">24 KHz</script></span>的，那么<span><span class="MathJax_Preview">48 KHz</span><script type="math/tex">48 KHz</script></span>的采样率是能够完全还原出原始的声音信号的。</p>
 <p>​       如果我们有一个音频文件，这个音频文件可以是通过程序录制得到的，也可以是使用代码生成的，就可以在手机上播放出来。播放声音的关键代码如下：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">StartPlay</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
 <span class="c1">//...//</span>
@@ -1863,7 +1864,7 @@
   <span class="c1">//...//</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>​       在播放声音时，我们仍然需要指定采样率、量化位数、声道数这些参数，并且这些参数要与生成音频文件时使用的参数相同，才能将音频正常播放出来。注意，上述的整个过程，在正常的无线通信的过程中也都存在，但是大家通常都接触不到，希望大家通过这个直观的例子，理解通信中采样和量化的第一步。</p>
+<p>​       在播放声音时，我们仍然需要指定采样率、量化位数、声道数这些参数，并且这些参数要与生成音频文件时使用的参数相同，才能将音频正常播放出来（思考为什么需要指定这些参数）。注意，上述的整个过程，在正常的无线通信的过程中也都存在，但是大家通常都接触不到，希望大家通过这个直观的例子，理解通信中采样和量化的第一步。</p>
 <blockquote>
 <p>大家思考并尝试一下，如果在生成音频时使用的是<span><span class="MathJax_Preview">48 KHz</span><script type="math/tex">48 KHz</script></span>采样率，而在播放时使用<span><span class="MathJax_Preview">24 KHz</span><script type="math/tex">24 KHz</script></span>采样率，播放出来的声音会是什么效果？同样也可以尝试不同的量化位数或者声道数的组合，并解释播放出来的声音和原本正常的声音不同的原因，就可以对信号的接收、生成等过程有更加深入的了解。</p>
 </blockquote>
@@ -1923,7 +1924,7 @@
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

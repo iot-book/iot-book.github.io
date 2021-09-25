@@ -501,7 +501,7 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    多径测量方法
+    多径测量
   </a>
   
 </li>
@@ -855,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -867,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1836,7 +1836,7 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    多径测量方法
+    多径测量
   </a>
   
 </li>
@@ -1856,7 +1856,7 @@
                 
                 <h1 id="_1">多径信道模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">多径效应<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>电磁波在传播过程中可能出现折射、反射、漫射、衍射等现象，因此当通信环境比较复杂时，在接收端可能会收到多路来自不同路径的信号副本。通常来说，这些信号副本的传播路径可以大致分为视距路径（LOS, Line of Sight）和非视距路径（NLOS, Not Line of Sight）两类。如下图所示，由不同传播路径到达的信号副本具有不同的延迟和能量衰减。如果第一个到达的信号和最后一个到达的信号时间之差（多径时延扩展）非常小，相当于所有的信号都是在叠加相长（波峰和波峰叠加，波谷和波谷叠加），则这样的多径叠加对信号的解码影响不大。但是当时多径延扩展比较大时，信号的叠加就有可能是相消的（即波峰和和波谷叠加），这样就会造成信号的失真，使接收机无法解码信号。</p>
+<p>电磁波在传播过程中当通信环境比较复杂时，在接收端可能会收到多路来自不同路径的信号副本。通常来说，这些信号副本的传播路径可以大致分为视距路径（LOS, Line of Sight）和非视距路径（NLOS, None-Line-of-Sight）两类。如下图所示，由不同传播路径到达的信号副本具有不同的延迟和能量衰减。如果第一个到达的信号和最后一个到达的信号时间之差（多径时延扩展）非常小，相当于所有的信号都是在叠加相长（波峰和波峰叠加，波谷和波谷叠加），则这样的多径叠加对信号的解码影响不大。但是当时多径延扩展比较大时，信号的叠加就有可能是相消的（即波峰和和波谷叠加），这样就会造成信号的失真，使接收机无法解码信号。</p>
 <p><center>
 <img src="./fig/cpt_multipath.jpg" width=600px>
 </center></p>
@@ -2039,8 +2039,8 @@ r(t)&=\Re\big\{\big[\sum_{n=0}^{N}\alpha_n(t)[\cos(\phi_n(t))-j\sin(\phi_n(t))]\
 </div>
 <p>当N趋向于无穷大，根据中心极限定理，<span><span class="MathJax_Preview">r_I(t)</span><script type="math/tex">r_I(t)</script></span>和<span><span class="MathJax_Preview">r_Q(t)</span><script type="math/tex">r_Q(t)</script></span>分别服从零均值高斯分布（实际上N较小时，只要<span><span class="MathJax_Preview">\alpha(t)</span><script type="math/tex">\alpha(t)</script></span>服从瑞利分布，上述结论仍然成立）。也就是说，多径叠加的结果，在时域上服从零均值高斯分布，即与噪声效果类似，当然这里的前提是多径数量足够多或多径系数<span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>服从瑞利分布。</p>
 <p><strong>宽带衰落</strong>：当<span><span class="MathJax_Preview">T_m</span><script type="math/tex">T_m</script></span>远小于<span><span class="MathJax_Preview">\frac{1}{B}</span><script type="math/tex">\frac{1}{B}</script></span>这个条件不成立的时候，发射信号会在接收端产生很宽的时延扩展，这样会导致前一时刻的码元的时延扩展侵占后面码元的时间，从而对其他时刻的码元产生干扰，即码间串扰。消除码间串扰的办法有很多，例如OFDM中的循环前缀，感兴趣的读者可以自行了解。</p>
-<h2 id="_4">多径测量方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>本节介绍如何测量多径信息，即测量多径信道中不同信号副本的到达时间和能量衰减。由于多径效应的存在，同一信号的不同副本在以不同延迟和衰减在接收端混叠。为了准确地提取混叠信号中各信号副本的信息，我们可以令发送端传输一特定格式的信号<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>，然后在接收端使用<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与收到的多径混叠信号<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>计算相关。通过设计<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的格式，可以使<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>只在与多径信号副本完全对齐时产生相关性波峰（调频线性波即为满足此要求的一种常用信号）。最后，通过提取<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>的相关性波峰，即可分离并测量各多径信号分量。</p>
+<h2 id="_4">多径测量<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>本节介绍如何测量多径信息，即测量多径信道中不同信号副本的到达时间和能量衰减。由于多径效应的存在，同一信号的不同副本在以不同延迟和衰减在接收端混叠。为了准确地提取混叠信号中各信号副本的信息，直观上看，我们可以令发送端传输一特定格式的信号<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>，然后在接收端使用<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与收到的多径混叠信号<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>计算相关性。通过设计<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的格式，可以使<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>只在与多径信号副本完全对齐时产生相关性波峰（调频线性波即为满足此要求的一种常用信号）。最后，通过提取<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>的相关性波峰，即可分离并测量各多径信号分量。</p>
 <p>上述多径测量方法奏效的前提，是将收到信号<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>与原始信号<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>计算相关性后，可以准确地分离各相关性波峰。理想情况下，如果对<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的信号长度不做限制，则当<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中信号副本完全对齐时可产生一无限窄的相关性波峰，<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中任意两个信号副本的相关性波峰互不影响。但实际上，由于<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的持续时间并非无限长，通过相关性计算后得到的是具有一定宽度的波峰，由此<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中时间接近的信号副本产生的相关性波峰可能互相重叠，甚至无法区分。</p>
 <p>为了解决这一问题，SIGCOMM’16的工作R2F2提出通过测量接收信号中不同多径副本的到达角来区分不同多径信号。如下图所示，信号经过不同传播路径到达接收端通常产生不同的入射角。</p>
 <p><center>
@@ -2145,7 +2145,7 @@ padding: 2px;">图. Splicer通过IFFT将频域响应特征变换为多径能量�
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

@@ -855,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -867,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1855,9 +1855,9 @@
                 
                 
                 <h1 id="_1">案例：滤波器比较与选择<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>到目前为止，我们介绍了包括滑动平均滤波器、基于卷积的FIR滤波器、基于递归的IIR滤波器、切比雪夫滤波器、巴特沃斯滤波器等多种不同类型的数字滤波器。面对所有这些可供选择的滤波器，我们如何知道在实际应用中要使用哪个？本节的目的是从性能、运算速度等方面对不同滤波器进行比较，以及说明如何针对应用需求选择合适的滤波器。</p>
+<p>到目前为止，我们介绍了包括滑动平均滤波器、基于卷积的FIR滤波器、基于递归的IIR滤波器、切比雪夫滤波器、巴特沃斯滤波器等多种不同类型的数字滤波器。面对所有这些可供选择的滤波器，我们如何知道在实际应用中要使用哪个？本节的目的是从性能、运算速度等方面对不同滤波器进行比较，以及说明如何针对应用需求选择合适的滤波器。这个是大家平时实验时候最关心的事情。</p>
 <h2 id="fir-vs-iir">FIR滤波器 vs IIR滤波器<a class="headerlink" href="#fir-vs-iir" title="Permanent link">&para;</a></h2>
-<p>FIR滤波器和IIR滤波器均可实现将一个频带与另一个频带的信号分离开。前者通过将输入信号与一个加窗的sinc滤波器内核做卷积实现，后者通过递归函数实现。对分离不同频带信号的需求而言，哪种数字滤波器是更好的选择？</p>
+<p>FIR滤波器和IIR滤波器均可实现将一个频带与另一个频带的信号分离开。前者通过将输入信号与一个加窗的<span><span class="MathJax_Preview">sinc</span><script type="math/tex">sinc</script></span>滤波器内核做卷积实现，后者通过递归函数实现。对分离不同频带信号的需求而言，哪种数字滤波器是更好的选择？</p>
 <p>为了回答这个问题，我们构造了一个纹波比为0.5％的6阶切比雪夫低通滤波器，和一个滤波器内核为51的FIR滤波器，对这两个滤波器的性能进行对比。</p>
 <p><center>
 <img src="./figs/FIR与IIR对比.png" width=800px>
@@ -1878,7 +1878,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. FIR滤波器与切比雪夫IIR滤波器极限参数配置下频域响应对比。</div>
 <p></center></p>
-<p>看到这里，许多同学可能回觉得，既然FIR滤波器在频域滤波的性能绝对好于IIR滤波器，是不是以后凡是碰到有滤波需求的应用时，无脑选择FIR滤波器就行了呢？答案当然是否定的，在实际应用中，除了滤波效果，我们还需要考虑一个关键问题：计算速度。精心设计的FIR滤波器可以达到任意你期待的滤波效果，前提是你有足够的耐心等待滤波器输出你期待的滤波结果。比较FIR和IIR滤波器的执行速度，可以发现通常IIR滤波器要比性能相当的FIR滤波器快一个数量级。</p>
+<p>看到这里，许多同学可能会觉得，既然FIR滤波器在频域滤波的性能绝对好于IIR滤波器，是不是以后凡是碰到有滤波需求的应用时，无脑选择FIR滤波器就行了呢？也并非这样的。在实际应用中，除了滤波效果，我们还需要考虑一个关键问题：计算速度。精心设计的FIR滤波器可以达到很好的期待的滤波效果，前提是你有足够的耐心等待滤波器输出你期待的结果。比较FIR和IIR滤波器的执行速度，可以发现通常IIR滤波器要比性能相当的FIR滤波器快一个数量级。</p>
 <p>所以在大部分对滤波精度要求不是那么高的应用场景中，我们更倾向于选择IIR滤波器，因为它的结构简单、计算速度也更快，且它的频域滤波效果可以满足绝大多数应用场景的需要。</p>
 <h2 id="vs">滑动平均 vs 一阶递归<a class="headerlink" href="#vs" title="Permanent link">&para;</a></h2>
 <p>在时域滤波场景中，我们通常使用滑动平均或一阶递归实现时域波形整形。为了比较这两种滤波器的使用差异，我们分别构造一个9点滑动平均滤波器和一个一阶递归滤波器。下图展示了两种滤波器的阶跃响应。在（a）中，移动平均阶跃响应是一条直线，这是从一个稳态迁移到另一个稳态的最快方法。 在（b）中，递归滤波器的阶跃响应更平滑，这对于某些应用可能更好。 </p>
@@ -1891,10 +1891,11 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 9-point滑动平均滤波器和一阶递归滤波器阶跃响应曲线。</div>
 <p></center></p>
-<p>上图也反映了，这两种滤波器在时域滤波的性能上实际上相差无几，通常可以根据个人喜好在两者之间进行选择。但是，在考虑大规模数据滤波和编程复杂度问题是，我们在选择滤波器时就需要在开发时间和执行时间之间进行权衡。如果我们希望减少开发时间，并愿意接受较慢的过滤器，例如，我们可能需要一次滤波几千个点。由于整个程序仅需几秒钟即可运行，因此花时间优化算法毫无意义。 我们通常会选择使用递归过滤器，这样编程和修改将稍微容易一些，并且执行速度也不会很慢。但是，如果我们需要一次滤波几亿个点，我们则应该选择使用滑动平均，并通过算法优化使得计算速度尽可能快。</p>
+<p>上图也反映了，这两种滤波器在时域滤波的性能上实际上相差无几，通常可以根据个人喜好在两者之间进行选择（真的是喜好么？:)）。但是，在考虑大规模数据滤波和编程复杂度问题是，我们在选择滤波器时就需要在开发时间和执行时间之间进行权衡。如果我们希望减少开发时间，并愿意接受较慢的过滤器，例如，我们可能需要一次滤波几千个点。由于整个程序仅需几秒钟即可运行，我们通常会选择使用递归过滤器，这样编程和修改将稍微容易一些，并且执行速度也不会很慢。但是，如果我们需要一次滤波几亿个点，我们则应该选择使用滑动平均，并通过算法优化使得计算速度尽可能快。</p>
 <h2 id="_2">实践案例——声音滤波<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>借助滤波器，我们可以保留或抑制信号中特定频率的内容。这是物联网信号处理中的常用也必不可少的操作。很多同学们对这一部分基本概念有所了解，但是具体操作起来仍然比较陌生，尤其是之前很多同学并没有实际使用的经验。
 在理解了基本原理之后，我们展示使用滤波来处理真实信号的案例。本部分将以录音降噪程序为例，向大家展示如何设计并实现具有特定功能的数字滤波器。我们处理一段混有高频噪声的录音信号，通过低通滤波抑制噪声信号，从而达到给录音降噪的目的。</p>
+<p>注意，上真数据了！</p>
 <p><strong>时域滤波</strong></p>
 <p>从时域看，通过滑动平均可以将高频噪声带来的毛刺波动尽可能的平滑，并保留低频信号的波形特征。滑动平均的主要可调整参数为窗口大小，下面我们将实现基于滑动平均信号整形，用于抑制录音信号中的噪声。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">clc</span><span class="p">;</span><span class="w"> </span><span class="nb">clear</span><span class="p">;</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="s">all</span><span class="p">;</span><span class="w"> </span><span class="n">clear</span><span class="w"> </span><span class="s">sound</span><span class="w"></span>
@@ -1990,10 +1991,9 @@ color: #999;
 padding: 2px;">图. 带通滤波效果</div>
 <p></center></p>
 <blockquote>
-<p>思考：下变频的原理以及效果？</p>
+<p>思考：下变频的原理？</p>
 </blockquote>
-<!-- MATLAB提供了bandpass函数供用户提取制定频带内的信号，其实现逻辑与上述代码类似： -->
-
+<p>当然MATLAB也提供了bandpass的带通滤波函数，供用户提取制定频带内的信号，其实现逻辑与上述代码类似：</p>
 <div class="highlight"><pre><span></span><code><span class="c">% parameters</span><span class="w"></span>
 <span class="n">filename</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;res2.wav&#39;</span><span class="p">;</span><span class="w"></span>
 
@@ -2074,7 +2074,7 @@ padding: 2px;">图. 带通滤波效果</div>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

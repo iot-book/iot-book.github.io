@@ -848,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -860,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1842,7 +1842,7 @@
                 
                 <h1 id="iir">IIR数字滤波器<a class="headerlink" href="#iir" title="Permanent link">&para;</a></h1>
 <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>在上一节我们介绍了基于卷积的FIR滤波器，实际上通过设计合适的滤波器内核，我们可以实现任意高的滤波要求。当然，要实现好的滤波效果，意味着使用更长的滤波器内核，因此计算开销也相应增加。在计算资源受限的场景中，基于卷积的滤波器无法满足应用需求，为了解决这一问题，研究者们发现，使用递归滤波器可以获得长脉冲响应而无需执行长卷积。通过递归实现的滤波器，当前时刻的输出不仅取决于之前N个时刻的输入，还受之前M个时刻输出的影响（借助反馈链路），其冲击响应可以达到无限长，因此基于递归实现的滤波器也称为无限冲激响应滤波器或IIR滤波器。基于递归的滤波器执行得非常快，但与基于卷积的数字滤波器相比，它的性能和灵活性更差。请记住，与使用递归的IIR过滤器相比，通过卷积执行的FIR过滤器的性能要好得多，可以实现更优的滤波效果，但是缺点是执行速度要慢得多。本节将介绍IIR滤波器的工作方式，以及如何设计简单的IIR滤波器。</p>
+<p>在上一节我们介绍了基于卷积的FIR滤波器，实际上通过设计合适的滤波器内核，我们可以实现任意高的滤波要求。当然，要实现好的滤波效果，意味着使用更长的滤波器内核，因此计算开销也相应增加。在计算资源受限的场景中，基于卷积的滤波器无法满足应用需求，为了解决这一问题，研究者们发现，使用递归滤波器可以获得长脉冲响应而无需执行长卷积。通过递归实现的滤波器，当前时刻的输出不仅取决于之前N个时刻的输入，还受之前M个时刻输出的影响（借助反馈链路），其冲击响应可以达到无限长，因此基于递归实现的滤波器也称为无限冲激响应滤波器或IIR滤波器。基于递归的滤波器执行得非常快，但与基于卷积的数字滤波器相比，它的性能和灵活性更差。本节将介绍IIR滤波器的工作方式，以及如何设计简单的IIR滤波器。</p>
 <h2 id="_2">基于递归的滤波器设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>在FIR滤波器中，每一时刻的输出取决于之前的有限个输入，即时刻<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>的输出由时刻<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>及其之前<span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>个时刻的输出信号与滤波器内核卷积得到，即</p>
 <div>
@@ -1868,7 +1868,7 @@ y[n] = a_0x[n] + a_1x[n-1] + a_2[n-2] + a_3x[n-3] + \cdots
 \end{aligned}
 </script>
 </div>
-<p>换句话说，通过将输入信号的值乘以“a”系数，将先前从输出信号计算的值乘以“b”系数，并将乘积相加，可以找到输出信号中的每个点。上称为递归公式，使用该公式的过滤器称为递归过滤器，“a”和“ b”值称为滤波器的递归系数。在实际实践中，最多只能使用十几个递归系数，否则滤波器将变得不稳定（即，输出不断增加或振荡）。递归过滤器在工程实践中很有用，因为它们绕过了冗长的卷积。当考虑当增量函数通过递归过滤器传递时会发生什么，即考虑该滤波器的脉冲响应时，输出通常是呈指数衰减的正弦振荡。由于这种脉冲响应无限长，因此递归滤波器通常称为无限脉冲响应（IIR）滤波器。</p>
+<p>换句话说，通过将输入信号的值乘以“a”系数，将先前从输出信号计算的值乘以“b”系数，并将乘积相加，可以找到输出信号中的每个点。上称为递归公式，使用该公式的过滤器称为递归过滤器，“a”和“ b”值称为滤波器的递归系数。在实际实践中，通常最多只能使用十几个递归系数，否则滤波器将变得不稳定（例如输出不断增加或振荡）。递归过滤器在工程实践中很有用，因为它们绕过了冗长的卷积。当考虑当增量函数通过递归过滤器传递时会发生什么，即考虑该滤波器的脉冲响应时，输出通常是呈指数衰减的正弦振荡。由于这种脉冲响应无限长，因此递归滤波器通常称为无限脉冲响应（IIR）滤波器。</p>
 <p>下面的代码展示了一阶IIR低通滤波器的实现示意，一阶IIR滤波器使用单个历史输出<span><span class="MathJax_Preview">y[n-1]</span><script type="math/tex">y[n-1]</script></span>计算当前<span><span class="MathJax_Preview">y[n]</span><script type="math/tex">y[n]</script></span>值。</p>
 <div class="highlight"><pre><span></span><code><span class="c">%% Impaulse Response of single pole filter</span><span class="w"></span>
 <span class="c">% Generating Impaulse</span><span class="w"></span>
@@ -1884,7 +1884,7 @@ y[n] = a_0x[n] + a_1x[n-1] + a_2[n-2] + a_3x[n-3] + \cdots
 <span class="w">    </span><span class="n">b1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">dout</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">din</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dout</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"></span>
 <span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">));</span><span class="w"></span>
 <span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="s">&#39;-.k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
 
@@ -1914,8 +1914,8 @@ y[n] = a_0x[n] + a_1x[n-1] + a_2[n-2] + a_3x[n-3] + \cdots
 <span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.2</span><span class="p">]);</span><span class="w"></span>
 <span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
 <span class="nb">legend</span><span class="p">(</span><span class="s">&#39;x = 0.9&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;x = 0.7&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;x = 0.5&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="n">grid</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="nb">box</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="n">grid</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"></span>
+<span class="n">box</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>下图展示了不同参数下一阶低通IIR低通滤波器的频域脉冲响应。一阶IIR滤波器的通带衰减、阻带抑制和过渡带宽度都和理想低通滤波器有较大差异，这是因为滤波器阶数较低，对性能有较大制约。此外，在不同参数下，低通滤波的通带带宽和阻带抑制效果都有明显的差异。</p>
 <p><center>
@@ -1997,7 +1997,7 @@ padding: 2px;">图. 一阶高通IIR滤波器。</div>
 <span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.7</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="mf">1e3</span><span class="p">:</span><span class="mf">0.8</span><span class="p">;</span><span class="w"></span>
 <span class="n">x</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e3</span><span class="p">))</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.2</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">100</span><span class="o">*</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e3</span><span class="p">));</span><span class="w"></span>
 <span class="nb">figure</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
 
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Sample number&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span><span class="w"></span>
@@ -2008,7 +2008,7 @@ padding: 2px;">图. 一阶高通IIR滤波器。</div>
 <span class="nb">box</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
 
 <span class="n">din</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
-
+<span class="c">% 变量重复用了，有点迷惑性，下次改进一下，大家注意一下。</span><span class="w"></span>
 <span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.9</span><span class="p">;</span><span class="w"></span>
 <span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">din</span><span class="p">;</span><span class="w"></span>
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">din</span><span class="p">)</span><span class="w"></span>
@@ -2112,7 +2112,7 @@ padding: 2px;">图. 一阶IIR滤波器时域滤波效果。</div>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

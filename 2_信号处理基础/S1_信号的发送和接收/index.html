@@ -811,7 +811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -823,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1824,6 +1824,7 @@
 <span class="nb">audiowrite</span><span class="p">(</span><span class="s">&#39;sound.wav&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">Fs</span><span class="p">);</span><span class="w">         </span><span class="c">% 保存声音</span><span class="w"></span>
 </code></pre></div>
 <p>​       上面的代码录制一段时间的声波信号并保存成本地文件。在定义录音对象时调用了函数<code>audiorecorder</code>，这个函数有3个参数，从前到后依次是 <strong>采样频率</strong> , <strong>采样位数</strong> 和 <strong>声道数</strong> 。在这个例子中，我们设置采样频率为48 kHz​，采样位数为<span><span class="MathJax_Preview">16</span><script type="math/tex">16</script></span>位，声道数为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>（即单声道），其中包含了采样、量化等概念。这3个参数从3个不同的维度确定了所接收声波的格式。声道数一般指的是该声音是用几个麦克风录制的。在matlab代码中，如果声道数为1，则录制得到的音频数据是一个列向量；如果声道数为2，则录制得到的音频数据是一个包含2列的矩阵，每一列分别代表从一个麦克风录制的结果。</p>
+<p>注意，这里是我们信号发送和接收的基础了，请大家都动手来试一下。这一部分是我们用声波来模拟信号发送和接收的基础。在其他的无线平台上，经过的也是类似的过程，只不过我们这里使用声波更加直观。</p>
                 
               
               
@@ -1880,7 +1881,7 @@
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

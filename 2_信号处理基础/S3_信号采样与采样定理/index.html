@@ -841,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -853,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1827,9 +1827,10 @@
                 
                 
                 <h1 id="_1">信号采样与采样定理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>​       上面的介绍遗留了两个问题：1. 采样具体是如何来实现的。2. 采样后得到的信号，会不会与原来的信号不一样，换一句话说，我们能不够通过采样后的信号来完全恢复原始信号。</p>
-<p>​       我们来看采样具体是怎么实现的。</p>
-<p>​       首先通过简单的仿真实验来进行说明，然后再通过实际的信号让大家体会这一过程。假设存在一个正弦的声波信号，频率为<span><span class="MathJax_Preview">5Hz</span><script type="math/tex">5Hz</script></span>，理想情况下这个信号是一个正弦波。我们假设采样率为200Hz，即1秒内有200个采样点，这个正弦波信号的采样点在matlab下可以使用如下的代码生成并画图。</p>
+<p>​     <br />
+关于采样有两个核心的问题：1. 采样具体是如何来实现的。2. 采样后得到的信号，会不会与原来的信号不一样，换一句话说，我们能不够通过采样后的信号来完全恢复原始信号。</p>
+<p>​       我们来看采样具体是怎么实现的。
+​       首先通过简单的仿真实验来进行说明，然后再通过实际的信号让大家体会这一过程。假设存在一个正弦的声波信号，频率为<span><span class="MathJax_Preview">5Hz</span><script type="math/tex">5Hz</script></span>。我们假设采样率为200Hz，即1秒内有200个采样点，这个正弦波信号的采样点在Matlab下可以使用如下的代码生成并画图。</p>
 <div class="highlight"><pre><span></span><code><span class="c">%% 信号的产生过程</span><span class="w"></span>
 <span class="c">%% 产生一个频率为5Hz、时长为1s的信号；</span><span class="w"></span>
 <span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="mi">200</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span><span class="w">            </span><span class="c">% 1s内200个采样点</span><span class="w"></span>
@@ -1843,7 +1844,7 @@
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 5Hz信号时域图</div>
 <p></center></p>
-<p>​       在上图中，我们取的采样点比较密集，因此图像看上去是一条连续的曲线。代码中，<strong>信号频率</strong> 为<span><span class="MathJax_Preview">5Hz</span><script type="math/tex">5Hz</script></span>，而 <strong>采样频率</strong> 为<span><span class="MathJax_Preview">200Hz</span><script type="math/tex">200Hz</script></span>，这种情况下看到的信号很正常，符合正弦信号的特点。</p>
+<p>​       在上图中，我们取的采样点比较密集，因此图像看上去是一条连续的曲线，实际上是不连续的，是很多离散的采样点组成。代码中，<strong>信号频率**为<span><span class="MathJax_Preview">5Hz</span><script type="math/tex">5Hz</script></span>，而 **采样频率</strong> 为<span><span class="MathJax_Preview">200Hz</span><script type="math/tex">200Hz</script></span>，这种情况下看到的信号很正常，符合正弦信号的特点。</p>
 <p>​       我们再尝试另外一组参数组合。当我们将信号频率稍微做一些修改后，信号的时域图像就变成下图所示的样子：</p>
 <div class="highlight"><pre><span></span><code><span class="c">%% 信号的产生过程</span><span class="w"></span>
 <span class="c">%% 产生一个频率为100Hz、时长为1s的信号；</span><span class="w"></span>
@@ -1858,9 +1859,9 @@
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 100Hz信号时域图</div>
 <p></center></p>
-<p>​       注意，同样是正弦信号，得到的结果从上图看，已经完全不是我们想象中的正弦图像了，大家想想看看这个是什么原因。</p>
+<p>​       注意，同样是正弦信号，得到的结果从上图看，已经完全不是我们想象中的正弦图像了，是一个杂乱无章的图了，大家想想看看这个是什么原因。</p>
 <p>​       从上面两幅信号时域图的对比中，我们思考为什么会有这样的不同，同样是每秒200个采样点，频率不同的正弦信号所画出来的图会有完全不一样的结果。</p>
-<p>​       我们很自然的有几个更深入的问题：对于一个给定的连续信号，我们能不能够通过采样的方法完整的还原出原始信号？如果可以，我们到底应该要用多大的采样率来采样这个信号？</p>
+<p>​       我们很自然的有几个更深入的问题：对于一个给定的连续信号，我们是否能够通过采样的方法完整的还原出原始信号？如果可以，我们到底应该要用多大的采样率来采样这个信号？</p>
 <p>​       这里牵涉到了信号采样中的一个重要问题，我们将这个问题更加具体、形式化地进行描述。假设信号中的频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>（一个信号可能包含多种频率），那么应该以多大的采样频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>对信号进行采样才合理呢？这里的“合理”是指我们通过采样后的离散信号，可以完全恢复出原本的连续信号（举例来说，从一组数据点中恢复出原始连续信号的一个数学表达式）。显然我们不可能采用无限大的采样频率，这样在计算机上无法处理，不具备实际的可操作性。采样频率的增大会带来额外的开销，实际上也非常不经济，例如会占用大量的存储空间。那么如果信号的频率为<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>，那么最小的采样频率<span><span class="MathJax_Preview">fs</span><script type="math/tex">fs</script></span>为多少。</p>
 <p>​       <strong>奈奎斯特采样定律</strong> 告诉我们，为了进行合理地采样，保证采样后的数据能够还原出原来的信号，采样后的信号包含原来信号的所有特征。采样频率必须满足<span><span class="MathJax_Preview">fs\ge 2*f</span><script type="math/tex">fs\ge 2*f</script></span>，<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>是给定连续信号的频率。采样过程所应遵循的规律，又称取样定理、抽样定理。采样定理说明了采样频率与信号频谱之间的关系，是连续信号转换为离散信号的基本依据。</p>
 <p>​       如果采样率低于信号最大频率的两倍会怎样呢？我们来看一组更加有意思的例子：</p>
@@ -1878,22 +1879,23 @@
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 401Hz信号时域图，采样率10000Hz</div>
 <p></center></p>
-<p>​       由于在一秒内该信号有401个周期，因此上图看上去非常密集，大家可以在matlab画出的图像中使用放大功能来查看时间粒度更细的图像，从而验证每个周期都是理想的正弦波信号。如果我们把采样率换成比<span><span class="MathJax_Preview">401Hz</span><script type="math/tex">401Hz</script></span>稍大一点的<span><span class="MathJax_Preview">402Hz</span><script type="math/tex">402Hz</script></span>，结果如下：</p>
+<p>​       由于在一秒内该信号有401个周期，因此上图看上去非常密集，大家可以在matlab画出的图像中使用放大功能来查看时间粒度更细的图像，从而验证每个周期都是理想的正弦波信号。</p>
+<p>如果我们把采样率换成比<span><span class="MathJax_Preview">401Hz</span><script type="math/tex">401Hz</script></span>稍大一点的<span><span class="MathJax_Preview">402Hz</span><script type="math/tex">402Hz</script></span>，使用代码如下：
 <div class="highlight"><pre><span></span><code><span class="c">%% 信号的产生过程</span><span class="w"></span>
 <span class="c">%% 产生一个频率为401Hz、时长为1s的信号；</span><span class="w"></span>
 <span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="mi">402</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span><span class="w">    </span><span class="c">% 1s内402个采样点</span><span class="w"></span>
 <span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">401</span><span class="p">;</span><span class="w">          </span><span class="c">% 频率f=401Hz</span><span class="w"></span>
 <span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+</code></pre></div></p>
 <p><center>
 <img src = "./fig/p6.png" width=600px>
 </center>
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 401Hz信号时域图，采样率402Hz</div>
 <p></center></p>
-<p>​       上图看上去也是一个理想的正弦波信号，但是仔细观察横轴的时间刻度可以发现，这是一个频率为<span><span class="MathJax_Preview">1Hz</span><script type="math/tex">1Hz</script></span>的正弦波。</p>
-<p>​       当采样率无法满足采样定律的要求时，就称发生了**混叠现象**。而为什么会导致最后的频率为1Hz，大家也可以再思考一下，跟401<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>的信号频率和402<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>的采样率有什么联系。用于演示混叠现象的经典例子之一是所谓的“车轮效应”。在影片里当马车越走越快时，马车车轮似乎越走越慢，之后甚至朝反方向旋转，为什么？</p>
+<p>我们得到的结果是跟上面这个图一样，上图看上去也是一个理想的正弦波信号，但很明显跟原始的401Hz的信号是不一样的。仔细观察横轴的时间刻度可以发现，这是一个频率为<span><span class="MathJax_Preview">1Hz</span><script type="math/tex">1Hz</script></span>的正弦波。</p>
+<p>​当采样率无法满足采样定律的要求时，就称发生了**混叠现象**。而为什么会导致最后的频率为1Hz，大家也可以再思考一下，跟401<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>的信号频率和402<span><span class="MathJax_Preview">Hz</span><script type="math/tex">Hz</script></span>的采样率有什么联系。用于演示混叠现象的经典例子之一是所谓的“车轮效应”。在影片里当马车越走越快时，马车车轮似乎越走越慢，之后甚至朝反方向旋转，为什么？</p>
 <blockquote>
 <p>思考
 1. 假设要将最大频率为8KHz的歌曲信号转成数字信号，需要的采样率至少是多少？
@@ -1968,7 +1970,7 @@
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with

@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#iir" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -588,28 +588,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     滤波器频域响应
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     滤波器实现
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     参考资料
   </a>
   
@@ -862,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S2_Backscatter基础原理/index.md" class="md-nav__link">
         8.1 Backscatter基本原理
       </a>
     </li>
@@ -874,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_RFID/" class="md-nav__link">
+      <a href="../../8_Backscatter通信/S1_RFID/index.md" class="md-nav__link">
         8.2 RFID
       </a>
     </li>
@@ -1828,28 +1828,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     滤波器频域响应
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     滤波器实现
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     参考资料
   </a>
   
@@ -1868,10 +1868,10 @@
               
                 
                 
-                <h1 id="iir">高级IIR滤波器<a class="headerlink" href="#iir" title="Permanent link">&para;</a></h1>
-<h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本节将以切比雪夫滤波器为例，介绍高级IIR滤波器的使用方法。切比雪夫滤波器用于将一个频带与另一个频带分开。作为一种IIR滤波器，其最大的优点是计算开销低，尽管它们无法达到基于卷积的FIR滤波器的频域滤波效果，但对于大部分应用来说，其频域响应已经足够满足应用需求了。切比雪夫滤波器的计算速度通常比相同效果下基于卷积的FIR滤波器快一个数量级，这是因为它们是通过递归而不是卷积执行的。IIR滤波器的高级设计需要基于称为z变换的数学知识，本章只介绍切比雪夫等高级IIR滤波器的基本使用方法，而不涉及对数学理论的讨论和研究。</p>
-<h2 id="_2">滤波器频域响应<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+                <h1 id="_1">高级滤波器设计<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">简介<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本节将以切比雪夫滤波器为例，介绍高级IIR滤波器的使用方法。切比雪夫滤波器用于将一个频带与另一个频带分开。作为一种IIR滤波器，其最大的优点是计算开销低，尽管它们无法达到基于卷积的FIR滤波器的频域滤波效果，但对于大部分应用来说，其频域响应已经足够满足应用需求了。切比雪夫滤波器的计算速度通常比相同效果下基于卷积的FIR滤波器快一个数量级，这是因为它们是通过递归而不是卷积执行的。IIR滤波器的高级设计需要基于称为z变换的数学知识，本章只介绍切比雪夫等高级IIR滤波器的基本使用方法，而不涉及对数学理论的讨论和研究。对此部分理论感兴趣的同学可以查阅专门的书籍，相关的书籍有很多。</p>
+<h2 id="_3">滤波器频域响应<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>切比雪夫（Chebyshev）响应是一种通过通过允许频率响应中存在纹波来实现更快的过渡带衰减的数学策略。这些策略最早由俄罗斯数学家Pafnuti Chebyshev在其开发的切比雪夫多项式中提出。使用这种数学策略实现的滤波器因此被命名为切比雪夫滤波器。下图展示了低通切比雪夫滤波器的频域响应：当允许的纹波比分别为0%，0.5% 和 20%时，切比雪夫滤波器的频域响应分别具有不同的过渡带衰减速度。允许的纹波比越大，过渡带衰减速度越快，所以在使用切比雪夫滤波器时需要在通带纹波比和过渡带衰减速度之间做权衡。</p>
 <p><center>
 <img src="./figs/切比雪夫响应.png" width=400px>
@@ -1927,10 +1927,10 @@ padding: 2px;">图. 几种不同特点的常用滤波器：巴特沃斯滤波器
 <p><strong>贝塞尔滤波器</strong></p>
 <p>特点：通带等纹波，阻带下降慢，即幅频特性的选频特性最差。但是，贝塞尔滤波器具有最佳的线性相位特性。</p>
 <p>贝赛尔(Bessel)滤波器是具有最大平坦的群延迟（线性相位响应）的线性过滤器。贝赛尔滤波器常用在音频天桥系统中。模拟贝赛尔滤波器描绘为几乎横跨整个通频带的恒定的群延迟，因而在通频带上保持了被过滤的信号波形。贝塞尔(Bessel)滤波器具有最平坦的幅度和相位响应。带通（通常为用户关注区域）的相位响应近乎呈线性。Bessel滤波器可用于减少所有IIR滤波器固有的非线性相位失真。</p>
-<h2 id="_3">滤波器实现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">滤波器实现<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>使用切比雪夫或巴特沃斯设计滤波器时，通常先使用拉普拉斯（Laplace）变换和z变换等数学方法将脉冲响应分解为正弦曲线和衰减指数。这个变换过程，本质上是将系统特征表示为一个复数多项式除以另一个复数多项式的形式，式子中分子的根称为零点，而分母的根称为极点。复杂的滤波器系统比简单的系统具有更多的极点和零点。不同的滤波器设计对应了复平面上不同的极点和零点坐标。因此在设计滤波器时，通常首先根据滤波器频域响应参数的要求，选择复平面上极点和零点的位置，然后根据极点和零点的位置，找到合适的递归系数来实现递归滤波器。例如，巴特沃思滤波器的极点位于复平面的圆上，而切比雪夫滤波器的极点位于椭圆上。</p>
-<p>理解上述滤波器设计过程需要具备较深入的数学基础知识。但实际上，对于大部分信号处理的应用来说，我们并不需要知道它们背后的数学原理。在实际操作中，更多的工程师、科学家和程序员从滤波器效果考虑，只需要能构造一个基本满足需求的滤波器就够了，为什么这么设计？参数是怎么算出来的？滤波器背后的数学原理都无需深究。</p>
-<p>因此，最简便的IIR滤波器实现方法就是查表。给定所需的频域响应参数，如截止频率、通带纹波比、阻带纹波比、滤波器阶数等，即可直接从表中找到最接近的参数表项，从而获取递归系数。</p>
+<p>理解上述滤波器设计过程需要具备较深入的数学基础知识。但实际上，对于大部分信号处理的应用来说，尤其是我们在课程上、在物联网研究过程中，我们并不需要从头开始学习这些原理（知道它们背后的数学原理对理解方法当然是有很大作用，但是你有时候在使用前未必来得及都理解清楚，所以大家可以先用，最后还是要多花时间去看一下专门的书籍）。
+因此，最简便的IIR滤波器实现方法就是查表。给定所需的频域响应参数，如截止频率、通带纹波比、阻带纹波比、滤波器阶数等，即可直接从表中找到最接近的参数表项，从而获取递归系数。</p>
 <p><center>
 <img src="./figs/IIR表.png" width=600px>
 </center></p>
@@ -2140,7 +2140,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 巴特沃斯滤波器（双线性变换法）</div>
 <p></center></p>
-<h2 id="_4">参考资料<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">参考资料<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>数字信号处理——IIR数字滤波器的设计：<a href="https://blog.csdn.net/Qinlong_Stm32/article/details/84570524">https://blog.csdn.net/Qinlong_Stm32/article/details/84570524</a></li>
 </ul>
@@ -2200,7 +2200,7 @@ padding: 2px;">图. 巴特沃斯滤波器（双线性变换法）</div>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            清华大学 -- 王继良
+            清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
           </div>
         
         Made with
