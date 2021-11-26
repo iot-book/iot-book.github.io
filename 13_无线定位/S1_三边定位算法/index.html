@@ -1891,14 +1891,14 @@ P_t = \underset{p}{argmin} \sum_{i=1}^N (d_i-\hat{d}_i)^2
     (x-x_1)^2+(y-y_1)^2=d_1^2\\
     \vdots\\
     (x-x_n)^2+(y-y_n)^2=d_n^2
-\end{cases}
+\end{cases} \tag{8}
 </div>
 <script type="math/tex; mode=display">
 \begin{cases}
     (x-x_1)^2+(y-y_1)^2=d_1^2\\
     \vdots\\
     (x-x_n)^2+(y-y_n)^2=d_n^2
-\end{cases}
+\end{cases} \tag{8}
 </script>
 </div>
 <p>但由于测量误差的存在，基于基站的定位圆并不会刚好交于一点。因此，在计算时，我们需要对其进行近似求解。常见方法有加权法、最小二乘法、质心法等。这里我们使用最小二乘法进行计算，在式(8)的基础上，我们将前n-1个方程减去第n个方程，得到线性化方程：<span><span class="MathJax_Preview">AX=b</span><script type="math/tex">AX=b</script></span>。其中：</p>
@@ -1907,7 +1907,8 @@ P_t = \underset{p}{argmin} \sum_{i=1}^N (d_i-\hat{d}_i)^2
 A=\left[
     \begin{matrix}
         2(x_1-x_n) &amp; 2(y_1-y_n)\\
-        2(x_{n-1}-x_n) &amp; 2(y-{n-1}-y_n)
+        \vdots  &amp;  \vdots  \\
+        2(x_{n-1}-x_n) &amp; 2(y_{n-1}-y_n)
     \end{matrix}
 \right],
 </div>
@@ -1915,7 +1916,8 @@ A=\left[
 A=\left[
     \begin{matrix}
         2(x_1-x_n) & 2(y_1-y_n)\\
-        2(x_{n-1}-x_n) & 2(y-{n-1}-y_n)
+        \vdots  &  \vdots  \\
+        2(x_{n-1}-x_n) & 2(y_{n-1}-y_n)
     \end{matrix}
 \right],
 </script>
@@ -1925,6 +1927,7 @@ A=\left[
 b=\left[
     \begin{matrix}
         x_1^2-x_n^2+y_1^2-y_n^2+d_n^2-d_1^2\\
+        \vdots \\
         x_{n-1}^2-x_n^2+y_{n-1}^2-y_n^2+d_n^2-d_{n-1}^2
     \end{matrix}
 \right]
@@ -1933,6 +1936,7 @@ b=\left[
 b=\left[
     \begin{matrix}
         x_1^2-x_n^2+y_1^2-y_n^2+d_n^2-d_1^2\\
+        \vdots \\
         x_{n-1}^2-x_n^2+y_{n-1}^2-y_n^2+d_n^2-d_{n-1}^2
     \end{matrix}
 \right]
