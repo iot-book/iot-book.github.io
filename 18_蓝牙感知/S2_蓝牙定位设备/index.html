@@ -1811,6 +1811,22 @@
 
               
             </article>
+            <!-- // % 评论 -->
+            <div id="container"></div>
+              <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+              <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+              <script>
+              var gitment = new Gitment({
+                id: 'location.href', 
+                owner: 'iot-book',
+                repo: 'Comments',
+                oauth: {
+                  client_id: 'ab5371b4172e50e09adb',
+                  client_secret: '792851320ee2902fe9c88bb7795e89592b108f77',
+                },
+              })
+              gitment.render('container')
+              </script> 
           </div>
         </div>
         
