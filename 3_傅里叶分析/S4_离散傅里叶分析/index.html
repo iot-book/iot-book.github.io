@@ -1995,10 +1995,10 @@ x[n] = \frac{1}{N}\sum_{k=0}^{N-1} c_k e^{j2\pi \frac{k}{N}n}.
 <p>系数<span><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>可如下确定</p>
 <div>
 <div class="MathJax_Preview">
-c_k = \langle x, \mathbf{e_k}\rangle = \sum_{n=0}^{N-1} x[n] e^{-j2\pi \frac{k}{N}n}.
+c_k = \langle x, \mathbf{e_k}\rangle = N\sum_{n=0}^{N-1} x[n] e^{-j2\pi \frac{k}{N}n}.
 </div>
 <script type="math/tex; mode=display">
-c_k = \langle x, \mathbf{e_k}\rangle = \sum_{n=0}^{N-1} x[n] e^{-j2\pi \frac{k}{N}n}.
+c_k = \langle x, \mathbf{e_k}\rangle = N\sum_{n=0}^{N-1} x[n] e^{-j2\pi \frac{k}{N}n}.
 </script>
 </div>
 <p>读者可能在其他地方看到形式类似但略有差别的DFS公式，我们再次强调这只是记号不同，并不影响DFS本质，如把<span><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>拆成两个<span><span class="MathJax_Preview">\frac{1}{\sqrt{N}}</span><script type="math/tex">\frac{1}{\sqrt{N}}</script></span>分别放到以上两个公式里。</p>
@@ -2059,7 +2059,7 @@ padding: 2px;">图. 周期为8的矩形波</div>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">ii</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="w"></span>
 <span class="w">        </span><span class="n">ek</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span>1<span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">ii</span><span class="o">*</span><span class="n">k</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
-<span class="w">    </span><span class="n">ck</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">xn</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">conj</span><span class="p">(</span><span class="n">ek</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">ck</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">xn</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">conj</span><span class="p">(</span><span class="n">ek</span><span class="p">));</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ck</span><span class="o">*</span><span class="n">ek</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>

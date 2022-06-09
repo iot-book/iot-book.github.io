@@ -1954,7 +1954,20 @@
 </script>
 </div>
 <p>当<span><span class="MathJax_Preview">t=t_0</span><script type="math/tex">t=t_0</script></span>时，<span><span class="MathJax_Preview">\phi_{xy}(t_0)=A\int^{+\infty}_{-\infty}x(\tau)^2d\tau</span><script type="math/tex">\phi_{xy}(t_0)=A\int^{+\infty}_{-\infty}x(\tau)^2d\tau</script></span>取得<span><span class="MathJax_Preview">\phi_{xy}(t)</span><script type="math/tex">\phi_{xy}(t)</script></span>的最大值。</p>
-<p>实际应用中，直接计算<span><span class="MathJax_Preview">\phi_{xy}(t)</span><script type="math/tex">\phi_{xy}(t)</script></span>的复杂度较高，利用公式<span><span class="MathJax_Preview">\mathcal{F}(x(t)\ast y(-t))=X(\omega)Y^{\ast}(\omega)</span><script type="math/tex">\mathcal{F}(x(t)\ast y(-t))=X(\omega)Y^{\ast}(\omega)</script></span>，其中<span><span class="MathJax_Preview">X(\omega)</span><script type="math/tex">X(\omega)</script></span>为<span><span class="MathJax_Preview">x(t)</span><script type="math/tex">x(t)</script></span>的傅里叶变换，<span><span class="MathJax_Preview">Y(\omega)</span><script type="math/tex">Y(\omega)</script></span>为<span><span class="MathJax_Preview">y(t)</span><script type="math/tex">y(t)</script></span>的傅里叶变换。计算<span><span class="MathJax_Preview">X(\omega)Y^{\ast}(\omega)</span><script type="math/tex">X(\omega)Y^{\ast}(\omega)</script></span>，再求傅里叶逆变换即可得到<span><span class="MathJax_Preview">\phi_{xy}(t)</span><script type="math/tex">\phi_{xy}(t)</script></span>。</p>
+<p>实际应用中，直接计算<span><span class="MathJax_Preview">\phi_{xy}(t)</span><script type="math/tex">\phi_{xy}(t)</script></span>的复杂度较高，利用公式<span><span class="MathJax_Preview">\mathcal{F}(x(t)\ast y(-t))=X(\omega)Y^{\ast}(\omega)</span><script type="math/tex">\mathcal{F}(x(t)\ast y(-t))=X(\omega)Y^{\ast}(\omega)</script></span>，其中<span><span class="MathJax_Preview">X(\omega)</span><script type="math/tex">X(\omega)</script></span>为<span><span class="MathJax_Preview">x(t)</span><script type="math/tex">x(t)</script></span>的傅里叶变换，<span><span class="MathJax_Preview">Y(\omega)</span><script type="math/tex">Y(\omega)</script></span>为<span><span class="MathJax_Preview">y(t)</span><script type="math/tex">y(t)</script></span>的傅里叶变换。</p>
+<p>计算<span><span class="MathJax_Preview">X(\omega)Y^{\ast}(\omega)</span><script type="math/tex">X(\omega)Y^{\ast}(\omega)</script></span>，再求傅里叶逆变换即可得到<span><span class="MathJax_Preview">\phi_{xy}(t)</span><script type="math/tex">\phi_{xy}(t)</script></span>，即
+$$
+\phi_{xy}(t)=\int_{0}<sup>{\pi}{X\left(\omega\right)Y</sup>\ast\left(\omega\right)e^{-j\omega t}d\omega}
+$$
+将信号时域卷积变为频域相乘能降低计算开销。另外，为消除混响和噪声的影响，可以在频域进行加权，比较常见的加权函数为PHAT加权
+$$
+\phi_{PHAT}\left(\omega\right)=\frac{1}{|X\left(\omega\right)Y^\ast\left(\omega\right)|}
+$$
+互相关函数变为
+$$
+\phi_{xy}(t)=\int_{0}<sup>{\pi}{\phi_{PHAT}\left(\omega\right)X\left(\omega\right)Y</sup>\ast\left(\omega\right)e^{-j\omega t}d\omega}
+$$
+利用互相关函数的峰值计算得到TDOA，即可用基于TDOA的方法计算出信源的AOA。</p>
 <p>综上所述，计算互相关函数的最大值即可得到声音到达两麦克风的到达时间差，从而得到声音的到达角度。</p>
 <p>下面利用实际录音得到的数据进行分析，使用4麦克风的线性阵列，播放的声音与麦克风阵列成45°。计算到达到达时间差和角度的具体实现代码如下（res\correlation.m）</p>
 <div class="highlight"><pre><span></span><code><span class="c">% 读入音频文件</span><span class="w"></span>
