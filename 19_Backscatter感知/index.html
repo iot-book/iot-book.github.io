@@ -18,7 +18,7 @@
     
     
       
-        <title>Backcatter感知/追踪 - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>Backcatter感知 - 物联网前沿实践 - 清华大学 - 王继良</title>
       
     
     
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Backcatter感知/追踪
+              Backcatter感知
             
           </span>
         </div>
@@ -1758,6 +1758,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    实验设备
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ide" class="md-nav__link">
+    编程环境及IDE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    工程目录
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1769,7 +1798,65 @@
               
                 
                 
-                <h1 id="backcatter">Backcatter感知/追踪<a class="headerlink" href="#backcatter" title="Permanent link">&para;</a></h1>
+                <h1 id="backcatter">Backcatter感知<a class="headerlink" href="#backcatter" title="Permanent link">&para;</a></h1>
+<p>本章介绍一个基于RFID技术的一维追踪系统，利用RFID阅读器读取RFID标签的相位，并将追踪结果实时显示在程序界面上。</p>
+<h2 id="_1">实验设备<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>ImpinJ Speedway R420 阅读器：（<a href="https://www.impinj.com/products/readers/impinj-speedway">官方网址</a>）</p>
+<p><center>
+<img src="./fig/reader.png" width=250px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. RFID阅读器</div>
+<p></center></p>
+<p>配套天线：</p>
+<p><center>
+<img src="./fig/antenna.png" width=250px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. RFID天线</div>
+<p></center></p>
+<p>RFID标签：</p>
+<p><center>
+<img src="./fig/tag.png" width=250px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. RFID标签</div>
+<p></center></p>
+<h2 id="ide">编程环境及IDE<a class="headerlink" href="#ide" title="Permanent link">&para;</a></h2>
+<p>IntelliJ IDEA 教育版，openjdk-15 (java version "15.0.1")</p>
+<p>Matlab R2020b</p>
+<h2 id="_2">工程目录<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>工程文件在目录./code内</p>
+<p>./code/Octane_SDK_Java_3_0_0 内为Java端控制阅读器的代码部分，使用IntelliJ IDEA打开该文件夹，如下图：</p>
+<p><center>
+<img src="./fig/java.png" width=650px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. Java端程序</div>
+<p></center></p>
+<p>将RFID阅读器连接至电脑后，运行main.java即可将阅读器的信息读取出来，并通过tcp连接（具体代码位于SingleTagReader.java中）发送到本地的Matlab程序</p>
+<p>./code/tcpClient.m 为Matlab端显示追踪结果的代码部分，使用Matlab打开该文件，在Java端程序运行后，运行tcpClient文件，即可在图中展示追踪结果，如下图：</p>
+<p><center>
+<img src="./fig/matlab.png" width=650px>
+</center></p>
+<p><center></p>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">图. Matlab端程序及结果展示界面</div>
+<p></center></p>
                 
               
               
