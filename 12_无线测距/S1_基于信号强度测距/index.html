@@ -9,44 +9,44 @@
         <meta name="description" content="介绍物联网基础概念">
       
       
-      
         <meta name="author" content="WiSys Lab">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
     
     
       
-        <title>12.1 基于信号强度测距 - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>12.1 基于信号强度测距 - 物联网前沿实践</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
           <meta name="theme-color" content="#546d78">
         
       
+      
     
     
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,7 +61,6 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,15 +77,18 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
   <img src="../../images/nicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -108,22 +110,21 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -143,11 +144,14 @@
     
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -161,7 +165,7 @@
                     
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="物联网前沿实践" class="md-nav__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -231,10 +235,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        第2章 信号处理基础
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          第2章 信号处理基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -243,6 +251,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -253,8 +262,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -265,8 +276,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -277,8 +290,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -289,8 +304,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -301,6 +318,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -321,10 +339,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
-      <label class="md-nav__link" for="__nav_5">
-        第3章 傅里叶分析
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          第3章 傅里叶分析
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -333,6 +355,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -343,8 +366,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -355,8 +380,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -367,8 +394,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -379,8 +408,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -391,6 +422,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -411,10 +443,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_6">
-        第4章 无线信道
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          第4章 无线信道
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
@@ -423,6 +459,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -433,8 +470,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -445,8 +484,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -457,8 +498,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -469,6 +512,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -489,10 +533,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_7">
-        第5章 信号滤波
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          第5章 信号滤波
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
@@ -501,6 +549,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -511,8 +560,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -523,8 +574,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -535,8 +588,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -547,8 +602,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -559,8 +616,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -571,6 +630,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -591,10 +651,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
-      <label class="md-nav__link" for="__nav_8">
-        第6章 数据调制和解调
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          第6章 数据调制和解调
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
@@ -603,6 +667,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -613,8 +678,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -625,8 +692,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -637,8 +706,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -649,8 +720,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -661,8 +734,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -673,8 +748,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -685,6 +762,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -705,10 +783,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
-      <label class="md-nav__link" for="__nav_9">
-        第7章 短距离无线通信技术
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          第7章 短距离无线通信技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
@@ -717,6 +799,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -727,8 +810,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -739,8 +824,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -751,8 +838,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -763,6 +852,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -783,10 +873,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
       
-      <label class="md-nav__link" for="__nav_10">
-        第8章 Backscatter通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          第8章 Backscatter通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
@@ -795,6 +889,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -805,8 +900,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -817,8 +914,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -829,6 +928,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -849,10 +949,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
-      <label class="md-nav__link" for="__nav_11">
-        第9章 LoRa
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          第9章 LoRa
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
@@ -861,6 +965,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -871,8 +976,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -883,8 +990,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -895,8 +1004,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -907,8 +1018,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -919,6 +1032,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -939,10 +1053,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
       
-      <label class="md-nav__link" for="__nav_12">
-        第10章 可见光通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          第10章 可见光通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
@@ -951,6 +1069,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -961,6 +1080,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -981,10 +1101,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
       
-      <label class="md-nav__link" for="__nav_13">
-        第11章 毫米波通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          第11章 毫米波通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
@@ -993,6 +1117,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1003,6 +1128,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1025,10 +1151,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" checked>
       
-      <label class="md-nav__link" for="__nav_14">
-        第12章 无线测距
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          第12章 无线测距
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
@@ -1037,6 +1167,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
     
@@ -1060,6 +1191,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -1108,8 +1240,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1120,6 +1254,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1140,10 +1275,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
-      <label class="md-nav__link" for="__nav_15">
-        第13章 无线定位
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          第13章 无线定位
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
@@ -1152,6 +1291,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1162,8 +1302,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1174,8 +1316,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1186,8 +1330,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1198,6 +1344,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1218,10 +1365,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
       
-      <label class="md-nav__link" for="__nav_16">
-        第14章 无线追踪
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16">
+          第14章 无线追踪
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
@@ -1230,6 +1381,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1240,8 +1392,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1252,8 +1406,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1264,6 +1420,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1284,10 +1441,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
       
-      <label class="md-nav__link" for="__nav_17">
-        第15章 传感器感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          第15章 传感器感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
@@ -1296,6 +1457,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1306,8 +1468,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1318,8 +1482,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1330,6 +1496,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1350,10 +1517,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
-      <label class="md-nav__link" for="__nav_18">
-        第16章 声波感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          第16章 声波感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
@@ -1362,6 +1533,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1372,8 +1544,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1384,8 +1558,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1396,8 +1572,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1408,8 +1586,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1420,6 +1600,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1440,10 +1621,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
       
-      <label class="md-nav__link" for="__nav_19">
-        第17章 Wi-Fi感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          第17章 Wi-Fi感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
@@ -1452,6 +1637,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1462,8 +1648,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1474,8 +1662,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1486,8 +1676,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1498,6 +1690,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1518,10 +1711,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
       
-      <label class="md-nav__link" for="__nav_20">
-        第18章 蓝牙感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_20">
+          第18章 蓝牙感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
@@ -1530,6 +1727,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1540,8 +1738,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1552,8 +1752,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1564,8 +1766,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1576,6 +1780,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1611,10 +1816,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
       
-      <label class="md-nav__link" for="__nav_22">
-        第20章 UWB感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22">
+          第20章 UWB感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
@@ -1623,6 +1832,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1633,8 +1843,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1645,6 +1857,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1695,10 +1908,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
       
-      <label class="md-nav__link" for="__nav_25">
-        第23章 可见光感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_25">
+          第23章 可见光感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
@@ -1707,6 +1924,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1717,8 +1935,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1729,8 +1949,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1741,6 +1963,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1761,10 +1984,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
       
-      <label class="md-nav__link" for="__nav_26">
-        附录
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26">
+          附录
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="附录" data-md-level="1">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
@@ -1773,6 +2000,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1783,8 +2011,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1795,6 +2025,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1814,6 +2045,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -1867,22 +2099,23 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                <h1 id="_1">基于信号强度测距<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+
+
+<h1 id="_1">基于信号强度测距<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>在物联网中，经常需要用到的一个功能是测量两个物体或者设备之间的距离。这里面有一些传统的方法，我们这里考虑的是利用物联网设备本省的功能来进行距离的测量，例如利用物联网设备上的摄像头、无线模块等实现距离测量。我们这个材料中主要会介绍基于无线信号来进行距离测量的方法。</p>
 <h2 id="_2">接收信号强度定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>接收信号强度（Received Signal Strength，RSS），有时也称接收信号强度指示（Received Signal Strength Indication，RSSI），是无线传输层用来判定链接质量的重要指标，传输层根据RSS判断是否需要增大发送端的发送强度。</p>
 <p>通常情况下，RSS用功率表示，单位是瓦特（W）。但无线信号能量较弱，通常在毫瓦（mW）级别。因此普遍的做法是将信号的能量以1mW为基准，以对数形式表示信号强度，即RSSI，单位为dBm(Decibel-milliwatts)：分贝毫瓦。所以在无线信号中，1mW就是0dBm，能量小于1mW的信号RSSI为负数，能量大于1mW的信号RSSI为正数。</p>
 <blockquote>
-<p>注意一下：<span><span class="MathJax_Preview">dB</span><script type="math/tex">dB</script></span>是一个纯计数单位，<span><span class="MathJax_Preview">dB = 10\lg X</span><script type="math/tex">dB = 10\lg X</script></span>，可以轻易把一个极大或极小的数表示出来。而<span><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>是一个带有量纲（毫瓦）的两个功率的比值的表示方法，是一个表示功率绝对值的单位，其计算公式为：<span><span class="MathJax_Preview">10\lg(功率值/1mW)</span><script type="math/tex">10\lg(功率值/1mW)</script></span>。</p>
+<p>注意一下：<span class="arithmatex"><span class="MathJax_Preview">dB</span><script type="math/tex">dB</script></span>是一个纯计数单位，<span class="arithmatex"><span class="MathJax_Preview">dB = 10\lg X</span><script type="math/tex">dB = 10\lg X</script></span>，可以轻易把一个极大或极小的数表示出来。而<span class="arithmatex"><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>是一个带有量纲（毫瓦）的两个功率的比值的表示方法，是一个表示功率绝对值的单位，其计算公式为：<span class="arithmatex"><span class="MathJax_Preview">10\lg(功率值/1mW)</span><script type="math/tex">10\lg(功率值/1mW)</script></span>。</p>
 </blockquote>
-<p>例如：如果发射功率为<span><span class="MathJax_Preview">1mW</span><script type="math/tex">1mW</script></span>，按<span><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>单位进行折算后的值应为：<span><span class="MathJax_Preview">10 \lg 1mW/1mW = 0 dBm</span><script type="math/tex">10 \lg 1mW/1mW = 0 dBm</script></span>；对于<span><span class="MathJax_Preview">40W</span><script type="math/tex">40W</script></span>的功率,则<span><span class="MathJax_Preview">10 \lg(40W/1mW)=46dBm</span><script type="math/tex">10 \lg(40W/1mW)=46dBm</script></span>。</p>
-<p>最常用的<span><span class="MathJax_Preview">2W＝33dBm</span><script type="math/tex">2W＝33dBm</script></span>，<span><span class="MathJax_Preview">20W＝43dBm</span><script type="math/tex">20W＝43dBm</script></span>。<span><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>与<span><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>之间的差值就可以用<span><span class="MathJax_Preview">dB</span><script type="math/tex">dB</script></span>来表示。比如<span><span class="MathJax_Preview">46dBm-43dBm=3dB</span><script type="math/tex">46dBm-43dBm=3dB</script></span>，表示<span><span class="MathJax_Preview">40W</span><script type="math/tex">40W</script></span>功率是<span><span class="MathJax_Preview">20W</span><script type="math/tex">20W</script></span>功率的<span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span>倍。所以我们可以很方便用dB来表示信号直接的关系。</p>
+<p>例如：如果发射功率为<span class="arithmatex"><span class="MathJax_Preview">1mW</span><script type="math/tex">1mW</script></span>，按<span class="arithmatex"><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>单位进行折算后的值应为：<span class="arithmatex"><span class="MathJax_Preview">10 \lg 1mW/1mW = 0 dBm</span><script type="math/tex">10 \lg 1mW/1mW = 0 dBm</script></span>；对于<span class="arithmatex"><span class="MathJax_Preview">40W</span><script type="math/tex">40W</script></span>的功率,则<span class="arithmatex"><span class="MathJax_Preview">10 \lg(40W/1mW)=46dBm</span><script type="math/tex">10 \lg(40W/1mW)=46dBm</script></span>。</p>
+<p>最常用的<span class="arithmatex"><span class="MathJax_Preview">2W＝33dBm</span><script type="math/tex">2W＝33dBm</script></span>，<span class="arithmatex"><span class="MathJax_Preview">20W＝43dBm</span><script type="math/tex">20W＝43dBm</script></span>。<span class="arithmatex"><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>与<span class="arithmatex"><span class="MathJax_Preview">dBm</span><script type="math/tex">dBm</script></span>之间的差值就可以用<span class="arithmatex"><span class="MathJax_Preview">dB</span><script type="math/tex">dB</script></span>来表示。比如<span class="arithmatex"><span class="MathJax_Preview">46dBm-43dBm=3dB</span><script type="math/tex">46dBm-43dBm=3dB</script></span>，表示<span class="arithmatex"><span class="MathJax_Preview">40W</span><script type="math/tex">40W</script></span>功率是<span class="arithmatex"><span class="MathJax_Preview">20W</span><script type="math/tex">20W</script></span>功率的<span class="arithmatex"><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span>倍。所以我们可以很方便用dB来表示信号直接的关系。</p>
 <h2 id="rssi">RSSI测距原理<a class="headerlink" href="#rssi" title="Permanent link">&para;</a></h2>
 <p>不难想到，信号强度RSSI肯定是跟距离有关的，直观上来看，距离越远，信号强度是越低的。
 在信道模型一章，我们已经对信号强度和距离的关系进行了详细的分析。
 通常，RSSI受发送功率、路径衰减、接收增益和系统处理增益四个元素影响。其计算公式可以表示为：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 RSSI = Tx\_Power + Path\_Loss + Rx\_Gain + System\_Gain
 </div>
@@ -1894,7 +2127,7 @@ RSSI = Tx\_Power + Path\_Loss + Rx\_Gain + System\_Gain
 $$
 P_{G}=-P_{L}=10 \log <em>{10} \frac{G</em>{l} \lambda^{2}}{(4 \pi d)^{2}}
 $$
-从这个公式我们可以看出来，如果知道距离，可以计算出信道的衰减；反之，如果我们能够测出发送和接收信号强度，是能够反推出距离<span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>的。但是注意，这是理想的情况，实际环境中比理想情况复杂很多，所以实际环境中信号强度不会和这个公式完美符合。</p>
+从这个公式我们可以看出来，如果知道距离，可以计算出信道的衰减；反之，如果我们能够测出发送和接收信号强度，是能够反推出距离<span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>的。但是注意，这是理想的情况，实际环境中比理想情况复杂很多，所以实际环境中信号强度不会和这个公式完美符合。</p>
 <p>信号在自由空间中的衰落如下图所示：
 <center>
 <img src="./fig/Friis.png" width=600px>
@@ -1906,7 +2139,7 @@ color: #999;
 padding: 2px;">图. 自由空间中电磁波能量随距离衰减曲线</div>
 <p></center></p>
 <p>其中发送功率、接收增益、系统增益都是定值，而路径衰减在理想情况下与传播距离直接相关。因此无线信号的发射功率和接收功率之间的关系可以用下式表示[1]：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 PR = \frac{c_0PT}{r^n}
 </div>
@@ -1914,9 +2147,9 @@ PR = \frac{c_0PT}{r^n}
 PR = \frac{c_0PT}{r^n}
 </script>
 </div>
-<p><span><span class="MathJax_Preview">PR</span><script type="math/tex">PR</script></span>是无线信号的接收功率，<span><span class="MathJax_Preview">PT</span><script type="math/tex">PT</script></span>是无线信号的发射功率，<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>是收发单元之间的距离，<span><span class="MathJax_Preview">c_0</span><script type="math/tex">c_0</script></span>是和天线参数和信号频率有关的常数，<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>是传播因子，数值大小取决于无线信号传播的环境（该公式为远场近似，<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>很小时不成立）。</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">PR</span><script type="math/tex">PR</script></span>是无线信号的接收功率，<span class="arithmatex"><span class="MathJax_Preview">PT</span><script type="math/tex">PT</script></span>是无线信号的发射功率，<span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>是收发单元之间的距离，<span class="arithmatex"><span class="MathJax_Preview">c_0</span><script type="math/tex">c_0</script></span>是和天线参数和信号频率有关的常数，<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>是传播因子，数值大小取决于无线信号传播的环境（该公式为远场近似，<span class="arithmatex"><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>很小时不成立）。</p>
 <p>对上式两边取对数可得:</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 10\lg(PR) = 10lg(c_0PT) - 10n\lg(r) = A - 10n\lg(r)
 </div>
@@ -1924,8 +2157,8 @@ PR = \frac{c_0PT}{r^n}
 10\lg(PR) = 10lg(c_0PT) - 10n\lg(r) = A - 10n\lg(r)
 </script>
 </div>
-<p>由于发送功率已知，<span><span class="MathJax_Preview">A=10lg(c_0PT)</span><script type="math/tex">A=10lg(c_0PT)</script></span>可以看作信号传输1m远时接收信号的功率。上式左部<span><span class="MathJax_Preview">10\lg(PR)</span><script type="math/tex">10\lg(PR)</script></span>是接收信号功率转换为dBm的表达式，因此可以直接写成下面的表达形式</p>
-<div>
+<p>由于发送功率已知，<span class="arithmatex"><span class="MathJax_Preview">A=10lg(c_0PT)</span><script type="math/tex">A=10lg(c_0PT)</script></span>可以看作信号传输1m远时接收信号的功率。上式左部<span class="arithmatex"><span class="MathJax_Preview">10\lg(PR)</span><script type="math/tex">10\lg(PR)</script></span>是接收信号功率转换为dBm的表达式，因此可以直接写成下面的表达形式</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 PR（in\quad dBm）=A-10n\lg(r)
 </div>
@@ -1933,8 +2166,8 @@ PR（in\quad dBm）=A-10n\lg(r)
 PR（in\quad dBm）=A-10n\lg(r)
 </script>
 </div>
-<p>上式中可以得到常数<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>的数值决定了接收信号强度和信号传输距离的关系，因此我们接下来分析这两个常数对信号传输距离的影响。</p>
-<p>先假定<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>不变，使<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>变化，可以得到如下图所示的关系曲线图。</p>
+<p>上式中可以得到常数<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>的数值决定了接收信号强度和信号传输距离的关系，因此我们接下来分析这两个常数对信号传输距离的影响。</p>
+<p>先假定<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>不变，使<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>变化，可以得到如下图所示的关系曲线图。</p>
 <p><center>
 <img src="./fig/RSS1.png" width=600px>
 </center>
@@ -1944,8 +2177,8 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. n不变，A变化时接收信号强度与传输距离关系图</div>
 <p></center></p>
-<p>从上图可以观察到，若信号传播因子<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>为定值，无线信号在近场传播时强度快速衰减，远距离时信号呈缓慢线性衰减。而当发射信号功率增加时，增加的传播距离近似为发射信号功率增加量和曲线在平缓阶段的斜率的比值。</p>
-<p>接下来我们分析当<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>不变，取不同的<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>，RSSI与信号传播距离的关系。</p>
+<p>从上图可以观察到，若信号传播因子<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>为定值，无线信号在近场传播时强度快速衰减，远距离时信号呈缓慢线性衰减。而当发射信号功率增加时，增加的传播距离近似为发射信号功率增加量和曲线在平缓阶段的斜率的比值。</p>
+<p>接下来我们分析当<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>不变，取不同的<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>，RSSI与信号传播距离的关系。</p>
 <p><center>
 <img src="./fig/RSS2.png" width=600px>
 </center></p>
@@ -1955,52 +2188,57 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. A不变，n变化时接收信号强度与传输距离关系图</div>
 <p></center></p>
-<p>如上图所示：当<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>取值越小时，信号在传播过程衰减越小，信号可以传播较远的距离。从上图还可以看到，良好的传播因子特性（<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>越小）或增加发射信号功率都能增加信号传播距离。传播因子主要取决于无线信号在空气中的衰减、反射、多径效应等干扰，如果干扰较小的话，传播因子<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>值越小，信号传播距离越远，无线信号的传播曲线越接近于理论曲线，基于RSSI的测距就会越精确。</p>
+<p>如上图所示：当<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>取值越小时，信号在传播过程衰减越小，信号可以传播较远的距离。从上图还可以看到，良好的传播因子特性（<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>越小）或增加发射信号功率都能增加信号传播距离。传播因子主要取决于无线信号在空气中的衰减、反射、多径效应等干扰，如果干扰较小的话，传播因子<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>值越小，信号传播距离越远，无线信号的传播曲线越接近于理论曲线，基于RSSI的测距就会越精确。</p>
 <h2 id="rssi_1">RSSI测距实现<a class="headerlink" href="#rssi_1" title="Permanent link">&para;</a></h2>
-<p>利用RSSI测距必须事先知道<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>值和<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>值，<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>值为无线收发节点相距<span><span class="MathJax_Preview">1m</span><script type="math/tex">1m</script></span>时接收节点接收无线信号强度值，<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>值是无线信号的传播因子，这两个值都是经验值，和具体使用的硬件节点和无线信号传播的环境密切相关，所以测距前必须在应用环境中把两个经验值标定好，标定的准确与否，直接关系到测距定位的精度。</p>
+<p>利用RSSI测距必须事先知道<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>值和<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>值，<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>值为无线收发节点相距<span class="arithmatex"><span class="MathJax_Preview">1m</span><script type="math/tex">1m</script></span>时接收节点接收无线信号强度值，<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>值是无线信号的传播因子，这两个值都是经验值，和具体使用的硬件节点和无线信号传播的环境密切相关，所以测距前必须在应用环境中把两个经验值标定好，标定的准确与否，直接关系到测距定位的精度。</p>
 <p>此外，如果无线节点系统应用在室外的话，野外的气象条件变化对无线信号的传输也会产生影响。在野外主要考虑的气象条件因素是温度和湿度变化，经过实验验证，温度和湿度条件变化对无线信号传输的影响是没有规律的，但影响效果不明显，可以采取均值或前后测量值加权等方法将其影响消除。</p>
 <p>利用RSSI测距时，要避免RSSI的不稳定性，使RSSI值越精确地体现无线信号的传输距离，通过设计各种滤波器使RSSI的值平滑。最常用也是较容易实现的两种滤波器形式是平均值和加权滤波器，其中平均值滤波器是最基本的滤波形式，但是它需要收发节点之间进行多次数据传输。</p>
 <h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>[1] <a href="https://en.wikipedia.org/wiki/Log-distance_path_loss_model">维基百科：对数距离路径损耗模型</a></p>
-                
-              
-              
-                
+
+
 
 
               
             </article>
+            
+
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
               <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
               <script>
-              var gitalk = new Gitalk({
-                  clientID: 'ab5371b4172e50e09adb',
-                  clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
-                  repo: 'Comments',
-                  owner: 'iot-book',
-                  admin: ['iot-book', 'tongsh'],
-                  id: location.pathname,      // Ensure uniqueness and length less than 50
-                  distractionFreeMode: false  // Facebook-like distraction free mode
-                })
-
-                gitalk.render('gitalk-container')
+                var gitalk = new Gitalk({
+                    clientID: 'ab5371b4172e50e09adb',
+                    clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
+                    repo: 'Comments',
+                    owner: 'iot-book',
+                    admin: ['iot-book', 'tongsh'],
+                    // id: 'location.pathname.substring(1,30)',
+                    id: location.pathname,      // Ensure uniqueness and length less than 50
+                    distractionFreeMode: false,  // Facebook-like distraction free mode
+                    labels: ['Gitalk'],
+                    title: 'IoTBook-Comment'
+                  })
+                  gitalk.render('gitalk-container')
               </script> 
+            </div>
+            <!-- End 评论 -->
+
           </div>
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
         <a href="../../11_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/S1_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1%E7%9A%84%E5%85%B4%E8%B5%B7/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 11.1 毫米波通信兴起与发展" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -2024,7 +2262,7 @@ padding: 2px;">图. A不变，n变化时接收信号强度与传输距离关系�
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -2032,19 +2270,20 @@ padding: 2px;">图. A不变，n变化时接收信号强度与传输距离关系�
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        <!-- Made with -->
-        <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
-          &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
-        </a>
-        <br>
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+     <!-- Made with -->
+     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+      &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
+    </a>
+    <br>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -2054,10 +2293,11 @@ padding: 2px;">图. A不变，n变化时接收信号强度与传输距离关系�
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

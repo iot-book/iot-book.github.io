@@ -9,44 +9,44 @@
         <meta name="description" content="介绍物联网基础概念">
       
       
-      
         <meta name="author" content="WiSys Lab">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
     
     
       
-        <title>主动式声波定位方法 - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>主动式声波定位方法 - 物联网前沿实践</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
           <meta name="theme-color" content="#546d78">
         
       
+      
     
     
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,7 +61,6 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,15 +77,18 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
   <img src="../../../images/nicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -108,22 +110,21 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -143,11 +144,14 @@
     
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -161,7 +165,7 @@
                     
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="物联网前沿实践" class="md-nav__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -231,10 +235,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        第2章 信号处理基础
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          第2章 信号处理基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -243,6 +251,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -253,8 +262,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -265,8 +276,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -277,8 +290,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -289,8 +304,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -301,6 +318,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -321,10 +339,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
-      <label class="md-nav__link" for="__nav_5">
-        第3章 傅里叶分析
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          第3章 傅里叶分析
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -333,6 +355,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -343,8 +366,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -355,8 +380,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -367,8 +394,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -379,8 +408,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -391,6 +422,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -411,10 +443,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_6">
-        第4章 无线信道
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          第4章 无线信道
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
@@ -423,6 +459,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -433,8 +470,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -445,8 +484,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -457,8 +498,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -469,6 +512,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -489,10 +533,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_7">
-        第5章 信号滤波
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          第5章 信号滤波
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
@@ -501,6 +549,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -511,8 +560,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -523,8 +574,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -535,8 +588,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -547,8 +602,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -559,8 +616,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -571,6 +630,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -591,10 +651,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
-      <label class="md-nav__link" for="__nav_8">
-        第6章 数据调制和解调
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          第6章 数据调制和解调
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
@@ -603,6 +667,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -613,8 +678,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -625,8 +692,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -637,8 +706,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -649,8 +720,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -661,8 +734,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -673,8 +748,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -685,6 +762,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -705,10 +783,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
-      <label class="md-nav__link" for="__nav_9">
-        第7章 短距离无线通信技术
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          第7章 短距离无线通信技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
@@ -717,6 +799,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -727,8 +810,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -739,8 +824,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -751,8 +838,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -763,6 +852,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -783,10 +873,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
       
-      <label class="md-nav__link" for="__nav_10">
-        第8章 Backscatter通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          第8章 Backscatter通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
@@ -795,6 +889,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -805,8 +900,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -817,8 +914,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -829,6 +928,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -849,10 +949,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
-      <label class="md-nav__link" for="__nav_11">
-        第9章 LoRa
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          第9章 LoRa
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
@@ -861,6 +965,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -871,8 +976,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -883,8 +990,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -895,8 +1004,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -907,8 +1018,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -919,6 +1032,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -939,10 +1053,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
       
-      <label class="md-nav__link" for="__nav_12">
-        第10章 可见光通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          第10章 可见光通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
@@ -951,6 +1069,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -961,6 +1080,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -981,10 +1101,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
       
-      <label class="md-nav__link" for="__nav_13">
-        第11章 毫米波通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          第11章 毫米波通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
@@ -993,6 +1117,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1003,6 +1128,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1023,10 +1149,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
-      <label class="md-nav__link" for="__nav_14">
-        第12章 无线测距
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          第12章 无线测距
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
@@ -1035,6 +1165,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1045,8 +1176,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1057,6 +1190,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1077,10 +1211,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
-      <label class="md-nav__link" for="__nav_15">
-        第13章 无线定位
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          第13章 无线定位
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
@@ -1089,6 +1227,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1099,8 +1238,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1111,8 +1252,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1123,8 +1266,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1135,6 +1280,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1155,10 +1301,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
       
-      <label class="md-nav__link" for="__nav_16">
-        第14章 无线追踪
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16">
+          第14章 无线追踪
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
@@ -1167,6 +1317,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1177,8 +1328,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1189,8 +1342,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1201,6 +1356,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1221,10 +1377,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
       
-      <label class="md-nav__link" for="__nav_17">
-        第15章 传感器感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          第15章 传感器感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
@@ -1233,6 +1393,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1243,8 +1404,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1255,8 +1418,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1267,6 +1432,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1287,10 +1453,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
-      <label class="md-nav__link" for="__nav_18">
-        第16章 声波感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          第16章 声波感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
@@ -1299,6 +1469,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1309,8 +1480,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1321,8 +1494,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1333,8 +1508,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1345,8 +1522,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1357,6 +1536,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1377,10 +1557,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
       
-      <label class="md-nav__link" for="__nav_19">
-        第17章 Wi-Fi感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          第17章 Wi-Fi感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
@@ -1389,6 +1573,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1399,8 +1584,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1411,8 +1598,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1423,8 +1612,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1435,6 +1626,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1455,10 +1647,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
       
-      <label class="md-nav__link" for="__nav_20">
-        第18章 蓝牙感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_20">
+          第18章 蓝牙感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
@@ -1467,6 +1663,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1477,8 +1674,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1489,8 +1688,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1501,8 +1702,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1513,6 +1716,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1548,10 +1752,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
       
-      <label class="md-nav__link" for="__nav_22">
-        第20章 UWB感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22">
+          第20章 UWB感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
@@ -1560,6 +1768,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1570,8 +1779,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1582,6 +1793,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1632,10 +1844,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
       
-      <label class="md-nav__link" for="__nav_25">
-        第23章 可见光感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_25">
+          第23章 可见光感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
@@ -1644,6 +1860,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1654,8 +1871,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1666,8 +1885,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1678,6 +1899,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1698,10 +1920,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
       
-      <label class="md-nav__link" for="__nav_26">
-        附录
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26">
+          附录
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="附录" data-md-level="1">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
@@ -1710,6 +1936,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1720,8 +1947,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1732,6 +1961,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1751,6 +1981,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -1768,9 +1999,10 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                <h1 id="_1">主动式声波定位方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>现有的基于声音的测距方法一般是基于相位进行测距，在这种方法中，先计算出声音信号在目标设备移动前后的信号相位变化值 <span><span class="MathJax_Preview">\Delta\phi_0</span><script type="math/tex">\Delta\phi_0</script></span> ，再根据 <span><span class="MathJax_Preview">\Delta d = \lambda \Delta\phi_0</span><script type="math/tex">\Delta d = \lambda \Delta\phi_0</script></span> 求出目标移动的距离。</p>
+
+
+<h1 id="_1">主动式声波定位方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>现有的基于声音的测距方法一般是基于相位进行测距，在这种方法中，先计算出声音信号在目标设备移动前后的信号相位变化值 <span class="arithmatex"><span class="MathJax_Preview">\Delta\phi_0</span><script type="math/tex">\Delta\phi_0</script></span> ，再根据 <span class="arithmatex"><span class="MathJax_Preview">\Delta d = \lambda \Delta\phi_0</span><script type="math/tex">\Delta d = \lambda \Delta\phi_0</script></span> 求出目标移动的距离。</p>
 <p>在这种方法中，为了提取接收信号与信号源之间的相位差，需要用接收到的信号与已知的原始发射信号相乘，然后再使用低通滤波器来进行低通滤波，从而求出声音信号相位。Vernier[1]提出了一种新的方法，能够在不进行滤波的情况下推算出相位，从而通过相位计算进行测距。</p>
 <p>在介绍这种方法之前，我们先来定义几个变量，用来简化对方法的说明：</p>
 <ul>
@@ -1791,8 +2023,8 @@ color: #999;
 padding: 2px;">图. LMP的定义</div>
 <p></center></p>
 <p>下面对测距方法进行描述：</p>
-<p>假定在时间 <span><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span> 和时间 <span><span class="MathJax_Preview">t_2</span><script type="math/tex">t_2</script></span> 两个时刻，录音设备取得两个等长时间窗口的音频数据 <span><span class="MathJax_Preview">w_1</span><script type="math/tex">w_1</script></span> 和 <span><span class="MathJax_Preview">w_2</span><script type="math/tex">w_2</script></span> 。每个窗口中有恰好有 <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> 个周期的声音信号，这 <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> 个周期的信号刚好对应着 <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> 个采样点。<span><span class="MathJax_Preview">w_1</span><script type="math/tex">w_1</script></span> 和 <span><span class="MathJax_Preview">w_2</span><script type="math/tex">w_2</script></span> 两个时间窗口内信号的LMPS分别为 <span><span class="MathJax_Preview">L_1</span><script type="math/tex">L_1</script></span> 和 <span><span class="MathJax_Preview">L_2</span><script type="math/tex">L_2</script></span> 。由于多普勒效应，在相邻的两个窗口内信号的相位变化为 <span><span class="MathJax_Preview">\Delta\phi = (L_2-L_1)2\pi/q</span><script type="math/tex">\Delta\phi = (L_2-L_1)2\pi/q</script></span>，在两个窗口的时间长度内，信号源的位置变化为 <span><span class="MathJax_Preview">\Delta d=\lambda\Delta\phi-c(t_2-t_1)</span><script type="math/tex">\Delta d=\lambda\Delta\phi-c(t_2-t_1)</script></span>，其中<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>是声音在空气中的传播速度。</p>
-<p>下图给出了一个通过LMP计算信号源距离变化的例子：在一个时间窗口内，<span><span class="MathJax_Preview">p = 3</span><script type="math/tex">p = 3</script></span> ，<span><span class="MathJax_Preview">q = 13</span><script type="math/tex">q = 13</script></span> 。当信号相位变化 <span><span class="MathJax_Preview">2\pi / q</span><script type="math/tex">2\pi / q</script></span> 时，LMPS增加1。也就是说，每当LMPS增加1，我们就可以说，信号的相位变换增加了 <span><span class="MathJax_Preview">2\pi / 13</span><script type="math/tex">2\pi / 13</script></span>。距离变化了 <span><span class="MathJax_Preview">\lambda / 13</span><script type="math/tex">\lambda / 13</script></span>。</p>
+<p>假定在时间 <span class="arithmatex"><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span> 和时间 <span class="arithmatex"><span class="MathJax_Preview">t_2</span><script type="math/tex">t_2</script></span> 两个时刻，录音设备取得两个等长时间窗口的音频数据 <span class="arithmatex"><span class="MathJax_Preview">w_1</span><script type="math/tex">w_1</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">w_2</span><script type="math/tex">w_2</script></span> 。每个窗口中有恰好有 <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> 个周期的声音信号，这 <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> 个周期的信号刚好对应着 <span class="arithmatex"><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> 个采样点。<span class="arithmatex"><span class="MathJax_Preview">w_1</span><script type="math/tex">w_1</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">w_2</span><script type="math/tex">w_2</script></span> 两个时间窗口内信号的LMPS分别为 <span class="arithmatex"><span class="MathJax_Preview">L_1</span><script type="math/tex">L_1</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">L_2</span><script type="math/tex">L_2</script></span> 。由于多普勒效应，在相邻的两个窗口内信号的相位变化为 <span class="arithmatex"><span class="MathJax_Preview">\Delta\phi = (L_2-L_1)2\pi/q</span><script type="math/tex">\Delta\phi = (L_2-L_1)2\pi/q</script></span>，在两个窗口的时间长度内，信号源的位置变化为 <span class="arithmatex"><span class="MathJax_Preview">\Delta d=\lambda\Delta\phi-c(t_2-t_1)</span><script type="math/tex">\Delta d=\lambda\Delta\phi-c(t_2-t_1)</script></span>，其中<span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>是声音在空气中的传播速度。</p>
+<p>下图给出了一个通过LMP计算信号源距离变化的例子：在一个时间窗口内，<span class="arithmatex"><span class="MathJax_Preview">p = 3</span><script type="math/tex">p = 3</script></span> ，<span class="arithmatex"><span class="MathJax_Preview">q = 13</span><script type="math/tex">q = 13</script></span> 。当信号相位变化 <span class="arithmatex"><span class="MathJax_Preview">2\pi / q</span><script type="math/tex">2\pi / q</script></span> 时，LMPS增加1。也就是说，每当LMPS增加1，我们就可以说，信号的相位变换增加了 <span class="arithmatex"><span class="MathJax_Preview">2\pi / 13</span><script type="math/tex">2\pi / 13</script></span>。距离变化了 <span class="arithmatex"><span class="MathJax_Preview">\lambda / 13</span><script type="math/tex">\lambda / 13</script></span>。</p>
 <p><center>
 <img src="./fig/LMPS例子.png" width=600px>
 </center></p>
@@ -1802,8 +2034,8 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 基于声音的测距方法——相位变化时的LMPS</div>
 <p></center></p>
-<p>在采样率不变的情况下，我们可以通过调节发射信号的频率来调节 <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> 与 <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>。例如，在采样率为 <span><span class="MathJax_Preview">44100 Hz</span><script type="math/tex">44100 Hz</script></span> 的情况下，如果取声音频率为 <span><span class="MathJax_Preview">20000 Hz</span><script type="math/tex">20000 Hz</script></span>，那么 <span><span class="MathJax_Preview">p = 200</span><script type="math/tex">p = 200</script></span>，<span><span class="MathJax_Preview">q = 441</span><script type="math/tex">q = 441</script></span>。在这种情况下，此方法的定位精度为 </p>
-<div>
+<p>在采样率不变的情况下，我们可以通过调节发射信号的频率来调节 <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> 与 <span class="arithmatex"><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>。例如，在采样率为 <span class="arithmatex"><span class="MathJax_Preview">44100 Hz</span><script type="math/tex">44100 Hz</script></span> 的情况下，如果取声音频率为 <span class="arithmatex"><span class="MathJax_Preview">20000 Hz</span><script type="math/tex">20000 Hz</script></span>，那么 <span class="arithmatex"><span class="MathJax_Preview">p = 200</span><script type="math/tex">p = 200</script></span>，<span class="arithmatex"><span class="MathJax_Preview">q = 441</span><script type="math/tex">q = 441</script></span>。在这种情况下，此方法的定位精度为 </p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \frac{340}{20000 \times 441} m = 0.0000385 m = 0.0385 mm
 </div>
@@ -1821,8 +2053,8 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 各种基于声音定位方法的比较</div>
 <p></center></p>
-<p>为了计算被追踪设备在移动过程中的相位变化，我们使用一种基于窗口的相位计算方法，在<span><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span>时刻，计算窗口<span><span class="MathJax_Preview">w_1</span><script type="math/tex">w_1</script></span>中的LMPS，在<span><span class="MathJax_Preview">t_2</span><script type="math/tex">t_2</script></span>时刻计算窗口<span><span class="MathJax_Preview">w_2</span><script type="math/tex">w_2</script></span>的LMPS，然后根据二者LMPS的差值计算出这两个时间窗口中的相位变化。</p>
-<p>基于窗口的相位计算的算法如下图所示。根据前文的推导，LMPS每增加1，相位变化 <span><span class="MathJax_Preview">2\pi / q</span><script type="math/tex">2\pi / q</script></span>。</p>
+<p>为了计算被追踪设备在移动过程中的相位变化，我们使用一种基于窗口的相位计算方法，在<span class="arithmatex"><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span>时刻，计算窗口<span class="arithmatex"><span class="MathJax_Preview">w_1</span><script type="math/tex">w_1</script></span>中的LMPS，在<span class="arithmatex"><span class="MathJax_Preview">t_2</span><script type="math/tex">t_2</script></span>时刻计算窗口<span class="arithmatex"><span class="MathJax_Preview">w_2</span><script type="math/tex">w_2</script></span>的LMPS，然后根据二者LMPS的差值计算出这两个时间窗口中的相位变化。</p>
+<p>基于窗口的相位计算的算法如下图所示。根据前文的推导，LMPS每增加1，相位变化 <span class="arithmatex"><span class="MathJax_Preview">2\pi / q</span><script type="math/tex">2\pi / q</script></span>。</p>
 <p><center>
 <img src="./fig/基于窗口的相位计算方法.png" width=500px>
 </center></p>
@@ -1833,7 +2065,7 @@ color: #999;
 padding: 2px;">图. 基于窗口的相位计算方法</div>
 <p></center></p>
 <p>值得一提的是，声音信号的相位是随着时间增加而线性增加的，其增加的速度等于其角频率：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 w=2\pi f
 </div>
@@ -1841,8 +2073,8 @@ w=2\pi f
 w=2\pi f
 </script>
 </div>
-<p>在计算距离的时候，要先把时间对相位的影响去除掉，得到声音信号的初始相位。根据初始相位变化 <span><span class="MathJax_Preview">\Delta\phi_0</span><script type="math/tex">\Delta\phi_0</script></span>，就可以求出被追踪设备移动的距离。</p>
-<div>
+<p>在计算距离的时候，要先把时间对相位的影响去除掉，得到声音信号的初始相位。根据初始相位变化 <span class="arithmatex"><span class="MathJax_Preview">\Delta\phi_0</span><script type="math/tex">\Delta\phi_0</script></span>，就可以求出被追踪设备移动的距离。</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 d=\frac{\lambda\Delta\phi_0}{2\pi}
 </div>
@@ -1850,8 +2082,8 @@ d=\frac{\lambda\Delta\phi_0}{2\pi}
 d=\frac{\lambda\Delta\phi_0}{2\pi}
 </script>
 </div>
-<p>假设被追踪设备的初始位置为 <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span>，那么设备当前位置可以表示为：</p>
-<div>
+<p>假设被追踪设备的初始位置为 <span class="arithmatex"><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span>，那么设备当前位置可以表示为：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 x=x_0+d
 </div>
@@ -1860,7 +2092,7 @@ x=x_0+d
 </script>
 </div>
 <p><strong>基于声音的二维定位方法</strong></p>
-<p>如下图所示，假设被追踪设备的初始位置为C（x0，y0），在一定时间内移动到D（x1，y1）。因为初始位置的坐标已经给定，因此AC和BC之间的距离就可以求出。只要知道设备相对与A、B两个声源的距离变化 <span><span class="MathJax_Preview">a_1</span><script type="math/tex">a_1</script></span> 和 <span><span class="MathJax_Preview">a_2</span><script type="math/tex">a_2</script></span>，就可以得到AD和BD的长度。由于AB之间的距离可以事先测量，因此在三角形<span><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>ABD中，三个边都是已知的，那么D点的坐标（x1，y1）就可以求出了。</p>
+<p>如下图所示，假设被追踪设备的初始位置为C（x0，y0），在一定时间内移动到D（x1，y1）。因为初始位置的坐标已经给定，因此AC和BC之间的距离就可以求出。只要知道设备相对与A、B两个声源的距离变化 <span class="arithmatex"><span class="MathJax_Preview">a_1</span><script type="math/tex">a_1</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">a_2</span><script type="math/tex">a_2</script></span>，就可以得到AD和BD的长度。由于AB之间的距离可以事先测量，因此在三角形<span class="arithmatex"><span class="MathJax_Preview">\Delta</span><script type="math/tex">\Delta</script></span>ABD中，三个边都是已知的，那么D点的坐标（x1，y1）就可以求出了。</p>
 <p><center>
 <img src="./fig/二维定位方法.png" width=500px>
 </center></p>
@@ -1870,54 +2102,59 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 二维定位方法</div>
 <p></center></p>
-                
-              
-              
-                
+
+
 
 
               
             </article>
+            
+
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
               <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
               <script>
-              var gitalk = new Gitalk({
-                  clientID: 'ab5371b4172e50e09adb',
-                  clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
-                  repo: 'Comments',
-                  owner: 'iot-book',
-                  admin: ['iot-book', 'tongsh'],
-                  id: location.pathname,      // Ensure uniqueness and length less than 50
-                  distractionFreeMode: false  // Facebook-like distraction free mode
-                })
-
-                gitalk.render('gitalk-container')
+                var gitalk = new Gitalk({
+                    clientID: 'ab5371b4172e50e09adb',
+                    clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
+                    repo: 'Comments',
+                    owner: 'iot-book',
+                    admin: ['iot-book', 'tongsh'],
+                    // id: 'location.pathname.substring(1,30)',
+                    id: location.pathname,      // Ensure uniqueness and length less than 50
+                    distractionFreeMode: false,  // Facebook-like distraction free mode
+                    labels: ['Gitalk'],
+                    title: 'IoTBook-Comment'
+                  })
+                  gitalk.render('gitalk-container')
               </script> 
+            </div>
+            <!-- End 评论 -->
+
           </div>
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        <!-- Made with -->
-        <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
-          &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
-        </a>
-        <br>
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+     <!-- Made with -->
+     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+      &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
+    </a>
+    <br>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -1927,10 +2164,11 @@ padding: 2px;">图. 二维定位方法</div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

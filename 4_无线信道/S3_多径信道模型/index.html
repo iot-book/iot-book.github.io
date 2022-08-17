@@ -9,44 +9,44 @@
         <meta name="description" content="介绍物联网基础概念">
       
       
-      
         <meta name="author" content="WiSys Lab">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
     
     
       
-        <title>4.3 多径信道模型 - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>4.3 多径信道模型 - 物联网前沿实践</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
           <meta name="theme-color" content="#546d78">
         
       
+      
     
     
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,7 +61,6 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,15 +77,18 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
   <img src="../../images/nicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -108,22 +110,21 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -143,11 +144,14 @@
     
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -161,7 +165,7 @@
                     
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="物联网前沿实践" class="md-nav__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -231,10 +235,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        第2章 信号处理基础
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          第2章 信号处理基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -243,6 +251,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -253,8 +262,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -265,8 +276,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -277,8 +290,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -289,8 +304,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -301,6 +318,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -321,10 +339,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
-      <label class="md-nav__link" for="__nav_5">
-        第3章 傅里叶分析
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          第3章 傅里叶分析
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -333,6 +355,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -343,8 +366,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -355,8 +380,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -367,8 +394,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -379,8 +408,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -391,6 +422,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -413,10 +445,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
-      <label class="md-nav__link" for="__nav_6">
-        第4章 无线信道
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          第4章 无线信道
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
@@ -425,6 +461,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -435,8 +472,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -447,8 +486,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -472,6 +513,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -513,8 +555,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -525,6 +569,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -545,10 +590,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_7">
-        第5章 信号滤波
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          第5章 信号滤波
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
@@ -557,6 +606,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -567,8 +617,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -579,8 +631,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -591,8 +645,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -603,8 +659,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -615,8 +673,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -627,6 +687,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -647,10 +708,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
-      <label class="md-nav__link" for="__nav_8">
-        第6章 数据调制和解调
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          第6章 数据调制和解调
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
@@ -659,6 +724,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -669,8 +735,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -681,8 +749,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -693,8 +763,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -705,8 +777,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -717,8 +791,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -729,8 +805,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -741,6 +819,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -761,10 +840,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
-      <label class="md-nav__link" for="__nav_9">
-        第7章 短距离无线通信技术
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          第7章 短距离无线通信技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
@@ -773,6 +856,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -783,8 +867,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -795,8 +881,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -807,8 +895,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -819,6 +909,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -839,10 +930,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
       
-      <label class="md-nav__link" for="__nav_10">
-        第8章 Backscatter通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          第8章 Backscatter通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
@@ -851,6 +946,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -861,8 +957,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -873,8 +971,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -885,6 +985,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -905,10 +1006,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
-      <label class="md-nav__link" for="__nav_11">
-        第9章 LoRa
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          第9章 LoRa
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
@@ -917,6 +1022,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -927,8 +1033,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -939,8 +1047,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -951,8 +1061,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -963,8 +1075,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -975,6 +1089,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -995,10 +1110,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
       
-      <label class="md-nav__link" for="__nav_12">
-        第10章 可见光通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          第10章 可见光通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
@@ -1007,6 +1126,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1017,6 +1137,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1037,10 +1158,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
       
-      <label class="md-nav__link" for="__nav_13">
-        第11章 毫米波通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          第11章 毫米波通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
@@ -1049,6 +1174,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1059,6 +1185,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1079,10 +1206,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
-      <label class="md-nav__link" for="__nav_14">
-        第12章 无线测距
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          第12章 无线测距
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
@@ -1091,6 +1222,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1101,8 +1233,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1113,6 +1247,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1133,10 +1268,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
-      <label class="md-nav__link" for="__nav_15">
-        第13章 无线定位
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          第13章 无线定位
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
@@ -1145,6 +1284,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1155,8 +1295,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1167,8 +1309,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1179,8 +1323,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1191,6 +1337,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1211,10 +1358,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
       
-      <label class="md-nav__link" for="__nav_16">
-        第14章 无线追踪
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16">
+          第14章 无线追踪
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
@@ -1223,6 +1374,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1233,8 +1385,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1245,8 +1399,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1257,6 +1413,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1277,10 +1434,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
       
-      <label class="md-nav__link" for="__nav_17">
-        第15章 传感器感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          第15章 传感器感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
@@ -1289,6 +1450,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1299,8 +1461,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1311,8 +1475,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1323,6 +1489,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1343,10 +1510,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
-      <label class="md-nav__link" for="__nav_18">
-        第16章 声波感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          第16章 声波感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
@@ -1355,6 +1526,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1365,8 +1537,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1377,8 +1551,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1389,8 +1565,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1401,8 +1579,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1413,6 +1593,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1433,10 +1614,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
       
-      <label class="md-nav__link" for="__nav_19">
-        第17章 Wi-Fi感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          第17章 Wi-Fi感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
@@ -1445,6 +1630,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1455,8 +1641,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1467,8 +1655,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1479,8 +1669,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1491,6 +1683,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1511,10 +1704,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
       
-      <label class="md-nav__link" for="__nav_20">
-        第18章 蓝牙感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_20">
+          第18章 蓝牙感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
@@ -1523,6 +1720,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1533,8 +1731,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1545,8 +1745,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1557,8 +1759,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1569,6 +1773,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1604,10 +1809,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
       
-      <label class="md-nav__link" for="__nav_22">
-        第20章 UWB感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22">
+          第20章 UWB感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
@@ -1616,6 +1825,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1626,8 +1836,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1638,6 +1850,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1688,10 +1901,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
       
-      <label class="md-nav__link" for="__nav_25">
-        第23章 可见光感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_25">
+          第23章 可见光感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
@@ -1700,6 +1917,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1710,8 +1928,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1722,8 +1942,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1734,6 +1956,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1754,10 +1977,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
       
-      <label class="md-nav__link" for="__nav_26">
-        附录
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26">
+          附录
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="附录" data-md-level="1">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
@@ -1766,6 +1993,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1776,8 +2004,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1788,6 +2018,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1807,6 +2038,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -1853,8 +2085,9 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                <h1 id="_1">多径信道模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+
+
+<h1 id="_1">多径信道模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">多径效应<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>电磁波在传播过程中当通信环境比较复杂时，在接收端可能会收到多路来自不同路径的信号副本。通常来说，这些信号副本的传播路径可以大致分为视距路径（LOS, Line of Sight）和非视距路径（NLOS, None-Line-of-Sight）两类。如下图所示，由不同传播路径到达的信号副本具有不同的延迟和能量衰减。如果第一个到达的信号和最后一个到达的信号时间之差（多径时延扩展）非常小，相当于所有的信号都是在叠加相长（波峰和波峰叠加，波谷和波谷叠加），则这样的多径叠加对信号的解码影响不大。但是当时多径延扩展比较大时，信号的叠加就有可能是相消的（即波峰和和波谷叠加），这样就会造成信号的失真，使接收机无法解码信号。</p>
 <p><center>
@@ -1869,8 +2102,8 @@ padding: 2px;">图. 多径效应示意</div>
 <p>由多径效应带来的信号的衰落在时间尺度上是和信号的周期同一个数量级，在距离尺度上和信号波长为同一数量级，信号的波长尺度相对于人移动的距离来说是很小的，所以多径效应是快衰落，也叫小尺度衰落；与之对应的，阴影效应和路径损耗是慢衰落，也叫大尺度衰落。</p>
 <!-- 信道传输过程中，经常要处理的一个重要问题就是如何解决衰减和多径带来的问题，想象一下如果信道传输过程中没有衰减和多径的影响，接收端能够完全没有变化的接收到发送端的信息，那么解码过程应该就要方便很多。下面我们就来看在实际信道中怎么样来表示这样的衰减和多径效应，如何通过参数来唯一的表示一个信道。 -->
 
-<p>下面介绍多径效应的数学表达形式，假设要发送的基带信号为<span><span class="MathJax_Preview">u(t)</span><script type="math/tex">u(t)</script></span>，通过将发送信号与高频载波相乘，并取结果的实部，即为发送端最终发送的信号。乘载波的过程可以表示为：</p>
-<div>
+<p>下面介绍多径效应的数学表达形式，假设要发送的基带信号为<span class="arithmatex"><span class="MathJax_Preview">u(t)</span><script type="math/tex">u(t)</script></span>，通过将发送信号与高频载波相乘，并取结果的实部，即为发送端最终发送的信号。乘载波的过程可以表示为：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \begin{aligned}
 s(t) &amp;=\operatorname{\Re}\left\{u(t) \mathrm{e}^{\mathrm{j} 2 \pi f_{\mathrm{c}} t}\right\} \\
@@ -1887,7 +2120,7 @@ s(t) &=\operatorname{\Re}\left\{u(t) \mathrm{e}^{\mathrm{j} 2 \pi f_{\mathrm{c}}
 </script>
 </div>
 <p>该信号的多个副本经过不同传播路径后在接收端叠加，叠加后信号可以表示为：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 r(t)=\operatorname{Re}\left\{\sum_{n=0}^{N(t)} \alpha_{n}(t) u\left(t-\tau_{n}(t)\right) \mathrm{e}^{\mathrm{j}\left(2 \pi f_{c}\left(t-\tau_{n}(t)\right)+\phi_{D_{n}}(t)\right)}\right\}
 </div>
@@ -1895,8 +2128,8 @@ r(t)=\operatorname{Re}\left\{\sum_{n=0}^{N(t)} \alpha_{n}(t) u\left(t-\tau_{n}(t
 r(t)=\operatorname{Re}\left\{\sum_{n=0}^{N(t)} \alpha_{n}(t) u\left(t-\tau_{n}(t)\right) \mathrm{e}^{\mathrm{j}\left(2 \pi f_{c}\left(t-\tau_{n}(t)\right)+\phi_{D_{n}}(t)\right)}\right\}
 </script>
 </div>
-<p>从上面这个表示可以看出来，<span><span class="MathJax_Preview">a_n(t)</span><script type="math/tex">a_n(t)</script></span>是不同路径信号幅度时变衰减，由路径损耗和阴影衰落确定；<span><span class="MathJax_Preview">\tau_n(t)</span><script type="math/tex">\tau_n(t)</script></span>是不同路径的信号路径传输时延<span><span class="MathJax_Preview">\tau_n(t)=r_n(t)/c</span><script type="math/tex">\tau_n(t)=r_n(t)/c</script></span>，<span><span class="MathJax_Preview">\phi_{D_n}(t)</span><script type="math/tex">\phi_{D_n}(t)</script></span>是不同路径的多谱勒相移。从上式可以看出，相比于原始信号，第<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>路多径信号的相位变化量为</p>
-<div>
+<p>从上面这个表示可以看出来，<span class="arithmatex"><span class="MathJax_Preview">a_n(t)</span><script type="math/tex">a_n(t)</script></span>是不同路径信号幅度时变衰减，由路径损耗和阴影衰落确定；<span class="arithmatex"><span class="MathJax_Preview">\tau_n(t)</span><script type="math/tex">\tau_n(t)</script></span>是不同路径的信号路径传输时延<span class="arithmatex"><span class="MathJax_Preview">\tau_n(t)=r_n(t)/c</span><script type="math/tex">\tau_n(t)=r_n(t)/c</script></span>，<span class="arithmatex"><span class="MathJax_Preview">\phi_{D_n}(t)</span><script type="math/tex">\phi_{D_n}(t)</script></span>是不同路径的多谱勒相移。从上式可以看出，相比于原始信号，第<span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>路多径信号的相位变化量为</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \phi_n(t)=2 \pi f_{c} \tau_{n}(t)-\phi_{D_{n}}(t)
 </div>
@@ -1904,8 +2137,8 @@ r(t)=\operatorname{Re}\left\{\sum_{n=0}^{N(t)} \alpha_{n}(t) u\left(t-\tau_{n}(t
 \phi_n(t)=2 \pi f_{c} \tau_{n}(t)-\phi_{D_{n}}(t)
 </script>
 </div>
-<p>将<span><span class="MathJax_Preview">\phi_n(t)</span><script type="math/tex">\phi_n(t)</script></span>代入<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>的表达式，有</p>
-<div>
+<p>将<span class="arithmatex"><span class="MathJax_Preview">\phi_n(t)</span><script type="math/tex">\phi_n(t)</script></span>代入<span class="arithmatex"><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>的表达式，有</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 r(t)=\operatorname{Re}\left\{\left[\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-\mathrm{j} \phi_{n}(t)} u\left(t-\tau_{n}(t)\right)\right] \mathrm{e}^{\mathrm{j} 2 \pi f_{c} t}\right\}
 </div>
@@ -1914,7 +2147,7 @@ r(t)=\operatorname{Re}\left\{\left[\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-
 </script>
 </div>
 <p>上式可以转换成输入信号和信道响应相互卷积的形式：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \begin{aligned}
 r(t) &amp;=\operatorname{Re}\left\{\left[\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-j \phi_{n}(t)} u\left(t-\tau_{n}(t)\right)\right] \mathrm{e}^{\mathrm{j} 2 \pi f_{\mathrm{c}} t}\right\}\\
@@ -1932,11 +2165,11 @@ r(t) &=\operatorname{Re}\left\{\left[\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^
 \end{aligned}
 </script>
 </div>
-<p>直观地来理解一下上面的卷积形式的接收信号：对于任意的发射时刻<span><span class="MathJax_Preview">(t-\tau)</span><script type="math/tex">(t-\tau)</script></span>都有可能对<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>时刻的接收信号产生贡献。但是究竟是哪几个时刻发射信号会产生贡献和产生什么样的贡献呢？<span><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>回答了这个问题，通过与<span><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>卷积，确定了发射时刻和接受时刻的时间差等于路径传输时延的信号，并赋予了幅度衰减和相位变化。<span><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>表示<span><span class="MathJax_Preview">t-\tau</span><script type="math/tex">t-\tau</script></span>时刻发出的信号，在时刻<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>收到，此时信号对应的信道系数。<span><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>体现了时变信道的两个特点：
-1. 通信时间不同（<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>不同），对应信道状态不同
-2. 传播延时不同（<span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span>不同），对应信道状态不同</p>
-<p>在最简化的情况下，信道响应<span><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>不随时间发生变化，这样一来信道响应就只与多径时延有关，即</p>
-<div>
+<p>直观地来理解一下上面的卷积形式的接收信号：对于任意的发射时刻<span class="arithmatex"><span class="MathJax_Preview">(t-\tau)</span><script type="math/tex">(t-\tau)</script></span>都有可能对<span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>时刻的接收信号产生贡献。但是究竟是哪几个时刻发射信号会产生贡献和产生什么样的贡献呢？<span class="arithmatex"><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>回答了这个问题，通过与<span class="arithmatex"><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>卷积，确定了发射时刻和接受时刻的时间差等于路径传输时延的信号，并赋予了幅度衰减和相位变化。<span class="arithmatex"><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>表示<span class="arithmatex"><span class="MathJax_Preview">t-\tau</span><script type="math/tex">t-\tau</script></span>时刻发出的信号，在时刻<span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>收到，此时信号对应的信道系数。<span class="arithmatex"><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>体现了时变信道的两个特点：
+1. 通信时间不同（<span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>不同），对应信道状态不同
+2. 传播延时不同（<span class="arithmatex"><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span>不同），对应信道状态不同</p>
+<p>在最简化的情况下，信道响应<span class="arithmatex"><span class="MathJax_Preview">c(\tau,t)</span><script type="math/tex">c(\tau,t)</script></span>不随时间发生变化，这样一来信道响应就只与多径时延有关，即</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 c(\tau)=\sum_{n=0}^{N} \alpha_{n} \mathrm{e}^{-\mathrm{j} \phi_{n}} \delta\left(\tau-\tau_{n}\right)
 </div>
@@ -1955,8 +2188,8 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 窄带衰落与宽带衰落示意</div>
 <p></center></p>
-<p><strong>窄带衰落</strong>：对于时延扩展远远小于发射信号带宽倒数（<span><span class="MathJax_Preview">T_m</span><script type="math/tex">T_m</script></span>远小于<span><span class="MathJax_Preview">\frac{1}{B}</span><script type="math/tex">\frac{1}{B}</script></span>）的信道引起的衰落叫做窄带衰落。简单理解，由于基带的带宽和码元的周期有着千丝万缕的关系（通常码元周期是基带带宽倒数的整数倍），可以认为窄带衰落发生时，信号的时延扩展远远小于一个码元周期。在这种情况下，从不同路径到达的信号可以认为只有相位和振幅的差异，而调制内容包括频率完全相同，即<span><span class="MathJax_Preview">u(t-\tau_i)\approx u(t)</span><script type="math/tex">u(t-\tau_i)\approx u(t)</script></span>。对于窄带衰落，接收信号可以表示为：</p>
-<div>
+<p><strong>窄带衰落</strong>：对于时延扩展远远小于发射信号带宽倒数（<span class="arithmatex"><span class="MathJax_Preview">T_m</span><script type="math/tex">T_m</script></span>远小于<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{B}</span><script type="math/tex">\frac{1}{B}</script></span>）的信道引起的衰落叫做窄带衰落。简单理解，由于基带的带宽和码元的周期有着千丝万缕的关系（通常码元周期是基带带宽倒数的整数倍），可以认为窄带衰落发生时，信号的时延扩展远远小于一个码元周期。在这种情况下，从不同路径到达的信号可以认为只有相位和振幅的差异，而调制内容包括频率完全相同，即<span class="arithmatex"><span class="MathJax_Preview">u(t-\tau_i)\approx u(t)</span><script type="math/tex">u(t-\tau_i)\approx u(t)</script></span>。对于窄带衰落，接收信号可以表示为：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 r(t)=\operatorname{Re}\left\{u(t) \mathrm{e}^{\mathrm{j} 2 \pi f_{c} t}\left(\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-j \phi_{n}(t)}\right)\right\}
 </div>
@@ -1964,7 +2197,7 @@ r(t)=\operatorname{Re}\left\{u(t) \mathrm{e}^{\mathrm{j} 2 \pi f_{c} t}\left(\su
 r(t)=\operatorname{Re}\left\{u(t) \mathrm{e}^{\mathrm{j} 2 \pi f_{c} t}\left(\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-j \phi_{n}(t)}\right)\right\}
 </script>
 </div>
-<p>上式中，<span><span class="MathJax_Preview">\alpha_n</span><script type="math/tex">\alpha_n</script></span>和路径损耗和阴影效应有关，是一个随机变量，相位<span><span class="MathJax_Preview">\phi_n</span><script type="math/tex">\phi_n</script></span>受多谱勒、时延、初相影响，也可以看作一个随机量。假设多径数量<span><span class="MathJax_Preview">N(t)</span><script type="math/tex">N(t)</script></span>足够大，则根据大数定理，系数<span><span class="MathJax_Preview">\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-j \phi_{n}(t)}</span><script type="math/tex">\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-j \phi_{n}(t)}</script></span>可以看作是一个随机过程（前提是直视路径不存在，否则<span><span class="MathJax_Preview">\alpha_n</span><script type="math/tex">\alpha_n</script></span>随机的假设不成立）。如下图所示，窄带衰落的最终结果，为多径叠加后在时域上服从零均值高斯分布，即与噪声效果类似，当然这里的前提是多径数量足够多或多径系数<span><span class="MathJax_Preview">\alpha_n</span><script type="math/tex">\alpha_n</script></span>服从瑞利分布。</p>
+<p>上式中，<span class="arithmatex"><span class="MathJax_Preview">\alpha_n</span><script type="math/tex">\alpha_n</script></span>和路径损耗和阴影效应有关，是一个随机变量，相位<span class="arithmatex"><span class="MathJax_Preview">\phi_n</span><script type="math/tex">\phi_n</script></span>受多谱勒、时延、初相影响，也可以看作一个随机量。假设多径数量<span class="arithmatex"><span class="MathJax_Preview">N(t)</span><script type="math/tex">N(t)</script></span>足够大，则根据大数定理，系数<span class="arithmatex"><span class="MathJax_Preview">\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-j \phi_{n}(t)}</span><script type="math/tex">\sum_{n=0}^{N(t)} \alpha_{n}(t) \mathrm{e}^{-j \phi_{n}(t)}</script></span>可以看作是一个随机过程（前提是直视路径不存在，否则<span class="arithmatex"><span class="MathJax_Preview">\alpha_n</span><script type="math/tex">\alpha_n</script></span>随机的假设不成立）。如下图所示，窄带衰落的最终结果，为多径叠加后在时域上服从零均值高斯分布，即与噪声效果类似，当然这里的前提是多径数量足够多或多径系数<span class="arithmatex"><span class="MathJax_Preview">\alpha_n</span><script type="math/tex">\alpha_n</script></span>服从瑞利分布。</p>
 <p><center>
 <img src="./fig/narrow.png" width=600px>
 </center></p>
@@ -2011,10 +2244,10 @@ $$
 
 <blockquote>
 <p><strong>思考：</strong>
-single tone是最常见的窄带信号，假设有一单频信号<span><span class="MathJax_Preview">s(t)=\Re\{e^{j(2\pi f_c t+\phi_0)}\}=cos(2\pi f_c t+\phi_0)</span><script type="math/tex">s(t)=\Re\{e^{j(2\pi f_c t+\phi_0)}\}=cos(2\pi f_c t+\phi_0)</script></span>将在信道中传播，考虑以下问题：信号经信道传播到达接收端，不考虑LoS，其余多径分量的叠加将产生怎样的结果？</p>
+single tone是最常见的窄带信号，假设有一单频信号<span class="arithmatex"><span class="MathJax_Preview">s(t)=\Re\{e^{j(2\pi f_c t+\phi_0)}\}=cos(2\pi f_c t+\phi_0)</span><script type="math/tex">s(t)=\Re\{e^{j(2\pi f_c t+\phi_0)}\}=cos(2\pi f_c t+\phi_0)</script></span>将在信道中传播，考虑以下问题：信号经信道传播到达接收端，不考虑LoS，其余多径分量的叠加将产生怎样的结果？</p>
 </blockquote>
-<p>接收端多径叠加信号可表示为：<span><span class="MathJax_Preview">r(t)=\Re\{[\sum_{n=0}^{N}\alpha_n(t)e^{-j\phi_n(t)}]e^{j2\pi f_c t}\}</span><script type="math/tex">r(t)=\Re\{[\sum_{n=0}^{N}\alpha_n(t)e^{-j\phi_n(t)}]e^{j2\pi f_c t}\}</script></span>，由欧拉公式<span><span class="MathJax_Preview">e^{j\phi}=\cos(\phi)+j\sin(\phi)</span><script type="math/tex">e^{j\phi}=\cos(\phi)+j\sin(\phi)</script></span>得</p>
-<div>
+<p>接收端多径叠加信号可表示为：<span class="arithmatex"><span class="MathJax_Preview">r(t)=\Re\{[\sum_{n=0}^{N}\alpha_n(t)e^{-j\phi_n(t)}]e^{j2\pi f_c t}\}</span><script type="math/tex">r(t)=\Re\{[\sum_{n=0}^{N}\alpha_n(t)e^{-j\phi_n(t)}]e^{j2\pi f_c t}\}</script></span>，由欧拉公式<span class="arithmatex"><span class="MathJax_Preview">e^{j\phi}=\cos(\phi)+j\sin(\phi)</span><script type="math/tex">e^{j\phi}=\cos(\phi)+j\sin(\phi)</script></span>得</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \begin{aligned}
 r(t)&amp;=\Re\big\{\big[\sum_{n=0}^{N}\alpha_n(t)[\cos(\phi_n(t))-j\sin(\phi_n(t))]\big]\times\big[\cos(2\pi f_c t)+j\sin(2\pi f_c t)\big]\big\}\\
@@ -2028,20 +2261,20 @@ r(t)&=\Re\big\{\big[\sum_{n=0}^{N}\alpha_n(t)[\cos(\phi_n(t))-j\sin(\phi_n(t))]\
 \end{aligned}
 </script>
 </div>
-<p>这里的<span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span>与<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>有关，是考虑了多普勒效应。上式中的<span><span class="MathJax_Preview">r_I(t)</span><script type="math/tex">r_I(t)</script></span>和<span><span class="MathJax_Preview">r_Q(t)</span><script type="math/tex">r_Q(t)</script></span>分别表示多径叠加系数（指不同多径相位和振幅的叠加）的In Phase和Quadrature Phase成分：</p>
-<div>
+<p>这里的<span class="arithmatex"><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span>与<span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>有关，是考虑了多普勒效应。上式中的<span class="arithmatex"><span class="MathJax_Preview">r_I(t)</span><script type="math/tex">r_I(t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">r_Q(t)</span><script type="math/tex">r_Q(t)</script></span>分别表示多径叠加系数（指不同多径相位和振幅的叠加）的In Phase和Quadrature Phase成分：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">r_I(t)=\sum_{n=1}^{N(t)}\alpha_n\times \cos(\phi_n(t))</div>
 <script type="math/tex; mode=display">r_I(t)=\sum_{n=1}^{N(t)}\alpha_n\times \cos(\phi_n(t))</script>
 </div>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">r_Q(t)=\sum_{n=1}^{N(t)}\alpha_n\times \sin(\phi_n(t))</div>
 <script type="math/tex; mode=display">r_Q(t)=\sum_{n=1}^{N(t)}\alpha_n\times \sin(\phi_n(t))</script>
 </div>
-<p>当N趋向于无穷大，根据中心极限定理，<span><span class="MathJax_Preview">r_I(t)</span><script type="math/tex">r_I(t)</script></span>和<span><span class="MathJax_Preview">r_Q(t)</span><script type="math/tex">r_Q(t)</script></span>分别服从零均值高斯分布（实际上N较小时，只要<span><span class="MathJax_Preview">\alpha(t)</span><script type="math/tex">\alpha(t)</script></span>服从瑞利分布，上述结论仍然成立）。也就是说，多径叠加的结果，在时域上服从零均值高斯分布，即与噪声效果类似，当然这里的前提是多径数量足够多或多径系数<span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>服从瑞利分布。</p>
-<p><strong>宽带衰落</strong>：当<span><span class="MathJax_Preview">T_m</span><script type="math/tex">T_m</script></span>远小于<span><span class="MathJax_Preview">\frac{1}{B}</span><script type="math/tex">\frac{1}{B}</script></span>这个条件不成立的时候，发射信号会在接收端产生很宽的时延扩展，这样会导致前一时刻的码元的时延扩展侵占后面码元的时间，从而对其他时刻的码元产生干扰，即码间串扰。消除码间串扰的办法有很多，例如OFDM中的循环前缀，感兴趣的读者可以自行了解。</p>
+<p>当N趋向于无穷大，根据中心极限定理，<span class="arithmatex"><span class="MathJax_Preview">r_I(t)</span><script type="math/tex">r_I(t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">r_Q(t)</span><script type="math/tex">r_Q(t)</script></span>分别服从零均值高斯分布（实际上N较小时，只要<span class="arithmatex"><span class="MathJax_Preview">\alpha(t)</span><script type="math/tex">\alpha(t)</script></span>服从瑞利分布，上述结论仍然成立）。也就是说，多径叠加的结果，在时域上服从零均值高斯分布，即与噪声效果类似，当然这里的前提是多径数量足够多或多径系数<span class="arithmatex"><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>服从瑞利分布。</p>
+<p><strong>宽带衰落</strong>：当<span class="arithmatex"><span class="MathJax_Preview">T_m</span><script type="math/tex">T_m</script></span>远小于<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{B}</span><script type="math/tex">\frac{1}{B}</script></span>这个条件不成立的时候，发射信号会在接收端产生很宽的时延扩展，这样会导致前一时刻的码元的时延扩展侵占后面码元的时间，从而对其他时刻的码元产生干扰，即码间串扰。消除码间串扰的办法有很多，例如OFDM中的循环前缀，感兴趣的读者可以自行了解。</p>
 <h2 id="_4">多径测量<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>本节介绍如何测量多径信息，即测量多径信道中不同信号副本的到达时间和能量衰减。由于多径效应的存在，同一信号的不同副本在以不同延迟和衰减在接收端混叠。为了准确地提取混叠信号中各信号副本的信息，直观上看，我们可以令发送端传输一特定格式的信号<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>，然后在接收端使用<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与收到的多径混叠信号<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>计算相关性。通过设计<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的格式，可以使<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>只在与多径信号副本完全对齐时产生相关性波峰（调频线性波即为满足此要求的一种常用信号）。最后，通过提取<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>的相关性波峰，即可分离并测量各多径信号分量。</p>
-<p>上述多径测量方法奏效的前提，是将收到信号<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>与原始信号<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>计算相关性后，可以准确地分离各相关性波峰。理想情况下，如果对<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的信号长度不做限制，则当<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中信号副本完全对齐时可产生一无限窄的相关性波峰，<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中任意两个信号副本的相关性波峰互不影响。但实际上，由于<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的持续时间并非无限长，通过相关性计算后得到的是具有一定宽度的波峰，由此<span><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中时间接近的信号副本产生的相关性波峰可能互相重叠，甚至无法区分。</p>
+<p>本节介绍如何测量多径信息，即测量多径信道中不同信号副本的到达时间和能量衰减。由于多径效应的存在，同一信号的不同副本在以不同延迟和衰减在接收端混叠。为了准确地提取混叠信号中各信号副本的信息，直观上看，我们可以令发送端传输一特定格式的信号<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>，然后在接收端使用<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与收到的多径混叠信号<span class="arithmatex"><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>计算相关性。通过设计<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的格式，可以使<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>只在与多径信号副本完全对齐时产生相关性波峰（调频线性波即为满足此要求的一种常用信号）。最后，通过提取<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与<span class="arithmatex"><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>的相关性波峰，即可分离并测量各多径信号分量。</p>
+<p>上述多径测量方法奏效的前提，是将收到信号<span class="arithmatex"><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>与原始信号<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>计算相关性后，可以准确地分离各相关性波峰。理想情况下，如果对<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的信号长度不做限制，则当<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>与<span class="arithmatex"><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中信号副本完全对齐时可产生一无限窄的相关性波峰，<span class="arithmatex"><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中任意两个信号副本的相关性波峰互不影响。但实际上，由于<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的持续时间并非无限长，通过相关性计算后得到的是具有一定宽度的波峰，由此<span class="arithmatex"><span class="MathJax_Preview">r(t)</span><script type="math/tex">r(t)</script></span>中时间接近的信号副本产生的相关性波峰可能互相重叠，甚至无法区分。</p>
 <p>为了解决这一问题，SIGCOMM’16的工作R2F2提出通过测量接收信号中不同多径副本的到达角来区分不同多径信号。如下图所示，信号经过不同传播路径到达接收端通常产生不同的入射角。</p>
 <p><center>
 <img src="./fig/R2-F2.png" width=200px>
@@ -2089,45 +2322,50 @@ padding: 2px;">图. Splicer通过IFFT将频域响应特征变换为多径能量�
 </center> -->
 
 <!-- ref：Precious Power Delay Profiling, Chime, .etc. -->
-                
-              
-              
-                
+
+
 
 
               
             </article>
+            
+
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
               <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
               <script>
-              var gitalk = new Gitalk({
-                  clientID: 'ab5371b4172e50e09adb',
-                  clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
-                  repo: 'Comments',
-                  owner: 'iot-book',
-                  admin: ['iot-book', 'tongsh'],
-                  id: location.pathname,      // Ensure uniqueness and length less than 50
-                  distractionFreeMode: false  // Facebook-like distraction free mode
-                })
-
-                gitalk.render('gitalk-container')
+                var gitalk = new Gitalk({
+                    clientID: 'ab5371b4172e50e09adb',
+                    clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
+                    repo: 'Comments',
+                    owner: 'iot-book',
+                    admin: ['iot-book', 'tongsh'],
+                    // id: 'location.pathname.substring(1,30)',
+                    id: location.pathname,      // Ensure uniqueness and length less than 50
+                    distractionFreeMode: false,  // Facebook-like distraction free mode
+                    labels: ['Gitalk'],
+                    title: 'IoTBook-Comment'
+                  })
+                  gitalk.render('gitalk-container')
               </script> 
+            </div>
+            <!-- End 评论 -->
+
           </div>
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
         <a href="../S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 4.2 路径损耗与阴影衰落" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -2151,7 +2389,7 @@ padding: 2px;">图. Splicer通过IFFT将频域响应特征变换为多径能量�
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -2159,19 +2397,20 @@ padding: 2px;">图. Splicer通过IFFT将频域响应特征变换为多径能量�
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        <!-- Made with -->
-        <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
-          &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
-        </a>
-        <br>
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+     <!-- Made with -->
+     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+      &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
+    </a>
+    <br>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -2181,10 +2420,11 @@ padding: 2px;">图. Splicer通过IFFT将频域响应特征变换为多径能量�
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

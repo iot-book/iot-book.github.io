@@ -9,44 +9,44 @@
         <meta name="description" content="介绍物联网基础概念">
       
       
-      
         <meta name="author" content="WiSys Lab">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
     
     
       
-        <title>9.2 LoRa 通信技术 - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>9.2 LoRa 通信技术 - 物联网前沿实践</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
           <meta name="theme-color" content="#546d78">
         
       
+      
     
     
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,7 +61,6 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,15 +77,18 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
   <img src="../../images/nicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -108,22 +110,21 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -143,11 +144,14 @@
     
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -161,7 +165,7 @@
                     
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="物联网前沿实践" class="md-nav__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -231,10 +235,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        第2章 信号处理基础
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          第2章 信号处理基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -243,6 +251,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -253,8 +262,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -265,8 +276,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -277,8 +290,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -289,8 +304,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -301,6 +318,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -321,10 +339,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
-      <label class="md-nav__link" for="__nav_5">
-        第3章 傅里叶分析
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          第3章 傅里叶分析
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -333,6 +355,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -343,8 +366,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -355,8 +380,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -367,8 +394,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -379,8 +408,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -391,6 +422,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -411,10 +443,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_6">
-        第4章 无线信道
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          第4章 无线信道
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
@@ -423,6 +459,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -433,8 +470,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -445,8 +484,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -457,8 +498,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -469,6 +512,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -489,10 +533,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_7">
-        第5章 信号滤波
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          第5章 信号滤波
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
@@ -501,6 +549,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -511,8 +560,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -523,8 +574,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -535,8 +588,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -547,8 +602,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -559,8 +616,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -571,6 +630,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -591,10 +651,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
-      <label class="md-nav__link" for="__nav_8">
-        第6章 数据调制和解调
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          第6章 数据调制和解调
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
@@ -603,6 +667,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -613,8 +678,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -625,8 +692,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -637,8 +706,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -649,8 +720,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -661,8 +734,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -673,8 +748,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -685,6 +762,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -705,10 +783,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
-      <label class="md-nav__link" for="__nav_9">
-        第7章 短距离无线通信技术
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          第7章 短距离无线通信技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
@@ -717,6 +799,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -727,8 +810,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -739,8 +824,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -751,8 +838,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -763,6 +852,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -783,10 +873,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
       
-      <label class="md-nav__link" for="__nav_10">
-        第8章 Backscatter通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          第8章 Backscatter通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
@@ -795,6 +889,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -805,8 +900,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -817,8 +914,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -829,6 +928,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -851,10 +951,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
       
-      <label class="md-nav__link" for="__nav_11">
-        第9章 LoRa
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          第9章 LoRa
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
@@ -863,6 +967,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -873,8 +978,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -898,6 +1005,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -953,8 +1061,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -965,8 +1075,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -977,8 +1089,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -989,6 +1103,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1009,10 +1124,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
       
-      <label class="md-nav__link" for="__nav_12">
-        第10章 可见光通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          第10章 可见光通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
@@ -1021,6 +1140,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1031,6 +1151,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1051,10 +1172,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
       
-      <label class="md-nav__link" for="__nav_13">
-        第11章 毫米波通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          第11章 毫米波通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
@@ -1063,6 +1188,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1073,6 +1199,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1093,10 +1220,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
-      <label class="md-nav__link" for="__nav_14">
-        第12章 无线测距
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          第12章 无线测距
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
@@ -1105,6 +1236,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1115,8 +1247,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1127,6 +1261,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1147,10 +1282,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
-      <label class="md-nav__link" for="__nav_15">
-        第13章 无线定位
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          第13章 无线定位
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
@@ -1159,6 +1298,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1169,8 +1309,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1181,8 +1323,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1193,8 +1337,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1205,6 +1351,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1225,10 +1372,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
       
-      <label class="md-nav__link" for="__nav_16">
-        第14章 无线追踪
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16">
+          第14章 无线追踪
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
@@ -1237,6 +1388,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1247,8 +1399,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1259,8 +1413,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1271,6 +1427,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1291,10 +1448,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
       
-      <label class="md-nav__link" for="__nav_17">
-        第15章 传感器感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          第15章 传感器感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
@@ -1303,6 +1464,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1313,8 +1475,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1325,8 +1489,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1337,6 +1503,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1357,10 +1524,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
-      <label class="md-nav__link" for="__nav_18">
-        第16章 声波感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          第16章 声波感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
@@ -1369,6 +1540,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1379,8 +1551,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1391,8 +1565,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1403,8 +1579,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1415,8 +1593,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1427,6 +1607,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1447,10 +1628,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
       
-      <label class="md-nav__link" for="__nav_19">
-        第17章 Wi-Fi感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          第17章 Wi-Fi感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
@@ -1459,6 +1644,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1469,8 +1655,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1481,8 +1669,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1493,8 +1683,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1505,6 +1697,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1525,10 +1718,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
       
-      <label class="md-nav__link" for="__nav_20">
-        第18章 蓝牙感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_20">
+          第18章 蓝牙感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
@@ -1537,6 +1734,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1547,8 +1745,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1559,8 +1759,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1571,8 +1773,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1583,6 +1787,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1618,10 +1823,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
       
-      <label class="md-nav__link" for="__nav_22">
-        第20章 UWB感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22">
+          第20章 UWB感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
@@ -1630,6 +1839,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1640,8 +1850,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1652,6 +1864,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1702,10 +1915,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
       
-      <label class="md-nav__link" for="__nav_25">
-        第23章 可见光感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_25">
+          第23章 可见光感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
@@ -1714,6 +1931,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1724,8 +1942,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1736,8 +1956,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1748,6 +1970,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1768,10 +1991,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
       
-      <label class="md-nav__link" for="__nav_26">
-        附录
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26">
+          附录
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="附录" data-md-level="1">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
@@ -1780,6 +2007,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1790,8 +2018,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1802,6 +2032,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1821,6 +2052,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -1881,8 +2113,9 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                <h1 id="lora">LoRa 通信<a class="headerlink" href="#lora" title="Permanent link">&para;</a></h1>
+
+
+<h1 id="lora">LoRa 通信<a class="headerlink" href="#lora" title="Permanent link">&para;</a></h1>
 <p>在这一部分，我们来介绍LoRa通信的基本原理，包括调制、解调、编码和解码，着重于物理层协议的分析，最后我们以声波作为传输方式展示如何进行LoRa通信。关于上层协议（如LoRaWAN），有很多其他的资料和开源实现供读者学习[1][2]。下面我们所讨论的LoRa，不加特殊说明的话，指LoRa物理层。</p>
 <p>需要说明的是，LoRa物理层是一个商用的私有协议，并没有完整公开的协议说明，因而已有的一些LoRa实现[3][4][5]都是依照Semtech公司的相关专利和文件猜出来的。很多对LoRa的说法只是基于大家的观察和理解，同时很多LoRa代码实现的性能是很差的，包括不少研究论文中使用的LoRa代码，实际性能也存在着很大的问题。为此，我们深入地进行了可验证的LoRa逆向工程并开源了两个完整的代码库。我们的实现可以达到商业LoRa芯片的性能和编解码能力（千米级通信，100%收发包）。</p>
 <p>MATLAB版本用于原型验证和离线操作，基于GNURadio平台的C++版本则是一个实时的高性能LoRa实现。希望这两个代码库可以更好地帮助大家学习和研究LoRa。未来我们还将开源FPGA上LoRa编解码的硬件实现。</p>
@@ -1935,7 +2168,7 @@ color: #999;
 padding: 2px;">图. LoRa循环频移编码。当SF=2时，分别编码了00，01，10，11的四种符号。</div>
 <p></center></p>
 <p>LoRa规定了一个参数SF（Spreading Factor，扩频因子），其定义为</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview"> 
 2^{SF} = B \cdot T.
 </div>
@@ -1944,7 +2177,7 @@ padding: 2px;">图. LoRa循环频移编码。当SF=2时，分别编码了00，01
 </script>
 </div>
 <p>可以看出，给定带宽B，SF越大每一个chirp长度T越长。
-SF用于调节传输速率和接收灵敏度，越大的SF速率越小但支持更远的通讯距离。一般来说每一个chirp可能的起始频率数目是 <span><span class="MathJax_Preview">2^{SF}</span><script type="math/tex">2^{SF}</script></span>。</p>
+SF用于调节传输速率和接收灵敏度，越大的SF速率越小但支持更远的通讯距离。一般来说每一个chirp可能的起始频率数目是 <span class="arithmatex"><span class="MathJax_Preview">2^{SF}</span><script type="math/tex">2^{SF}</script></span>。</p>
 <p>当我们使用软件无线电设备（Software-defined radio, SDR）接收一段LoRa设备发出的信号，并用<a href="https://github.com/miek/inspectrum">inspectrum</a>这个软件（其他可画时频图的软件或代码也可以）把信号的时频图画出来，那么它大概会是如下样子：</p>
 <p><center>
 <img src="./fig/pkt.png" width="600px">
@@ -1957,7 +2190,7 @@ padding: 2px;">图. LoRa数据包时频图</div>
 <p></center></p>
 <p>一个完整的LoRa数据包结构包含三个部分：前导码（Preamble）、SFD（Start Frame Delimiter）和数据部分（Data）。 前导码包含6~65535个basic upchirp和两个标识网络号的其他chirp符号。接着是2.25个basic downchirp，作为SFD标识数据段的开始。后面的数据段则包含着若干编码了数据的data chirp。</p>
 <p>LoRa解调过程，实质就是求出chirp符号的起始频率，其做法通常是这样的：首先将收到的基带upchirp信号与downchirp点乘，化为单频信号，这一操作叫做dechirp（解扩频）。Dechirp能够将chirp信号能量集中到单一频率，是LoRa的抗噪及传输远距离的原因之一。</p>
-<p>Dechirp之后，对得到的信号进一步做FFT(快速傅里叶变换)，即可在频域获得一个峰值，这个峰值位置对应的频率即是起始频率，我们因此得到对应的<span><span class="MathJax_Preview">SF</span><script type="math/tex">SF</script></span>个比特。对于非basic upchirp而言，如果采样率高于带宽的话，会得到两个峰，我们可以将这两个峰进行叠加来增强峰的高度，进而求出对应的位置。下面两图分别对应basic upchirp和非basic upchirp的解调过程。</p>
+<p>Dechirp之后，对得到的信号进一步做FFT(快速傅里叶变换)，即可在频域获得一个峰值，这个峰值位置对应的频率即是起始频率，我们因此得到对应的<span class="arithmatex"><span class="MathJax_Preview">SF</span><script type="math/tex">SF</script></span>个比特。对于非basic upchirp而言，如果采样率高于带宽的话，会得到两个峰，我们可以将这两个峰进行叠加来增强峰的高度，进而求出对应的位置。下面两图分别对应basic upchirp和非basic upchirp的解调过程。</p>
 <p><center>
 <img src="./fig/decode_0.png" width="400px">
 </center>
@@ -1977,8 +2210,8 @@ color: #999;
 padding: 2px;">图. 解调非basic upchirp</div>
 <p></center></p>
 <p>我们再以数学式子的形式将上面的过程更细致地梳理一遍。</p>
-<p>upchirp从最低频率开始，随时间增加逐渐上升至最高频率。而downchirp则与之相反，从最高频率逐渐下降至最低频率。最高频率和最低频率之间的差值为LoRa的带宽<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>。设basic upchirp的最低频率为<span><span class="MathJax_Preview">f_0=-\frac{B}{2}</span><script type="math/tex">f_0=-\frac{B}{2}</script></span>，最高频率为<span><span class="MathJax_Preview">f_1=\frac{B}{2}</span><script type="math/tex">f_1=\frac{B}{2}</script></span>，chirp长度为<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>。因此其频率可以表示为<span><span class="MathJax_Preview">f(t)=f_0+kt</span><script type="math/tex">f(t)=f_0+kt</script></span>，其中<span><span class="MathJax_Preview">k=\frac{BW}{T}</span><script type="math/tex">k=\frac{BW}{T}</script></span>表示扫频速度。线性变化的频率对时间做积分可以得到二次形式的相位<span><span class="MathJax_Preview">\phi(t) = 2\pi (f_0 t + \frac{1}{2}kt^2)</span><script type="math/tex">\phi(t) = 2\pi (f_0 t + \frac{1}{2}kt^2)</script></span>。由此，basic upchirp可以表示为：</p>
-<div>
+<p>upchirp从最低频率开始，随时间增加逐渐上升至最高频率。而downchirp则与之相反，从最高频率逐渐下降至最低频率。最高频率和最低频率之间的差值为LoRa的带宽<span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>。设basic upchirp的最低频率为<span class="arithmatex"><span class="MathJax_Preview">f_0=-\frac{B}{2}</span><script type="math/tex">f_0=-\frac{B}{2}</script></span>，最高频率为<span class="arithmatex"><span class="MathJax_Preview">f_1=\frac{B}{2}</span><script type="math/tex">f_1=\frac{B}{2}</script></span>，chirp长度为<span class="arithmatex"><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>。因此其频率可以表示为<span class="arithmatex"><span class="MathJax_Preview">f(t)=f_0+kt</span><script type="math/tex">f(t)=f_0+kt</script></span>，其中<span class="arithmatex"><span class="MathJax_Preview">k=\frac{BW}{T}</span><script type="math/tex">k=\frac{BW}{T}</script></span>表示扫频速度。线性变化的频率对时间做积分可以得到二次形式的相位<span class="arithmatex"><span class="MathJax_Preview">\phi(t) = 2\pi (f_0 t + \frac{1}{2}kt^2)</span><script type="math/tex">\phi(t) = 2\pi (f_0 t + \frac{1}{2}kt^2)</script></span>。由此，basic upchirp可以表示为：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 C(t)=e^{j2\pi(f_0+\frac{1}{2}kt) t}
 \tag{1}
@@ -1991,9 +2224,9 @@ C(t)=e^{j2\pi(f_0+\frac{1}{2}kt) t}
 <blockquote>
 <p>思考：这里频率为什么会有负的，意义是什么？</p>
 </blockquote>
-<p>当嵌入数据时，LoRa首先令basic upchirp乘上一个固定频率的偏移分量，偏移后的信号可以表示为<span><span class="MathJax_Preview">C(t)e^{j2\pi \Delta ft}</span><script type="math/tex">C(t)e^{j2\pi \Delta ft}</script></span>。随后，LoRa将所有频率高于<span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span>的信号段循环频移至<span><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span>频率处，频移后的信号如下图(e)所示。如果定义了 <span><span class="MathJax_Preview">2^{SF}</span><script type="math/tex">2^{SF}</script></span> 种不同的偏移频率，最多可以表示 <span><span class="MathJax_Preview">SF</span><script type="math/tex">SF</script></span> 比特的数据。</p>
+<p>当嵌入数据时，LoRa首先令basic upchirp乘上一个固定频率的偏移分量，偏移后的信号可以表示为<span class="arithmatex"><span class="MathJax_Preview">C(t)e^{j2\pi \Delta ft}</span><script type="math/tex">C(t)e^{j2\pi \Delta ft}</script></span>。随后，LoRa将所有频率高于<span class="arithmatex"><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span>的信号段循环频移至<span class="arithmatex"><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span>频率处，频移后的信号如下图(e)所示。如果定义了 <span class="arithmatex"><span class="MathJax_Preview">2^{SF}</span><script type="math/tex">2^{SF}</script></span> 种不同的偏移频率，最多可以表示 <span class="arithmatex"><span class="MathJax_Preview">SF</span><script type="math/tex">SF</script></span> 比特的数据。</p>
 <p>在解调部分，我们要进行dechirp和FFT。对于一个收到的数据包，LoRa首先令数据包中每个数据upchirp与basic downchirp相乘。与upchirp类似，basic downchirp可以表示为：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 C^*(t)=e^{j2\pi(f_1-\frac{1}{2}kt) t}
 </div>
@@ -2001,8 +2234,8 @@ C^*(t)=e^{j2\pi(f_1-\frac{1}{2}kt) t}
 C^*(t)=e^{j2\pi(f_1-\frac{1}{2}kt) t}
 </script>
 </div>
-<p>当<span><span class="MathJax_Preview">f_0 = -f_1</span><script type="math/tex">f_0 = -f_1</script></span>时，<span><span class="MathJax_Preview">C^*(t)</span><script type="math/tex">C^*(t)</script></span>是<span><span class="MathJax_Preview">C(t)</span><script type="math/tex">C(t)</script></span>的共轭，因此这个相乘的结果是一个单频信号，其频率等于编码chirp的频率偏移量：</p>
-<div>
+<p>当<span class="arithmatex"><span class="MathJax_Preview">f_0 = -f_1</span><script type="math/tex">f_0 = -f_1</script></span>时，<span class="arithmatex"><span class="MathJax_Preview">C^*(t)</span><script type="math/tex">C^*(t)</script></span>是<span class="arithmatex"><span class="MathJax_Preview">C(t)</span><script type="math/tex">C(t)</script></span>的共轭，因此这个相乘的结果是一个单频信号，其频率等于编码chirp的频率偏移量：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 C^*(t)\cdot C(t)e^{j2\pi \Delta ft}=e^{j2\pi \Delta ft}
 </div>
@@ -2010,7 +2243,7 @@ C^*(t)\cdot C(t)e^{j2\pi \Delta ft}=e^{j2\pi \Delta ft}
 C^*(t)\cdot C(t)e^{j2\pi \Delta ft}=e^{j2\pi \Delta ft}
 </script>
 </div>
-<p>对<span><span class="MathJax_Preview">e^{j2\pi \Delta ft}</span><script type="math/tex">e^{j2\pi \Delta ft}</script></span>做FFT将时域信号转化为频域波峰，波峰的下标即对应信号编码的数据。</p>
+<p>对<span class="arithmatex"><span class="MathJax_Preview">e^{j2\pi \Delta ft}</span><script type="math/tex">e^{j2\pi \Delta ft}</script></span>做FFT将时域信号转化为频域波峰，波峰的下标即对应信号编码的数据。</p>
 <p>整个LoRa解码流程如下图所示，对应两种信号的解码，左为basic upchirp，右为非basic upchirp。第一行为信号的时间-频率图，第二行为信号的时间-幅度图，第三行为信号乘downchirp后的时间-幅度图，第四行为傅里叶变换结果，注意左边在0的位置有峰。</p>
 <p><center> 
 <img src="./fig/loraDecoder.png" width="800px">
@@ -2079,7 +2312,7 @@ padding: 2px;">图. LoRa解调流程</div>
 <span class="w">    </span><span class="n">freq_pwr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">fft_res</span><span class="p">);</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
 </code></pre></div>
-<p>由于Chirp在循环频移后部分信号的起始频率等于原始起始频率减去BW，当采样频率高于BW时，这两段信号在频域将产生两个互不重叠的波峰（一个在原始频率 <span><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span> 处，另一个在频率 <span><span class="MathJax_Preview">Fs-BW+f_0</span><script type="math/tex">Fs-BW+f_0</script></span> 处）。因此，如果接收端的采样频率大于BW，我们需要手动将两个不同频率处的波峰在频域叠加，以确保整个Chirp信号的能量得到集中。为了确保两个波峰可以叠加增强，我们搜索两个波峰之间所有可能的相位差，并选择可以使叠加后波峰能量最大的相位。</p>
+<p>由于Chirp在循环频移后部分信号的起始频率等于原始起始频率减去BW，当采样频率高于BW时，这两段信号在频域将产生两个互不重叠的波峰（一个在原始频率 <span class="arithmatex"><span class="MathJax_Preview">f_0</span><script type="math/tex">f_0</script></span> 处，另一个在频率 <span class="arithmatex"><span class="MathJax_Preview">Fs-BW+f_0</span><script type="math/tex">Fs-BW+f_0</script></span> 处）。因此，如果接收端的采样频率大于BW，我们需要手动将两个不同频率处的波峰在频域叠加，以确保整个Chirp信号的能量得到集中。为了确保两个波峰可以叠加增强，我们搜索两个波峰之间所有可能的相位差，并选择可以使叠加后波峰能量最大的相位。</p>
 <div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>out_rst<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">chirp_comp_alias</span><span class="p">(</span>rz, over_rate<span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="c">% over_rate = Fs / BW;</span><span class="w"></span>
 <span class="w">    </span><span class="n">nfft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">numel</span><span class="p">(</span><span class="n">rz</span><span class="p">);</span><span class="w"></span>
@@ -2155,7 +2388,7 @@ padding: 2px;">图. LoRa解调流程</div>
 <p>需要特别指出的是：
 1. 上述解调过程只是其中的一种方法，也有很多其他的方法，比如有一些研究工作就利用时域上观察频率变化规律来解码（大家可以想想这个有什么根本问题）。
 2. 上述解调过程中其实还有很多细节，例如如何达到最好的解调效果、如何精准地找到频率等。这些目前都没有完全展开，请读者参考论文[6]和代码实现<a href="https://github.com/jkadbear/LoRaPHY">LoRaPHY</a>仔细思考。</p>
-<p>接下来我们介绍如何处理信号同步问题，即如何解决CFO（Carrier Frequency Offset，载波频偏）和TO（Time Offset，时间偏移）的影响。 假设我们发送的chirp信号扫频范围在 470MHz ~ 470.5MHz，到了接受端，收到的信号扫频范围可能会变成 470MHz+<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ~ 470.5MHz+<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ，这个频偏是由于收发端时钟不一致造成的，我们称之为CFO。 当我们解码的时候，截取信号的窗口可能没有和chirp符号完全对齐，这样也会带来一个频率偏移，我们称之为TO。 下图展示了有无CFO、窗口是否对齐的四种解调结果。</p>
+<p>接下来我们介绍如何处理信号同步问题，即如何解决CFO（Carrier Frequency Offset，载波频偏）和TO（Time Offset，时间偏移）的影响。 假设我们发送的chirp信号扫频范围在 470MHz ~ 470.5MHz，到了接受端，收到的信号扫频范围可能会变成 470MHz+<span class="arithmatex"><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ~ 470.5MHz+<span class="arithmatex"><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> ，这个频偏是由于收发端时钟不一致造成的，我们称之为CFO。 当我们解码的时候，截取信号的窗口可能没有和chirp符号完全对齐，这样也会带来一个频率偏移，我们称之为TO。 下图展示了有无CFO、窗口是否对齐的四种解调结果。</p>
 <p><center>
 <img src="./fig/CFO_TO.png" width="600px">
 </center>
@@ -2296,13 +2529,13 @@ padding: 2px;">图. 生成的LoRa数据包</div>
 <p>下面详细介绍每一步的具体实现细节。LoRa物理层协议是封闭且有专利的，因此，没有免费提供的官方文件。但目前已有相关逆向工程的结果，如<a href="https://github.com/matt-knight/research/blob/master/2016_05_20_jailbreak/Reversing-Lora-Knight.pdf">Reversing-Lora</a> 和 <a href="https://github.com/rpp0/gr-lora">gr-lora</a>。</p>
 <p><strong>LoRa symbol 编码</strong></p>
 <p>LoRa基于CSS（Chirp Spreading Spectrum，啁啾扩频）编码，每一个传输的symbol是一个chirp。LoRa用一个参数SF（Spreading Factor，扩频因子）来调控传输速率和通信距离，SF的定义为 </p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">2^{SF} = B\cdot T</div>
 <script type="math/tex; mode=display">2^{SF} = B\cdot T</script>
 </div>
 <p>其中 B 为chirp扫频的带宽，T 为一个chirp持续的时间。</p>
 <p>基带上的一个basis upchirp可以表示为 </p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 e^{j2\pi \left(-\frac{B}{2}+\frac{B}{T}t\right)t}
 </div>
@@ -2332,29 +2565,29 @@ e^{j2\pi \left(-\frac{B}{2}+\frac{B}{T}t\right)t}
 <li>如在 B=125kHz 的情况下，SF=&#8542;/9/10 时 DE=0，SF=11/12 时 DE=1。</li>
 <li>CRC=1 表示使用了 CRC 验证，CRC=0 表示未使用 CRC 验证。</li>
 <li>IH=0 表示使用 explicit header，IH=1 表示使用 implicit header。</li>
-<li>CR可取  <span><span class="MathJax_Preview">\frac{4}{5},\frac{4}{6},\frac{4}{7},\frac{4}{8}</span><script type="math/tex">\frac{4}{5},\frac{4}{6},\frac{4}{7},\frac{4}{8}</script></span> 。</li>
+<li>CR可取  <span class="arithmatex"><span class="MathJax_Preview">\frac{4}{5},\frac{4}{6},\frac{4}{7},\frac{4}{8}</span><script type="math/tex">\frac{4}{5},\frac{4}{6},\frac{4}{7},\frac{4}{8}</script></span> 。</li>
 </ul>
 <p><strong>symbol 数目公式推导</strong></p>
 <p>令 PPM = SF - 2DE ，代表一个 symbol 能编码的比特数。</p>
 <p>上面已经解释道，若一个 chirp 的持续时间过长，LoRa 认为它能代表的低位比特是不准确的，故减去 2DE。</p>
 <p>Hamming 编码即代表 coding rate，如 4/7 表示使用 (7, 4) hamming 码。</p>
-<p>编码是分组的，4 个 symbol 会被扩充为 <span><span class="MathJax_Preview">\frac{4}{CR}</span><script type="math/tex">\frac{4}{CR}</script></span> 个 symbol。</p>
-<p>n 个字节的 payload 即有 8n 个比特，对应 symbol 数为  <span><span class="MathJax_Preview">\left\lceil\frac{8n}{4PPM}\right\rceil\cdot \frac{4}{CR}</span><script type="math/tex">\left\lceil\frac{8n}{4PPM}\right\rceil\cdot \frac{4}{CR}</script></span>。
+<p>编码是分组的，4 个 symbol 会被扩充为 <span class="arithmatex"><span class="MathJax_Preview">\frac{4}{CR}</span><script type="math/tex">\frac{4}{CR}</script></span> 个 symbol。</p>
+<p>n 个字节的 payload 即有 8n 个比特，对应 symbol 数为  <span class="arithmatex"><span class="MathJax_Preview">\left\lceil\frac{8n}{4PPM}\right\rceil\cdot \frac{4}{CR}</span><script type="math/tex">\left\lceil\frac{8n}{4PPM}\right\rceil\cdot \frac{4}{CR}</script></span>。
 这也就是公式中的主要项。</p>
 <p>Whitening、Shuffling、Gray 编码并不影响字节数因此也不影响 symbol 数。</p>
-<p>Interleaving 只在剩余字节数不足以填充 <span><span class="MathJax_Preview">\frac{4}{CR}</span><script type="math/tex">\frac{4}{CR}</script></span> 个 symbol 时产生影响。</p>
+<p>Interleaving 只在剩余字节数不足以填充 <span class="arithmatex"><span class="MathJax_Preview">\frac{4}{CR}</span><script type="math/tex">\frac{4}{CR}</script></span> 个 symbol 时产生影响。</p>
 <p>剩余的 symbol 来自包头。</p>
 <p>LoRa 包头含有 8 bits 包长度、8 bits 包头 CRC、3 bits 标识 coding rate、1 bit 标识是否有 payload CRC、4 bits 保留比特，共 2.5 bytes。</p>
-<p>协议规定紧跟在 SFD 后的 8 个 symbol 用来编码包头内容且有效比特数为 (SF - 2) bits/symbol，coding rate 为 <span><span class="MathJax_Preview">\frac{4}{8}</span><script type="math/tex">\frac{4}{8}</script></span>。</p>
-<p>这 8 个 symbol 在编码包头后还剩 <span><span class="MathJax_Preview">\frac{4(SF - 2) - 2.5*8}{8} = 0.5SF - 3.5</span><script type="math/tex">\frac{4(SF - 2) - 2.5*8}{8} = 0.5SF - 3.5</script></span> bytes 可用于编码数据。</p>
+<p>协议规定紧跟在 SFD 后的 8 个 symbol 用来编码包头内容且有效比特数为 (SF - 2) bits/symbol，coding rate 为 <span class="arithmatex"><span class="MathJax_Preview">\frac{4}{8}</span><script type="math/tex">\frac{4}{8}</script></span>。</p>
+<p>这 8 个 symbol 在编码包头后还剩 <span class="arithmatex"><span class="MathJax_Preview">\frac{4(SF - 2) - 2.5*8}{8} = 0.5SF - 3.5</span><script type="math/tex">\frac{4(SF - 2) - 2.5*8}{8} = 0.5SF - 3.5</script></span> bytes 可用于编码数据。</p>
 <p>如果 payload 的 CRC 存在，则要占用 2 bytes 的数据。</p>
 <p>另外考虑到物理层还允许省略包头即 implicit header 模式，还能省出 2.5 bytes （⚠️尽管是 implicit header 模式，协议仍然规定这 8 个 symbol 的特殊地位）。</p>
-<p>因此除去初始的 8 个 symbol，还有 <span><span class="MathJax_Preview">\max\left(\left\lceil\frac{8(n - 0.5SF + 3.5 + 2CRC - 2.5IH)}{4PPM}\right\rceil\cdot \frac{4}{CR}, 0\right)</span><script type="math/tex">\max\left(\left\lceil\frac{8(n - 0.5SF + 3.5 + 2CRC - 2.5IH)}{4PPM}\right\rceil\cdot \frac{4}{CR}, 0\right)</script></span> 个 symbol（ max 用于防止负数出现）。</p>
+<p>因此除去初始的 8 个 symbol，还有 <span class="arithmatex"><span class="MathJax_Preview">\max\left(\left\lceil\frac{8(n - 0.5SF + 3.5 + 2CRC - 2.5IH)}{4PPM}\right\rceil\cdot \frac{4}{CR}, 0\right)</span><script type="math/tex">\max\left(\left\lceil\frac{8(n - 0.5SF + 3.5 + 2CRC - 2.5IH)}{4PPM}\right\rceil\cdot \frac{4}{CR}, 0\right)</script></span> 个 symbol（ max 用于防止负数出现）。</p>
 <p>加上前导码和 SFD 我们便得到了最后结果。</p>
 <p><strong>LoRa 物理层解码示例</strong></p>
-<p>我们以一个经过 demodulation 的 LoRa 数据包为例，该数据包使用 SF=7, CR=&#8536;, BW=125kHz，发送内容为 4 个字节：0x11, 0x10, 0x10, 0x01。在除去 Preamble、Sync Word、SFD 之后我们收到的 data symbol 为 29 49 97 1 29 17 61 101 0 102 75 86 84 26 86 50 32 89。这些数字代表 FFT 窗口中 peak 的位置，也即 bin，取值范围 <span><span class="MathJax_Preview">0\sim 2^{SF}-1</span><script type="math/tex">0\sim 2^{SF}-1</script></span> 。</p>
+<p>我们以一个经过 demodulation 的 LoRa 数据包为例，该数据包使用 SF=7, CR=&#8536;, BW=125kHz，发送内容为 4 个字节：0x11, 0x10, 0x10, 0x01。在除去 Preamble、Sync Word、SFD 之后我们收到的 data symbol 为 29 49 97 1 29 17 61 101 0 102 75 86 84 26 86 50 32 89。这些数字代表 FFT 窗口中 peak 的位置，也即 bin，取值范围 <span class="arithmatex"><span class="MathJax_Preview">0\sim 2^{SF}-1</span><script type="math/tex">0\sim 2^{SF}-1</script></span> 。</p>
 <p><strong>提取包头</strong></p>
-<p>首先 LoRa 做了一个很奇怪的操作（现为rpp0/gr-lora的操作失误，待其更新whitening bytes），把所有数都在模 <span><span class="MathJax_Preview">2^{SF}</span><script type="math/tex">2^{SF}</script></span> 的意义下减一，于是序列变为 28 48 96 0 28 16 60 100 127 101 74 85 83 25 85 49 31 88。</p>
+<p>首先 LoRa 做了一个很奇怪的操作（现为rpp0/gr-lora的操作失误，待其更新whitening bytes），把所有数都在模 <span class="arithmatex"><span class="MathJax_Preview">2^{SF}</span><script type="math/tex">2^{SF}</script></span> 的意义下减一，于是序列变为 28 48 96 0 28 16 60 100 127 101 74 85 83 25 85 49 31 88。</p>
 <p>包头信息包含在前 8 个数中且使用 CR=4/8，选取它们并右移两位（舍弃低两位），得到 7 12 24 0 7 4 15 25。然后对序列进行 Gray 编码（BinaryToGray），例如 7 的二进制表示为 00000111，所以 <code>7 ^ (7 &gt;&gt; 1) = 00000111 ^ 00000011 = 00000100</code>。同理对剩下的数进行操作。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// https://en.wikipedia.org/wiki/Gray_code</span>
 <span class="cm">/*</span>
@@ -2363,7 +2596,7 @@ e^{j2\pi \left(-\frac{B}{2}+\frac{B}{T}t\right)t}
 <span class="cm"> *</span>
 <span class="cm"> * The operator &gt;&gt; is shift right. The operator ^ is exclusive or.</span>
 <span class="cm"> */</span><span class="w"></span>
-<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BinaryToGray</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"></span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">BinaryToGray</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -2374,7 +2607,7 @@ e^{j2\pi \left(-\frac{B}{2}+\frac{B}{T}t\right)t}
 <span class="cm"> * Each Gray code bit is exclusive-ored with all</span>
 <span class="cm"> * more significant bits.</span>
 <span class="cm"> */</span><span class="w"></span>
-<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">GrayToBinary</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"></span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GrayToBinary</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">mask</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
@@ -2410,13 +2643,13 @@ e^{j2\pi \left(-\frac{B}{2}+\frac{B}{T}t\right)t}
 </code></pre></div>
 <p>例如 10011001 代表十进制数 153，我们找到表中第 153 个数为 04 即解码结果（153 以 0 为起始，04 是十进制表示，对应成二进制为 0100）。</p>
 <p>于是我们又得到 0000 0100 0011 0000 0110 0000。这里共 2.5 有效字节（我们补充的 0 不是有效字节），恰好是包头含有的所有信息（当 SF 更大时，会剩余一些字节用来编码数据）。这些比特的拼装顺序为，前 4 个比特放置高 4 位，后 4 个比特放置低 4 位。对号入座得 00000100 00110000 01100000。参考 LoRa 包头结构为</p>
-<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span> <span class="nc">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span><span class="w"> </span><span class="n">loraphy_header</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span><span class="w"> </span><span class="n">loraphy_header</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w">           </span><span class="c1">// 数据包字节数</span>
-<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nl">crc_msn</span> <span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">      </span><span class="c1">// 包头 CRC 高位</span>
-<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nl">has_mac_crc</span> <span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 是否含有 Mac 层 CRC</span>
-<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nl">cr</span> <span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">           </span><span class="c1">// 数据包使用的 Coding Rate</span>
-<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nl">crc_lsn</span> <span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">      </span><span class="c1">// 包头 CRC 低位</span>
-<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nl">reserved</span> <span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">     </span><span class="c1">// 保留位</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">crc_msn</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">      </span><span class="c1">// 包头 CRC 高位</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">has_mac_crc</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 是否含有 Mac 层 CRC</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">cr</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">           </span><span class="c1">// 数据包使用的 Coding Rate</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">crc_lsn</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">      </span><span class="c1">// 包头 CRC 低位</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">reserved</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">     </span><span class="c1">// 保留位</span>
 <span class="p">}</span><span class="w"> </span><span class="n">loraphy_header_t</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>译码得：包长为第一个字节 4，CR 为第二个字节的高三位 001，代表使用了 &#8536;。</p>
@@ -2450,7 +2683,7 @@ color: #999;
 padding: 2px;">图. 通信流程</div>
 <p></center></p>
 <p><strong>发射端</strong></p>
-<p>由于手机采样率限制，信号频率带宽不能很高，这里设置信号带宽2kHz，采样率48kHz，编码SF=7个比特，也就是可编码符号数目为 <span><span class="MathJax_Preview">2^{SF}=128</span><script type="math/tex">2^{SF}=128</script></span>，
+<p>由于手机采样率限制，信号频率带宽不能很高，这里设置信号带宽2kHz，采样率48kHz，编码SF=7个比特，也就是可编码符号数目为 <span class="arithmatex"><span class="MathJax_Preview">2^{SF}=128</span><script type="math/tex">2^{SF}=128</script></span>，
 接下来生成Chirp和基带LoRa信号，这里编码了3个6，之前加了一段0信号，是为了使信号长一点，编码录音的时候错过有效信号。对于编码数据，在实现上可以不同。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">16e3</span><span class="p">;</span><span class="w">           </span><span class="c">% 载波频率，主要用于纠正采样频偏（SFO），在发射端可忽略</span><span class="w"></span>
 <span class="n">sf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w">              </span><span class="c">% 扩频因子</span><span class="w"></span>
@@ -2471,7 +2704,7 @@ padding: 2px;">图. 通信流程</div>
 <span class="n">zs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">Nchirp</span><span class="o">*</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
 <span class="n">chirp_sound</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">zs</span><span class="p">,</span><span class="w"> </span><span class="n">sig</span><span class="p">);</span><span class="w">      </span><span class="c">% 基带信号</span><span class="w"></span>
 </code></pre></div>
-<p>之后上变频：将基带信号的实部乘上一个余弦高频信号，基带信号的虚部乘上一个正弦高频信号（有负号），最后将它们加起来作为真实发送的信号。这里设置的高频信号为 <span><span class="MathJax_Preview">f_c = 16</span><script type="math/tex">f_c = 16</script></span> kHz。</p>
+<p>之后上变频：将基带信号的实部乘上一个余弦高频信号，基带信号的虚部乘上一个正弦高频信号（有负号），最后将它们加起来作为真实发送的信号。这里设置的高频信号为 <span class="arithmatex"><span class="MathJax_Preview">f_c = 16</span><script type="math/tex">f_c = 16</script></span> kHz。</p>
 <div class="highlight"><pre><span></span><code><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">chirp_sound</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
 <span class="n">car_chirp_sound</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">real</span><span class="p">(</span><span class="n">chirp_sound</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="nb">imag</span><span class="p">(</span><span class="n">chirp_sound</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">fc</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -2636,7 +2869,7 @@ padding: 2px;">图. 节点代码和应用代码目录</div>
 </li>
 </ul>
 <p><strong>如何烧写程序</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2648,7 +2881,7 @@ padding: 2px;">图. 节点代码和应用代码目录</div>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>1. 安装烧写程序
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>1. 安装烧写程序
 
 下载官方提供并经过修改的STM32烧写程序 http://download.thulpwan.top/stm32flash.zip ，解压并编译安装 &lt;code&gt;make &amp;&amp; make install&lt;/code&gt; ，安装成功后应可以执行 &lt;code&gt;stm32flash -h&lt;/code&gt;。
 
@@ -2661,8 +2894,8 @@ stm32flash -w abp01-sf12-4863-classA.bin -v -g 0 /dev/tty.SLAB_USBtoUART
 ```
 
 其中 &lt;code&gt;/dev/tty.SLAB_USBtoUART&lt;/code&gt; 为Mac上显示的串口设备，在Linux通常类似 &lt;code&gt;/dev/ttyUSB0&lt;/code&gt; 。
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <!--<mark>注：不同的操作平台还需要配置相应的环境。</mark>-->
 
 <ul>
@@ -2670,7 +2903,7 @@ stm32flash -w abp01-sf12-4863-classA.bin -v -g 0 /dev/tty.SLAB_USBtoUART
 </ul>
 <p>购买的网关通常自带了相关的LoRaWAN代码可以直接使用。也可以自己搭建网关服务，网关的代码一般包含网关硬件控制相关的代码LoRa_gateway和通信代码packet_forwarder。
    参考代码分别为<a href="https://github.com/Lora-net/lora_gateway">LoRa_gateway</a>和<a href="https://github.com/Lora-net/packet_forwarder">packet_forwarder</a>。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2692,7 +2925,7 @@ stm32flash -w abp01-sf12-4863-classA.bin -v -g 0 /dev/tty.SLAB_USBtoUART
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>依然是先git clone下来，然后再分别对连部分代码进行编译生成，这之后会在lora_geteway目录下生成./reset_lgw.sh文件，在packet_forwarder/lora_pkt_fwd目录下面生成lora_pkt_fwd可执行文件。然后需要依次执行./reset_lgw.sh start，./lora_pkt_fwd，即可将网关运行起来。
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code>依然是先git clone下来，然后再分别对连部分代码进行编译生成，这之后会在lora_geteway目录下生成./reset_lgw.sh文件，在packet_forwarder/lora_pkt_fwd目录下面生成lora_pkt_fwd可执行文件。然后需要依次执行./reset_lgw.sh start，./lora_pkt_fwd，即可将网关运行起来。
 
 需要注意packet_forwarder/lora_pkt_fwd目录下的global_conf.json和local_conf.json两个文件，这是用来配置网关的，其中一个主要目的是使服务器能够找到网关，global_conf是全局对于网关接收到的频率频段进行设置，local_conf.json主要设置云服务器的server.
 CN470频段设置如下：
@@ -2715,8 +2948,8 @@ Channel Group | Channel | Start Freq(MHz) | End Freq(MHz) |
 ChannelsMask字节&lt;span style=&quot;color:red&quot;&gt;从左到右&lt;/span&gt;代表的Channel频率&lt;span style=&quot;color:red&quot;&gt;逐渐降低&lt;/span&gt;，如：最后一个ChannelsMask若为&lt;span style=&quot;color:red&quot;&gt;0x00FF&lt;/span&gt;则代表使用Channel Group &lt;span style=&quot;color:red&quot;&gt;10&lt;/span&gt;，&lt;span style=&quot;color:red&quot;&gt;0xFF00&lt;/span&gt;代表使用Channel Group &lt;span style=&quot;color:red&quot;&gt;11&lt;/span&gt;。
 
 &lt;mark&gt;注：网关有可能需要反复运行多次才可以成功启动。&lt;/mark&gt;
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 <ul>
 <li>
 <p>搭建LoRa服务器。</p>
@@ -2745,45 +2978,50 @@ LoRa服务器也可以分为三个部分, LoRa gateway bridge, LoRa server 和 L
 <li>Shuai Tong, Zilin Shen, Yunhao Liu, Jiliang Wang. "Combating Link Dynamics for Reliable LoRa Connection in Urban Settings", ACM MobiCom 2021.</li>
 <li>Jinyan Jiang, Zhenqiang Xu, Jiliang Wang. "Long-Range Ambient LoRa Backscatter with Parallel Decoding", ACM MobiCom 2021.</li>
 </ol>
-                
-              
-              
-                
+
+
 
 
               
             </article>
+            
+
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
               <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
               <script>
-              var gitalk = new Gitalk({
-                  clientID: 'ab5371b4172e50e09adb',
-                  clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
-                  repo: 'Comments',
-                  owner: 'iot-book',
-                  admin: ['iot-book', 'tongsh'],
-                  id: location.pathname,      // Ensure uniqueness and length less than 50
-                  distractionFreeMode: false  // Facebook-like distraction free mode
-                })
-
-                gitalk.render('gitalk-container')
+                var gitalk = new Gitalk({
+                    clientID: 'ab5371b4172e50e09adb',
+                    clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
+                    repo: 'Comments',
+                    owner: 'iot-book',
+                    admin: ['iot-book', 'tongsh'],
+                    // id: 'location.pathname.substring(1,30)',
+                    id: location.pathname,      // Ensure uniqueness and length less than 50
+                    distractionFreeMode: false,  // Facebook-like distraction free mode
+                    labels: ['Gitalk'],
+                    title: 'IoTBook-Comment'
+                  })
+                  gitalk.render('gitalk-container')
               </script> 
+            </div>
+            <!-- End 评论 -->
+
           </div>
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
         <a href="../S1_LoRa%E7%AE%80%E4%BB%8B/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 9.1 LoRa 发展简史" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -2807,7 +3045,7 @@ LoRa服务器也可以分为三个部分, LoRa gateway bridge, LoRa server 和 L
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -2815,19 +3053,20 @@ LoRa服务器也可以分为三个部分, LoRa gateway bridge, LoRa server 和 L
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        <!-- Made with -->
-        <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
-          &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
-        </a>
-        <br>
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+     <!-- Made with -->
+     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+      &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
+    </a>
+    <br>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -2837,10 +3076,11 @@ LoRa服务器也可以分为三个部分, LoRa gateway bridge, LoRa server 和 L
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

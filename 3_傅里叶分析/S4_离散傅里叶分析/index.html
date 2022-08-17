@@ -9,44 +9,44 @@
         <meta name="description" content="介绍物联网基础概念">
       
       
-      
         <meta name="author" content="WiSys Lab">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
     
     
       
-        <title>3.4 离散傅里叶分析 - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>3.4 离散傅里叶分析 - 物联网前沿实践</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
           <meta name="theme-color" content="#546d78">
         
       
+      
     
     
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,7 +61,6 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,15 +77,18 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
   <img src="../../images/nicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -108,22 +110,21 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -143,11 +144,14 @@
     
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -161,7 +165,7 @@
                     
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="物联网前沿实践" class="md-nav__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -231,10 +235,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        第2章 信号处理基础
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          第2章 信号处理基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -243,6 +251,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -253,8 +262,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -265,8 +276,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -277,8 +290,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -289,8 +304,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -301,6 +318,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -323,10 +341,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
-      <label class="md-nav__link" for="__nav_5">
-        第3章 傅里叶分析
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          第3章 傅里叶分析
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -335,6 +357,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -345,8 +368,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -357,8 +382,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -369,8 +396,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -394,6 +423,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -489,8 +519,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -501,6 +533,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -521,10 +554,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_6">
-        第4章 无线信道
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          第4章 无线信道
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
@@ -533,6 +570,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -543,8 +581,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -555,8 +595,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -567,8 +609,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -579,6 +623,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -599,10 +644,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_7">
-        第5章 信号滤波
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          第5章 信号滤波
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
@@ -611,6 +660,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -621,8 +671,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -633,8 +685,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -645,8 +699,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -657,8 +713,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -669,8 +727,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -681,6 +741,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -701,10 +762,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
-      <label class="md-nav__link" for="__nav_8">
-        第6章 数据调制和解调
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          第6章 数据调制和解调
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
@@ -713,6 +778,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -723,8 +789,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -735,8 +803,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -747,8 +817,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -759,8 +831,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -771,8 +845,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -783,8 +859,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -795,6 +873,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -815,10 +894,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
-      <label class="md-nav__link" for="__nav_9">
-        第7章 短距离无线通信技术
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          第7章 短距离无线通信技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
@@ -827,6 +910,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -837,8 +921,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -849,8 +935,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -861,8 +949,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -873,6 +963,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -893,10 +984,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
       
-      <label class="md-nav__link" for="__nav_10">
-        第8章 Backscatter通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          第8章 Backscatter通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
@@ -905,6 +1000,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -915,8 +1011,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -927,8 +1025,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -939,6 +1039,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -959,10 +1060,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
-      <label class="md-nav__link" for="__nav_11">
-        第9章 LoRa
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          第9章 LoRa
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
@@ -971,6 +1076,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -981,8 +1087,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -993,8 +1101,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1005,8 +1115,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1017,8 +1129,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1029,6 +1143,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1049,10 +1164,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
       
-      <label class="md-nav__link" for="__nav_12">
-        第10章 可见光通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          第10章 可见光通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
@@ -1061,6 +1180,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1071,6 +1191,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1091,10 +1212,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
       
-      <label class="md-nav__link" for="__nav_13">
-        第11章 毫米波通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          第11章 毫米波通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
@@ -1103,6 +1228,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1113,6 +1239,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1133,10 +1260,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
-      <label class="md-nav__link" for="__nav_14">
-        第12章 无线测距
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          第12章 无线测距
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
@@ -1145,6 +1276,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1155,8 +1287,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1167,6 +1301,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1187,10 +1322,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
-      <label class="md-nav__link" for="__nav_15">
-        第13章 无线定位
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          第13章 无线定位
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
@@ -1199,6 +1338,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1209,8 +1349,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1221,8 +1363,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1233,8 +1377,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1245,6 +1391,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1265,10 +1412,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
       
-      <label class="md-nav__link" for="__nav_16">
-        第14章 无线追踪
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16">
+          第14章 无线追踪
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
@@ -1277,6 +1428,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1287,8 +1439,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1299,8 +1453,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1311,6 +1467,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1331,10 +1488,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
       
-      <label class="md-nav__link" for="__nav_17">
-        第15章 传感器感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          第15章 传感器感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
@@ -1343,6 +1504,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1353,8 +1515,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1365,8 +1529,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1377,6 +1543,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1397,10 +1564,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
-      <label class="md-nav__link" for="__nav_18">
-        第16章 声波感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          第16章 声波感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
@@ -1409,6 +1580,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1419,8 +1591,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1431,8 +1605,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1443,8 +1619,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1455,8 +1633,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1467,6 +1647,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1487,10 +1668,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
       
-      <label class="md-nav__link" for="__nav_19">
-        第17章 Wi-Fi感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          第17章 Wi-Fi感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
@@ -1499,6 +1684,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1509,8 +1695,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1521,8 +1709,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1533,8 +1723,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1545,6 +1737,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1565,10 +1758,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
       
-      <label class="md-nav__link" for="__nav_20">
-        第18章 蓝牙感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_20">
+          第18章 蓝牙感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
@@ -1577,6 +1774,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1587,8 +1785,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1599,8 +1799,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1611,8 +1813,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1623,6 +1827,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1658,10 +1863,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
       
-      <label class="md-nav__link" for="__nav_22">
-        第20章 UWB感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22">
+          第20章 UWB感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
@@ -1670,6 +1879,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1680,8 +1890,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1692,6 +1904,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1742,10 +1955,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
       
-      <label class="md-nav__link" for="__nav_25">
-        第23章 可见光感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_25">
+          第23章 可见光感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
@@ -1754,6 +1971,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1764,8 +1982,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1776,8 +1996,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1788,6 +2010,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1808,10 +2031,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
       
-      <label class="md-nav__link" for="__nav_26">
-        附录
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26">
+          附录
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="附录" data-md-level="1">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
@@ -1820,6 +2047,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1830,8 +2058,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1842,6 +2072,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1861,6 +2092,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -1961,12 +2193,13 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                <h1 id="_1">离散傅里叶分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+
+
+<h1 id="_1">离散傅里叶分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">离散傅里叶级数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>从傅里叶级数到傅里叶变换，我们从离散频域变到了连续频域，但它们处理的都是连续时间信号，而在实际信号处理中我们不会处理连续的信号，更多地会面对因为采样而在时间上离散的信号。我们同样关心这些信号的频谱。因此我们仿照前面的做法，从研究离散的周期序列开始，推导离散傅里叶级数。也就是我们假设我们能够采样到一个周期信号，怎么根据采样的结果来分析这个信号。</p>
-<p>设有一个离散的周期序列<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>（我们用方括号表示里面的变量是离散的），其周期为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>。按照傅里叶的思想，我们可以将它展开为一系列三角波的和。在之前的傅里叶级数展开中，我们选择的频率是基频的0倍、1倍、2倍……周期为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列其基频是<span><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>，那么我们应选取的三角波是<span><span class="MathJax_Preview">e^{j2\pi\frac{0}{N}n}, e^{\pm j2\pi\frac{1}{N}n}, e^{\pm j2\pi\frac{2}{N}n}, \cdots</span><script type="math/tex">e^{j2\pi\frac{0}{N}n}, e^{\pm j2\pi\frac{1}{N}n}, e^{\pm j2\pi\frac{2}{N}n}, \cdots</script></span>, 但稍加观察我们会发现，并非像连续情形下出现了无穷多种频率，离散情况下这些三角波事实上只有<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>种，因为<span><span class="MathJax_Preview">e^{j2\pi\frac{k+N}{N}n} = e^{j2\pi\frac{k}{N}n}</span><script type="math/tex">e^{j2\pi\frac{k+N}{N}n} = e^{j2\pi\frac{k}{N}n}</script></span>。连续傅里叶级数导出了一个无穷维的希尔伯特空间，而离散情况下只存在<span><span class="MathJax_Preview">\frac{0}{N}, \frac{1}{N}\dots, \frac{N-1}{N}</span><script type="math/tex">\frac{0}{N}, \frac{1}{N}\dots, \frac{N-1}{N}</script></span>这样的频率，所以离散傅里叶级数对应一个有限维的希尔伯特空间。类似的，我们也说周期序列<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>可表为</p>
-<div>
+<p>设有一个离散的周期序列<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>（我们用方括号表示里面的变量是离散的），其周期为<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>。按照傅里叶的思想，我们可以将它展开为一系列三角波的和。在之前的傅里叶级数展开中，我们选择的频率是基频的0倍、1倍、2倍……周期为<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列其基频是<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>，那么我们应选取的三角波是<span class="arithmatex"><span class="MathJax_Preview">e^{j2\pi\frac{0}{N}n}, e^{\pm j2\pi\frac{1}{N}n}, e^{\pm j2\pi\frac{2}{N}n}, \cdots</span><script type="math/tex">e^{j2\pi\frac{0}{N}n}, e^{\pm j2\pi\frac{1}{N}n}, e^{\pm j2\pi\frac{2}{N}n}, \cdots</script></span>, 但稍加观察我们会发现，并非像连续情形下出现了无穷多种频率，离散情况下这些三角波事实上只有<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>种，因为<span class="arithmatex"><span class="MathJax_Preview">e^{j2\pi\frac{k+N}{N}n} = e^{j2\pi\frac{k}{N}n}</span><script type="math/tex">e^{j2\pi\frac{k+N}{N}n} = e^{j2\pi\frac{k}{N}n}</script></span>。连续傅里叶级数导出了一个无穷维的希尔伯特空间，而离散情况下只存在<span class="arithmatex"><span class="MathJax_Preview">\frac{0}{N}, \frac{1}{N}\dots, \frac{N-1}{N}</span><script type="math/tex">\frac{0}{N}, \frac{1}{N}\dots, \frac{N-1}{N}</script></span>这样的频率，所以离散傅里叶级数对应一个有限维的希尔伯特空间。类似的，我们也说周期序列<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>可表为</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 x[n] = \sum_{k=0}^{N-1}c_k \mathbf{e_k}.
 </div>
@@ -1974,8 +2207,8 @@ x[n] = \sum_{k=0}^{N-1}c_k \mathbf{e_k}.
 x[n] = \sum_{k=0}^{N-1}c_k \mathbf{e_k}.
 </script>
 </div>
-<p>读者可以看到，该表达式与有限维欧几里得空间上向量的展开更为相似，我们用与连续傅里叶级数中相似的做法来确定<span><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>与<span><span class="MathJax_Preview">\mathbf{e_k}</span><script type="math/tex">\mathbf{e_k}</script></span>。首先我们要定义一个内积，我们令无穷长周期<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的离散序列<span><span class="MathJax_Preview">\mathbf{a}= (\cdots, a_0, a_1, \cdots, a_{N-1}, \cdots)</span><script type="math/tex">\mathbf{a}= (\cdots, a_0, a_1, \cdots, a_{N-1}, \cdots)</script></span>和<span><span class="MathJax_Preview">\mathbf{b}= (\cdots, b_0, b_1, \cdots, b_{N-1}, \cdots)</span><script type="math/tex">\mathbf{b}= (\cdots, b_0, b_1, \cdots, b_{N-1}, \cdots)</script></span>的内积为</p>
-<div>
+<p>读者可以看到，该表达式与有限维欧几里得空间上向量的展开更为相似，我们用与连续傅里叶级数中相似的做法来确定<span class="arithmatex"><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>与<span class="arithmatex"><span class="MathJax_Preview">\mathbf{e_k}</span><script type="math/tex">\mathbf{e_k}</script></span>。首先我们要定义一个内积，我们令无穷长周期<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的离散序列<span class="arithmatex"><span class="MathJax_Preview">\mathbf{a}= (\cdots, a_0, a_1, \cdots, a_{N-1}, \cdots)</span><script type="math/tex">\mathbf{a}= (\cdots, a_0, a_1, \cdots, a_{N-1}, \cdots)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">\mathbf{b}= (\cdots, b_0, b_1, \cdots, b_{N-1}, \cdots)</span><script type="math/tex">\mathbf{b}= (\cdots, b_0, b_1, \cdots, b_{N-1}, \cdots)</script></span>的内积为</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \langle \mathbf{a}, \mathbf{b}\rangle = N \sum_{n=0}^{N-1} a_n \overline{b_n}.
 </div>
@@ -1983,8 +2216,8 @@ x[n] = \sum_{k=0}^{N-1}c_k \mathbf{e_k}.
 \langle \mathbf{a}, \mathbf{b}\rangle = N \sum_{n=0}^{N-1} a_n \overline{b_n}.
 </script>
 </div>
-<p>可以验证该定义满足内积三条件（右边的系数<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>只是为了让我们的记号与后面章节更贴合，其选取本身可以是任意的，如设为1）。我们选取单位正交基向量<span><span class="MathJax_Preview">\mathbf{e_k} = (\frac{1}{N}e^{j2\pi \frac{k}{N}\cdot0}, \frac{1}{N}e^{j2\pi \frac{k}{N}\cdot1}, \cdots, \frac{1}{N}e^{j2\pi \frac{k}{N}(N-1)}), k=0, 1, \cdots, N-1</span><script type="math/tex">\mathbf{e_k} = (\frac{1}{N}e^{j2\pi \frac{k}{N}\cdot0}, \frac{1}{N}e^{j2\pi \frac{k}{N}\cdot1}, \cdots, \frac{1}{N}e^{j2\pi \frac{k}{N}(N-1)}), k=0, 1, \cdots, N-1</script></span>。那么我们有 <strong>离散傅里叶级数（Discrete Fourier Series，DFS）</strong> 展开式</p>
-<div>
+<p>可以验证该定义满足内积三条件（右边的系数<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>只是为了让我们的记号与后面章节更贴合，其选取本身可以是任意的，如设为1）。我们选取单位正交基向量<span class="arithmatex"><span class="MathJax_Preview">\mathbf{e_k} = (\frac{1}{N}e^{j2\pi \frac{k}{N}\cdot0}, \frac{1}{N}e^{j2\pi \frac{k}{N}\cdot1}, \cdots, \frac{1}{N}e^{j2\pi \frac{k}{N}(N-1)}), k=0, 1, \cdots, N-1</span><script type="math/tex">\mathbf{e_k} = (\frac{1}{N}e^{j2\pi \frac{k}{N}\cdot0}, \frac{1}{N}e^{j2\pi \frac{k}{N}\cdot1}, \cdots, \frac{1}{N}e^{j2\pi \frac{k}{N}(N-1)}), k=0, 1, \cdots, N-1</script></span>。那么我们有 <strong>离散傅里叶级数（Discrete Fourier Series，DFS）</strong> 展开式</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 x[n] = \frac{1}{N}\sum_{k=0}^{N-1} c_k e^{j2\pi \frac{k}{N}n}.
 </div>
@@ -1992,8 +2225,8 @@ x[n] = \frac{1}{N}\sum_{k=0}^{N-1} c_k e^{j2\pi \frac{k}{N}n}.
 x[n] = \frac{1}{N}\sum_{k=0}^{N-1} c_k e^{j2\pi \frac{k}{N}n}.
 </script>
 </div>
-<p>系数<span><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>可如下确定</p>
-<div>
+<p>系数<span class="arithmatex"><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>可如下确定</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 c_k = \langle x, \mathbf{e_k}\rangle = N\sum_{n=0}^{N-1} x[n] e^{-j2\pi \frac{k}{N}n}.
 </div>
@@ -2001,9 +2234,9 @@ c_k = \langle x, \mathbf{e_k}\rangle = N\sum_{n=0}^{N-1} x[n] e^{-j2\pi \frac{k}
 c_k = \langle x, \mathbf{e_k}\rangle = N\sum_{n=0}^{N-1} x[n] e^{-j2\pi \frac{k}{N}n}.
 </script>
 </div>
-<p>读者可能在其他地方看到形式类似但略有差别的DFS公式，我们再次强调这只是记号不同，并不影响DFS本质，如把<span><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>拆成两个<span><span class="MathJax_Preview">\frac{1}{\sqrt{N}}</span><script type="math/tex">\frac{1}{\sqrt{N}}</script></span>分别放到以上两个公式里。</p>
+<p>读者可能在其他地方看到形式类似但略有差别的DFS公式，我们再次强调这只是记号不同，并不影响DFS本质，如把<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>拆成两个<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{\sqrt{N}}</span><script type="math/tex">\frac{1}{\sqrt{N}}</script></span>分别放到以上两个公式里。</p>
 <p>我们同样以矩形波为例，计算DFS展开。设矩形波</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 x[n]=\left\{
 \begin{aligned}
@@ -2024,7 +2257,7 @@ x[n\pm 8], &\quad 其他.
 </script>
 </div>
 <p>则</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 c_k = \sum_{k=0}^{3} 1 \cdot e^{-j\frac{2\pi k}{8}n} + \sum_{k=4}^{7} (-1) \cdot e^{-j\frac{2\pi k}{8}n}.
 </div>
@@ -2083,9 +2316,9 @@ padding: 2px;">图. 矩形波离散傅里叶级数展开</div>
 <p></center></p>
 <h2 id="_3">离散时间傅里叶变换<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>上面讨论了周期序列的离散傅里叶级数，按照之前的逻辑，当我们把周期信号推向非周期信号时，离散的频域会变成连续的频域，离散傅里叶级数就应该变成“离散傅里叶变换”？不过由于种种原因，我们把这样推出来的变换称之为离散时间傅里叶变换。我们后面会讨论的“离散傅里叶变换”不仅时域离散，频域也是离散的。</p>
-<p>对于一个非周期的序列<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>，我们考虑截取其中从<span><span class="MathJax_Preview">N_1</span><script type="math/tex">N_1</script></span>到<span><span class="MathJax_Preview">N_2</span><script type="math/tex">N_2</script></span>长为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的一段作周期延拓，于是得到一个周期为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列<span><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>。</p>
-<p><span><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>有离散傅里叶级数</p>
-<div>
+<p>对于一个非周期的序列<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>，我们考虑截取其中从<span class="arithmatex"><span class="MathJax_Preview">N_1</span><script type="math/tex">N_1</script></span>到<span class="arithmatex"><span class="MathJax_Preview">N_2</span><script type="math/tex">N_2</script></span>长为<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的一段作周期延拓，于是得到一个周期为<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列<span class="arithmatex"><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>。</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>有离散傅里叶级数</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \widetilde{x}[n] = \frac{1}{N}\sum_{k=N_1}^{N_2} c_k \, e^{j2\pi \frac{k}{N}n}.
 </div>
@@ -2093,8 +2326,8 @@ padding: 2px;">图. 矩形波离散傅里叶级数展开</div>
 \widetilde{x}[n] = \frac{1}{N}\sum_{k=N_1}^{N_2} c_k \, e^{j2\pi \frac{k}{N}n}.
 </script>
 </div>
-<p>DFS的系数<span><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>为</p>
-<div>
+<p>DFS的系数<span class="arithmatex"><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>为</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 c_k = \sum_{n=N_1}^{N_2} \widetilde{x}[n] e^{-j2\pi \frac{k}{N}n}.
 </div>
@@ -2102,8 +2335,8 @@ c_k = \sum_{n=N_1}^{N_2} \widetilde{x}[n] e^{-j2\pi \frac{k}{N}n}.
 c_k = \sum_{n=N_1}^{N_2} \widetilde{x}[n] e^{-j2\pi \frac{k}{N}n}.
 </script>
 </div>
-<p>令<span><span class="MathJax_Preview">N_1 \to -\infty</span><script type="math/tex">N_1 \to -\infty</script></span>，<span><span class="MathJax_Preview">N_2 \to +\infty</span><script type="math/tex">N_2 \to +\infty</script></span>，则<span><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>变为<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>。若求和式收敛，则</p>
-<div>
+<p>令<span class="arithmatex"><span class="MathJax_Preview">N_1 \to -\infty</span><script type="math/tex">N_1 \to -\infty</script></span>，<span class="arithmatex"><span class="MathJax_Preview">N_2 \to +\infty</span><script type="math/tex">N_2 \to +\infty</script></span>，则<span class="arithmatex"><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>变为<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>。若求和式收敛，则</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 c_k = \sum_{n=-\infty}^{+\infty} x[n] e^{-j2\pi \frac{k}{N}n}.
 </div>
@@ -2111,8 +2344,8 @@ c_k = \sum_{n=-\infty}^{+\infty} x[n] e^{-j2\pi \frac{k}{N}n}.
 c_k = \sum_{n=-\infty}^{+\infty} x[n] e^{-j2\pi \frac{k}{N}n}.
 </script>
 </div>
-<p>令<span><span class="MathJax_Preview">\omega = 2\pi \frac{k}{N}</span><script type="math/tex">\omega = 2\pi \frac{k}{N}</script></span>，当<span><span class="MathJax_Preview">N\to +\infty</span><script type="math/tex">N\to +\infty</script></span>的时候<span><span class="MathJax_Preview">\omega</span><script type="math/tex">\omega</script></span>将表示一个连续的频率。我们把<span><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>换成另一个记号<span><span class="MathJax_Preview">X(\omega)</span><script type="math/tex">X(\omega)</script></span>，则有</p>
-<div>
+<p>令<span class="arithmatex"><span class="MathJax_Preview">\omega = 2\pi \frac{k}{N}</span><script type="math/tex">\omega = 2\pi \frac{k}{N}</script></span>，当<span class="arithmatex"><span class="MathJax_Preview">N\to +\infty</span><script type="math/tex">N\to +\infty</script></span>的时候<span class="arithmatex"><span class="MathJax_Preview">\omega</span><script type="math/tex">\omega</script></span>将表示一个连续的频率。我们把<span class="arithmatex"><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>换成另一个记号<span class="arithmatex"><span class="MathJax_Preview">X(\omega)</span><script type="math/tex">X(\omega)</script></span>，则有</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 X(\omega) = \sum_{n=-\infty}^{+\infty} x[n] e^{-j\omega n}.
 </div>
@@ -2120,8 +2353,8 @@ X(\omega) = \sum_{n=-\infty}^{+\infty} x[n] e^{-j\omega n}.
 X(\omega) = \sum_{n=-\infty}^{+\infty} x[n] e^{-j\omega n}.
 </script>
 </div>
-<p>我们称<span><span class="MathJax_Preview">X(\omega)</span><script type="math/tex">X(\omega)</script></span>为<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>的 <strong>离散时间傅里叶变换（Discrete-time Fourier Transform，DTFT）</strong> 。对于它的逆变换，我们可以考察<span><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>的表达式，<span><span class="MathJax_Preview">\frac{1}{N}=\frac{\Delta \omega}{2\pi}</span><script type="math/tex">\frac{1}{N}=\frac{\Delta \omega}{2\pi}</script></span>在<span><span class="MathJax_Preview">N \to +\infty</span><script type="math/tex">N \to +\infty</script></span>时成为<span><span class="MathJax_Preview">\frac{d \omega}{2\pi}</span><script type="math/tex">\frac{d \omega}{2\pi}</script></span>，求和号转为积分号，我们得到</p>
-<div>
+<p>我们称<span class="arithmatex"><span class="MathJax_Preview">X(\omega)</span><script type="math/tex">X(\omega)</script></span>为<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>的 <strong>离散时间傅里叶变换（Discrete-time Fourier Transform，DTFT）</strong> 。对于它的逆变换，我们可以考察<span class="arithmatex"><span class="MathJax_Preview">\widetilde{x}[n]</span><script type="math/tex">\widetilde{x}[n]</script></span>的表达式，<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{N}=\frac{\Delta \omega}{2\pi}</span><script type="math/tex">\frac{1}{N}=\frac{\Delta \omega}{2\pi}</script></span>在<span class="arithmatex"><span class="MathJax_Preview">N \to +\infty</span><script type="math/tex">N \to +\infty</script></span>时成为<span class="arithmatex"><span class="MathJax_Preview">\frac{d \omega}{2\pi}</span><script type="math/tex">\frac{d \omega}{2\pi}</script></span>，求和号转为积分号，我们得到</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 x[n] = \frac{1}{2\pi}\int_{0}^{2\pi} X(\omega) e^{j\omega n}d\omega.
 </div>
@@ -2131,7 +2364,7 @@ x[n] = \frac{1}{2\pi}\int_{0}^{2\pi} X(\omega) e^{j\omega n}d\omega.
 </div>
 <p>上式称为 <strong>逆离散时间傅里叶变换（Inverse Discrete-time Fourier Transform, IDTFT）</strong> 。</p>
 <p>与之前一样，我们仍旧来计算一下矩形波的DTFT。令</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 x[n] = \left\{
 \begin{aligned}
@@ -2150,7 +2383,7 @@ x[n] = \left\{
 </script>
 </div>
 <p>则</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 X(\omega) = \sum_{n=-N}^{N} e^{-j\omega n} = 1 + 2\sum_{n=1}^{N}\cos(n\omega) = \frac{\sin((N+\frac{1}{2})\omega)}{\sin\frac{\omega}{2}}.
 </div>
@@ -2171,20 +2404,20 @@ padding: 2px;">图. 狄利克雷核</div>
 <p>从另一个角度来说，我们对一个连续信号进行离散的采样就是希望从采样结果也能获得连续信号的频谱，所以狄利克雷核与sinc函数相似也是理所当然的。当采样率无穷高时，DTFT的结果与FT相同。在采样定理所描述的一定理论条件下，可以由DTFT完全恢复出原来的连续函数。</p>
 <h2 id="_4">离散傅里叶变换<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>最初傅里叶分析被提出并不是为了做信号处理，而是解偏微分方程，但是现在傅里叶分析应用最广的地方便是信号处理。依信号的连续性和周期性分类，我们分别导出了FS、FT、DFS和DTFT，如下所示：</p>
-<p>连续的周期信号   <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 傅里叶级数（FS）</p>
-<p>连续的非周期信号 <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 傅里叶变换（FT）</p>
-<p>离散的周期信号   <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 离散傅里叶级数（DFS）</p>
-<p>离散的非周期信号 <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 离散时间傅里叶变换（DTFT）</p>
+<p>连续的周期信号   <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 傅里叶级数（FS）</p>
+<p>连续的非周期信号 <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 傅里叶变换（FT）</p>
+<p>离散的周期信号   <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 离散傅里叶级数（DFS）</p>
+<p>离散的非周期信号 <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 离散时间傅里叶变换（DTFT）</p>
 <p>不过在信号处理中最常用的却是一个称为离散傅里叶变换的方法，这又是从何而来呢？注意到，在FS、FT、DFS和DTFT中，我们讨论的都是无穷长信号的分析。在实际系统中，我们往往只能得到有限长的离散信号，如何分析一个它的频谱呢？</p>
-<p>首先让我们想一想，什么是离散有限长信号的频谱？离散和有限都只是现实施加于我们的限制，我们希望这个“频谱”能反映真实信号的频谱。设离散有限长信号<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>的长度为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>，<span><span class="MathJax_Preview">n\in \{0, 1, \cdots, N-1\}</span><script type="math/tex">n\in \{0, 1, \cdots, N-1\}</script></span>。那么，有三种情况：</p>
+<p>首先让我们想一想，什么是离散有限长信号的频谱？离散和有限都只是现实施加于我们的限制，我们希望这个“频谱”能反映真实信号的频谱。设离散有限长信号<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>的长度为<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>，<span class="arithmatex"><span class="MathJax_Preview">n\in \{0, 1, \cdots, N-1\}</span><script type="math/tex">n\in \{0, 1, \cdots, N-1\}</script></span>。那么，有三种情况：</p>
 <ol>
 <li>真实信号是周期的，有限长信号恰好截断了整数个周期；</li>
 <li>真实信号是周期的，有限长信号并非截断了整数个周期；</li>
 <li>真实信号是非周期的。</li>
 </ol>
 <h3 id="_5">第一种情况<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>对于第一种情况，很简单，只要把这一段信号复制多遍放到首尾做周期延拓即可，于是乎我们便得到了一个离散的周期信号。用DFS就能得到信号频谱，也即DFS的系数<span><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>。我们把<span><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>换成另一个记号<span><span class="MathJax_Preview">X[k]</span><script type="math/tex">X[k]</script></span>，因此有</p>
-<div>
+<p>对于第一种情况，很简单，只要把这一段信号复制多遍放到首尾做周期延拓即可，于是乎我们便得到了一个离散的周期信号。用DFS就能得到信号频谱，也即DFS的系数<span class="arithmatex"><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>。我们把<span class="arithmatex"><span class="MathJax_Preview">c_k</span><script type="math/tex">c_k</script></span>换成另一个记号<span class="arithmatex"><span class="MathJax_Preview">X[k]</span><script type="math/tex">X[k]</script></span>，因此有</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 X[k]=\sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}, \quad k=0,1, \ldots, N-1.
 </div>
@@ -2192,8 +2425,8 @@ X[k]=\sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}, \quad k=0,1, \ldots, N-1.
 X[k]=\sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}, \quad k=0,1, \ldots, N-1.
 </script>
 </div>
-<p>我们称<span><span class="MathJax_Preview">X[k]</span><script type="math/tex">X[k]</script></span>为<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>的 <strong>离散傅里叶变换（Discrete Fourier Transform, DFT）</strong> 。由DFS展开式，我们还有 <strong>逆离散傅里叶变换（Inverse Discrete Fourier Transform, IDFT）</strong> ：</p>
-<div>
+<p>我们称<span class="arithmatex"><span class="MathJax_Preview">X[k]</span><script type="math/tex">X[k]</script></span>为<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>的 <strong>离散傅里叶变换（Discrete Fourier Transform, DFT）</strong> 。由DFS展开式，我们还有 <strong>逆离散傅里叶变换（Inverse Discrete Fourier Transform, IDFT）</strong> ：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 x[n]=\frac{1}{N} \sum_{k=0}^{N-1} X[k] \, e^{j2\pi\frac{k}{N} n}, \quad n=0,1, \ldots, N-1.
 </div>
@@ -2201,17 +2434,17 @@ x[n]=\frac{1}{N} \sum_{k=0}^{N-1} X[k] \, e^{j2\pi\frac{k}{N} n}, \quad n=0,1, \
 x[n]=\frac{1}{N} \sum_{k=0}^{N-1} X[k] \, e^{j2\pi\frac{k}{N} n}, \quad n=0,1, \ldots, N-1.
 </script>
 </div>
-<p>（这里再次强调，DFT和IDFT变换式中和式前面的归一化系数并不重要。在上面的定义中，DFT和IDFT前的系数分别为1和<span><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>，有时会将这两个系数都改成<span><span class="MathJax_Preview">\frac{1}{\sqrt{N}}</span><script type="math/tex">\frac{1}{\sqrt{N}}</script></span>。）</p>
+<p>（这里再次强调，DFT和IDFT变换式中和式前面的归一化系数并不重要。在上面的定义中，DFT和IDFT前的系数分别为1和<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{N}</span><script type="math/tex">\frac{1}{N}</script></span>，有时会将这两个系数都改成<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{\sqrt{N}}</span><script type="math/tex">\frac{1}{\sqrt{N}}</script></span>。）</p>
 <p>所以DFT就是DFS中的系数公式，IDFT就是DFS展开式，相当于换种角度把离散周期信号重新理解了一遍。继而我们可以把上面的分类修改为：</p>
-<p>连续的周期信号   <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 傅里叶级数（FS）</p>
-<p>连续的非周期信号 <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 傅里叶变换（FT）</p>
-<p>离散的周期信号   <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 离散傅里叶级数（DFS）&amp; 离散傅里叶变换（DFT）</p>
-<p>离散的非周期信号 <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 离散时间傅里叶变换（DTFT）</p>
+<p>连续的周期信号   <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 傅里叶级数（FS）</p>
+<p>连续的非周期信号 <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 傅里叶变换（FT）</p>
+<p>离散的周期信号   <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 离散傅里叶级数（DFS）&amp; 离散傅里叶变换（DFT）</p>
+<p>离散的非周期信号 <span class="arithmatex"><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> 离散时间傅里叶变换（DTFT）</p>
 <p>这时读者会问了，那第二、三种情况怎么办呢？</p>
 <h3 id="_6">第二、三种情况<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>先来看第二种情况，问题来了，我怎么知道它截断的是不是整数个周期呢？我唯一知道的只有那个有限长的序列，我怎么能在没有其他证据情况下对真实信号妄加揣测呢？所以说，情况二无解，我们只能默认截断的是整数个周期。但由于现实中很难正好截断整数个周期，因此会导致用DFT计算得到的频谱可能与连续信号有差别，俗称“频谱泄露”。</p>
-<p>第三种情况同样如此，信号都是非周期了，我怎能知道小于<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>或大于<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的时候信号是什么样子呢？所以合理的假设是，我们的采样时间足够长，长度<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列已经包含了有效信号的全部，之外的部分都是<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>。如此一来，我们得到了一个无穷长非周期离散序列，自然可以用DTFT来处理它，于是有信号频谱</p>
-<div>
+<p>第三种情况同样如此，信号都是非周期了，我怎能知道小于<span class="arithmatex"><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>或大于<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的时候信号是什么样子呢？所以合理的假设是，我们的采样时间足够长，长度<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列已经包含了有效信号的全部，之外的部分都是<span class="arithmatex"><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>。如此一来，我们得到了一个无穷长非周期离散序列，自然可以用DTFT来处理它，于是有信号频谱</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 X(\omega) = \sum_{n=-\infty}^{+\infty} x[n] e^{-j\omega n} = \sum_{n=0}^{N-1} x[n] e^{-j\omega n}.
 </div>
@@ -2219,9 +2452,9 @@ X(\omega) = \sum_{n=-\infty}^{+\infty} x[n] e^{-j\omega n} = \sum_{n=0}^{N-1} x[
 X(\omega) = \sum_{n=-\infty}^{+\infty} x[n] e^{-j\omega n} = \sum_{n=0}^{N-1} x[n] e^{-j\omega n}.
 </script>
 </div>
-<p>细心的读者会发现，DFT表达式跟上式好像差不多。没错，DFT只是<span><span class="MathJax_Preview">X(\omega)</span><script type="math/tex">X(\omega)</script></span>进行离散取值<span><span class="MathJax_Preview">\omega=\frac{2\pi k}{N}</span><script type="math/tex">\omega=\frac{2\pi k}{N}</script></span>时的情况。或者换种说法，对有限长信号而言，DFT是DTFT在频域主值区间上的抽样。在信号处理中，为方便数字电路计算，我们不仅需要时域离散，还需要频域离散，因此即使真实信号是非周期的，我们也需要对DTFT的连续频谱进行抽样以存储频谱。既然总归要抽样，DFT也是对DTFT的一种抽样，何不就用DFT来对付这第三种情况呢？</p>
-<p>善于思考的读者会想到，就算DFT能抽样，但它的频域分辨率只是固定的<span><span class="MathJax_Preview">\frac{2\pi}{N}</span><script type="math/tex">\frac{2\pi}{N}</script></span>，如果我想要更细粒度的频谱，DFT不就办不到了？不急，DFT还有一个神奇的辅助操作——时域 <strong>补零（Zero Padding）</strong> ，比如我们将<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>添上长度为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>序列，记为<span><span class="MathJax_Preview">y[n]</span><script type="math/tex">y[n]</script></span>，即</p>
-<div>
+<p>细心的读者会发现，DFT表达式跟上式好像差不多。没错，DFT只是<span class="arithmatex"><span class="MathJax_Preview">X(\omega)</span><script type="math/tex">X(\omega)</script></span>进行离散取值<span class="arithmatex"><span class="MathJax_Preview">\omega=\frac{2\pi k}{N}</span><script type="math/tex">\omega=\frac{2\pi k}{N}</script></span>时的情况。或者换种说法，对有限长信号而言，DFT是DTFT在频域主值区间上的抽样。在信号处理中，为方便数字电路计算，我们不仅需要时域离散，还需要频域离散，因此即使真实信号是非周期的，我们也需要对DTFT的连续频谱进行抽样以存储频谱。既然总归要抽样，DFT也是对DTFT的一种抽样，何不就用DFT来对付这第三种情况呢？</p>
+<p>善于思考的读者会想到，就算DFT能抽样，但它的频域分辨率只是固定的<span class="arithmatex"><span class="MathJax_Preview">\frac{2\pi}{N}</span><script type="math/tex">\frac{2\pi}{N}</script></span>，如果我想要更细粒度的频谱，DFT不就办不到了？不急，DFT还有一个神奇的辅助操作——时域 <strong>补零（Zero Padding）</strong> ，比如我们将<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>添上长度为<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的<span class="arithmatex"><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>序列，记为<span class="arithmatex"><span class="MathJax_Preview">y[n]</span><script type="math/tex">y[n]</script></span>，即</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 y[n] = \left\{
 \begin{aligned}
@@ -2239,8 +2472,8 @@ x[n], &\quad 0 \leq n < N \\
 \right.
 </script>
 </div>
-<p>那么<span><span class="MathJax_Preview">y[n]</span><script type="math/tex">y[n]</script></span>的DFT为</p>
-<div>
+<p>那么<span class="arithmatex"><span class="MathJax_Preview">y[n]</span><script type="math/tex">y[n]</script></span>的DFT为</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 Y[k] = \sum_{n=0}^{2N-1} y[n] \, e^{-j2\pi\frac{k}{2N} n} = \sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{2N} n}.
 </div>
@@ -2249,7 +2482,7 @@ Y[k] = \sum_{n=0}^{2N-1} y[n] \, e^{-j2\pi\frac{k}{2N} n} = \sum_{n=0}^{N-1} x[n
 </script>
 </div>
 <p>与</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 X[k] = \sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}
 </div>
@@ -2257,12 +2490,12 @@ X[k] = \sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}
 X[k] = \sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}
 </script>
 </div>
-<p>相比，显然得到的频谱<span><span class="MathJax_Preview">Y[k]</span><script type="math/tex">Y[k]</script></span>和之前的频谱<span><span class="MathJax_Preview">X[k]</span><script type="math/tex">X[k]</script></span>相同，但分辨率却成为<span><span class="MathJax_Preview">\frac{\pi}{N}</span><script type="math/tex">\frac{\pi}{N}</script></span>，比原来提高了一倍。如果我们还想要更高的分辨率，添加更多的<span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>即可。要注意不管补多少零，DFT的结果总是DTFT的一个抽样，故补了无穷多零时的频谱就是DTFT频谱。</p>
+<p>相比，显然得到的频谱<span class="arithmatex"><span class="MathJax_Preview">Y[k]</span><script type="math/tex">Y[k]</script></span>和之前的频谱<span class="arithmatex"><span class="MathJax_Preview">X[k]</span><script type="math/tex">X[k]</script></span>相同，但分辨率却成为<span class="arithmatex"><span class="MathJax_Preview">\frac{\pi}{N}</span><script type="math/tex">\frac{\pi}{N}</script></span>，比原来提高了一倍。如果我们还想要更高的分辨率，添加更多的<span class="arithmatex"><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>即可。要注意不管补多少零，DFT的结果总是DTFT的一个抽样，故补了无穷多零时的频谱就是DTFT频谱。</p>
 <p>以上，总结三种情况，对于离散的有限长信号，只需要DFT（辅以时域补零）就可求出我们需要的频谱。</p>
 <h2 id="_7">快速傅里叶变换<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>DFT虽然可以计算有限时间内的频谱，但它的计算复杂度是<span><span class="MathJax_Preview">O(N^2)</span><script type="math/tex">O(N^2)</script></span>的，计算量过大，限制了在实际中的应用。在20世纪60年代中期，一种称之为 <strong>快速傅里叶变换（Fast Fourier Transform, FFT）</strong> 的算法被引入，它是快速计算序列的DFT或IDFT的方法。这一算法在1965年被库利（Cooley）和图基（Tukey）独立地发现。其实FFT也有相当长的历史，事实上这一算法在高斯的手稿中已能找到。FFT之所以成为重要的近代发现是由于它被证明非常适合于高效的数字实现，并且它将计算变换所需要的时间减少了几个数量级。有了这一算法，在利用DFT的许多有趣而过去认为不切实际的想法突然变得实际起来，并且使离散时间信号与系统分析技术的发展加速向前迈进。1994年美国数学家吉尔伯特·斯特朗把FFT描述为“我们一生中最重要的数值算法”，它还被IEEE科学与工程计算期刊列入20世纪十大算法。</p>
-<p>我们以长度<span><span class="MathJax_Preview">N=2^r</span><script type="math/tex">N=2^r</script></span>的序列来讲解FFT算法原理（其他非2的幂的FFT算法也已存在，感兴趣的读者可以自行探究）。FFT的核心思想是分治算法，把一个计算长为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列的DFT转化为计算两个长为<span><span class="MathJax_Preview">\frac{N}{2}</span><script type="math/tex">\frac{N}{2}</script></span>的序列的DFT，以此降低计算量。我们誊写DFT的公式如下：</p>
-<div>
+<p>DFT虽然可以计算有限时间内的频谱，但它的计算复杂度是<span class="arithmatex"><span class="MathJax_Preview">O(N^2)</span><script type="math/tex">O(N^2)</script></span>的，计算量过大，限制了在实际中的应用。在20世纪60年代中期，一种称之为 <strong>快速傅里叶变换（Fast Fourier Transform, FFT）</strong> 的算法被引入，它是快速计算序列的DFT或IDFT的方法。这一算法在1965年被库利（Cooley）和图基（Tukey）独立地发现。其实FFT也有相当长的历史，事实上这一算法在高斯的手稿中已能找到。FFT之所以成为重要的近代发现是由于它被证明非常适合于高效的数字实现，并且它将计算变换所需要的时间减少了几个数量级。有了这一算法，在利用DFT的许多有趣而过去认为不切实际的想法突然变得实际起来，并且使离散时间信号与系统分析技术的发展加速向前迈进。1994年美国数学家吉尔伯特·斯特朗把FFT描述为“我们一生中最重要的数值算法”，它还被IEEE科学与工程计算期刊列入20世纪十大算法。</p>
+<p>我们以长度<span class="arithmatex"><span class="MathJax_Preview">N=2^r</span><script type="math/tex">N=2^r</script></span>的序列来讲解FFT算法原理（其他非2的幂的FFT算法也已存在，感兴趣的读者可以自行探究）。FFT的核心思想是分治算法，把一个计算长为<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的序列的DFT转化为计算两个长为<span class="arithmatex"><span class="MathJax_Preview">\frac{N}{2}</span><script type="math/tex">\frac{N}{2}</script></span>的序列的DFT，以此降低计算量。我们誊写DFT的公式如下：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 X[k] = \sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}.
 </div>
@@ -2270,8 +2503,8 @@ X[k] = \sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}.
 X[k] = \sum_{n=0}^{N-1} x[n] \, e^{-j2\pi\frac{k}{N} n}.
 </script>
 </div>
-<p>为表示方便，我们记<span><span class="MathJax_Preview">W_N = e^{-j2\pi\frac{1}{N}}</span><script type="math/tex">W_N = e^{-j2\pi\frac{1}{N}}</script></span>。那么DFT的公式就可以写为</p>
-<div>
+<p>为表示方便，我们记<span class="arithmatex"><span class="MathJax_Preview">W_N = e^{-j2\pi\frac{1}{N}}</span><script type="math/tex">W_N = e^{-j2\pi\frac{1}{N}}</script></span>。那么DFT的公式就可以写为</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 X[k] = \sum_{n=0}^{N-1} x[n] \, W_N^{kn}.
 </div>
@@ -2279,8 +2512,8 @@ X[k] = \sum_{n=0}^{N-1} x[n] \, W_N^{kn}.
 X[k] = \sum_{n=0}^{N-1} x[n] \, W_N^{kn}.
 </script>
 </div>
-<p>按照<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>取值的奇偶性，我们把序列<span><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>分为两部分<span><span class="MathJax_Preview">x_{odd}[m]</span><script type="math/tex">x_{odd}[m]</script></span>和<span><span class="MathJax_Preview">x_{even}[m]</span><script type="math/tex">x_{even}[m]</script></span>（<span><span class="MathJax_Preview">m=0, 1, \cdots, \frac{N}{2}-1</span><script type="math/tex">m=0, 1, \cdots, \frac{N}{2}-1</script></span>），因而上式可写为</p>
-<div>
+<p>按照<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>取值的奇偶性，我们把序列<span class="arithmatex"><span class="MathJax_Preview">x[n]</span><script type="math/tex">x[n]</script></span>分为两部分<span class="arithmatex"><span class="MathJax_Preview">x_{odd}[m]</span><script type="math/tex">x_{odd}[m]</script></span>和<span class="arithmatex"><span class="MathJax_Preview">x_{even}[m]</span><script type="math/tex">x_{even}[m]</script></span>（<span class="arithmatex"><span class="MathJax_Preview">m=0, 1, \cdots, \frac{N}{2}-1</span><script type="math/tex">m=0, 1, \cdots, \frac{N}{2}-1</script></span>），因而上式可写为</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \begin{aligned}
 X[k] &amp;= \sum_{n=2m} x[n] \, W_N^{kn} + \sum_{n=2m+1} x[n] \, W_N^{kn} \\
@@ -2294,8 +2527,8 @@ X[k] &= \sum_{n=2m} x[n] \, W_N^{kn} + \sum_{n=2m+1} x[n] \, W_N^{kn} \\
 \end{aligned}
 </script>
 </div>
-<p>简单计算后我们知道<span><span class="MathJax_Preview">W_N^{2km} = W_{N/2}^{km}</span><script type="math/tex">W_N^{2km} = W_{N/2}^{km}</script></span>，所以</p>
-<div>
+<p>简单计算后我们知道<span class="arithmatex"><span class="MathJax_Preview">W_N^{2km} = W_{N/2}^{km}</span><script type="math/tex">W_N^{2km} = W_{N/2}^{km}</script></span>，所以</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \begin{aligned}
 X[k] &amp;= \sum_{m=0}^{\frac{N}{2}-1} x_{even}[m] \, W_{N/2}^{km} + W_N^{k}\sum_{m=0}^{\frac{N}{2}-1} x_{odd}[m] \, W_{N/2}^{km}. \\
@@ -2309,9 +2542,9 @@ X[k] &= \sum_{m=0}^{\frac{N}{2}-1} x_{even}[m] \, W_{N/2}^{km} + W_N^{k}\sum_{m=
 \end{aligned}
 </script>
 </div>
-<p>当<span><span class="MathJax_Preview">k&lt;\frac{N}{2}</span><script type="math/tex">k<\frac{N}{2}</script></span>时，<span><span class="MathJax_Preview">Y_1[k]</span><script type="math/tex">Y_1[k]</script></span>和<span><span class="MathJax_Preview">Y_2[k]</span><script type="math/tex">Y_2[k]</script></span>分别是<span><span class="MathJax_Preview">x_{odd}[m]</span><script type="math/tex">x_{odd}[m]</script></span>和<span><span class="MathJax_Preview">x_{even}[m]</span><script type="math/tex">x_{even}[m]</script></span>的DFT；当<span><span class="MathJax_Preview">k\geq \frac{N}{2}</span><script type="math/tex">k\geq \frac{N}{2}</script></span>时，<span><span class="MathJax_Preview">Y_1[k] = Y_1[k-\frac{N}{2}]</span><script type="math/tex">Y_1[k] = Y_1[k-\frac{N}{2}]</script></span>，<span><span class="MathJax_Preview">Y_2[k] = Y_2[k-\frac{N}{2}]</span><script type="math/tex">Y_2[k] = Y_2[k-\frac{N}{2}]</script></span>，我们可以重复利用<span><span class="MathJax_Preview">x_{odd}[m]</span><script type="math/tex">x_{odd}[m]</script></span>和<span><span class="MathJax_Preview">x_{even}[m]</span><script type="math/tex">x_{even}[m]</script></span>的DFT结果。</p>
-<p>于是我们成功地将一个长为<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的DFT计算转化为两个长为<span><span class="MathJax_Preview">\frac{N}{2}</span><script type="math/tex">\frac{N}{2}</script></span>的DFT计算。设FFT的算法时间复杂度为<span><span class="MathJax_Preview">T(N)</span><script type="math/tex">T(N)</script></span>，因为最后合并结果消耗<span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>的时间，我们有</p>
-<div>
+<p>当<span class="arithmatex"><span class="MathJax_Preview">k&lt;\frac{N}{2}</span><script type="math/tex">k<\frac{N}{2}</script></span>时，<span class="arithmatex"><span class="MathJax_Preview">Y_1[k]</span><script type="math/tex">Y_1[k]</script></span>和<span class="arithmatex"><span class="MathJax_Preview">Y_2[k]</span><script type="math/tex">Y_2[k]</script></span>分别是<span class="arithmatex"><span class="MathJax_Preview">x_{odd}[m]</span><script type="math/tex">x_{odd}[m]</script></span>和<span class="arithmatex"><span class="MathJax_Preview">x_{even}[m]</span><script type="math/tex">x_{even}[m]</script></span>的DFT；当<span class="arithmatex"><span class="MathJax_Preview">k\geq \frac{N}{2}</span><script type="math/tex">k\geq \frac{N}{2}</script></span>时，<span class="arithmatex"><span class="MathJax_Preview">Y_1[k] = Y_1[k-\frac{N}{2}]</span><script type="math/tex">Y_1[k] = Y_1[k-\frac{N}{2}]</script></span>，<span class="arithmatex"><span class="MathJax_Preview">Y_2[k] = Y_2[k-\frac{N}{2}]</span><script type="math/tex">Y_2[k] = Y_2[k-\frac{N}{2}]</script></span>，我们可以重复利用<span class="arithmatex"><span class="MathJax_Preview">x_{odd}[m]</span><script type="math/tex">x_{odd}[m]</script></span>和<span class="arithmatex"><span class="MathJax_Preview">x_{even}[m]</span><script type="math/tex">x_{even}[m]</script></span>的DFT结果。</p>
+<p>于是我们成功地将一个长为<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>的DFT计算转化为两个长为<span class="arithmatex"><span class="MathJax_Preview">\frac{N}{2}</span><script type="math/tex">\frac{N}{2}</script></span>的DFT计算。设FFT的算法时间复杂度为<span class="arithmatex"><span class="MathJax_Preview">T(N)</span><script type="math/tex">T(N)</script></span>，因为最后合并结果消耗<span class="arithmatex"><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>的时间，我们有</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 T(N) = 2T(N/2) + O(N).
 </div>
@@ -2319,7 +2552,7 @@ T(N) = 2T(N/2) + O(N).
 T(N) = 2T(N/2) + O(N).
 </script>
 </div>
-<p>根据<a href="https://zh.wikipedia.org/wiki/%E4%B8%BB%E5%AE%9A%E7%90%86">主定理</a>，不难得知FFT的时间复杂度为<span><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>。同学们回忆一下算法课上的内容，自己计算一下这个过程的复杂度。类似的思路，对IDFT我们也有对应的 <strong>逆快速傅里叶变换（Inverse Fast Fourier Transform, IFFT）</strong> 。</p>
+<p>根据<a href="https://zh.wikipedia.org/wiki/%E4%B8%BB%E5%AE%9A%E7%90%86">主定理</a>，不难得知FFT的时间复杂度为<span class="arithmatex"><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>。同学们回忆一下算法课上的内容，自己计算一下这个过程的复杂度。类似的思路，对IDFT我们也有对应的 <strong>逆快速傅里叶变换（Inverse Fast Fourier Transform, IFFT）</strong> 。</p>
 <p>以上我们阐述了一种递归的FFT算法，在实际实现中，我们常常把递归算法转为迭代算法。尤其为了在硬件上实现，常见的FFT算法还要引入一种蝶式计算结构。为了增强计算性能，还要做很多的优化。此处我们不再详述。</p>
 <p><img alt="FT v.s. FS v.s. DTFT v.s. DFT" src="fig/FT.gif" />
 <center></p>
@@ -2330,9 +2563,9 @@ padding: 2px;">图. FT v.s. FS v.s. DTFT v.s. DFT</div>
 <p></center></p>
 <h3 id="fft">基于FFT的大数乘法与卷积<a class="headerlink" href="#fft" title="Permanent link">&para;</a></h3>
 <p>这里我们来介绍两个利用FFT进行高效算法设计的例子——大数乘法与卷积。表面上看这两个例子似乎相去甚远，但它们的核心思想却是一样的。</p>
-<p>在学习程序设计课程的时候，我们都写过大数乘法，其实现是模拟手工列竖式计算，计算复杂度为<span><span class="MathJax_Preview">O(N^{2})</span><script type="math/tex">O(N^{2})</script></span>。通过FFT，我们可以将大数乘法的复杂度变为<span><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>。</p>
-<p>设<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>是两个很大的数，<span><span class="MathJax_Preview">C=A\cdot B</span><script type="math/tex">C=A\cdot B</script></span>。把这两个数写成多项式的形式（这里我们补足够数量的前导零使得它们的乘积也能用<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>位表示）：</p>
-<div>
+<p>在学习程序设计课程的时候，我们都写过大数乘法，其实现是模拟手工列竖式计算，计算复杂度为<span class="arithmatex"><span class="MathJax_Preview">O(N^{2})</span><script type="math/tex">O(N^{2})</script></span>。通过FFT，我们可以将大数乘法的复杂度变为<span class="arithmatex"><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>。</p>
+<p>设<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和<span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>是两个很大的数，<span class="arithmatex"><span class="MathJax_Preview">C=A\cdot B</span><script type="math/tex">C=A\cdot B</script></span>。把这两个数写成多项式的形式（这里我们补足够数量的前导零使得它们的乘积也能用<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>位表示）：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 A(x)=\sum_{n=0}^{N-1}a_n x^n \qquad
 B(x)=\sum_{n=0}^{N-1}b_n x^n
@@ -2342,18 +2575,18 @@ A(x)=\sum_{n=0}^{N-1}a_n x^n \qquad
 B(x)=\sum_{n=0}^{N-1}b_n x^n
 </script>
 </div>
-<p>其中<span><span class="MathJax_Preview">a_0, a_1, \cdots, a_{N−1}</span><script type="math/tex">a_0, a_1, \cdots, a_{N−1}</script></span>分别表示<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的第一位、第二位……第<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>位，<span><span class="MathJax_Preview">b_0, b_1, \cdots, b_{N−1}</span><script type="math/tex">b_0, b_1, \cdots, b_{N−1}</script></span>分别表示<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>的第一位、第二位……第<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>位。这样我们就能用向量<span><span class="MathJax_Preview">(a_0, a_1, \cdots ,a_{N−1})</span><script type="math/tex">(a_0, a_1, \cdots ,a_{N−1})</script></span>来表示<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>，向量<span><span class="MathJax_Preview">(b_0, b_1, \cdots ,b_{N−1})</span><script type="math/tex">(b_0, b_1, \cdots ,b_{N−1})</script></span>来表示<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>，这种表示方法叫做系数表示法，当<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>取10时就是我们常用的十进制。</p>
-<p>我们知道多项式除了有系数表示法，还有点值表示法（拉格朗日插值），<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>个点可以唯一确定一个多项式。例如当我们知道<span><span class="MathJax_Preview">(0, A(0)), (1, A(1)), \cdots, (N-1, A(N-1))</span><script type="math/tex">(0, A(0)), (1, A(1)), \cdots, (N-1, A(N-1))</script></span>这些点时，<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>也就是已知的。</p>
+<p>其中<span class="arithmatex"><span class="MathJax_Preview">a_0, a_1, \cdots, a_{N−1}</span><script type="math/tex">a_0, a_1, \cdots, a_{N−1}</script></span>分别表示<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的第一位、第二位……第<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>位，<span class="arithmatex"><span class="MathJax_Preview">b_0, b_1, \cdots, b_{N−1}</span><script type="math/tex">b_0, b_1, \cdots, b_{N−1}</script></span>分别表示<span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>的第一位、第二位……第<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>位。这样我们就能用向量<span class="arithmatex"><span class="MathJax_Preview">(a_0, a_1, \cdots ,a_{N−1})</span><script type="math/tex">(a_0, a_1, \cdots ,a_{N−1})</script></span>来表示<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>，向量<span class="arithmatex"><span class="MathJax_Preview">(b_0, b_1, \cdots ,b_{N−1})</span><script type="math/tex">(b_0, b_1, \cdots ,b_{N−1})</script></span>来表示<span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>，这种表示方法叫做系数表示法，当<span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>取10时就是我们常用的十进制。</p>
+<p>我们知道多项式除了有系数表示法，还有点值表示法（拉格朗日插值），<span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>个点可以唯一确定一个多项式。例如当我们知道<span class="arithmatex"><span class="MathJax_Preview">(0, A(0)), (1, A(1)), \cdots, (N-1, A(N-1))</span><script type="math/tex">(0, A(0)), (1, A(1)), \cdots, (N-1, A(N-1))</script></span>这些点时，<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>也就是已知的。</p>
 <p>下面我们考虑这样一种计算方法</p>
 <ol>
-<li>将<span><span class="MathJax_Preview">A, B</span><script type="math/tex">A, B</script></span>的系数表示变为点值表示。</li>
-<li>计算点值表示的乘积，即<span><span class="MathJax_Preview">(0, C(0)), \cdots, (N-1, C(N-1))=(0, A(0)\cdot B(0)), \cdots, (N-1, A(N-1)\cdot B(N-1))</span><script type="math/tex">(0, C(0)), \cdots, (N-1, C(N-1))=(0, A(0)\cdot B(0)), \cdots, (N-1, A(N-1)\cdot B(N-1))</script></span></li>
-<li><span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>的点值表示已经确定了<span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>，将其转化为系数表示即求得对应大数乘积。</li>
+<li>将<span class="arithmatex"><span class="MathJax_Preview">A, B</span><script type="math/tex">A, B</script></span>的系数表示变为点值表示。</li>
+<li>计算点值表示的乘积，即<span class="arithmatex"><span class="MathJax_Preview">(0, C(0)), \cdots, (N-1, C(N-1))=(0, A(0)\cdot B(0)), \cdots, (N-1, A(N-1)\cdot B(N-1))</span><script type="math/tex">(0, C(0)), \cdots, (N-1, C(N-1))=(0, A(0)\cdot B(0)), \cdots, (N-1, A(N-1)\cdot B(N-1))</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>的点值表示已经确定了<span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>，将其转化为系数表示即求得对应大数乘积。</li>
 </ol>
-<p>步骤2的复杂度为<span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>，但步骤1和3的朴素算法复杂度是<span><span class="MathJax_Preview">O(N^{2})</span><script type="math/tex">O(N^{2})</script></span>，看似没有降低总体的复杂度，但这个思路给了我们优化它的可能。</p>
-<p>观察大数的多项式表示，其实是一个求和，而DFT也是一个求和。如果<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>取为DFT里对应各频率的单位复根（点值表示法的取点是任意的，我们可以在复平面上任取<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个点），那么“将<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的系数表示变为点值表示”这一操作等价于“求解<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的DFT”，点值表示化为系数表示则对应于IDFT。由于FFT和IFFT的存在，步骤1和3的算法复杂度都变成了<span><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>，于是总体计算大数乘法的时间复杂度也变成了<span><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>。</p>
-<p>在学习信号处理时，不可避免地，我们会遇到一个概念——<strong>卷积（Convolution）</strong>。离散形式的卷积定义如下：设<span><span class="MathJax_Preview">a[n],b[n]</span><script type="math/tex">a[n],b[n]</script></span>为无穷长离散序列，则<span><span class="MathJax_Preview">a[n]</span><script type="math/tex">a[n]</script></span>和<span><span class="MathJax_Preview">b[n]</span><script type="math/tex">b[n]</script></span>的卷积为</p>
-<div>
+<p>步骤2的复杂度为<span class="arithmatex"><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>，但步骤1和3的朴素算法复杂度是<span class="arithmatex"><span class="MathJax_Preview">O(N^{2})</span><script type="math/tex">O(N^{2})</script></span>，看似没有降低总体的复杂度，但这个思路给了我们优化它的可能。</p>
+<p>观察大数的多项式表示，其实是一个求和，而DFT也是一个求和。如果<span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>取为DFT里对应各频率的单位复根（点值表示法的取点是任意的，我们可以在复平面上任取<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个点），那么“将<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的系数表示变为点值表示”这一操作等价于“求解<span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>的DFT”，点值表示化为系数表示则对应于IDFT。由于FFT和IFFT的存在，步骤1和3的算法复杂度都变成了<span class="arithmatex"><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>，于是总体计算大数乘法的时间复杂度也变成了<span class="arithmatex"><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>。</p>
+<p>在学习信号处理时，不可避免地，我们会遇到一个概念——<strong>卷积（Convolution）</strong>。离散形式的卷积定义如下：设<span class="arithmatex"><span class="MathJax_Preview">a[n],b[n]</span><script type="math/tex">a[n],b[n]</script></span>为无穷长离散序列，则<span class="arithmatex"><span class="MathJax_Preview">a[n]</span><script type="math/tex">a[n]</script></span>和<span class="arithmatex"><span class="MathJax_Preview">b[n]</span><script type="math/tex">b[n]</script></span>的卷积为</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 s[n] = a[n] \ast b[n] = \sum_{m=-\infty}^{+\infty} a_mb_{n-m}.
 </div>
@@ -2361,8 +2594,8 @@ s[n] = a[n] \ast b[n] = \sum_{m=-\infty}^{+\infty} a_mb_{n-m}.
 s[n] = a[n] \ast b[n] = \sum_{m=-\infty}^{+\infty} a_mb_{n-m}.
 </script>
 </div>
-<p>实际中的序列都是有限的，只知道<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个点的值该怎么办呢？我们有两种办法，（一）周期延拓，（二）其他值视为零。第一种方法导致的对有限序列的卷积计算称为 <strong>循环卷积（Circular Convolution）</strong> ，也叫圆周卷积，用<span><span class="MathJax_Preview">\circledast</span><script type="math/tex">\circledast</script></span>表示。第二种方法导致的对有限序列的卷积计算称为 <strong>线性卷积（Linear Convolution）</strong> ，用<span><span class="MathJax_Preview">\ast</span><script type="math/tex">\ast</script></span>表示。我们考察线性卷积的情况，也即<span><span class="MathJax_Preview">a[n] = (\cdots, 0, a_0, a_1, \cdots, a_{N-1}, 0, \cdots)</span><script type="math/tex">a[n] = (\cdots, 0, a_0, a_1, \cdots, a_{N-1}, 0, \cdots)</script></span>，<span><span class="MathJax_Preview">b[n] = (\cdots, 0, b_0, b_1, \cdots, b_{N-1}, 0, \cdots)</span><script type="math/tex">b[n] = (\cdots, 0, b_0, b_1, \cdots, b_{N-1}, 0, \cdots)</script></span>。则<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>可列如下：</p>
-<div>
+<p>实际中的序列都是有限的，只知道<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>个点的值该怎么办呢？我们有两种办法，（一）周期延拓，（二）其他值视为零。第一种方法导致的对有限序列的卷积计算称为 <strong>循环卷积（Circular Convolution）</strong> ，也叫圆周卷积，用<span class="arithmatex"><span class="MathJax_Preview">\circledast</span><script type="math/tex">\circledast</script></span>表示。第二种方法导致的对有限序列的卷积计算称为 <strong>线性卷积（Linear Convolution）</strong> ，用<span class="arithmatex"><span class="MathJax_Preview">\ast</span><script type="math/tex">\ast</script></span>表示。我们考察线性卷积的情况，也即<span class="arithmatex"><span class="MathJax_Preview">a[n] = (\cdots, 0, a_0, a_1, \cdots, a_{N-1}, 0, \cdots)</span><script type="math/tex">a[n] = (\cdots, 0, a_0, a_1, \cdots, a_{N-1}, 0, \cdots)</script></span>，<span class="arithmatex"><span class="MathJax_Preview">b[n] = (\cdots, 0, b_0, b_1, \cdots, b_{N-1}, 0, \cdots)</span><script type="math/tex">b[n] = (\cdots, 0, b_0, b_1, \cdots, b_{N-1}, 0, \cdots)</script></span>。则<span class="arithmatex"><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>可列如下：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \begin{aligned}
 s[0] &amp;= a_0b_0 \\
@@ -2386,8 +2619,8 @@ s[2N-2] &= a_{N-1}b_{N-1}.
 \end{aligned}
 </script>
 </div>
-<p>这样计算<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>的复杂度显然是<span><span class="MathJax_Preview">O(N^2)</span><script type="math/tex">O(N^2)</script></span>。但我们仔细观察会发现，<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>的表达式竟与手工列竖式计算大数乘法的结果是一样的！也就是说我们同样可以利用FFT将算法复杂度变为<span><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>。所以我们先计算<span><span class="MathJax_Preview">a[n]</span><script type="math/tex">a[n]</script></span>和<span><span class="MathJax_Preview">b[n]</span><script type="math/tex">b[n]</script></span>的FFT，<span><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>就是两者乘积的IFFT。用公式来说，即：</p>
-<div>
+<p>这样计算<span class="arithmatex"><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>的复杂度显然是<span class="arithmatex"><span class="MathJax_Preview">O(N^2)</span><script type="math/tex">O(N^2)</script></span>。但我们仔细观察会发现，<span class="arithmatex"><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>的表达式竟与手工列竖式计算大数乘法的结果是一样的！也就是说我们同样可以利用FFT将算法复杂度变为<span class="arithmatex"><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span>。所以我们先计算<span class="arithmatex"><span class="MathJax_Preview">a[n]</span><script type="math/tex">a[n]</script></span>和<span class="arithmatex"><span class="MathJax_Preview">b[n]</span><script type="math/tex">b[n]</script></span>的FFT，<span class="arithmatex"><span class="MathJax_Preview">s[n]</span><script type="math/tex">s[n]</script></span>就是两者乘积的IFFT。用公式来说，即：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 s[n] = a[n] \ast b[n] = \text{IFFT}\left\{\,\text{FFT}\{a[n]\} \cdot \text{FFT}\{b[n]\}\,\right\}.
 </div>
@@ -2396,7 +2629,7 @@ s[n] = a[n] \ast b[n] = \text{IFFT}\left\{\,\text{FFT}\{a[n]\} \cdot \text{FFT}\
 </script>
 </div>
 <p>或者我们写为：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 FFT\{a[n] \ast b[n]\} = FFT\{a[n]\} \cdot FFT\{b[n]\}.
 </div>
@@ -2405,7 +2638,7 @@ FFT\{a[n] \ast b[n]\} = FFT\{a[n]\} \cdot FFT\{b[n]\}.
 </script>
 </div>
 <p>这就是傅里叶变换著名的性质：时域的卷积等于频域的乘积。其实更正确地说，针对FFT，我们应该用循环卷积，也即：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 FFT\{a[n] \circledast b[n]\} = FFT\{a[n]\} \cdot FFT\{b[n]\}.
 </div>
@@ -2414,7 +2647,7 @@ FFT\{a[n] \circledast b[n]\} = FFT\{a[n]\} \cdot FFT\{b[n]\}.
 </script>
 </div>
 <p>注意这个性质非常非常重要，请读者时刻记住！</p>
-<p>请读者思考为什么循环卷积才是对的？（提示：前面暗含一个假设，<span><span class="MathJax_Preview">a[n]</span><script type="math/tex">a[n]</script></span>和<span><span class="MathJax_Preview">b[n]</span><script type="math/tex">b[n]</script></span>补了很多零）</p>
+<p>请读者思考为什么循环卷积才是对的？（提示：前面暗含一个假设，<span class="arithmatex"><span class="MathJax_Preview">a[n]</span><script type="math/tex">a[n]</script></span>和<span class="arithmatex"><span class="MathJax_Preview">b[n]</span><script type="math/tex">b[n]</script></span>补了很多零）</p>
 <h3 id="fft_1">案例：用FFT分析信号<a class="headerlink" href="#fft_1" title="Permanent link">&para;</a></h3>
 <p>接下来我们以MATLAB代码的形式介绍如何用FFT分析信号频谱。我们以四个信号为例，分别是</p>
 <ol>
@@ -2490,9 +2723,9 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 采样五个周期的100 Hz正弦波（左：时域图像，中：FFT幅度谱，右：FFT相位谱）</div>
 <p></center></p>
-<p>上图分别展示了采样长度为一个周期和五个周期的<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz正弦波的时域、频域图像。我们在图中画出了负的频率，这是很正常的，因为一个实数总能写成两个共轭复数的和，因而具有一个正频率和与之对应的负频率。总的来说，实数信号的频谱总是对称的，通常我们仅看其中的一半。FFT的结果是复数，因而既有幅度也有相位信息，上图除了展示FFT幅度谱外，还展示了FFT相位谱。一般来说幅度谱较为常用，因为它可以告诉我们信号中某个频率占有多少比重，相位谱使用较少但也是很重要的，如在OFDM调制中非常关注FFT相位。</p>
-<p>图中一个奇怪的现象是，当我们只采样了一个周期的信号时，未补零的频谱告诉我们信号中只含有<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的频率，补了16倍零的更细粒度的频谱却告诉我们最大成分的频率并非<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz（蓝色圆圈与黑色曲线最高点明显不重合）。这是为什么呢？因为在FFT看来，一个实数正弦波包含有两个频率，分别是<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz和<span><span class="MathJax_Preview">-100</span><script type="math/tex">-100</script></span>Hz，由于信号的有限性，这两个频率会产生旁瓣从而互相干扰，于是原本应指向<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的峰被扰动偏移了。这个效应会随着旁瓣的变小而趋弱。</p>
-<p>抑制旁瓣在实际信号处理中非常重要，一般抑制旁瓣有两种方法，其一是给信号乘上一个窗函数，俗称“加窗”。“加窗”的过程在很多工作中包括论文中都被有意无意的忽略了，或者就不讲了，实际上很多情况窗函数的使用能够极大的简化信号处理的难度，甚至能对效果起到决定性的作用。另一种方法是延长采样时间（让我们的信号不再“有限长”）。由图可知，在我们加长采样时间到五个周期时，黑线的尖峰终于近似和蓝色圆点重叠，我们从频谱读到了<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz频率。</p>
+<p>上图分别展示了采样长度为一个周期和五个周期的<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz正弦波的时域、频域图像。我们在图中画出了负的频率，这是很正常的，因为一个实数总能写成两个共轭复数的和，因而具有一个正频率和与之对应的负频率。总的来说，实数信号的频谱总是对称的，通常我们仅看其中的一半。FFT的结果是复数，因而既有幅度也有相位信息，上图除了展示FFT幅度谱外，还展示了FFT相位谱。一般来说幅度谱较为常用，因为它可以告诉我们信号中某个频率占有多少比重，相位谱使用较少但也是很重要的，如在OFDM调制中非常关注FFT相位。</p>
+<p>图中一个奇怪的现象是，当我们只采样了一个周期的信号时，未补零的频谱告诉我们信号中只含有<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的频率，补了16倍零的更细粒度的频谱却告诉我们最大成分的频率并非<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz（蓝色圆圈与黑色曲线最高点明显不重合）。这是为什么呢？因为在FFT看来，一个实数正弦波包含有两个频率，分别是<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz和<span class="arithmatex"><span class="MathJax_Preview">-100</span><script type="math/tex">-100</script></span>Hz，由于信号的有限性，这两个频率会产生旁瓣从而互相干扰，于是原本应指向<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的峰被扰动偏移了。这个效应会随着旁瓣的变小而趋弱。</p>
+<p>抑制旁瓣在实际信号处理中非常重要，一般抑制旁瓣有两种方法，其一是给信号乘上一个窗函数，俗称“加窗”。“加窗”的过程在很多工作中包括论文中都被有意无意的忽略了，或者就不讲了，实际上很多情况窗函数的使用能够极大的简化信号处理的难度，甚至能对效果起到决定性的作用。另一种方法是延长采样时间（让我们的信号不再“有限长”）。由图可知，在我们加长采样时间到五个周期时，黑线的尖峰终于近似和蓝色圆点重叠，我们从频谱读到了<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz频率。</p>
 <blockquote>
 <p>思考：这两种操作为什么能够使得频率的结果更加精确？</p>
 </blockquote>
@@ -2552,7 +2785,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 采样五个半周期的100Hz正弦波（左：时域图像，右：FFT幅度谱）</div>
 <p></center></p>
-<p>不同于整周期截断的信号，非整周期截断的信号会出现“频谱泄露”或者“失真”。如上图所示，蓝色圆圈不再处于峰顶。无论我们怎么增加采样时间，不补零的频谱始终告诉我们还有好些其他不同于<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的频率存在，且强度不小。在这种情况下，用补零提高频谱分辨率是必要的。</p>
+<p>不同于整周期截断的信号，非整周期截断的信号会出现“频谱泄露”或者“失真”。如上图所示，蓝色圆圈不再处于峰顶。无论我们怎么增加采样时间，不补零的频谱始终告诉我们还有好些其他不同于<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的频率存在，且强度不小。在这种情况下，用补零提高频谱分辨率是必要的。</p>
 <p>从这个小小的例子我们可以看出FFT作用，也可以看出来如何使用好FFT也是一个很大的问题，即便对于这么简单的一个信号，如果使用方法不对，得到的效果将会有很大的差别，很多同学在实际信号处理或者论文实验的过程中发现结果不理想，很多时候要从最小最基础的地方想原因。这也是为什么我们要把傅里叶这一部分啰嗦这么多的一个很重要的原因。</p>
 <p><strong>复数三角波</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span><span class="w"></span>
@@ -2600,7 +2833,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 采样五个周期的100Hz复数三角波（左：时域实部图像，右：FFT幅度谱）</div>
 <p></center></p>
-<p>上图展示了<span><span class="MathJax_Preview">e^{j2\pi\cdot 100t}</span><script type="math/tex">e^{j2\pi\cdot 100t}</script></span>这个复信号的时域和频域图像，不同于实数三角波，该信号具有单一的频率<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz。</p>
+<p>上图展示了<span class="arithmatex"><span class="MathJax_Preview">e^{j2\pi\cdot 100t}</span><script type="math/tex">e^{j2\pi\cdot 100t}</script></span>这个复信号的时域和频域图像，不同于实数三角波，该信号具有单一的频率<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz。</p>
 <p><strong>方波</strong>
 <div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span><span class="w"></span>
 
@@ -2647,51 +2880,56 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅度谱）</div>
 <p></center></p>
-<p>上图展示了一个周期为<span><span class="MathJax_Preview">10</span><script type="math/tex">10</script></span>ms的方波信号及其频谱，可以看到，频谱中最主要的频率是<span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz，与周期<span><span class="MathJax_Preview">10</span><script type="math/tex">10</script></span>ms对应。当然读者也能明显看出来，频率不只是100Hz，大家也可以思考这个是为什么。</p>
+<p>上图展示了一个周期为<span class="arithmatex"><span class="MathJax_Preview">10</span><script type="math/tex">10</script></span>ms的方波信号及其频谱，可以看到，频谱中最主要的频率是<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz，与周期<span class="arithmatex"><span class="MathJax_Preview">10</span><script type="math/tex">10</script></span>ms对应。当然读者也能明显看出来，频率不只是100Hz，大家也可以思考这个是为什么。</p>
 <h2 id="_8">参考文献<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Oppenheim, Alan V and Buck, John R and Schafer, Ronald W. Discrete-time signal processing. Vol. 2[M]. Upper Saddle River, NJ: Prentice Hall, 2001.</li>
 <li>Cormen, Thomas H and Leiserson, Charles E and Rivest, Ronald L and Stein, Clifford. Introduction to algorithms[M]. MIT press, 2009.</li>
 </ol>
-                
-              
-              
-                
+
+
 
 
               
             </article>
+            
+
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
               <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
               <script>
-              var gitalk = new Gitalk({
-                  clientID: 'ab5371b4172e50e09adb',
-                  clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
-                  repo: 'Comments',
-                  owner: 'iot-book',
-                  admin: ['iot-book', 'tongsh'],
-                  id: location.pathname,      // Ensure uniqueness and length less than 50
-                  distractionFreeMode: false  // Facebook-like distraction free mode
-                })
-
-                gitalk.render('gitalk-container')
+                var gitalk = new Gitalk({
+                    clientID: 'ab5371b4172e50e09adb',
+                    clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
+                    repo: 'Comments',
+                    owner: 'iot-book',
+                    admin: ['iot-book', 'tongsh'],
+                    // id: 'location.pathname.substring(1,30)',
+                    id: location.pathname,      // Ensure uniqueness and length less than 50
+                    distractionFreeMode: false,  // Facebook-like distraction free mode
+                    labels: ['Gitalk'],
+                    title: 'IoTBook-Comment'
+                  })
+                  gitalk.render('gitalk-container')
               </script> 
+            </div>
+            <!-- End 评论 -->
+
           </div>
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
         <a href="../S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.3 傅里叶变换" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -2715,7 +2953,7 @@ padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅�
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -2723,19 +2961,20 @@ padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅�
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        <!-- Made with -->
-        <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
-          &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
-        </a>
-        <br>
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+     <!-- Made with -->
+     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+      &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
+    </a>
+    <br>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -2745,10 +2984,11 @@ padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅�
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

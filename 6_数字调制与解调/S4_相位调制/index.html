@@ -9,44 +9,44 @@
         <meta name="description" content="介绍物联网基础概念">
       
       
-      
         <meta name="author" content="WiSys Lab">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
     
     
       
-        <title>6.4 相位调制 - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>6.4 相位调制 - 物联网前沿实践</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
           <meta name="theme-color" content="#546d78">
         
       
+      
     
     
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,7 +61,6 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,15 +77,18 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
   <img src="../../images/nicon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -108,22 +110,21 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -143,11 +144,14 @@
     
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -161,7 +165,7 @@
                     
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="物联网前沿实践" class="md-nav__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -231,10 +235,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        第2章 信号处理基础
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          第2章 信号处理基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -243,6 +251,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -253,8 +262,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -265,8 +276,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -277,8 +290,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -289,8 +304,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -301,6 +318,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -321,10 +339,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
-      <label class="md-nav__link" for="__nav_5">
-        第3章 傅里叶分析
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          第3章 傅里叶分析
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -333,6 +355,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -343,8 +366,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -355,8 +380,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -367,8 +394,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -379,8 +408,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -391,6 +422,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -411,10 +443,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_6">
-        第4章 无线信道
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          第4章 无线信道
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
@@ -423,6 +459,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -433,8 +470,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -445,8 +484,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -457,8 +498,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -469,6 +512,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -489,10 +533,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_7">
-        第5章 信号滤波
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          第5章 信号滤波
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
@@ -501,6 +549,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -511,8 +560,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -523,8 +574,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -535,8 +588,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -547,8 +602,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -559,8 +616,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -571,6 +630,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -593,10 +653,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
-      <label class="md-nav__link" for="__nav_8">
-        第6章 数据调制和解调
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          第6章 数据调制和解调
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
@@ -605,6 +669,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -615,8 +680,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -627,8 +694,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -639,8 +708,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -664,6 +735,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -719,8 +791,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -731,8 +805,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -743,8 +819,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -755,6 +833,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -775,10 +854,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
-      <label class="md-nav__link" for="__nav_9">
-        第7章 短距离无线通信技术
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          第7章 短距离无线通信技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
@@ -787,6 +870,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -797,8 +881,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -809,8 +895,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -821,8 +909,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -833,6 +923,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -853,10 +944,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
       
-      <label class="md-nav__link" for="__nav_10">
-        第8章 Backscatter通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          第8章 Backscatter通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
@@ -865,6 +960,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -875,8 +971,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -887,8 +985,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -899,6 +999,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -919,10 +1020,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
-      <label class="md-nav__link" for="__nav_11">
-        第9章 LoRa
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          第9章 LoRa
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
@@ -931,6 +1036,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -941,8 +1047,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -953,8 +1061,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -965,8 +1075,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -977,8 +1089,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -989,6 +1103,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1009,10 +1124,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
       
-      <label class="md-nav__link" for="__nav_12">
-        第10章 可见光通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          第10章 可见光通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
@@ -1021,6 +1140,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1031,6 +1151,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1051,10 +1172,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
       
-      <label class="md-nav__link" for="__nav_13">
-        第11章 毫米波通信
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          第11章 毫米波通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
@@ -1063,6 +1188,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1073,6 +1199,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1093,10 +1220,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
-      <label class="md-nav__link" for="__nav_14">
-        第12章 无线测距
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          第12章 无线测距
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
@@ -1105,6 +1236,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1115,8 +1247,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1127,6 +1261,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1147,10 +1282,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
-      <label class="md-nav__link" for="__nav_15">
-        第13章 无线定位
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          第13章 无线定位
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
@@ -1159,6 +1298,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1169,8 +1309,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1181,8 +1323,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1193,8 +1337,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1205,6 +1351,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1225,10 +1372,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
       
-      <label class="md-nav__link" for="__nav_16">
-        第14章 无线追踪
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16">
+          第14章 无线追踪
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
@@ -1237,6 +1388,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1247,8 +1399,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1259,8 +1413,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1271,6 +1427,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1291,10 +1448,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
       
-      <label class="md-nav__link" for="__nav_17">
-        第15章 传感器感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          第15章 传感器感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
@@ -1303,6 +1464,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1313,8 +1475,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1325,8 +1489,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1337,6 +1503,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1357,10 +1524,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
-      <label class="md-nav__link" for="__nav_18">
-        第16章 声波感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          第16章 声波感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
@@ -1369,6 +1540,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1379,8 +1551,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1391,8 +1565,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1403,8 +1579,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1415,8 +1593,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1427,6 +1607,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1447,10 +1628,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
       
-      <label class="md-nav__link" for="__nav_19">
-        第17章 Wi-Fi感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          第17章 Wi-Fi感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
@@ -1459,6 +1644,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1469,8 +1655,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1481,8 +1669,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1493,8 +1683,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1505,6 +1697,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1525,10 +1718,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
       
-      <label class="md-nav__link" for="__nav_20">
-        第18章 蓝牙感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_20">
+          第18章 蓝牙感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
@@ -1537,6 +1734,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1547,8 +1745,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1559,8 +1759,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1571,8 +1773,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1583,6 +1787,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1618,10 +1823,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
       
-      <label class="md-nav__link" for="__nav_22">
-        第20章 UWB感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22">
+          第20章 UWB感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
@@ -1630,6 +1839,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1640,8 +1850,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1652,6 +1864,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1702,10 +1915,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
       
-      <label class="md-nav__link" for="__nav_25">
-        第23章 可见光感知
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_25">
+          第23章 可见光感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
@@ -1714,6 +1931,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1724,8 +1942,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1736,8 +1956,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1748,6 +1970,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1768,10 +1991,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
       
-      <label class="md-nav__link" for="__nav_26">
-        附录
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26">
+          附录
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="附录" data-md-level="1">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
@@ -1780,6 +2007,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1790,8 +2018,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1802,6 +2032,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1821,6 +2052,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
@@ -1881,31 +2113,32 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                <h1 id="_1">相位调制<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+
+
+<h1 id="_1">相位调制<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>​       相位调制，简称调相，也就是相位偏移键控(Phase-shift keying , PSK)，使用信号中不同的相位来调制数据。根据使用的相位数量上的区别，相位调制又可分为二相位偏移键控(Binary PSK, BPSK), 四相位偏移键控(Quadrature PSK, QPSK)和八相位偏移键控(8PSK)等。</p>
 <p>​       这些调制的方法我相信大家都或多或少的有听说过，但是真是要实现起来，大家可能还是得想一想。具体是怎么实现的，就未必很熟悉了。如果将声音作为信号，实现一个基于声音的传输系统，这样可能就更复杂了。本章主要要讲的就是这个事情，希望能够通过这一部分的介绍，大家能够完整的了解一个类似真实调制解调的过程。</p>
 <p>​       在进行信号处理时，或者我们看到很多论文时，经常会听到I和Q路这个概念，这个概念对于初次接触的人可能会比较难懂。很多人即便是经常使用，例如在定位中经常I和Q来计算相位从而计算距离等，但使用过程中可能也未必真正了解其中的含义。</p>
-<p>​       我们以PSK为例介绍I和Q的情况。为了生成不同信号的相位，当然我们最直接的方法可以改变单路信号的相位，例如<span><span class="MathJax_Preview">sin(2\pi f t + \phi)</span><script type="math/tex">sin(2\pi f t + \phi)</script></span>，其中<span><span class="MathJax_Preview">\phi</span><script type="math/tex">\phi</script></span>就是信号的相位。我们可以生成一个具备不同相位的正弦波，利用这个正弦波来进行数据传输。</p>
+<p>​       我们以PSK为例介绍I和Q的情况。为了生成不同信号的相位，当然我们最直接的方法可以改变单路信号的相位，例如<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \phi)</span><script type="math/tex">sin(2\pi f t + \phi)</script></span>，其中<span class="arithmatex"><span class="MathJax_Preview">\phi</span><script type="math/tex">\phi</script></span>就是信号的相位。我们可以生成一个具备不同相位的正弦波，利用这个正弦波来进行数据传输。</p>
 <p>​       为了更加一般化的理解这个过程，目前普遍使用的实现PSK的方法是I/Q正交调制。其原理是使用两路正交的信号分别编码两路数据，每路数据单独调制，并将两路信号直接相加。
 一方面我们可以知道，由于正弦和余弦信号的正交性，两路信号可以分别解码出来。
 我们暂时先不考虑正交这个角度，考虑两路信号相加的结果，相加的信号是具备不同的相位。</p>
-<p>如何来得到相加后具有不同相位的信号呢？通常我们选取正交的两路信号为<span><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>和<span><span class="MathJax_Preview">cos(2\pi ft)</span><script type="math/tex">cos(2\pi ft)</script></span>，通过改变正弦和余弦函数的幅度来得到相加后不同相位的信号。例如，<span><span class="MathJax_Preview">\frac{\sqrt{2}}{2}sin(2\pi ft)+\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">\frac{\sqrt{2}}{2}sin(2\pi ft)+\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t + \frac{\pi}{4})</script></span>可以代表一个初相位为<span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>的信号，<span><span class="MathJax_Preview">\frac{\sqrt{2}}{2}sin(2\pi ft)-\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t - \frac{\pi}{4})</span><script type="math/tex">\frac{\sqrt{2}}{2}sin(2\pi ft)-\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t - \frac{\pi}{4})</script></span>可以代表一个初相位为<span><span class="MathJax_Preview">-\frac{\pi}{4}</span><script type="math/tex">-\frac{\pi}{4}</script></span>的信号。<span><span class="MathJax_Preview">\frac{\sqrt{2}}{2}</span><script type="math/tex">\frac{\sqrt{2}}{2}</script></span>这个系数是为了相加后的信号幅度为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>。因此我们发现利用两路正交的信号，我们可以很方便控制生成信号的相位。这样发送端分别控制两路正交信号，最后实际达到的效果就是生成信号具备不同相位。</p>
-<p>​       那么如何据计算出来这个相位，如何用这个相位来编码信息呢？一个直接的方法就是不同的相位对应到不同的数据，例如可以将相位分为0, <span><span class="MathJax_Preview">\pi/4</span><script type="math/tex">\pi/4</script></span>, <span><span class="MathJax_Preview">\pi/2</span><script type="math/tex">\pi/2</script></span>, <span><span class="MathJax_Preview">3\pi/4</span><script type="math/tex">3\pi/4</script></span>，分别代表00,01,10,11四个不同的比特序列，这样接收每一个相位就可以代表两个比特了。
-在信号传输过程中，如何来更加直观的来表示这一事情呢？我们可以把<span><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>的幅度作为横坐标，<span><span class="MathJax_Preview">cos(2\pi ft)</span><script type="math/tex">cos(2\pi ft)</script></span>的幅度作为纵坐标，就可以在一个平面直角坐标系中画出一个点，把一个PSK调制方法中所有的幅度组合都画在图中，则会得到一系列点，这个图叫做该调制方法的**星座映射图**，或简称**星座图**。由于在PSK中，我们通常要求I/Q两路信号相加后的信号幅度为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，所以PSK的星座图上所有的点都位于单位圆上。</p>
+<p>如何来得到相加后具有不同相位的信号呢？通常我们选取正交的两路信号为<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">cos(2\pi ft)</span><script type="math/tex">cos(2\pi ft)</script></span>，通过改变正弦和余弦函数的幅度来得到相加后不同相位的信号。例如，<span class="arithmatex"><span class="MathJax_Preview">\frac{\sqrt{2}}{2}sin(2\pi ft)+\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">\frac{\sqrt{2}}{2}sin(2\pi ft)+\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t + \frac{\pi}{4})</script></span>可以代表一个初相位为<span class="arithmatex"><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>的信号，<span class="arithmatex"><span class="MathJax_Preview">\frac{\sqrt{2}}{2}sin(2\pi ft)-\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t - \frac{\pi}{4})</span><script type="math/tex">\frac{\sqrt{2}}{2}sin(2\pi ft)-\frac{\sqrt{2}}{2}cos(2\pi ft)=sin(2\pi f t - \frac{\pi}{4})</script></span>可以代表一个初相位为<span class="arithmatex"><span class="MathJax_Preview">-\frac{\pi}{4}</span><script type="math/tex">-\frac{\pi}{4}</script></span>的信号。<span class="arithmatex"><span class="MathJax_Preview">\frac{\sqrt{2}}{2}</span><script type="math/tex">\frac{\sqrt{2}}{2}</script></span>这个系数是为了相加后的信号幅度为<span class="arithmatex"><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>。因此我们发现利用两路正交的信号，我们可以很方便控制生成信号的相位。这样发送端分别控制两路正交信号，最后实际达到的效果就是生成信号具备不同相位。</p>
+<p>​       那么如何据计算出来这个相位，如何用这个相位来编码信息呢？一个直接的方法就是不同的相位对应到不同的数据，例如可以将相位分为0, <span class="arithmatex"><span class="MathJax_Preview">\pi/4</span><script type="math/tex">\pi/4</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\pi/2</span><script type="math/tex">\pi/2</script></span>, <span class="arithmatex"><span class="MathJax_Preview">3\pi/4</span><script type="math/tex">3\pi/4</script></span>，分别代表00,01,10,11四个不同的比特序列，这样接收每一个相位就可以代表两个比特了。
+在信号传输过程中，如何来更加直观的来表示这一事情呢？我们可以把<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi ft)</span><script type="math/tex">sin(2\pi ft)</script></span>的幅度作为横坐标，<span class="arithmatex"><span class="MathJax_Preview">cos(2\pi ft)</span><script type="math/tex">cos(2\pi ft)</script></span>的幅度作为纵坐标，就可以在一个平面直角坐标系中画出一个点，把一个PSK调制方法中所有的幅度组合都画在图中，则会得到一系列点，这个图叫做该调制方法的**星座映射图**，或简称**星座图**。由于在PSK中，我们通常要求I/Q两路信号相加后的信号幅度为<span class="arithmatex"><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，所以PSK的星座图上所有的点都位于单位圆上。</p>
 <p>​       从另外的一种角度来看，我们来理解一下I/Q两路调制。</p>
-<p>​       不考虑是相位调制，我们考虑在调制的过程中我们就使用<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">cos(2\pi f t)</span><script type="math/tex">cos(2\pi f t)</script></span>同时调制信号，为什么可以用这两路呢，因为这两路信号是正交的。我们可以将这两路认为是I路和Q路信号。发送端我们可以在这两路信号上设置成不同的幅度，那么接收端可以分别计算出不同的幅度，从而将数据解码出来。</p>
+<p>​       不考虑是相位调制，我们考虑在调制的过程中我们就使用<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">cos(2\pi f t)</span><script type="math/tex">cos(2\pi f t)</script></span>同时调制信号，为什么可以用这两路呢，因为这两路信号是正交的。我们可以将这两路认为是I路和Q路信号。发送端我们可以在这两路信号上设置成不同的幅度，那么接收端可以分别计算出不同的幅度，从而将数据解码出来。</p>
 <p>​       这时的I和Q就对应到由I轴和Q轴组成的星座图上的一个点（这就是星座图的来源），以此来看，我们如果可以使用星座图上的任意I和Q组合（即星座图上的任意点）来编码数据。编码过程中使用的星座图上点的数量跟编码的bit数有直接关系。</p>
 <ul>
 <li>使用星座图上的2个点，每次编码1个bit，例如BPSK。</li>
 <li>使用星座图上的4个点，每次编码2个bit，例如QPSK。</li>
 <li>使用星座图上的8个点，每次编码3个bit，例如8PSK。</li>
 </ul>
-<p>​       理论上也可以任意使用星座图上的n个点，每次能编码<span><span class="MathJax_Preview">\log_2 n</span><script type="math/tex">\log_2 n</script></span>个bit。从理论上来说，这n个点都可以从接收到的信号中解码出来。当然在实际编码中不会任意选取，都会有规律的选取。</p>
+<p>​       理论上也可以任意使用星座图上的n个点，每次能编码<span class="arithmatex"><span class="MathJax_Preview">\log_2 n</span><script type="math/tex">\log_2 n</script></span>个bit。从理论上来说，这n个点都可以从接收到的信号中解码出来。当然在实际编码中不会任意选取，都会有规律的选取。</p>
 <p>​       确定好点的位置后，我们就很容易得到编码的数据。例如</p>
 <ul>
-<li>在BPSK中，两个点的位置(I Q)分别为(1, 0), (-1, 0)，我们可以用(1, 0)编码bit 1，用(-1, 0)编码bit 0。即编码数据用的是<span><span class="MathJax_Preview">I*sin(2\pi f t)+ Q*cos(2\pi f t) = 1*sin(2\pi f t)+ 0*cos(2\pi f t)=sin(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t)+ Q*cos(2\pi f t) = 1*sin(2\pi f t)+ 0*cos(2\pi f t)=sin(2\pi f t)</script></span>和 <span><span class="MathJax_Preview">I*sin(2\pi f t)+ Q*cos(2\pi f t) = -1*sin(2\pi f t)+ 0*cos(2\pi f t)=-sin(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t)+ Q*cos(2\pi f t) = -1*sin(2\pi f t)+ 0*cos(2\pi f t)=-sin(2\pi f t)</script></span>。因此接收端收到的数据只能是<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>,基于收到的数据我们解出I和Q，从而对应到1和0。</li>
-<li>在QPSK中，四个点的位置(I Q)分别为<span><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</script></span>, 因此我们可以编码2个bit，我们可以用<span><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</script></span>编码bit 00，用<span><span class="MathJax_Preview">(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</span><script type="math/tex">(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</script></span>编码bit 10，依此类推。基于收到的数据我们解出I和Q，从而对应的bit。</li>
+<li>在BPSK中，两个点的位置(I Q)分别为(1, 0), (-1, 0)，我们可以用(1, 0)编码bit 1，用(-1, 0)编码bit 0。即编码数据用的是<span class="arithmatex"><span class="MathJax_Preview">I*sin(2\pi f t)+ Q*cos(2\pi f t) = 1*sin(2\pi f t)+ 0*cos(2\pi f t)=sin(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t)+ Q*cos(2\pi f t) = 1*sin(2\pi f t)+ 0*cos(2\pi f t)=sin(2\pi f t)</script></span>和 <span class="arithmatex"><span class="MathJax_Preview">I*sin(2\pi f t)+ Q*cos(2\pi f t) = -1*sin(2\pi f t)+ 0*cos(2\pi f t)=-sin(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t)+ Q*cos(2\pi f t) = -1*sin(2\pi f t)+ 0*cos(2\pi f t)=-sin(2\pi f t)</script></span>。因此接收端收到的数据只能是<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>,基于收到的数据我们解出I和Q，从而对应到1和0。</li>
+<li>在QPSK中，四个点的位置(I Q)分别为<span class="arithmatex"><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</script></span>, 因此我们可以编码2个bit，我们可以用<span class="arithmatex"><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</script></span>编码bit 00，用<span class="arithmatex"><span class="MathJax_Preview">(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</span><script type="math/tex">(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})</script></span>编码bit 10，依此类推。基于收到的数据我们解出I和Q，从而对应的bit。</li>
 </ul>
 <blockquote>
 <p>思考：接收端如何从收到的数据出计算出每个点在星座图上的位置，即如何计算I和Q？</p>
@@ -1913,11 +2146,11 @@
 <h2 id="iq">I/Q与相位的关系？<a class="headerlink" href="#iq" title="Permanent link">&para;</a></h2>
 <p>​       从上面的过程我们能够看出，I/Q实际就直接影响到了调制出来的信号的相位。当然，从星座图我们也能够看出，I/Q不只是影响相位，还会影响到编码出来信号的幅度。那为什么我们把上面的方法都叫做xPSK，为什么称之为相位调制？在实际信号处理和很多论文中，都通过I和Q计算信号的相位。例如在很多硬件设备上，都会直接给你解码后的I和Q的值，我们可以很方便的基于I/Q算出接收到的信号的相位。</p>
 <p>​       我们来看看上述过程I/Q到底和相位有什么关系。</p>
-<p>​       调制后的数据为<span><span class="MathJax_Preview">I*sin(2\pi f t) + Q* cos(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t) + Q* cos(2\pi f t)</script></span>(不同的资料中表示会稍有不同)，即<span><span class="MathJax_Preview">\sqrt{I^2 + Q^2}sin(2\pi f t + \arctan \frac{Q}{I})</span><script type="math/tex">\sqrt{I^2 + Q^2}sin(2\pi f t + \arctan \frac{Q}{I})</script></span>。大家可以试着自己推导一下。
-也就是说，接收到的信号相位为（<span><span class="MathJax_Preview">\phi = \arctan \frac{Q}{I}</span><script type="math/tex">\phi = \arctan \frac{Q}{I}</script></span>）。例如</p>
+<p>​       调制后的数据为<span class="arithmatex"><span class="MathJax_Preview">I*sin(2\pi f t) + Q* cos(2\pi f t)</span><script type="math/tex">I*sin(2\pi f t) + Q* cos(2\pi f t)</script></span>(不同的资料中表示会稍有不同)，即<span class="arithmatex"><span class="MathJax_Preview">\sqrt{I^2 + Q^2}sin(2\pi f t + \arctan \frac{Q}{I})</span><script type="math/tex">\sqrt{I^2 + Q^2}sin(2\pi f t + \arctan \frac{Q}{I})</script></span>。大家可以试着自己推导一下。
+也就是说，接收到的信号相位为（<span class="arithmatex"><span class="MathJax_Preview">\phi = \arctan \frac{Q}{I}</span><script type="math/tex">\phi = \arctan \frac{Q}{I}</script></span>）。例如</p>
 <ul>
-<li>BPSK，对应不同相位信号为<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>，实际上等价于<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>，将数据调制到了0和<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>两种不同的相位上。</li>
-<li>QPSK，对应不同相位信号为<span><span class="MathJax_Preview">sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{3\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{3\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{5\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{5\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{7\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{7\pi}{4})</script></span>, 将数据调制到了<span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{3\pi}{4}</span><script type="math/tex">\frac{3\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{5\pi}{4}</span><script type="math/tex">\frac{5\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{7\pi}{4}</span><script type="math/tex">\frac{7\pi}{4}</script></span>四种不同相位上。</li>
+<li>BPSK，对应不同相位信号为<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>，实际上等价于<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>，将数据调制到了0和<span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>两种不同的相位上。</li>
+<li>QPSK，对应不同相位信号为<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{\pi}{4})</script></span>, <span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \frac{3\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{3\pi}{4})</script></span>, <span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \frac{5\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{5\pi}{4})</script></span>, <span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \frac{7\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{7\pi}{4})</script></span>, 将数据调制到了<span class="arithmatex"><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\frac{3\pi}{4}</span><script type="math/tex">\frac{3\pi}{4}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\frac{5\pi}{4}</span><script type="math/tex">\frac{5\pi}{4}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\frac{7\pi}{4}</span><script type="math/tex">\frac{7\pi}{4}</script></span>四种不同相位上。</li>
 </ul>
 <blockquote>
 <p>思考：BPSK、QPSK等星座图上的不同点，如何进行解码。</p>
@@ -1925,14 +2158,14 @@
 <p>​       如果理解了上述过程，也就比较好理解为什么大家经常看到的传统通信里面都用这样的方法来表示调制的过程。很多基于相位进行定位、追踪和感知的工作都使用这个I和Q来直接计算相位。所以大家看到I/Q时不要紧张，在复杂的调制方法，其中的I/Q也是这个意思。后面我们也会介绍更多更复杂的调制方法（包括OFDM）等，但是不管方法多么复杂，基本的思想都是一样的。甚至大家现在都可以基于这个原理设计出不同的调制方法了。</p>
 <h2 id="bpsk">BPSK<a class="headerlink" href="#bpsk" title="Permanent link">&para;</a></h2>
 <p>​       看完了基本原理，实际上主要的实现都可以完成了。</p>
-<p>​       我们首先来看最简单的BPSK如何来实现。跟之前介绍的一样，我们使用相位差为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的两种信号<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>：对应不同相位信号为<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>，实际上等价于<span><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>，将数据调制到了0和<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>两种不同的相位上。</p>
+<p>​       我们首先来看最简单的BPSK如何来实现。跟之前介绍的一样，我们使用相位差为<span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的两种信号<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>：对应不同相位信号为<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">-sin(2\pi f t)</span><script type="math/tex">-sin(2\pi f t)</script></span>，实际上等价于<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t)</span><script type="math/tex">sin(2\pi f t)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \pi)</span><script type="math/tex">sin(2\pi f t + \pi)</script></span>，将数据调制到了0和<span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>两种不同的相位上。</p>
 <p><center>
 <img src = "./fig/bpsk-basic.png" width=600px>
 </center>
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 相位为0和相位为pi的信号</div>
 <p></center></p>
-<p>​       有了这两个码元，我们就可以根据输入的待调制的信息来选择不同相位的信号。当输入为0时，我们选择相位为0的信号，当输入为1时，我们选择相位为<span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的信号。输入信号和对应的生成的BPSK调制过的信号如下图所示。</p>
+<p>​       有了这两个码元，我们就可以根据输入的待调制的信息来选择不同相位的信号。当输入为0时，我们选择相位为0的信号，当输入为1时，我们选择相位为<span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>的信号。输入信号和对应的生成的BPSK调制过的信号如下图所示。</p>
 <p><center>
 <img src = "./fig/bpsk-encode.png" width=600px>
 </center>
@@ -1954,11 +2187,11 @@
 </tr>
 <tr>
 <td>1</td>
-<td><span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span></td>
 </tr>
 </tbody>
 </table>
-<p>​       从I/Q调制的角度去理解，此时“0”对应的信号为<span><span class="MathJax_Preview">1*sin(2\pi ft)+0*cos(2\pi ft)</span><script type="math/tex">1*sin(2\pi ft)+0*cos(2\pi ft)</script></span>，"1"对应的信号为<span><span class="MathJax_Preview">-1*sin(2\pi ft)+0*cos(2\pi ft)</span><script type="math/tex">-1*sin(2\pi ft)+0*cos(2\pi ft)</script></span>，其星座映射图为：</p>
+<p>​       从I/Q调制的角度去理解，此时“0”对应的信号为<span class="arithmatex"><span class="MathJax_Preview">1*sin(2\pi ft)+0*cos(2\pi ft)</span><script type="math/tex">1*sin(2\pi ft)+0*cos(2\pi ft)</script></span>，"1"对应的信号为<span class="arithmatex"><span class="MathJax_Preview">-1*sin(2\pi ft)+0*cos(2\pi ft)</span><script type="math/tex">-1*sin(2\pi ft)+0*cos(2\pi ft)</script></span>，其星座映射图为：</p>
 <p><center>
 <img src = "./fig/bpsk-star.png" width=600px>
 </center>
@@ -1966,10 +2199,10 @@
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. BPSK星座图</div>
 <p></center></p>
 <h2 id="qpsk">QPSK<a class="headerlink" href="#qpsk" title="Permanent link">&para;</a></h2>
-<p>​       QPSK使用4种相位的信号来调制信息。对应不同相位信号为<span><span class="MathJax_Preview">sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{3\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{3\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{5\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{5\pi}{4})</script></span>, <span><span class="MathJax_Preview">sin(2\pi f t + \frac{7\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{7\pi}{4})</script></span>, 将数据调制到了<span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{3\pi}{4}</span><script type="math/tex">\frac{3\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{5\pi}{4}</span><script type="math/tex">\frac{5\pi}{4}</script></span>, <span><span class="MathJax_Preview">\frac{7\pi}{4}</span><script type="math/tex">\frac{7\pi}{4}</script></span>四种不同相位上。</p>
-<p>​       对应IQ星座图上的四个点为<span><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</script></span>.</p>
-<p>​       用<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>和<span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>分别代表两路待调制的数据，使用I/Q调制后的信号为：</p>
-<div>
+<p>​       QPSK使用4种相位的信号来调制信息。对应不同相位信号为<span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \frac{\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{\pi}{4})</script></span>, <span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \frac{3\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{3\pi}{4})</script></span>, <span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \frac{5\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{5\pi}{4})</script></span>, <span class="arithmatex"><span class="MathJax_Preview">sin(2\pi f t + \frac{7\pi}{4})</span><script type="math/tex">sin(2\pi f t + \frac{7\pi}{4})</script></span>, 将数据调制到了<span class="arithmatex"><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\frac{3\pi}{4}</span><script type="math/tex">\frac{3\pi}{4}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\frac{5\pi}{4}</span><script type="math/tex">\frac{5\pi}{4}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">\frac{7\pi}{4}</span><script type="math/tex">\frac{7\pi}{4}</script></span>四种不同相位上。</p>
+<p>​       对应IQ星座图上的四个点为<span class="arithmatex"><span class="MathJax_Preview">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</span><script type="math/tex">(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (-\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})</script></span>.</p>
+<p>​       用<span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>和<span class="arithmatex"><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>分别代表两路待调制的数据，使用I/Q调制后的信号为：</p>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 </div>
@@ -1993,29 +2226,29 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 <td>00</td>
 <td>1</td>
 <td>1</td>
-<td><span><span class="MathJax_Preview">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</span><script type="math/tex">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</script></span></td>
-<td><span><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</span><script type="math/tex">sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{\pi}{4})</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{\pi}{4}</span><script type="math/tex">\frac{\pi}{4}</script></span></td>
 </tr>
 <tr>
 <td>01</td>
 <td>1</td>
 <td>-1</td>
-<td><span><span class="MathJax_Preview">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</span><script type="math/tex">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</script></span></td>
-<td><span><span class="MathJax_Preview">\frac{7 \pi}{4}</span><script type="math/tex">\frac{7 \pi}{4}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</span><script type="math/tex">sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{7 \pi}{4})</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{7 \pi}{4}</span><script type="math/tex">\frac{7 \pi}{4}</script></span></td>
 </tr>
 <tr>
 <td>10</td>
 <td>-1</td>
 <td>1</td>
-<td><span><span class="MathJax_Preview">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</script></span></td>
-<td><span><span class="MathJax_Preview">\frac{3 \pi}{4}</span><script type="math/tex">\frac{3 \pi}{4}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) + cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{3 \pi}{4})</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{3 \pi}{4}</span><script type="math/tex">\frac{3 \pi}{4}</script></span></td>
 </tr>
 <tr>
 <td>11</td>
 <td>-1</td>
 <td>-1</td>
-<td><span><span class="MathJax_Preview">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</script></span></td>
-<td><span><span class="MathJax_Preview">\frac{5 \pi}{4}</span><script type="math/tex">\frac{5 \pi}{4}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</span><script type="math/tex">-sin(2\pi ft) - cos(2\pi ft) = \sqrt{2}sin(2\pi ft+\frac{5 \pi}{4})</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{5 \pi}{4}</span><script type="math/tex">\frac{5 \pi}{4}</script></span></td>
 </tr>
 </tbody>
 </table>
@@ -2026,7 +2259,7 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 <center></p>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. QPSK星座图</div>
 <p></center></p>
-<p>为了使输出信号<span><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的幅度为<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，我们需要对I和Q信号除以<span><span class="MathJax_Preview">\sqrt{2}</span><script type="math/tex">\sqrt{2}</script></span>，因此，数据和I,Q对应关系应该是如下表所示：</p>
+<p>为了使输出信号<span class="arithmatex"><span class="MathJax_Preview">s(t)</span><script type="math/tex">s(t)</script></span>的幅度为<span class="arithmatex"><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>，我们需要对I和Q信号除以<span class="arithmatex"><span class="MathJax_Preview">\sqrt{2}</span><script type="math/tex">\sqrt{2}</script></span>，因此，数据和I,Q对应关系应该是如下表所示：</p>
 <table>
 <thead>
 <tr>
@@ -2038,27 +2271,27 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 <tbody>
 <tr>
 <td>00</td>
-<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
-<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
 </tr>
 <tr>
 <td>01</td>
-<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
-<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
 </tr>
 <tr>
 <td>10</td>
-<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
-<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
 </tr>
 <tr>
 <td>11</td>
-<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
-<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
 </tr>
 </tbody>
 </table>
-<p>​       下图展示了I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。图中对应的I路和Q路数据分别是：<span><span class="MathJax_Preview">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span>,<span><span class="MathJax_Preview">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span></p>
+<p>​       下图展示了I、Q基带信号、分别调制了信息的两路信号以及叠加后的信号。图中对应的I路和Q路数据分别是：<span class="arithmatex"><span class="MathJax_Preview">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">I= \{\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span>,<span class="arithmatex"><span class="MathJax_Preview">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</span><script type="math/tex">Q = \{ \frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},-\frac{ \sqrt{2} }{2},\frac{ \sqrt{2} }{2}\}</script></span></p>
 <p><center>
 <img src = "./fig/qpsk-encode.png" width=600px>
 </center>
@@ -2066,7 +2299,7 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. IQ信号和调制后的QPSK信号</div>
 <p></center></p>
 <p>​       在解码时，利用其正交特性，分别对两路信号在一个周期内进行积分运算，得到每路信号中编码的数据。以解码I路信号为例：</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">
 \begin{split}
 \int_{0}^{\frac{1}{f}}(s(t)* sin(2\pi ft)) &amp;=  \int_{0}^{\frac{1}{f}}((i* sin(2\pi ft) + q* cos(2\pi ft))*sin(2\pi ft)) \\
@@ -2099,7 +2332,7 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 </script>
 </div>
 <p>​       对Q路信号的解码与之同理，只需要把积分中相乘的正弦信号换成余弦信号即可。</p>
-<p>​       在实际传输过程中，由于噪声的影响，我们通过上述公式得到的坐标<span><span class="MathJax_Preview">(i,q)</span><script type="math/tex">(i,q)</script></span>可能并不是精确地落在星座图上的4个点之一，而是在一个点附近。因此在代码实现时，我们需要找到离<span><span class="MathJax_Preview">(i,q)</span><script type="math/tex">(i,q)</script></span>最近的星座图上的点。由此可知，该调制方式具有一定的抵抗噪声的能力。</p>
+<p>​       在实际传输过程中，由于噪声的影响，我们通过上述公式得到的坐标<span class="arithmatex"><span class="MathJax_Preview">(i,q)</span><script type="math/tex">(i,q)</script></span>可能并不是精确地落在星座图上的4个点之一，而是在一个点附近。因此在代码实现时，我们需要找到离<span class="arithmatex"><span class="MathJax_Preview">(i,q)</span><script type="math/tex">(i,q)</script></span>最近的星座图上的点。由此可知，该调制方式具有一定的抵抗噪声的能力。</p>
 <h2 id="qpsk_1">使用声波信号实现QPSK<a class="headerlink" href="#qpsk_1" title="Permanent link">&para;</a></h2>
 <p>调制：</p>
 <div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="nf">Modulator</span><span class="p">(</span>codes, fileName, sigSNR<span class="p">)</span><span class="w"></span>
@@ -2204,8 +2437,8 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 <tbody>
 <tr>
 <td>000</td>
-<td><span><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
-<td><span><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">-\frac{ \sqrt{2} }{2}</span><script type="math/tex">-\frac{ \sqrt{2} }{2}</script></span></td>
 </tr>
 <tr>
 <td>001</td>
@@ -2219,8 +2452,8 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 </tr>
 <tr>
 <td>011</td>
-<td>-<span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
-<td><span><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td>-<span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\frac{ \sqrt{2} }{2}</span><script type="math/tex">\frac{ \sqrt{2} }{2}</script></span></td>
 </tr>
 <tr>
 <td>...</td>
@@ -2242,45 +2475,50 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
 </blockquote>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block;color: #999;padding: 2px;">图. 64QAM星座图</div>
 <p></center></p>
-                
-              
-              
-                
+
+
 
 
               
             </article>
+            
+
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
               <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
               <script>
-              var gitalk = new Gitalk({
-                  clientID: 'ab5371b4172e50e09adb',
-                  clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
-                  repo: 'Comments',
-                  owner: 'iot-book',
-                  admin: ['iot-book', 'tongsh'],
-                  id: location.pathname,      // Ensure uniqueness and length less than 50
-                  distractionFreeMode: false  // Facebook-like distraction free mode
-                })
-
-                gitalk.render('gitalk-container')
+                var gitalk = new Gitalk({
+                    clientID: 'ab5371b4172e50e09adb',
+                    clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
+                    repo: 'Comments',
+                    owner: 'iot-book',
+                    admin: ['iot-book', 'tongsh'],
+                    // id: 'location.pathname.substring(1,30)',
+                    id: location.pathname,      // Ensure uniqueness and length less than 50
+                    distractionFreeMode: false,  // Facebook-like distraction free mode
+                    labels: ['Gitalk'],
+                    title: 'IoTBook-Comment'
+                  })
+                  gitalk.render('gitalk-container')
               </script> 
+            </div>
+            <!-- End 评论 -->
+
           </div>
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
         <a href="../S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 6.3 频率调制" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -2304,7 +2542,7 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -2312,19 +2550,20 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        <!-- Made with -->
-        <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
-          &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
-        </a>
-        <br>
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+     <!-- Made with -->
+     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+      &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
+    </a>
+    <br>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -2334,10 +2573,11 @@ s(t) = i*sin(2\pi ft) + q*cos(2\pi ft)
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       
