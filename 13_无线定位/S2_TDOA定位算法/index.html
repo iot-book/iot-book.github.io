@@ -1295,13 +1295,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    参考文献
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2066,13 +2059,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    参考文献
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2120,8 +2106,8 @@ color: #999;
 padding: 2px;">图. 并发TDOA</div>
 <p></center></p>
 <p>上图展示了这样一个定位系统架构，这里引入了一个名叫发起节点(initiator)的角色，其位置也是已知的。发起节点主动发起一次通信给四个基站，四个基站收到这个消息之后，分别延时一段很小的时间(纳秒级别)，因此可以将他们近似等同于同时发送信息。当标签收到来自基站的信息后，由于基站的消息间隔极小，一般情况下是解析不了这些消息的。但是却不妨碍标签生成相应的信道响应信息(Channel Impulse Response， CIR) (大家可以回顾“无线信道”章节关于信道响应信息部分内容)。上图显示了标签测量得到的CIR信息，其中四个峰值分别对应四个基站。每个CIR对应的时间间隔是已知且固定的(<span class="arithmatex"><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span>)，这样两个基站到标签的时间差(<span class="arithmatex"><span class="MathJax_Preview">\Delta t</span><script type="math/tex">\Delta t</script></span>)可以通过计算CIR上两个基站对应的间隔(<span class="arithmatex"><span class="MathJax_Preview">inter\_cir</span><script type="math/tex">inter\_cir</script></span>)，然后采用<span class="arithmatex"><span class="MathJax_Preview">\Delta t = inter\_cir \times \tau</span><script type="math/tex">\Delta t = inter\_cir \times \tau</script></span>求出。</p>
-<p>值得注意的是，并非所有的通信信号及设备具备纳米级分辨率。比较典型的具备纳米级分辨率的信号时超宽带(Ultra-wideband, UWB)。UWB信号带宽大于<span class="arithmatex"><span class="MathJax_Preview">500 MHz</span><script type="math/tex">500 MHz</script></span>。也正得益于大宽带，UWB具有纳秒级的时间分辨率，因此具有极高的测距定位精度。我们将在<a href="https://iot-book.github.io/20_UWB感知/S1_UWB设备与开发环境/">“UWB感知”章节</a>，通过实际的例子介绍如何使用UWB设备实现基于并行传输的TDOA定位算法。</p>
-<h2 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>值得注意的是，并非所有的通信信号及设备具备纳秒级分辨率。比较典型的具备纳秒级分辨率的信号时超宽带(Ultra-wideband, UWB)。UWB信号带宽大于<span class="arithmatex"><span class="MathJax_Preview">500 MHz</span><script type="math/tex">500 MHz</script></span>。也正得益于大宽带，UWB具有纳秒级的时间分辨率，因此具有极高的测距定位精度。我们将在<a href="https://iot-book.github.io/20_UWB感知/S1_UWB设备与开发环境/">“UWB感知”章节</a>，通过实际的例子介绍如何使用UWB设备实现基于并行传输的TDOA定位算法。</p>
+<!-- ## 参考文献 -->
 
 
 

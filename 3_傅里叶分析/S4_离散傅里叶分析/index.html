@@ -2241,7 +2241,7 @@ c_k = \langle x, \mathbf{e_k}\rangle = N\sum_{n=0}^{N-1} x[n] e^{-j2\pi \frac{k}
 x[n]=\left\{
 \begin{aligned}
 1, &amp;\quad 0 \leq n &lt; 4 \\
--1, &amp;\quad 4 \leq t &lt; 8 \\
+-1, &amp;\quad 4 \leq n &lt; 8 \\
 x[n\pm 8], &amp;\quad 其他.
 \end{aligned}
 \right.
@@ -2250,7 +2250,7 @@ x[n\pm 8], &amp;\quad 其他.
 x[n]=\left\{
 \begin{aligned}
 1, &\quad 0 \leq n < 4 \\
--1, &\quad 4 \leq t < 8 \\
+-1, &\quad 4 \leq n < 8 \\
 x[n\pm 8], &\quad 其他.
 \end{aligned}
 \right.
@@ -2259,10 +2259,10 @@ x[n\pm 8], &\quad 其他.
 <p>则</p>
 <div class="arithmatex">
 <div class="MathJax_Preview">
-c_k = \sum_{k=0}^{3} 1 \cdot e^{-j\frac{2\pi k}{8}n} + \sum_{k=4}^{7} (-1) \cdot e^{-j\frac{2\pi k}{8}n}.
+c_k = \sum_{n=0}^{3} 1 \cdot e^{-j\frac{2\pi k}{8}n} + \sum_{n=4}^{7} (-1) \cdot e^{-j\frac{2\pi k}{8}n}.
 </div>
 <script type="math/tex; mode=display">
-c_k = \sum_{k=0}^{3} 1 \cdot e^{-j\frac{2\pi k}{8}n} + \sum_{k=4}^{7} (-1) \cdot e^{-j\frac{2\pi k}{8}n}.
+c_k = \sum_{n=0}^{3} 1 \cdot e^{-j\frac{2\pi k}{8}n} + \sum_{n=4}^{7} (-1) \cdot e^{-j\frac{2\pi k}{8}n}.
 </script>
 </div>
 <p>我们用MATLAB展示矩形波的展开过程，如下：</p>
