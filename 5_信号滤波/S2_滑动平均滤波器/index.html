@@ -12,26 +12,28 @@
         <meta name="author" content="WiSys Lab">
       
       
+      
+        <link rel="prev" href="../S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%AE%80%E4%BB%8B/">
+      
+      
+        <link rel="next" href="../S3_FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>5.2 滑动平均滤波器 - 物联网前沿实践</title>
+        <title>5.2 滑动平均滤波器 - 物联网前沿实践 - 清华大学 - 王继良</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#546d78">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
+
     
     
     
@@ -50,6 +52,7 @@
 
     
     
+    
   </head>
   
   
@@ -58,7 +61,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Blue-Grey" data-md-color-accent="Deep-Orange">
   
     
     
@@ -80,7 +83,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -123,7 +128,7 @@
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -135,7 +140,7 @@
           <div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -233,17 +238,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           第2章 信号处理基础
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           第2章 信号处理基础
@@ -337,17 +343,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_5">
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           第3章 傅里叶分析
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           第3章 傅里叶分析
@@ -441,17 +448,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
           第4章 无线信道
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           第4章 无线信道
@@ -533,17 +541,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
           第5章 信号滤波
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           第5章 信号滤波
@@ -573,7 +582,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -713,17 +722,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_8">
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
           第6章 数据调制和解调
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           第6章 数据调制和解调
@@ -845,17 +855,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_9">
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
           第7章 短距离无线通信技术
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           第7章 短距离无线通信技术
@@ -935,17 +946,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_10">
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
           第8章 Backscatter通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
           第8章 Backscatter通信
@@ -1011,17 +1023,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_11">
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
           第9章 LoRa
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
           第9章 LoRa
@@ -1115,17 +1128,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_12">
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
           第10章 可见光通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
           第10章 可见光通信
@@ -1163,17 +1177,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_13">
+        <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
           第11章 毫米波通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
           第11章 毫米波通信
@@ -1211,17 +1226,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_14">
+        <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
           第12章 无线测距
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
           第12章 无线测距
@@ -1273,17 +1289,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_15">
+        <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
           第13章 无线定位
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
           第13章 无线定位
@@ -1363,17 +1380,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_16">
+        <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
           第14章 无线追踪
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
           第14章 无线追踪
@@ -1439,17 +1457,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_17">
+        <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
           第15章 传感器感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
           第15章 传感器感知
@@ -1515,17 +1534,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_18">
+        <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
           第16章 声波感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
           第16章 声波感知
@@ -1619,17 +1639,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_19">
+        <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
           第17章 Wi-Fi感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
           第17章 Wi-Fi感知
@@ -1709,17 +1730,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
           第18章 蓝牙感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
           第18章 蓝牙感知
@@ -1814,17 +1836,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_22">
+        <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
           第20章 UWB感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
           第20章 UWB感知
@@ -1906,17 +1929,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_25" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_25">
+        <label class="md-nav__link" for="__nav_25" id="__nav_25_label" tabindex="0">
           第23章 可见光感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_25_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
           第23章 可见光感知
@@ -1982,17 +2006,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_26" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_26">
+        <label class="md-nav__link" for="__nav_26" id="__nav_26_label" tabindex="0">
           附录
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="附录" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_26_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
           附录
@@ -2095,10 +2120,11 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+                  
 
 
 <h1 id="_1">滑动平均滤波器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
@@ -2178,24 +2204,24 @@
 <p><code>M = movmean(A,k)</code> 返回由局部 <code>k</code> 个数据点的均值组成的数组，其中每个均值是基于 <code>A</code> 的相邻元素的长度为 <code>k</code> 的移动窗口计算得出。当 <code>k</code> 为奇数时，窗口以当前位置的元素为中心。当 <code>k</code> 为偶数时，窗口以当前元素及其前一个元素为中心。当没有足够的元素填满窗口时，窗口将自动在端点处截断。当窗口被截断时，只根据窗口内的元素计算平均值。<code>M</code> 与 <code>A</code> 的大小相同。</p>
 </blockquote>
 <p><code>movmean()</code>的第<code>n</code>个输出对应的窗口默认以第<code>n</code>个输入为中心，当然，我们也可以指定第<code>n</code>个窗口在输入序列中的具体位置。例如，<code>M = movmean(A,[kb kf])</code> 通过长度为 <code>kb+kf+1</code> 的窗口计算均值，其中包括当前位置的元素、后面的 <code>kb</code> 个元素和前面的 <code>kf</code> 个元素。下面展示的是我们利用<code>movmean()</code>函数计算车辆数量滑动平均的代码：</p>
-<div class="highlight"><pre><span></span><code><span class="c">% computes a moving average by sliding a window of length len_win.</span><span class="w"></span>
-<span class="n">din</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="mi">37</span><span class="w"> </span><span class="mi">77</span><span class="w"> </span><span class="mi">89</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">63</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
-<span class="n">len_win</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
-<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="n">len_win</span><span class="p">);</span><span class="w"></span>
-<span class="c">% the kth output uses the kth input as the center of the window</span><span class="w"></span>
-<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dout</span><span class="p">(</span><span class="nb">ceil</span><span class="p">(</span><span class="n">len_win</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span><span class="k">end</span><span class="p">);</span><span class="w"></span>
-<span class="nb">disp</span><span class="p">(</span><span class="n">dout</span><span class="p">);</span><span class="w"></span>
-<span class="c">% Display the Result of Slide Average</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">len_win</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">dout</span><span class="p">,</span><span class="s">&#39;-o&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;Color&#39;</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">din</span><span class="p">),</span><span class="n">din</span><span class="p">,</span><span class="s">&#39;-^&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xlim</span><span class="p">([</span><span class="mi">1</span><span class="w"> </span><span class="n">len_win</span><span class="o">+</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Filtered&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Original&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">set</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">800</span><span class="w"> </span><span class="mi">800</span><span class="w"> </span><span class="mi">550</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Number of Cars&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
-<span class="n">box</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c">% computes a moving average by sliding a window of length len_win.</span>
+<span class="n">din</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="mi">37</span><span class="w"> </span><span class="mi">77</span><span class="w"> </span><span class="mi">89</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">63</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<span class="n">len_win</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="n">len_win</span><span class="p">);</span>
+<span class="c">% the kth output uses the kth input as the center of the window</span>
+<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dout</span><span class="p">(</span><span class="nb">ceil</span><span class="p">(</span><span class="n">len_win</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span><span class="k">end</span><span class="p">);</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">dout</span><span class="p">);</span>
+<span class="c">% Display the Result of Slide Average</span>
+<span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">len_win</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">dout</span><span class="p">,</span><span class="s">&#39;-o&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;Color&#39;</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">din</span><span class="p">),</span><span class="n">din</span><span class="p">,</span><span class="s">&#39;-^&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">1</span><span class="w"> </span><span class="n">len_win</span><span class="o">+</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Filtered&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Original&#39;</span><span class="p">);</span>
+<span class="nb">set</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">800</span><span class="w"> </span><span class="mi">800</span><span class="w"> </span><span class="mi">550</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Number of Cars&#39;</span><span class="p">);</span>
+<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="n">box</span><span class="w"> </span><span class="s">on</span>
 </code></pre></div>
 <p>使用滑动窗口计算平均的结果如下图所示，在输入数据中原本存在许多突变的点，这些点在滑动平均操作后都变得更加平滑了。</p>
 <!-- **直观上看，考虑在时间序列中，突变的点对应高频的信号，因此滑动平均操作可以消除输入序列中的高频分量。通过滑动平均操作，我们实现了过滤高频分量、保留低频分量的目标，即实现了一个简单的低通滤波器。** -->
@@ -2254,35 +2280,35 @@ padding: 2px;">图. 加权求和</div>
 <h2 id="_4">噪声抑制与窗口选择<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>仅从滑动平均滤波器的实现方法看，很多人也许会质疑它的实际效果，因为它的实现实在是过于简单。但正因为因为滑动平均滤波器实现非常简单，所以它通常是遇到问题时首先要尝试的方法。事实上，滑动平均滤波器不仅对许多应用非常有效，而且对于一些常见问题，它的滤波效果就是最佳的——它可以减少随机白噪声，同时保持最清晰的阶跃响应。</p>
 <p>在使用滑动平均滤波器时，最关键的参数是滑动窗口的大小，也就是使用矩形函数作为卷积核时，卷积核的长度。下面用一个实际的MATLAB例子向大家展示使用不同长度的滑动窗口对滑动平均效果的影响。</p>
-<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span><span class="o">*</span><span class="mf">0.2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">)];</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Sample number&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
-<span class="w">    </span><span class="n">box</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="w">    </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span><span class="o">*</span><span class="mf">0.2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">)];</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Sample number&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">box</span><span class="w"> </span><span class="s">on</span>
+<span class="w">    </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
 
-<span class="n">y1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Sample number&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
-<span class="w">    </span><span class="n">box</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="w">    </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="n">y1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Sample number&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">box</span><span class="w"> </span><span class="s">on</span>
+<span class="w">    </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
 
-<span class="n">y1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">51</span><span class="p">);</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Sample number&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
-<span class="w">    </span><span class="n">box</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="w">    </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="n">y1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">51</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Sample number&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">box</span><span class="w"> </span><span class="s">on</span>
+<span class="w">    </span><span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
 </code></pre></div>
 <p>原信号及滤波后的信号如下图所示，（a）中的信号是埋在随机噪声中的脉冲，在（b）和（c）中，滑动平均滤波器的平滑作用减小了随机噪声的幅度（优点），但也降低了边缘的清晰度（缺点）。可以看到滑动窗口选择得越长，随机噪声抑制效果越好，但对应的边缘清晰度（阶跃响应的过渡速度）也越差。尽管如此，相比于所有其他可能使用的线性滤波器，当给定最低需要满足的边缘清晰度，滑动平均滤波器对随机噪声的抑制效果是最好的。规定滤波器的降噪量等于平均值中点数的平方根，则一个100点滑动平均滤波器可以将噪声水平降低10倍。</p>
 <p><center>
@@ -2298,32 +2324,32 @@ padding: 2px;">图. 选择不同滑动窗口时，滑动平均滤波器效果</d
 <p>要理解为什么滑动平均滤波器是最佳的随机噪声抑制方案，请想象我们要设计一个具有固定边缘清晰度的滤波器。例如，假设我们要求一个滤波器的阶跃响应上升沿不得长于11个采样点，在此要求下，所有基于卷积实现的滤波器（FIR滤波器）的卷积核长度都不得超过11个点。由于可以得到优化问题：如何选择滤波器内核中的11个值，以最小化输出信号上的噪声？对于随机噪声场景而言，每一个采样点的噪声都是随机的，因此，通过在卷积核中为输入点中的任意一个分配较大的系数来对它们中的任何一个进行优先处理是没有用的。 当对所有输入样本同等对待（即滑动平均）时，可获得最佳的噪声抑制效果。</p>
 <h2 id="_5">频率响应<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>之前我们说过，滑动平均在时域上可以提供最佳的随机噪声抑制效果，但从频域看，滑动平均滤波器在频带分离任务上表现非常糟糕。我们先用一个MATLAB的仿真实例来观察滑动平均滤波器的频域响应：</p>
-<div class="highlight"><pre><span></span><code><span class="c">%% Impulse Response of moving average filter</span><span class="w"></span>
-<span class="c">% Generating Impulse</span><span class="w"></span>
-<span class="n">din</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1e4</span><span class="p">);</span><span class="w"></span>
-<span class="n">din</span><span class="p">(</span><span class="mf">5e3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c">%% Impulse Response of moving average filter</span>
+<span class="c">% Generating Impulse</span>
+<span class="n">din</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1e4</span><span class="p">);</span>
+<span class="n">din</span><span class="p">(</span><span class="mf">5e3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
-<span class="c">% Impulse Response of moving average filter</span><span class="w"></span>
-<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
-<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">));</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
+<span class="c">% Impulse Response of moving average filter</span>
+<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">));</span>
+<span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
 
-<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span><span class="w"></span>
-<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="s">&#39;--k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;Color&#39;</span><span class="p">,</span><span class="s">&#39;#708090&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">));</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="s">&#39;--k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;Color&#39;</span><span class="p">,</span><span class="s">&#39;#708090&#39;</span><span class="p">);</span>
 
-<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="mi">31</span><span class="p">);</span><span class="w"></span>
-<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="s">&#39;-.k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;Color&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;#2F4F4F&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">dout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">movmean</span><span class="p">(</span><span class="n">din</span><span class="p">,</span><span class="mi">31</span><span class="p">);</span>
+<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="nb">length</span><span class="p">(</span><span class="n">dout</span><span class="p">));</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="s">&#39;-.k&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;Color&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;#2F4F4F&#39;</span><span class="p">);</span>
 
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">0.5</span><span class="o">*</span><span class="nb">numel</span><span class="p">(</span><span class="n">z</span><span class="p">)]);</span><span class="w"></span>
-<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;3 point&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;11 point&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;31 point&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="n">grid</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="nb">box</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">0.5</span><span class="o">*</span><span class="nb">numel</span><span class="p">(</span><span class="n">z</span><span class="p">)]);</span>
+<span class="nb">set</span><span class="p">(</span><span class="nb">gca</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;3 point&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;11 point&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;31 point&#39;</span><span class="p">);</span>
+<span class="n">grid</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">box</span><span class="w"> </span><span class="n">on</span>
 </code></pre></div>
 <p>下图展示了使用不同长度滑动窗口的滑动平均滤波器的频率响应曲线。可以看到，随着滑动窗口长度的增加，通带带宽逐渐变窄，阻带抑制逐渐增强，这与时域上观察到的窗口越长、噪声抑制效果越好相吻合。此外，可以看到无论使用多长的滑动窗口，滑动平均滤波器均具有较长的过渡带，且阻带抑制较差，因此可以判断其在频域是一个表现非常糟糕的低通滤波器。</p>
 <p><center>
@@ -2353,10 +2379,9 @@ H[f] = \frac{sin(\pi fM)}{Msin(\pi f)}
 
 
 
-              
-            </article>
-            
 
+                
+              </article>
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -2378,57 +2403,48 @@ H[f] = \frac{sin(\pi fM)}{Msin(\pi f)}
               </script> 
             </div>
             <!-- End 评论 -->
-
-          </div>
+            <!-- 弹窗 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+            Swal.fire({
+              title: '感谢浏览\n 为了更好地了解读者信息\n 请留下您的联系方式',
+              width: 600,
+              color: '#716add',
+              background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
+              confirmButtonText: '立即填写',
+              backdrop: `
+                rgba(0,0,123,0.4)
+                url("https://sweetalert2.github.io/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.fire(
+                  '正在跳转',
+                  '感谢您的配合！',
+                  'success'
+                )
+                setTimeout(function(){window.location.href = 'https://wj.qq.com/s2/12185738/aa5f/'}, 800)
+              }
+            })
+            </script>
+            <!-- End 弹窗 -->
+            </div>
+          
+          
         </div>
         
       </main>
       
         <footer class="md-footer">
   
-    
-    <nav class="md-footer__inner md-grid" aria-label="页脚" >
-      
-        
-        <a href="../S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%AE%80%E4%BB%8B/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 5.1 数字滤波器简介" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              5.1 数字滤波器简介
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../S3_FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 5.3 FIR数字滤波器" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              5.3 FIR数字滤波器
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
   
-     <!-- Made with -->
-     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+    <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
       &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
     </a>
     <br>
@@ -2441,6 +2457,7 @@ H[f] = \frac{sin(\pi fM)}{Msin(\pi f)}
       
     </div>
   </div>
+  
 </footer>
       
     </div>
@@ -2448,31 +2465,32 @@ H[f] = \frac{sin(\pi fM)}{Msin(\pi f)}
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
-    
+      
+      <!-- Default Statcounter code for iot-book http://iot-book.github.io -->
+      <script type="text/javascript">
+        var sc_project=12505380; 
+        var sc_invisible=1; 
+        var sc_security="d2f0597f"; 
+        </script>
+        <script type="text/javascript"
+        src="https://www.statcounter.com/counter/counter.js"
+        async></script>
+        <noscript><div class="statcounter"><a title="Web Analytics"
+        href="https://statcounter.com/" target="_blank"><img
+        class="statcounter"
+        src="https://c.statcounter.com/12505380/0/d2f0597f/1/"
+        alt="Web Analytics"></ a></div></noscript>
+        <!-- End of Statcounter Code -->
 
-    <!-- Default Statcounter code for iot-book http://iot-book.github.io -->
-    <script type="text/javascript">
-      var sc_project=12505380; 
-      var sc_invisible=1; 
-      var sc_security="d2f0597f"; 
-      </script>
-      <script type="text/javascript"
-      src="https://www.statcounter.com/counter/counter.js"
-      async></script>
-      <noscript><div class="statcounter"><a title="Web Analytics"
-      href="https://statcounter.com/" target="_blank"><img
-      class="statcounter"
-      src="https://c.statcounter.com/12505380/0/d2f0597f/1/"
-      alt="Web Analytics"></ a></div></noscript>
-      <!-- End of Statcounter Code -->
+    
   </body>
 </html>

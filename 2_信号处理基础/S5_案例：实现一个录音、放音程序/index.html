@@ -12,26 +12,28 @@
         <meta name="author" content="WiSys Lab">
       
       
+      
+        <link rel="prev" href="../S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/">
+      
+      
+        <link rel="next" href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>2.5 案例：声音采集与播放 - 物联网前沿实践</title>
+        <title>2.5 案例：声音采集与播放 - 物联网前沿实践 - 清华大学 - 王继良</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#546d78">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
+
     
     
     
@@ -50,6 +52,7 @@
 
     
     
+    
   </head>
   
   
@@ -58,7 +61,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Blue-Grey" data-md-color-accent="Deep-Orange">
   
     
     
@@ -80,7 +83,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -123,7 +128,7 @@
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -135,7 +140,7 @@
           <div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -235,17 +240,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           第2章 信号处理基础
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           第2章 信号处理基础
@@ -317,7 +323,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -349,17 +355,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_5">
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           第3章 傅里叶分析
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           第3章 傅里叶分析
@@ -453,17 +460,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
           第4章 无线信道
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           第4章 无线信道
@@ -543,17 +551,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
           第5章 信号滤波
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           第5章 信号滤波
@@ -661,17 +670,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_8">
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
           第6章 数据调制和解调
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           第6章 数据调制和解调
@@ -793,17 +803,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_9">
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
           第7章 短距离无线通信技术
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           第7章 短距离无线通信技术
@@ -883,17 +894,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_10">
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
           第8章 Backscatter通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
           第8章 Backscatter通信
@@ -959,17 +971,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_11">
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
           第9章 LoRa
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
           第9章 LoRa
@@ -1063,17 +1076,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_12">
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
           第10章 可见光通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
           第10章 可见光通信
@@ -1111,17 +1125,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_13">
+        <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
           第11章 毫米波通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
           第11章 毫米波通信
@@ -1159,17 +1174,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_14">
+        <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
           第12章 无线测距
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
           第12章 无线测距
@@ -1221,17 +1237,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_15">
+        <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
           第13章 无线定位
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
           第13章 无线定位
@@ -1311,17 +1328,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_16">
+        <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
           第14章 无线追踪
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
           第14章 无线追踪
@@ -1387,17 +1405,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_17">
+        <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
           第15章 传感器感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
           第15章 传感器感知
@@ -1463,17 +1482,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_18">
+        <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
           第16章 声波感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
           第16章 声波感知
@@ -1567,17 +1587,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_19">
+        <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
           第17章 Wi-Fi感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
           第17章 Wi-Fi感知
@@ -1657,17 +1678,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
           第18章 蓝牙感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
           第18章 蓝牙感知
@@ -1762,17 +1784,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_22">
+        <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
           第20章 UWB感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
           第20章 UWB感知
@@ -1854,17 +1877,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_25" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_25">
+        <label class="md-nav__link" for="__nav_25" id="__nav_25_label" tabindex="0">
           第23章 可见光感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_25_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
           第23章 可见光感知
@@ -1930,17 +1954,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_26" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_26">
+        <label class="md-nav__link" for="__nav_26" id="__nav_26_label" tabindex="0">
           附录
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="附录" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_26_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
           附录
@@ -2007,94 +2032,95 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+                  
 
 
 <h1 id="_1">案例：实现一个录音、放音程序<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>我们来看一个真实的采样和量化的例子，这也是我们整个数据处理实验的开始。我们这个实验在手机上就能实现，我们来看看手机上如何进行声音的采样和量化。</p>
 <p>​       在做实验之前，你需要准备好一个手机（安卓和苹果手机都可以），并配置好基本的开发环境，如果你还不太熟悉，可以网上参考很多材料。</p>
 <p>​       录制声音的关键代码如下。仔细看下面代码，虽然我们使用的是声波信号进行采样和量化，但是其思想和大家学习过的网络传输的过程是类似的。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">//采样率：48KHz</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">SamplingRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span><span class="w"></span>
-<span class="c1">//量化位数：16Bit</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">audioEncoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioFormat</span><span class="p">.</span><span class="na">ENCODING_PCM_16BIT</span><span class="p">;</span><span class="w"></span>
-<span class="c1">//声道数：双声道（立体声）</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">channelConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioFormat</span><span class="p">.</span><span class="na">CHANNEL_IN_STEREO</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">//采样率：48KHz</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">SamplingRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span>
+<span class="c1">//量化位数：16Bit</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">audioEncoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioFormat</span><span class="p">.</span><span class="na">ENCODING_PCM_16BIT</span><span class="p">;</span>
+<span class="c1">//声道数：双声道（立体声）</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">channelConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioFormat</span><span class="p">.</span><span class="na">CHANNEL_IN_STEREO</span><span class="p">;</span>
 
-<span class="c1">//...其他代码...///</span><span class="w"></span>
+<span class="c1">//...其他代码...///</span>
 
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">StartRecord</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">//...//</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//文件输出流</span><span class="w"></span>
-<span class="w">  </span><span class="n">OutputStream</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">BufferedOutputStream</span><span class="w"> </span><span class="n">bos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BufferedOutputStream</span><span class="p">(</span><span class="n">os</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">DataOutputStream</span><span class="w"> </span><span class="n">dos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataOutputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">);</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">StartRecord</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">//...//</span>
+<span class="w">  </span><span class="c1">//文件输出流</span>
+<span class="w">  </span><span class="n">OutputStream</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+<span class="w">  </span><span class="n">BufferedOutputStream</span><span class="w"> </span><span class="n">bos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BufferedOutputStream</span><span class="p">(</span><span class="n">os</span><span class="p">);</span>
+<span class="w">  </span><span class="n">DataOutputStream</span><span class="w"> </span><span class="n">dos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataOutputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">//获取在当前采样和信道参数下，每次读取到的数据buffer的大小</span><span class="w"></span>
-<span class="w">  </span><span class="n">bufferSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioRecord</span><span class="p">.</span><span class="na">getMinBufferSize</span><span class="p">(</span><span class="n">SamplingRate</span><span class="p">,</span><span class="w"> </span><span class="n">channelConfiguration</span><span class="p">,</span><span class="w"> </span><span class="n">audioEncoding</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//建立audioRecord实例，思考一下里面各个参数的意义</span><span class="w"></span>
-<span class="w">  </span><span class="n">AudioRecord</span><span class="w"> </span><span class="n">audioRecord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AudioRecord</span><span class="p">(</span><span class="n">MediaRecorder</span><span class="p">.</span><span class="na">AudioSource</span><span class="p">.</span><span class="na">MIC</span><span class="p">,</span><span class="w"> </span><span class="n">SamplingRate</span><span class="p">,</span><span class="w"> </span><span class="n">channelConfiguration</span><span class="p">,</span><span class="w"> </span><span class="n">audioEncoding</span><span class="p">,</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//获取在当前采样和信道参数下，每次读取到的数据buffer的大小</span>
+<span class="w">  </span><span class="n">bufferSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioRecord</span><span class="p">.</span><span class="na">getMinBufferSize</span><span class="p">(</span><span class="n">SamplingRate</span><span class="p">,</span><span class="w"> </span><span class="n">channelConfiguration</span><span class="p">,</span><span class="w"> </span><span class="n">audioEncoding</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">//建立audioRecord实例，思考一下里面各个参数的意义</span>
+<span class="w">  </span><span class="n">AudioRecord</span><span class="w"> </span><span class="n">audioRecord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AudioRecord</span><span class="p">(</span><span class="n">MediaRecorder</span><span class="p">.</span><span class="na">AudioSource</span><span class="p">.</span><span class="na">MIC</span><span class="p">,</span><span class="w"> </span><span class="n">SamplingRate</span><span class="p">,</span><span class="w"> </span><span class="n">channelConfiguration</span><span class="p">,</span><span class="w"> </span><span class="n">audioEncoding</span><span class="p">,</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">//设置用来承接从audiorecord实例中获取的原始数据的数组</span><span class="w"></span>
-<span class="w">  </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//启动audioRecord</span><span class="w"></span>
-<span class="w">  </span><span class="n">audioRecord</span><span class="p">.</span><span class="na">startRecording</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//设置用来承接从audiorecord实例中获取的原始数据的数组</span>
+<span class="w">  </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">]</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">//启动audioRecord</span>
+<span class="w">  </span><span class="n">audioRecord</span><span class="p">.</span><span class="na">startRecording</span><span class="p">();</span>
 
-<span class="w">  </span><span class="c1">//设置正在录音的参数isRecording为true</span><span class="w"></span>
-<span class="w">  </span><span class="n">isRecording</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//只要isRecording为true就一直从audioRecord读出数据，并写入文件输出流。</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//当停止按钮被按下，isRecording会变为false，循环停止</span><span class="w"></span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">isRecording</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">bufferReadResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">audioRecord</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bufferReadResult</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="n">dos</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//停止audioRecord，关闭输出流</span><span class="w"></span>
-<span class="w">  </span><span class="n">audioRecord</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="n">dos</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//...//</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//设置正在录音的参数isRecording为true</span>
+<span class="w">  </span><span class="n">isRecording</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">//只要isRecording为true就一直从audioRecord读出数据，并写入文件输出流。</span>
+<span class="w">  </span><span class="c1">//当停止按钮被按下，isRecording会变为false，循环停止</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">isRecording</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">bufferReadResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">audioRecord</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">);</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bufferReadResult</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="n">dos</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">//停止audioRecord，关闭输出流</span>
+<span class="w">  </span><span class="n">audioRecord</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
+<span class="w">  </span><span class="n">dos</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">  </span><span class="c1">//...//</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>​       上面的代码简单来看表示了一个如下的过程：
 首先有一个ADC不断的将声音信号转化成为数字信号（因此采样量化过程由硬件已经完成了，我们通常不用管了，如果真的要做通信前端的时候，这部分才是需要考虑的），这个数字信号是存储在一个buffer里面的，需要我们从buffer中将数据不断的读取出来，然后保存成一定格式的声音信号。这个过程类似网络的数据处理。网络数据首先通过网卡的处理，网卡有一个很重要的功能就是将物理信号转化为数字信号。回忆一下在网络编程中（如果还没有实践过，就想象一下实际电脑上网络传输的实现），我们需要将收到的数据从buffer中读取出来。进一步来看，如何处理这个buffer中的数据也是有不同的手段的，第一种是轮询，简单的说就是不断地去看buffer中是否有数据；第二种是中断，一旦有数据到来，就会产生一个中断通知进行数据处理。这两种处理方法都可以实现非阻塞模式，即用户无需在这个地方等待buffer内容。还有一种是阻塞模式，用户需要等待buffer内容，当buffer中有数据时才能够继续往下处理。几种模式各有优缺点，这是数据处理中，尤其是通信和与硬件打交道的数据处理中经常要面临的问题。例如如果数据处理不及时，数据就会被覆盖导致丢失，这个问题在网络传输中也会遇到。</p>
 <p>​       将数据读取出来之后，我们就有了采样和量化过后的数据，这才是真实计算机能够处理的数据，注意原始的声音我们是保存不下来的。</p>
 <p>​       另外我们还想通过这一部分代码介绍几个重要概念，这也是平时大家在网络学习的过程中容易忽视的概念，因为之前网络学习中接触最底层基础的信号处理较少。在启动录音的过程中，需要设置几个参数，第一个就是采样率，目前设置的是<span class="arithmatex"><span class="MathJax_Preview">48 KHz</span><script type="math/tex">48 KHz</script></span>（到前面看看这个采样率对实际恢复数据的影响，就理解为什么这个参数很重要了），能够将人耳能听到的声音和人说话的声音录下来（思考一下人耳能听到的声音和人说话的声音大概的频率范围应该是多少）。第二个是量化位数，这里设置的是16位，即每一个采样点用16bit来量化（思考这能将声音量化成多少位）。第三个是声道数量，目前选择的是双声道，即有两路数据。这样的配置也就意味着，如果原始声音信号的频率是小于<span class="arithmatex"><span class="MathJax_Preview">24 KHz</span><script type="math/tex">24 KHz</script></span>的，那么<span class="arithmatex"><span class="MathJax_Preview">48 KHz</span><script type="math/tex">48 KHz</script></span>的采样率是能够完全还原出原始的声音信号的。</p>
 <p>​       如果我们有一个音频文件，这个音频文件可以是通过程序录制得到的，也可以是使用代码生成的，就可以在手机上播放出来。播放声音的关键代码如下：</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">StartPlay</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="c1">//...//</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//文件输入流</span><span class="w"></span>
-<span class="w">    </span><span class="n">InputStream</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//如果要播放wav格式的文件，需要跳过44字节的文件头，后面的内容才是音频</span><span class="w"></span>
-<span class="w">    </span><span class="n">is</span><span class="p">.</span><span class="na">skip</span><span class="p">(</span><span class="mi">44</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//获取在当前采样和信道参数下，每次读取到的数据buffer的大小</span><span class="w"></span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">bufferSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">.</span><span class="na">getMinBufferSize</span><span class="p">(</span><span class="n">SamplingRate</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="n">channelConfiguration</span><span class="p">,</span><span class="w"> </span><span class="n">audioEncoding</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//建立audioTrack实例</span><span class="w"></span>
-<span class="w">  </span><span class="n">AudioTrack</span><span class="w"> </span><span class="n">audioTrack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">(</span><span class="n">AudioManager</span><span class="p">.</span><span class="na">STREAM_MUSIC</span><span class="p">,</span><span class="w"> </span><span class="n">SamplingRate</span><span class="p">,</span><span class="w"> </span><span class="n">channelConfiguration</span><span class="p">,</span><span class="w"> </span><span class="n">audioEncoding</span><span class="p">,</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">,</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">.</span><span class="na">MODE_STREAM</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//设置一个数组，用来承接从音频文件中获取的音频数据</span><span class="w"></span>
-<span class="w">    </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">readCount</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="p">.</span><span class="na">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isPlaying</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">//从文件中读取一段音频数据</span><span class="w"></span>
-<span class="w">    </span><span class="n">readCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">is</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">readCount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">.</span><span class="na">ERROR_INVALID_OPERATION</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">readCount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">.</span><span class="na">ERROR_BAD_VALUE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">readCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="c1">//如果读取的音频数据有效，就将数据写入audioTrack并进行播放</span><span class="w"></span>
-<span class="w">      </span><span class="n">audioTrack</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">readCount</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">audioTrack</span><span class="p">.</span><span class="na">play</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//停止播放，关闭输入流</span><span class="w"></span>
-<span class="w">  </span><span class="n">is</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="n">audioTrack</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//...//</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">StartPlay</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">//...//</span>
+<span class="w">  </span><span class="c1">//文件输入流</span>
+<span class="w">    </span><span class="n">InputStream</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">//如果要播放wav格式的文件，需要跳过44字节的文件头，后面的内容才是音频</span>
+<span class="w">    </span><span class="n">is</span><span class="p">.</span><span class="na">skip</span><span class="p">(</span><span class="mi">44</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">//获取在当前采样和信道参数下，每次读取到的数据buffer的大小</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">bufferSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">.</span><span class="na">getMinBufferSize</span><span class="p">(</span><span class="n">SamplingRate</span><span class="p">,</span>
+<span class="w">                </span><span class="n">channelConfiguration</span><span class="p">,</span><span class="w"> </span><span class="n">audioEncoding</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">//建立audioTrack实例</span>
+<span class="w">  </span><span class="n">AudioTrack</span><span class="w"> </span><span class="n">audioTrack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">(</span><span class="n">AudioManager</span><span class="p">.</span><span class="na">STREAM_MUSIC</span><span class="p">,</span><span class="w"> </span><span class="n">SamplingRate</span><span class="p">,</span><span class="w"> </span><span class="n">channelConfiguration</span><span class="p">,</span><span class="w"> </span><span class="n">audioEncoding</span><span class="p">,</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">,</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">.</span><span class="na">MODE_STREAM</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">//设置一个数组，用来承接从音频文件中获取的音频数据</span>
+<span class="w">    </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">readCount</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="p">.</span><span class="na">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isPlaying</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">//从文件中读取一段音频数据</span>
+<span class="w">    </span><span class="n">readCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">is</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">readCount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">.</span><span class="na">ERROR_INVALID_OPERATION</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">readCount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AudioTrack</span><span class="p">.</span><span class="na">ERROR_BAD_VALUE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">readCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">//如果读取的音频数据有效，就将数据写入audioTrack并进行播放</span>
+<span class="w">      </span><span class="n">audioTrack</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">readCount</span><span class="p">);</span>
+<span class="w">      </span><span class="n">audioTrack</span><span class="p">.</span><span class="na">play</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">//停止播放，关闭输入流</span>
+<span class="w">  </span><span class="n">is</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">  </span><span class="n">audioTrack</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
+<span class="w">  </span><span class="c1">//...//</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>​       在播放声音时，我们仍然需要指定采样率、量化位数、声道数这些参数，并且这些参数要与生成音频文件时使用的参数相同，才能将音频正常播放出来（思考为什么需要指定这些参数）。注意，上述的整个过程，在正常的无线通信的过程中也都存在，但是大家通常都接触不到，希望大家通过这个直观的例子，理解通信中采样和量化的第一步。</p>
 <blockquote>
@@ -2104,10 +2130,9 @@
 
 
 
-              
-            </article>
-            
 
+                
+              </article>
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -2129,57 +2154,48 @@
               </script> 
             </div>
             <!-- End 评论 -->
-
-          </div>
+            <!-- 弹窗 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+            Swal.fire({
+              title: '感谢浏览\n 为了更好地了解读者信息\n 请留下您的联系方式',
+              width: 600,
+              color: '#716add',
+              background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
+              confirmButtonText: '立即填写',
+              backdrop: `
+                rgba(0,0,123,0.4)
+                url("https://sweetalert2.github.io/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.fire(
+                  '正在跳转',
+                  '感谢您的配合！',
+                  'success'
+                )
+                setTimeout(function(){window.location.href = 'https://wj.qq.com/s2/12185738/aa5f/'}, 800)
+              }
+            })
+            </script>
+            <!-- End 弹窗 -->
+            </div>
+          
+          
         </div>
         
       </main>
       
         <footer class="md-footer">
   
-    
-    <nav class="md-footer__inner md-grid" aria-label="页脚" >
-      
-        
-        <a href="../S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2.4 信号量化" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              2.4 信号量化
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.1 历史与发展" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              3.1 历史与发展
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
   
-     <!-- Made with -->
-     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+    <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
       &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
     </a>
     <br>
@@ -2192,6 +2208,7 @@
       
     </div>
   </div>
+  
 </footer>
       
     </div>
@@ -2199,31 +2216,32 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
-    
+      
+      <!-- Default Statcounter code for iot-book http://iot-book.github.io -->
+      <script type="text/javascript">
+        var sc_project=12505380; 
+        var sc_invisible=1; 
+        var sc_security="d2f0597f"; 
+        </script>
+        <script type="text/javascript"
+        src="https://www.statcounter.com/counter/counter.js"
+        async></script>
+        <noscript><div class="statcounter"><a title="Web Analytics"
+        href="https://statcounter.com/" target="_blank"><img
+        class="statcounter"
+        src="https://c.statcounter.com/12505380/0/d2f0597f/1/"
+        alt="Web Analytics"></ a></div></noscript>
+        <!-- End of Statcounter Code -->
 
-    <!-- Default Statcounter code for iot-book http://iot-book.github.io -->
-    <script type="text/javascript">
-      var sc_project=12505380; 
-      var sc_invisible=1; 
-      var sc_security="d2f0597f"; 
-      </script>
-      <script type="text/javascript"
-      src="https://www.statcounter.com/counter/counter.js"
-      async></script>
-      <noscript><div class="statcounter"><a title="Web Analytics"
-      href="https://statcounter.com/" target="_blank"><img
-      class="statcounter"
-      src="https://c.statcounter.com/12505380/0/d2f0597f/1/"
-      alt="Web Analytics"></ a></div></noscript>
-      <!-- End of Statcounter Code -->
+    
   </body>
 </html>

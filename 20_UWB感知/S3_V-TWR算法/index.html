@@ -1,0 +1,2335 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="介绍物联网基础概念">
+      
+      
+        <meta name="author" content="WiSys Lab">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+    
+    
+      
+        <title>V-TWR 算法 - 物联网前沿实践 - 清华大学 - 王继良</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Blue-Grey" data-md-color-accent="Deep-Orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#v-twr" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            物联网前沿实践
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              V-TWR 算法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="物联网前沿实践" class="md-nav__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
+      
+  <img src="../../images/nicon.png" alt="logo">
+
+    </a>
+    物联网前沿实践
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_%E5%89%8D%E8%A8%802/" class="md-nav__link">
+        第2版前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_%E5%89%8D%E8%A8%801/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        第1版前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_%E7%89%A9%E8%81%94%E7%BD%91%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        第1章 物联网概述
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          第2章 信号处理基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          第2章 信号处理基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/" class="md-nav__link">
+        2.1 信号生成、发送和接收
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        2.2 从模拟到数字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        2.3 信号采样与采样定理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/" class="md-nav__link">
+        2.4 信号量化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        2.5 案例：声音采集与播放
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          第3章 傅里叶分析
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          第3章 傅里叶分析
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/" class="md-nav__link">
+        3.1 历史与发展
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/" class="md-nav__link">
+        3.2 傅里叶级数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        3.3 傅里叶变换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/" class="md-nav__link">
+        3.4 离散傅里叶分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        3.5 案例：短时傅里叶与频谱
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          第4章 无线信道
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          第4章 无线信道
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S1_%E4%BF%A1%E9%81%93%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+        4.1 定义与概念
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/" class="md-nav__link">
+        4.2 路径损耗与阴影衰落
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        4.3 多径信道模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S4_%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+        4.4 案例：信道仿真与测量
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          第5章 信号滤波
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          第5章 信号滤波
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        5.1 数字滤波器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S2_%E6%BB%91%E5%8A%A8%E5%B9%B3%E5%9D%87%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        5.2 滑动平均滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S3_FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        5.3 FIR数字滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S4_IIR%E6%BB%A4%E6%B3%A2%E5%99%A8/" class="md-nav__link">
+        5.4 IIR数字滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S5_%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%26%E5%B7%B4%E7%89%B9%E6%B2%83%E6%96%AF/" class="md-nav__link">
+        5.5 高级IIR滤波器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S6_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%AF%94%E8%BE%83%E4%B8%8E%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        5.6 案例：滤波器比较与选择
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          第6章 数据调制和解调
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          第6章 数据调制和解调
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        6.1 引言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        6.2 幅度调制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        6.3 频率调制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        6.4 相位调制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/" class="md-nav__link">
+        6.5 载波上变频
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        6.6 调制方法综合应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
+        6.7 案例：简单无线通信系统
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          第7章 短距离无线通信技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          第7章 短距离无线通信技术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S1_WiFi/" class="md-nav__link">
+        7.1 Wi-Fi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S2_%E8%93%9D%E7%89%99/" class="md-nav__link">
+        7.2 蓝牙
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S3_ZigBee/" class="md-nav__link">
+        7.3 ZigBee
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S4_%E6%A1%88%E4%BE%8B%EF%BC%88%E8%93%9D%E7%89%99%EF%BC%89/" class="md-nav__link">
+        7.4 案例：蓝牙连接实验
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          第8章 Backscatter通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          第8章 Backscatter通信
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        8.1 Backscatter基本原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_RFID/" class="md-nav__link">
+        8.2 RFID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S3_%E6%96%B0%E5%BD%A2%E5%BC%8F%E7%9A%84Backscatter%EF%BC%9A%E4%BB%8EWiFi%E5%88%B0LoRa/" class="md-nav__link">
+        8.3 泛在信号Backscatter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          第9章 LoRa
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          第9章 LoRa
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        9.1 LoRa 发展简史
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/" class="md-nav__link">
+        9.2 LoRa 通信技术
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/" class="md-nav__link">
+        9.3 LoRa 冲突解码算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A/" class="md-nav__link">
+        9.4 LoRa 测试床介绍与实现
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S5_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/" class="md-nav__link">
+        9.5 LoRa 设备远程更新
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          第10章 可见光通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          第10章 可见光通信
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/S1_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        10.1 Li-Fi技术简介
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+          第11章 毫米波通信
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          第11章 毫米波通信
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/S1_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1%E7%9A%84%E5%85%B4%E8%B5%B7/" class="md-nav__link">
+        11.1 毫米波通信兴起与发展
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+          第12章 无线测距
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          第12章 无线测距
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        12.1 基于信号强度测距
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        12.2 基于传播时间测距
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+          第13章 无线定位
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          第13章 无线定位
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S1_%E4%B8%89%E8%BE%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        13.1 三边定位
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        13.2 TDOA定位
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S3_AOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        13.3 AOA定位
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S4_%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        13.4 无线指纹定位
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+          第14章 无线追踪
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_16">
+          <span class="md-nav__icon md-icon"></span>
+          第14章 无线追踪
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        14.1 多普勒追踪
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        14.2 FMCW追踪
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        14.3 信号相位追踪
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+          第15章 传感器感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_17">
+          <span class="md-nav__icon md-icon"></span>
+          第15章 传感器感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S1_%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        15.1 传感器原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S2_%E6%83%AF%E6%80%A7%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/" class="md-nav__link">
+        15.2 惯性传感器感知
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%89%E5%8D%93%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        15.3 案例：安卓传感器编程
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+          第16章 声波感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_18">
+          <span class="md-nav__icon md-icon"></span>
+          第16章 声波感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S1_%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        16.1 声波测距
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S2_%E5%A3%B0%E6%B3%A2%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        16.2 声波定位
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S3_%E5%A3%B0%E6%B3%A2%E8%BF%BD%E8%B8%AA/" class="md-nav__link">
+        16.3 声波追踪
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S4_%E5%A3%B0%E6%B3%A2%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" class="md-nav__link">
+        16.4 声波手势识别
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S5_%E5%A3%B0%E6%B3%A2%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/" class="md-nav__link">
+        16.5 声波设备认证
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+          第17章 Wi-Fi感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_19">
+          <span class="md-nav__icon md-icon"></span>
+          第17章 Wi-Fi感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S1_%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/" class="md-nav__link">
+        17.1 信道状态信息获取
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S2_CSI%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/" class="md-nav__link">
+        17.2 CSI分析实例
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9AWiFI%20ToF%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        17.3 WiFi测距
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S4_Wi-Fi%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        17.4 WiFi定位
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+          第18章 蓝牙感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_20">
+          <span class="md-nav__icon md-icon"></span>
+          第18章 蓝牙感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S1_%E8%93%9D%E7%89%99%E5%AF%BB%E5%90%91%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        18.1 蓝牙寻向原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        18.2 蓝牙定位设备
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        18.3 定位算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        18.4 应用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        第19章 Backscatter感知
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+          第20章 UWB感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_22">
+          <span class="md-nav__icon md-icon"></span>
+          第20章 UWB感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S1_UWB%E8%AE%BE%E5%A4%87%E4%B8%8E%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        20.1 UWB设备与开发环境
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        20.3 UWB定位算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        第21章 LoRa感知
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../404/" class="md-nav__link">
+        第22章 毫米波感知
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_25" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_25" id="__nav_25_label" tabindex="0">
+          第23章 可见光感知
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_25_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_25">
+          <span class="md-nav__icon md-icon"></span>
+          第23章 可见光感知
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S1_%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        23.1 概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S2_%E4%B8%BB%E5%8A%A8%E5%BC%8F/" class="md-nav__link">
+        23.2 主动式设备定位
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S3_%E8%A2%AB%E5%8A%A8%E5%BC%8F/" class="md-nav__link">
+        23.3 被动式标签定位和姿态估计
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_26" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26" id="__nav_26_label" tabindex="0">
+          附录
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_26_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_26">
+          <span class="md-nav__icon md-icon"></span>
+          附录
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_%E9%99%84%E5%BD%95/S1_%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        1 Android 环境搭建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_%E9%99%84%E5%BD%95/S2_MATLAB%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        2 MATLAB 环境搭建
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    通信架构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    算法设计
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    补充说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="v-twr">V-TWR 算法<a class="headerlink" href="#v-twr" title="Permanent link">&para;</a></h1>
+<p>我们首先介绍算法系统的通信架构，然后介绍如何在这样的架构下实现标签的高精度定位，也就是V-TWR算法的具体设计。</p>
+<p><center></p>
+<figure>
+<img src="./fig/scheme4.jpg" width=280px>
+<img src="./fig/data_timestamps.jpg" width=330px>
+</figure>
+<p></center></p>
+<h2 id="_1">通信架构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>上图左边展示了系统的通信架构。
+在这个架构里面，基站之间采用DS-TWR方法来进行冗余的通信并测距。标签则保持被动侦听的状态，它在基站测距的时候会接收它们之间的应答数据。此外，架构里面有一个特殊的基站，我们起名为发起基站，它负责发起整个系统的通信流程，并调度与其他基站测距过程。</p>
+<p>整个数据通信过程如上图右边所示。发起基站首先广播一个“Poll”数据包，然后基站A<sub>1</sub> <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> A<sub>4</sub>依次回应“Resp”数据包，最后发起基站再广播一个“Final”数据包。这样，发起基站和每个基站都形成了DS-TWR测距过程，它们之间的飞行时间可以通过DS-TWR公式来进行计算。在整个过程中，标签一共会接收6个数据包。由于标签的被动接收模式，系统的容量不会受到标签数量的影响。换句话说，系统可以理论上支持不限数量的标签。因此，系统就达到了高可扩展的目的。下面将介绍系统如何在这样的框架下实现标签的高精度定位。</p>
+<h2 id="_2">算法设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>为了介绍的方便，本节首先对系统通信过程中收集的数据以及对应的时间戳信息进行标记。
+如上右图所示，<span class="arithmatex"><span class="MathJax_Preview">t_{IP}</span><script type="math/tex">t_{IP}</script></span>和<span class="arithmatex"><span class="MathJax_Preview">t_{IF}</span><script type="math/tex">t_{IF}</script></span>分别表示发起基站发送“Poll”和“Final”数据包的时间，<span class="arithmatex"><span class="MathJax_Preview">t_{IRi}</span><script type="math/tex">t_{IRi}</script></span>表示发起基站接收第i个基站的“Resp”数据包的时间。同样地，<span class="arithmatex"><span class="MathJax_Preview">t_{TP}</span><script type="math/tex">t_{TP}</script></span>和<span class="arithmatex"><span class="MathJax_Preview">t_{TF}</span><script type="math/tex">t_{TF}</script></span>分别表示标签接收发起基站的“Poll”和“Final”数据包的时间，<span class="arithmatex"><span class="MathJax_Preview">t_{TRi}</span><script type="math/tex">t_{TRi}</script></span>表示标签接收第i个基站的“Resp”数据包的时间。
+在上述表述中，<span class="arithmatex"><span class="MathJax_Preview">i = {1, \ldots, N}</span><script type="math/tex">i = {1, \ldots, N}</script></span>，其中<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>是基站的数量。
+由于发起基站可以将它收集的时间戳信息通过“Final”数据包传输给标签，标签在整个过程中就可以得到上述12个数据包的时间戳信息。
+因此，V-TWR算法的目标就是利用这12个时间戳信息来为标签定位。
+值得一说的是，V-TWR算法可以拓展到更多的基站，这里仅仅是用5个基站来举例说明。</p>
+<p><center></p>
+<figure>
+<img src="./fig/v-twr.jpg" width=666px>
+</figure>
+<p></center></p>
+<p>直观来讲，为了达到高精度测距定位的目的，V-TWR算法需要充分利用基站间交换的冗余数据。为此，V-TWR算法提出一个虚拟测距的概念。
+具体来说，V-TWR算法的核心设计是在标签端生成一个虚拟的“Resp”包并发送给发起基站。
+这样标签和发起基站之间就可以形成DS-TWR测距过程。
+我们用发起基站A<sub>0</sub>，基站A<sub>1</sub>来举例说明。
+如上图所示，
+发起基站<sub>0</sub>与基站A<sub>1</sub>之间还是采用DS-TWR方法来通信并测距，其中的时间戳均在图中标明。
+假设标签在<span class="arithmatex"><span class="MathJax_Preview">{t}_{TR1}'</span><script type="math/tex">{t}_{TR1}'</script></span>时刻发送一个虚拟消息给发起基站A<sub>0</sub>，且这个虚拟消息恰恰在<span class="arithmatex"><span class="MathJax_Preview">t_{IR1}</span><script type="math/tex">t_{IR1}</script></span>时刻被A<sub>0</sub>接收。这个假设是合理的，只要选择合适的<span class="arithmatex"><span class="MathJax_Preview">{t}_{TR1}'</span><script type="math/tex">{t}_{TR1}'</script></span>值即可。
+这样，标签和发起基站A<sub>0</sub>就能形成一个虚拟的DS-TWR测距过程。
+基于虚拟时间<span class="arithmatex"><span class="MathJax_Preview">{t}_{TR1}'</span><script type="math/tex">{t}_{TR1}'</script></span>，它们之间的飞行时间可以用下式来计算：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+        T_{f} = \frac{(t_{IR1} - t_{IP}) \times (t_{TF} - {t}_{TR1}') - ({t}_{TR1}' - t_{TP}) \times (t_{IF} - t_{IR1})}{t_{IF}-t_{IP} + t_{TF} - t_{TP}} \tag{1}
+</div>
+<script type="math/tex; mode=display">
+        T_{f} = \frac{(t_{IR1} - t_{IP}) \times (t_{TF} - {t}_{TR1}') - ({t}_{TR1}' - t_{TP}) \times (t_{IF} - t_{IR1})}{t_{IF}-t_{IP} + t_{TF} - t_{TP}} \tag{1}
+</script>
+</div>
+<p>由于<span class="arithmatex"><span class="MathJax_Preview">{t}_{TR1}'</span><script type="math/tex">{t}_{TR1}'</script></span>是未知的，<span class="arithmatex"><span class="MathJax_Preview">T_f</span><script type="math/tex">T_f</script></span>是不能直接计算出来的，我们称之为虚拟飞行时间。而为了求解出这个虚拟飞行时间，V-TWR算法就需要推导出<span class="arithmatex"><span class="MathJax_Preview">{t}_{TR1}'</span><script type="math/tex">{t}_{TR1}'</script></span>。
+V-TWR算法利用设备之间的物理位置来进行推导。记标签和发起基站A<sub>0</sub>之间距离为<span class="arithmatex"><span class="MathJax_Preview">d_{T \to I}</span><script type="math/tex">d_{T \to I}</script></span>，标签与基站A<sub>1</sub>距离为<span class="arithmatex"><span class="MathJax_Preview">d_{T \to A1}</span><script type="math/tex">d_{T \to A1}</script></span>，以及A<sub>0</sub>与A<sub>1</sub>的距离为<span class="arithmatex"><span class="MathJax_Preview">d_{I \to A_1}</span><script type="math/tex">d_{I \to A_1}</script></span>，我们可以得到以下关系：</p>
+<p>$$
+        t_{TR1}=t_{A1R}+\frac{d_{T \to A}}c \
+        t_{IR1}=t_{A1R}+\frac{d_{I \to A}}c \
+        t_{IR1}={t}<em>{TR1}' +\frac{d</em>{T \to I}}c   \tag{2}</p>
+<p>$$</p>
+<p>其中<span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>为电磁波的速度。基于上面三个式子，我们可以得到虚拟时间<span class="arithmatex"><span class="MathJax_Preview">{t}_{TR1}'</span><script type="math/tex">{t}_{TR1}'</script></span>和已知量<span class="arithmatex"><span class="MathJax_Preview">t_{TR1}</span><script type="math/tex">t_{TR1}</script></span>的关系：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    {t}_{TR1}' =t_{TR1}-\frac{d_{T \to A}}c-\frac{d_{T \to I}}c+\frac{d_{I \to A}}c  \tag{3}
+</div>
+<script type="math/tex; mode=display">
+    {t}_{TR1}' =t_{TR1}-\frac{d_{T \to A}}c-\frac{d_{T \to I}}c+\frac{d_{I \to A}}c  \tag{3}
+</script>
+</div>
+<p>将式<span class="arithmatex"><span class="MathJax_Preview">(3)</span><script type="math/tex">(3)</script></span>代入式<span class="arithmatex"><span class="MathJax_Preview">(1)</span><script type="math/tex">(1)</script></span>，消去<span class="arithmatex"><span class="MathJax_Preview">{t}_{TR1}'</span><script type="math/tex">{t}_{TR1}'</script></span>可以得到如下结果：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \frac{d_{T \to I}}{c} \times T = \frac{d_{T \to A}+d_{T \to I}-d_{I \to A}}{c} \times (t_{IF} - t_{IP}) + T_{x1}     \tag{4}
+</div>
+<script type="math/tex; mode=display">
+    \frac{d_{T \to I}}{c} \times T = \frac{d_{T \to A}+d_{T \to I}-d_{I \to A}}{c} \times (t_{IF} - t_{IP}) + T_{x1}     \tag{4}
+</script>
+</div>
+<p>其中<span class="arithmatex"><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>和<span class="arithmatex"><span class="MathJax_Preview">T_{x1}</span><script type="math/tex">T_{x1}</script></span>如下计算：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+        T = (t_{IF}-t_{IP}) + (t_{TF} - t_{TP}) \\
+        T_{x1} = (t_{IR1}-t_{IP}) \times (t_{TF}-t_{TR1}) \\
+        - (t_{TR1}-t_{TP}) \times (t_{IF} - t_{IR1})   \tag{5}
+</div>
+<script type="math/tex; mode=display">
+        T = (t_{IF}-t_{IP}) + (t_{TF} - t_{TP}) \\
+        T_{x1} = (t_{IR1}-t_{IP}) \times (t_{TF}-t_{TR1}) \\
+        - (t_{TR1}-t_{TP}) \times (t_{IF} - t_{IR1})   \tag{5}
+</script>
+</div>
+<p>不难观察到，对于同一对发起基站A<sub>0</sub>和标签来说，<span class="arithmatex"><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>是一个常量而<span class="arithmatex"><span class="MathJax_Preview">T_{x1}</span><script type="math/tex">T_{x1}</script></span>是随着另一个基站变化而变化的。
+举例来说，如果基站A<sub>1</sub>变成了基站A<sub>2</sub>，那么<span class="arithmatex"><span class="MathJax_Preview">T_{x1}</span><script type="math/tex">T_{x1}</script></span>的值也会发生变化。
+由于式<span class="arithmatex"><span class="MathJax_Preview">(4)</span><script type="math/tex">(4)</script></span>有两个未知量<span class="arithmatex"><span class="MathJax_Preview">d_{T \to I}</span><script type="math/tex">d_{T \to I}</script></span>和<span class="arithmatex"><span class="MathJax_Preview">d_{T \to A}</span><script type="math/tex">d_{T \to A}</script></span>，标签的位置依旧是算不出来的。
+不过它揭示了这两个未知量<span class="arithmatex"><span class="MathJax_Preview">d_{T \to I}</span><script type="math/tex">d_{T \to I}</script></span>和<span class="arithmatex"><span class="MathJax_Preview">d_{T \to A}</span><script type="math/tex">d_{T \to A}</script></span>之间的关系，我们不禁思考，这有什么用呢？</p>
+<p>我们注意到，对于发起基站外的其他基站来说，<span class="arithmatex"><span class="MathJax_Preview">d_{T \to I}</span><script type="math/tex">d_{T \to I}</script></span>（即标签到发起基站的距离）可以假定是不变的。
+由于整个通信过程是非常快的，整个通信流程只需要几毫秒到十几毫秒，因此假定在这段很短时间里，发起基站与标签的距离不变是合理的。如此，V-TWR算法就可以采用多个基站联合来求解出上面的未知量，从而解出标签的位置。</p>
+<p>对基站A<sub>1</sub>到A<sub>4</sub>，我们可以将式<span class="arithmatex"><span class="MathJax_Preview">(4)</span><script type="math/tex">(4)</script></span>和<span class="arithmatex"><span class="MathJax_Preview">(5)</span><script type="math/tex">(5)</script></span>重新整理如下（<span class="arithmatex"><span class="MathJax_Preview">i = 1, \ldots, 4</span><script type="math/tex">i = 1, \ldots, 4</script></span>）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+        \frac{d_{T \to I}}{c} \times T = \frac{d_{T \to Ai}+d_{T \to I}-d_{I \to Ai}}{c} \times (t_{IF} - t_{IP}) + T_{xi} \\
+        T_{xi} = (t_{IRi}-t_{IP}) \times (t_{TF}-t_{TRi}) \\
+        - (t_{TRi}-t_{TP}) \times (t_{IF} - t_{IRi})  \tag{6}
+</div>
+<script type="math/tex; mode=display">
+        \frac{d_{T \to I}}{c} \times T = \frac{d_{T \to Ai}+d_{T \to I}-d_{I \to Ai}}{c} \times (t_{IF} - t_{IP}) + T_{xi} \\
+        T_{xi} = (t_{IRi}-t_{IP}) \times (t_{TF}-t_{TRi}) \\
+        - (t_{TRi}-t_{TP}) \times (t_{IF} - t_{IRi})  \tag{6}
+</script>
+</div>
+<p>其中<span class="arithmatex"><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>表达式不变，可用式<span class="arithmatex"><span class="MathJax_Preview">(5)</span><script type="math/tex">(5)</script></span>计算得到。</p>
+<p>将基站A<sub>2</sub>对应的结果减去基站A<sub>1</sub>对应的结果，并重新整理得到：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \frac{d_{T \to A2} - d_{T \to A1}}{c} = \frac{(T_{x1} - T_{x2})}{t_{IF} - t_{IP}} + \frac{d_{I \to A2} - d_{I \to A1}}{c}  \tag{7}
+</div>
+<script type="math/tex; mode=display">
+    \frac{d_{T \to A2} - d_{T \to A1}}{c} = \frac{(T_{x1} - T_{x2})}{t_{IF} - t_{IP}} + \frac{d_{I \to A2} - d_{I \to A1}}{c}  \tag{7}
+</script>
+</div>
+<p>上式等号左边<span class="arithmatex"><span class="MathJax_Preview">\frac{d_{T \to A2} - d_{T \to A1}}{c}</span><script type="math/tex">\frac{d_{T \to A2} - d_{T \to A1}}{c}</script></span>即是标签到基站A<sub>2</sub>和基站A<sub>1</sub>的距离差，而等号右边的式子均为已知量。也就是说，我们可以根据记录的时间以及已知的基站间距离求解得到标签到两个基站的距离差了。
+类似地，<span class="arithmatex"><span class="MathJax_Preview">\frac{d_{T \to A3} - d_{T \to A1}}{c}</span><script type="math/tex">\frac{d_{T \to A3} - d_{T \to A1}}{c}</script></span>和<span class="arithmatex"><span class="MathJax_Preview">\frac{d_{T \to A4} - d_{T \to A1}}{c}</span><script type="math/tex">\frac{d_{T \to A4} - d_{T \to A1}}{c}</script></span>可以如下计算：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \frac{d_{T \to A3} - d_{T \to A1}}{c} = \frac{(T_{x1} - T_{x3}) }{t_{IF} - t_{IP}} + \frac{d_{I \to A3} - d_{I \to A1}}{c}  \\
+    \frac{d_{T \to A4} - d_{T \to A1}}{c} = \frac{(T_{x1} - T_{x4}) }{t_{IF} - t_{IP}} + \frac{d_{I \to A4} - d_{I \to A1}}{c}  \tag{8}
+</div>
+<script type="math/tex; mode=display">
+    \frac{d_{T \to A3} - d_{T \to A1}}{c} = \frac{(T_{x1} - T_{x3}) }{t_{IF} - t_{IP}} + \frac{d_{I \to A3} - d_{I \to A1}}{c}  \\
+    \frac{d_{T \to A4} - d_{T \to A1}}{c} = \frac{(T_{x1} - T_{x4}) }{t_{IF} - t_{IP}} + \frac{d_{I \to A4} - d_{I \to A1}}{c}  \tag{8}
+</script>
+</div>
+<p>有了这三个距离差信息，我们就可以通过一些经典的位置求解算法来计算标签的位置了。</p>
+<p>具体来说，我们可以利用以下两种方法来求解标签的位置：一是基于双曲线的位置求解算法，二是基于搜索的非线性最小二乘算法。
+基于双曲线的算法通过双曲线求交点的方法来求解位置。理论上来讲，标签的位置是位于以基站为焦点的双曲线上的。因此，给定多个不同基站，标签位置就在多条双曲线的交点处。我们采用经典的Chan算法来进行求解。该算法假定测量噪声符合零均值的高斯分布，然后以非递归方式求解得到的双曲线方程。因此，Chan算法能够以很小的计算开销获取一个较为准确的结果。</p>
+<p>而基于搜索的非线性最小二乘算法原理是这样的：给定解空间里面的一个侯选位置<span class="arithmatex"><span class="MathJax_Preview">pos_{1}</span><script type="math/tex">pos_{1}</script></span>以及基站位置<span class="arithmatex"><span class="MathJax_Preview">pos_{ai}</span><script type="math/tex">pos_{ai}</script></span>（<span class="arithmatex"><span class="MathJax_Preview">i = 1,2,3 \ldots, N</span><script type="math/tex">i = 1,2,3 \ldots, N</script></span>，其中<span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>是基站数量），标签到基站间的距离差可以计算为：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \Delta d_{i,j}=\left|\left| pos_{1}-pos_{ai}\right|\right|-\left|\left| pos_{1}-pos_{aj}\right|\right|, \quad i \neq j  \tag{9}
+</div>
+<script type="math/tex; mode=display">
+    \Delta d_{i,j}=\left|\left| pos_{1}-pos_{ai}\right|\right|-\left|\left| pos_{1}-pos_{aj}\right|\right|, \quad i \neq j  \tag{9}
+</script>
+</div>
+<p>当得到测量结果<span class="arithmatex"><span class="MathJax_Preview">\Delta \widehat d_{i,j}</span><script type="math/tex">\Delta \widehat d_{i,j}</script></span>之后，该算法可以通过最小化计算与测量的结果来求解标签的位置（<span class="arithmatex"><span class="MathJax_Preview">\widehat{pos}_{1}</span><script type="math/tex">\widehat{pos}_{1}</script></span>）：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \widehat{pos}_{1}={\underset {pos}{\operatorname {arg\,min} }}\,{\textstyle\sum_{i=1}^{N-1}}{( \Delta {\widehat d}_{i,j}- \Delta d_{i, j})}^2 \tag{10}
+</div>
+<script type="math/tex; mode=display">
+    \widehat{pos}_{1}={\underset {pos}{\operatorname {arg\,min} }}\,{\textstyle\sum_{i=1}^{N-1}}{( \Delta {\widehat d}_{i,j}- \Delta d_{i, j})}^2 \tag{10}
+</script>
+</div>
+<p>这个算法通常需要搜索很大的解空间来找到最符合目标的结果，因此它能够实现很高的精度，但是其计算开销很大。</p>
+<p>考虑这两个算法的特点，即Chan算法可以快速地给定一个较粗略的结果而基于搜索的非线性最小二乘算法能够提供很高的精度却需要很大的空间搜索开销，我们则通过组合这两个算法来寻求定位精度与时间开销的均衡。具体来说，我们首先利用Chan算法来快速获取一个粗略的候选位置，然后在这个候选位置的一个小范围内利用基于搜索的非线性最小二乘算法进行搜索以获得更准确的位置结果，如在候选位置的1 <span class="arithmatex"><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> <span class="arithmatex"><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span> 1 <span class="arithmatex"><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>的范围内进行解空间搜索。</p>
+<p>总而言之，我们首先利用V-TWR算法获取标签到不同基站的距离差信息，再使用Chan算法以及基于搜索的非线性最小二乘法来求解标签的位置，最终完成为标签高精度定位的目标。</p>
+<h2 id="_3">补充说明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>我们理论分析了V-TWR算法的误差，证明其与DS-TWR的定位误差为同一量级的，且明显优于TDOA方法。至此，我们就完成了同时实现高精度和高可扩展性的算法设计目标。</p>
+<p>此外，为了进一步实现更精准、更鲁棒的效果，我们还设计了两个优化算法，分别为测距自校正优化算法和基站轮转优化算法。
+测距自校正优化算法实现了自动测距校准的目的，大大减少了人工校准的开销，且有效地减少了UWB的测距偏差。
+基站轮转优化算法则使得系统不再简单的依赖于某一个基站，同时通过链路质量的简单判断实现了抵抗NLOS影响的效果。</p>
+<p>上述内容均可参加引用文章1。</p>
+<h2 id="_4">参考文献<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Yang J, Dong B S, Wang J L, "VULoc: Accurate uwb localization for countless
+targets without synchronization", ACM IMWUT 2022.</li>
+</ol>
+
+
+
+
+
+                
+              </article>
+            <!-- // % 评论 -->
+            <div id="gitalk-container"></div>
+              <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script>
+                var gitalk = new Gitalk({
+                    clientID: 'ab5371b4172e50e09adb',
+                    clientSecret: '792851320ee2902fe9c88bb7795e89592b108f77',
+                    repo: 'Comments',
+                    owner: 'iot-book',
+                    admin: ['iot-book', 'tongsh'],
+                    // id: 'location.pathname.substring(1,30)',
+                    id: location.pathname,      // Ensure uniqueness and length less than 50
+                    distractionFreeMode: false,  // Facebook-like distraction free mode
+                    labels: ['Gitalk'],
+                    title: 'IoTBook-Comment'
+                  })
+                  gitalk.render('gitalk-container')
+              </script> 
+            </div>
+            <!-- End 评论 -->
+            <!-- 弹窗 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+            Swal.fire({
+              title: '感谢浏览\n 为了更好地了解读者信息\n 请留下您的联系方式',
+              width: 600,
+              color: '#716add',
+              background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
+              confirmButtonText: '立即填写',
+              backdrop: `
+                rgba(0,0,123,0.4)
+                url("https://sweetalert2.github.io/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.fire(
+                  '正在跳转',
+                  '感谢您的配合！',
+                  'success'
+                )
+                setTimeout(function(){window.location.href = 'https://wj.qq.com/s2/12185738/aa5f/'}, 800)
+              }
+            })
+            </script>
+            <!-- End 弹窗 -->
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+      &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
+    </a>
+    <br>
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+  
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+      
+      <!-- Default Statcounter code for iot-book http://iot-book.github.io -->
+      <script type="text/javascript">
+        var sc_project=12505380; 
+        var sc_invisible=1; 
+        var sc_security="d2f0597f"; 
+        </script>
+        <script type="text/javascript"
+        src="https://www.statcounter.com/counter/counter.js"
+        async></script>
+        <noscript><div class="statcounter"><a title="Web Analytics"
+        href="https://statcounter.com/" target="_blank"><img
+        class="statcounter"
+        src="https://c.statcounter.com/12505380/0/d2f0597f/1/"
+        alt="Web Analytics"></ a></div></noscript>
+        <!-- End of Statcounter Code -->
+
+    
+  </body>
+</html>

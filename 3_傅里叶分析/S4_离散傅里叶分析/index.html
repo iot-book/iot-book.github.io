@@ -12,26 +12,28 @@
         <meta name="author" content="WiSys Lab">
       
       
+      
+        <link rel="prev" href="../S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/">
+      
+      
+        <link rel="next" href="../S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>3.4 离散傅里叶分析 - 物联网前沿实践</title>
+        <title>3.4 离散傅里叶分析 - 物联网前沿实践 - 清华大学 - 王继良</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#546d78">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
+
     
     
     
@@ -50,6 +52,7 @@
 
     
     
+    
   </head>
   
   
@@ -58,7 +61,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Blue-Grey" data-md-color-accent="Deep-Orange">
   
     
     
@@ -80,7 +83,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="物联网前沿实践" class="md-header__button md-logo" aria-label="物联网前沿实践" data-md-component="logo">
       
@@ -123,7 +128,7 @@
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -135,7 +140,7 @@
           <div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -233,17 +238,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           第2章 信号处理基础
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第2章 信号处理基础" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           第2章 信号处理基础
@@ -339,17 +345,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_5">
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           第3章 傅里叶分析
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第3章 傅里叶分析" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           第3章 傅里叶分析
@@ -407,7 +414,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -552,17 +559,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
           第4章 无线信道
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第4章 无线信道" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           第4章 无线信道
@@ -642,17 +650,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
           第5章 信号滤波
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第5章 信号滤波" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           第5章 信号滤波
@@ -760,17 +769,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_8">
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
           第6章 数据调制和解调
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第6章 数据调制和解调" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           第6章 数据调制和解调
@@ -892,17 +902,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_9">
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
           第7章 短距离无线通信技术
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第7章 短距离无线通信技术" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           第7章 短距离无线通信技术
@@ -982,17 +993,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_10">
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
           第8章 Backscatter通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第8章 Backscatter通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
           第8章 Backscatter通信
@@ -1058,17 +1070,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_11">
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
           第9章 LoRa
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第9章 LoRa" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
           第9章 LoRa
@@ -1162,17 +1175,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_12">
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
           第10章 可见光通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第10章 可见光通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
           第10章 可见光通信
@@ -1210,17 +1224,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_13">
+        <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
           第11章 毫米波通信
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第11章 毫米波通信" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
           第11章 毫米波通信
@@ -1258,17 +1273,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_14">
+        <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
           第12章 无线测距
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第12章 无线测距" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
           第12章 无线测距
@@ -1320,17 +1336,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_15">
+        <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
           第13章 无线定位
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第13章 无线定位" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
           第13章 无线定位
@@ -1410,17 +1427,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_16">
+        <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
           第14章 无线追踪
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第14章 无线追踪" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_16">
           <span class="md-nav__icon md-icon"></span>
           第14章 无线追踪
@@ -1486,17 +1504,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_17">
+        <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
           第15章 传感器感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第15章 传感器感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_17">
           <span class="md-nav__icon md-icon"></span>
           第15章 传感器感知
@@ -1562,17 +1581,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_18">
+        <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
           第16章 声波感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第16章 声波感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
           第16章 声波感知
@@ -1666,17 +1686,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_19">
+        <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
           第17章 Wi-Fi感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第17章 Wi-Fi感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_19">
           <span class="md-nav__icon md-icon"></span>
           第17章 Wi-Fi感知
@@ -1756,17 +1777,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_20">
+        <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
           第18章 蓝牙感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第18章 蓝牙感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_20">
           <span class="md-nav__icon md-icon"></span>
           第18章 蓝牙感知
@@ -1861,17 +1883,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_22">
+        <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
           第20章 UWB感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第20章 UWB感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_22">
           <span class="md-nav__icon md-icon"></span>
           第20章 UWB感知
@@ -1953,17 +1976,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_25" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_25">
+        <label class="md-nav__link" for="__nav_25" id="__nav_25_label" tabindex="0">
           第23章 可见光感知
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="第23章 可见光感知" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_25_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_25">
           <span class="md-nav__icon md-icon"></span>
           第23章 可见光感知
@@ -2029,17 +2053,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_26" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_26">
+        <label class="md-nav__link" for="__nav_26" id="__nav_26_label" tabindex="0">
           附录
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="附录" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_26_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_26">
           <span class="md-nav__icon md-icon"></span>
           附录
@@ -2189,10 +2214,11 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+                  
 
 
 <h1 id="_1">离散傅里叶分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
@@ -2266,13 +2292,13 @@ c_k = \sum_{n=0}^{3} 1 \cdot e^{-j\frac{2\pi k}{8}n} + \sum_{n=4}^{7} (-1) \cdot
 </script>
 </div>
 <p>我们用MATLAB展示矩形波的展开过程，如下：</p>
-<p><div class="highlight"><pre><span></span><code><span class="c">%% 矩形波的离散傅里叶级数展开</span><span class="w"></span>
-<span class="c">% 构造周期为8的离散矩形波</span><span class="w"></span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"></span>
-<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">(</span><span class="nb">repmat</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span><span class="w"></span>
+<p><div class="highlight"><pre><span></span><code><span class="c">%% 矩形波的离散傅里叶级数展开</span>
+<span class="c">% 构造周期为8的离散矩形波</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="nb">stem</span><span class="p">(</span><span class="nb">repmat</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
 </code></pre></div>
 <center>
 <img src="./fig/discrete_square_wave.png" width="600px">
@@ -2283,27 +2309,27 @@ display: inline-block;
 color: #999;
 padding: 2px;">图. 周期为8的矩形波</div>
 <p></center></p>
-<p><div class="highlight"><pre><span></span><code><span class="c">% 计算离散傅里叶系数</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
-<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
-<span class="w">    </span><span class="c">% 向量e_k的系数</span><span class="w"></span>
-<span class="w">    </span><span class="n">ek</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">ii</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="w"></span>
-<span class="w">        </span><span class="n">ek</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span>1<span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">ii</span><span class="o">*</span><span class="n">k</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"></span>
-<span class="w">    </span><span class="n">ck</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">xn</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">conj</span><span class="p">(</span><span class="n">ek</span><span class="p">));</span><span class="w"></span>
+<p><div class="highlight"><pre><span></span><code><span class="c">% 计算离散傅里叶系数</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="c">% 向量e_k的系数</span>
+<span class="w">    </span><span class="n">ek</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">ii</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span>
+<span class="w">        </span><span class="n">ek</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span>1<span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">ii</span><span class="o">*</span><span class="n">k</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">ck</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">xn</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">conj</span><span class="p">(</span><span class="n">ek</span><span class="p">));</span>
 
-<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ck</span><span class="o">*</span><span class="n">ek</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
-<span class="w">        </span><span class="c">% 绘图</span><span class="w"></span>
-<span class="w">        </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nb">ceil</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">4</span><span class="p">)));</span><span class="w"></span>
-<span class="w">        </span><span class="c">% 画出序列的实部</span><span class="w"></span>
-<span class="w">        </span><span class="nb">stem</span><span class="p">(</span><span class="nb">real</span><span class="p">(</span><span class="nb">repmat</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="nb">title</span><span class="p">(</span><span class="nb">strcat</span><span class="p">([</span><span class="s">&#39;前&#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="s">&#39;项求和&#39;</span><span class="p">]));</span><span class="w"></span>
-<span class="w">        </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ck</span><span class="o">*</span><span class="n">ek</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="c">% 绘图</span>
+<span class="w">        </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nb">ceil</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">4</span><span class="p">)));</span>
+<span class="w">        </span><span class="c">% 画出序列的实部</span>
+<span class="w">        </span><span class="nb">stem</span><span class="p">(</span><span class="nb">real</span><span class="p">(</span><span class="nb">repmat</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="w">        </span><span class="nb">title</span><span class="p">(</span><span class="nb">strcat</span><span class="p">([</span><span class="s">&#39;前&#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="s">&#39;项求和&#39;</span><span class="p">]));</span>
+<span class="w">        </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
 </code></pre></div>
 <center>
 <img src="./fig/discrete_square_wave_dfs.png" width="800px">
@@ -2657,53 +2683,53 @@ FFT\{a[n] \circledast b[n]\} = FFT\{a[n]\} \cdot FFT\{b[n]\}.
 <li>方波</li>
 </ol>
 <p><strong>整周期截断的正弦波</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span>
 
-<span class="c">% 构造频率为100Hz的正弦波</span><span class="w"></span>
-<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样一个周期</span><span class="w"></span>
-<span class="c">% t = (0:1/fs:5/f0-1/fs)&#39;; % 采样五个周期</span><span class="w"></span>
-<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">1400</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">);</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间（ms）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="c">% 构造频率为100Hz的正弦波</span>
+<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样一个周期</span>
+<span class="c">% t = (0:1/fs:5/f0-1/fs)&#39;; % 采样五个周期</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">1400</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间（ms）&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span>
 
-<span class="c">% 不补零的FFT</span><span class="w"></span>
-<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span><span class="w"></span>
-<span class="c">% 将负频率放到左侧</span><span class="w"></span>
-<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span><span class="w"></span>
+<span class="c">% 不补零的FFT</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="c">% 将负频率放到左侧</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
 
-<span class="c">% 补零的FFT</span><span class="w"></span>
-<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% 补零倍数</span><span class="w"></span>
-<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
-<span class="c">% 将负频率放到左侧</span><span class="w"></span>
-<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span><span class="w"></span>
+<span class="c">% 补零的FFT</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% 补零倍数</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% 将负频率放到左侧</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
 
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">);</span><span class="w"></span>
-<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span><span class="w"></span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
 
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">);</span><span class="w"></span>
-<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">angle</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">angle</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;相位&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">angle</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">angle</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;相位&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p><center>
 <img src="./fig/fft_period_sin_1T.png" width="900px">
@@ -2730,42 +2756,42 @@ padding: 2px;">图. 采样五个周期的100 Hz正弦波（左：时域图像，
 <p>思考：这两种操作为什么能够使得频率的结果更加精确？</p>
 </blockquote>
 <p><strong>非整周期截断的正弦波</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span>
 
-<span class="c">% 构造周期为100Hz的正弦波</span><span class="w"></span>
-<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mf">1.6</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样一个半周期</span><span class="w"></span>
-<span class="c">% t = (0:1/fs:5.6/f0-1/fs)&#39;; % 采样五个半周期</span><span class="w"></span>
-<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间（ms）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="c">% 构造周期为100Hz的正弦波</span>
+<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mf">1.6</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样一个半周期</span>
+<span class="c">% t = (0:1/fs:5.6/f0-1/fs)&#39;; % 采样五个半周期</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间（ms）&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span>
 
-<span class="c">% 不补零的FFT</span><span class="w"></span>
-<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span><span class="w"></span>
-<span class="c">% 将负频率放到左侧</span><span class="w"></span>
-<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span><span class="w"></span>
+<span class="c">% 不补零的FFT</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="c">% 将负频率放到左侧</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
 
-<span class="c">% 补零的FFT</span><span class="w"></span>
-<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% 补零倍数</span><span class="w"></span>
-<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
-<span class="c">% 将负频率放到左侧</span><span class="w"></span>
-<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span><span class="w"></span>
+<span class="c">% 补零的FFT</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% 补零倍数</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% 将负频率放到左侧</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
 
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span><span class="w"></span>
-<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span><span class="w"></span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p><center>
 <img src="./fig/fft_period_sin_1T5.png">
@@ -2788,41 +2814,41 @@ padding: 2px;">图. 采样五个半周期的100Hz正弦波（左：时域图像�
 <p>不同于整周期截断的信号，非整周期截断的信号会出现“频谱泄露”或者“失真”。如上图所示，蓝色圆圈不再处于峰顶。无论我们怎么增加采样时间，不补零的频谱始终告诉我们还有好些其他不同于<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz的频率存在，且强度不小。在这种情况下，用补零提高频谱分辨率是必要的。</p>
 <p>从这个小小的例子我们可以看出FFT作用，也可以看出来如何使用好FFT也是一个很大的问题，即便对于这么简单的一个信号，如果使用方法不对，得到的效果将会有很大的差别，很多同学在实际信号处理或者论文实验的过程中发现结果不理想，很多时候要从最小最基础的地方想原因。这也是为什么我们要把傅里叶这一部分啰嗦这么多的一个很重要的原因。</p>
 <p><strong>复数三角波</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span>
 
-<span class="c">% 构造频率为100Hz的复数三角波</span><span class="w"></span>
-<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">5</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样五个周期</span><span class="w"></span>
-<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span>1<span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间（ms）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="c">% 构造频率为100Hz的复数三角波</span>
+<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">5</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样五个周期</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span>1<span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间（ms）&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span>
 
-<span class="c">% 不补零的FFT</span><span class="w"></span>
-<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span><span class="w"></span>
-<span class="c">% 将负频率放到左侧</span><span class="w"></span>
-<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span><span class="w"></span>
+<span class="c">% 不补零的FFT</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="c">% 将负频率放到左侧</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
 
-<span class="c">% 补零的FFT</span><span class="w"></span>
-<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% 补零倍数</span><span class="w"></span>
-<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
-<span class="c">% 将负频率放到左侧</span><span class="w"></span>
-<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span><span class="w"></span>
+<span class="c">% 补零的FFT</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% 补零倍数</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% 将负频率放到左侧</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
 
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span><span class="w"></span>
-<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span><span class="w"></span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p><center>
 <img src="./fig/fft_complex.png">
@@ -2835,41 +2861,41 @@ padding: 2px;">图. 采样五个周期的100Hz复数三角波（左：时域实�
 <p></center></p>
 <p>上图展示了<span class="arithmatex"><span class="MathJax_Preview">e^{j2\pi\cdot 100t}</span><script type="math/tex">e^{j2\pi\cdot 100t}</script></span>这个复信号的时域和频域图像，不同于实数三角波，该信号具有单一的频率<span class="arithmatex"><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>Hz。</p>
 <p><strong>方波</strong>
-<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% 采样率1000Hz</span>
 
-<span class="c">% 构造周期为10ms的方波</span><span class="w"></span>
-<span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">10e-3</span><span class="p">;</span><span class="w"></span>
-<span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c">% 4个周期采样</span><span class="w"></span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span><span class="p">;</span><span class="w"></span>
-<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">repmat</span><span class="p">([</span><span class="nb">ones</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间（ms）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="c">% 构造周期为10ms的方波</span>
+<span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">10e-3</span><span class="p">;</span>
+<span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c">% 4个周期采样</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">repmat</span><span class="p">([</span><span class="nb">ones</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;时间（ms）&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span>
 
-<span class="c">% 不补零的FFT</span><span class="w"></span>
-<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span><span class="w"></span>
-<span class="c">% 将负频率放到左侧</span><span class="w"></span>
-<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span><span class="w"></span>
+<span class="c">% 不补零的FFT</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="c">% 将负频率放到左侧</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
 
-<span class="c">% 补零的FFT</span><span class="w"></span>
-<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span><span class="w"> </span><span class="c">% 补零倍数</span><span class="w"></span>
-<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
-<span class="c">% 将负频率放到左侧</span><span class="w"></span>
-<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span><span class="w"></span>
+<span class="c">% 补零的FFT</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span><span class="w"> </span><span class="c">% 补零倍数</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% 将负频率放到左侧</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
 
-<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span><span class="w"></span>
-<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span><span class="w"></span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
-<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span><span class="w"></span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;频率（Hz）&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;强度&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;不补零&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
 </code></pre></div>
 <center>
 <img src="./fig/fft_square.png">
@@ -2890,10 +2916,9 @@ padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅�
 
 
 
-              
-            </article>
-            
 
+                
+              </article>
             <!-- // % 评论 -->
             <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -2915,57 +2940,48 @@ padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅�
               </script> 
             </div>
             <!-- End 评论 -->
-
-          </div>
+            <!-- 弹窗 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+            Swal.fire({
+              title: '感谢浏览\n 为了更好地了解读者信息\n 请留下您的联系方式',
+              width: 600,
+              color: '#716add',
+              background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
+              confirmButtonText: '立即填写',
+              backdrop: `
+                rgba(0,0,123,0.4)
+                url("https://sweetalert2.github.io/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.fire(
+                  '正在跳转',
+                  '感谢您的配合！',
+                  'success'
+                )
+                setTimeout(function(){window.location.href = 'https://wj.qq.com/s2/12185738/aa5f/'}, 800)
+              }
+            })
+            </script>
+            <!-- End 弹窗 -->
+            </div>
+          
+          
         </div>
         
       </main>
       
         <footer class="md-footer">
   
-    
-    <nav class="md-footer__inner md-grid" aria-label="页脚" >
-      
-        
-        <a href="../S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.3 傅里叶变换" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              3.3 傅里叶变换
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.5 案例：短时傅里叶与频谱" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              3.5 案例：短时傅里叶与频谱
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
   
-     <!-- Made with -->
-     <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
+    <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/" target="_blank" rel="noopener">
       &copy; 清华大学 - 王继良 - jiliangwang@tsinghua.edu.cn
     </a>
     <br>
@@ -2978,6 +2994,7 @@ padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅�
       
     </div>
   </div>
+  
 </footer>
       
     </div>
@@ -2985,31 +3002,32 @@ padding: 2px;">图. 周期10ms的方波（左：时域图像，右：频域幅�
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
-    
+      
+      <!-- Default Statcounter code for iot-book http://iot-book.github.io -->
+      <script type="text/javascript">
+        var sc_project=12505380; 
+        var sc_invisible=1; 
+        var sc_security="d2f0597f"; 
+        </script>
+        <script type="text/javascript"
+        src="https://www.statcounter.com/counter/counter.js"
+        async></script>
+        <noscript><div class="statcounter"><a title="Web Analytics"
+        href="https://statcounter.com/" target="_blank"><img
+        class="statcounter"
+        src="https://c.statcounter.com/12505380/0/d2f0597f/1/"
+        alt="Web Analytics"></ a></div></noscript>
+        <!-- End of Statcounter Code -->
 
-    <!-- Default Statcounter code for iot-book http://iot-book.github.io -->
-    <script type="text/javascript">
-      var sc_project=12505380; 
-      var sc_invisible=1; 
-      var sc_security="d2f0597f"; 
-      </script>
-      <script type="text/javascript"
-      src="https://www.statcounter.com/counter/counter.js"
-      async></script>
-      <noscript><div class="statcounter"><a title="Web Analytics"
-      href="https://statcounter.com/" target="_blank"><img
-      class="statcounter"
-      src="https://c.statcounter.com/12505380/0/d2f0597f/1/"
-      alt="Web Analytics"></ a></div></noscript>
-      <!-- End of Statcounter Code -->
+    
   </body>
 </html>
