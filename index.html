@@ -2048,6 +2048,37 @@
 <img src="./iot-book交流讨论群聊二维码.png" width=300px>
 </center> -->
 
+<!-- 弹窗 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+Swal.fire({
+    title: '感谢浏览\n 为了更好地了解读者信息\n 请留下您的联系方式',
+    width: 600,
+    color: '#716add',
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    cancelButtonText: '暂不填写',
+    background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
+    confirmButtonText: '立即填写',
+    backdrop: `
+    rgba(0,0,123,0.4)
+    url("https://sweetalert2.github.io/images/nyan-cat.gif")
+    left top
+    no-repeat
+    `
+}).then((result) => {
+    if (result.isConfirmed) {
+    Swal.fire(
+        '正在跳转',
+        '感谢您的配合！',
+        'success'
+    )
+    setTimeout(function(){window.location.href = 'https://wj.qq.com/s2/12185738/aa5f/'}, 800)
+    }
+})
+</script>
+<!-- End 弹窗 -->
+
 <p>这个材料是我们组在物联网方向上一些体会的总结，在此也感谢我们小组的每一位同学，特别感谢童率、宋知朋、徐振强、杨景、董柏顺、陈倩、陈亦捷、张嘉睿、江晋彦、焦俊人等，他们在准备这个材料的过程中做出了很大的贡献。</p>
 <p>王继良
 2020年12月</p>
@@ -2081,36 +2112,7 @@
               </script> 
             </div>
             <!-- End 评论 -->
-            <!-- 弹窗 -->
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script>
-            Swal.fire({
-              title: '感谢浏览\n 为了更好地了解读者信息\n 请留下您的联系方式',
-              width: 600,
-              color: '#716add',
-              showCancelButton: true,
-              cancelButtonColor: '#d33',
-              cancelButtonText: '暂不填写',
-              background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
-              confirmButtonText: '立即填写',
-              backdrop: `
-                rgba(0,0,123,0.4)
-                url("https://sweetalert2.github.io/images/nyan-cat.gif")
-                left top
-                no-repeat
-              `
-            }).then((result) => {
-              if (result.isConfirmed) {
-                Swal.fire(
-                  '正在跳转',
-                  '感谢您的配合！',
-                  'success'
-                )
-                setTimeout(function(){window.location.href = 'https://wj.qq.com/s2/12185738/aa5f/'}, 800)
-              }
-            })
-            </script>
-            <!-- End 弹窗 -->
+            
             </div>
           
           

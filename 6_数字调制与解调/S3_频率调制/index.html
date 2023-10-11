@@ -2176,36 +2176,7 @@
               </script> 
             </div>
             <!-- End 评论 -->
-            <!-- 弹窗 -->
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script>
-            Swal.fire({
-              title: '感谢浏览\n 为了更好地了解读者信息\n 请留下您的联系方式',
-              width: 600,
-              color: '#716add',
-              showCancelButton: true,
-              cancelButtonColor: '#d33',
-              cancelButtonText: '暂不填写',
-              background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
-              confirmButtonText: '立即填写',
-              backdrop: `
-                rgba(0,0,123,0.4)
-                url("https://sweetalert2.github.io/images/nyan-cat.gif")
-                left top
-                no-repeat
-              `
-            }).then((result) => {
-              if (result.isConfirmed) {
-                Swal.fire(
-                  '正在跳转',
-                  '感谢您的配合！',
-                  'success'
-                )
-                setTimeout(function(){window.location.href = 'https://wj.qq.com/s2/12185738/aa5f/'}, 800)
-              }
-            })
-            </script>
-            <!-- End 弹窗 -->
+            
             </div>
           
           
