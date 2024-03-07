@@ -2159,7 +2159,7 @@
 <span class="nb">binary</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="nb">binary</span><span class="o">&#39;</span><span class="p">,[</span><span class="n">L</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
 <span class="k">end</span>
 </code></pre></div>
-<p>​       我们采用声波信号进行通信。采样频率为48 kHz​，由于大多数人听不到17 kHz频率以上的声音，也不会发出超过17 Hz的声音，因此在我们的方法中我们让设备发送18 kHz的声波，这样就可以在发送过程中不干扰其他人，也可以让信号避免被人说话声音干扰。选择脉冲长度为100个采样点，由于采样频率为48 kHz，脉冲的持续时间是<span class="arithmatex"><span class="MathJax_Preview">100/48000\approx 2.1ms</span><script type="math/tex">100/48000\approx 2.1ms</script></span>。脉冲之间的间隔采样点数与编码的对应规则见下表：</p>
+<p>​       我们采用声波信号进行通信。采样频率为48 kHz​，由于大多数人听不到17 kHz频率以上的声音，也不会发出超过17 kHz的声音，因此在我们的方法中我们让设备发送18 kHz的声波，这样就可以在发送过程中不干扰其他人，也可以让信号避免被人说话声音干扰。选择脉冲长度为100个采样点，由于采样频率为48 kHz，脉冲的持续时间是<span class="arithmatex"><span class="MathJax_Preview">100/48000\approx 2.1ms</span><script type="math/tex">100/48000\approx 2.1ms</script></span>。脉冲之间的间隔采样点数与编码的对应规则见下表：</p>
 <table>
 <thead>
 <tr>
