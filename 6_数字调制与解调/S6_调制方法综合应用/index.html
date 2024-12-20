@@ -23,7 +23,7 @@
     
     
       
-        <title>6.6 调制方法综合应用 - 物联网前沿实践 - 清华大学 - 王继良</title>
+        <title>6.6 数据包检测与同步 - 物联网前沿实践 - 清华大学 - 王继良</title>
       
     
     
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6.6 调制方法综合应用
+              6.6 数据包检测与同步
             
           </span>
         </div>
@@ -764,12 +764,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          6.6 调制方法综合应用
+          6.6 数据包检测与同步
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        6.6 调制方法综合应用
+        6.6 数据包检测与同步
       </a>
       
         
@@ -2153,7 +2153,125 @@
               <article class="md-content__inner md-typeset">
                 
                   
+<h1 id="_1">数据包检测与同步<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在无线信号通信和感知的应用中，接收设备往往需要准确地检测和提取发送端发送的信号，以正确地解码信息。这一过程称为发送端和接收端的时间同步。但是由于在无线通信和感知的场景中，发送端和接收端往往没有预先进行时间同步，需要利用发送的信号实现时间同步的功能。实现时间同步的信号被称作前导码（Preamble）。</p>
+<h2 id="_2">前导码</h2>
+<h3 id="_3">前导码的定义与性质</h3>
+<p>在计算机网络中，前导码是一种信号，用于在计算机系统之间同步数据传输，确保接收端能够正确对齐并识别数据包。</p>
+<p>前导码对于维持网络设备间的高效通信至关重要，其关键功能包括</p>
+<ul>
+<li>同步：确保网络系统之间的数据包正确对齐。</li>
+<li>识别：帮助接收端识别数据包。</li>
+<li>信道状态检测：通过已知信号检测信道的状态和特征。</li>
+</ul>
+<p>前导码需要具有良好的时间性质，以实现精确的时间同步，该性质被称为自相关性质。</p>
+<p>为了更好地理解自相关性质，我们首先介绍信号的自相关函数：</p>
+<p>假设有一个离散时间信号为x[n]，则其自相关函数为
+<div class="arithmatex">
+  <div class="MathJax_Preview">
+    R_{xx}[m] = E(x[m+n]x[n])
+  </div>
+  <script type="math/tex; mode=display">
+    R_{xx}[m] = E(x[m+n]x[n])
+  </script>
+</div>
+其中E( )表示数学期望。</p>
+<p>该函数的意义为计算信号片段的相关程度。</p>
+<p>我们使用一个动图展示了自相关函数的计算过程：</p>
+<p><img src="./fig/plt.gif" alt="plt" style="zoom:80%;" /></p>
+<p>对于自相关函数，当m=0时，该函数取得最大值，可以用于表示信号对齐。因此，自相关函数可以用于实现时间同步。</p>
+<p>为了实现更精确的时间同步，前导码应当具有以下的性质：</p>
+<ul>
+<li>当前导码信号对齐(m=0)时，自相关函数有最大值。</li>
+<li>当前导码信号未对齐(m≠0)时，自相关函数接近于0。</li>
+</ul>
+<h3 id="_4">利用前导码实现时间同步</h3>
+<p>利用前导码信号x[n]和接收信号y[n]，计算二者的互相关函数，可以实现时间同步。互相关函数的定义为
+<div class="arithmatex">
+  <div class="MathJax_Preview">
+    R_{xy}[m] = E(x[m+n]y[n])
+  </div>
+  <script type="math/tex; mode=display">
+    R_{xy}[m] = E(x[m+n]y[n])
+  </script>
+</div>
+利用前导码信号良好的自相关性质，当前导码信号和接收信号时间对齐时，互相关函数有最大值。因此，互相关函数取得最大值的时间即为信号到达的时间。</p>
+<h3 id="_5">前导码的设计</h3>
+<p>已有的研究对于前导码的设计有充分的研究。在这一部分，我们选取一些典型的前导码信号进行介绍。</p>
+<p>需要注意的是，前导码信号针对二进制序列设计的信号与针对连续函数设计的信号，在这里我们介绍针对连续函数设计的信号。</p>
+<h4 id="_6">伪随机信号</h4>
+<p>一种最简单的可用于前导码的信号为伪随机信号，利用随机函数生成一个序列。</p>
+<pre><code class="language-matlab">N = 128;
+signal = rand(1,N)*2-1;
+</code></pre>
+<p>其自相关函数图像如下：</p>
+<p><img src="./fig/autocorr_rand.svg" alt="autocorr_rand" style="zoom:50%;" /></p>
+<p>可以看出伪随机信号具有良好的自相关性质，可以用作前导码。</p>
+<p>但是使用随机函数生成的伪随机信号没有规律。现有的研究总结了很多伪随机信号用作前导码，我们介绍其中一种，Zadoff-Chu序列（ZC序列）。</p>
+<p>ZC序列为一复数伪随机序列，其表达式为：
+<div class="arithmatex">
+  <div class="MathJax_Preview">
+    ZC[n] = exp(j\pi(\frac{un(n+c_f+2q)}{N}))
+  </div>
+  <script type="math/tex; mode=display">
+    ZC[n] = exp(j\pi(\frac{un(n+c_f+2q)}{N}))
+  </script>
+</div>
+其中N为序列长度，u和n大于等于0且小于N，且u与N互质，<span class="arithmatex"><span class="MathJax_Preview">c_f = N\%2</span><script type="math/tex">c_f = N\%2</script></span>，q为正数。</p>
+<p>我们可以取该信号的实部作为前导码信号
+<div class="arithmatex">
+  <div class="MathJax_Preview">
+    \Re(ZC[n]) = cos(\pi(\frac{un(n+c_f+2q)}{N}))
+  </div>
+  <script type="math/tex; mode=display">
+    \Re(ZC[n]) = cos(\pi(\frac{un(n+c_f+2q)}{N}))
+  </script>
+</div>
+该信号的自相关函数如下图：</p>
+<p><img src="./fig/autocorr_zc.svg" alt="autocorr_zc" style="zoom:50%;" /></p>
+<p>该函数也可作为前导码的信号，且更容易生成。</p>
+<p>伪随机信号虽然具有较好的自相关性质，如果对其进行频谱分析可以发现这些信号的频谱充满整个频带，在应用中，可能需要限制前导码信号的带宽，以避免产生噪音或干扰其他频带的信号，在这种情况下，需要设计带宽有限的前导码信号。</p>
+<h4 id="_7">线性调频信号</h4>
+<p>线性调频信号，也可以称为chirp信号，其特性是频率随时间线性变化，可以表达为：
+<div class="arithmatex">
+  <div class="MathJax_Preview">
+    x(t) = cos(2\pi( f_{\min}t + \frac{1}{2}\frac{B}{T}t^2))
+  </div>
+  <script type="math/tex; mode=display">
+    x(t) = cos(2\pi( f_{\min}t + \frac{1}{2}\frac{B}{T}t^2))
+  </script>
+</div>
+其中fmin为信号的最小频率，B为带宽，T​为信号的时间长度。</p>
+<p>我们给出计算线性调频信号的自相关函数的计算代码：</p>
+<pre><code class="language-matlab">%% 生成信号
+N= 500; fs = 20000;
+t = 0:1/fs:(N-1)/fs;
+fmin = 100; fmax = 500; B = fmax-fmin;
+T = N/fs;
+signal = cos(2*pi*(fmin*t+0.5*(B/T)*t.^2));
 
+%% 求自相关函数
+% 滞后值(m)
+lags = -(N-1):(N-1);
+autocorr = zeros(1,2*N-1);
+for m = lags
+    if m&lt;0
+         autocorr(m+N) = sum(signal(1:N+m).*signal(-m+1:N))/N;
+    else
+         autocorr(m+N) = sum(signal(m+1:N).*signal(1:N-m))/N;
+    end
+end
+
+% 绘图
+plot(lags,autocorr,'lineWidth',1.5)
+</code></pre>
+<p>得出其自相关函数图像为：</p>
+<p><img src="./fig/chirp_corr.svg" alt="chirp_corr" style="zoom:50%;" /></p>
+<p>可以看出在有限的带宽下，线性调频信号有良好的自相关性质，能够作为前导码参与无线通信和感知。</p>
+<blockquote>
+<p>[!TIP]</p>
+<p>思考：在实际场景中，若存在频率偏移、相位偏移或多径效应，前导码信号及互相关函数有何变化？</p>
+</blockquote>
 
 <h1 id="_1">调制方法综合应用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>​       以上介绍的幅度调制、频率调制和相位调制是调制方法中最基本的三类，将其中的一类进行改进，或者结合这3类方式，就可以发展出效率更高、抗噪声能力更强的调制方式。本节将介绍在三类基本调制方法上演变出的其他调制方式，包括脉冲间隔调制，OQPSK，QAM和OFDM。</p>
@@ -2255,98 +2373,108 @@ OQPSK方法是基于QPSK的I/Q调制方式，基本跟QPSK是类似的。I路信
 <p></center></p>
 <p>​       各子载波上的码元长度都为<span class="arithmatex"><span class="MathJax_Preview">T_c</span><script type="math/tex">T_c</script></span>，因此它们的频谱在<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{T_c}</span><script type="math/tex">\frac{1}{T_c}</script></span>处都为0。间隔为<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{T_c}</span><script type="math/tex">\frac{1}{T_c}</script></span>的子载波叠加后，各子信道的频率样本间不存在相互干扰（例如子载波2和子载波3的频谱在<span class="arithmatex"><span class="MathJax_Preview">\frac{1}{T_c}</span><script type="math/tex">\frac{1}{T_c}</script></span>处的输出都为0）。</p>
 <h2 id="ofdm_1">OFDM声波信号实现<a class="headerlink" href="#ofdm_1" title="Permanent link">&para;</a></h2>
+<p>图中展示了三个子载波的频谱，它们的中心频率分别为1/Tc，2/Tc，3/Tc。在每个子载波的中心频率处，其他所有子载波的强度均为0，因此，各子信道的频率样本间不存在相互干扰，容易分离每个子信道的信息。</p>
 <p>所以OFDM可以如下来实现，使用多路正交的频率，每一路频率上使用之前我们说过的调制方式，多路信号叠加到一起。</p>
 <p>这里我们以QPSK调制基带信号为基础，使用4路正交的子载波，即在每一路子载波上使用QPSK，最终实现一个简单的OFDM调制解调功能。为了简化代码，这里的调制部分省略了添加模拟信道噪声的步骤。</p>
 <p>调制：</p>
-<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="nf">OFDMmodulator</span><span class="p">(</span>codes, fileName<span class="p">)</span>
-<span class="c">%输入参数：</span>
-<span class="c">%codes: 待调制的数据，0/1数组</span>
-<span class="c">%fileName：保存到本地的信号文件</span>
-<span class="c">%调用样例：</span>
-<span class="c">%OFDMmodulator([1,1,0,0,1,0,1,0], &#39;data&#39;)</span>
-<span class="c">%调用结果：</span>
-<span class="c">%同文件夹下生成一个‘data.wav’音频文件</span>
-<span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span>
-<span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.025</span><span class="p">;</span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">    </span><span class="c">%采用4路子载波进行OFDM调制</span>
-<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="o">&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+<pre><code class="language-matlab">%% 生成信号
+  function OFDMmodulator(codes, fileName)
+  %输入参数：
+  %codes: 待调制的数据，0/1数组
+  %fileName：保存到本地的信号文件
+  %调用样例：
+  %OFDMmodulator([1,1,0,0,0,1,1,0], 'data')
+  %调用结果：
+  %同文件夹下生成一个‘data.wav’音频文件
+  fs = 48000;
+  T = 0.025; %周期为1/40s
+  N = 4;    %采用4路子载波进行OFDM调制
+  f = (1 : N)' / T; % 4路子载波的频率为40,80,120,160Hz 
+  
+  %将信号长度补齐到8的倍数（4路子载波，每个QPSK码元代表2bit）
+  cLen = length(codes);
+  L = 2 * N;
+  add0 = mod(cLen, L);
+  if add0 ~= 0
+      codes = [codes, zeros(1, L - add0)];
+      cLen = cLen + L - add0;
+  end
+  
+  t = (0 : 1/fs : T - 1/fs);
+  
+  %生成I信号和Q信号
+  sigCarriers = exp(1j*2*pi*f*t);
+  
+  %生成两路基带信号，并相加
+  sigL = size(sigCarriers, 2); % 信号片段的长度
+  sig = zeros(N, sigL * cLen / L);
+  for i = 1 : cLen / L
+    % QPSK 调制
+      % 计算相位的I和Q值
+      phaseI = (1 - 2 * codes(i * L - 7 : 2 : i * L))' * sqrt(2) / 2; 
+      phaseQ = (1 - 2 * codes(i * L - 6 : 2 : i * L))' * sqrt(2) / 2;
+      sig(:, (i - 1) * sigL + 1 : i * sigL) = (phaseI + 1j * phaseQ) .* sigCarriers;
+  end
+  
+  sig = sum(sig, 1);
+  sig = sig / max(abs(sig));
+  % 取实部
+  sig = real(sig);
+  audiowrite([fileName, '.wav'], sig, fs);
+  
+  end
+</code></pre>
 
-<span class="c">%将信号长度补齐到8的倍数（4路子载波，每个QPSK码元代表2bit）</span>
-<span class="n">cLen</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">codes</span><span class="p">);</span>
-<span class="n">L</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
-<span class="n">add0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">cLen</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">);</span>
-<span class="k">if</span><span class="w"> </span><span class="n">add0</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">    </span><span class="n">codes</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">codes</span><span class="p">,</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">add0</span><span class="p">)];</span>
-<span class="w">    </span><span class="n">cLen</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cLen</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">add0</span><span class="p">;</span>
-<span class="k">end</span>
-
-<span class="c">%生成I信号和Q信号</span>
-<span class="n">sigI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">));</span>
-<span class="n">sigQ</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">));</span>
-
-<span class="c">%生成两路基带信号，并相加</span>
-<span class="n">sigL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">sigI</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="n">sig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">sigL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cLen</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="p">);</span>
-<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">cLen</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span>
-<span class="w">    </span><span class="n">fI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">codes</span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">))</span><span class="o">&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">    </span><span class="n">fQ</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">codes</span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">))</span><span class="o">&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">    </span><span class="n">sig</span><span class="p">(:,</span><span class="w"> </span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigL</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigL</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fI</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">sigI</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fQ</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">sigQ</span><span class="p">;</span>
-<span class="k">end</span>
-
-<span class="c">%叠加4路信号</span>
-<span class="n">sig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="c">%将信号幅度恢复为1</span>
-<span class="n">sig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sig</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sig</span><span class="p">));</span>
-
-<span class="nb">audiowrite</span><span class="p">([</span><span class="nb">fileName</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;.wav&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">);</span>
-
-<span class="k">end</span>
-</code></pre></div>
 <p>​       发送端可以将这个调制好的声音播放出去，这在手机上就可以进行，然后接收端通过录音将声音接收下来，然后使用下面的算法进行解调，整个过程跟真实的无线数据收发一致。</p>
 <p>​       主要的解调代码如下：</p>
-<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>codes<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">OFDMdemodulator</span><span class="p">(</span>fileName<span class="p">)</span>
-<span class="c">%输入参数：</span>
-<span class="c">%fileName：调制数据得到的信号文件</span>
-<span class="c">%输出：</span>
-<span class="c">%codes: 解调结果，0/1数组</span>
-<span class="c">%调用样例：(同文件夹内需要有&#39;data.wav&#39;文件)</span>
-<span class="c">%OFDMdemodulator(‘data’)</span>
-<span class="c">%调用结果：</span>
-<span class="c">%输出[1,1,0,0,1,0,1,0]</span>
-<span class="p">[</span><span class="n">sig</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">audioread</span><span class="p">([</span><span class="nb">fileName</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;.wav&#39;</span><span class="p">]);</span>
-<span class="n">sig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sig</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.025</span><span class="p">;</span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="o">&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
-<span class="n">L</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
+<pre><code class="language-matlab">
+  function codes = OFDMdemodulator(fileName)
+%输入参数：
+%fileName：调制数据得到的信号文件
+%输出：
+%codes: 解调结果，0/1数组
+%调用样例：(同文件夹内需要有'data.wav'文件)
+%OFDMdemodulator(‘data’)
+%调用结果：
+%输出[1,1,0,0,0,1,1,0]
+[sig, fs] = audioread([fileName, '.wav']);
+sig = sig';
+T = 0.025;
+N = 4;
+f = (1 : N)' / T;
+L = 2 * N;
 
-<span class="c">%生成I信号和Q信号</span>
-<span class="n">sigI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">));</span>
-<span class="n">sigQ</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">));</span>
-<span class="n">sigL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">sigI</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="n">sigI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="n">sigI</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sigL</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
-<span class="n">sigQ</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="n">sigQ</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sigL</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
+sigL = fs*T;
 
-<span class="c">%生成星座图上的4个点对应的标准基带信号，保存在一个4行、4页的矩阵中（每一行对应一个星座图上的点，每一页对应一路子载波信号）</span>
+cLen = L * length(sig) / sigL;
+codes = zeros(1, cLen);
 
-<span class="n">sigMat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="k">...</span>
-<span class="w">    </span><span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">repmat</span><span class="p">(</span><span class="n">sigI</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">...</span>
-<span class="w">    </span><span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">repmat</span><span class="p">(</span><span class="n">sigQ</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+for i = 1 : cLen / L
 
-<span class="n">cLen</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sigL</span><span class="p">;</span>
-<span class="n">codes</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">cLen</span><span class="p">);</span>
+    seg = sig((i - 1) * sigL + 1 : i * sigL)
 
-<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">cLen</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span>
-<span class="w">    </span><span class="n">seg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">repmat</span><span class="p">(</span><span class="n">sig</span><span class="p">((</span><span class="nb">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigL</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigL</span><span class="p">),</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="c">%通过积分的方式（积分针对的是连续信号，离散信号则是对点积求和），判断当前的这一段信号和哪个标准信号距离最近。积分的结果越大代表两个信号越相似。</span>
-<span class="w">    </span><span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="w"> </span><span class="n">maxI</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">sigMat</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">seg</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">codes</span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">maxI</span><span class="p">(:)</span><span class="o">&#39;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">    </span><span class="n">codes</span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">maxI</span><span class="p">(:)</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="k">end</span>
+    % 通过FFT求对应频率的频谱
+    sigFFT = fft(seg);
+    sigFFT = sigFFT(1+1:N+1);
 
-<span class="k">end</span>
-</code></pre></div>
-<p>和QPSK类似，在解调的代码实现中，生成标准基带信号时采用了多维矩阵的形式。大家可以对比单载波的QPSK和使用多载波的OFDM调制解调的代码，并在代码中找到利用子载波正交性进行解码的地方，以加深对OFDM原理的理解。</p>
+    % 绘制星座图
+    figure
+    scatter(real(sigFFT),imag(sigFFT))
+    
+    % 通过星座图的实部/虚部符号解调信息
+    I = (1 - sign(real(sigFFT)))/2;
+    Q = (1 - sign(imag(sigFFT)))/2;
+
+    codes(i * L - 7 : 2 : i * L) = I;
+    codes(i * L - 6 : 2 : i * L) = Q;
+
+end
+
+end
+</code></pre>
+
+<p>与QPSK不同，我们利用FFT对信号的频谱进行分析。通过频谱分析的方式进行信号解调。大家也可以对调制过程中的每个子载波信号绘制频谱，验证OFDM的调制方式，加深对OFDM子载波正交性的理解。</p>
+
 <p>​       如果我们将上述的Matlab实现的调制和解调代码实现到手机上去的话，再结合手机的播放声音和录音的功能，就很容易实现一个基于声波的无线传输系统。大家可能会看到有很多关于声音的传输的前沿论文和软件，他们的基本实现都是以此为基础的，例如就有论文专门研究如何实现声波上的OFDM，我们再这里就跟大家直接进行展示。理解了这个，大家也可以动手去尝试一下。</p>
 <p>​注意，我们这里给的OFDM的调制解调方式跟真实的会有一些差别，这里主要是方便为了大家理解。我们介绍的过程是产生不同频率的正交信号，然后每一路上调制叠加。</p>
 <p>真实的调制解调过程并不需要产生不同频率的正交信号，而是通过傅里叶逆变换ifft，指定不同子载波频率后通过傅里叶逆变换生成要调制的数据。而在接收端通过傅里叶变化直接将各个子载波的信息解码出来。</p>
@@ -2361,6 +2489,9 @@ OQPSK方法是基于QPSK的I/Q调制方式，基本跟QPSK是类似的。I路信
 <p>基于这一主要思路，大家可以尝试一下OFDM的实现，并思考这样实现的好处是什么。</p>
 </blockquote>
 <p>​       当然完整的OFDM比这个更复杂，例如还会添加循环冗余的前缀等等，不过大家理解了OFDM的基本操作后，很多其他的技术部分也就比较好理解了，也能够从基本操作出发不断完善了。强烈建议大家都去相对完整地实现一次OFDM方法，一定会有很大的收获。基于现在的这些基础知识，请大家相信实现OFDM不会有你们想的那么复杂。</p>
+
+
+
 <h2 id="_3">参考资料和文献<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
 <li>《信号与系统（第二版）》</li>
@@ -2373,7 +2504,7 @@ OQPSK方法是基于QPSK的I/Q调制方式，基本跟QPSK是类似的。I路信
                 
               </article>
             <!-- // % 评论 -->
-            <div id="gitalk-container"></div>
+            <!-- <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
               <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
               <script>
@@ -2391,7 +2522,7 @@ OQPSK方法是基于QPSK的I/Q调制方式，基本跟QPSK是类似的。I路信
                   })
                   gitalk.render('gitalk-container')
               </script> 
-            </div>
+            </div> -->
             <!-- End 评论 -->
             
             </div>
