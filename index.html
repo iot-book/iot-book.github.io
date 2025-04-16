@@ -44,7 +44,106 @@
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
-      
+    <style>
+          /* 优化移动端样式 */
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+        
+        .book-container {
+          flex-direction: column;
+          margin-bottom: 30px;
+        }
+        
+        .book-cover {
+          width: 100%;
+          height: auto;
+          max-width: 200px;
+          margin: 0 auto 20px;
+        }
+        
+        .book-info {
+          width: 100%;
+        }
+        
+        h1 {
+          font-size: 1.5rem;
+        }
+        
+        .book-meta {
+          padding: 10px;
+        }
+        
+        .buy-btn {
+          width: 100%;
+          text-align: center;
+          padding: 12px 0;
+        }
+      }
+
+      body {
+          font-family: 'Microsoft YaHei', Arial, sans-serif;
+          line-height: 1.6;
+          margin: 0;
+          padding: 20px;
+          color: #333;
+          max-width: 100%;
+          margin: 0 auto;
+      }
+      .book-container {
+          display: flex;
+          margin-bottom: 40px;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 30px;
+      }
+      .book-cover {
+          width: 200px;
+          height: 280px;
+          margin-right: 30px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      .book-info {
+          flex: 1;
+      }
+      h1 {
+          color: #2c3e50;
+          margin-top: 0;
+      }
+      h2 {
+          color: #3498db;
+          border-bottom: 2px solid #3498db;
+          padding-bottom: 5px;
+          margin-top: 0;
+      }
+      .book-meta {
+          background-color: #f8f9fa;
+          padding: 15px;
+          border-radius: 5px;
+          margin: 15px 0;
+      }
+      .buy-btn {
+          display: inline-block;
+          background-color: #e74c3c;
+          color: white;
+          padding: 10px 20px;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: bold;
+          margin-top: 10px;
+          transition: background-color 0.3s;
+      }
+      .buy-btn:hover {
+          background-color: #c0392b;
+      }
+      .book-description {
+          margin-bottom: 15px;
+      }
+      .highlight {
+          font-weight: bold;
+          color: #e74c3c;
+      }
+  </style>
 
     
     
@@ -2018,12 +2117,12 @@
           
           
             <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
+              <!-- <article class="md-content__inner md-typeset"> -->
                 
-                  
+                
 
 
-<h1 id="2">第2版前言<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<!-- <h1 id="2">第2版前言<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
 <p>这是我在清华开设课程《物联网导论》准备过程中的备课材料，在上这门课的过程中，我发现很多同学听到的物联网概念很多，但是实际动手的体会很少，对很多系统是如何实现的，背后的原理如何理解并不深刻，现在很多物联网的材料侧重概念，实现介绍较少。我想到我自己刚开始在物联网这一领域研究的时候，可以看到的代码更少，甚至很多时候连硬件设备都没有，很多都靠自己来搭建，中间走了很多弯路、踩了很多坑。因此趁着在准备这门课的过程中我准备了这个材料，放在这里供同学们参考，结合着课程一起动手学习。</p>
 <p>这个材料主要围绕物联网通信、感知展开，主要包括核心原理介绍，以及实现过程展示，最大的特点就是我们每一部分都提供了代码，这些代码很多一些是初步物联网通信感知的原理、一部分是我们自己论文的代码，也还有一部分是前沿物联网研究的代码实现，希望能够对不同阶段的同学起到不同的作用。我自己的团队主要研究方向是物联网通信和感知，也完成了很多不同的真实系统，如当时世界上规模最大的室外多跳自组网传感网系统、低功耗传输协议、低功耗广域网、无源低功耗广域网，利用物联网泛在信号（无线、声波、可见光等）进行感知，在这些方面积累了一些经验，希望能够分享给大家。
 总体上来看，材料的组织按照如下的方式：</p>
@@ -2043,13 +2142,13 @@
 <li>可以作为课程实验课程材料，基于这个建立相关实验体系。总体来看，材料努力做到既适合计算机专业没有通信背景人来阅读，又能够作为通信等专业的辅助阅读和实验材料。</li>
 </ol>
 <p>材料准备过程中个人理解有限，难免会有所问题，物联网是一个很大的方向，材料很难覆盖全面，事实上我也没有打算面面俱到，希望能够重点突出。欢迎大家使用材料的过程中指出错误、提出问题、多多交流。
-如有可能，也希望大家能够给出宝贵建议和意见，可以发邮件给我 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#105;&#108;&#105;&#97;&#110;&#103;&#119;&#97;&#110;&#103;&#64;&#116;&#115;&#105;&#110;&#103;&#104;&#117;&#97;&#46;&#101;&#100;&#117;&#46;&#99;&#110;">&#106;&#105;&#108;&#105;&#97;&#110;&#103;&#119;&#97;&#110;&#103;&#64;&#116;&#115;&#105;&#110;&#103;&#104;&#117;&#97;&#46;&#101;&#100;&#117;&#46;&#99;&#110;</a>。</p>
+如有可能，也希望大家能够给出宝贵建议和意见，可以发邮件给我 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#105;&#108;&#105;&#97;&#110;&#103;&#119;&#97;&#110;&#103;&#64;&#116;&#115;&#105;&#110;&#103;&#104;&#117;&#97;&#46;&#101;&#100;&#117;&#46;&#99;&#110;">&#106;&#105;&#108;&#105;&#97;&#110;&#103;&#119;&#97;&#110;&#103;&#64;&#116;&#115;&#105;&#110;&#103;&#104;&#117;&#97;&#46;&#101;&#100;&#117;&#46;&#99;&#110;</a>。</p> -->
 <!-- <center>
 <img src="./iot-book交流讨论群聊二维码.png" width=300px>
 </center> -->
 
 <!-- 弹窗 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 Swal.fire({
     title: '感谢浏览\n 为了更好地了解读者信息\n 请留下您的联系方式',
@@ -2076,23 +2175,23 @@ Swal.fire({
     setTimeout(function(){window.location.href = 'https://wj.qq.com/s2/12185738/aa5f/'}, 800)
     }
 })
-</script>
+</script> -->
 <!-- End 弹窗 -->
 
-<p>这个材料是我们组在物联网方向上一些体会的总结，在此也感谢我们小组的每一位同学，特别感谢童率、宋知朋、徐振强、杨景、董柏顺、陈倩、陈亦捷、张嘉睿、江晋彦、焦俊人等，他们在准备这个材料的过程中做出了很大的贡献。</p>
-<p>王继良
-2020年12月</p>
-<p>@copyright <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/">Jiliang Wang</a>
-未经明确的书面允许，请勿复制或者在其他地方使用里面的材料。</p>
+<!-- <p>这个材料是我们组在物联网方向上一些体会的总结，在此也感谢我们小组的每一位同学，特别感谢童率、宋知朋、徐振强、杨景、董柏顺、陈倩、陈亦捷、张嘉睿、江晋彦、焦俊人等，他们在准备这个材料的过程中做出了很大的贡献。</p> -->
+<!-- <p>王继良 -->
+<!-- 2020年12月</p> -->
+<!-- <p>@copyright <a href="http://tns.thss.tsinghua.edu.cn/~jiliang/">Jiliang Wang</a>
+未经明确的书面允许，请勿复制或者在其他地方使用里面的材料。</p> -->
 
 
 
 
 
                 
-              </article>
+              <!-- </article> -->
             <!-- // % 评论 -->
-            <div id="gitalk-container"></div>
+            <!-- <div id="gitalk-container"></div>
               <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
               <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
               <script>
@@ -2110,9 +2209,53 @@ Swal.fire({
                   })
                   gitalk.render('gitalk-container')
               </script> 
-            </div>
+            </div> -->
             <!-- End 评论 -->
-            
+            <div class="book-container">
+              <img src="./images/iotbook.png" alt="物联网通信与智能感知封面" class="book-cover">
+              <div class="book-info">
+                  <h1>物联网通信与智能感知 理论与实践</h1>
+                  <div class="book-meta">
+                      <p><strong>出版社：</strong>清华大学出版社</p>
+                      <p><strong>出版日期：</strong>2025年</p>
+                      <p><strong>ISBN：</strong>9787302683834</p>
+                  </div>
+                  <div class="book-description">
+                      <p>《物联网通信与智能感知 理论与实践》从物联网的基础知识出发，主要围绕物联网通信和感知展开，全面介绍了物联网的架构、技术原理、应用领域和发展趋势等，涵盖物联网的感知层、网络层和应用层等多个层次，为读者提供了完整的物联网知识体系。</p>
+                      <p>本书结合大量实战应用案例，展示了物联网技术在现实生活中的应用和价值。可作为高等院校物联网专业高年级本科生学习物联网通信、感知的教学辅导书，也可供对无线通信和物联网感兴趣的初学者或者从事相关技术研发的工程技术人员参考。</p>
+                      <p class="highlight">本书特色：理论与实践相结合，系统全面，案例丰富，适合不同层次读者学习参考。</p>
+                  </div>
+                  <a href="https://detail.tmall.com/item.htm?id=910318943404&spm=a211lz.success.0.0.41692b90JVrpEq&skuId=5774653309503" class="buy-btn" target="_blank">立即购买</a>
+              </div>
+          </div>
+      
+          <div class="book-container">
+              <img src="./images/llm4app.png" alt="大模型重塑应用开发封面" class="book-cover">
+              <div class="book-info">
+                  <h1>大模型重塑应用开发</h1>
+                  <div class="book-meta">
+                      <p><strong>出版社：</strong>-</p>
+                      <p><strong>出版日期：</strong>-</p>
+                      <p><strong>ISBN：</strong>-</p>
+                  </div>
+                  <div class="book-description">
+                      <p>本书探讨大模型技术对移动应用开发领域的深刻变革。移动应用开发作为技术走向用户的重要途径，传统开发流程高度依赖人工且成本高昂。</p>
+                      <p>随着大模型的迅猛发展，移动应用开发领域迎来了前所未有的变革：</p>
+                      <ul>
+                          <li>在需求分析阶段，大模型能够对海量用户数据进行深度挖掘</li>
+                          <li>在设计环节，大模型展现出强大的创造力</li>
+                          <li>在代码编写阶段，大模型显著提升开发效率</li>
+                      </ul>
+                      <p>本书源自作者在《移动应用开发》课程中的实践探索，记录了大模型时代下移动应用开发的新模式和新思考。特别探讨了如何避免两个极端误区：过度依赖个人能力或过度依赖大模型。</p>
+                      <p class="highlight">本书特色：直面大模型时代开发者的核心困惑，提供实践导向的解决方案，适合所有关注AI与开发结合的读者。</p>
+                  </div>
+                  <a href="#" class="buy-btn" target="_blank">即将上市</a>
+              </div>
+          </div>
+
+
+
+
             </div>
           
           
