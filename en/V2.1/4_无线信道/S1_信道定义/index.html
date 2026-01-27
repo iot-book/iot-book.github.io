@@ -1,0 +1,4088 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Translated IoT technical book">
+      
+      
+        <meta name="author" content="Translation Pipeline">
+      
+      
+      
+        <link rel="prev" href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html">
+      
+      
+        <link rel="next" href="../S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/index.html">
+      
+      
+        
+          <link rel="alternate" href="/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>4.1 Channel Definition - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wireless-channels" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="IoT Book" class="md-header__button md-logo" aria-label="IoT Book" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IoT Book
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.1 Channel Definition
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="IoT Book" class="md-nav__button md-logo" aria-label="IoT Book" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface Version 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.%20%E5%89%8D%E8%A8%80/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface Version 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_%E7%89%A9%E8%81%94%E7%BD%91%E6%A6%82%E8%BF%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. IoT Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Signal Processing Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Signal Processing Fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Signal Generation, Transmission, and Reception
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Analog vs Digital Signals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Sampling Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Signal Quantization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Case Study Recorder Player
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Fourier Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Fourier Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Fourier Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Fourier Transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Discrete Fourier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Case Study STFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Wireless Channels
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. Wireless Channels
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Channel Definition
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Channel Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#channel-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-impulse-response-cir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Impulse Response (CIR)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-frequency-response-cfr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Frequency Response (CFR)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-state-information-csi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel State Information (CSI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Path Loss and Shadowing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Multipath Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S4_%E6%A1%88%E4%BE%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Case Study Wireless Channel Simulation and Measurement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Signal Filtering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. Signal Filtering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%AE%80%E4%BB%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Filter Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S2_%E6%BB%91%E5%8A%A8%E5%B9%B3%E5%9D%87%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Moving Average Filter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S3_FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 FIR Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S4_IIR%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 IIR Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S5_%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%26%E5%B7%B4%E7%89%B9%E6%B2%83%E6%96%AF/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Advanced Filter Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S6_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%AF%94%E8%BE%83%E4%B8%8E%E9%80%89%E6%8B%A9/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 Case Study Filter Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Digital Modulation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    6. Digital Modulation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 Amplitude Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Frequency Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Phase Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 Upconversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 Integrated Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 Case Study Full System Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Short-Range Wireless
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7. Short-Range Wireless
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S1_WiFi/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 WiFi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S2_%E8%93%9D%E7%89%99/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Bluetooth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S3_ZigBee/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 ZigBee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S4_%E6%A1%88%E4%BE%8B%EF%BC%88%E8%93%9D%E7%89%99%EF%BC%89/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Case Study Bluetooth Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Backscatter Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Backscatter Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_RFID/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 RFID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S3_%E6%96%B0%E5%BD%A2%E5%BC%8F%E7%9A%84Backscatter%EF%BC%9A%E4%BB%8EWiFi%E5%88%B0LoRa/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 WiFi to LoRa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LoRa
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. LoRa
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 LoRa Communication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 Collision Decoding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.4 Testbed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S5_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.5 OTA Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Visible Light Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10. Visible Light Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/S1_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 Visible Light Communication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Millimeter-Wave Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11. Millimeter-Wave Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/S1_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1%E7%9A%84%E5%85%B4%E8%B5%B7/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.1 mmWave
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Wireless Ranging
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12. Wireless Ranging
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.1 RSS Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.2 ToF Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Wireless Localization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    13. Wireless Localization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S1_%E4%B8%89%E8%BE%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.1 Trilateration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.2 TDOA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S3_AOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.3 AOA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S4_%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.4 Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Wireless Tracking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    14. Wireless Tracking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.1 Doppler-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.2 FMCW-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.3 Phase-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Sensor-Based Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    15. Sensor-Based Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S1_%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.1 Sensor Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S2_%E6%83%AF%E6%80%A7%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.2 Inertial Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%89%E5%8D%93%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BC%96%E7%A8%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.3 Android Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Acoustic Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    16. Acoustic Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S1_%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.1 Acoustic Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S2_%E5%A3%B0%E6%B3%A2%E5%AE%9A%E4%BD%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.2 Acoustic Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S3_%E5%A3%B0%E6%B3%A2%E8%BF%BD%E8%B8%AA/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.3 Acoustic Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S4_%E5%A3%B0%E6%B3%A2%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.4 Acoustic Gesture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S5_%E5%A3%B0%E6%B3%A2%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.5 Device Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. WiFi Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. WiFi Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S1_%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.1 CSI Acquisition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S2_CSI%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.2 CSI Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9AWiFI%20ToF%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.3 WiFi ToF Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S4_Wi-Fi%E5%AE%9A%E4%BD%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.4 WiFi Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Bluetooth Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    18. Bluetooth Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S1_%E8%93%9D%E7%89%99%E5%AF%BB%E5%90%91%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.1 Direction Finding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.2 Localization Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.3 Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.4 Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../19_Backscatter%E6%84%9F%E7%9F%A5/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Backscatter Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_22" >
+        
+          
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. UWB Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    20. UWB Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB%E6%84%9F%E7%9F%A5/S1_UWB%E8%AE%BE%E5%A4%87%E4%B8%8E%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.1 Devices & Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB%E6%84%9F%E7%9F%A5/S3_V-TWR%E7%AE%97%E6%B3%95/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.3 V-TWR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../21_LoRa%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. LoRa Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../22_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Millimeter-wave Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_25" >
+        
+          
+          <label class="md-nav__link" for="__nav_25" id="__nav_25_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Visible Light Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_25_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_25">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    23. Visible Light Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S1_%E6%A6%82%E8%BF%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.1 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S2_%E4%B8%BB%E5%8A%A8%E5%BC%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.2 Active Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S3_%E8%A2%AB%E5%8A%A8%E5%BC%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.3 Passive Sensing and Pose Estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_26" >
+        
+          
+          <label class="md-nav__link" for="__nav_26" id="__nav_26_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_26_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_26">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_%E9%99%84%E5%BD%95/S1_%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Android Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_%E9%99%84%E5%BD%95/S2_MATLAB%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 MATLAB Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#channel-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-impulse-response-cir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Impulse Response (CIR)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-frequency-response-cfr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Frequency Response (CFR)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-state-information-csi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel State Information (CSI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="wireless-channels">Wireless Channels</h1>
+<h2 id="channel-definition">Channel Definition</h2>
+<p>Just as vehicles require roads for transportation, signals require channels for transmission. According to Wikipedia, a <em>channel</em>—also referred to as a <em>path</em>, <em>band</em>, or <em>wave channel</em>—is the medium through which signals propagate in a communication system. It comprises all physical transmission media traversed by a signal from transmitter to receiver; broadly defined, it may also include associated equipment involved in signal transmission. Understanding channels forms a foundational prerequisite for comprehending data transmission. Indeed, cutting-edge research in the Internet of Things (IoT)—ranging from IoT communications to IoT sensing—is fundamentally grounded in channel characteristics: such work either addresses challenges introduced by the channel or exploits its inherent properties.</p>
+<p>Throughout this section, we shall consistently focus on the following questions:</p>
+<ul>
+<li>What is a channel?  </li>
+<li>How is a channel mathematically represented?</li>
+</ul>
+<p>We first recall that the fundamental objective of transmission is to reconstruct the transmitted signal based on the received signal. To achieve this, we must first understand how to represent signals (<em>modulation</em>) and how to model the channel (<em>characterizing its effect on signal propagation</em>). Suppose the transmitted signal is denoted by <span class="arithmatex">\(s\)</span>; then the received signal after passing through the channel is <span class="arithmatex">\(f(s)\)</span>, where the function <span class="arithmatex">\(f\)</span> captures the channel’s effect on the signal. The goal of transmission is thus to estimate <span class="arithmatex">\(s\)</span> from the observed <span class="arithmatex">\(f(s)\)</span>. Ideally, one would hope the channel introduces no distortion whatsoever, yielding <span class="arithmatex">\(f(s) = s\)</span>. In practice, however, such an ideal scenario is unattainable.</p>
+<p>Intuitively, a channel represents the physical medium through which a signal propagates from transmitter to receiver—a canonical communication process comprising three components: transmitter, channel, and receiver. For example, consider homework you write at night and submit to your teacher the next day: you are the transmitter; the homework constitutes the data; the notebook and the act of submission collectively form the channel; and your teacher is the receiver. To ensure your teacher reads your homework correctly, you first ensure your writing is accurate—you may enlarge your handwriting to improve legibility, write your name clearly to identify authorship, and highlight key points—all strategies employed at the transmitter to enhance transmission reliability. Simultaneously, you strive to deliver the notebook reliably to your teacher—for instance, protecting it carefully during rain—to mitigate channel-induced impairments. Only upon successful delivery can your teacher interpret your original content accurately.</p>
+<p>Channels can be classified into two categories:</p>
+<p><strong>Narrowband (or Physical) Channel</strong>: Classified according to transmission medium, narrowband channels fall into three types: wired channels, wireless channels, and storage channels. Notably, magnetic tapes, hard disks, and other data storage media can also be regarded as communication channels. Writing data onto such media is analogous to a transmitter sending signals into a channel; reading data from them corresponds to a receiver retrieving signals from the channel.</p>
+<p><strong>Broadband (or Functional) Channel</strong>: Classified according to functional role, broadband channels comprise <em>modulation channels</em> and <em>coding channels</em>. A modulation channel spans from the output of the modulator to the input of the demodulator. Within this domain, both transmission media and intervening hardware apply transformations to the signal; the modulator/demodulator only concerns itself with the input–output relationship induced by these transformations—not their underlying physical implementation. A coding channel extends from the output of the encoder to the input of the decoder. For coding/decoding researchers, the digital sequence emitted by the encoder undergoes various transformations across the coding channel before arriving at the decoder input as another digital sequence; only the mapping between these two sequences matters.</p>
+<center>
+<img src="./fig/CH3_信道.png" width=600px>
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Schematic illustration of a channel</div>
+</center>
+
+<p>Understanding channels underpins both IoT communication and sensing. Many communication processing and sensing techniques either compensate for or exploit channel effects. Thus, grasping channel behavior begins with understanding its fundamental impacts on signals—such as attenuation and multipath propagation—and how these effects can be rigorously modeled. This chapter covers precisely those topics. Once mastered, most practical communication problems become significantly clearer and more tractable. As previously noted, channel understanding also serves as the foundation for IoT sensing—particularly for wireless localization and environmental sensing.</p>
+<h2 id="channel-impulse-response-cir">Channel Impulse Response (CIR)</h2>
+<!-- Begin with unit impulse response, describe how it transforms through the channel, then generalize this effect and introduce channel parameters such as H. -->
+<p>The first step in channel analysis is constructing a mathematical description—that is, determining the output signal resulting from an arbitrary input signal passing through the channel. However, infinitely many possible input waveforms exist; exhaustively measuring the channel’s response to each waveform is infeasible. Hence, we must identify a fundamental “unit basis” capable of synthesizing any arbitrary waveform.</p>
+<p>Fortunately, the <em>unit impulse signal</em> serves as an ideal candidate for this purpose: any signal can be decomposed into a linear superposition of time-shifted unit impulses. Consequently, by characterizing the channel’s response to a unit impulse, we can compute the response to any arbitrary input via linear superposition. For instance, if the input is a scaled impulse—e.g., twice the amplitude—the output will likewise scale proportionally, assuming linearity. Here, we assume the channel behaves linearly; nonlinear channels are excluded from consideration in this material, as linear models suffice for most analytical purposes and constitute the standard assumption in virtually all technical literature and textbooks. Unless otherwise specified, all subsequent discussions assume linear channels.</p>
+<p>We illustrate how the <em>Channel Impulse Response (CIR)</em> enables representation of the channel output for arbitrary inputs, using discrete-time notation for clarity. A discrete-time unit impulse signal is defined as:</p>
+<div class="arithmatex">\[
+\delta[n]=\left\{\begin{array}{ll}
+1, &amp; n=0 \\
+0, &amp; n \neq 0
+\end{array}\right.
+\]</div>
+<p>That is, it equals “1” only at time index zero and “0” elsewhere. Through sampling, any continuous-time signal can be expressed in discrete form, as shown below.</p>
+<center>
+<img src="./fig/Channel1.png" width=600px>
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Any signal can be represented as a weighted sum of time-shifted unit impulses via sampling.</div>
+</center>
+
+<p>Each sampled value corresponds to a unit impulse scaled in amplitude and delayed in time. For example, a sample of amplitude 0.9 at time index 1 is expressed as <span class="arithmatex">\(0.9 \delta[n-1]\)</span>. Similarly, the entire signal consisting of <span class="arithmatex">\(N\)</span> samples can be written as the sum of <span class="arithmatex">\(N\)</span> scaled and delayed unit impulses:</p>
+<div class="arithmatex">\[
+x[n] = \sum_{k=0}^{N-1} Ampl[k]\times \delta[n-k]
+\]</div>
+<p>This expression appears frequently in technical documentation, textbooks, and research papers. It provides a powerful representation method: converting a sequence into a summation form greatly simplifies numerous computational tasks. Its elegance becomes increasingly apparent with experience.</p>
+<p>For a linear channel, if we know the response <span class="arithmatex">\(\delta'[n]\)</span> to the unit impulse <span class="arithmatex">\(\delta[n]\)</span>, then the response <span class="arithmatex">\(x[n]\)</span> to any arbitrary input <span class="arithmatex">\(x[n]\)</span> is given by:</p>
+<div class="arithmatex">\[
+x'[n]  = \sum_{k=0}^{N-1} Ampl[k]\times \delta'[n-k]
+\]</div>
+<!-- We typically use the Channel Impulse Response (CIR) to characterize channel behavior. Given a channel, its CIR is defined as the output signal observed when a unit impulse is applied at the input. -->
+
+<!-- To analyze channel characteristics, we commonly employ the Channel Impulse Response (CIR), i.e., the output signal measured at the channel’s output when a unit impulse is injected at its input. During communication, the channel modifies propagating signals—altering their amplitude, frequency, and phase. Different channels produce distinct distortions; the CIR provides a precise means to quantify and differentiate these effects. -->
+
+<p>In the continuous-time domain, the unit impulse signal δ(t) satisfies: δ(t) = 0 for all t ≠ 0, and its integral over the entire real line equals unity:</p>
+<div class="arithmatex">\[
+\delta(t) = 0, t\neq 0 
+\]</div>
+<p>and</p>
+<div class="arithmatex">\[
+\int_{-\infty}^{\infty}\delta(t)dt = 1
+\]</div>
+<p>In signal analysis, we handle both discrete and continuous representations, carefully distinguishing notation: discrete-time signals use square brackets [·], while continuous-time signals use parentheses (·). From an engineering perspective, focusing primarily on the discrete-time interpretation suffices.</p>
+<p>Next, we examine how the unit impulse transforms upon passage through a realistic channel. Two dominant phenomena shape the CIR: <em>attenuation</em> and <em>multipath propagation</em>. Attenuation arises from path loss and shadow fading, reducing signal energy. Multipath results from multiple propagation paths, causing the receiver to observe several delayed replicas of the same pulse.</p>
+<center>
+<img src="./fig/Channel2.png" width=400px>
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Illustration of channel response: arrows denote delayed and attenuated replicas of the unit impulse generated by the channel.</div>
+</center>
+
+<p>The figure above visually depicts how a unit impulse evolves through the channel: due to diverse propagation paths, the receiver observes multiple delayed copies of the input pulse. Each copy exhibits distinct attenuation, phase shift, and spectral distortion. The net received signal—the CIR—is therefore the superposition of these delayed replicas.</p>
+<!-- In fact, we can view the channel as a filter whose parameters (commonly denoted $h$) are illustrated above. -->
+
+<!-- > Exercise: Given knowledge of a channel’s unit impulse response, how would you compute the output for an arbitrary input signal? -->
+
+<center>
+<img src="./fig/Channel3.png" width=600px>
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. CIR representation with varying delays and attenuations.</div>
+</center>
+
+<center>
+<img src="./fig/Channel4.png" width=600px>
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Linear superposition of delayed/attenuated CIR components reconstructs the channel response to any input signal $x[n]$.</div>
+</center>
+
+<p>As shown, linear superposition of delayed and attenuated impulse responses fully characterizes the channel output for any input <span class="arithmatex">\(x[n]\)</span>.</p>
+<p>Now, how do we formalize this process mathematically? This leads directly to the mathematical definition of the CIR.</p>
+<p>From prior discussion, the CIR represents the superposition of multiple delayed, attenuated, and phase-shifted replicas of the unit impulse. Denote the CIR as <span class="arithmatex">\(h[n]\)</span>; each element <span class="arithmatex">\(h[n]\)</span> encodes the complex gain (attenuation and phase shift) corresponding to delay l. For example, <span class="arithmatex">\(h[1]=0.9e^{j\varphi}\)</span> signifies a replica arriving at time index 1 with amplitude 0.9 and phase shift <span class="arithmatex">\(\varphi\)</span>.</p>
+<p>In discrete-time systems, the impulse response <span class="arithmatex">\(h[n]\)</span> fully characterizes the system when the input is <span class="arithmatex">\(\delta[n]\)</span>. Thus, for any input <span class="arithmatex">\(x[]\)</span>, the output <span class="arithmatex">\(y[]\)</span> is obtained via discrete-time convolution (summation):</p>
+<p><span class="arithmatex">\(x[]\)</span> equals <span class="arithmatex">\(x[n] = x[k]\delta[n-k], k = 0, 1, \ldots, +\infty\)</span>. Since the channel response to <span class="arithmatex">\(\delta[n]\)</span> is <span class="arithmatex">\(h[n]\)</span>, linearity implies the response to <span class="arithmatex">\(\delta[n-k]\)</span> is <span class="arithmatex">\(h[n-k]\)</span>, and the response to <span class="arithmatex">\(x[k]\delta[n-k]\)</span> is &lt;<MATH_44>. Therefore, the output for input <span class="arithmatex">\(x[n]\)</span> is:</p>
+<div class="arithmatex">\[
+y[n]=\sum_{k=0}^{\infty} x[k] h[n-k]
+\]</div>
+<p>Assume the maximum propagation delay introduced by the channel is <span class="arithmatex">\(M\)</span>—i.e., a signal transmitted at time <span class="arithmatex">\(0\)</span> arrives at the receiver no later than time <span class="arithmatex">\(M\)</span>. This quantity is termed the <strong>channel delay spread</strong>. Equivalently, the received signal at any instant reflects the superposition of the previous <span class="arithmatex">\(M\)</span> transmitted symbols:</p>
+<div class="arithmatex">\[
+y[n] = x[n]\times h[0] + x[n-1] \times h[1] + \cdots + x[n-M]\times h[M]
+\]</div>
+<p>This expression is equivalently written in convolution form:</p>
+<div class="arithmatex">\[
+y[n] = \sum_{k=0}^{M}x[n-k]h[k] = x * h
+\]</div>
+<p>Thus, given the channel’s unit impulse response <span class="arithmatex">\(h\)</span> and an arbitrary input <span class="arithmatex">\(x\)</span>, the output is simply the convolution of the two. Note that <strong>*</strong> denotes convolution—not ordinary multiplication. This formula appears ubiquitously in textbooks and research literature.</p>
+<p>In the continuous-time domain, under the linear time-invariant (LTI) assumption, the response to a unit impulse <span class="arithmatex">\(\delta(t)\)</span> is:</p>
+<div class="arithmatex">\[
+y(t)=\int_{-\infty}^{\infty} \delta(\tau) h(t-\tau) d \tau= h(t)
+\]</div>
+<p>For an arbitrary input <span class="arithmatex">\(x(t)\)</span>, the output <span class="arithmatex">\(y(t)\)</span> is computed via continuous-time convolution:</p>
+<div class="arithmatex">\[
+y(t)=\int_{-\infty}^{\infty} x(\tau) h(t-\tau) d \tau=x(t) * h(t)
+\]</div>
+<blockquote>
+<p>Why convolution?<br />
+Convolution inherently captures a key channel property: the received signal at any moment depends on contributions from past transmitted symbols. Analogously, a single punch (impulse input) causes prolonged pain (system memory); multiple punches produce cumulative, overlapping discomfort—intuitively illustrating how channels smear temporal information.</p>
+<ul>
+<li>Given a channel with direct path and two reflected paths having attenuations 0.9, 0.5, and 0.8, delays 15<span class="arithmatex">\(\mu s\)</span> and <span class="arithmatex">\(40\mu s\)</span>, and phase shifts <span class="arithmatex">\(35rad\)</span> and <span class="arithmatex">\(70rad\)</span>, how is the CIR <span class="arithmatex">\(h\)</span> expressed?  </li>
+<li>If a sinusoidal signal <span class="arithmatex">\(x(t)=sin(t)\)</span> is transmitted over this channel, what is the received signal? What if an arbitrary signal <span class="arithmatex">\(s(t)\)</span> is transmitted?  </li>
+<li>How does additive noise <span class="arithmatex">\(N(t)\)</span> affect the received signal?</li>
+</ul>
+</blockquote>
+<p>In practice, a critical task is estimating the transmitted signal <span class="arithmatex">\(x\)</span> from the received signal <span class="arithmatex">\(y\)</span> and measured channel response <span class="arithmatex">\(h\)</span>. This raises another essential question: how do we measure the CIR <span class="arithmatex">\(h\)</span>?</p>
+<p>Ideally, one could inject a perfect unit impulse at the transmitter and record the corresponding output as the CIR <span class="arithmatex">\(h\)</span>. However, generating an ideal impulse is physically impossible. Hence, practical systems transmit known reference signals—such as preambles or pilot tones—to estimate the CIR.</p>
+<h2 id="channel-frequency-response-cfr">Channel Frequency Response (CFR)</h2>
+<p>Multipath propagation manifests in the time domain as delay spread; the CIR directly captures this phenomenon. In the frequency domain, the same physical mechanisms cause <em>frequency-selective fading</em>: signals traversing different paths interfere constructively or destructively at the receiver, leading to frequency-dependent attenuation. For instance, if two multipath components arrive with a time difference equal to half the period of a particular frequency, that frequency component suffers severe cancellation; if the delay equals an integer number of periods, constructive addition occurs.</p>
+<p>Accordingly, the <em>Channel Frequency Response (CFR)</em> is widely used to characterize channel impact via its magnitude and phase responses. Under infinite bandwidth assumptions, CFR and CIR are Fourier transform pairs—mathematically equivalent representations related by the Fourier transform and its inverse. The figure below illustrates the frequency response of a frequency-selective fading channel.</p>
+<center>
+<img src="./fig/channel-response-freq.png" width=600px>
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Frequency-domain channel response: arrows indicate frequency-dependent attenuation and phase shift induced by the channel.</div>
+</center>
+
+<p>In real communication systems, the time-domain CIR can be transformed into the frequency domain. By comparing the spectral characteristics of input and output signals, one computes the frequency-domain channel response and subsequently recovers time-domain parameters. Crucially, CFR and CIR are equivalent representations—one in time, the other in frequency—interconvertible via Fourier analysis. Moreover, CFR serves as a vital information source for many modern IoT localization and sensing techniques: by analyzing CFR features of specially designed probing signals, one extracts multipath propagation characteristics useful for positioning and environmental inference.</p>
+<!-- A unit impulse passing through a channel yields a combination of attenuated and delayed replicas of itself. This output is termed the unit impulse response, which completely characterizes the channel—i.e., -->
+
+<h2 id="channel-state-information-csi">Channel State Information (CSI)</h2>
+<p>Having understood CIR and CFR, the concept of <em>Channel State Information (CSI)</em> follows naturally. Like CFR, CSI describes channel impact in the frequency domain. Their distinction lies in scope: CFR is a general parameter applicable to any frequency, whereas CSI specifically refers—in OFDM systems—to the channel gain matrix <span class="arithmatex">\(H\)</span> (also called the channel matrix or fading matrix), whose elements represent per-subcarrier complex gains. Assuming <span class="arithmatex">\(M\)</span> transmit antennas, <span class="arithmatex">\(N\)</span> receive antennas, and <span class="arithmatex">\(K\)</span> subcarriers, each CSI sample yields <span class="arithmatex">\(M\times N\times K\)</span> complex-valued elements <span class="arithmatex">\(a_ie^{-j\theta_i}\)</span>, encoding amplitude and phase per subcarrier. For single-input single-output (SISO) systems, CSI reduces to amplitude and phase per subcarrier. Effectively, CSI is a discrete-frequency sampling of the CFR, evaluated at the OFDM subcarrier frequencies.</p>
+<blockquote>
+<p>If OFDM remains unfamiliar, no concern—detailed explanations and implementations follow later.</p>
+</blockquote>
+<p>CSI is categorized as <em>instantaneous CSI</em> or <em>statistical CSI</em>. Instantaneous CSI reflects the current channel realization. Statistical CSI captures long-term channel statistics—e.g., fading distribution type, average channel gain, spatial correlation. In fast-fading systems, the channel state changes rapidly even within a symbol duration. In slow-fading scenarios, instantaneous CSI estimates remain valid for sufficiently long intervals, enabling adaptive transmission strategies.</p>
+<!-- As introduced earlier, the CIR expresses the time-domain superposition of delayed signal replicas, i.e., the convolution of the input signal with the impulse response matrix $h$: $y(t) = \sum_i s(t-\tau_i)\times A_ie^{j\phi_i}=s(t)\otimes h$. -->
+
+<p>If each time-domain CIR tap is treated as a scalar coefficient, and <span class="arithmatex">\(h = [h_1, h_2, \ldots, h_k]\)</span> denotes the complex gain (delay + attenuation) imparted by the channel to a unit impulse, then for arbitrary input <span class="arithmatex">\(x\)</span>, the output becomes:</p>
+<p>Including additive noise, the typical observation model is: <span class="arithmatex">\(y = x*h + noise\)</span>.</p>
+<h2 id="channel-estimation">Channel Estimation</h2>
+<p>As discussed previously, the highly dynamic wireless environment drastically alters signal amplitude, phase, and frequency en route to the receiver. To recover the original transmitted signal as faithfully as possible, channel estimation and equalization are indispensable. High-quality estimation and equalization algorithms critically determine receiver performance—dictating whether the signal can ultimately be decoded.</p>
+<p>Based on reliance on pilot symbols, channel estimation methods fall into three classes: <em>blind</em>, <em>semi-blind</em>, and <em>pilot-assisted (non-blind)</em> estimation. Blind estimation requires no pilot symbols and consumes no spectrum resources—it exploits only intrinsic statistical properties of the received signal. However, blind methods suffer from high computational complexity and slow convergence, rendering them unsuitable for real-time interactive communication systems. Semi-blind estimation mitigates these drawbacks by embedding a small number of pilot symbols within the transmitted signal. Leveraging these pilots, semi-blind estimators achieve superior accuracy compared to blind approaches. Yet they often assume pilots impose negligible interference on data transmission, face constraints on training sequence length, and may exhibit phase ambiguity (subspace-based methods), error propagation (decision-feedback methods), slow convergence, or local minima trapping—limiting practical utility. Pilot-assisted (non-blind) estimation employs specially designed pilot sequences to aid estimation. Such methods consist of two stages: (i) estimation at pilot locations, and (ii) interpolation at non-pilot locations. Pilot-assisted estimation is the de facto standard in modern communication systems.</p>
+<p><strong>1. Least Squares (LS) Algorithm</strong></p>
+<p>We now present a pilot-assisted non-blind channel estimation technique based on the <em>Least Squares (LS)</em> criterion. Fundamentally, channel estimation aims to recover the CIR. Per earlier definitions, the ideal—but impractical—approach would inject a unit impulse and observe the output. Realistically, we transmit a known training sequence <span class="arithmatex">\(x(t)\)</span> and measure the received signal <span class="arithmatex">\(y(t)\)</span>. Theoretically, <span class="arithmatex">\(y(t) = x(t)*h(t)\)</span>. Solving this equation yields <span class="arithmatex">\(h(t)\)</span>, thereby estimating the channel. In actual packet transmissions, <span class="arithmatex">\(x(t)\)</span> may correspond to the preamble—a fixed, known field embedded in every packet. Receivers thus infer <span class="arithmatex">\(h\)</span> by comparing received and transmitted preambles. This explains why preambles serve dual roles: synchronization and channel estimation.</p>
+<blockquote>
+<p>Exercise: Given known <span class="arithmatex">\(y(t) = x(t)*h(t)\)</span>, <span class="arithmatex">\(x(t)\)</span> (transmitted), and <span class="arithmatex">\(y(t)\)</span> (received), how do we reconstruct the CIR <span class="arithmatex">\(h(t)\)</span>? Recall <span class="arithmatex">\(*\)</span> denotes convolution.</p>
+</blockquote>
+<p>Since time-domain convolution corresponds to frequency-domain multiplication, applying the Fourier transform yields the relation:<br />
+Let X denote the Fourier transform of the transmitted pilot, Y the transform of the received pilot, H the channel frequency response, and N the noise transform. Then:</p>
+<div class="arithmatex">\[
+Y=XH+N
+\]</div>
+<p>The LS principle minimizes the squared error between the received signal and the noise-free prediction:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\widetilde{H} &amp;= argmin|Y-XH|^2\\
+&amp;=argmin [(Y-XH)(Y-XH)^T]
+\end{aligned}
+\]</div>
+<p>Setting the derivative of <span class="arithmatex">\(\widetilde{H}\)</span> with respect to H to zero—i.e., solving ∂<span class="arithmatex">\(\widetilde{H}\)</span>/∂H = 0 when <span class="arithmatex">\(argmin|Y-XH|^2\)</span> = <span class="arithmatex">\(0\)</span>—yields:</p>
+<div class="arithmatex">\[
+[(Y-XH)(Y-XH)^T] = 0
+\]</div>
+<p>Differentiating <span class="arithmatex">\(H\)</span> gives:</p>
+<div class="arithmatex">\[
+(X^TX)^{-1}X^TY = X^{-1}Y = H + N/X
+\]</div>
+<p>Hence, the LS estimate of the channel response is:</p>
+<div class="arithmatex">\[
+\widetilde{H} = \bigg[\frac{Y(0)}{X(0)}\quad\frac{Y(1)}{X(1)}\quad \cdots\quad \frac{Y(N-1)}{X(N-1)}\bigg]^T
+\]</div>
+<p>As evident, LS leverages pilot symbols for straightforward, low-complexity channel matrix estimation. However, it ignores noise and inter-carrier interference, limiting accuracy. LS performs well under high SNR but degrades severely in noisy conditions.</p>
+<p>The MATLAB code below demonstrates LS-based CFR estimation <span class="arithmatex">\(H\)</span>:</p>
+<div class="highlight"><pre><span></span><code><span class="c">%% Rx_data1: received signal</span>
+<span class="c">%% pilot_seq: known preamble sequence</span>
+
+<span class="c">%% Extract preamble portion</span>
+<span class="n">Rx_data2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Rx_data1</span><span class="p">(</span><span class="n">N_cp</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,:);</span>
+
+<span class="c">%% Perform FFT</span>
+<span class="n">Rx_pilot</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">Rx_data2</span><span class="p">);</span>
+<span class="n">pilot_fft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">pilot_seq</span><span class="p">);</span>
+
+<span class="c">%% LS channel estimation</span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Rx_pilot</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="n">pilot_fft</span><span class="p">;</span><span class="w"> </span>
+<span class="c">% Linear interpolation:</span>
+<span class="c">%   Values at interpolation points are estimated via linear functions connecting nearest neighbors.</span>
+<span class="c">%   Extrapolation beyond known points uses specified interpolation method.</span>
+<span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">interp1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;linear&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;extrap&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>2. Linear Minimum Mean Square Error (LMMSE) Algorithm</strong></p>
+<p>When higher estimation accuracy is required, LS may prove insufficient. The <em>Linear Minimum Mean Square Error (LMMSE)</em> algorithm improves upon LS by minimizing the mean-squared error rather than just the squared error. LMMSE explicitly accounts for noise statistics to suppress estimation variance. Its main drawback is high computational cost—particularly the matrix inversion operation—which poses challenges for real-time implementation.</p>
+<p>Derivation of the MMSE estimator via calculus proceeds as follows:</p>
+<center>
+<img src="./fig/LMMSE.png" width=800px>
+</center>
+
+<p><strong>3. DFT-Based LS Algorithm</strong></p>
+<p>This variant combines computational efficiency with partial noise suppression. Signal energy in the CIR is typically concentrated within a short time window; weaker sidelobes can be safely truncated. By selectively retaining only dominant CIR taps and setting others to zero, DFT-based LS effectively mitigates noise corruption inherent in conventional LS.</p>
+<center>
+<img src="./fig/DFT算法.png" width=600px>
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. DFT-based LS algorithm workflow</div>
+</center>
+
+<h2 id="references">References</h2>
+<ol>
+<li>Zheng Yang, Zimu Zhou, and Yunhao Liu. 2013. From RSSI to CSI: Indoor localization via channel response. <em>ACM Comput. Surv.</em> 46, 2, Article 25 (December 2013), 32 pages. DOI: <a href="https://doi.org/10.1145/2543581.2543592">https://doi.org/10.1145/2543581.2543592</a>  </li>
+<li>Xie Y, Li Z, Li M. Precise power delay profiling with commodity Wi-Fi[J]. IEEE Transactions on Mobile Computing, 2018, 18(6): 1342-1355.  </li>
+<li><a href="https://zh.wikipedia.org/wiki/Communication_channel">Wikipedia/Communication_channel</a>  </li>
+<li><a href="https://en.wikipedia.org/wiki/Multipath_propagation">Wikipedia/Multipath</a>  </li>
+<li><a href="https://zh.wikipedia.org/wiki/Fading">Wikipedia/Fading</a>  </li>
+<li><a href="https://en.wikipedia.org/wiki/Channel_state_information">Wikipedia/Channel_state_information</a></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Tsinghua University - Jiliang Wang - jiliangwang@tsinghua.edu.cn
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.expand", "navigation.top", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

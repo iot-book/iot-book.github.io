@@ -1,0 +1,187 @@
+site_name: IoT Book
+site_description: Translated IoT technical book
+site_author: Translation Pipeline
+
+docs_dir: en-md
+site_dir: en
+use_directory_urls: false
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tracking
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - attr_list
+  - pymdownx.magiclink
+
+copyright: © Tsinghua University - Jiliang Wang - jiliangwang@tsinghua.edu.cn
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  alternate:
+    - name: 中文
+      link: /zh/
+      lang: zh
+
+plugins:
+  - search
+
+
+nav:
+  - Preface Version 2: index.md
+  - Preface Version 1: 1. 前言/物联网导论.md
+  - 1. IoT Overview: V2.1/1_物联网概述/index.md
+
+  - 2. Signal Processing Fundamentals:
+      - 2.1 Signal Generation, Transmission, and Reception: V2.1/2_信号处理基础/S1_信号的发送和接收/index.md
+      - 2.2 Analog vs Digital Signals: V2.1/2_信号处理基础/S2_模拟信号和数字信号介绍/index.md
+      - 2.3 Sampling Theorem: V2.1/2_信号处理基础/S3_信号采样与采样定理/index.md
+      - 2.4 Signal Quantization: V2.1/2_信号处理基础/S4_信号量化/index.md
+      - 2.5 Case Study Recorder Player: V2.1/2_信号处理基础/S5_案例：实现一个录音、放音程序/index.md
+
+  - 3. Fourier Analysis:
+      - 3.1 History: V2.1/3_傅里叶分析/S1_傅里叶分析一段历史/index.md
+      - 3.2 Fourier Series: V2.1/3_傅里叶分析/S2_傅里叶级数/index.md
+      - 3.3 Fourier Transform: V2.1/3_傅里叶分析/S3_傅里叶变换/index.md
+      - 3.4 Discrete Fourier: V2.1/3_傅里叶分析/S4_离散傅里叶分析/index.md
+      - 3.5 Case Study STFT: V2.1/3_傅里叶分析/S5_短时傅里叶变换/index.md
+
+  - 4. Wireless Channels:
+      - 4.1 Channel Definition: V2.1/4_无线信道/S1_信道定义/index.md
+      - 4.2 Path Loss and Shadowing: V2.1/4_无线信道/S2_路径损耗与阴影衰落/index.md
+      - 4.3 Multipath Models: V2.1/4_无线信道/S3_多径信道模型/index.md
+      - 4.4 Case Study Wireless Channel Simulation and Measurement: V2.1/4_无线信道/S4_案例/index.md
+
+  - 5. Signal Filtering:
+      - 5.1 Filter Introduction: V2.1/5_信号滤波/S1_滤波器简介/index.md
+      - 5.2 Moving Average Filter: V2.1/5_信号滤波/S2_滑动平均滤波器/index.md
+      - 5.3 FIR Filters: V2.1/5_信号滤波/S3_FIR滤波器/index.md
+      - 5.4 IIR Filters: V2.1/5_信号滤波/S4_IIR滤波器/index.md
+      - 5.5 Advanced Filter Design: V2.1/5_信号滤波/S5_切比雪夫&巴特沃斯/index.md
+      - 5.6 Case Study Filter Comparison: V2.1/5_信号滤波/S6_滤波器比较与选择/index.md
+
+  - 6. Digital Modulation:
+      - 6.1 Introduction: V2.1/6_数字调制与解调/S1_调制解调介绍/index.md
+      - 6.2 Amplitude Modulation: V2.1/6_数字调制与解调/S2_幅度调制/index.md
+      - 6.3 Frequency Modulation: V2.1/6_数字调制与解调/S3_频率调制/index.md
+      - 6.4 Phase Modulation: V2.1/6_数字调制与解调/S4_相位调制/index.md
+      - 6.5 Upconversion: V2.1/6_数字调制与解调/S5_基带信号和载波上变频/index.md
+      # 6.6 6.7 文件与显示不符
+      - 6.6 Integrated Modulation: V2.1/6_数字调制与解调/S6_调制方法综合应用/index.md
+      - 6.7 Case Study Full System Example: V2.1/6_数字调制与解调/S7_相对完整的通信系统实现/index.md
+
+  - 7. Short-Range Wireless:
+      - 7.1 WiFi: V2.1/7_短距离无线通信技术/S1_WiFi/index.md
+      - 7.2 Bluetooth: V2.1/7_短距离无线通信技术/S2_蓝牙/index.md
+      - 7.3 ZigBee: V2.1/7_短距离无线通信技术/S3_ZigBee/index.md
+      - 7.4 Case Study Bluetooth Case: V2.1/7_短距离无线通信技术/S4_案例（蓝牙）/index.md
+
+  - 8. Backscatter Communication:
+      - 8.1 Principles: V2.1/8_Backscatter通信/S1_Backscatter基础原理/index.md
+      - 8.2 RFID: V2.1/8_Backscatter通信/S2_RFID/index.md
+      # 8.3 标题变化
+      - 8.3 WiFi to LoRa: V2.1/8_Backscatter通信/S3_新形式的Backscatter：从WiFi到LoRa/index.md
+
+  - 9. LoRa:
+      - 9.1 Introduction: V2.1/9_LoRa/S1_LoRa简介/index.md
+      - 9.2 LoRa Communication: V2.1/9_LoRa/S2_LoRa通信实验/index.md
+      - 9.3 Collision Decoding: V2.1/9_LoRa/S3_LoRa冲突解码/index.md
+      - 9.4 Testbed: V2.1/9_LoRa/S4_LoRa测试床/index.md
+      - 9.5 OTA Update: V2.1/9_LoRa/S5_LoRa设备远程更新/index.md
+        # 没有 9.6弱信号
+#      - 9.6 Weak Signal Decoding: V2.1/9_LoRa/S6_LoRa弱信号解码/index.md
+
+  - 10. Visible Light Communication:
+      - 10.1 Visible Light Communication: V2.1/10_可见光通信/S1_可见光通信/index.md
+
+  - 11. Millimeter-Wave Communication:
+      - 11.1 mmWave: V2.1/11_毫米波通信/S1_毫米波通信的兴起/index.md
+
+  - 12. Wireless Ranging:
+      - 12.1 RSS Ranging: V2.1/12_无线测距/S1_基于信号强度测距/index.md
+      - 12.2 ToF Ranging: V2.1/12_无线测距/S2_基于传播时间测距/index.md
+
+  - 13. Wireless Localization:
+      - 13.1 Trilateration: V2.1/13_无线定位/S1_三边定位算法/index.md
+      - 13.2 TDOA: V2.1/13_无线定位/S2_TDOA定位算法/index.md
+      - 13.3 AOA: V2.1/13_无线定位/S3_AOA定位算法/index.md
+      - 13.4 Fingerprinting: V2.1/13_无线定位/S4_信号指纹定位算法/index.md
+
+  - 14. Wireless Tracking:
+      - 14.1 Doppler-Based: V2.1/14_无线追踪/S1_基于多普勒效应的追踪方法/index.md
+      - 14.2 FMCW-Based: V2.1/14_无线追踪/S2_基于FMCW的追踪方法/index.md
+      - 14.3 Phase-Based: V2.1/14_无线追踪/S3_基于信号相位变化的追踪方法/index.md
+
+  - 15. Sensor-Based Sensing:
+      - 15.1 Sensor Principles: V2.1/15_传感器感知/S1_传感器原理/index.md
+      - 15.2 Inertial Sensors: V2.1/15_传感器感知/S2_惯性传感器感知/index.md
+      - 15.3 Android Sensors: V2.1/15_传感器感知/S3_案例：安卓传感器编程/index.md
+
+  - 16. Acoustic Sensing:
+      - 16.1 Acoustic Ranging: V2.1/16_声波感知/S1_声波测距/index.md
+      - 16.2 Acoustic Localization: V2.1/16_声波感知/S2_声波定位/index.md
+      - 16.3 Acoustic Tracking: V2.1/16_声波感知/S3_声波追踪/index.md
+      - 16.4 Acoustic Gesture: V2.1/16_声波感知/S4_声波手势识别/index.md
+      - 16.5 Device Authentication: V2.1/16_声波感知/S5_声波设备认证/index.md
+#      - 16.6 Acoustic Intro (Old): V2.1/16_声波感知/old/S1_声波感知技术简介_一部分可以补充/index.md
+#      - 16.7 Active Localization (Old): V2.1/16_声波感知/old/S2_主动式声波定位方法_x/index.md
+#      - 16.8 Passive Localization (Old): V2.1/16_声波感知/old/S3_被动式声波定位方法_往前放/index.md
+
+  - 17. WiFi Sensing:
+      - 17.1 CSI Acquisition: V2.1/17_WiFi感知/S1_信道状态信息获取/index.md
+      - 17.2 CSI Analysis: V2.1/17_WiFi感知/S2_CSI分析实例/index.md
+      - 17.3 WiFi ToF Case: V2.1/17_WiFi感知/S3_案例：WiFI ToF测距/index.md
+      - 17.4 WiFi Localization: V2.1/17_WiFi感知/S4_Wi-Fi定位/index.md
+
+  - 18. Bluetooth Sensing:
+      - 18.1 Direction Finding: V2.1/18_蓝牙感知/S1_蓝牙寻向原理/index.md
+      - 18.2 Localization Devices: V2.1/18_蓝牙感知/S2_蓝牙定位设备/404/index.md
+      - 18.3 Algorithms: V2.1/18_蓝牙感知/S3_定位算法/404/index.md
+      - 18.4 Applications: V2.1/18_蓝牙感知/S4_应用/404/index.md
+        # 这几章都没有
+#      - 18.2 Localization Devices: V2.1/18_蓝牙感知/S2_蓝牙定位设备/index.md
+#      - 18.3 Algorithms: V2.1/18_蓝牙感知/S3_定位算法/index.md
+#      - 18.4 Applications: V2.1/18_蓝牙感知/S4_应用/index.md
+
+# 同样没有
+  - 19. Backscatter Sensing: V2.1/19_Backscatter感知/404/index.md
+#      - 19.1 Overview: V2.1/19_Backscatter感知/index.md
+
+  - 20. UWB Sensing:
+      - 20.1 Devices & Environment: V2.1/20_UWB感知/S1_UWB设备与开发环境/index.md
+      - 20.3 V-TWR: V2.1/20_UWB感知/S3_V-TWR算法/404/index.md
+# 同样没有 令人疑惑
+#      - 20.2 Ranging & Localization: V2.1/20_UWB感知/S2_UWB测距定位算法/index.md
+#      - 20.3 V-TWR: V2.1/20_UWB感知/S3_V-TWR算法/index.md
+#      - 20.4 AoA Optimization: V2.1/20_UWB感知/S4_AoA定位优化算法/index.md
+#      - 20.5 Link Quality: V2.1/20_UWB感知/S5_UWB链路判断算法/index.md
+
+  - 21. LoRa Sensing: V2.1/21_LoRa感知/index.md
+
+  - 22. Millimeter-wave Sensing: V2.1/22_毫米波感知/index.md
+
+  - 23. Visible Light Sensing:
+      - 23.1 Overview: V2.1/23_可见光感知/S1_概述/index.md
+      - 23.2 Active Sensing: V2.1/23_可见光感知/S2_主动式/index.md
+      - 23.3 Passive Sensing and Pose Estimation: V2.1/23_可见光感知/S3_被动式/index.md
+
+  - Appendices:
+      - 1 Android Basics: V2.1/24_附录/S1_安卓开发基础/index.md
+      - 2 MATLAB Basics: V2.1/24_附录/S2_MATLAB开发基础/index.md
+
+
+

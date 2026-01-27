@@ -1,0 +1,4499 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Translated IoT technical book">
+      
+      
+        <meta name="author" content="Translation Pipeline">
+      
+      
+      
+        <link rel="prev" href="../S2_%E5%A3%B0%E6%B3%A2%E5%AE%9A%E4%BD%8D/index.html">
+      
+      
+        <link rel="next" href="../S4_%E5%A3%B0%E6%B3%A2%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/index.html">
+      
+      
+        
+          <link rel="alternate" href="/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>16.3 Acoustic Tracking - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#acoustic-motion-tracking" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="IoT Book" class="md-header__button md-logo" aria-label="IoT Book" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IoT Book
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              16.3 Acoustic Tracking
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="IoT Book" class="md-nav__button md-logo" aria-label="IoT Book" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface Version 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.%20%E5%89%8D%E8%A8%80/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface Version 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_%E7%89%A9%E8%81%94%E7%BD%91%E6%A6%82%E8%BF%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. IoT Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Signal Processing Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Signal Processing Fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Signal Generation, Transmission, and Reception
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Analog vs Digital Signals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Sampling Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Signal Quantization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Case Study Recorder Player
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Fourier Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Fourier Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Fourier Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Fourier Transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S4_%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Discrete Fourier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90/S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Case Study STFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Wireless Channels
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. Wireless Channels
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S1_%E4%BF%A1%E9%81%93%E5%AE%9A%E4%B9%89/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Channel Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Path Loss and Shadowing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Multipath Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S4_%E6%A1%88%E4%BE%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Case Study Wireless Channel Simulation and Measurement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Signal Filtering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. Signal Filtering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%AE%80%E4%BB%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Filter Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S2_%E6%BB%91%E5%8A%A8%E5%B9%B3%E5%9D%87%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Moving Average Filter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S3_FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 FIR Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S4_IIR%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 IIR Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S5_%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%26%E5%B7%B4%E7%89%B9%E6%B2%83%E6%96%AF/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Advanced Filter Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S6_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%AF%94%E8%BE%83%E4%B8%8E%E9%80%89%E6%8B%A9/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 Case Study Filter Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Digital Modulation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    6. Digital Modulation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 Amplitude Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Frequency Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Phase Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 Upconversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 Integrated Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 Case Study Full System Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Short-Range Wireless
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7. Short-Range Wireless
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S1_WiFi/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 WiFi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S2_%E8%93%9D%E7%89%99/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Bluetooth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S3_ZigBee/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 ZigBee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S4_%E6%A1%88%E4%BE%8B%EF%BC%88%E8%93%9D%E7%89%99%EF%BC%89/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Case Study Bluetooth Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Backscatter Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Backscatter Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_RFID/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 RFID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S3_%E6%96%B0%E5%BD%A2%E5%BC%8F%E7%9A%84Backscatter%EF%BC%9A%E4%BB%8EWiFi%E5%88%B0LoRa/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 WiFi to LoRa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LoRa
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. LoRa
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 LoRa Communication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 Collision Decoding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.4 Testbed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S5_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.5 OTA Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Visible Light Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10. Visible Light Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/S1_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 Visible Light Communication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Millimeter-Wave Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11. Millimeter-Wave Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/S1_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1%E7%9A%84%E5%85%B4%E8%B5%B7/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.1 mmWave
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Wireless Ranging
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12. Wireless Ranging
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.1 RSS Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.2 ToF Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Wireless Localization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    13. Wireless Localization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S1_%E4%B8%89%E8%BE%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.1 Trilateration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.2 TDOA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S3_AOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.3 AOA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S4_%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.4 Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Wireless Tracking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    14. Wireless Tracking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.1 Doppler-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.2 FMCW-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.3 Phase-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Sensor-Based Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    15. Sensor-Based Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S1_%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.1 Sensor Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S2_%E6%83%AF%E6%80%A7%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.2 Inertial Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%89%E5%8D%93%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BC%96%E7%A8%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.3 Android Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Acoustic Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    16. Acoustic Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S1_%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.1 Acoustic Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S2_%E5%A3%B0%E6%B3%A2%E5%AE%9A%E4%BD%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.2 Acoustic Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.3 Acoustic Tracking
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.3 Acoustic Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#high-precision-device-tracking-based-on-signal-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-Precision Device Tracking Based on Signal Phase
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High-Precision Device Tracking Based on Signal Phase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#measuring-signal-phase-variation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring Signal Phase Variation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-dimensional-position-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two-Dimensional Position Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-dimensional-tracking-based-on-fmcw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two-Dimensional Tracking Based on FMCW
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two-Dimensional Tracking Based on FMCW">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiments-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiments and Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localization-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localization Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-code-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Code and Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S4_%E5%A3%B0%E6%B3%A2%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.4 Acoustic Gesture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S5_%E5%A3%B0%E6%B3%A2%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.5 Device Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. WiFi Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. WiFi Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S1_%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.1 CSI Acquisition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S2_CSI%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.2 CSI Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9AWiFI%20ToF%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.3 WiFi ToF Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S4_Wi-Fi%E5%AE%9A%E4%BD%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.4 WiFi Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Bluetooth Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    18. Bluetooth Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S1_%E8%93%9D%E7%89%99%E5%AF%BB%E5%90%91%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.1 Direction Finding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.2 Localization Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.3 Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.4 Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../19_Backscatter%E6%84%9F%E7%9F%A5/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Backscatter Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_22" >
+        
+          
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. UWB Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    20. UWB Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB%E6%84%9F%E7%9F%A5/S1_UWB%E8%AE%BE%E5%A4%87%E4%B8%8E%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.1 Devices & Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB%E6%84%9F%E7%9F%A5/S3_V-TWR%E7%AE%97%E6%B3%95/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.3 V-TWR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../21_LoRa%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. LoRa Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../22_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Millimeter-wave Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_25" >
+        
+          
+          <label class="md-nav__link" for="__nav_25" id="__nav_25_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Visible Light Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_25_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_25">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    23. Visible Light Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S1_%E6%A6%82%E8%BF%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.1 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S2_%E4%B8%BB%E5%8A%A8%E5%BC%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.2 Active Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S3_%E8%A2%AB%E5%8A%A8%E5%BC%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.3 Passive Sensing and Pose Estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_26" >
+        
+          
+          <label class="md-nav__link" for="__nav_26" id="__nav_26_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_26_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_26">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_%E9%99%84%E5%BD%95/S1_%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Android Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_%E9%99%84%E5%BD%95/S2_MATLAB%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 MATLAB Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#high-precision-device-tracking-based-on-signal-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-Precision Device Tracking Based on Signal Phase
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High-Precision Device Tracking Based on Signal Phase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#measuring-signal-phase-variation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring Signal Phase Variation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-dimensional-position-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two-Dimensional Position Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-dimensional-tracking-based-on-fmcw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two-Dimensional Tracking Based on FMCW
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two-Dimensional Tracking Based on FMCW">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiments-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiments and Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localization-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localization Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-code-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Code and Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="acoustic-motion-tracking">Acoustic Motion Tracking</h1>
+<p>Acoustic waves enable high-precision motion tracking of moving sound sources. This section introduces two representative case studies.</p>
+<h2 id="high-precision-device-tracking-based-on-signal-phase">High-Precision Device Tracking Based on Signal Phase</h2>
+<p>The phase-based tracking method and its associated implementation code were introduced earlier in the “Wireless Tracking” chapter; readers are encouraged to revisit that section. The core of phase-based tracking lies in computing the phase variation of the received signal. Classical methods for estimating phase variation suffer from limited phase resolution, constrained by the signal sampling rate. Moreover, the sampling rate of acoustic signals is subject to both hardware and software limitations. Consequently, improving tracking accuracy solely by increasing the sampling rate is typically impractical.</p>
+<p>Here, we introduce a novel phase-based tracking method proposed in our INFOCOM paper <em>Vernier</em> [1], which enhances the accuracy of phase-variation-based tracking without increasing the signal sampling rate.</p>
+<p>First, consider an analogous example of indirect resolution enhancement—the vernier caliper. A vernier caliper is a precision instrument used to measure linear dimensions. It consists of two main components: a main scale and a movable vernier scale that slides along the main scale. Both scales feature markings, but their respective graduations differ slightly in spacing. Typically, the main scale is marked in integer millimeters, whereas the vernier scale’s graduations differ minutely from those of the main scale.</p>
+<center>
+    <img src=".\fig\Vernier01.png" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure 1. Schematic diagram of a vernier caliper</div>
+</center>
+
+<p>For a typical vernier caliper, the main scale graduation interval is 1 mm, while the vernier scale graduation interval is 0.9 mm. Suppose the length to be measured is <span class="arithmatex">\(r\)</span>; then:</p>
+<div class="arithmatex">\[
+r-r'+0.9x=1.0x
+\]</div>
+<p>where <span class="arithmatex">\(r’\)</span> denotes the floor of <span class="arithmatex">\(r\)</span>, and <span class="arithmatex">\(x\)</span> indicates the index of the vernier scale graduation that aligns precisely with a main scale graduation. Rearranging yields:</p>
+<div class="arithmatex">\[
+r-r'=0.1x
+\]</div>
+<p>Since each increment of one vernier scale division increases the misalignment relative to the main scale by 0.1 mm, this principle enables finer-length measurements. Notably, the measurement resolution of a vernier caliper is fundamentally determined not by the difference between the two scale intervals, but rather by their greatest common divisor.</p>
+<h3 id="measuring-signal-phase-variation">Measuring Signal Phase Variation</h3>
+<p>Next, we present a phase-variation measurement technique inspired by the vernier caliper principle.</p>
+<p>We define two variables:</p>
+<p>LMP (Local Max Prefix): Within a signal sampling window, the LMP of the first sample point is defined as 0. Starting from the second sample point, if a sample value (i.e., the signal amplitude at that point) is greater than both its preceding and succeeding values, its LMP equals the LMP of the preceding point plus 1; otherwise, its LMP equals that of the preceding point.</p>
+<p>LMPS (Local Max Prefix Sum): LMPS is the sum of all LMP values across all samples within a window.</p>
+<p>Assume that an audio recording device captures two equal-duration audio segments, <span class="arithmatex">\(w_1\)</span> and <span class="arithmatex">\(w_2\)</span>, at times <span class="arithmatex">\(t_1\)</span> and <span class="arithmatex">\(t_2\)</span>, respectively. Each segment contains exactly <span class="arithmatex">\(p\)</span> full cycles of the acoustic signal, corresponding to precisely <span class="arithmatex">\(p\)</span> samples. Let the LMPS values of <span class="arithmatex">\(w_1\)</span> and <span class="arithmatex">\(w_2\)</span> be <span class="arithmatex">\(L_1\)</span> and <span class="arithmatex">\(L_2\)</span>, respectively. Then the phase variation between the two windows is <span class="arithmatex">\(\Delta \phi = (L_2 - L_1)2\pi /q\)</span>, and the corresponding distance variation is <span class="arithmatex">\(\Delta d = \lambda \Delta \phi/2\pi\)</span>, where <span class="arithmatex">\(c\)</span> denotes the speed of sound in air.</p>
+<center>
+    <img src=".\fig\Vernier02.png" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure 2. Illustration of LMP and LMPS</div>
+</center>
+
+<p>As shown, within a time window, <span class="arithmatex">\(p = 3\)</span>, <span class="arithmatex">\(q = 13\)</span>. The LMP values of the sampled points are illustrated, and the LMPS of the signal is 26.</p>
+<center>
+    <img src=".\fig\Vernier03.png" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure 3. Vernier-based phase variation measurement schematic</div>
+</center>
+
+<p>When the signal phase advances by <span class="arithmatex">\(2\pi / q\)</span>, the LMPS increases by 1.</p>
+<p>Thus, when <span class="arithmatex">\(p = 3\)</span> and <span class="arithmatex">\(q = 13\)</span>, each unit increase in LMPS corresponds to a phase shift of <span class="arithmatex">\(2\pi / 13\)</span>, and a distance change (decrease) of <span class="arithmatex">\(\lambda / 13\)</span>.</p>
+<p>This approach enables higher-precision phase-variation-based tracking.</p>
+<p>Without altering the sampling rate, the ratio <span class="arithmatex">\(p\)</span> to <span class="arithmatex">\(q\)</span> can be tuned by adjusting the transmitted signal frequency. For instance, with a sampling rate <span class="arithmatex">\(44100 Hz\)</span>, selecting a sound frequency <span class="arithmatex">\(20000 Hz\)</span> yields <span class="arithmatex">\(p = 200\)</span> and <span class="arithmatex">\(q = 441\)</span>. Under these conditions, the localization accuracy of this method is:</p>
+<div class="arithmatex">\[
+\frac{340}{20000 \times 441} m = 0.0000385 m = 0.0385 mm
+\]</div>
+<p>The concrete implementation code is provided below (<code>res/phase_Vernier.m</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="c">% Read audio file</span>
+<span class="p">[</span><span class="n">data</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">audioread</span><span class="p">(</span><span class="s">&#39;record.wav&#39;</span><span class="p">);</span>
+<span class="c">% Extract first channel</span>
+<span class="n">data</span><span class="p">=</span><span class="n">data</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span>
+<span class="c">% Convert data to row vector</span>
+<span class="n">data</span><span class="p">=</span><span class="n">data</span><span class="p">.</span><span class="o">&#39;</span><span class="p">;</span>
+
+<span class="c">% Apply bandpass filter for noise suppression</span>
+<span class="n">bp_filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">design</span><span class="p">(</span><span class="n">fdesign</span><span class="p">.</span><span class="n">bandpass</span><span class="p">(</span><span class="s">&#39;N,F3dB1,F3dB2&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">20800</span><span class="p">,</span><span class="mi">21200</span><span class="p">,</span><span class="n">fs</span><span class="p">),</span><span class="s">&#39;butter&#39;</span><span class="p">);</span>
+<span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">filter</span><span class="p">(</span><span class="n">bp_filter</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+
+<span class="c">%% Compute LMP and LMPS variations</span>
+<span class="c">% fs=48000</span>
+<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">21000</span><span class="p">;</span>
+<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">340</span><span class="p">;</span>
+
+<span class="c">% fs:f0=16:7</span>
+<span class="c">% Use 16 samples per window, each containing 7 signal cycles</span>
+<span class="n">slice_len</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+<span class="n">p</span><span class="p">=</span><span class="mi">7</span><span class="p">;</span>
+
+<span class="n">slice_num</span><span class="p">=</span><span class="nb">floor</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">/</span><span class="n">slice_len</span><span class="p">);</span>
+<span class="n">lmps</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">slice_num</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">slice_num</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="n">lmp</span><span class="p">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">sum</span><span class="p">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="p">=</span><span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">slice_len</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">slice_len</span><span class="o">+</span><span class="nb">j</span><span class="p">)</span><span class="o">&gt;</span><span class="n">data</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">slice_len</span><span class="o">+</span><span class="nb">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">slice_len</span><span class="o">+</span><span class="nb">j</span><span class="p">)</span><span class="o">&gt;</span><span class="n">data</span><span class="p">(</span><span class="nb">i</span><span class="o">*</span><span class="n">slice_len</span><span class="o">+</span><span class="nb">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">lmp</span><span class="p">=</span><span class="n">lmp</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="nb">sum</span><span class="p">=</span><span class="nb">sum</span><span class="o">+</span><span class="n">lmp</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="nb">sum</span><span class="p">=</span><span class="nb">sum</span><span class="o">+</span><span class="n">lmp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)=</span><span class="nb">sum</span><span class="p">;</span>
+<span class="k">end</span>
+
+<span class="c">%% Repair anomalous data</span>
+<span class="c">% Upper and lower bounds for LMPS are 60 and 45, respectively</span>
+<span class="n">u_bound</span><span class="p">=</span><span class="mi">60</span><span class="p">;</span>
+<span class="n">l_bound</span><span class="p">=</span><span class="mi">45</span><span class="p">;</span>
+
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">lmps</span><span class="p">)</span>
+<span class="w">    </span><span class="c">% Replace out-of-bound values with the previous time-slice value</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&lt;</span><span class="n">l_bound</span>
+<span class="w">        </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">elseif</span><span class="w"> </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&gt;</span><span class="n">u_bound</span>
+<span class="w">        </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c">%% Compute phase and distance variations</span>
+<span class="c">% Compensate for phase jumps</span>
+<span class="n">bias</span><span class="p">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">phase</span><span class="p">=</span><span class="n">lmps</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="p">=</span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="n">u_bound</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&lt;</span><span class="n">l_bound</span><span class="o">+</span><span class="mi">4</span>
+<span class="w">        </span><span class="n">bias</span><span class="p">=</span><span class="n">bias</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">elseif</span><span class="w"> </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">l_bound</span><span class="o">+</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">&gt;</span><span class="n">u_bound</span><span class="o">-</span><span class="mi">4</span>
+<span class="w">        </span><span class="n">bias</span><span class="p">=</span><span class="n">bias</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">phase</span><span class="p">(</span><span class="nb">i</span><span class="p">)=</span><span class="n">lmps</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">+</span><span class="n">bias</span><span class="o">*</span><span class="n">slice_len</span><span class="p">;</span>
+<span class="k">end</span>
+<span class="n">phase</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">phase</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="n">slice_len</span><span class="p">;</span>
+
+<span class="c">% Set initial phase to zero</span>
+<span class="n">phase</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">phase</span><span class="o">-</span><span class="n">phase</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">distance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">phase</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">;</span>
+
+<span class="n">delta_t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">slice_len</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">time</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">slice_num</span><span class="p">;</span>
+<span class="nb">time</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">time</span><span class="o">*</span><span class="n">delta_t</span><span class="p">;</span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="nb">time</span><span class="p">,</span><span class="n">distance</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Phase-Based Tracking (Vernier)&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time (s)&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Distance (m)&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>A sound source emits a 21-kHz acoustic signal. During audio recording, the mobile device first moves 10 cm away from the source, then another 20 cm away, and finally returns to its initial position. The tracking result is shown below:</p>
+<center>
+    <img src=".\fig\result_vernier.png" width=600px>
+</center>
+
+<p>The results demonstrate that this method accurately tracks device motion.</p>
+<h3 id="two-dimensional-position-tracking"><strong>Two-Dimensional Position Tracking</strong></h3>
+<p>As illustrated below, assume the tracked device initially resides at point <span class="arithmatex">\(C\)</span> ($<span class="arithmatex">\(x_0\)</span>$, $<span class="arithmatex">\(y_0\)</span>$) and moves to point <span class="arithmatex">\(D\)</span> ($<span class="arithmatex">\(x_1\)</span>$, $<span class="arithmatex">\(y_1\)</span>$) over time. Since the initial coordinates are known, distances <span class="arithmatex">\(AC\)</span> and <span class="arithmatex">\(BC\)</span> can be computed directly. Given the distance variations $<span class="arithmatex">\(a_1\)</span>$ and $<span class="arithmatex">\(a_2\)</span>$ relative to two acoustic sources <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, distances <span class="arithmatex">\(AD\)</span> and <span class="arithmatex">\(BD\)</span> follow immediately. As the inter-source distance <span class="arithmatex">\(AB\)</span> is pre-measured, triangle $<span class="arithmatex">\(\Delta\)</span>ABD$ has all three side lengths known; thus, the coordinates of point <span class="arithmatex">\(D\)</span> ($<span class="arithmatex">\(x_1\)</span>$, $<span class="arithmatex">\(y_1\)</span>$) can be uniquely determined.</p>
+<center>
+<img src="./fig/二维定位方法.png" width=500px>
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Two-dimensional localization method</div>
+</center>
+
+<h2 id="two-dimensional-tracking-based-on-fmcw">Two-Dimensional Tracking Based on FMCW</h2>
+<p>Inspired by the FMCW-based tracking principle introduced in the “Wireless Tracking” chapter, this method computes distance variations by comparing the frequency shift between transmitted and received signals during motion, and performs continuous target localization via simultaneous multi-base-station distance measurements.</p>
+<p>Similarly, experiments are conducted using smartphone platforms and loudspeakers.</p>
+<h3 id="system-design">System Design</h3>
+<p><strong>Signal Design</strong></p>
+<p>Two-dimensional localization requires measuring distance variations from the microphone to at least two loudspeakers. Thus, both hardware and signal design differ from one-dimensional ranging.</p>
+<p>On the hardware side, we retain ordinary smartphones as receivers; for transmitters, we employ two loudspeakers.</p>
+<p>Regarding signal design, leveraging stereo audio playback capability, we generate distinct left- and right-channel signals played simultaneously on the two loudspeakers.</p>
+<p>Our signal design ensures that the two loudspeakers do not emit sound concurrently, thereby avoiding complex filtering and alignment operations during signal processing. Even concurrent emission would be feasible; however, for simplicity, the implementation herein adopts sequential playback.</p>
+<p>Specifically, the transmitted signal structure is:</p>
+<p><code>FMCW for start-point detection + Time-division FMCW on left/right channels</code>,<br />
+with a 100-ms period for the time-division FMCW on left/right channels structured as follows (<code>$</code> denotes an FMCW chirp; blank spaces denote silence):</p>
+<div class="highlight"><pre><span></span><code>+------------------------------------+
+| 40ms       |10ms| 40ms        |10ms| &lt;- duration: 100ms
++------------------------------------+
+|$$$$$$$$$$$$|    |             |    | &lt;- right channel
++------------------------------------+
+|                 |$$$$$$$$$$$$$|    | &lt;- left channel
++------------------------------------+
+</code></pre></div>
+<p><strong>Localization and Tracking Procedure</strong></p>
+<ul>
+<li><strong>Start-point detection</strong>: To address the ambiguity in one-dimensional ranging where “approaching then receding” may erroneously yield an initial distance increase followed by decrease, we intentionally shift the start point backward by 100–200 samples. This ensures the initial measured distance is inflated, enabling unambiguous detection of initial distance reduction.</li>
+<li><strong>Dual-channel distance estimation</strong>: Since left- and right-channel signals are synchronized, we apply the same one-dimensional ranging method—partitioning the recorded signal into time slices—to independently estimate distances to each loudspeaker. Note that within each 100-ms cycle, distance measurements to the two loudspeakers are temporally offset by 50 ms. However, given low-speed motion assumptions, this timing offset is currently neglected. Interested readers may explore improvements to mitigate this error source.</li>
+<li><strong>Filtering and data processing</strong>: Different filters are applied to the acquired data—a critical step in localization and tracking. Familiarity with various filtering techniques and data-processing methods is essential. In this implementation, Hampel filtering and Kalman filtering are employed to suppress outliers and random disturbances in distance measurements.</li>
+<li><strong>Two-dimensional coordinate computation</strong>: After subtracting the initial measurement (first value) from all subsequent distance readings, the resulting distance variations are fed into a two-circle intersection algorithm to compute the two-dimensional position, given the known initial position.</li>
+</ul>
+<h3 id="experiments-and-analysis">Experiments and Analysis</h3>
+<p>Two-dimensional localization experiments were conducted under three distinct scenarios, depicted in the figures below:</p>
+<center>
+    <img src="./fig/1.png" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Vertical movement experimental setup</div>
+</center>
+
+<center>
+    <img src="./fig/2.png" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Diagonal movement experimental setup</div>
+</center>
+
+<center>
+   <img src="./fig/3.png" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Horizontal movement experimental setup</div>
+</center>
+
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Initial Position</th>
+<th>Loudspeaker Positions</th>
+<th>Movement Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>(0,0)</td>
+<td>(0.40,0), (-0.40,0)</td>
+<td>Vertical</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(0,0)</td>
+<td>(0.40,0), (-0.40,0)</td>
+<td>Vertical</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(0.40, 0.05)</td>
+<td>(0.40,0), (-0.40,0)</td>
+<td>Diagonal</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(0.40, 0.05)</td>
+<td>(0.40,0), (-0.40,0)</td>
+<td>Diagonal</td>
+</tr>
+<tr>
+<td>5</td>
+<td>(0.40, 0.42)</td>
+<td>(0.40,0), (-0.40,0)</td>
+<td>Horizontal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="experimental-results">Experimental Results</h3>
+<p><strong>Distance Measurements</strong></p>
+<center>
+    <img src="./fig/d1.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Distance measurement result for Experiment 1</div>
+</center>
+<center>
+    <img src="./fig/d2.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Distance measurement result for Experiment 2</div>
+</center>
+<center>
+    <img src="./fig/d3.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Distance measurement result for Experiment 3</div>
+</center>
+<center>
+   <img src="./fig/d4.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Distance measurement result for Experiment 4</div>
+</center>
+<center>
+    <img src="./fig/d5.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Distance measurement result for Experiment 5</div>
+</center>
+
+<p>From Experiments 3, 4, and 5, it is evident that applying filters yields smoother distance estimates. Even with large initial errors or prolonged deviations, the filtered outputs recover robustly.</p>
+<h3 id="localization-results">Localization Results</h3>
+<center>
+    <img src="./fig/c1.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Tracking performance for Experiment 1</div>
+</center>
+
+<center>
+   <img src="./fig/c2.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Tracking performance for Experiment 2</div>
+</center>
+
+<center>
+    <img src="./fig/c3.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Tracking performance for Experiment 3</div>
+</center>
+
+<center>
+    <img src="./fig/c4.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Tracking performance for Experiment 4</div>
+</center>
+
+<center>
+    <img src="./fig/c5.jpg" width=600px>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure. Tracking performance for Experiment 5</div>
+</center>
+
+<p>The reconstructed trajectories broadly reflect actual motion patterns, though residual errors remain substantial. First, distance-variation-based localization demands highly accurate reference values; any significant initial offset propagates as cumulative error. Second, manual smartphone manipulation introduces mechanical jitter, contributing further to inaccuracies. Despite these limitations, this implementation serves as a solid foundational codebase for hands-on experimentation.</p>
+<blockquote>
+<p>Readers are encouraged to consider how to improve tracking performance here—significant enhancements are achievable.</p>
+</blockquote>
+<h3 id="experimental-code-and-data">Experimental Code and Data</h3>
+<p><strong>Tracking Experiment Code</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c">%% Transmitted signal generation</span>
+<span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">44100</span><span class="p">;</span>
+<span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.04</span><span class="p">;</span>
+<span class="n">chirp_samples</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">stop06</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.06</span><span class="p">;</span>
+<span class="n">stop05</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span>
+<span class="n">stop01</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
+<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16000</span><span class="p">;</span><span class="w"> </span><span class="c">% start freq</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">18000</span><span class="p">;</span><span class="w">  </span><span class="c">% end freq</span>
+
+<span class="n">blank06</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">stop06</span><span class="o">*</span><span class="n">fs</span><span class="p">);</span>
+<span class="n">blank05</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">stop05</span><span class="o">*</span><span class="n">fs</span><span class="p">);</span>
+<span class="n">blank01</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">stop01</span><span class="o">*</span><span class="n">fs</span><span class="p">);</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">T</span><span class="o">*</span><span class="n">fs</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;linear&#39;</span><span class="p">);</span>
+<span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="n">bf0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8000</span><span class="p">;</span>
+<span class="n">bf1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">9000</span><span class="p">;</span>
+<span class="n">begin</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">bf0</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">bf1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;linear&#39;</span><span class="p">);</span>
+<span class="n">repeat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">85</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">%% Received signal loading, filtering, start-point detection, and frequency-offset calculation</span>
+<span class="n">filename</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;5.wav&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% Modify filename here</span>
+<span class="p">[</span><span class="n">mydata</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">audioread</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+
+<span class="n">mydata</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">mydata</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">lags</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">xcorr</span><span class="p">(</span><span class="n">mydata</span><span class="p">,</span><span class="w"> </span><span class="n">begin</span><span class="p">);</span><span class="w"> </span><span class="c">% Many alternative methods exist; consider them.</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="w"> </span><span class="nb">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+<span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lags</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span>
+
+<span class="n">hd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">design</span><span class="p">(</span><span class="n">fdesign</span><span class="p">.</span><span class="n">bandpass</span><span class="p">(</span><span class="s">&#39;N,F3dB1,F3dB2&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">14000</span><span class="p">,</span><span class="mi">20000</span><span class="p">,</span><span class="n">fs</span><span class="p">),</span><span class="s">&#39;butter&#39;</span><span class="p">);</span>
+<span class="n">mydata</span><span class="p">=</span><span class="nb">filter</span><span class="p">(</span><span class="n">hd</span><span class="p">,</span><span class="n">mydata</span><span class="p">);</span>
+
+<span class="c">%% Generate pseudo-transmitted signal</span>
+<span class="n">pseudo_T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">repeat</span>
+<span class="w">    </span><span class="n">pseudo_T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">pseudo_T</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">blank01</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">blank01</span><span class="p">];</span>
+<span class="k">end</span>
+
+<span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="o">~</span><span class="p">]=</span><span class="nb">size</span><span class="p">(</span><span class="n">mydata</span><span class="p">);</span>
+
+<span class="c">% Start position of FMCW signal is at &#39;start&#39;</span>
+<span class="nb">start</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">idx</span><span class="o">+</span><span class="mf">0.1</span><span class="o">*</span><span class="n">fs</span><span class="o">-</span><span class="mi">100</span><span class="p">;</span><span class="w"> </span>
+<span class="n">pseudo_T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">start</span><span class="p">),</span><span class="n">pseudo_T</span><span class="p">];</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="n">m</span><span class="p">]=</span><span class="nb">size</span><span class="p">(</span><span class="n">pseudo_T</span><span class="p">);</span>
+<span class="n">pseudo_T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">pseudo_T</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="n">m</span><span class="p">)];</span>
+
+<span class="n">s</span><span class="p">=</span><span class="n">pseudo_T</span><span class="o">.*</span><span class="n">mydata</span><span class="o">&#39;</span><span class="p">;</span>
+
+<span class="n">len</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="n">fs</span><span class="p">);</span><span class="w"> </span><span class="c">% Total length of chirp signal plus trailing silence</span>
+<span class="n">fftlen</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1024</span><span class="o">*</span><span class="mi">64</span><span class="p">;</span><span class="w"> </span><span class="c">% Zero-padding length for FFT. Padding increases frequency resolution. Try varying padding lengths to assess impact.</span>
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fs</span><span class="o">*</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">fftlen</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">fftlen</span><span class="p">);</span><span class="w"> </span><span class="c">%% Frequency sampling points after zero-padded FFT</span>
+<span class="c">% These parameters are neither fixed nor necessarily optimal; adjust thoughtfully.</span>
+
+<span class="c">%% Compute frequency offset for each chirp segment</span>
+<span class="n">deltaf1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="n">deltaf2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">start</span><span class="p">:</span><span class="n">len</span><span class="p">:</span><span class="nb">start</span><span class="o">+</span><span class="n">len</span><span class="o">*</span><span class="p">(</span><span class="n">repeat</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">   </span><span class="n">chunk1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="n">chirp_samples</span><span class="p">);</span>
+<span class="w">   </span><span class="n">chunk2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="nb">length</span><span class="p">(</span><span class="n">blank05</span><span class="p">):</span><span class="nb">i</span><span class="o">+</span><span class="nb">length</span><span class="p">(</span><span class="n">blank05</span><span class="p">)</span><span class="o">+</span><span class="n">chirp_samples</span><span class="p">);</span>
+<span class="w">   </span><span class="n">FFT_out1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">chunk1</span><span class="p">,</span><span class="n">fftlen</span><span class="p">));</span>
+<span class="w">   </span><span class="n">FFT_out2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="nb">fft</span><span class="p">(</span><span class="n">chunk2</span><span class="p">,</span><span class="n">fftlen</span><span class="p">));</span>
+<span class="w">   </span><span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="w"> </span><span class="n">index1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">FFT_out1</span><span class="p">);</span>
+<span class="w">   </span><span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="w"> </span><span class="n">index2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">FFT_out2</span><span class="p">);</span>
+<span class="w">   </span><span class="n">deltaf1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">deltaf1</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">index1</span><span class="p">)];</span>
+<span class="w">   </span><span class="n">deltaf2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">deltaf2</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">index2</span><span class="p">)];</span>
+<span class="k">end</span>
+
+<span class="c">%% Compute distance variations</span>
+<span class="n">D1</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="n">deltaf1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">340</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="n">f1</span><span class="o">-</span><span class="n">f0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+<span class="n">D2</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="n">deltaf2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">340</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="n">f1</span><span class="o">-</span><span class="n">f0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+<span class="n">figure</span>
+<span class="s">plot(D1)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">D2</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Distance1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Distance2&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="nb">start</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c">% Discard initial samples to mitigate cumulative error from early inaccuracies</span>
+<span class="n">D1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D1</span><span class="p">(</span><span class="nb">start</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
+<span class="n">D2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D2</span><span class="p">(</span><span class="nb">start</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">%% Filtering, denoising, and trajectory visualization</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">D1</span><span class="o">-</span><span class="n">D1</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">D2</span><span class="o">-</span><span class="n">D2</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">kd1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kalman</span><span class="p">(</span><span class="n">hampel</span><span class="p">(</span><span class="n">D1</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span><span class="w"> </span><span class="mf">5e-4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0068</span><span class="p">);</span>
+<span class="n">kd2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kalman</span><span class="p">(</span><span class="n">hampel</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span><span class="w"> </span><span class="mf">5e-4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0068</span><span class="p">);</span>
+<span class="n">kd1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kd1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">kd1</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">kd2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kd2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">kd2</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">kd1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">hampel</span><span class="p">(</span><span class="n">kd1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span>
+<span class="n">kd2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">hampel</span><span class="p">(</span><span class="n">kd2</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span>
+
+<span class="c">%% Visualize distance variations</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">kd1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">kd2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">grid</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Distance1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Distance2&#39;</span><span class="p">,</span><span class="s">&#39;Distance1(filter)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Distance2(filter)&#39;</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="s">&#39;best&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
+
+<span class="c">%% Compute two-dimensional positions</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;1.wav&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;2.wav&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">start</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<span class="k">end</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;3.wav&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;4.wav&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="nb">start</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.40</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">];</span><span class="w">  </span>
+<span class="k">end</span>
+
+<span class="k">if</span><span class="w">  </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;5.wav&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="nb">start</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.40</span><span class="p">,</span><span class="w"> </span><span class="mf">0.42</span><span class="p">];</span><span class="w">  </span>
+<span class="k">end</span>
+<span class="n">speakers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.40</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mf">0.40</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<span class="n">pd1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pdist</span><span class="p">([</span><span class="nb">start</span><span class="p">;</span><span class="w"> </span><span class="n">speakers</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)]);</span>
+<span class="n">pd2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pdist</span><span class="p">([</span><span class="nb">start</span><span class="p">;</span><span class="w"> </span><span class="n">speakers</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)]);</span>
+
+<span class="n">kd1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kd1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pd1</span><span class="p">;</span>
+<span class="n">kd2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kd2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pd2</span><span class="p">;</span>
+<span class="n">xs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">kd1</span><span class="p">));</span>
+<span class="n">ys</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">kd1</span><span class="p">));</span>
+<span class="n">figure</span>
+<span class="s">scatter([0.40</span><span class="w"> </span><span class="o">-</span><span class="mf">0.40</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="s">&#39;b*&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span><span class="s">&#39;Speaker positions&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;X/(m)&#39;</span><span class="p">)</span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span>
+
+<span class="nb">text</span><span class="p">(</span><span class="mf">0.40</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="s">&#39;Speaker1&#39;</span><span class="p">)</span>
+<span class="nb">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.40</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="s">&#39;Speaker2&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Y/(m)&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Coordinate System&#39;</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="n">xs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">start</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">ys</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">start</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">kd1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">[</span><span class="n">xout</span><span class="p">,</span><span class="n">yout</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">circcirc</span><span class="p">(</span><span class="n">speakers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">speakers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">kd1</span><span class="p">(</span><span class="nb">i</span><span class="p">),</span><span class="n">speakers</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">speakers</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">kd2</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+<span class="w">    </span><span class="n">xs</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">real</span><span class="p">(</span><span class="n">xout</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ys</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">real</span><span class="p">(</span><span class="n">yout</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">isnan</span><span class="p">(</span><span class="n">xs</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span>
+<span class="w">       </span><span class="n">xs</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xs</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">       </span><span class="n">ys</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ys</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="k">end</span>
+<span class="n">xs_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kalman</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="mf">5e-2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">);</span>
+<span class="n">ys_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kalman</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="w"> </span><span class="mf">5e-2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">);</span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">xs_</span><span class="p">,</span><span class="n">ys_</span><span class="p">,</span><span class="s">&#39;:r+&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span><span class="s">&#39;Smoothed trajectory&#39;</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="s">&#39;:g.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span><span class="s">&#39;Raw trajectory&#39;</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;1.wav&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;2.wav&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="mf">0.40</span><span class="p">],[</span><span class="mi">0</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.5</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;--b&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span><span class="s">&#39;True trajectory&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">if</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;3.wav&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;4.wav&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">([</span><span class="mf">0.40</span><span class="w">  </span><span class="o">-</span><span class="mf">0.40</span><span class="p">],[</span><span class="mi">0</span><span class="w"> </span><span class="mf">0.8</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;--b&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span><span class="s">&#39;True trajectory&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">if</span><span class="w">  </span><span class="nb">strcmp</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;5.wav&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">plot</span><span class="p">([</span><span class="mf">0.40</span><span class="w"> </span><span class="o">-</span><span class="mf">0.40</span><span class="p">],[</span><span class="mf">0.42</span><span class="w"> </span><span class="mf">0.42</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;--b&#39;</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span><span class="s">&#39;True trajectory&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="nb">legend</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">%% Kalman filter implementation</span>
+<span class="k">function</span><span class="w"> </span>xhat<span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="nf">kalman</span><span class="p">(</span>D, Q, R<span class="p">)</span>
+<span class="w">    </span><span class="n">sz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">D</span><span class="p">)];</span>
+<span class="w">    </span><span class="n">xhat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="n">P</span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">);</span>
+<span class="w">    </span><span class="n">xhatminus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pminus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">);</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">);</span>
+<span class="w">    </span><span class="n">xhat</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="n">P</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c">% Initial estimation error variance</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="w">        </span><span class="c">% Time update (prediction)</span>
+<span class="w">        </span><span class="c">% Predict current state using previous optimal estimate</span>
+<span class="w">        </span><span class="n">xhatminus</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xhat</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="c">% Predicted error variance equals previous optimal estimate variance plus process noise variance</span>
+<span class="w">        </span><span class="n">Pminus</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">Q</span><span class="p">;</span>
+<span class="w">        </span><span class="c">% Measurement update (correction)</span>
+<span class="w">        </span><span class="c">% Compute Kalman gain</span>
+<span class="w">        </span><span class="n">K</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Pminus</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="w"> </span><span class="n">Pminus</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">R</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="c">% Correct prediction using current measurement to obtain optimal estimate with minimal mean-square error</span>
+<span class="w">        </span><span class="n">xhat</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xhatminus</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">K</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">-</span><span class="n">xhatminus</span><span class="p">(</span><span class="n">k</span><span class="p">));</span>
+<span class="w">        </span><span class="c">% Compute final estimation error variance</span>
+<span class="w">        </span><span class="n">P</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">K</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">*</span><span class="n">Pminus</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Note that this code contains rich technical content; careful reading is recommended. Furthermore, many parameters herein are suboptimal and offer room for improvement.</p>
+<p><strong>Data Files</strong></p>
+<ul>
+<li><a href="res/1.wav">1.wav</a></li>
+<li><a href="res/2.wav">2.wav</a></li>
+<li><a href="res/3.wav">3.wav</a></li>
+<li><a href="res/4.wav">4.wav</a></li>
+<li><a href="res/5.wav">5.wav</a></li>
+</ul>
+<h2 id="references">References</h2>
+<ol>
+<li>Yunting Zhang, Jiliang Wang, Weiyi Wang, Zhao Wang, Yunhao Liu. "Vernier: Accurate and Fast Acoustic Motion Tracking Using Mobile Devices", IEEE INFOCOM 2018.  </li>
+<li>Linsong Cheng, Zhao Wang, Yunting Zhang, Weiyi Wang, Weimin Xu, Jiliang Wang. "Towards Single Source based Acoustic Localization", IEEE INFOCOM 2020.  </li>
+<li>Pengjing Xie, Jingchao Feng, Zhichao Cao, Jiliang Wang. "GeneWave: Fast Authentication and Key Agreement on Commodity Mobile Devices", IEEE ICNP 2017</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Tsinghua University - Jiliang Wang - jiliangwang@tsinghua.edu.cn
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.expand", "navigation.top", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

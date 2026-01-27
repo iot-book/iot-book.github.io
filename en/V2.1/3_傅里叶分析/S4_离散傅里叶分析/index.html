@@ -1,0 +1,4442 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Translated IoT technical book">
+      
+      
+        <meta name="author" content="Translation Pipeline">
+      
+      
+      
+        <link rel="prev" href="../S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html">
+      
+      
+        <link rel="next" href="../S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html">
+      
+      
+        
+          <link rel="alternate" href="/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>3.4 Discrete Fourier - IoT Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#discrete-fourier-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="IoT Book" class="md-header__button md-logo" aria-label="IoT Book" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IoT Book
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.4 Discrete Fourier
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="IoT Book" class="md-nav__button md-logo" aria-label="IoT Book" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IoT Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface Version 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.%20%E5%89%8D%E8%A8%80/%E7%89%A9%E8%81%94%E7%BD%91%E5%AF%BC%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface Version 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_%E7%89%A9%E8%81%94%E7%BD%91%E6%A6%82%E8%BF%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. IoT Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Signal Processing Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Signal Processing Fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Signal Generation, Transmission, and Reception
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S2_%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E4%BB%8B%E7%BB%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Analog vs Digital Signals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S3_%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7%E4%B8%8E%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Sampling Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S4_%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%8C%96/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Signal Quantization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S5_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BD%95%E9%9F%B3%E3%80%81%E6%94%BE%E9%9F%B3%E7%A8%8B%E5%BA%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Case Study Recorder Player
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Fourier Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Fourier Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S1_%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E4%B8%80%E6%AE%B5%E5%8E%86%E5%8F%B2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S2_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Fourier Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S3_%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Fourier Transform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Discrete Fourier
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Discrete Fourier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#discrete-fourier-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discrete Fourier Series
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discrete-time-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discrete-Time Fourier Transform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discrete-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discrete Fourier Transform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discrete Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cases-2-and-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cases 2 and 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fast-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fast Fourier Transform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fast Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#large-integer-multiplication-and-convolution-via-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Large-Integer Multiplication and Convolution via FFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-signal-spectrum-analysis-using-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Signal Spectrum Analysis Using FFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S5_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Case Study STFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Wireless Channels
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. Wireless Channels
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S1_%E4%BF%A1%E9%81%93%E5%AE%9A%E4%B9%89/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Channel Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S2_%E8%B7%AF%E5%BE%84%E6%8D%9F%E8%80%97%E4%B8%8E%E9%98%B4%E5%BD%B1%E8%A1%B0%E8%90%BD/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Path Loss and Shadowing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S3_%E5%A4%9A%E5%BE%84%E4%BF%A1%E9%81%93%E6%A8%A1%E5%9E%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Multipath Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_%E6%97%A0%E7%BA%BF%E4%BF%A1%E9%81%93/S4_%E6%A1%88%E4%BE%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Case Study Wireless Channel Simulation and Measurement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Signal Filtering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. Signal Filtering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S1_%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%AE%80%E4%BB%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Filter Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S2_%E6%BB%91%E5%8A%A8%E5%B9%B3%E5%9D%87%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Moving Average Filter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S3_FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 FIR Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S4_IIR%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 IIR Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S5_%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%26%E5%B7%B4%E7%89%B9%E6%B2%83%E6%96%AF/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Advanced Filter Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_%E4%BF%A1%E5%8F%B7%E6%BB%A4%E6%B3%A2/S6_%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%AF%94%E8%BE%83%E4%B8%8E%E9%80%89%E6%8B%A9/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 Case Study Filter Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Digital Modulation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    6. Digital Modulation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S1_%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83%E4%BB%8B%E7%BB%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S2_%E5%B9%85%E5%BA%A6%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 Amplitude Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S3_%E9%A2%91%E7%8E%87%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Frequency Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S4_%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Phase Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S5_%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BD%BD%E6%B3%A2%E4%B8%8A%E5%8F%98%E9%A2%91/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 Upconversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S6_%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 Integrated Modulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6_%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/S7_%E7%9B%B8%E5%AF%B9%E5%AE%8C%E6%95%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 Case Study Full System Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Short-Range Wireless
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7. Short-Range Wireless
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S1_WiFi/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 WiFi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S2_%E8%93%9D%E7%89%99/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Bluetooth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S3_ZigBee/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 ZigBee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7_%E7%9F%AD%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/S4_%E6%A1%88%E4%BE%8B%EF%BC%88%E8%93%9D%E7%89%99%EF%BC%89/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Case Study Bluetooth Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Backscatter Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Backscatter Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S1_Backscatter%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S2_RFID/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 RFID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8_Backscatter%E9%80%9A%E4%BF%A1/S3_%E6%96%B0%E5%BD%A2%E5%BC%8F%E7%9A%84Backscatter%EF%BC%9A%E4%BB%8EWiFi%E5%88%B0LoRa/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 WiFi to LoRa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LoRa
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. LoRa
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S1_LoRa%E7%AE%80%E4%BB%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S2_LoRa%E9%80%9A%E4%BF%A1%E5%AE%9E%E9%AA%8C/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 LoRa Communication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S3_LoRa%E5%86%B2%E7%AA%81%E8%A7%A3%E7%A0%81/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 Collision Decoding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S4_LoRa%E6%B5%8B%E8%AF%95%E5%BA%8A/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.4 Testbed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9_LoRa/S5_LoRa%E8%AE%BE%E5%A4%87%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.5 OTA Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Visible Light Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10. Visible Light Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/S1_%E5%8F%AF%E8%A7%81%E5%85%89%E9%80%9A%E4%BF%A1/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 Visible Light Communication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Millimeter-Wave Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11. Millimeter-Wave Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1/S1_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E9%80%9A%E4%BF%A1%E7%9A%84%E5%85%B4%E8%B5%B7/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.1 mmWave
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Wireless Ranging
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12. Wireless Ranging
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S1_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.1 RSS Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12_%E6%97%A0%E7%BA%BF%E6%B5%8B%E8%B7%9D/S2_%E5%9F%BA%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E9%97%B4%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.2 ToF Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Wireless Localization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    13. Wireless Localization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S1_%E4%B8%89%E8%BE%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.1 Trilateration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S2_TDOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.2 TDOA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S3_AOA%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.3 AOA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13_%E6%97%A0%E7%BA%BF%E5%AE%9A%E4%BD%8D/S4_%E4%BF%A1%E5%8F%B7%E6%8C%87%E7%BA%B9%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.4 Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Wireless Tracking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    14. Wireless Tracking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S1_%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.1 Doppler-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S2_%E5%9F%BA%E4%BA%8EFMCW%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.2 FMCW-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../14_%E6%97%A0%E7%BA%BF%E8%BF%BD%E8%B8%AA/S3_%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9B%B8%E4%BD%8D%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%BD%E8%B8%AA%E6%96%B9%E6%B3%95/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.3 Phase-Based
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Sensor-Based Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    15. Sensor-Based Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S1_%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.1 Sensor Principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S2_%E6%83%AF%E6%80%A7%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.2 Inertial Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15_%E4%BC%A0%E6%84%9F%E5%99%A8%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AE%89%E5%8D%93%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BC%96%E7%A8%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.3 Android Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Acoustic Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    16. Acoustic Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S1_%E5%A3%B0%E6%B3%A2%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.1 Acoustic Ranging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S2_%E5%A3%B0%E6%B3%A2%E5%AE%9A%E4%BD%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.2 Acoustic Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S3_%E5%A3%B0%E6%B3%A2%E8%BF%BD%E8%B8%AA/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.3 Acoustic Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S4_%E5%A3%B0%E6%B3%A2%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.4 Acoustic Gesture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16_%E5%A3%B0%E6%B3%A2%E6%84%9F%E7%9F%A5/S5_%E5%A3%B0%E6%B3%A2%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16.5 Device Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. WiFi Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    17. WiFi Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S1_%E4%BF%A1%E9%81%93%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.1 CSI Acquisition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S2_CSI%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.2 CSI Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S3_%E6%A1%88%E4%BE%8B%EF%BC%9AWiFI%20ToF%E6%B5%8B%E8%B7%9D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.3 WiFi ToF Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17_WiFi%E6%84%9F%E7%9F%A5/S4_Wi-Fi%E5%AE%9A%E4%BD%8D/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.4 WiFi Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Bluetooth Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    18. Bluetooth Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S1_%E8%93%9D%E7%89%99%E5%AF%BB%E5%90%91%E5%8E%9F%E7%90%86/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.1 Direction Finding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S2_%E8%93%9D%E7%89%99%E5%AE%9A%E4%BD%8D%E8%AE%BE%E5%A4%87/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.2 Localization Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S3_%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.3 Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18_%E8%93%9D%E7%89%99%E6%84%9F%E7%9F%A5/S4_%E5%BA%94%E7%94%A8/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18.4 Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../19_Backscatter%E6%84%9F%E7%9F%A5/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Backscatter Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_22" >
+        
+          
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. UWB Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    20. UWB Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB%E6%84%9F%E7%9F%A5/S1_UWB%E8%AE%BE%E5%A4%87%E4%B8%8E%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.1 Devices & Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20_UWB%E6%84%9F%E7%9F%A5/S3_V-TWR%E7%AE%97%E6%B3%95/404/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20.3 V-TWR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../21_LoRa%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. LoRa Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../22_%E6%AF%AB%E7%B1%B3%E6%B3%A2%E6%84%9F%E7%9F%A5/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Millimeter-wave Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_25" >
+        
+          
+          <label class="md-nav__link" for="__nav_25" id="__nav_25_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Visible Light Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_25_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_25">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    23. Visible Light Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S1_%E6%A6%82%E8%BF%B0/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.1 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S2_%E4%B8%BB%E5%8A%A8%E5%BC%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.2 Active Sensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23_%E5%8F%AF%E8%A7%81%E5%85%89%E6%84%9F%E7%9F%A5/S3_%E8%A2%AB%E5%8A%A8%E5%BC%8F/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23.3 Passive Sensing and Pose Estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_26" >
+        
+          
+          <label class="md-nav__link" for="__nav_26" id="__nav_26_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_26_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_26">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_%E9%99%84%E5%BD%95/S1_%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Android Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../24_%E9%99%84%E5%BD%95/S2_MATLAB%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 MATLAB Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#discrete-fourier-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discrete Fourier Series
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discrete-time-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discrete-Time Fourier Transform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discrete-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discrete Fourier Transform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discrete Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cases-2-and-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cases 2 and 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fast-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fast Fourier Transform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fast Fourier Transform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#large-integer-multiplication-and-convolution-via-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Large-Integer Multiplication and Convolution via FFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-signal-spectrum-analysis-using-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Signal Spectrum Analysis Using FFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="discrete-fourier-analysis">Discrete Fourier Analysis</h1>
+<h2 id="discrete-fourier-series">Discrete Fourier Series</h2>
+<p>From Fourier series to Fourier transform, we transitioned from a discrete frequency domain to a continuous frequency domain; however, both treat continuous-time signals. In practical signal processing, we do not handle continuous signals—instead, we face signals that are discretized in time due to sampling. We remain equally interested in the spectra of such signals. Therefore, following the same approach as before, we begin by analyzing discrete periodic sequences and derive the discrete Fourier series (DFS). That is, we assume we can sample a periodic signal and aim to analyze it based on the sampled data.</p>
+<p>Let there be a discrete periodic sequence <span class="arithmatex">\(x[n]\)</span> (square brackets indicate discrete variables), with period <span class="arithmatex">\(N\)</span>. Following Fourier’s idea, we expand it as a sum of sinusoidal components. In the earlier Fourier series expansion, the selected frequencies were integer multiples (0×, 1×, 2×, …) of the fundamental frequency. For a sequence of period <span class="arithmatex">\(N\)</span>, the fundamental frequency is <span class="arithmatex">\(2\pi/N\)</span>; thus, the appropriate sinusoids are <span class="arithmatex">\(e^{j2\pi kn/N}\)</span>. However, upon closer inspection, unlike the continuous case where infinitely many distinct frequencies appear, only <span class="arithmatex">\(N\)</span> distinct sinusoids exist in the discrete case because <span class="arithmatex">\(e^{j2\pi(k+N)n/N} = e^{j2\pi kn/N}\)</span>. Only frequencies of the form <span class="arithmatex">\(2\pi k/N\)</span> exist in the discrete setting; therefore, the discrete Fourier series can be expressed as:</p>
+<div class="arithmatex">\[
+x[n] = \sum_{k=0}^{N-1} c_k e^{j2\pi kn/N}
+\]</div>
+<p>Observe that this expression closely resembles the expansion of a vector in a finite-dimensional Euclidean space. As in the continuous Fourier series, we determine coefficients <span class="arithmatex">\(c_k\)</span> and <span class="arithmatex">\(d_k\)</span> using an inner product. First, define the inner product for two infinite-length periodic discrete sequences <span class="arithmatex">\(x[n]\)</span> and <span class="arithmatex">\(y[n]\)</span> with period <span class="arithmatex">\(N\)</span> as:</p>
+<div class="arithmatex">\[
+\langle x[n], y[n] \rangle = \frac{1}{N}\sum_{n=0}^{N-1} x[n] y^*[n]
+\]</div>
+<p>It can be verified that this definition satisfies the three axioms of an inner product (the scaling factor <span class="arithmatex">\(1/N\)</span> on the right-hand side is chosen solely to align notation with later chapters; it may be arbitrarily set, e.g., to 1). We select orthonormal basis vectors <span class="arithmatex">\(\phi_k[n] = e^{j2\pi kn/N}\)</span>. Then we obtain the <strong>Discrete Fourier Series (DFS)</strong> expansion:</p>
+<div class="arithmatex">\[
+x[n] = \sum_{k=0}^{N-1} a_k \phi_k[n]
+\]</div>
+<p>The coefficients <span class="arithmatex">\(a_k\)</span> are determined as follows:</p>
+<div class="arithmatex">\[
+a_k = \langle x[n], \phi_k[n] \rangle = \frac{1}{N}\sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}
+\]</div>
+<p>Readers may encounter DFS formulas elsewhere that appear similar but differ slightly in notation. We reiterate: such differences reflect only notational conventions and do not affect the essence of the DFS—for instance, the factor <span class="arithmatex">\(1/N\)</span> may be split into two factors <span class="arithmatex">\(1/\sqrt{N}\)</span> placed separately in both the forward and inverse formulas.</p>
+<p>We again use a rectangular wave as an example to compute its DFS expansion. Let the rectangular wave be defined as:</p>
+<div class="arithmatex">\[
+x[n] =
+\begin{cases}
+1, &amp; 0 \leq n &lt; N/2 \\
+-1, &amp; N/2 \leq n &lt; N
+\end{cases}
+\]</div>
+<p>Then:</p>
+<div class="arithmatex">\[
+a_k = \frac{1}{N}\sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}
+= \frac{1}{N}\left( \sum_{n=0}^{N/2-1} e^{-j2\pi kn/N} - \sum_{n=N/2}^{N-1} e^{-j2\pi kn/N} \right)
+\]</div>
+<p>We demonstrate the rectangular wave’s DFS expansion using MATLAB, as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c">%% Discrete Fourier Series Expansion of a Rectangular Wave</span>
+<span class="c">% Construct a discrete rectangular wave with period 8</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="nb">stem</span><span class="p">(</span><span class="nb">repmat</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+</code></pre></div>
+<center>
+<img src="./fig/discrete_square_wave.png" width="600px">
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Rectangular wave with period 8</div>
+</center>
+
+<div class="highlight"><pre><span></span><code><span class="c">% Compute discrete Fourier coefficients</span>
+<span class="nb">figure</span><span class="p">;</span>
+<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="c">% Coefficients of vector e_k</span>
+<span class="w">    </span><span class="n">ek</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">ii</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span>
+<span class="w">        </span><span class="n">ek</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span>1<span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">ii</span><span class="o">*</span><span class="n">k</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">ck</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">xn</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">conj</span><span class="p">(</span><span class="n">ek</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ck</span><span class="o">*</span><span class="n">ek</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="c">% Plot</span>
+<span class="w">        </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nb">ceil</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">4</span><span class="p">)));</span>
+<span class="w">        </span><span class="c">% Plot real part of the sequence</span>
+<span class="w">        </span><span class="nb">stem</span><span class="p">(</span><span class="nb">real</span><span class="p">(</span><span class="nb">repmat</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="w">        </span><span class="nb">title</span><span class="p">(</span><span class="nb">strcat</span><span class="p">([</span><span class="s">&#39;Sum of first &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="s">&#39; terms&#39;</span><span class="p">]));</span>
+<span class="w">        </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<center>
+<img src="./fig/discrete_square_wave_dfs.png" width="800px">
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Discrete Fourier Series expansion of a rectangular wave</div>
+</center>
+
+<h2 id="discrete-time-fourier-transform">Discrete-Time Fourier Transform</h2>
+<p>The preceding section discussed the discrete Fourier series for periodic sequences. Following prior logic, when extending a periodic signal toward a non-periodic one, the discrete frequency domain becomes continuous, and the discrete Fourier series should evolve into a “discrete Fourier transform.” However, for various reasons, the resulting transform is termed the <strong>discrete-time Fourier transform (DTFT)</strong>. The transform later referred to as the “discrete Fourier transform (DFT)” is discrete in both time and frequency domains.</p>
+<p>For a non-periodic sequence <span class="arithmatex">\(x[n]\)</span>, consider extracting a segment of length <span class="arithmatex">\(N\)</span> from <span class="arithmatex">\(n = 0\)</span> to <span class="arithmatex">\(n = N-1\)</span>, then periodically extending it to obtain a periodic sequence <span class="arithmatex">\(\tilde{x}[n]\)</span> with period <span class="arithmatex">\(N\)</span>:</p>
+<div class="arithmatex">\[
+\tilde{x}[n] = \sum_{r=-\infty}^{\infty} x[n - rN]
+\]</div>
+<p><span class="arithmatex">\(\tilde{x}[n]\)</span> admits a discrete Fourier series:</p>
+<div class="arithmatex">\[
+\tilde{x}[n] = \sum_{k=0}^{N-1} \tilde{a}_k e^{j2\pi kn/N}
+\]</div>
+<p>The DFS coefficients <span class="arithmatex">\(\tilde{a}_k\)</span> are:</p>
+<div class="arithmatex">\[
+\tilde{a}_k = \frac{1}{N}\sum_{n=0}^{N-1} \tilde{x}[n] e^{-j2\pi kn/N}
+= \frac{1}{N}\sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}
+\]</div>
+<p>Let <span class="arithmatex">\(\omega_k = 2\pi k/N\)</span> and <span class="arithmatex">\(X(e^{j\omega_k}) = N \tilde{a}_k\)</span>, then <span class="arithmatex">\(\tilde{a}_k\)</span> becomes <span class="arithmatex">\(X(e^{j\omega_k})/N\)</span>. If the summation converges, then:</p>
+<div class="arithmatex">\[
+X(e^{j\omega_k}) = \sum_{n=0}^{N-1} x[n] e^{-j\omega_k n}
+\]</div>
+<p>Let <span class="arithmatex">\(\omega = \lim_{N \to \infty} \omega_k\)</span>. As <span class="arithmatex">\(N \to \infty\)</span>, <span class="arithmatex">\(\omega_k\)</span> becomes a continuous frequency variable. Replace <span class="arithmatex">\(\omega_k\)</span> with <span class="arithmatex">\(\omega\)</span>, yielding:</p>
+<div class="arithmatex">\[
+X(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n] e^{-j\omega n}
+\]</div>
+<p>We call <span class="arithmatex">\(X(e^{j\omega})\)</span> the <strong>discrete-time Fourier transform (DTFT)</strong> of <span class="arithmatex">\(x[n]\)</span>. For its inverse, examine the expression for <span class="arithmatex">\(\tilde{x}[n]\)</span>: as <span class="arithmatex">\(N \to \infty\)</span>, <span class="arithmatex">\(\omega_k\)</span> becomes infinitesimally spaced, and the summation over <span class="arithmatex">\(k\)</span> transforms into an integral over <span class="arithmatex">\(\omega\)</span>, giving:</p>
+<div class="arithmatex">\[
+x[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\omega}) e^{j\omega n} d\omega
+\]</div>
+<p>This is called the <strong>inverse discrete-time Fourier transform (IDTFT)</strong>.</p>
+<p>As before, we compute the DTFT of a rectangular wave. Let:</p>
+<div class="arithmatex">\[
+x[n] =
+\begin{cases}
+1, &amp; |n| \leq M \\
+0, &amp; |n| &gt; M
+\end{cases}
+\]</div>
+<p>Then:</p>
+<div class="arithmatex">\[
+X(e^{j\omega}) = \sum_{n=-M}^{M} e^{-j\omega n}
+= \frac{\sin\left(\omega(M + \tfrac{1}{2})\right)}{\sin(\omega/2)}
+\]</div>
+<p>The above result is the well-known <strong>Dirichlet kernel</strong>, whose shape closely resembles that of the sinc function, except that the Dirichlet kernel is periodic.</p>
+<center>
+<img src="./fig/Dirichlet_kernels.svg" width="600px">
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Dirichlet kernel</div>
+</center>
+
+<p>From another perspective, discrete sampling of a continuous signal aims to recover the continuous signal’s spectrum from the samples; hence, the similarity between the Dirichlet kernel and the sinc function is natural. When the sampling rate tends to infinity, the DTFT coincides with the Fourier transform (FT). Under theoretical conditions described by the sampling theorem, the original continuous signal can be fully reconstructed from its DTFT.</p>
+<h2 id="discrete-fourier-transform">Discrete Fourier Transform</h2>
+<p>Fourier analysis was originally developed not for signal processing but for solving partial differential equations. Today, however, its most widespread application lies in signal processing. Classifying signals by continuity and periodicity, we have derived the Fourier series (FS), Fourier transform (FT), discrete Fourier series (DFS), and discrete-time Fourier transform (DTFT), as summarized below:</p>
+<p>Continuous periodic signal   <span class="arithmatex">\(\leftrightarrow\)</span> Fourier series (FS)<br />
+Continuous non-periodic signal <span class="arithmatex">\(\leftrightarrow\)</span> Fourier transform (FT)<br />
+Discrete periodic signal       <span class="arithmatex">\(\leftrightarrow\)</span> Discrete Fourier series (DFS)<br />
+Discrete non-periodic signal   <span class="arithmatex">\(\leftrightarrow\)</span> Discrete-time Fourier transform (DTFT)</p>
+<p>Yet the most commonly used method in signal processing is the <strong>discrete Fourier transform (DFT)</strong>—how does it arise? Note that FS, FT, DFS, and DTFT all analyze infinitely long signals. In practice, however, we typically acquire only finite-length discrete signals—how do we analyze their spectra?</p>
+<p>First, what constitutes the spectrum of a finite-length discrete signal? Discreteness and finiteness are merely physical constraints imposed upon us; we desire this “spectrum” to reflect the true signal’s spectrum. Suppose a finite-length discrete signal <span class="arithmatex">\(x[n]\)</span> has length <span class="arithmatex">\(N\)</span>, i.e., <span class="arithmatex">\(x[n] = 0\)</span> for <span class="arithmatex">\(n &lt; 0\)</span> or <span class="arithmatex">\(n \geq N\)</span>. Three cases arise:</p>
+<ol>
+<li>The underlying signal is periodic, and the finite-length segment captures an integer number of periods;  </li>
+<li>The underlying signal is periodic, but the finite-length segment does not capture an integer number of periods;  </li>
+<li>The underlying signal is non-periodic.</li>
+</ol>
+<h3 id="case-1">Case 1</h3>
+<p>For Case 1, the solution is straightforward: replicate the segment periodically to construct a discrete periodic signal. Its spectrum is then given directly by the DFS coefficients <span class="arithmatex">\(a_k\)</span>. Denoting <span class="arithmatex">\(a_k\)</span> instead by <span class="arithmatex">\(X[k]\)</span>, we obtain:</p>
+<div class="arithmatex">\[
+X[k] = \sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}, \quad k = 0,1,\dots,N-1
+\]</div>
+<p>We call <span class="arithmatex">\(X[k]\)</span> the <strong>discrete Fourier transform (DFT)</strong> of <span class="arithmatex">\(x[n]\)</span>. From the DFS expansion, we also obtain the <strong>inverse discrete Fourier transform (IDFT)</strong>:</p>
+<div class="arithmatex">\[
+x[n] = \frac{1}{N}\sum_{k=0}^{N-1} X[k] e^{j2\pi kn/N}, \quad n = 0,1,\dots,N-1
+\]</div>
+<p>Again, the normalization constants preceding the summations in DFT and IDFT are unimportant. In the above definition, the DFT carries coefficient 1 and the IDFT carries <span class="arithmatex">\(1/N\)</span>; alternatively, both may be assigned <span class="arithmatex">\(1/\sqrt{N}\)</span>.</p>
+<p>Thus, the DFT corresponds precisely to the DFS coefficient formula, and the IDFT corresponds to the DFS expansion—equivalently, it represents a reinterpretation of discrete periodic signals from another viewpoint. Consequently, our classification may be revised as:</p>
+<p>Continuous periodic signal   <span class="arithmatex">\(\leftrightarrow\)</span> Fourier series (FS)<br />
+Continuous non-periodic signal <span class="arithmatex">\(\leftrightarrow\)</span> Fourier transform (FT)<br />
+Discrete periodic signal       <span class="arithmatex">\(\leftrightarrow\)</span> Discrete Fourier series (DFS) &amp; Discrete Fourier transform (DFT)<br />
+Discrete non-periodic signal   <span class="arithmatex">\(\leftrightarrow\)</span> Discrete-time Fourier transform (DTFT)</p>
+<p>At this point, readers may ask: what about Cases 2 and 3?</p>
+<h3 id="cases-2-and-3">Cases 2 and 3</h3>
+<p>Consider Case 2 first: how can we know whether the segment captures an integer number of periods? All we possess is the finite-length sequence itself—without additional evidence, we cannot speculate about the underlying signal. Hence, Case 2 has no definitive solution; we must assume the segment captures an integer number of periods. However, in practice, exact integer-period truncation is rare, causing discrepancies between the DFT-computed spectrum and the true continuous signal’s spectrum—a phenomenon known as <strong>spectral leakage</strong>.</p>
+<p>Case 3 presents a similar issue: if the signal is non-periodic, how can we know its behavior for <span class="arithmatex">\(n &lt; 0\)</span> or <span class="arithmatex">\(n &gt; N-1\)</span>? A reasonable assumption is that our sampling duration is sufficiently long—the <span class="arithmatex">\(N\)</span>-point sequence contains all essential signal information, while values outside this range are zero. This yields an infinite-length non-periodic discrete sequence, naturally amenable to DTFT analysis, producing the spectrum:</p>
+<div class="arithmatex">\[
+X(e^{j\omega}) = \sum_{n=0}^{N-1} x[n] e^{-j\omega n}
+\]</div>
+<p>Careful readers will notice the resemblance between the DFT expression and the above. Indeed, the DFT corresponds to sampling <span class="arithmatex">\(X(e^{j\omega})\)</span> at discrete frequencies <span class="arithmatex">\(\omega_k = 2\pi k/N\)</span>. Equivalently, for a finite-length signal, the DFT is a sampling of the DTFT over its principal frequency interval. In digital signal processing, for efficient digital circuit implementation, we require both time and frequency domains to be discrete. Thus, even for non-periodic signals, we must sample the continuous DTFT spectrum for storage. Since sampling is inevitable, and the DFT inherently provides such sampling, why not employ the DFT for Case 3?</p>
+<p>Thoughtful readers may object: although the DFT performs sampling, its frequency resolution is fixed at <span class="arithmatex">\(2\pi/N\)</span>—what if finer spectral resolution is desired? Not to worry: the DFT supports a powerful auxiliary operation—<strong>zero padding</strong> in the time domain. For instance, append a zero sequence of length <span class="arithmatex">\(L\)</span> to <span class="arithmatex">\(x[n]\)</span>, denoted <span class="arithmatex">\(x_{\text{zp}}[n]\)</span>, i.e.:</p>
+<div class="arithmatex">\[
+x_{\text{zp}}[n] =
+\begin{cases}
+x[n], &amp; 0 \leq n &lt; N \\
+0, &amp; N \leq n &lt; N+L
+\end{cases}
+\]</div>
+<p>Then the DFT of <span class="arithmatex">\(x_{\text{zp}}[n]\)</span> is:</p>
+<div class="arithmatex">\[
+X_{\text{zp}}[k] = \sum_{n=0}^{N+L-1} x_{\text{zp}}[n] e^{-j2\pi kn/(N+L)}, \quad k = 0,1,\dots,N+L-1
+\]</div>
+<p>Compared with:</p>
+<div class="arithmatex">\[
+X[k] = \sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}, \quad k = 0,1,\dots,N-1
+\]</div>
+<p>The resulting spectrum <span class="arithmatex">\(X_{\text{zp}}[k]\)</span> matches <span class="arithmatex">\(X[k]\)</span> at corresponding indices but achieves resolution <span class="arithmatex">\(2\pi/(N+L)\)</span>, doubling the original resolution. Higher resolution is attainable by adding more zeros. Crucially, regardless of zero-padding extent, the DFT always yields samples of the DTFT; thus, infinite zero-padding recovers the full DTFT spectrum.</p>
+<p>In summary, for discrete finite-length signals, the DFT—augmented by zero padding—is sufficient to obtain the required spectrum.</p>
+<h2 id="fast-fourier-transform">Fast Fourier Transform</h2>
+<p>Although the DFT computes spectra over finite durations, its computational complexity is <span class="arithmatex">\(O(N^2)\)</span>, rendering it impractical for large-scale applications. In the mid-1960s, the <strong>fast Fourier transform (FFT)</strong> algorithm was introduced—a highly efficient method for computing the DFT or IDFT of a sequence. Independently discovered by Cooley and Tukey in 1965, the FFT has a long history; its significance stems from its suitability for efficient digital implementation, reducing computation time by several orders of magnitude. With this algorithm, numerous intriguing yet previously impractical ideas relying on the DFT suddenly became feasible, accelerating advances in discrete-time signal and system analysis. In 1994, mathematician Gilbert Strang described the FFT as “the most important numerical algorithm of our lifetime,” and it was listed by the IEEE journal <em>Computing in Science &amp; Engineering</em> among the top ten algorithms of the 20th century.</p>
+<p>We explain the FFT principle using a sequence of length <span class="arithmatex">\(N = 2^m\)</span> (FFT algorithms for non-power-of-two lengths also exist; interested readers may explore them independently). The core idea is divide-and-conquer: decompose computation of an <span class="arithmatex">\(N\)</span>-point DFT into two <span class="arithmatex">\(N/2\)</span>-point DFTs, thereby reducing computational load. Rewriting the DFT formula:</p>
+<div class="arithmatex">\[
+X[k] = \sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}
+\]</div>
+<p>For convenience, denote <span class="arithmatex">\(W_N = e^{-j2\pi/N}\)</span>. Then the DFT becomes:</p>
+<div class="arithmatex">\[
+X[k] = \sum_{n=0}^{N-1} x[n] W_N^{kn}
+\]</div>
+<p>Partition <span class="arithmatex">\(x[n]\)</span> into even- and odd-indexed subsequences <span class="arithmatex">\(x_e[n] = x[2n]\)</span> and <span class="arithmatex">\(x_o[n] = x[2n+1]\)</span> (<span class="arithmatex">\(n = 0,1,\dots,N/2-1\)</span>), yielding:</p>
+<div class="arithmatex">\[
+X[k] = \sum_{n=0}^{N/2-1} x[2n] W_N^{2kn} + \sum_{n=0}^{N/2-1} x[2n+1] W_N^{k(2n+1)}
+= \sum_{n=0}^{N/2-1} x_e[n] W_{N/2}^{kn} + W_N^k \sum_{n=0}^{N/2-1} x_o[n] W_{N/2}^{kn}
+\]</div>
+<p>Simple algebra shows <span class="arithmatex">\(W_N^{2kn} = W_{N/2}^{kn}\)</span>, so:</p>
+<div class="arithmatex">\[
+X[k] = X_e[k] + W_N^k X_o[k]
+\]</div>
+<p>When <span class="arithmatex">\(k &lt; N/2\)</span>, <span class="arithmatex">\(X_e[k]\)</span> and <span class="arithmatex">\(X_o[k]\)</span> are the DFTs of <span class="arithmatex">\(x_e[n]\)</span> and <span class="arithmatex">\(x_o[n]\)</span>, respectively; when <span class="arithmatex">\(k \geq N/2\)</span>, <span class="arithmatex">\(W_N^{k+N/2} = -W_N^k\)</span>, allowing reuse of <span class="arithmatex">\(X_e[k]\)</span> and <span class="arithmatex">\(X_o[k]\)</span> results.</p>
+<p>Thus, we successfully reduce computation of one <span class="arithmatex">\(N\)</span>-point DFT to two <span class="arithmatex">\(N/2\)</span>-point DFTs. Let <span class="arithmatex">\(T(N)\)</span> denote the FFT’s time complexity. Since merging results consumes <span class="arithmatex">\(O(N)\)</span> time, we obtain:</p>
+<div class="arithmatex">\[
+T(N) = 2T(N/2) + O(N)
+\]</div>
+<p>Solving this recurrence yields <span class="arithmatex">\(T(N) = O(N \log_2 N)\)</span>. Students should recall material from algorithms courses and verify this complexity themselves. Analogously, for the IDFT, we have the <strong>inverse fast Fourier transform (IFFT)</strong>.</p>
+<p>The above describes a recursive FFT algorithm. In practice, recursive implementations are often converted to iterative ones. Especially for hardware implementation, common FFT algorithms incorporate a <strong>butterfly computation structure</strong>. Further optimizations enhance computational performance—details are omitted here.</p>
+<p><img alt="FT v.s. FS v.s. DTFT v.s. DFT" src="fig/FT.gif" /></p>
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. FT vs. FS vs. DTFT vs. DFT</div>
+</center>
+
+<h3 id="large-integer-multiplication-and-convolution-via-fft">Large-Integer Multiplication and Convolution via FFT</h3>
+<p>We now present two examples illustrating efficient algorithm design using the FFT—large-integer multiplication and convolution. Though seemingly unrelated, both rely on the same core idea.</p>
+<p>In programming courses, students implement large-integer multiplication by simulating manual column-wise multiplication, achieving <span class="arithmatex">\(O(n^2)\)</span> complexity. Using the FFT, this complexity reduces to <span class="arithmatex">\(O(n \log n)\)</span>.</p>
+<p>Let <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> be two large integers, each with <span class="arithmatex">\(n\)</span> digits. Express them as polynomials (padding sufficient leading zeros so their product fits within <span class="arithmatex">\(2n\)</span> digits):</p>
+<div class="arithmatex">\[
+A(x) = \sum_{i=0}^{n-1} a_i x^i, \quad B(x) = \sum_{i=0}^{n-1} b_i x^i
+\]</div>
+<p>where <span class="arithmatex">\(a_i\)</span> and <span class="arithmatex">\(b_i\)</span> denote the <span class="arithmatex">\(i\)</span>-th digit (least-significant digit first) of <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, respectively. Thus, vector <span class="arithmatex">\(\mathbf{a} = [a_0, a_1, \dots, a_{n-1}]^T\)</span> represents <span class="arithmatex">\(A\)</span>, and <span class="arithmatex">\(\mathbf{b} = [b_0, b_1, \dots, b_{n-1}]^T\)</span> represents <span class="arithmatex">\(B\)</span>. This representation is called the <strong>coefficient representation</strong>, and choosing <span class="arithmatex">\(x = 10\)</span> yields standard decimal notation.</p>
+<p>Polynomials admit not only coefficient representations but also <strong>point-value representations</strong> (Lagrange interpolation): <span class="arithmatex">\(n\)</span> points uniquely determine a degree-<span class="arithmatex">\((n-1)\)</span> polynomial. For example, knowing values at points <span class="arithmatex">\(x_0, x_1, \dots, x_{n-1}\)</span> determines <span class="arithmatex">\(A(x)\)</span> completely.</p>
+<p>Consider the following computational strategy:</p>
+<ol>
+<li>Convert coefficient representations of <span class="arithmatex">\(A(x)\)</span> and <span class="arithmatex">\(B(x)\)</span> to point-value representations.  </li>
+<li>Multiply point-value representations: <span class="arithmatex">\(C(x_i) = A(x_i) B(x_i)\)</span>.  </li>
+<li>Convert point-value representation of <span class="arithmatex">\(C(x)\)</span> back to coefficient representation—yielding the product integer.</li>
+</ol>
+<p>Step 2 requires <span class="arithmatex">\(O(n)\)</span> operations, but naive implementations of Steps 1 and 3 cost <span class="arithmatex">\(O(n^2)\)</span>, offering no overall improvement. Yet this framework enables optimization.</p>
+<p>Observe that polynomial evaluation is a summation, identical in form to the DFT. If the evaluation points <span class="arithmatex">\(x_i\)</span> are chosen as the <span class="arithmatex">\(N\)</span>-th roots of unity (arbitrary points suffice for point-value representation; we select <span class="arithmatex">\(N\)</span> points on the complex plane), then “converting coefficient representation to point-value representation” becomes equivalent to computing the DFT of <span class="arithmatex">\(\mathbf{a}\)</span>, and the reverse conversion corresponds to the IDFT. With FFT and IFFT available, Steps 1 and 3 reduce to <span class="arithmatex">\(O(n \log n)\)</span>, making total large-integer multiplication complexity <span class="arithmatex">\(O(n \log n)\)</span>.</p>
+<p>In signal processing, we inevitably encounter <strong>convolution</strong>. The discrete convolution is defined as follows: let <span class="arithmatex">\(x[n]\)</span> and <span class="arithmatex">\(h[n]\)</span> be infinite-length discrete sequences; their convolution is:</p>
+<div class="arithmatex">\[
+y[n] = (x * h)[n] = \sum_{k=-\infty}^{\infty} x[k] h[n-k]
+\]</div>
+<p>Real-world sequences are finite—we know only <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(M\)</span> points of <span class="arithmatex">\(x[n]\)</span> and <span class="arithmatex">\(h[n]\)</span>, respectively. Two approaches exist: (i) periodic extension, or (ii) zero-padding. Approach (i) yields <strong>circular convolution</strong>, denoted <span class="arithmatex">\(x[n] \circledast h[n]\)</span>; approach (ii) yields <strong>linear convolution</strong>, denoted <span class="arithmatex">\(x[n] * h[n]\)</span>. Consider linear convolution: <span class="arithmatex">\(x[n] = 0\)</span> for <span class="arithmatex">\(n &lt; 0\)</span> or <span class="arithmatex">\(n \geq N\)</span>, and <span class="arithmatex">\(h[n] = 0\)</span> for <span class="arithmatex">\(n &lt; 0\)</span> or <span class="arithmatex">\(n \geq M\)</span>. Then <span class="arithmatex">\(y[n]\)</span> is:</p>
+<div class="arithmatex">\[
+y[n] = \sum_{k=0}^{N-1} x[k] h[n-k], \quad n = 0,1,\dots,N+M-2
+\]</div>
+<p>Computing <span class="arithmatex">\(y[n]\)</span> naively incurs <span class="arithmatex">\(O(NM)\)</span> complexity. However, careful observation reveals that <span class="arithmatex">\(y[n]\)</span>’s expression matches manual column-wise multiplication of large integers! Thus, FFT similarly reduces convolution complexity to <span class="arithmatex">\(O((N+M)\log(N+M))\)</span>. Specifically, compute FFTs of <span class="arithmatex">\(x[n]\)</span> and <span class="arithmatex">\(h[n]\)</span>, then <span class="arithmatex">\(y[n]\)</span> equals the IFFT of their product:</p>
+<div class="arithmatex">\[
+y[n] = \text{IFFT}\big\{ \text{FFT}\{x[n]\} \cdot \text{FFT}\{h[n]\} \big\}
+\]</div>
+<p>Or equivalently:</p>
+<div class="arithmatex">\[
+x[n] * h[n] = \text{IFFT}\big\{ \text{FFT}\{x[n]\} \cdot \text{FFT}\{h[n]\} \big\}
+\]</div>
+<p>This embodies the famous property of the Fourier transform: convolution in the time domain equals multiplication in the frequency domain. More precisely, for FFT-based computation, circular convolution applies:</p>
+<div class="arithmatex">\[
+x[n] \circledast h[n] = \text{IFFT}\big\{ \text{FFT}\{x[n]\} \cdot \text{FFT}\{h[n]\} \big\}
+\]</div>
+<p>Note this property is critically important—remember it always!</p>
+<p>Why is circular convolution correct? (Hint: recall the implicit assumption that <span class="arithmatex">\(x[n]\)</span> and <span class="arithmatex">\(h[n]\)</span> are zero-padded.)</p>
+<h3 id="example-signal-spectrum-analysis-using-fft">Example: Signal Spectrum Analysis Using FFT</h3>
+<p>Next, we demonstrate FFT-based signal spectrum analysis via MATLAB code. Four signals are analyzed:</p>
+<ol>
+<li>Sine wave truncated over an integer number of periods  </li>
+<li>Sine wave truncated over a non-integer number of periods  </li>
+<li>Complex exponential (complex sinusoid)  </li>
+<li>Square wave  </li>
+</ol>
+<p><strong>Sine wave truncated over an integer number of periods</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% Sampling rate: 1000 Hz</span>
+
+<span class="c">% Construct a 100-Hz sine wave</span>
+<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% Sample one period</span>
+<span class="c">% t = (0:1/fs:5/f0-1/fs)&#39;; % Sample five periods</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">1400</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time (ms)&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span>
+
+<span class="c">% FFT without zero-padding</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="c">% Shift negative frequencies to left</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="c">% FFT with zero-padding</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% Zero-padding factor</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% Shift negative frequencies to left</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (Hz)&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Zero-padded&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;No zero-padding&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">angle</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">angle</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (Hz)&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Phase&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Zero-padded&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;No zero-padding&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
+</code></pre></div>
+<center>
+<img src="./fig/fft_period_sin_1T.png" width="900px">
+</center>
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. 100-Hz sine wave sampled over one period (left: time-domain waveform; center: FFT magnitude spectrum; right: FFT phase spectrum)</div>
+</center>
+
+<center>
+<img src="./fig/fft_period_sin_5T.png">
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. 100-Hz sine wave sampled over five periods (left: time-domain waveform; center: FFT magnitude spectrum; right: FFT phase spectrum)</div>
+</center>
+
+<p>The figures above display time- and frequency-domain representations of a 100-Hz sine wave sampled over one and five periods, respectively. Negative frequencies are plotted—this is natural, as any real-valued signal decomposes into conjugate complex exponentials, possessing both positive and corresponding negative frequencies. Real signals exhibit symmetric spectra; typically, only half is examined. FFT outputs complex values, carrying both magnitude and phase information. Besides magnitude spectra, the figures also show phase spectra. Magnitude spectra are more commonly used, revealing the relative strength of each frequency component; phase spectra are equally vital—for instance, in OFDM modulation, FFT phase is critically monitored.</p>
+<p>A curious phenomenon appears: when sampling exactly one period, the unpadded spectrum indicates a pure 100-Hz component, whereas the 16× zero-padded, higher-resolution spectrum shows the dominant peak deviating from 100 Hz (blue circles misaligned with black curve maxima). Why? Because a real sine wave comprises two frequency components: <span class="arithmatex">\(+100\)</span> Hz and <span class="arithmatex">\(-100\)</span> Hz. Due to signal finiteness, these generate sidelobes that interfere, perturbing the ideal 100-Hz peak. This effect diminishes as sidelobes shrink.</p>
+<p>Sidelobe suppression is crucial in practical signal processing. Two common methods exist: (i) multiplying the signal by a window function (“windowing”). Windowing is often omitted or glossed over in many works—including research papers—yet proper window selection frequently simplifies signal processing significantly and may decisively impact performance. (ii) Extending the sampling duration (rendering the signal effectively “non-finite”). As shown, increasing sampling to five periods aligns the black curve’s peak closely with the blue dot, correctly identifying the 100-Hz component.</p>
+<blockquote>
+<p>Reflection: Why do these two operations improve frequency estimation accuracy?</p>
+</blockquote>
+<p><strong>Sine wave truncated over a non-integer number of periods</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% Sampling rate: 1000 Hz</span>
+
+<span class="c">% Construct a 100-Hz sine wave</span>
+<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mf">1.6</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% Sample 1.5 periods</span>
+<span class="c">% t = (0:1/fs:5.6/f0-1/fs)&#39;; % Sample 5.5 periods</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time (ms)&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span>
+
+<span class="c">% FFT without zero-padding</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="c">% Shift negative frequencies to left</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="c">% FFT with zero-padding</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% Zero-padding factor</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% Shift negative frequencies to left</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (Hz)&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Zero-padded&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;No zero-padding&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
+</code></pre></div>
+<center>
+<img src="./fig/fft_period_sin_1T5.png">
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. 100-Hz sine wave sampled over 1.5 periods (left: time-domain waveform; right: FFT magnitude spectrum)</div>
+</center>
+
+<center>
+<img src="./fig/fft_period_sin_5T5.png">
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. 100-Hz sine wave sampled over 5.5 periods (left: time-domain waveform; right: FFT magnitude spectrum)</div>
+</center>
+
+<p>Unlike integer-period truncation, non-integer-period truncation causes <strong>spectral leakage</strong> or distortion. As shown, blue circles no longer align with spectral peaks. Regardless of sampling duration increase, the unpadded spectrum persistently indicates multiple significant frequency components besides 100 Hz. In such cases, zero-padding to enhance spectral resolution becomes essential.</p>
+<p>This simple example illustrates both the power and subtlety of FFT usage. Even for such a basic signal, improper application yields markedly inferior results. Many students encounter unsatisfactory outcomes in practical signal processing or research experiments—often, root causes lie in foundational choices. This is precisely why extensive exposition of Fourier analysis is warranted.</p>
+<p><strong>Complex exponential (complex sinusoid)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% Sampling rate: 1000 Hz</span>
+
+<span class="c">% Construct a 100-Hz complex exponential</span>
+<span class="n">f0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">:</span><span class="mi">5</span><span class="o">/</span><span class="n">f0</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% Sample five periods</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span>1<span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">((</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="nb">real</span><span class="p">(</span><span class="n">xn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time (ms)&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span>
+
+<span class="c">% FFT without zero-padding</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="c">% Shift negative frequencies to left</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="c">% FFT with zero-padding</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="c">% Zero-padding factor</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% Shift negative frequencies to left</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (Hz)&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Zero-padded&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;No zero-padding&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
+</code></pre></div>
+<center>
+<img src="./fig/fft_complex.png">
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. 100-Hz complex exponential sampled over five periods (left: real part of time-domain waveform; right: FFT magnitude spectrum)</div>
+</center>
+
+<p>The figure displays time- and frequency-domain representations of the complex signal <span class="arithmatex">\(x[n] = e^{j2\pi 100 n / f_s}\)</span>, which—unlike its real-valued counterpart—exhibits a single frequency component at 100 Hz.</p>
+<p><strong>Square wave</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e3</span><span class="p">;</span><span class="w"> </span><span class="c">% Sampling rate: 1000 Hz</span>
+
+<span class="c">% Construct a square wave with period 10 ms</span>
+<span class="n">T</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">10e-3</span><span class="p">;</span>
+<span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c">% Sample four periods</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+<span class="n">xn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">repmat</span><span class="p">([</span><span class="nb">ones</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">400</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="mi">900</span><span class="w"> </span><span class="mi">300</span><span class="p">]);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time (ms)&#39;</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">);</span>
+
+<span class="c">% FFT without zero-padding</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">);</span>
+<span class="c">% Shift negative frequencies to left</span>
+<span class="n">yn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="c">% FFT with zero-padding</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span><span class="w"> </span><span class="c">% Zero-padding factor</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fft</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="c">% Shift negative frequencies to left</span>
+<span class="n">yn2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">yn2</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span><span class="w"> </span><span class="n">yn2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span>
+<span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">&#39;/</span><span class="n">N</span><span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span>
+<span class="nb">stem</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">yn</span><span class="p">),</span><span class="s">&#39;color&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">168</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&#39;linestyle&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (Hz)&#39;</span><span class="p">);</span>
+<span class="nb">xticks</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">500</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yn2</span><span class="p">))]);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Zero-padded&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;No zero-padding&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthEast&#39;</span><span class="p">);</span>
+</code></pre></div>
+<center>
+<img src="./fig/fft_square.png">
+</center>
+
+<center>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Figure. Square wave with period 10 ms (left: time-domain waveform; right: magnitude spectrum)</div>
+</center>
+
+<p>The figure shows a square wave with period 10 ms and its spectrum. The dominant frequency component is 100 Hz, consistent with the 10-ms period. Readers will also observe additional frequency components beyond 100 Hz—consider why this occurs.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>Oppenheim, Alan V and Buck, John R and Schafer, Ronald W. <em>Discrete-time signal processing</em>. Vol. 2[M]. Upper Saddle River, NJ: Prentice Hall, 2001.  </li>
+<li>Cormen, Thomas H and Leiserson, Charles E and Rivest, Ronald L and Stein, Clifford. <em>Introduction to algorithms</em>[M]. MIT press, 2009.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Tsinghua University - Jiliang Wang - jiliangwang@tsinghua.edu.cn
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.expand", "navigation.top", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

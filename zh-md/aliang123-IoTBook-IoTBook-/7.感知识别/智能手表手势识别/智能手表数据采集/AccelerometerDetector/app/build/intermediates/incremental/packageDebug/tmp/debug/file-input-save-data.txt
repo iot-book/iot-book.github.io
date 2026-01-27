@@ -1,0 +1,11 @@
+#Internal package file, do not edit.
+#Thu Jul 11 10:22:39 CST 2019
+1.base=/Users/szp/Desktop/szp/LABORATORY/AccelerometerDetector/app/build/intermediates/transforms/dexMerger/debug/1
+0.baseType=DIRECTORY
+1.baseType=DIRECTORY
+count=2
+1.set=DEX
+0.path=classes.dex
+0.set=DEX
+0.base=/Users/szp/Desktop/szp/LABORATORY/AccelerometerDetector/app/build/intermediates/transforms/dexMerger/debug/0
+1.path=classes.dex

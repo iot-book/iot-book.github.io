@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/szp/Desktop/szp/LABORATORY/AccelerometerDetector/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw210dp-v13/values-sw210dp-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/szp/.gradle/caches/transforms-2/files-2.1/aea1241b72ed8e82c584e5d0a19c8c24/res/values-sw210dp-v13/values.xml",
+                    "from": {
+                        "startLines": "4,5,6",
+                        "startColumns": "0,0,0",
+                        "startOffsets": "215,279,339",
+                        "endColumns": "63,59,47",
+                        "endOffsets": "278,338,386"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,123,187",
+                        "endColumns": "67,63,51",
+                        "endOffsets": "118,182,234"
+                    }
+                }
+            ]
+        }
+    ]
+}
