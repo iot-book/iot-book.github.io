@@ -8,6 +8,7 @@ use_directory_urls: false
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
   features:
     - navigation.tracking
