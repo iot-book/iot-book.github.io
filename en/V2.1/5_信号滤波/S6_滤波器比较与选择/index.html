@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -3901,6 +3901,55 @@ padding: 2px;">Figure. Bandpass filtering effect.</div>
 <span class="w">    </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;amplitude&#39;</span><span class="p">);</span>
 <span class="k">end</span>
 </code></pre></div>
+<p>After mastering the basic principles and design methods of filters, this section uses a practical application case to explain how to utilize filters for signal processing tasks.</p>
+<p>You can click the link below to download the corresponding audio file:
+<a href="https://cloud.tsinghua.edu.cn/f/c56912db8f8440b7af69/?dl=1">Download Link</a></p>
+<p>When playing this audio file, you will only hear a conventional musical melody. However, by plotting its spectrogram using the <strong>Short-Time Fourier Transform (STFT)</strong>, you will discover that this audio is actually a mixture of sounds from two different frequency bands.</p>
+<div class="highlight"><pre><span></span><code><span class="c">% Read the audio file</span>
+<span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">Fs</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">audioread</span><span class="p">(</span><span class="s">&#39;audio.wav&#39;</span><span class="p">);</span>
+
+<span class="c">% --------------------- STFT Parameter Settings ---------------------</span>
+<span class="n">win</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">hamming</span><span class="p">(</span><span class="mi">1200</span><span class="p">);</span><span class="w">   </span><span class="c">% Window length: 1200</span>
+<span class="n">noverlap</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">960</span><span class="p">;</span><span class="w">        </span><span class="c">% Number of overlaps: 960 (80% overlap)</span>
+<span class="n">nfft</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1200</span><span class="p">;</span><span class="w">           </span><span class="c">% FFT points match the window length</span>
+
+<span class="c">% --------------------- Compute STFT and Plot Spectrogram ---------------------</span>
+<span class="p">[</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">stft</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">Fs</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Window&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">win</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;OverlapLength&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">noverlap</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;FFTLength&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">nfft</span><span class="p">);</span>
+
+<span class="c">% Plot spectrogram and adjust formatting</span>
+<span class="nb">figure</span><span class="p">(</span><span class="s">&#39;Color&#39;</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="mi">96</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="o">*</span><span class="mi">96</span><span class="p">]);</span><span class="w"> </span>
+<span class="nb">pcolor</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">S</span><span class="p">)));</span>
+<span class="n">shading</span><span class="w"> </span><span class="s">interp</span><span class="p">;</span>
+<span class="nb">colorbar</span><span class="p">;</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Time (s)&#39;</span><span class="p">,</span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Frequency (Hz)&#39;</span><span class="p">,</span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Spectrogram&#39;</span><span class="p">,</span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="s">&#39;FontWeight&#39;</span><span class="p">,</span><span class="s">&#39;bold&#39;</span><span class="p">);</span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Fs</span><span class="o">/</span><span class="mi">2</span><span class="p">]);</span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]);</span>
+</code></pre></div>
+<p>Within the frequency range perceptible to the human ear (<span class="arithmatex">\(\leq 18000\text{Hz}\)</span>), the spectrogram displays features corresponding to the musical melody. However, in the <strong>ultrasonic band</strong> (<span class="arithmatex">\(&gt; 18000\text{Hz}\)</span>), there is a hidden signal with linearly changing frequencies that alternate between ascending and descending (chirps). Since this signal is in the ultrasonic range, it exceeds the range of human hearing; thus, only the normal music is audible. This technique of embedding ultrasonic signals into regular music can be applied to the <strong>Internet of Things (IoT)</strong> to achieve functions like inaudible communication and sensing.</p>
+<p>So, how do we extract the usable ultrasonic signals from the mixed signal? This requirement can be met by designing and applying a filter.</p>
+<p>The sampling rate of this audio signal is <span class="arithmatex">\(48000\text{Hz}\)</span>, and the target signal is located above <span class="arithmatex">\(20000\text{Hz}\)</span>. Therefore, we can design a <strong>High-Pass Filter (HPF)</strong> to complete the processing. The filtering code is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c">% --------------------- Design High-Pass Filter ---------------------</span>
+<span class="c">% Key parameters</span>
+<span class="n">Fc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">17500</span><span class="p">;</span><span class="w">          </span><span class="c">% Cutoff frequency</span>
+<span class="n">Fs_filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Fs</span><span class="p">;</span><span class="w">      </span>
+<span class="n">order</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w">           </span><span class="c">% Filter order</span>
+
+<span class="c">% Design a Butterworth high-pass filter</span>
+<span class="c">% The butter function returns filter coefficients [b, a]; &#39;high&#39; specifies the type</span>
+<span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span><span class="w"> </span><span class="n">Fc</span><span class="o">/</span><span class="p">(</span><span class="n">Fs_filter</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;high&#39;</span><span class="p">);</span><span class="w"> </span>
+
+<span class="c">% --------------------- filtfilt ---------------------</span>
+<span class="c">% Use filtfilt for forward + backward filtering to avoid phase distortion</span>
+<span class="n">y_filtered</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+</code></pre></div>
+<p><img src="figs/original_STFT.png"></p>
+<p>The <code>filtfilt</code> function is a commonly used <strong>zero-phase filtering</strong> function in signal processing. Its core function is to perform both forward and backward filtering: first, the signal passes through the designed filter in the forward direction, and then the result is passed through the same filter in reverse.</p>
+<p>This approach ensures that the filtered signal has <strong>zero phase shift</strong> (avoiding phase distortion) and effectively doubles the filter's attenuation. It prevents phase distortion issues caused by single-direction filtering, making it especially suitable for signal processing scenarios with high requirements for phase fidelity, such as audio and vibration analysis.</p>
+<p>The spectrogram of the signal after filtering is shown below:</p>
+<p><img src="figs/filtered_STFT.png" /></p>
+<p>As clearly seen in the spectrogram, the low-frequency signals have been completely removed. When playing the filtered audio, almost no sound can be heard, which validates that the low-frequency acoustic waves were effectively filtered out.</p>
 
 
 
