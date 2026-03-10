@@ -205,3 +205,70 @@ function fft_plot(y, Fs, NFFT, plot_title)
     ylabel('amplitude');
 end
 ```
+
+After mastering the basic principles and design methods of filters, this section uses a practical application case to explain how to utilize filters for signal processing tasks.
+
+You can click the link below to download the corresponding audio file:
+[Download Link](https://cloud.tsinghua.edu.cn/f/c56912db8f8440b7af69/?dl=1)
+
+When playing this audio file, you will only hear a conventional musical melody. However, by plotting its spectrogram using the **Short-Time Fourier Transform (STFT)**, you will discover that this audio is actually a mixture of sounds from two different frequency bands.
+
+```matlab
+% Read the audio file
+[y, Fs] = audioread('audio.wav');
+
+% --------------------- STFT Parameter Settings ---------------------
+win = hamming(1200);   % Window length: 1200
+noverlap = 960;        % Number of overlaps: 960 (80% overlap)
+nfft = 1200;           % FFT points match the window length
+
+% --------------------- Compute STFT and Plot Spectrogram ---------------------
+[S, f, t] = stft(y, Fs, 'Window', win, 'OverlapLength', noverlap, 'FFTLength', nfft);
+
+% Plot spectrogram and adjust formatting
+figure('Color','w', 'Position', [100, 100, 10*96, 6*96]); 
+pcolor(t, f, 20*log10(abs(S)));
+shading interp;
+colorbar;
+xlabel('Time (s)','FontSize',20);
+ylabel('Frequency (Hz)','FontSize',20);
+title('Spectrogram','FontSize',20,'FontWeight','bold');
+ylim([0, Fs/2]);
+xlim([0, 8]);
+
+```
+
+Within the frequency range perceptible to the human ear ($\leq 18000\text{Hz}$), the spectrogram displays features corresponding to the musical melody. However, in the **ultrasonic band** ($> 18000\text{Hz}$), there is a hidden signal with linearly changing frequencies that alternate between ascending and descending (chirps). Since this signal is in the ultrasonic range, it exceeds the range of human hearing; thus, only the normal music is audible. This technique of embedding ultrasonic signals into regular music can be applied to the **Internet of Things (IoT)** to achieve functions like inaudible communication and sensing.
+
+So, how do we extract the usable ultrasonic signals from the mixed signal? This requirement can be met by designing and applying a filter.
+
+The sampling rate of this audio signal is $48000\text{Hz}$, and the target signal is located above $20000\text{Hz}$. Therefore, we can design a **High-Pass Filter (HPF)** to complete the processing. The filtering code is as follows:
+
+```matlab
+% --------------------- Design High-Pass Filter ---------------------
+% Key parameters
+Fc = 17500;          % Cutoff frequency
+Fs_filter = Fs;      
+order = 8;           % Filter order
+
+% Design a Butterworth high-pass filter
+% The butter function returns filter coefficients [b, a]; 'high' specifies the type
+[b, a] = butter(order, Fc/(Fs_filter/2), 'high'); 
+
+% --------------------- filtfilt ---------------------
+% Use filtfilt for forward + backward filtering to avoid phase distortion
+y_filtered = filtfilt(b, a, y);
+
+```
+
+<img src="figs/original_STFT.png">
+
+The `filtfilt` function is a commonly used **zero-phase filtering** function in signal processing. Its core function is to perform both forward and backward filtering: first, the signal passes through the designed filter in the forward direction, and then the result is passed through the same filter in reverse.
+
+This approach ensures that the filtered signal has **zero phase shift** (avoiding phase distortion) and effectively doubles the filter's attenuation. It prevents phase distortion issues caused by single-direction filtering, making it especially suitable for signal processing scenarios with high requirements for phase fidelity, such as audio and vibration analysis.
+
+The spectrogram of the signal after filtering is shown below:
+
+<img src="figs/filtered_STFT.png" />
+
+As clearly seen in the spectrogram, the low-frequency signals have been completely removed. When playing the filtered audio, almost no sound can be heard, which validates that the low-frequency acoustic waves were effectively filtered out.
