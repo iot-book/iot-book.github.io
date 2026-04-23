@@ -3,27 +3,29 @@
 {% block extrahead %}
   {{ super() }}
 
-  <!-- Statcounter -->
-  <script type="text/javascript">
-  var sc_project=12505380;
-  var sc_invisible=0;
-  var sc_security="d2f0597f";
-  var scJsHost = "https://";
-  document.write("<sc"+"ript type='text/javascript' src='" +
-  scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
+  {% set page_url = page.url if page and page.url else "" %}
+  {% if not (page_url.startswith("404") or "/404/" in page_url) %}
+    <!-- Statcounter -->
+    <script type="text/javascript">
+    var sc_project=12505380;
+    var sc_invisible=1;
+    var sc_security="d2f0597f";
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
 
-  <noscript>
-    <div class="statcounter">
-      <a title="Web Analytics Made Easy - Statcounter" href=" " target="_blank">
-        <img class="statcounter"
-             src="https://c.statcounter.com/12505380/0/d2f0597f/0/"
-             alt="Web Analytics Made Easy - Statcounter"
-             referrerPolicy="no-referrer-when-downgrade">
-      </a>
-    </div>
-  </noscript>
-  <!-- End Statcounter -->
+    <noscript>
+      <div class="statcounter">
+        <a title="Web Analytics" href="https://statcounter.com/" target="_blank" rel="noopener">
+          <img class="statcounter"
+               src="https://c.statcounter.com/12505380/0/d2f0597f/1/"
+               alt="Web Analytics"
+               referrerPolicy="no-referrer-when-downgrade">
+        </a>
+      </div>
+    </noscript>
+    <!-- End Statcounter -->
+  {% endif %}
 
 {% endblock %}
